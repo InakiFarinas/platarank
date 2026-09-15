@@ -1,0 +1,7381 @@
+[
+  {
+    "itemId": "T2_POTION_ENERGY",
+    "baseItemId": "T2_POTION_ENERGY",
+    "nameEs": "Poción de energía menor",
+    "nameEn": "Minor Energy Potion",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_ENERGY@1",
+    "baseItemId": "T2_POTION_ENERGY",
+    "nameEs": "Poción de energía menor",
+    "nameEn": "Minor Energy Potion",
+    "tier": 2,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_ENERGY@2",
+    "baseItemId": "T2_POTION_ENERGY",
+    "nameEs": "Poción de energía menor",
+    "nameEn": "Minor Energy Potion",
+    "tier": 2,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_ENERGY@3",
+    "baseItemId": "T2_POTION_ENERGY",
+    "nameEs": "Poción de energía menor",
+    "nameEn": "Minor Energy Potion",
+    "tier": 2,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_HEAL",
+    "baseItemId": "T2_POTION_HEAL",
+    "nameEs": "Poción de curación menor",
+    "nameEn": "Minor Healing Potion",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_HEAL@1",
+    "baseItemId": "T2_POTION_HEAL",
+    "nameEs": "Poción de curación menor",
+    "nameEn": "Minor Healing Potion",
+    "tier": 2,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_HEAL@2",
+    "baseItemId": "T2_POTION_HEAL",
+    "nameEs": "Poción de curación menor",
+    "nameEn": "Minor Healing Potion",
+    "tier": 2,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_POTION_HEAL@3",
+    "baseItemId": "T2_POTION_HEAL",
+    "nameEs": "Poción de curación menor",
+    "nameEn": "Minor Healing Potion",
+    "tier": 2,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_ACID",
+    "baseItemId": "T3_POTION_ACID",
+    "nameEs": "Poción de ácido menor",
+    "nameEn": "Minor Acid Potion",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu duras",
+        "nameEn": "Rugged Spirit Paws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_ACID@1",
+    "baseItemId": "T3_POTION_ACID",
+    "nameEs": "Poción de ácido menor",
+    "nameEn": "Minor Acid Potion",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu duras",
+        "nameEn": "Rugged Spirit Paws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_ACID@2",
+    "baseItemId": "T3_POTION_ACID",
+    "nameEs": "Poción de ácido menor",
+    "nameEn": "Minor Acid Potion",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu duras",
+        "nameEn": "Rugged Spirit Paws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_ACID@3",
+    "baseItemId": "T3_POTION_ACID",
+    "nameEs": "Poción de ácido menor",
+    "nameEn": "Minor Acid Potion",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu duras",
+        "nameEn": "Rugged Spirit Paws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_CLEANSE2",
+    "baseItemId": "T3_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza menor",
+    "nameEn": "Minor Cleansing Potion",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana dura",
+        "nameEn": "Rugged Sylvian Root"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_CLEANSE2@1",
+    "baseItemId": "T3_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza menor",
+    "nameEn": "Minor Cleansing Potion",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana dura",
+        "nameEn": "Rugged Sylvian Root"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_CLEANSE2@2",
+    "baseItemId": "T3_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza menor",
+    "nameEn": "Minor Cleansing Potion",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana dura",
+        "nameEn": "Rugged Sylvian Root"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_CLEANSE2@3",
+    "baseItemId": "T3_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza menor",
+    "nameEn": "Minor Cleansing Potion",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana dura",
+        "nameEn": "Rugged Sylvian Root"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_MOB_RESET",
+    "baseItemId": "T3_POTION_MOB_RESET",
+    "nameEs": "Poción de calma menor",
+    "nameEn": "Minor Calming Potion",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías duras",
+        "nameEn": "Rugged Shadow Claws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_MOB_RESET@1",
+    "baseItemId": "T3_POTION_MOB_RESET",
+    "nameEs": "Poción de calma menor",
+    "nameEn": "Minor Calming Potion",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías duras",
+        "nameEn": "Rugged Shadow Claws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_MOB_RESET@2",
+    "baseItemId": "T3_POTION_MOB_RESET",
+    "nameEs": "Poción de calma menor",
+    "nameEn": "Minor Calming Potion",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías duras",
+        "nameEn": "Rugged Shadow Claws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_MOB_RESET@3",
+    "baseItemId": "T3_POTION_MOB_RESET",
+    "nameEs": "Poción de calma menor",
+    "nameEn": "Minor Calming Potion",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías duras",
+        "nameEn": "Rugged Shadow Claws"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_REVIVE",
+    "baseItemId": "T3_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo menor",
+    "nameEn": "Minor Gigantify Potion",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_REVIVE@1",
+    "baseItemId": "T3_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo menor",
+    "nameEn": "Minor Gigantify Potion",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_REVIVE@2",
+    "baseItemId": "T3_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo menor",
+    "nameEn": "Minor Gigantify Potion",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_REVIVE@3",
+    "baseItemId": "T3_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo menor",
+    "nameEn": "Minor Gigantify Potion",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_SLOWFIELD",
+    "baseItemId": "T3_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa menor",
+    "nameEn": "Minor Sticky Potion",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_SLOWFIELD@1",
+    "baseItemId": "T3_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa menor",
+    "nameEn": "Minor Sticky Potion",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_SLOWFIELD@2",
+    "baseItemId": "T3_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa menor",
+    "nameEn": "Minor Sticky Potion",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_SLOWFIELD@3",
+    "baseItemId": "T3_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa menor",
+    "nameEn": "Minor Sticky Potion",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_STONESKIN",
+    "baseItemId": "T3_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia menor",
+    "nameEn": "Minor Resistance Potion",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_STONESKIN@1",
+    "baseItemId": "T3_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia menor",
+    "nameEn": "Minor Resistance Potion",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_STONESKIN@2",
+    "baseItemId": "T3_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia menor",
+    "nameEn": "Minor Resistance Potion",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_POTION_STONESKIN@3",
+    "baseItemId": "T3_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia menor",
+    "nameEn": "Minor Resistance Potion",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_COMFREY",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_BERSERK",
+    "baseItemId": "T4_POTION_BERSERK",
+    "nameEs": "Poción de berserker menor",
+    "nameEn": "Minor Berserk Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo duros",
+        "nameEn": "Rugged Werewolf Fangs"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_BERSERK@1",
+    "baseItemId": "T4_POTION_BERSERK",
+    "nameEs": "Poción de berserker menor",
+    "nameEn": "Minor Berserk Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo duros",
+        "nameEn": "Rugged Werewolf Fangs"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_BERSERK@2",
+    "baseItemId": "T4_POTION_BERSERK",
+    "nameEs": "Poción de berserker menor",
+    "nameEn": "Minor Berserk Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo duros",
+        "nameEn": "Rugged Werewolf Fangs"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_BERSERK@3",
+    "baseItemId": "T4_POTION_BERSERK",
+    "nameEs": "Poción de berserker menor",
+    "nameEn": "Minor Berserk Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo duros",
+        "nameEn": "Rugged Werewolf Fangs"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_COOLDOWN",
+    "baseItemId": "T4_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno menor",
+    "nameEn": "Minor Poison Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 84,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_COOLDOWN@1",
+    "baseItemId": "T4_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno menor",
+    "nameEn": "Minor Poison Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 106,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_COOLDOWN@2",
+    "baseItemId": "T4_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno menor",
+    "nameEn": "Minor Poison Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 151,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_COOLDOWN@3",
+    "baseItemId": "T4_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno menor",
+    "nameEn": "Minor Poison Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 284,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 5,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_ENERGY",
+    "baseItemId": "T4_POTION_ENERGY",
+    "nameEs": "Poción de energía",
+    "nameEn": "Energy Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 210,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_ENERGY@1",
+    "baseItemId": "T4_POTION_ENERGY",
+    "nameEs": "Poción de energía",
+    "nameEn": "Energy Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 277,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_ENERGY@2",
+    "baseItemId": "T4_POTION_ENERGY",
+    "nameEs": "Poción de energía",
+    "nameEn": "Energy Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 411,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_ENERGY@3",
+    "baseItemId": "T4_POTION_ENERGY",
+    "nameEs": "Poción de energía",
+    "nameEn": "Energy Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 811,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_GATHER",
+    "baseItemId": "T4_POTION_GATHER",
+    "nameEs": "Poción de recolección menor",
+    "nameEn": "Minor Gathering Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 61,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica duro",
+        "nameEn": "Rugged Runestone Tooth"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_GATHER@1",
+    "baseItemId": "T4_POTION_GATHER",
+    "nameEs": "Poción de recolección menor",
+    "nameEn": "Minor Gathering Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 84,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica duro",
+        "nameEn": "Rugged Runestone Tooth"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_GATHER@2",
+    "baseItemId": "T4_POTION_GATHER",
+    "nameEs": "Poción de recolección menor",
+    "nameEn": "Minor Gathering Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 128,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica duro",
+        "nameEn": "Rugged Runestone Tooth"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_GATHER@3",
+    "baseItemId": "T4_POTION_GATHER",
+    "nameEs": "Poción de recolección menor",
+    "nameEn": "Minor Gathering Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 262,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica duro",
+        "nameEn": "Rugged Runestone Tooth"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_HEAL",
+    "baseItemId": "T4_POTION_HEAL",
+    "nameEs": "Poción de curación",
+    "nameEn": "Healing Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 210,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_HEAL@1",
+    "baseItemId": "T4_POTION_HEAL",
+    "nameEs": "Poción de curación",
+    "nameEn": "Healing Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 277,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_HEAL@2",
+    "baseItemId": "T4_POTION_HEAL",
+    "nameEs": "Poción de curación",
+    "nameEn": "Healing Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 411,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_HEAL@3",
+    "baseItemId": "T4_POTION_HEAL",
+    "nameEs": "Poción de curación",
+    "nameEn": "Healing Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 811,
+    "materials": [
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LAVA",
+    "baseItemId": "T4_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal menor",
+    "nameEn": "Minor Hellfire Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo duro",
+        "nameEn": "Rugged Imp's Horn"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LAVA@1",
+    "baseItemId": "T4_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal menor",
+    "nameEn": "Minor Hellfire Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo duro",
+        "nameEn": "Rugged Imp's Horn"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LAVA@2",
+    "baseItemId": "T4_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal menor",
+    "nameEn": "Minor Hellfire Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo duro",
+        "nameEn": "Rugged Imp's Horn"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LAVA@3",
+    "baseItemId": "T4_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal menor",
+    "nameEn": "Minor Hellfire Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo duro",
+        "nameEn": "Rugged Imp's Horn"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LIFEWARD",
+    "baseItemId": "T4_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Menor",
+    "nameEn": "Minor Lifeward Potion",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T4_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón diluida",
+        "nameEn": "Diluted Dragon Blood"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LIFEWARD@1",
+    "baseItemId": "T4_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Menor",
+    "nameEn": "Minor Lifeward Potion",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T4_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón diluida",
+        "nameEn": "Diluted Dragon Blood"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LIFEWARD@2",
+    "baseItemId": "T4_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Menor",
+    "nameEn": "Minor Lifeward Potion",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T4_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón diluida",
+        "nameEn": "Diluted Dragon Blood"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_LIFEWARD@3",
+    "baseItemId": "T4_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Menor",
+    "nameEn": "Minor Lifeward Potion",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T4_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón diluida",
+        "nameEn": "Diluted Dragon Blood"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_TORNADO",
+    "baseItemId": "T4_POTION_TORNADO",
+    "nameEs": "Tornado en botella menor",
+    "nameEn": "Minor Tornado in a Bottle",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba dura",
+        "nameEn": "Rugged Dawnfeather"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_TORNADO@1",
+    "baseItemId": "T4_POTION_TORNADO",
+    "nameEs": "Tornado en botella menor",
+    "nameEn": "Minor Tornado in a Bottle",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba dura",
+        "nameEn": "Rugged Dawnfeather"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_TORNADO@2",
+    "baseItemId": "T4_POTION_TORNADO",
+    "nameEs": "Tornado en botella menor",
+    "nameEn": "Minor Tornado in a Bottle",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba dura",
+        "nameEn": "Rugged Dawnfeather"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_POTION_TORNADO@3",
+    "baseItemId": "T4_POTION_TORNADO",
+    "nameEs": "Tornado en botella menor",
+    "nameEn": "Minor Tornado in a Bottle",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T3_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba dura",
+        "nameEn": "Rugged Dawnfeather"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_ACID",
+    "baseItemId": "T5_POTION_ACID",
+    "nameEs": "Poción de ácido",
+    "nameEn": "Acid Potion",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu finas",
+        "nameEn": "Fine Spirit Paws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_ACID@1",
+    "baseItemId": "T5_POTION_ACID",
+    "nameEs": "Poción de ácido",
+    "nameEn": "Acid Potion",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu finas",
+        "nameEn": "Fine Spirit Paws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_ACID@2",
+    "baseItemId": "T5_POTION_ACID",
+    "nameEs": "Poción de ácido",
+    "nameEn": "Acid Potion",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu finas",
+        "nameEn": "Fine Spirit Paws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_ACID@3",
+    "baseItemId": "T5_POTION_ACID",
+    "nameEs": "Poción de ácido",
+    "nameEn": "Acid Potion",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu finas",
+        "nameEn": "Fine Spirit Paws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_CLEANSE2",
+    "baseItemId": "T5_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza",
+    "nameEn": "Cleansing Potion",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 298,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana fina",
+        "nameEn": "Fine Sylvian Root"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_CLEANSE2@1",
+    "baseItemId": "T5_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza",
+    "nameEn": "Cleansing Potion",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 365,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana fina",
+        "nameEn": "Fine Sylvian Root"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_CLEANSE2@2",
+    "baseItemId": "T5_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza",
+    "nameEn": "Cleansing Potion",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 498,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana fina",
+        "nameEn": "Fine Sylvian Root"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_CLEANSE2@3",
+    "baseItemId": "T5_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza",
+    "nameEn": "Cleansing Potion",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 898,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana fina",
+        "nameEn": "Fine Sylvian Root"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_MOB_RESET",
+    "baseItemId": "T5_POTION_MOB_RESET",
+    "nameEs": "Poción de calma",
+    "nameEn": "Calming Potion",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías finas",
+        "nameEn": "Fine Shadow Claws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_MOB_RESET@1",
+    "baseItemId": "T5_POTION_MOB_RESET",
+    "nameEs": "Poción de calma",
+    "nameEn": "Calming Potion",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías finas",
+        "nameEn": "Fine Shadow Claws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_MOB_RESET@2",
+    "baseItemId": "T5_POTION_MOB_RESET",
+    "nameEs": "Poción de calma",
+    "nameEn": "Calming Potion",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías finas",
+        "nameEn": "Fine Shadow Claws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_MOB_RESET@3",
+    "baseItemId": "T5_POTION_MOB_RESET",
+    "nameEs": "Poción de calma",
+    "nameEn": "Calming Potion",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías finas",
+        "nameEn": "Fine Shadow Claws"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_REVIVE",
+    "baseItemId": "T5_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo",
+    "nameEn": "Gigantify Potion",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_REVIVE@1",
+    "baseItemId": "T5_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo",
+    "nameEn": "Gigantify Potion",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_REVIVE@2",
+    "baseItemId": "T5_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo",
+    "nameEn": "Gigantify Potion",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_REVIVE@3",
+    "baseItemId": "T5_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo",
+    "nameEn": "Gigantify Potion",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_SLOWFIELD",
+    "baseItemId": "T5_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa",
+    "nameEn": "Sticky Potion",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_SLOWFIELD@1",
+    "baseItemId": "T5_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa",
+    "nameEn": "Sticky Potion",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_SLOWFIELD@2",
+    "baseItemId": "T5_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa",
+    "nameEn": "Sticky Potion",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_SLOWFIELD@3",
+    "baseItemId": "T5_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa",
+    "nameEn": "Sticky Potion",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_STONESKIN",
+    "baseItemId": "T5_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia",
+    "nameEn": "Resistance Potion",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_STONESKIN@1",
+    "baseItemId": "T5_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia",
+    "nameEn": "Resistance Potion",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_STONESKIN@2",
+    "baseItemId": "T5_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia",
+    "nameEn": "Resistance Potion",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_POTION_STONESKIN@3",
+    "baseItemId": "T5_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia",
+    "nameEn": "Resistance Potion",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_BERSERK",
+    "baseItemId": "T6_POTION_BERSERK",
+    "nameEs": "Poción de berserker",
+    "nameEn": "Berserk Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 298,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo finos",
+        "nameEn": "Fine Werewolf Fangs"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_BERSERK@1",
+    "baseItemId": "T6_POTION_BERSERK",
+    "nameEs": "Poción de berserker",
+    "nameEn": "Berserk Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 365,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo finos",
+        "nameEn": "Fine Werewolf Fangs"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_BERSERK@2",
+    "baseItemId": "T6_POTION_BERSERK",
+    "nameEs": "Poción de berserker",
+    "nameEn": "Berserk Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 498,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo finos",
+        "nameEn": "Fine Werewolf Fangs"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_BERSERK@3",
+    "baseItemId": "T6_POTION_BERSERK",
+    "nameEs": "Poción de berserker",
+    "nameEn": "Berserk Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 898,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo finos",
+        "nameEn": "Fine Werewolf Fangs"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_COOLDOWN",
+    "baseItemId": "T6_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno",
+    "nameEn": "Poison Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 378,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_COOLDOWN@1",
+    "baseItemId": "T6_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno",
+    "nameEn": "Poison Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 445,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_COOLDOWN@2",
+    "baseItemId": "T6_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno",
+    "nameEn": "Poison Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 578,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_COOLDOWN@3",
+    "baseItemId": "T6_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno",
+    "nameEn": "Poison Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 979,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 15,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_ENERGY",
+    "baseItemId": "T6_POTION_ENERGY",
+    "nameEs": "Poción de energía mayor",
+    "nameEn": "Major Energy Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 768,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_ENERGY@1",
+    "baseItemId": "T6_POTION_ENERGY",
+    "nameEs": "Poción de energía mayor",
+    "nameEn": "Major Energy Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 968,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_ENERGY@2",
+    "baseItemId": "T6_POTION_ENERGY",
+    "nameEs": "Poción de energía mayor",
+    "nameEn": "Major Energy Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1369,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_ENERGY@3",
+    "baseItemId": "T6_POTION_ENERGY",
+    "nameEs": "Poción de energía mayor",
+    "nameEn": "Major Energy Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 2570,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_GATHER",
+    "baseItemId": "T6_POTION_GATHER",
+    "nameEs": "Poción de recolección",
+    "nameEn": "Gathering Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 310,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica fino",
+        "nameEn": "Fine Runestone Tooth"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_GATHER@1",
+    "baseItemId": "T6_POTION_GATHER",
+    "nameEs": "Poción de recolección",
+    "nameEn": "Gathering Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 376,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica fino",
+        "nameEn": "Fine Runestone Tooth"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_GATHER@2",
+    "baseItemId": "T6_POTION_GATHER",
+    "nameEs": "Poción de recolección",
+    "nameEn": "Gathering Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 510,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica fino",
+        "nameEn": "Fine Runestone Tooth"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_GATHER@3",
+    "baseItemId": "T6_POTION_GATHER",
+    "nameEs": "Poción de recolección",
+    "nameEn": "Gathering Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 910,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica fino",
+        "nameEn": "Fine Runestone Tooth"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_HEAL",
+    "baseItemId": "T6_POTION_HEAL",
+    "nameEs": "Poción de curación mayor",
+    "nameEn": "Major Healing Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 768,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_HEAL@1",
+    "baseItemId": "T6_POTION_HEAL",
+    "nameEs": "Poción de curación mayor",
+    "nameEn": "Major Healing Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 968,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_HEAL@2",
+    "baseItemId": "T6_POTION_HEAL",
+    "nameEs": "Poción de curación mayor",
+    "nameEn": "Major Healing Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1369,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_HEAL@3",
+    "baseItemId": "T6_POTION_HEAL",
+    "nameEs": "Poción de curación mayor",
+    "nameEn": "Major Healing Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 2570,
+    "materials": [
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LAVA",
+    "baseItemId": "T6_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal",
+    "nameEn": "Hellfire Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo fino",
+        "nameEn": "Fine Imp's Horn"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LAVA@1",
+    "baseItemId": "T6_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal",
+    "nameEn": "Hellfire Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo fino",
+        "nameEn": "Fine Imp's Horn"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LAVA@2",
+    "baseItemId": "T6_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal",
+    "nameEn": "Hellfire Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo fino",
+        "nameEn": "Fine Imp's Horn"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LAVA@3",
+    "baseItemId": "T6_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal",
+    "nameEn": "Hellfire Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo fino",
+        "nameEn": "Fine Imp's Horn"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LIFEWARD",
+    "baseItemId": "T6_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida",
+    "nameEn": "Lifeward Potion",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T6_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón",
+        "nameEn": "Dragon Blood"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LIFEWARD@1",
+    "baseItemId": "T6_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida",
+    "nameEn": "Lifeward Potion",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T6_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón",
+        "nameEn": "Dragon Blood"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LIFEWARD@2",
+    "baseItemId": "T6_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida",
+    "nameEn": "Lifeward Potion",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T6_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón",
+        "nameEn": "Dragon Blood"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_LIFEWARD@3",
+    "baseItemId": "T6_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida",
+    "nameEn": "Lifeward Potion",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T6_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón",
+        "nameEn": "Dragon Blood"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_TORNADO",
+    "baseItemId": "T6_POTION_TORNADO",
+    "nameEs": "Tornado en botella",
+    "nameEn": "Tornado in a Bottle",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 294,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba fina",
+        "nameEn": "Fine Dawnfeather"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_TORNADO@1",
+    "baseItemId": "T6_POTION_TORNADO",
+    "nameEs": "Tornado en botella",
+    "nameEn": "Tornado in a Bottle",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 361,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba fina",
+        "nameEn": "Fine Dawnfeather"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_TORNADO@2",
+    "baseItemId": "T6_POTION_TORNADO",
+    "nameEs": "Tornado en botella",
+    "nameEn": "Tornado in a Bottle",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba fina",
+        "nameEn": "Fine Dawnfeather"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_POTION_TORNADO@3",
+    "baseItemId": "T6_POTION_TORNADO",
+    "nameEs": "Tornado en botella",
+    "nameEn": "Tornado in a Bottle",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 895,
+    "materials": [
+      {
+        "itemId": "T5_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba fina",
+        "nameEn": "Fine Dawnfeather"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_ACID",
+    "baseItemId": "T7_POTION_ACID",
+    "nameEs": "Poción de ácido mayor",
+    "nameEn": "Major Acid Potion",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1296,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu excelentes",
+        "nameEn": "Excellent Spirit Paws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_ACID@1",
+    "baseItemId": "T7_POTION_ACID",
+    "nameEs": "Poción de ácido mayor",
+    "nameEn": "Major Acid Potion",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1496,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu excelentes",
+        "nameEn": "Excellent Spirit Paws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_ACID@2",
+    "baseItemId": "T7_POTION_ACID",
+    "nameEs": "Poción de ácido mayor",
+    "nameEn": "Major Acid Potion",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1896,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu excelentes",
+        "nameEn": "Excellent Spirit Paws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_ACID@3",
+    "baseItemId": "T7_POTION_ACID",
+    "nameEs": "Poción de ácido mayor",
+    "nameEn": "Major Acid Potion",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3097,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_DIREBEAR",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Patas de espíritu excelentes",
+        "nameEn": "Excellent Spirit Paws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_CLEANSE2",
+    "baseItemId": "T7_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza mayor",
+    "nameEn": "Major Cleansing Potion",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1283,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana excelente",
+        "nameEn": "Excellent Sylvian Root"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_CLEANSE2@1",
+    "baseItemId": "T7_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza mayor",
+    "nameEn": "Major Cleansing Potion",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1484,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana excelente",
+        "nameEn": "Excellent Sylvian Root"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_CLEANSE2@2",
+    "baseItemId": "T7_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza mayor",
+    "nameEn": "Major Cleansing Potion",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1884,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana excelente",
+        "nameEn": "Excellent Sylvian Root"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_CLEANSE2@3",
+    "baseItemId": "T7_POTION_CLEANSE2",
+    "nameEs": "Poción de limpieza mayor",
+    "nameEn": "Major Cleansing Potion",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3085,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ENT",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Raíz silvana excelente",
+        "nameEn": "Excellent Sylvian Root"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_MOB_RESET",
+    "baseItemId": "T7_POTION_MOB_RESET",
+    "nameEs": "Poción de calma mayor",
+    "nameEn": "Major Calming Potion",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías excelentes",
+        "nameEn": "Excellent Shadow Claws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_MOB_RESET@1",
+    "baseItemId": "T7_POTION_MOB_RESET",
+    "nameEs": "Poción de calma mayor",
+    "nameEn": "Major Calming Potion",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1472,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías excelentes",
+        "nameEn": "Excellent Shadow Claws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_MOB_RESET@2",
+    "baseItemId": "T7_POTION_MOB_RESET",
+    "nameEs": "Poción de calma mayor",
+    "nameEn": "Major Calming Potion",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1873,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías excelentes",
+        "nameEn": "Excellent Shadow Claws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_MOB_RESET@3",
+    "baseItemId": "T7_POTION_MOB_RESET",
+    "nameEs": "Poción de calma mayor",
+    "nameEn": "Major Calming Potion",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3073,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_PANTHER",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Garras sombrías excelentes",
+        "nameEn": "Excellent Shadow Claws"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_REVIVE",
+    "baseItemId": "T7_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo mayor",
+    "nameEn": "Major Gigantify Potion",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1020,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_REVIVE@1",
+    "baseItemId": "T7_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo mayor",
+    "nameEn": "Major Gigantify Potion",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1220,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_REVIVE@2",
+    "baseItemId": "T7_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo mayor",
+    "nameEn": "Major Gigantify Potion",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1620,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_REVIVE@3",
+    "baseItemId": "T7_POTION_REVIVE",
+    "nameEs": "Poción de gigantismo mayor",
+    "nameEn": "Major Gigantify Potion",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 2821,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_SLOWFIELD",
+    "baseItemId": "T7_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa mayor",
+    "nameEn": "Major Sticky Potion",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_SLOWFIELD@1",
+    "baseItemId": "T7_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa mayor",
+    "nameEn": "Major Sticky Potion",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1472,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_SLOWFIELD@2",
+    "baseItemId": "T7_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa mayor",
+    "nameEn": "Major Sticky Potion",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1873,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_SLOWFIELD@3",
+    "baseItemId": "T7_POTION_SLOWFIELD",
+    "nameEs": "Poción pegajosa mayor",
+    "nameEn": "Major Sticky Potion",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 3073,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_STONESKIN",
+    "baseItemId": "T7_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia mayor",
+    "nameEn": "Major Resistance Potion",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_STONESKIN@1",
+    "baseItemId": "T7_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia mayor",
+    "nameEn": "Major Resistance Potion",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1472,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_STONESKIN@2",
+    "baseItemId": "T7_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia mayor",
+    "nameEn": "Major Resistance Potion",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1873,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_POTION_STONESKIN@3",
+    "baseItemId": "T7_POTION_STONESKIN",
+    "nameEs": "Poción de resistencia mayor",
+    "nameEn": "Major Resistance Potion",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 3073,
+    "materials": [
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_BERSERK",
+    "baseItemId": "T8_POTION_BERSERK",
+    "nameEs": "Poción de berserker mayor",
+    "nameEn": "Major Berserk Potion",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1307,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo excelentes",
+        "nameEn": "Excellent Werewolf Fangs"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_BERSERK@1",
+    "baseItemId": "T8_POTION_BERSERK",
+    "nameEs": "Poción de berserker mayor",
+    "nameEn": "Major Berserk Potion",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1507,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo excelentes",
+        "nameEn": "Excellent Werewolf Fangs"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_BERSERK@2",
+    "baseItemId": "T8_POTION_BERSERK",
+    "nameEs": "Poción de berserker mayor",
+    "nameEn": "Major Berserk Potion",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1908,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo excelentes",
+        "nameEn": "Excellent Werewolf Fangs"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_BERSERK@3",
+    "baseItemId": "T8_POTION_BERSERK",
+    "nameEs": "Poción de berserker mayor",
+    "nameEn": "Major Berserk Potion",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3108,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_WEREWOLF",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Colmillos de hombre lobo excelentes",
+        "nameEn": "Excellent Werewolf Fangs"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T6_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Schnapps de patata",
+        "nameEn": "Potato Schnapps"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_CLEANSE",
+    "baseItemId": "T8_POTION_CLEANSE",
+    "nameEs": "Poción de invisibilidad",
+    "nameEn": "Invisibility Potion",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_CLEANSE@1",
+    "baseItemId": "T8_POTION_CLEANSE",
+    "nameEs": "Poción de invisibilidad",
+    "nameEn": "Invisibility Potion",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1472,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_CLEANSE@2",
+    "baseItemId": "T8_POTION_CLEANSE",
+    "nameEs": "Poción de invisibilidad",
+    "nameEn": "Invisibility Potion",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1873,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_CLEANSE@3",
+    "baseItemId": "T8_POTION_CLEANSE",
+    "nameEs": "Poción de invisibilidad",
+    "nameEn": "Invisibility Potion",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 3073,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_COOLDOWN",
+    "baseItemId": "T8_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno mayor",
+    "nameEn": "Major Poison Potion",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_COOLDOWN@1",
+    "baseItemId": "T8_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno mayor",
+    "nameEn": "Major Poison Potion",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1472,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_COOLDOWN@2",
+    "baseItemId": "T8_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno mayor",
+    "nameEn": "Major Poison Potion",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 1873,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_COOLDOWN@3",
+    "baseItemId": "T8_POTION_COOLDOWN",
+    "nameEs": "Poción de veneno mayor",
+    "nameEn": "Major Poison Potion",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 3073,
+    "materials": [
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 45,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_GATHER",
+    "baseItemId": "T8_POTION_GATHER",
+    "nameEs": "Poción de recolección mayor",
+    "nameEn": "Major Gathering Potion",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1319,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica excelente",
+        "nameEn": "Excellent Runestone Tooth"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_GATHER@1",
+    "baseItemId": "T8_POTION_GATHER",
+    "nameEs": "Poción de recolección mayor",
+    "nameEn": "Major Gathering Potion",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1520,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica excelente",
+        "nameEn": "Excellent Runestone Tooth"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_GATHER@2",
+    "baseItemId": "T8_POTION_GATHER",
+    "nameEs": "Poción de recolección mayor",
+    "nameEn": "Major Gathering Potion",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1920,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica excelente",
+        "nameEn": "Excellent Runestone Tooth"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_GATHER@3",
+    "baseItemId": "T8_POTION_GATHER",
+    "nameEs": "Poción de recolección mayor",
+    "nameEn": "Major Gathering Potion",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3121,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_ELEMENTAL",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Diente de piedra rúnica excelente",
+        "nameEn": "Excellent Runestone Tooth"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LAVA",
+    "baseItemId": "T8_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal mayor",
+    "nameEn": "Major Hellfire Potion",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo excelente",
+        "nameEn": "Excellent Imp's Horn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LAVA@1",
+    "baseItemId": "T8_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal mayor",
+    "nameEn": "Major Hellfire Potion",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1472,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo excelente",
+        "nameEn": "Excellent Imp's Horn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LAVA@2",
+    "baseItemId": "T8_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal mayor",
+    "nameEn": "Major Hellfire Potion",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1873,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo excelente",
+        "nameEn": "Excellent Imp's Horn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LAVA@3",
+    "baseItemId": "T8_POTION_LAVA",
+    "nameEs": "Poción de fuego infernal mayor",
+    "nameEn": "Major Hellfire Potion",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3073,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_IMP",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Cuerno de diablillo excelente",
+        "nameEn": "Excellent Imp's Horn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LIFEWARD",
+    "baseItemId": "T8_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Mayor",
+    "nameEn": "Major Lifeward Potion",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1296,
+    "materials": [
+      {
+        "itemId": "T8_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón potente",
+        "nameEn": "Potent Dragon Blood"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LIFEWARD@1",
+    "baseItemId": "T8_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Mayor",
+    "nameEn": "Major Lifeward Potion",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1496,
+    "materials": [
+      {
+        "itemId": "T8_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón potente",
+        "nameEn": "Potent Dragon Blood"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LIFEWARD@2",
+    "baseItemId": "T8_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Mayor",
+    "nameEn": "Major Lifeward Potion",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1896,
+    "materials": [
+      {
+        "itemId": "T8_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón potente",
+        "nameEn": "Potent Dragon Blood"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_LIFEWARD@3",
+    "baseItemId": "T8_POTION_LIFEWARD",
+    "nameEs": "Poción Guardavida Mayor",
+    "nameEn": "Major Lifeward Potion",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3097,
+    "materials": [
+      {
+        "itemId": "T8_ALCHEMY_RARE_DRAGONAREA",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Sangre de Dragón potente",
+        "nameEn": "Potent Dragon Blood"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_TORNADO",
+    "baseItemId": "T8_POTION_TORNADO",
+    "nameEs": "Tornado en botella mayor",
+    "nameEn": "Major Tornado in a Bottle",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1296,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba excelente",
+        "nameEn": "Excellent Dawnfeather"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_TORNADO@1",
+    "baseItemId": "T8_POTION_TORNADO",
+    "nameEs": "Tornado en botella mayor",
+    "nameEn": "Major Tornado in a Bottle",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1496,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba excelente",
+        "nameEn": "Excellent Dawnfeather"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano básico",
+        "nameEn": "Basic Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_TORNADO@2",
+    "baseItemId": "T8_POTION_TORNADO",
+    "nameEs": "Tornado en botella mayor",
+    "nameEn": "Major Tornado in a Bottle",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 1896,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba excelente",
+        "nameEn": "Excellent Dawnfeather"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano refinado",
+        "nameEn": "Refined Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_POTION_TORNADO@3",
+    "baseItemId": "T8_POTION_TORNADO",
+    "nameEs": "Tornado en botella mayor",
+    "nameEn": "Major Tornado in a Bottle",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "alchemy",
+    "batchSize": 10,
+    "craftingFocus": 3097,
+    "materials": [
+      {
+        "itemId": "T7_ALCHEMY_RARE_EAGLE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Pluma de alba excelente",
+        "nameEn": "Excellent Dawnfeather"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_ALCOHOL",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Orujo de maíz",
+        "nameEn": "Corn Hooch"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T8_ALCOHOL",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Aguardiente de calabaza",
+        "nameEn": "Pumpkin Moonshine"
+      },
+      {
+        "itemId": "T1_ALCHEMY_EXTRACT_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Extracto arcano puro",
+        "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "UNIQUE_WEAPONMASTER_IDLE_PROTOTYPE",
+    "baseItemId": "UNIQUE_WEAPONMASTER_IDLE_PROTOTYPE",
+    "nameEs": "UNIQUE_WEAPONMASTER_IDLE_PROTOTYPE",
+    "nameEn": "UNIQUE_WEAPONMASTER_IDLE_PROTOTYPE",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  },
+  {
+    "itemId": "UNIQUE_WEAPONMASTER_POTION_PROTOTYPE",
+    "baseItemId": "UNIQUE_WEAPONMASTER_POTION_PROTOTYPE",
+    "nameEs": "UNIQUE_WEAPONMASTER_POTION_PROTOTYPE",
+    "nameEn": "UNIQUE_WEAPONMASTER_POTION_PROTOTYPE",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "alchemy",
+    "batchSize": 5,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T2_AGARIC",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  }
+]
