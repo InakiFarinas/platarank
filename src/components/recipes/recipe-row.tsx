@@ -76,6 +76,15 @@ function Stat({ label, value, mono }: { label: string; value: string; mono?: boo
   );
 }
 
+function specialtyLabel(row: RecipeRowData): string {
+  const focusLabel = row.focus ? "con foco" : "sin foco";
+  if (row.recipe.stationType === "alchemy") return `Brecilien, ${focusLabel}`;
+  if (row.recipe.stationType === "refining") {
+    return `${row.specialtyActive ? "con" : "sin"} especialidad de refinado, ${focusLabel}`;
+  }
+  return focusLabel;
+}
+
 function RowDetail({ row }: { row: RecipeRowData }) {
   return (
     <div className="bg-card/50 px-3 py-3 text-xs sm:px-9">
@@ -91,10 +100,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
               v={row.brecilienCovered ? "cotiza este ítem" : "sin cotización para este ítem"}
             />
             <Row k="Score de calidad" v={`${row.qualityScore}/100`} />
-            <Row
-              k="Retorno asumido"
-              v={`${Math.round(row.returnRatePct * 100)}% (Brecilien${row.focus ? ", con foco" : ", sin foco"})`}
-            />
+            <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row)})`} />
             <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
             <Row k="Cuota de mercado" v={`${Math.round(row.marketSharePct * 100)}%`} />
           </dl>

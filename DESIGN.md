@@ -138,6 +138,8 @@ Mobile-first, single-column container (`max-w-5xl`, centered), with padding that
 
 **Sticky header pattern.** The page title block is `sticky top-0 z-20`, bleeds edge-to-edge via negative margin (`-mx-3 sm:-mx-6`) then re-pads, and sits on `bg-background/95` with `backdrop-blur` so content scrolls underneath a legible, non-opaque title bar. This is the standard header treatment for any Operate-mode page in this project.
 
+**Multi-surface structure (Fase 3+).** As of the Refinado surface, the project has more than one ranked-list page (`/alquimia`, `/refinado`, more to come in later fases). Both share one server component (`recipe-page.tsx`) that owns the sticky header, a small text-link nav row (`Alquimia` / `Refinado`, muted-foreground default, foreground on hover, no active-state treatment yet), the `RecipeExplorer` + `RecipeTable`, and the footer -- so the two surfaces are pixel-identical in chrome by construction, not by convention. A new station type extends this same component with a `stationType` prop rather than forking the page; only the title, description, and the params/labels that differ per station type (e.g. Refinado's "Especialidad de refinado" switch, hidden on Alquimia) branch inside the shared components.
+
 **Row density.** Rows are dense by design: `py-2.5` on mobile collapsing to `py-2` on desktop, virtualized at a 52px row-height estimate so hundreds of recipes scan fast on a phone.
 
 **Responsive control fallback.** Sort controls have two forms, not one degraded into the other: a `hidden sm:flex` inline header row of text+icon sort buttons for desktop, and a `sm:hidden` horizontally-scrollable pill/chip bar for mobile.

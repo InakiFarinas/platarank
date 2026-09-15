@@ -1,19 +1,21 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AlchemyTable } from "./alchemy-table";
+import { RecipeTable } from "./recipe-table";
 import { Controls, type FilterParams } from "./controls";
 import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type RecipeMathParams, type RecipeRow } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 
 const DEFAULT_FILTERS: FilterParams = { maxAgeHours: null, minVolume: null };
 
-export function AlchemyExplorer({
+export function RecipeExplorer({
   recipes,
   marketByItem,
+  stationType,
 }: {
   recipes: Recipe[];
   marketByItem: Record<string, CityPricePoint[]>;
+  stationType: "alchemy" | "refining";
 }) {
   const [params, setParams] = useState<RecipeMathParams>(DEFAULT_PARAMS);
   const [filters, setFilters] = useState<FilterParams>(DEFAULT_FILTERS);
@@ -30,9 +32,15 @@ export function AlchemyExplorer({
         <p className="text-xs text-muted-foreground">
           Mostrando {rows.length} de {allRows.length} recetas.
         </p>
-        <Controls params={params} onParamsChange={setParams} filters={filters} onFiltersChange={setFilters} />
+        <Controls
+          params={params}
+          onParamsChange={setParams}
+          filters={filters}
+          onFiltersChange={setFilters}
+          stationType={stationType}
+        />
       </div>
-      <AlchemyTable rows={rows} />
+      <RecipeTable rows={rows} />
     </div>
   );
 }

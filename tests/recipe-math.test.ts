@@ -85,3 +85,64 @@ describe("computeRecipeRow", () => {
     expect(row.platinumPerDay).toBeNull();
   });
 });
+
+describe("computeRecipeRow (refinado)", () => {
+  const planksRecipe: Recipe = {
+    itemId: "T4_PLANKS",
+    baseItemId: "T4_PLANKS",
+    nameEs: "Tablas",
+    nameEn: "Planks",
+    tier: 4,
+    enchant: 0,
+    stationType: "refining",
+    batchSize: 1,
+    craftingFocus: 54,
+    materials: [
+      { itemId: "T4_WOOD", count: 2, category: "other", nameEs: "Troncos", nameEn: "Logs" },
+      { itemId: "T3_PLANKS", count: 1, category: "other", nameEs: "Tablas T3", nameEn: "Planks T3" },
+    ],
+  };
+
+  test("el fee de refinado no depende de los materiales, solo de tier y encantamiento", () => {
+    const data = market({
+      T4_PLANKS: [point("Caerleon", 100)],
+      T4_WOOD: [point("Caerleon", 10)],
+      T3_PLANKS: [point("Caerleon", 20)],
+    });
+    const row = computeRecipeRow(planksRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    // (235/1000) * 18 * 2^(4-4) * 2^0 = 0.235 * 18
+    expect(row.feePerBatch).toBeCloseTo(0.235 * 18, 5);
+  });
+
+  test("sin especialidad de refinado, el retorno es igual al de alquimia sin especialidad de crafteo", () => {
+    const data = market({
+      T4_PLANKS: [point("Caerleon", 100)],
+      T4_WOOD: [point("Caerleon", 10)],
+      T3_PLANKS: [point("Caerleon", 20)],
+    });
+    const row = computeRecipeRow(planksRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      refiningSpecialty: false,
+    });
+    expect(row.specialtyActive).toBe(false);
+    expect(row.returnRatePct).toBeCloseTo(0.152, 2); // solo el bonus base de estacion (18%)
+  });
+
+  test("con especialidad de refinado activada, el retorno sube al escalon de +40%", () => {
+    const data = market({
+      T4_PLANKS: [point("Caerleon", 100)],
+      T4_WOOD: [point("Caerleon", 10)],
+      T3_PLANKS: [point("Caerleon", 20)],
+    });
+    const row = computeRecipeRow(planksRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      refiningSpecialty: true,
+    });
+    expect(row.specialtyActive).toBe(true);
+    expect(row.returnRatePct).toBeCloseTo(0.367, 2); // 18% + 40% de especialidad de refinado
+  });
+});

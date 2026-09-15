@@ -1,4 +1,4 @@
-import { alchemyStationFeePerBatch } from "@/lib/formulas/station-fee";
+import { alchemyStationFeePerBatch, refiningStationFeePerBatch } from "@/lib/formulas/station-fee";
 import { netSellMultiplier } from "@/lib/formulas/market-tax";
 import { returnRate } from "@/lib/formulas/return-rate";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
@@ -29,6 +29,8 @@ export type RecipeMathParams = {
   marketShare: number;
   focus: boolean;
   stationRatePer100Nutrition: number;
+  /** Refinado only: whether the player refines in a city with that resource's refining specialty (+40% return). */
+  refiningSpecialty: boolean;
   /** Rows whose sell reference is older than this are still shown but flagged; filtering happens in the UI layer. */
 };
 
@@ -38,6 +40,7 @@ export const DEFAULT_PARAMS: RecipeMathParams = {
   marketShare: 1,
   focus: false,
   stationRatePer100Nutrition: 235,
+  refiningSpecialty: false,
 };
 
 export type MaterialLine = RecipeMaterial & {
@@ -58,6 +61,7 @@ export type RecipeRow = {
   discarded: { city: string; price: number; reason: string }[];
   returnRatePct: number;
   focus: boolean;
+  specialtyActive: boolean;
   marketSharePct: number;
   feePerBatch: number;
   feePerUnit: number;
@@ -90,7 +94,16 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     deviationFromHistorical,
   });
 
-  const returnRatePct = returnRate({ cityCraftingSpecialty: true, cityRefiningSpecialty: false, focus: params.focus });
+  const isAlchemy = recipe.stationType === "alchemy";
+  const isRefining = recipe.stationType === "refining";
+  const specialtyActive = isAlchemy || (isRefining && params.refiningSpecialty);
+  const returnRatePct = returnRate({
+    // Alchemy has exactly one specialty city (Brecilien), so it's always assumed active.
+    // Refining's specialty city differs per resource type, so it's the player's own toggle.
+    cityCraftingSpecialty: isAlchemy,
+    cityRefiningSpecialty: isRefining && params.refiningSpecialty,
+    focus: params.focus,
+  });
 
   const materials: MaterialLine[] = recipe.materials.map((m) => {
     const points = (market.get(m.itemId) ?? []).filter((p) => params.buyCities.includes(p.city as Location) && p.price !== null);
@@ -105,7 +118,9 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     };
   });
 
-  const feePerBatch = alchemyStationFeePerBatch(recipe.materials, params.stationRatePer100Nutrition);
+  const feePerBatch = isRefining
+    ? refiningStationFeePerBatch(recipe.tier, recipe.enchant, params.stationRatePer100Nutrition)
+    : alchemyStationFeePerBatch(recipe.materials, params.stationRatePer100Nutrition);
   const feePerUnit = feePerBatch / recipe.batchSize;
 
   const allMaterialsPriced = materials.every((m) => m.costContribution !== null);
@@ -129,6 +144,7 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     discarded: sellStat.result.discarded,
     returnRatePct,
     focus: params.focus,
+    specialtyActive,
     marketSharePct: params.marketShare,
     feePerBatch,
     feePerUnit,

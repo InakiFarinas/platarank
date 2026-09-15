@@ -10,7 +10,7 @@ const ITEMS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master
 const FORMATTED_ITEMS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/formatted/items.json";
 const OUTPUT_PATH = path.join(__dirname, "..", "src", "data", "generated", "recipes.json");
 
-type RawCraftResource = { "@uniquename": string; "@count": string };
+type RawCraftResource = { "@uniquename": string; "@count": string; "@enchantmentlevel"?: string };
 type RawCraftingRequirements = {
   "@amountcrafted": string;
   "@craftingfocus"?: string;
@@ -28,6 +28,14 @@ type RawConsumableItem = {
   enchantments?: { enchantment: RawEnchantment | RawEnchantment[] };
 };
 
+type RawSimpleItem = {
+  "@uniquename": string;
+  "@tier": string;
+  "@enchantmentlevel"?: string;
+  "@shopsubcategory1"?: string;
+  craftingrequirements?: RawCraftingRequirements | RawCraftingRequirements[];
+};
+
 type LocalizedItem = {
   UniqueName: string;
   LocalizedNames?: Record<string, string>;
@@ -40,7 +48,7 @@ type Recipe = {
   nameEn: string;
   tier: number;
   enchant: number;
-  stationType: "alchemy";
+  stationType: "alchemy" | "refining";
   batchSize: number;
   craftingFocus: number;
   materials: RecipeMaterial[];
@@ -49,7 +57,7 @@ type Recipe = {
 async function main() {
   console.log("Downloading ao-bin-dumps...");
   const [itemsRoot, formattedItems] = await Promise.all([
-    fetchJson<{ items: { consumableitem: RawConsumableItem[] } }>(ITEMS_URL),
+    fetchJson<{ items: { consumableitem: RawConsumableItem[]; simpleitem: RawSimpleItem[] } }>(ITEMS_URL),
     fetchJson<LocalizedItem[]>(FORMATTED_ITEMS_URL),
   ]);
 
@@ -71,16 +79,32 @@ async function main() {
     const baseItemId = potion["@uniquename"];
     const tier = Number(potion["@tier"]);
 
-    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, potion.craftingrequirements!, names));
+    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "alchemy", potion.craftingrequirements!, names));
 
     const enchantments = potion.enchantments?.enchantment;
     if (enchantments) {
       for (const ench of asArray(enchantments)) {
         const level = Number(ench["@enchantmentlevel"]);
         const itemId = `${baseItemId}@${level}`;
-        recipes.push(buildRecipe(itemId, baseItemId, tier, level, ench.craftingrequirements, names));
+        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "alchemy", ench.craftingrequirements, names));
       }
     }
+  }
+
+  // Refinado: cada nivel de encantamiento (0-4) es su propio simpleitem de nivel superior, no un
+  // bloque "enchantments" anidado como en las pociones. Algunos tienen recetas alternativas (con
+  // fichas de facción) -- nos quedamos con la que no pida ninguna ficha.
+  const refinedResources = itemsRoot.items.simpleitem.filter(
+    (i) => i["@shopsubcategory1"] === "refinedresources" && i.craftingrequirements,
+  );
+  for (const item of refinedResources) {
+    const itemUniqueName = item["@uniquename"];
+    const tier = Number(item["@tier"]);
+    const enchant = Number(item["@enchantmentlevel"] ?? 0);
+    const itemId = enchant > 0 ? `${itemUniqueName}@${enchant}` : itemUniqueName;
+    const baseItemId = itemUniqueName.replace(/_LEVEL\d+$/, "");
+    const cr = pickCraftingRequirements(asArray(item.craftingrequirements!));
+    recipes.push(buildRecipe(itemId, baseItemId, tier, enchant, "refining", cr, names));
   }
 
   recipes.sort((a, b) => a.itemId.localeCompare(b.itemId));
@@ -93,11 +117,12 @@ function buildRecipe(
   baseItemId: string,
   tier: number,
   enchant: number,
+  stationType: "alchemy" | "refining",
   cr: RawCraftingRequirements,
   names: Map<string, { es: string; en: string }>,
 ): Recipe {
   const materials = asArray(cr.craftresource ?? []).map((r) => {
-    const materialId = r["@uniquename"];
+    const materialId = resolveItemId(r["@uniquename"], r["@enchantmentlevel"], names);
     const materialNames = names.get(materialId);
     return {
       itemId: materialId,
@@ -116,11 +141,34 @@ function buildRecipe(
     nameEn: itemNames?.en ?? itemId,
     tier,
     enchant,
-    stationType: "alchemy",
+    stationType,
     batchSize: Number(cr["@amountcrafted"]),
     craftingFocus: Number(cr["@craftingfocus"] ?? 0),
     materials,
   };
+}
+
+/**
+ * Some item families (raw/refined resources) trade under `${uniquename}@${level}` for their
+ * enchanted variants; others (arcane extracts) trade under the bare `_LEVELn` uniquename as-is.
+ * Rather than hardcode which family does which, trust the formatted-names dump: if the suffixed
+ * id exists there, that's the real market id.
+ */
+function resolveItemId(uniquename: string, enchantmentLevel: string | undefined, names: Map<string, unknown>): string {
+  const level = Number(enchantmentLevel ?? 0);
+  if (level > 0) {
+    const suffixed = `${uniquename}@${level}`;
+    if (names.has(suffixed)) return suffixed;
+  }
+  return uniquename;
+}
+
+/** Picks the plain-silver/materials recipe variant, skipping any that require a faction token. */
+function pickCraftingRequirements(list: RawCraftingRequirements[]): RawCraftingRequirements {
+  const withoutTokens = list.filter(
+    (cr) => !asArray(cr.craftresource ?? []).some((r) => /FACTION|TOKEN/.test(r["@uniquename"])),
+  );
+  return withoutTokens[0] ?? list[0];
 }
 
 function asArray<T>(value: T | T[]): T[] {

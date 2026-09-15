@@ -1,5 +1,85 @@
 [
   {
+    "itemId": "T2_CLOTH",
+    "baseItemId": "T2_CLOTH",
+    "nameEs": "Tela simple",
+    "nameEn": "Simple Cloth",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 18,
+    "materials": [
+      {
+        "itemId": "T2_FIBER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Algodón",
+        "nameEn": "Cotton"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_LEATHER",
+    "baseItemId": "T2_LEATHER",
+    "nameEs": "Cuero firme",
+    "nameEn": "Stiff Leather",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 18,
+    "materials": [
+      {
+        "itemId": "T2_HIDE",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Piel dura",
+        "nameEn": "Rugged Hide"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_METALBAR",
+    "baseItemId": "T2_METALBAR",
+    "nameEs": "Lingote de cobre",
+    "nameEn": "Copper Bar",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 18,
+    "materials": [
+      {
+        "itemId": "T2_ORE",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Mineral de cobre",
+        "nameEn": "Copper Ore"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_PLANKS",
+    "baseItemId": "T2_PLANKS",
+    "nameEs": "Tablas de abedul",
+    "nameEn": "Birch Planks",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 18,
+    "materials": [
+      {
+        "itemId": "T2_WOOD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Troncos de abedul",
+        "nameEn": "Birch Logs"
+      }
+    ]
+  },
+  {
     "itemId": "T2_POTION_ENERGY",
     "baseItemId": "T2_POTION_ENERGY",
     "nameEs": "Poción de energía menor",
@@ -198,6 +278,134 @@
         "category": "extract",
         "nameEs": "Extracto arcano puro",
         "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_STONEBLOCK",
+    "baseItemId": "T2_STONEBLOCK",
+    "nameEs": "Bloque de piedra caliza",
+    "nameEn": "Limestone Block",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 18,
+    "materials": [
+      {
+        "itemId": "T2_ROCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Piedra caliza",
+        "nameEn": "Limestone"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_CLOTH",
+    "baseItemId": "T3_CLOTH",
+    "nameEs": "Tela pulcra",
+    "nameEn": "Neat Cloth",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 31,
+    "materials": [
+      {
+        "itemId": "T3_FIBER",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Lino",
+        "nameEn": "Flax"
+      },
+      {
+        "itemId": "T2_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela simple",
+        "nameEn": "Simple Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_LEATHER",
+    "baseItemId": "T3_LEATHER",
+    "nameEs": "Cuero grueso",
+    "nameEn": "Thick Leather",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 31,
+    "materials": [
+      {
+        "itemId": "T3_HIDE",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Piel fina",
+        "nameEn": "Thin Hide"
+      },
+      {
+        "itemId": "T2_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero firme",
+        "nameEn": "Stiff Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_METALBAR",
+    "baseItemId": "T3_METALBAR",
+    "nameEs": "Lingote de bronce",
+    "nameEn": "Bronze Bar",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 31,
+    "materials": [
+      {
+        "itemId": "T3_ORE",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Mineral de estaño",
+        "nameEn": "Tin Ore"
+      },
+      {
+        "itemId": "T2_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de cobre",
+        "nameEn": "Copper Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_PLANKS",
+    "baseItemId": "T3_PLANKS",
+    "nameEs": "Tablas de castaño",
+    "nameEn": "Chestnut Planks",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 31,
+    "materials": [
+      {
+        "itemId": "T3_WOOD",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Troncos de castaño",
+        "nameEn": "Chestnut Logs"
+      },
+      {
+        "itemId": "T2_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de abedul",
+        "nameEn": "Birch Planks"
       }
     ]
   },
@@ -888,6 +1096,573 @@
         "category": "extract",
         "nameEs": "Extracto arcano puro",
         "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_STONEBLOCK",
+    "baseItemId": "T3_STONEBLOCK",
+    "nameEs": "Bloque de arenisca",
+    "nameEn": "Sandstone Block",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 31,
+    "materials": [
+      {
+        "itemId": "T3_ROCK",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Arenisca",
+        "nameEn": "Sandstone"
+      },
+      {
+        "itemId": "T2_STONEBLOCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Bloque de piedra caliza",
+        "nameEn": "Limestone Block"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_CLOTH",
+    "baseItemId": "T4_CLOTH",
+    "nameEs": "Tela fina",
+    "nameEn": "Fine Cloth",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 54,
+    "materials": [
+      {
+        "itemId": "T4_FIBER",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Cáñamo",
+        "nameEn": "Hemp"
+      },
+      {
+        "itemId": "T3_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_CLOTH_LEVEL1@1",
+    "baseItemId": "T4_CLOTH",
+    "nameEs": "Tela fina poco común",
+    "nameEn": "Uncommon Fine Cloth",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T4_FIBER_LEVEL1@1",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Cáñamo poco común",
+        "nameEn": "Uncommon Hemp"
+      },
+      {
+        "itemId": "T3_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_CLOTH_LEVEL2@2",
+    "baseItemId": "T4_CLOTH",
+    "nameEs": "Tela fina rara",
+    "nameEn": "Rare Fine Cloth",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T4_FIBER_LEVEL2@2",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Cáñamo raro",
+        "nameEn": "Rare Hemp"
+      },
+      {
+        "itemId": "T3_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_CLOTH_LEVEL3@3",
+    "baseItemId": "T4_CLOTH",
+    "nameEs": "Tela fina excepcional",
+    "nameEn": "Exceptional Fine Cloth",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T4_FIBER_LEVEL3@3",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Cáñamo excepcional",
+        "nameEn": "Exceptional Hemp"
+      },
+      {
+        "itemId": "T3_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_CLOTH_LEVEL4@4",
+    "baseItemId": "T4_CLOTH",
+    "nameEs": "Tela fina prístina",
+    "nameEn": "Pristine Fine Cloth",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T4_FIBER_LEVEL4@4",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Cáñamo prístino",
+        "nameEn": "Pristine Hemp"
+      },
+      {
+        "itemId": "T3_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_LEATHER",
+    "baseItemId": "T4_LEATHER",
+    "nameEs": "Cuero trabajado",
+    "nameEn": "Worked Leather",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 54,
+    "materials": [
+      {
+        "itemId": "T4_HIDE",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Piel media",
+        "nameEn": "Medium Hide"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_LEATHER_LEVEL1@1",
+    "baseItemId": "T4_LEATHER",
+    "nameEs": "Cuero trabajado poco común",
+    "nameEn": "Uncommon Worked Leather",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T4_HIDE_LEVEL1@1",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Piel media poco común",
+        "nameEn": "Uncommon Medium Hide"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_LEATHER_LEVEL2@2",
+    "baseItemId": "T4_LEATHER",
+    "nameEs": "Cuero trabajado raro",
+    "nameEn": "Rare Worked Leather",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T4_HIDE_LEVEL2@2",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Piel media rara",
+        "nameEn": "Rare Medium Hide"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_LEATHER_LEVEL3@3",
+    "baseItemId": "T4_LEATHER",
+    "nameEs": "Cuero trabajado excepcional",
+    "nameEn": "Exceptional Worked Leather",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T4_HIDE_LEVEL3@3",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Piel media excepcional",
+        "nameEn": "Exceptional Medium Hide"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_LEATHER_LEVEL4@4",
+    "baseItemId": "T4_LEATHER",
+    "nameEs": "Cuero trabajado prístino",
+    "nameEn": "Pristine Worked Leather",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T4_HIDE_LEVEL4@4",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Piel media prístina",
+        "nameEn": "Pristine Medium Hide"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_METALBAR",
+    "baseItemId": "T4_METALBAR",
+    "nameEs": "Lingote de acero",
+    "nameEn": "Steel Bar",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 54,
+    "materials": [
+      {
+        "itemId": "T4_ORE",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Mineral de hierro",
+        "nameEn": "Iron Ore"
+      },
+      {
+        "itemId": "T3_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de bronce",
+        "nameEn": "Bronze Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_METALBAR_LEVEL1@1",
+    "baseItemId": "T4_METALBAR",
+    "nameEs": "Ling. de acero poco común",
+    "nameEn": "Uncommon Steel Bar",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T4_ORE_LEVEL1@1",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Mineral de hierro poco común",
+        "nameEn": "Uncommon Iron Ore"
+      },
+      {
+        "itemId": "T3_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de bronce",
+        "nameEn": "Bronze Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_METALBAR_LEVEL2@2",
+    "baseItemId": "T4_METALBAR",
+    "nameEs": "Lingote de acero raro",
+    "nameEn": "Rare Steel Bar",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T4_ORE_LEVEL2@2",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Mineral de hierro raro",
+        "nameEn": "Rare Iron Ore"
+      },
+      {
+        "itemId": "T3_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de bronce",
+        "nameEn": "Bronze Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_METALBAR_LEVEL3@3",
+    "baseItemId": "T4_METALBAR",
+    "nameEs": "Lingote de acero excepcional",
+    "nameEn": "Exceptional Steel Bar",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T4_ORE_LEVEL3@3",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Mineral de hierro excepcional",
+        "nameEn": "Exceptional Iron Ore"
+      },
+      {
+        "itemId": "T3_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de bronce",
+        "nameEn": "Bronze Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_METALBAR_LEVEL4@4",
+    "baseItemId": "T4_METALBAR",
+    "nameEs": "Lingote de acero prístino",
+    "nameEn": "Pristine Steel Bar",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T4_ORE_LEVEL4@4",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Mineral de hierro prístino",
+        "nameEn": "Pristine Iron Ore"
+      },
+      {
+        "itemId": "T3_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de bronce",
+        "nameEn": "Bronze Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_PLANKS",
+    "baseItemId": "T4_PLANKS",
+    "nameEs": "Tablas de pino",
+    "nameEn": "Pine Planks",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 54,
+    "materials": [
+      {
+        "itemId": "T4_WOOD",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Troncos de pino",
+        "nameEn": "Pine Logs"
+      },
+      {
+        "itemId": "T3_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de castaño",
+        "nameEn": "Chestnut Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_PLANKS_LEVEL1@1",
+    "baseItemId": "T4_PLANKS",
+    "nameEs": "Tablas de pino poco común",
+    "nameEn": "Uncommon Pine Planks",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T4_WOOD_LEVEL1@1",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Troncos de pino poco común",
+        "nameEn": "Uncommon Pine Logs"
+      },
+      {
+        "itemId": "T3_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de castaño",
+        "nameEn": "Chestnut Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_PLANKS_LEVEL2@2",
+    "baseItemId": "T4_PLANKS",
+    "nameEs": "Tablas de pino raro",
+    "nameEn": "Rare Pine Planks",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T4_WOOD_LEVEL2@2",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Troncos de pino raro",
+        "nameEn": "Rare Pine Logs"
+      },
+      {
+        "itemId": "T3_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de castaño",
+        "nameEn": "Chestnut Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_PLANKS_LEVEL3@3",
+    "baseItemId": "T4_PLANKS",
+    "nameEs": "Tablas de pino excepcional",
+    "nameEn": "Exceptional Pine Planks",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T4_WOOD_LEVEL3@3",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Troncos de pino excepcional",
+        "nameEn": "Exceptional Pine Logs"
+      },
+      {
+        "itemId": "T3_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de castaño",
+        "nameEn": "Chestnut Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_PLANKS_LEVEL4@4",
+    "baseItemId": "T4_PLANKS",
+    "nameEs": "Tablas de pino prístino",
+    "nameEn": "Pristine Pine Planks",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T4_WOOD_LEVEL4@4",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Troncos de pino prístino",
+        "nameEn": "Pristine Pine Logs"
+      },
+      {
+        "itemId": "T3_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de castaño",
+        "nameEn": "Chestnut Planks"
       }
     ]
   },
@@ -1924,6 +2699,573 @@
     ]
   },
   {
+    "itemId": "T4_STONEBLOCK",
+    "baseItemId": "T4_STONEBLOCK",
+    "nameEs": "Bloque de travertino",
+    "nameEn": "Travertine Block",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 54,
+    "materials": [
+      {
+        "itemId": "T4_ROCK",
+        "count": 2,
+        "category": "other",
+        "nameEs": "Travertino",
+        "nameEn": "Travertine"
+      },
+      {
+        "itemId": "T3_STONEBLOCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Bloque de arenisca",
+        "nameEn": "Sandstone Block"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_CLOTH",
+    "baseItemId": "T5_CLOTH",
+    "nameEs": "Tela decorada",
+    "nameEn": "Ornate Cloth",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T5_FIBER",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Duranta",
+        "nameEn": "Skyflower"
+      },
+      {
+        "itemId": "T4_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela fina",
+        "nameEn": "Fine Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_CLOTH_LEVEL1@1",
+    "baseItemId": "T5_CLOTH",
+    "nameEs": "Tela decorada poco común",
+    "nameEn": "Uncommon Ornate Cloth",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T5_FIBER_LEVEL1@1",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Duranta poco común",
+        "nameEn": "Uncommon Skyflower"
+      },
+      {
+        "itemId": "T4_CLOTH_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela fina poco común",
+        "nameEn": "Uncommon Fine Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_CLOTH_LEVEL2@2",
+    "baseItemId": "T5_CLOTH",
+    "nameEs": "Tela decorada rara",
+    "nameEn": "Rare Ornate Cloth",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T5_FIBER_LEVEL2@2",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Duranta rara",
+        "nameEn": "Rare Skyflower"
+      },
+      {
+        "itemId": "T4_CLOTH_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela fina rara",
+        "nameEn": "Rare Fine Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_CLOTH_LEVEL3@3",
+    "baseItemId": "T5_CLOTH",
+    "nameEs": "Tela decorada excepcional",
+    "nameEn": "Exceptional Ornate Cloth",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T5_FIBER_LEVEL3@3",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Duranta excepcional",
+        "nameEn": "Exceptional Skyflower"
+      },
+      {
+        "itemId": "T4_CLOTH_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela fina excepcional",
+        "nameEn": "Exceptional Fine Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_CLOTH_LEVEL4@4",
+    "baseItemId": "T5_CLOTH",
+    "nameEs": "Tela decorada prístina",
+    "nameEn": "Pristine Ornate Cloth",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T5_FIBER_LEVEL4@4",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Duranta prístina",
+        "nameEn": "Pristine Skyflower"
+      },
+      {
+        "itemId": "T4_CLOTH_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela fina prístina",
+        "nameEn": "Pristine Fine Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_LEATHER",
+    "baseItemId": "T5_LEATHER",
+    "nameEs": "Cuero curtido",
+    "nameEn": "Cured Leather",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T5_HIDE",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Piel pesada",
+        "nameEn": "Heavy Hide"
+      },
+      {
+        "itemId": "T4_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero trabajado",
+        "nameEn": "Worked Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_LEATHER_LEVEL1@1",
+    "baseItemId": "T5_LEATHER",
+    "nameEs": "Cuero curtido poco común",
+    "nameEn": "Uncommon Cured Leather",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T5_HIDE_LEVEL1@1",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Piel pesada poco común",
+        "nameEn": "Uncommon Heavy Hide"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero trabajado poco común",
+        "nameEn": "Uncommon Worked Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_LEATHER_LEVEL2@2",
+    "baseItemId": "T5_LEATHER",
+    "nameEs": "Cuero curtido raro",
+    "nameEn": "Rare Cured Leather",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T5_HIDE_LEVEL2@2",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Piel pesada rara",
+        "nameEn": "Rare Heavy Hide"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero trabajado raro",
+        "nameEn": "Rare Worked Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_LEATHER_LEVEL3@3",
+    "baseItemId": "T5_LEATHER",
+    "nameEs": "Cuero curtido excepcional",
+    "nameEn": "Exceptional Cured Leather",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T5_HIDE_LEVEL3@3",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Piel pesada excepcional",
+        "nameEn": "Exceptional Heavy Hide"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero trabajado excepcional",
+        "nameEn": "Exceptional Worked Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_LEATHER_LEVEL4@4",
+    "baseItemId": "T5_LEATHER",
+    "nameEs": "Cuero curtido prístino",
+    "nameEn": "Pristine Cured Leather",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T5_HIDE_LEVEL4@4",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Piel pesada prístina",
+        "nameEn": "Pristine Heavy Hide"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero trabajado prístino",
+        "nameEn": "Pristine Worked Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_METALBAR",
+    "baseItemId": "T5_METALBAR",
+    "nameEs": "Lingote de titanio",
+    "nameEn": "Titanium Steel Bar",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T5_ORE",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Mineral de titanio",
+        "nameEn": "Titanium Ore"
+      },
+      {
+        "itemId": "T4_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de acero",
+        "nameEn": "Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_METALBAR_LEVEL1@1",
+    "baseItemId": "T5_METALBAR",
+    "nameEs": "Lingote de titanio poco común",
+    "nameEn": "Uncommon Titanium Steel Bar",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T5_ORE_LEVEL1@1",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Mineral de titanio poco común",
+        "nameEn": "Uncommon Titanium Ore"
+      },
+      {
+        "itemId": "T4_METALBAR_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Ling. de acero poco común",
+        "nameEn": "Uncommon Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_METALBAR_LEVEL2@2",
+    "baseItemId": "T5_METALBAR",
+    "nameEs": "Lingote de titanio raro",
+    "nameEn": "Rare Titanium Steel Bar",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T5_ORE_LEVEL2@2",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Mineral de titanio raro",
+        "nameEn": "Rare Titanium Ore"
+      },
+      {
+        "itemId": "T4_METALBAR_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de acero raro",
+        "nameEn": "Rare Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_METALBAR_LEVEL3@3",
+    "baseItemId": "T5_METALBAR",
+    "nameEs": "Lingote de titanio excepcional",
+    "nameEn": "Exceptional Titanium Steel Bar",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T5_ORE_LEVEL3@3",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Mineral de titanio excepcional",
+        "nameEn": "Exceptional Titanium Ore"
+      },
+      {
+        "itemId": "T4_METALBAR_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de acero excepcional",
+        "nameEn": "Exceptional Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_METALBAR_LEVEL4@4",
+    "baseItemId": "T5_METALBAR",
+    "nameEs": "Lingote de titanio prístino",
+    "nameEn": "Pristine Titanium Steel Bar",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T5_ORE_LEVEL4@4",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Mineral de titanio prístino",
+        "nameEn": "Pristine Titanium Ore"
+      },
+      {
+        "itemId": "T4_METALBAR_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de acero prístino",
+        "nameEn": "Pristine Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_PLANKS",
+    "baseItemId": "T5_PLANKS",
+    "nameEs": "Tablas de cedro",
+    "nameEn": "Cedar Planks",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T5_WOOD",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Troncos de cedro",
+        "nameEn": "Cedar Logs"
+      },
+      {
+        "itemId": "T4_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de pino",
+        "nameEn": "Pine Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_PLANKS_LEVEL1@1",
+    "baseItemId": "T5_PLANKS",
+    "nameEs": "Tablas de cedro poco común",
+    "nameEn": "Uncommon Cedar Planks",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T5_WOOD_LEVEL1@1",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Troncos de cedro poco común",
+        "nameEn": "Uncommon Cedar Logs"
+      },
+      {
+        "itemId": "T4_PLANKS_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de pino poco común",
+        "nameEn": "Uncommon Pine Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_PLANKS_LEVEL2@2",
+    "baseItemId": "T5_PLANKS",
+    "nameEs": "Tablas de cedro raro",
+    "nameEn": "Rare Cedar Planks",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T5_WOOD_LEVEL2@2",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Troncos de cedro raro",
+        "nameEn": "Rare Cedar Logs"
+      },
+      {
+        "itemId": "T4_PLANKS_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de pino raro",
+        "nameEn": "Rare Pine Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_PLANKS_LEVEL3@3",
+    "baseItemId": "T5_PLANKS",
+    "nameEs": "Tablas de cedro excepcional",
+    "nameEn": "Exceptional Cedar Planks",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T5_WOOD_LEVEL3@3",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Troncos de cedro excepcional",
+        "nameEn": "Exceptional Cedar Logs"
+      },
+      {
+        "itemId": "T4_PLANKS_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de pino excepcional",
+        "nameEn": "Exceptional Pine Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_PLANKS_LEVEL4@4",
+    "baseItemId": "T5_PLANKS",
+    "nameEs": "Tablas de cedro prístino",
+    "nameEn": "Pristine Cedar Planks",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T5_WOOD_LEVEL4@4",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Troncos de cedro prístino",
+        "nameEn": "Pristine Cedar Logs"
+      },
+      {
+        "itemId": "T4_PLANKS_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de pino prístino",
+        "nameEn": "Pristine Pine Planks"
+      }
+    ]
+  },
+  {
     "itemId": "T5_POTION_ACID",
     "baseItemId": "T5_POTION_ACID",
     "nameEs": "Poción de ácido",
@@ -2946,6 +4288,573 @@
         "category": "extract",
         "nameEs": "Extracto arcano puro",
         "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_STONEBLOCK",
+    "baseItemId": "T5_STONEBLOCK",
+    "nameEs": "Bloque de granito",
+    "nameEn": "Granite Block",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 94,
+    "materials": [
+      {
+        "itemId": "T5_ROCK",
+        "count": 3,
+        "category": "other",
+        "nameEs": "Granito",
+        "nameEn": "Granite"
+      },
+      {
+        "itemId": "T4_STONEBLOCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Bloque de travertino",
+        "nameEn": "Travertine Block"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_CLOTH",
+    "baseItemId": "T6_CLOTH",
+    "nameEs": "Tela suntuosa",
+    "nameEn": "Lavish Cloth",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T6_FIBER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Algodón ambarino",
+        "nameEn": "Amberleaf Cotton"
+      },
+      {
+        "itemId": "T5_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela decorada",
+        "nameEn": "Ornate Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_CLOTH_LEVEL1@1",
+    "baseItemId": "T6_CLOTH",
+    "nameEs": "Tela suntuosa poco común",
+    "nameEn": "Uncommon Lavish Cloth",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T6_FIBER_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Algodón ambarino poco común",
+        "nameEn": "Uncommon Amberleaf Cotton"
+      },
+      {
+        "itemId": "T5_CLOTH_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela decorada poco común",
+        "nameEn": "Uncommon Ornate Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_CLOTH_LEVEL2@2",
+    "baseItemId": "T6_CLOTH",
+    "nameEs": "Tela suntuosa rara",
+    "nameEn": "Rare Lavish Cloth",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T6_FIBER_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Algodón ambarino raro",
+        "nameEn": "Rare Amberleaf Cotton"
+      },
+      {
+        "itemId": "T5_CLOTH_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela decorada rara",
+        "nameEn": "Rare Ornate Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_CLOTH_LEVEL3@3",
+    "baseItemId": "T6_CLOTH",
+    "nameEs": "Tela suntuosa excepcional",
+    "nameEn": "Exceptional Lavish Cloth",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T6_FIBER_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Algodón ambarino excepcional",
+        "nameEn": "Exceptional Amberleaf Cotton"
+      },
+      {
+        "itemId": "T5_CLOTH_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela decorada excepcional",
+        "nameEn": "Exceptional Ornate Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_CLOTH_LEVEL4@4",
+    "baseItemId": "T6_CLOTH",
+    "nameEs": "Tela suntuosa prístina",
+    "nameEn": "Pristine Lavish Cloth",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T6_FIBER_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Algodón ambarino prístino",
+        "nameEn": "Pristine Amberleaf Cotton"
+      },
+      {
+        "itemId": "T5_CLOTH_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela decorada prístina",
+        "nameEn": "Pristine Ornate Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_LEATHER",
+    "baseItemId": "T6_LEATHER",
+    "nameEs": "Cuero endurecido",
+    "nameEn": "Hardened Leather",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T6_HIDE",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Piel fornida",
+        "nameEn": "Robust Hide"
+      },
+      {
+        "itemId": "T5_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero curtido",
+        "nameEn": "Cured Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_LEATHER_LEVEL1@1",
+    "baseItemId": "T6_LEATHER",
+    "nameEs": "Cuero endurecido poco común",
+    "nameEn": "Uncommon Hardened Leather",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T6_HIDE_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Piel fornida poco común",
+        "nameEn": "Uncommon Robust Hide"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero curtido poco común",
+        "nameEn": "Uncommon Cured Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_LEATHER_LEVEL2@2",
+    "baseItemId": "T6_LEATHER",
+    "nameEs": "Cuero endurecido raro",
+    "nameEn": "Rare Hardened Leather",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T6_HIDE_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Piel fornida rara",
+        "nameEn": "Rare Robust Hide"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero curtido raro",
+        "nameEn": "Rare Cured Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_LEATHER_LEVEL3@3",
+    "baseItemId": "T6_LEATHER",
+    "nameEs": "Cuero endurecido excepcional",
+    "nameEn": "Exceptional Hardened Leather",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T6_HIDE_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Piel fornida excepcional",
+        "nameEn": "Exceptional Robust Hide"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero curtido excepcional",
+        "nameEn": "Exceptional Cured Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_LEATHER_LEVEL4@4",
+    "baseItemId": "T6_LEATHER",
+    "nameEs": "Cuero endurecido prístino",
+    "nameEn": "Pristine Hardened Leather",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T6_HIDE_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Piel fornida prístina",
+        "nameEn": "Pristine Robust Hide"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero curtido prístino",
+        "nameEn": "Pristine Cured Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_METALBAR",
+    "baseItemId": "T6_METALBAR",
+    "nameEs": "Lingote de runita",
+    "nameEn": "Runite Steel Bar",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T6_ORE",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Mineral de runita",
+        "nameEn": "Runite Ore"
+      },
+      {
+        "itemId": "T5_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de titanio",
+        "nameEn": "Titanium Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_METALBAR_LEVEL1@1",
+    "baseItemId": "T6_METALBAR",
+    "nameEs": "Lingote de runita poco común",
+    "nameEn": "Uncommon Runite Steel Bar",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T6_ORE_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Mineral de runita poco común",
+        "nameEn": "Uncommon Runite Ore"
+      },
+      {
+        "itemId": "T5_METALBAR_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de titanio poco común",
+        "nameEn": "Uncommon Titanium Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_METALBAR_LEVEL2@2",
+    "baseItemId": "T6_METALBAR",
+    "nameEs": "Lingote de runita raro",
+    "nameEn": "Rare Runite Steel Bar",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T6_ORE_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Mineral de runita rara",
+        "nameEn": "Rare Runite Ore"
+      },
+      {
+        "itemId": "T5_METALBAR_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de titanio raro",
+        "nameEn": "Rare Titanium Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_METALBAR_LEVEL3@3",
+    "baseItemId": "T6_METALBAR",
+    "nameEs": "Lingote de runita excepcional",
+    "nameEn": "Exceptional Runite Steel Bar",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T6_ORE_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Mineral de runita excepcional",
+        "nameEn": "Exceptional Runite Ore"
+      },
+      {
+        "itemId": "T5_METALBAR_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de titanio excepcional",
+        "nameEn": "Exceptional Titanium Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_METALBAR_LEVEL4@4",
+    "baseItemId": "T6_METALBAR",
+    "nameEs": "Lingote de runita prístino",
+    "nameEn": "Pristine Runite Steel Bar",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T6_ORE_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Mineral de runita prístino",
+        "nameEn": "Pristine Runite Ore"
+      },
+      {
+        "itemId": "T5_METALBAR_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de titanio prístino",
+        "nameEn": "Pristine Titanium Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_PLANKS",
+    "baseItemId": "T6_PLANKS",
+    "nameEs": "Tablas de roble rojo",
+    "nameEn": "Bloodoak Planks",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T6_WOOD",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Troncos de roble rojo",
+        "nameEn": "Bloodoak Logs"
+      },
+      {
+        "itemId": "T5_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cedro",
+        "nameEn": "Cedar Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_PLANKS_LEVEL1@1",
+    "baseItemId": "T6_PLANKS",
+    "nameEs": "Tablas de roble rojo poco común",
+    "nameEn": "Uncommon Bloodoak Planks",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T6_WOOD_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Troncos de roble rojo poco común",
+        "nameEn": "Uncommon Bloodoak Logs"
+      },
+      {
+        "itemId": "T5_PLANKS_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cedro poco común",
+        "nameEn": "Uncommon Cedar Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_PLANKS_LEVEL2@2",
+    "baseItemId": "T6_PLANKS",
+    "nameEs": "Tablas de roble rojo raro",
+    "nameEn": "Rare Bloodoak Planks",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T6_WOOD_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Troncos de roble rojo raro",
+        "nameEn": "Rare Bloodoak Logs"
+      },
+      {
+        "itemId": "T5_PLANKS_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cedro raro",
+        "nameEn": "Rare Cedar Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_PLANKS_LEVEL3@3",
+    "baseItemId": "T6_PLANKS",
+    "nameEs": "Tablas de roble rojo excepcional",
+    "nameEn": "Exceptional Bloodoak Planks",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T6_WOOD_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Troncos de roble rojo excepcional",
+        "nameEn": "Exceptional Bloodoak Logs"
+      },
+      {
+        "itemId": "T5_PLANKS_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cedro excepcional",
+        "nameEn": "Exceptional Cedar Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_PLANKS_LEVEL4@4",
+    "baseItemId": "T6_PLANKS",
+    "nameEs": "Tablas de roble rojo prístino",
+    "nameEn": "Pristine Bloodoak Planks",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T6_WOOD_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Troncos de roble rojo prístino",
+        "nameEn": "Pristine Bloodoak Logs"
+      },
+      {
+        "itemId": "T5_PLANKS_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cedro prístino",
+        "nameEn": "Pristine Cedar Planks"
       }
     ]
   },
@@ -4374,6 +6283,573 @@
     ]
   },
   {
+    "itemId": "T6_STONEBLOCK",
+    "baseItemId": "T6_STONEBLOCK",
+    "nameEs": "Bloque de pizarra",
+    "nameEn": "Slate Block",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 164,
+    "materials": [
+      {
+        "itemId": "T6_ROCK",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Pizarra",
+        "nameEn": "Slate"
+      },
+      {
+        "itemId": "T5_STONEBLOCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Bloque de granito",
+        "nameEn": "Granite Block"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_CLOTH",
+    "baseItemId": "T7_CLOTH",
+    "nameEs": "Tela opulenta",
+    "nameEn": "Opulent Cloth",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T7_FIBER",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Lino solar",
+        "nameEn": "Sunflax"
+      },
+      {
+        "itemId": "T6_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela suntuosa",
+        "nameEn": "Lavish Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_CLOTH_LEVEL1@1",
+    "baseItemId": "T7_CLOTH",
+    "nameEs": "Tela opulenta poco común",
+    "nameEn": "Uncommon Opulent Cloth",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T7_FIBER_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Lino solar poco común",
+        "nameEn": "Uncommon Sunflax"
+      },
+      {
+        "itemId": "T6_CLOTH_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela suntuosa poco común",
+        "nameEn": "Uncommon Lavish Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_CLOTH_LEVEL2@2",
+    "baseItemId": "T7_CLOTH",
+    "nameEs": "Tela opulenta rara",
+    "nameEn": "Rare Opulent Cloth",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T7_FIBER_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Lino solar raro",
+        "nameEn": "Rare Sunflax"
+      },
+      {
+        "itemId": "T6_CLOTH_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela suntuosa rara",
+        "nameEn": "Rare Lavish Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_CLOTH_LEVEL3@3",
+    "baseItemId": "T7_CLOTH",
+    "nameEs": "Tela opulenta excepcional",
+    "nameEn": "Exceptional Opulent Cloth",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T7_FIBER_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Lino solar excepcional",
+        "nameEn": "Exceptional Sunflax"
+      },
+      {
+        "itemId": "T6_CLOTH_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela suntuosa excepcional",
+        "nameEn": "Exceptional Lavish Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_CLOTH_LEVEL4@4",
+    "baseItemId": "T7_CLOTH",
+    "nameEs": "Tela opulenta prístina",
+    "nameEn": "Pristine Opulent Cloth",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T7_FIBER_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Lino solar prístino",
+        "nameEn": "Pristine Sunflax"
+      },
+      {
+        "itemId": "T6_CLOTH_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela suntuosa prístina",
+        "nameEn": "Pristine Lavish Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_LEATHER",
+    "baseItemId": "T7_LEATHER",
+    "nameEs": "Cuero reforzado",
+    "nameEn": "Reinforced Leather",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T7_HIDE",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel gruesa",
+        "nameEn": "Thick Hide"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_LEATHER_LEVEL1@1",
+    "baseItemId": "T7_LEATHER",
+    "nameEs": "Cuero reforzado poco común",
+    "nameEn": "Uncommon Reinforced Leather",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T7_HIDE_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel gruesa poco común",
+        "nameEn": "Uncommon Thick Hide"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero endurecido poco común",
+        "nameEn": "Uncommon Hardened Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_LEATHER_LEVEL2@2",
+    "baseItemId": "T7_LEATHER",
+    "nameEs": "Cuero reforzado raro",
+    "nameEn": "Rare Reinforced Leather",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T7_HIDE_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel gruesa rara",
+        "nameEn": "Rare Thick Hide"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero endurecido raro",
+        "nameEn": "Rare Hardened Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_LEATHER_LEVEL3@3",
+    "baseItemId": "T7_LEATHER",
+    "nameEs": "Cuero reforzado excepcional",
+    "nameEn": "Exceptional Reinforced Leather",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T7_HIDE_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel gruesa excepcional",
+        "nameEn": "Exceptional Thick Hide"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero endurecido excepcional",
+        "nameEn": "Exceptional Hardened Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_LEATHER_LEVEL4@4",
+    "baseItemId": "T7_LEATHER",
+    "nameEs": "Cuero reforzado prístino",
+    "nameEn": "Pristine Reinforced Leather",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T7_HIDE_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel gruesa prístina",
+        "nameEn": "Pristine Thick Hide"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero endurecido prístino",
+        "nameEn": "Pristine Hardened Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_METALBAR",
+    "baseItemId": "T7_METALBAR",
+    "nameEs": "Lingote de meteorito",
+    "nameEn": "Meteorite Steel Bar",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T7_ORE",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de meteorito",
+        "nameEn": "Meteorite Ore"
+      },
+      {
+        "itemId": "T6_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de runita",
+        "nameEn": "Runite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_METALBAR_LEVEL1@1",
+    "baseItemId": "T7_METALBAR",
+    "nameEs": "Lingote de meteorito poco común",
+    "nameEn": "Uncommon Meteorite Steel Bar",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T7_ORE_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de meteorito poco común",
+        "nameEn": "Uncommon Meteorite Ore"
+      },
+      {
+        "itemId": "T6_METALBAR_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de runita poco común",
+        "nameEn": "Uncommon Runite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_METALBAR_LEVEL2@2",
+    "baseItemId": "T7_METALBAR",
+    "nameEs": "Lingote de meteorito raro",
+    "nameEn": "Rare Meteorite Steel Bar",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T7_ORE_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de meteorito raro",
+        "nameEn": "Rare Meteorite Ore"
+      },
+      {
+        "itemId": "T6_METALBAR_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de runita raro",
+        "nameEn": "Rare Runite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_METALBAR_LEVEL3@3",
+    "baseItemId": "T7_METALBAR",
+    "nameEs": "Lingote de meteorito excepcional",
+    "nameEn": "Exceptional Meteorite Steel Bar",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T7_ORE_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de meteorito excepcional",
+        "nameEn": "Exceptional Meteorite Ore"
+      },
+      {
+        "itemId": "T6_METALBAR_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de runita excepcional",
+        "nameEn": "Exceptional Runite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_METALBAR_LEVEL4@4",
+    "baseItemId": "T7_METALBAR",
+    "nameEs": "Lingote de meteorito prístino",
+    "nameEn": "Pristine Meteorite Steel Bar",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T7_ORE_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de meteorito prístino",
+        "nameEn": "Pristine Meteorite Ore"
+      },
+      {
+        "itemId": "T6_METALBAR_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de runita prístino",
+        "nameEn": "Pristine Runite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_PLANKS",
+    "baseItemId": "T7_PLANKS",
+    "nameEs": "Tablas de cortezaceniza",
+    "nameEn": "Ashenbark Planks",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T7_WOOD",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de cortezaceniza",
+        "nameEn": "Ashenbark Logs"
+      },
+      {
+        "itemId": "T6_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de roble rojo",
+        "nameEn": "Bloodoak Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_PLANKS_LEVEL1@1",
+    "baseItemId": "T7_PLANKS",
+    "nameEs": "Tablas de cortezaceniza poco común",
+    "nameEn": "Uncommon Ashenbark Planks",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T7_WOOD_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de cortezaceniza poco común",
+        "nameEn": "Uncommon Ashenbark Logs"
+      },
+      {
+        "itemId": "T6_PLANKS_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de roble rojo poco común",
+        "nameEn": "Uncommon Bloodoak Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_PLANKS_LEVEL2@2",
+    "baseItemId": "T7_PLANKS",
+    "nameEs": "Tablas de cortezaceniza rara",
+    "nameEn": "Rare Ashenbark Planks",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T7_WOOD_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de cortezaceniza rara",
+        "nameEn": "Rare Ashenbark Logs"
+      },
+      {
+        "itemId": "T6_PLANKS_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de roble rojo raro",
+        "nameEn": "Rare Bloodoak Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_PLANKS_LEVEL3@3",
+    "baseItemId": "T7_PLANKS",
+    "nameEs": "Tablas de cortezaceniza excepcional",
+    "nameEn": "Exceptional Ashenbark Planks",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T7_WOOD_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de cortezaceniza excepcional",
+        "nameEn": "Exceptional Ashenbark Logs"
+      },
+      {
+        "itemId": "T6_PLANKS_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de roble rojo excepcional",
+        "nameEn": "Exceptional Bloodoak Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_PLANKS_LEVEL4@4",
+    "baseItemId": "T7_PLANKS",
+    "nameEs": "Tablas de cortezaceniza prístina",
+    "nameEn": "Pristine Ashenbark Planks",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T7_WOOD_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de cortezaceniza prístina",
+        "nameEn": "Pristine Ashenbark Logs"
+      },
+      {
+        "itemId": "T6_PLANKS_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de roble rojo prístino",
+        "nameEn": "Pristine Bloodoak Planks"
+      }
+    ]
+  },
+  {
     "itemId": "T7_POTION_ACID",
     "baseItemId": "T7_POTION_ACID",
     "nameEs": "Poción de ácido mayor",
@@ -5704,6 +8180,573 @@
         "category": "extract",
         "nameEs": "Extracto arcano puro",
         "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_STONEBLOCK",
+    "baseItemId": "T7_STONEBLOCK",
+    "nameEs": "Bloque de basalto",
+    "nameEn": "Basalt Block",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 287,
+    "materials": [
+      {
+        "itemId": "T7_ROCK",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Basalto",
+        "nameEn": "Basalt"
+      },
+      {
+        "itemId": "T6_STONEBLOCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Bloque de pizarra",
+        "nameEn": "Slate Block"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_CLOTH",
+    "baseItemId": "T8_CLOTH",
+    "nameEs": "Tela barroca",
+    "nameEn": "Baroque Cloth",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T8_FIBER",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Cáñamo fantasma",
+        "nameEn": "Ghost Hemp"
+      },
+      {
+        "itemId": "T7_CLOTH",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela opulenta",
+        "nameEn": "Opulent Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_CLOTH_LEVEL1@1",
+    "baseItemId": "T8_CLOTH",
+    "nameEs": "Tela barroca poco común",
+    "nameEn": "Uncommon Baroque Cloth",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T8_FIBER_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Cáñamo fantasma poco común",
+        "nameEn": "Uncommon Ghost Hemp"
+      },
+      {
+        "itemId": "T7_CLOTH_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela opulenta poco común",
+        "nameEn": "Uncommon Opulent Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_CLOTH_LEVEL2@2",
+    "baseItemId": "T8_CLOTH",
+    "nameEs": "Tela barroca rara",
+    "nameEn": "Rare Baroque Cloth",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T8_FIBER_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Cáñamo fantasma raro",
+        "nameEn": "Rare Ghost Hemp"
+      },
+      {
+        "itemId": "T7_CLOTH_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela opulenta rara",
+        "nameEn": "Rare Opulent Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_CLOTH_LEVEL3@3",
+    "baseItemId": "T8_CLOTH",
+    "nameEs": "Tela barroca excepcional",
+    "nameEn": "Exceptional Baroque Cloth",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T8_FIBER_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Cáñamo fantasma excepcional",
+        "nameEn": "Exceptional Ghost Hemp"
+      },
+      {
+        "itemId": "T7_CLOTH_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela opulenta excepcional",
+        "nameEn": "Exceptional Opulent Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_CLOTH_LEVEL4@4",
+    "baseItemId": "T8_CLOTH",
+    "nameEs": "Tela barroca prístina",
+    "nameEn": "Pristine Baroque Cloth",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 4714,
+    "materials": [
+      {
+        "itemId": "T8_FIBER_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Cáñamo fantasma prístino",
+        "nameEn": "Pristine Ghost Hemp"
+      },
+      {
+        "itemId": "T7_CLOTH_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tela opulenta prístina",
+        "nameEn": "Pristine Opulent Cloth"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_LEATHER",
+    "baseItemId": "T8_LEATHER",
+    "nameEs": "Cuero fortalecido",
+    "nameEn": "Fortified Leather",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T8_HIDE",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel resistente",
+        "nameEn": "Resilient Hide"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_LEATHER_LEVEL1@1",
+    "baseItemId": "T8_LEATHER",
+    "nameEs": "Cuero fortalecido poco común",
+    "nameEn": "Uncommon Fortified Leather",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T8_HIDE_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel resistente poco común",
+        "nameEn": "Uncommon Resilient Hide"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero reforzado poco común",
+        "nameEn": "Uncommon Reinforced Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_LEATHER_LEVEL2@2",
+    "baseItemId": "T8_LEATHER",
+    "nameEs": "Cuero fortalecido raro",
+    "nameEn": "Rare Fortified Leather",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T8_HIDE_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel resistente rara",
+        "nameEn": "Rare Resilient Hide"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero reforzado raro",
+        "nameEn": "Rare Reinforced Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_LEATHER_LEVEL3@3",
+    "baseItemId": "T8_LEATHER",
+    "nameEs": "Cuero fortalecido excepcional",
+    "nameEn": "Exceptional Fortified Leather",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T8_HIDE_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel resistente excepcional",
+        "nameEn": "Exceptional Resilient Hide"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero reforzado excepcional",
+        "nameEn": "Exceptional Reinforced Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_LEATHER_LEVEL4@4",
+    "baseItemId": "T8_LEATHER",
+    "nameEs": "Cuero fortalecido prístino",
+    "nameEn": "Pristine Fortified Leather",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 4714,
+    "materials": [
+      {
+        "itemId": "T8_HIDE_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Piel resistente prístina",
+        "nameEn": "Pristine Resilient Hide"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Cuero reforzado prístino",
+        "nameEn": "Pristine Reinforced Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_METALBAR",
+    "baseItemId": "T8_METALBAR",
+    "nameEs": "Lingote de adamantio",
+    "nameEn": "Adamantium Steel Bar",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T8_ORE",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de adamantio",
+        "nameEn": "Adamantium Ore"
+      },
+      {
+        "itemId": "T7_METALBAR",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de meteorito",
+        "nameEn": "Meteorite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_METALBAR_LEVEL1@1",
+    "baseItemId": "T8_METALBAR",
+    "nameEs": "Lingote de adamantio poco común",
+    "nameEn": "Uncommon Adamantium Steel Bar",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T8_ORE_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de adamantio poco común",
+        "nameEn": "Uncommon Adamantium Ore"
+      },
+      {
+        "itemId": "T7_METALBAR_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de meteorito poco común",
+        "nameEn": "Uncommon Meteorite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_METALBAR_LEVEL2@2",
+    "baseItemId": "T8_METALBAR",
+    "nameEs": "Lingote de adamantio raro",
+    "nameEn": "Rare Adamantium Steel Bar",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T8_ORE_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de adamantio raro",
+        "nameEn": "Rare Adamantium Ore"
+      },
+      {
+        "itemId": "T7_METALBAR_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de meteorito raro",
+        "nameEn": "Rare Meteorite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_METALBAR_LEVEL3@3",
+    "baseItemId": "T8_METALBAR",
+    "nameEs": "Lingote de adamantio excepcional",
+    "nameEn": "Exceptional Adamantium Steel Bar",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T8_ORE_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de adamantio excepcional",
+        "nameEn": "Exceptional Adamantium Ore"
+      },
+      {
+        "itemId": "T7_METALBAR_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de meteorito excepcional",
+        "nameEn": "Exceptional Meteorite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_METALBAR_LEVEL4@4",
+    "baseItemId": "T8_METALBAR",
+    "nameEs": "Lingote de adamantio prístino",
+    "nameEn": "Pristine Adamantium Steel Bar",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 4714,
+    "materials": [
+      {
+        "itemId": "T8_ORE_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mineral de adamantio prístino",
+        "nameEn": "Pristine Adamantium Ore"
+      },
+      {
+        "itemId": "T7_METALBAR_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Lingote de meteorito prístino",
+        "nameEn": "Pristine Meteorite Steel Bar"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_PLANKS",
+    "baseItemId": "T8_PLANKS",
+    "nameEs": "Tablas de maderablanca",
+    "nameEn": "Whitewood Planks",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T8_WOOD",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de maderablanca",
+        "nameEn": "Whitewood Logs"
+      },
+      {
+        "itemId": "T7_PLANKS",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cortezaceniza",
+        "nameEn": "Ashenbark Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_PLANKS_LEVEL1@1",
+    "baseItemId": "T8_PLANKS",
+    "nameEs": "Tablas de maderablanca poco común",
+    "nameEn": "Uncommon Whitewood Planks",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 880,
+    "materials": [
+      {
+        "itemId": "T8_WOOD_LEVEL1@1",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de maderablanca poco común",
+        "nameEn": "Uncommon Whitewood Logs"
+      },
+      {
+        "itemId": "T7_PLANKS_LEVEL1@1",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cortezaceniza poco común",
+        "nameEn": "Uncommon Ashenbark Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_PLANKS_LEVEL2@2",
+    "baseItemId": "T8_PLANKS",
+    "nameEs": "Tablas de maderablanca rara",
+    "nameEn": "Rare Whitewood Planks",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 1539,
+    "materials": [
+      {
+        "itemId": "T8_WOOD_LEVEL2@2",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de maderablanca rara",
+        "nameEn": "Rare Whitewood Logs"
+      },
+      {
+        "itemId": "T7_PLANKS_LEVEL2@2",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cortezaceniza rara",
+        "nameEn": "Rare Ashenbark Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_PLANKS_LEVEL3@3",
+    "baseItemId": "T8_PLANKS",
+    "nameEs": "Tablas de maderablanca excepcional",
+    "nameEn": "Exceptional Whitewood Planks",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 2694,
+    "materials": [
+      {
+        "itemId": "T8_WOOD_LEVEL3@3",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de maderablanca excepcional",
+        "nameEn": "Exceptional Whitewood Logs"
+      },
+      {
+        "itemId": "T7_PLANKS_LEVEL3@3",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cortezaceniza excepcional",
+        "nameEn": "Exceptional Ashenbark Planks"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_PLANKS_LEVEL4@4",
+    "baseItemId": "T8_PLANKS",
+    "nameEs": "Tablas de maderablanca prístina",
+    "nameEn": "Pristine Whitewood Planks",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 4714,
+    "materials": [
+      {
+        "itemId": "T8_WOOD_LEVEL4@4",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Troncos de maderablanca prístina",
+        "nameEn": "Pristine Whitewood Logs"
+      },
+      {
+        "itemId": "T7_PLANKS_LEVEL4@4",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tablas de cortezaceniza prístina",
+        "nameEn": "Pristine Ashenbark Planks"
       }
     ]
   },
@@ -7335,6 +10378,33 @@
         "category": "extract",
         "nameEs": "Extracto arcano puro",
         "nameEn": "Pure Arcane Extract"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_STONEBLOCK",
+    "baseItemId": "T8_STONEBLOCK",
+    "nameEs": "Bloque de mármol",
+    "nameEn": "Marble Block",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "refining",
+    "batchSize": 1,
+    "craftingFocus": 503,
+    "materials": [
+      {
+        "itemId": "T8_ROCK",
+        "count": 5,
+        "category": "other",
+        "nameEs": "Mármol",
+        "nameEn": "Marble"
+      },
+      {
+        "itemId": "T7_STONEBLOCK",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Bloque de basalto",
+        "nameEn": "Basalt Block"
       }
     ]
   },

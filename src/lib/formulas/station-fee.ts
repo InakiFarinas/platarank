@@ -20,3 +20,9 @@ export function alchemyStationFeePerBatch(
   const nutritionUnits = FARM_MATERIAL_UNIT * farmMaterialCount;
   return (ratePer100Nutrition / 1000) * nutritionUnits;
 }
+
+// Refinado: (tarifa/1000) x 18 x 2^(tier-4) x 2^ench. Unlike alchemy, this depends only on the
+// output's tier and enchantment level -- not on the materials in the recipe.
+export function refiningStationFeePerBatch(tier: number, enchant: number, ratePer100Nutrition: number): number {
+  return (ratePer100Nutrition / 1000) * 18 * 2 ** (tier - 4) * 2 ** enchant;
+}

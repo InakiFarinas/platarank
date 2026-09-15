@@ -16,7 +16,7 @@ const SORT_ACCESSORS: Record<SortKey, (r: RecipeRow) => number> = {
   platinumPerDay: (r) => r.platinumPerDay ?? -Infinity,
 };
 
-export function AlchemyTable({ rows }: { rows: RecipeRow[] }) {
+export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("platinumPerDay");
   const [desc, setDesc] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -61,7 +61,7 @@ export function AlchemyTable({ rows }: { rows: RecipeRow[] }) {
 
       <div className="hidden items-center gap-4 border-b border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
         <span className="w-8 shrink-0">#</span>
-        <span className="flex-1">Poción</span>
+        <span className="flex-1">Ítem</span>
         <div className="flex items-center gap-6">
           <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" width="w-12" />
           <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/dia" width="w-12" />

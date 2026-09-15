@@ -21,11 +21,13 @@ export function Controls({
   onParamsChange,
   filters,
   onFiltersChange,
+  stationType,
 }: {
   params: RecipeMathParams;
   onParamsChange: (params: RecipeMathParams) => void;
   filters: FilterParams;
   onFiltersChange: (filters: FilterParams) => void;
+  stationType: "alchemy" | "refining";
 }) {
   function toggleCity(key: "buyCities" | "sellCities", city: Location, checked: boolean) {
     const current = params[key];
@@ -57,7 +59,7 @@ export function Controls({
           />
 
           <CitySection
-            title="Vender la poción en"
+            title="Vender el ítem en"
             cities={REAL_CITIES}
             selected={params.sellCities}
             onToggle={(city, checked) => toggleCity("sellCities", city, checked)}
@@ -82,6 +84,22 @@ export function Controls({
               onCheckedChange={(checked) => onParamsChange({ ...params, focus: checked })}
             />
           </div>
+
+          {stationType === "refining" && (
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <Label htmlFor="refining-specialty-switch">Especialidad de refinado</Label>
+                <p className="text-xs text-muted-foreground">
+                  +40% de retorno -- activalo si refinás en la ciudad con especialidad para este recurso.
+                </p>
+              </div>
+              <Switch
+                id="refining-specialty-switch"
+                checked={params.refiningSpecialty}
+                onCheckedChange={(checked) => onParamsChange({ ...params, refiningSpecialty: checked })}
+              />
+            </div>
+          )}
 
           <NumberField
             label="Cuota de mercado (%)"
