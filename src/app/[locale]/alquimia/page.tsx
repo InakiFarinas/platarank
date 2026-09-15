@@ -33,7 +33,7 @@ export default async function AlquimiaPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-3 py-4 sm:px-6 sm:py-8">
-      <header className="mb-4 sm:mb-6">
+      <header className="sticky top-0 z-20 -mx-3 mb-4 border-b border-border bg-background/95 px-3 py-3 backdrop-blur sm:-mx-6 sm:mb-6 sm:px-6">
         <h1 className="text-lg font-semibold tracking-tight sm:text-xl">Alquimia -- Americas</h1>
         <p className="text-sm text-muted-foreground">
           Ranking por plata realizable por dia: margen x volumen diario del mercado. Tocá una fila para ver de dónde

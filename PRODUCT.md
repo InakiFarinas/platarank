@@ -40,7 +40,7 @@ Name: PlataRank (repo/package `platarank`). No existing visual identity, logo, o
 
 ## Evidence on Hand
 
-No real market data is live in the UI yet (ingester and DB schema exist; first ingest run pending a DB credential from the user). Recipe data (174 alchemy recipes, ~220 priced items) is real, pulled from the official ao-bin-dumps client data.
+Real market data is live: the ingester has run successfully against AODP Americas and populated `market_aggregates` for all 219 priced items. Recipe data (174 alchemy recipes) is real, pulled from the official ao-bin-dumps client data. The ingester now runs hourly via GitHub Actions.
 
 ## Product Principles
 

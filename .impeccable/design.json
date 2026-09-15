@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-15T00:00:00.000Z",
+  "title": "Design System: PlataRank",
+  "extensions": {
+    "colorMeta": {
+      "money-amber": {
+        "role": "primary",
+        "displayName": "Money Amber",
+        "canonical": "oklch(0.78 0.16 68)",
+        "tonalRamp": [
+          "oklch(0.20 0.05 68)",
+          "oklch(0.32 0.09 68)",
+          "oklch(0.44 0.12 68)",
+          "oklch(0.56 0.14 68)",
+          "oklch(0.66 0.15 68)",
+          "oklch(0.72 0.16 68)",
+          "oklch(0.78 0.16 68)",
+          "oklch(0.90 0.10 68)"
+        ]
+      },
+      "operate-ground": {
+        "role": "neutral",
+        "displayName": "Operate Ground",
+        "canonical": "oklch(0.14 0.003 285)",
+        "tonalRamp": [
+          "oklch(0.10 0.003 285)",
+          "oklch(0.14 0.003 285)",
+          "oklch(0.19 0.004 285)",
+          "oklch(0.23 0.004 285)",
+          "oklch(0.25 0.004 285)",
+          "oklch(0.40 0.004 285)",
+          "oklch(0.62 0.006 285)",
+          "oklch(0.94 0.003 285)"
+        ]
+      },
+      "card-surface": {
+        "role": "neutral",
+        "displayName": "Card Surface",
+        "canonical": "oklch(0.19 0.004 285)"
+      },
+      "secondary-surface": {
+        "role": "neutral",
+        "displayName": "Secondary Surface",
+        "canonical": "oklch(0.25 0.004 285)"
+      },
+      "hairline-border": {
+        "role": "neutral",
+        "displayName": "Hairline Border",
+        "canonical": "oklch(1 0 0 / 8%)"
+      }
+    },
+    "typographyMeta": {
+      "headline": { "displayName": "Headline", "purpose": "Page title only, e.g. 'Alquimia -- Americas'." },
+      "body": { "displayName": "Body", "purpose": "Subtitles, prose, error/loading copy." },
+      "tabular": { "displayName": "Tabular", "purpose": "Every numeric value: rank, margin, volume, quality score, plata/dia, derivation figures." },
+      "label": { "displayName": "Label", "purpose": "Column headers and stat captions." }
+    },
+    "breakpoints": [
+      { "name": "sm", "value": "640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Recipe Row",
+      "kind": "custom",
+      "refersTo": "row-item",
+      "description": "Full-width toggle button showing rank, name, tier badge, margin/volume stats, quality bar, and the amber plata/dia figure; expands an inline derivation panel on click.",
+      "html": "<button class=\"ds-row\"><span class=\"ds-row-rank\">1</span><span class=\"ds-row-name\">Poción de Vida Mayor <span class=\"ds-badge-tier\">T6.1</span></span><span class=\"ds-row-stat\">+34%<em>margen</em></span><span class=\"ds-row-money\">128k<em>plata/dia</em></span></button>",
+      "css": ".ds-row { display: flex; align-items: center; gap: 16px; width: 100%; padding: 10px 12px; background: transparent; border: none; border-bottom: 1px solid oklch(1 0 0 / 8%); color: oklch(0.94 0.003 285); text-align: left; font-family: 'Geist Sans', ui-sans-serif, sans-serif; transition: background 0.15s; } .ds-row:hover { background: color-mix(in oklch, oklch(0.25 0.004 285) 40%, transparent); } .ds-row:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; } .ds-row-rank { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: oklch(0.62 0.006 285); } .ds-row-name { flex: 1; font-size: 14px; font-weight: 500; } .ds-badge-tier { margin-left: 6px; padding: 1px 6px; border-radius: 6px; background: oklch(0.25 0.004 285); font-family: 'Geist Mono', monospace; font-size: 10px; } .ds-row-stat { text-align: right; font-size: 12px; color: oklch(0.62 0.006 285); font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; } .ds-row-stat em { display: block; font-style: normal; font-size: 10px; } .ds-row-money { text-align: right; font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 16px; color: oklch(0.78 0.16 68); } .ds-row-money em { display: block; font-style: normal; font-size: 10px; color: oklch(0.62 0.006 285); }"
+    },
+    {
+      "name": "Quality Bar",
+      "kind": "custom",
+      "refersTo": "quality-bar-fill",
+      "description": "Thin horizontal bar chip signaling data-quality score strength, not a pass/fail badge.",
+      "html": "<span class=\"ds-quality\"><span class=\"ds-quality-track\"><span class=\"ds-quality-fill\" style=\"width:72%\"></span></span><span class=\"ds-quality-score\">72</span></span>",
+      "css": ".ds-quality { display: inline-flex; align-items: center; gap: 6px; } .ds-quality-track { width: 40px; height: 6px; border-radius: 9999px; background: oklch(0.23 0.004 285); overflow: hidden; } .ds-quality-fill { display: block; height: 100%; border-radius: 9999px; background: oklch(0.78 0.16 68); } .ds-quality-score { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 11px; color: oklch(0.62 0.006 285); }"
+    },
+    {
+      "name": "Sort Chip (mobile)",
+      "kind": "chip",
+      "refersTo": "sort-chip-active",
+      "description": "Pill-shaped sort toggle for the mobile fallback bar; active state carries the amber accent.",
+      "html": "<button class=\"ds-chip ds-chip-active\">Plata/dia <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 5v14M19 12l-7 7-7-7\"/></svg></button>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 9999px; border: 1px solid oklch(1 0 0 / 8%); background: transparent; color: oklch(0.62 0.006 285); font-family: 'Geist Sans', sans-serif; font-size: 12px; white-space: nowrap; } .ds-chip-active { border-color: color-mix(in oklch, oklch(0.78 0.16 68) 50%, transparent); background: color-mix(in oklch, oklch(0.78 0.16 68) 10%, transparent); color: oklch(0.78 0.16 68); } .ds-chip:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; }"
+    },
+    {
+      "name": "Sticky Page Header",
+      "kind": "custom",
+      "refersTo": "row-item",
+      "description": "Sticky, blurred title block used at the top of every Operate-mode page.",
+      "html": "<header class=\"ds-header\"><h1 class=\"ds-header-title\">Alquimia -- Americas</h1><p class=\"ds-header-sub\">Ranking por plata realizable por dia.</p></header>",
+      "css": ".ds-header { position: sticky; top: 0; z-index: 20; padding: 12px; border-bottom: 1px solid oklch(1 0 0 / 8%); background: color-mix(in oklch, oklch(0.14 0.003 285) 95%, transparent); backdrop-filter: blur(8px); } .ds-header-title { font-family: 'Geist Sans', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: oklch(0.94 0.003 285); margin: 0; } .ds-header-sub { margin: 2px 0 0; font-size: 14px; color: oklch(0.62 0.006 285); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operate-Mode Trading Ticker",
+    "overview": "PlataRank is a single-purpose Operate surface, not a marketing page: a near-black ground read one-handed next to the game, where the only color statement is a warm amber reserved for the number that matters. The build confirms the direction contract's thesis exactly -- plata/dia renders as the largest, only-colored figure in each row (text-money, font-mono, text-base sm:text-lg font-semibold), while margin and volume sit as small muted stats stacked beside it. There is no hero, no marketing copy, no light mode: <html class=\"dark\"> is hardcoded in the root layout, confirming dark-only is a real product decision, not a default left unconfigured. Density and legibility drive every layout call: hairline borders instead of shadows, a virtualized row list tuned to a 52px estimate, and tabular-nums monospace on every number so columns hold their alignment while scrolling fast on a phone. The system does not reach for icons, badges, or color to create hierarchy where restraint already does the job -- the one amber accent is rationed to two roles and never leaks into buttons or navigation.",
+    "keyCharacteristics": [
+      "Dark-only \"Operate ground\" -- no light theme exists or is planned.",
+      "One accent color, two jobs: the plata/dia figure and active sort state. Nothing else uses it.",
+      "Tabular-nums monospace on every numeric value; proportional sans on every label.",
+      "Zero shadows; hairline borders and tonal surface steps carry all separation.",
+      "Dense, mobile-first row rhythm with an expandable inline detail panel per row."
+    ],
+    "rules": [
+      { "name": "The One Amber Rule", "body": "The accent is rationed to the plata/dia figure and active sort state. A retry button, a badge, or a nav item never carries it -- confirmed by the error page's retry button, which uses a plain hairline border and hover:bg-accent, not the money color.", "section": "colors" },
+      { "name": "The Tabular-Nums Rule", "body": "Any value that is a quantity (silver, percent, count, score) renders in mono with tabular-nums; any value that is a label or name renders in the proportional sans. Never mix the two roles for legibility's sake.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Elevation is never simulated with box-shadow. Use a border and/or the next tonal surface step instead.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do reserve the money-amber accent for realized/ranked silver figures and active sort/filter state only.",
+      "Do render every quantity (price, percent, count, score) in mono with tabular-nums; render every name/label in proportional sans.",
+      "Do use hairline borders and tonal surface steps for separation and depth; never a shadow.",
+      "Do pair any new sortable/filterable control with both a desktop inline-header form and a mobile chip-bar form, per the confirmed responsive split.",
+      "Do keep new ranked-list surfaces (Fase 2 city controls, Fase 3 station types) on the row + expandable-detail pattern rather than introducing a details page or modal."
+    ],
+    "donts": [
+      "Don't introduce a light theme variant; dark-only is a confirmed product decision (<html class=\"dark\"> is hardcoded), not an unfinished default.",
+      "Don't render a data-quality or confidence score as a colored badge or traffic-light; the thin horizontal bar is the system's only quality-signal device.",
+      "Don't spread the amber accent onto buttons, nav, or non-ranking UI -- it stays rationed to the two roles above.",
+      "Don't add box-shadows for elevation; step to the next tonal surface or add a hairline border instead."
+    ]
+  }
+}

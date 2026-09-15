@@ -86,6 +86,11 @@ function RowDetail({ row }: { row: RecipeRowData }) {
             <Row k="Precio de referencia" v={row.sellRefPrice !== null ? `${formatSilver(row.sellRefPrice)} plata` : "sin datos"} />
             <Row k="Mediana entre" v={`${row.sellRefCitiesCount} ciudades`} />
             <Row k="Dato más viejo usado" v={formatAge(row.sellRefAgeSeconds)} />
+            <Row
+              k="Brecilien"
+              v={row.brecilienCovered ? "cotiza este ítem" : "sin cotización para este ítem"}
+            />
+            <Row k="Score de calidad" v={`${row.qualityScore}/100`} />
             <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (Brecilien, sin foco)`} />
             <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
             <Row k="Cuota de mercado" v="100% (Fase 1)" />
