@@ -34,12 +34,12 @@ export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number 
             className={cn("h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")}
           />
           <span className="truncate text-sm font-medium">{recipe.nameEs}</span>
-          <Badge variant="secondary" className="shrink-0 font-mono text-[10px] tabular-nums">
+          <Badge variant="secondary" className="shrink-0 font-mono text-[11px] tabular-nums">
             T{recipe.tier}
             {enchantLabel(recipe.enchant)}
           </Badge>
           {!row.hasData && (
-            <Badge variant="outline" className="shrink-0 text-[10px] text-muted-foreground">
+            <Badge variant="outline" className="shrink-0 text-[11px] text-muted-foreground">
               datos insuficientes
             </Badge>
           )}
@@ -57,7 +57,7 @@ export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number 
             <div className="font-mono text-base font-semibold tabular-nums text-money sm:text-lg">
               {formatSilver(row.platinumPerDay)}
             </div>
-            <div className="text-[10px] text-muted-foreground sm:hidden">plata/dia</div>
+            <div className="text-[11px] text-muted-foreground sm:hidden">plata/dia</div>
           </div>
         </div>
       </button>
@@ -71,7 +71,7 @@ function Stat({ label, value, mono }: { label: string; value: string; mono?: boo
   return (
     <div className="text-right">
       <div className={cn("text-xs text-foreground", mono && "font-mono tabular-nums")}>{value}</div>
-      <div className="text-[10px] text-muted-foreground">{label}</div>
+      <div className="text-[11px] text-muted-foreground">{label}</div>
     </div>
   );
 }
