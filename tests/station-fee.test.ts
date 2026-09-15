@@ -1,28 +1,28 @@
 import { describe, expect, test } from "vitest";
-import { alchemyStationFeePerBatch, refiningStationFeePerBatch } from "@/lib/formulas/station-fee";
+import { farmStationFeePerBatch, refiningStationFeePerBatch } from "@/lib/formulas/station-fee";
 
-describe("alchemyStationFeePerBatch", () => {
+describe("farmStationFeePerBatch (alquimia y cocina)", () => {
   // T6_POTION_HEAL@1, lote de 5: 72 T6_FOXGLOVE + 18 T5_EGG + 18 T6_ALCOHOL (todos "farm"),
   // + 45 T1_ALCHEMY_EXTRACT_LEVEL1 (extract, no paga fee). Tarifa de ejemplo: 235/100 nutricion.
   const heal6Ench1Materials = [
-    { category: "farm" as const, count: 72 },
-    { category: "farm" as const, count: 18 },
-    { category: "farm" as const, count: 18 },
-    { category: "extract" as const, count: 45 },
+    { itemId: "T6_FOXGLOVE", category: "farm" as const, count: 72 },
+    { itemId: "T5_EGG", category: "farm" as const, count: 18 },
+    { itemId: "T6_ALCOHOL", category: "farm" as const, count: 18 },
+    { itemId: "T1_ALCHEMY_EXTRACT_LEVEL1", category: "extract" as const, count: 45 },
   ];
 
   test("solo cuenta materiales de granja, ignora extractos", () => {
-    const fee = alchemyStationFeePerBatch(heal6Ench1Materials, 235);
+    const fee = farmStationFeePerBatch(heal6Ench1Materials, 235);
     // (235/1000) * 45 * (72+18+18) = 0.235 * 45 * 108
     expect(fee).toBeCloseTo(0.235 * 45 * 108, 5);
   });
 
   test("no depende del tier ni del encantamiento, solo de los materiales pasados", () => {
-    const feeLowTier = alchemyStationFeePerBatch([{ category: "farm", count: 10 }], 235);
-    const feeHighTierSameFarmCount = alchemyStationFeePerBatch(
+    const feeLowTier = farmStationFeePerBatch([{ itemId: "T2_AGARIC", category: "farm", count: 10 }], 235);
+    const feeHighTierSameFarmCount = farmStationFeePerBatch(
       [
-        { category: "farm", count: 10 },
-        { category: "artifact", count: 999 },
+        { itemId: "T8_YARROW", category: "farm", count: 10 },
+        { itemId: "T5_ALCHEMY_RARE_EAGLE", category: "artifact", count: 999 },
       ],
       235,
     );
@@ -30,15 +30,34 @@ describe("alchemyStationFeePerBatch", () => {
   });
 
   test("artefactos no pagan fee", () => {
-    const fee = alchemyStationFeePerBatch([{ category: "artifact", count: 500 }], 235);
+    const fee = farmStationFeePerBatch([{ itemId: "T5_ALCHEMY_RARE_EAGLE", category: "artifact", count: 500 }], 235);
     expect(fee).toBe(0);
   });
 
   test("escala linealmente con la tarifa", () => {
-    const materials = [{ category: "farm" as const, count: 20 }];
-    const feeAt100 = alchemyStationFeePerBatch(materials, 100);
-    const feeAt200 = alchemyStationFeePerBatch(materials, 200);
+    const materials = [{ itemId: "T2_AGARIC", category: "farm" as const, count: 20 }];
+    const feeAt100 = farmStationFeePerBatch(materials, 100);
+    const feeAt200 = farmStationFeePerBatch(materials, 200);
     expect(feeAt200).toBeCloseTo(feeAt100 * 2, 5);
+  });
+
+  test("carne cuenta un factor fijo de 900 por unidad, sin importar el tier", () => {
+    const t3 = farmStationFeePerBatch([{ itemId: "T3_MEAT", category: "meat" as const, count: 8 }], 235);
+    const t8 = farmStationFeePerBatch([{ itemId: "T8_MEAT", category: "meat" as const, count: 8 }], 235);
+    expect(t3).toBeCloseTo(0.235 * 900 * 8, 5);
+    expect(t3).toBeCloseTo(t8, 5);
+  });
+
+  test("pescado usa el factor de su propio tier (T3/T5/T7/T8)", () => {
+    const t3 = farmStationFeePerBatch([{ itemId: "T3_FISH_SALTWATER_ALL_RARE", category: "fish" as const, count: 10 }], 235);
+    const t8 = farmStationFeePerBatch([{ itemId: "T8_FISH_SALTWATER_ALL_RARE", category: "fish" as const, count: 10 }], 235);
+    expect(t3).toBeCloseTo(0.235 * 11.25 * 10, 5);
+    expect(t8).toBeCloseTo(0.235 * 225 * 10, 5);
+  });
+
+  test("pescado en un tier sin factor documentado no rompe, cuenta como 0", () => {
+    const fee = farmStationFeePerBatch([{ itemId: "T1_FISHCHOPS", category: "fish" as const, count: 10 }], 235);
+    expect(fee).toBe(0);
   });
 });
 

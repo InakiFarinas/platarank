@@ -18,7 +18,7 @@ export type Recipe = typeof recipes.$inferSelect;
 export type RecipeMaterial = {
   itemId: string;
   count: number;
-  category: "farm" | "extract" | "artifact" | "other";
+  category: "farm" | "extract" | "artifact" | "meat" | "fish" | "other";
   nameEs: string;
   nameEn: string;
 };

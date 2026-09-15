@@ -146,3 +146,49 @@ describe("computeRecipeRow (refinado)", () => {
     expect(row.returnRatePct).toBeCloseTo(0.367, 2); // 18% + 40% de especialidad de refinado
   });
 });
+
+describe("computeRecipeRow (cocina)", () => {
+  const soupRecipe: Recipe = {
+    itemId: "T5_MEAL_SOUP",
+    baseItemId: "T5_MEAL_SOUP",
+    nameEs: "Sopa de col",
+    nameEn: "Cabbage Soup",
+    tier: 5,
+    enchant: 0,
+    stationType: "cooking",
+    batchSize: 10,
+    craftingFocus: 504,
+    materials: [{ itemId: "T5_CABBAGE", count: 144, category: "farm", nameEs: "Coles", nameEn: "Cabbage" }],
+  };
+
+  test("el fee de cocina usa la misma formula que alquimia (materiales de granja)", () => {
+    const data = market({
+      T5_MEAL_SOUP: [point("Caerleon", 1000)],
+      T5_CABBAGE: [point("Caerleon", 10)],
+    });
+    const row = computeRecipeRow(soupRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    // (235/1000) * 45 * 144
+    expect(row.feePerBatch).toBeCloseTo(0.235 * 45 * 144, 5);
+  });
+
+  test("especialidad de cocina sube el retorno al escalon de +15%, no al de refinado", () => {
+    const data = market({
+      T5_MEAL_SOUP: [point("Caerleon", 1000)],
+      T5_CABBAGE: [point("Caerleon", 10)],
+    });
+    const sinEspecialidad = computeRecipeRow(soupRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      cookingSpecialty: false,
+    });
+    const conEspecialidad = computeRecipeRow(soupRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      cookingSpecialty: true,
+    });
+    expect(sinEspecialidad.returnRatePct).toBeCloseTo(0.152, 2);
+    expect(conEspecialidad.returnRatePct).toBeCloseTo(0.248, 2); // 18% + 15% (crafting specialty), no +40%
+  });
+});

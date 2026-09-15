@@ -27,7 +27,7 @@ export function Controls({
   onParamsChange: (params: RecipeMathParams) => void;
   filters: FilterParams;
   onFiltersChange: (filters: FilterParams) => void;
-  stationType: "alchemy" | "refining";
+  stationType: "alchemy" | "refining" | "cooking";
 }) {
   function toggleCity(key: "buyCities" | "sellCities", city: Location, checked: boolean) {
     const current = params[key];
@@ -97,6 +97,22 @@ export function Controls({
                 id="refining-specialty-switch"
                 checked={params.refiningSpecialty}
                 onCheckedChange={(checked) => onParamsChange({ ...params, refiningSpecialty: checked })}
+              />
+            </div>
+          )}
+
+          {stationType === "cooking" && (
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <Label htmlFor="cooking-specialty-switch">Especialidad de cocina</Label>
+                <p className="text-xs text-muted-foreground">
+                  +15% de retorno -- activalo si cocinás en la ciudad con especialidad de cocina.
+                </p>
+              </div>
+              <Switch
+                id="cooking-specialty-switch"
+                checked={params.cookingSpecialty}
+                onCheckedChange={(checked) => onParamsChange({ ...params, cookingSpecialty: checked })}
               />
             </div>
           )}

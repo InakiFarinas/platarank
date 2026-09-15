@@ -1,6 +1,6 @@
 # PlataRank
 
-Ranking de crafteo (alquimia, refinado) en [Albion Online](https://albiononline.com/) por **plata realizable por día**, no por margen unitario.
+Ranking de crafteo (alquimia, refinado, cocina) en [Albion Online](https://albiononline.com/) por **plata realizable por día**, no por margen unitario.
 
 ## La tesis
 
@@ -9,14 +9,14 @@ Casi todas las herramientas de mercado de Albion responden "¿cuánta ganancia d
 PlataRank mete el volumen diario de trades (expuesto desde siempre por la API pública, casi nunca usado) dentro de la matemática del crafteo: **ganancia unitaria × volumen diario del mercado × la cuota que asumís llevarte**. El resto del producto se ordena alrededor de tres cosas:
 
 1. **Mostrar el trabajo.** Cada fila lleva un score de calidad de dato visible y se puede abrir para ver la derivación completa: qué precio se usó, de qué ciudad, de cuándo, y qué se descartó como outlier y por qué.
-2. **Fee de estación correcto.** Plata por cada 100 de nutrición consumida (no un porcentaje plano), con una fórmula específica por tipo de estación -- alquimia depende de los materiales de granja de la receta, refinado depende solo del tier y el encantamiento.
+2. **Fee de estación correcto.** Plata por cada 100 de nutrición consumida (no un porcentaje plano), con una fórmula específica por tipo de estación -- alquimia y cocina dependen de los materiales de la receta (granja, carne, pescado), refinado depende solo del tier y el encantamiento.
 3. **Datos de mercado sucios, tratados como tal.** Recorte de outliers asimétrico, mediana entre ciudades (nunca el máximo), Brecilien marcado explícitamente cuando no cotiza.
 
 ## Estado (Fase 3, parcial)
 
 - Un servidor (Americas), sin cuentas ni pagos.
-- Dos rubros ya en producción: **alquimia** (`/alquimia`, 174 recetas) y **refinado** (`/refinado`, 115 recetas: madera/fibra/mineral/cuero/piedra -> tablas/tela/lingotes/cuero curtido/bloques, tiers 2-8, encantamiento 0-4). 449 ítems con precio en total. Armas, armaduras y cocina quedan para una próxima iteración -- necesitan sumar la dimensión de calidad (5 niveles) que ninguno de los dos rubros actuales tiene.
-- Restricciones reales activas en ambos rubros: ciudades de compra y de venta por separado (Black Market como opt-in explícito, no una ciudad más), cuota de mercado editable, foco on/off, tarifa de estación editable, filtros de antigüedad y volumen mínimo, y en refinado además un toggle de "especialidad de refinado" (ya que a diferencia de alquimia -- una sola ciudad posible, Brecilien -- cada recurso de refinado tiene su propia ciudad de especialidad). Todo es estado de sesión en el navegador (panel "Filtros"), no persiste entre recargas.
+- Tres rubros ya en producción: **alquimia** (`/alquimia`, 174 recetas), **refinado** (`/refinado`, 115 recetas: madera/fibra/mineral/cuero/piedra -> tablas/tela/lingotes/cuero curtido/bloques, tiers 2-8, encantamiento 0-4) y **cocina** (`/cocina`, 183 recetas: platos con pescado y carne). 678 ítems con precio en total. Armas, armaduras y herramientas quedan para una próxima iteración -- necesitan sumar la dimensión de calidad (5 niveles) que ninguno de los tres rubros actuales tiene, y ciudades de especialidad de crafteo por tipo de arma/armadura que no verifiqué.
+- Restricciones reales activas en los tres rubros: ciudades de compra y de venta por separado (Black Market como opt-in explícito, no una ciudad más), cuota de mercado editable, foco on/off, tarifa de estación editable, filtros de antigüedad y volumen mínimo. Refinado y cocina además tienen su propio toggle de "especialidad" (ya que, a diferencia de alquimia -- una sola ciudad posible, Brecilien, ya verificada -- no tengo confirmada la ciudad de especialidad real de cada recurso de refinado ni de cocina). Todo es estado de sesión en el navegador (panel "Filtros"), no persiste entre recargas.
 - Sin golden cases todavía: las fórmulas de fee/retorno están implementadas contra fuentes públicas pero no verificadas contra capturas del juego. Ver `fixtures/golden-cases.json` y `tests/golden-cases.test.ts`.
 
 ## Stack

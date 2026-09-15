@@ -8,6 +8,7 @@ import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
 const NAV_ITEMS = [
   { href: "/es/alquimia", label: "Alquimia" },
   { href: "/es/refinado", label: "Refinado" },
+  { href: "/es/cocina", label: "Cocina" },
 ] as const;
 
 export async function RecipePage({
@@ -15,7 +16,7 @@ export async function RecipePage({
   title,
   description,
 }: {
-  stationType: "alchemy" | "refining";
+  stationType: "alchemy" | "refining" | "cooking";
   title: string;
   description: string;
 }) {

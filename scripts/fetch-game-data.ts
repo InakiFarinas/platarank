@@ -48,7 +48,7 @@ type Recipe = {
   nameEn: string;
   tier: number;
   enchant: number;
-  stationType: "alchemy" | "refining";
+  stationType: "alchemy" | "refining" | "cooking";
   batchSize: number;
   craftingFocus: number;
   materials: RecipeMaterial[];
@@ -91,6 +91,28 @@ async function main() {
     }
   }
 
+  // Cocina: mismo patron anidado de "enchantments" que las pociones. Algunas lineas (los platos
+  // "_AVALON") requieren una ficha de mision intransable en TODOS sus niveles, no solo en una
+  // variante alternativa -- se descarta el item entero si su receta base la exige.
+  const meals = itemsRoot.items.consumableitem.filter(
+    (c) => c["@craftingcategory"] === "food" && c.craftingrequirements && !hasUntradeableMaterial(c.craftingrequirements),
+  );
+  for (const meal of meals) {
+    const baseItemId = meal["@uniquename"];
+    const tier = Number(meal["@tier"]);
+
+    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "cooking", meal.craftingrequirements!, names));
+
+    const enchantments = meal.enchantments?.enchantment;
+    if (enchantments) {
+      for (const ench of asArray(enchantments)) {
+        const level = Number(ench["@enchantmentlevel"]);
+        const itemId = `${baseItemId}@${level}`;
+        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "cooking", ench.craftingrequirements, names));
+      }
+    }
+  }
+
   // Refinado: cada nivel de encantamiento (0-4) es su propio simpleitem de nivel superior, no un
   // bloque "enchantments" anidado como en las pociones. Algunos tienen recetas alternativas (con
   // fichas de facción) -- nos quedamos con la que no pida ninguna ficha.
@@ -117,7 +139,7 @@ function buildRecipe(
   baseItemId: string,
   tier: number,
   enchant: number,
-  stationType: "alchemy" | "refining",
+  stationType: "alchemy" | "refining" | "cooking",
   cr: RawCraftingRequirements,
   names: Map<string, { es: string; en: string }>,
 ): Recipe {
@@ -165,10 +187,13 @@ function resolveItemId(uniquename: string, enchantmentLevel: string | undefined,
 
 /** Picks the plain-silver/materials recipe variant, skipping any that require a faction token. */
 function pickCraftingRequirements(list: RawCraftingRequirements[]): RawCraftingRequirements {
-  const withoutTokens = list.filter(
-    (cr) => !asArray(cr.craftresource ?? []).some((r) => /FACTION|TOKEN/.test(r["@uniquename"])),
-  );
+  const withoutTokens = list.filter((cr) => !hasUntradeableMaterial(cr));
   return withoutTokens[0] ?? list[0];
+}
+
+/** True if any material in this recipe isn't a real tradeable item (quest tokens, event rewards). */
+function hasUntradeableMaterial(cr: RawCraftingRequirements): boolean {
+  return asArray(cr.craftresource ?? []).some((r) => /FACTION|QUESTITEM|^UNIQUE_|EVENT/.test(r["@uniquename"]));
 }
 
 function asArray<T>(value: T | T[]): T[] {

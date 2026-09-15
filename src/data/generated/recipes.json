@@ -1,5 +1,275 @@
 [
   {
+    "itemId": "T1_MEAL_GRILLEDFISH",
+    "baseItemId": "T1_MEAL_GRILLEDFISH",
+    "nameEs": "Pescado a la plancha",
+    "nameEn": "Grilled Fish",
+    "tier": 1,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 15,
+    "materials": [
+      {
+        "itemId": "T1_FISHCHOPS",
+        "count": 10,
+        "category": "fish",
+        "nameEs": "Pescado picado",
+        "nameEn": "Chopped Fish"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SEAWEEDSALAD",
+    "baseItemId": "T1_MEAL_SEAWEEDSALAD",
+    "nameEs": "Ensalada de alga",
+    "nameEn": "Seaweed Salad",
+    "tier": 1,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 4,
+    "materials": [
+      {
+        "itemId": "T1_SEAWEED",
+        "count": 10,
+        "category": "farm",
+        "nameEs": "Alga",
+        "nameEn": "Seaweed"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP",
+    "baseItemId": "T1_MEAL_SOUP",
+    "nameEs": "Sopa de zanahoria",
+    "nameEn": "Carrot Soup",
+    "tier": 1,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T1_CARROT",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP_FISH",
+    "baseItemId": "T1_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja verdosa",
+    "nameEn": "Greenmoor Clam Soup",
+    "tier": 1,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja verdosa",
+        "nameEn": "Greenmoor Clam"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP_FISH@1",
+    "baseItemId": "T1_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja verdosa",
+    "nameEn": "Greenmoor Clam Soup",
+    "tier": 1,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 144,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja verdosa",
+        "nameEn": "Greenmoor Clam"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP_FISH@2",
+    "baseItemId": "T1_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja verdosa",
+    "nameEn": "Greenmoor Clam Soup",
+    "tier": 1,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 278,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja verdosa",
+        "nameEn": "Greenmoor Clam"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP_FISH@3",
+    "baseItemId": "T1_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja verdosa",
+    "nameEn": "Greenmoor Clam Soup",
+    "tier": 1,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 678,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja verdosa",
+        "nameEn": "Greenmoor Clam"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP@1",
+    "baseItemId": "T1_MEAL_SOUP",
+    "nameEs": "Sopa de zanahoria",
+    "nameEn": "Carrot Soup",
+    "tier": 1,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T1_CARROT",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP@2",
+    "baseItemId": "T1_MEAL_SOUP",
+    "nameEs": "Sopa de zanahoria",
+    "nameEn": "Carrot Soup",
+    "tier": 1,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T1_CARROT",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T1_MEAL_SOUP@3",
+    "baseItemId": "T1_MEAL_SOUP",
+    "nameEs": "Sopa de zanahoria",
+    "nameEn": "Carrot Soup",
+    "tier": 1,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T1_CARROT",
+        "count": 16,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
     "itemId": "T2_CLOTH",
     "baseItemId": "T2_CLOTH",
     "nameEs": "Tela simple",
@@ -36,6 +306,292 @@
         "category": "other",
         "nameEs": "Piel dura",
         "nameEn": "Rugged Hide"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD",
+    "baseItemId": "T2_MEAL_SALAD",
+    "nameEs": "Ensalada de frijoles",
+    "nameEn": "Bean Salad",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 56,
+    "materials": [
+      {
+        "itemId": "T2_BEAN",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD_FISH",
+    "baseItemId": "T2_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de calamar de aguas poco profundas",
+    "nameEn": "Shallowshore Squid Salad",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Calamar de aguas poco profundas",
+        "nameEn": "Shallowshore Squid"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD_FISH@1",
+    "baseItemId": "T2_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de calamar de aguas poco profundas",
+    "nameEn": "Shallowshore Squid Salad",
+    "tier": 2,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 144,
+    "materials": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Calamar de aguas poco profundas",
+        "nameEn": "Shallowshore Squid"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD_FISH@2",
+    "baseItemId": "T2_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de calamar de aguas poco profundas",
+    "nameEn": "Shallowshore Squid Salad",
+    "tier": 2,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 278,
+    "materials": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Calamar de aguas poco profundas",
+        "nameEn": "Shallowshore Squid"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD_FISH@3",
+    "baseItemId": "T2_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de calamar de aguas poco profundas",
+    "nameEn": "Shallowshore Squid Salad",
+    "tier": 2,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 678,
+    "materials": [
+      {
+        "itemId": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Calamar de aguas poco profundas",
+        "nameEn": "Shallowshore Squid"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T2_AGARIC",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Agárico arcano",
+        "nameEn": "Arcane Agaric"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD@1",
+    "baseItemId": "T2_MEAL_SALAD",
+    "nameEs": "Ensalada de frijoles",
+    "nameEn": "Bean Salad",
+    "tier": 2,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 78,
+    "materials": [
+      {
+        "itemId": "T2_BEAN",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD@2",
+    "baseItemId": "T2_MEAL_SALAD",
+    "nameEs": "Ensalada de frijoles",
+    "nameEn": "Bean Salad",
+    "tier": 2,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 123,
+    "materials": [
+      {
+        "itemId": "T2_BEAN",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T2_MEAL_SALAD@3",
+    "baseItemId": "T2_MEAL_SALAD",
+    "nameEs": "Ensalada de frijoles",
+    "nameEn": "Bean Salad",
+    "tier": 2,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 256,
+    "materials": [
+      {
+        "itemId": "T2_BEAN",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T1_CARROT",
+        "count": 8,
+        "category": "farm",
+        "nameEs": "Zanahorias",
+        "nameEn": "Carrots"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
       }
     ]
   },
@@ -352,6 +908,1419 @@
         "category": "other",
         "nameEs": "Cuero firme",
         "nameEn": "Stiff Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE",
+    "baseItemId": "T3_MEAL_OMELETTE",
+    "nameEs": "Tortilla de pollo",
+    "nameEn": "Chicken Omelette",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 52,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_DRAGONAREA",
+    "baseItemId": "T3_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Serena",
+    "nameEn": "Carefree Leyfin Omelette",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Serena",
+        "nameEn": "Carefree Leyfin"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_DRAGONAREA@1",
+    "baseItemId": "T3_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Serena",
+    "nameEn": "Carefree Leyfin Omelette",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 144,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Serena",
+        "nameEn": "Carefree Leyfin"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_DRAGONAREA@2",
+    "baseItemId": "T3_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Serena",
+    "nameEn": "Carefree Leyfin Omelette",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 278,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Serena",
+        "nameEn": "Carefree Leyfin"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_DRAGONAREA@3",
+    "baseItemId": "T3_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Serena",
+    "nameEn": "Carefree Leyfin Omelette",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 678,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Serena",
+        "nameEn": "Carefree Leyfin"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_FISH",
+    "baseItemId": "T3_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río abajo",
+    "nameEn": "Lowriver Crab Omelette",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río abajo",
+        "nameEn": "Lowriver Crab"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_FISH@1",
+    "baseItemId": "T3_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río abajo",
+    "nameEn": "Lowriver Crab Omelette",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 144,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río abajo",
+        "nameEn": "Lowriver Crab"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_FISH@2",
+    "baseItemId": "T3_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río abajo",
+    "nameEn": "Lowriver Crab Omelette",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 278,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río abajo",
+        "nameEn": "Lowriver Crab"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE_FISH@3",
+    "baseItemId": "T3_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río abajo",
+    "nameEn": "Lowriver Crab Omelette",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 678,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río abajo",
+        "nameEn": "Lowriver Crab"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE@1",
+    "baseItemId": "T3_MEAL_OMELETTE",
+    "nameEs": "Tortilla de pollo",
+    "nameEn": "Chicken Omelette",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 74,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE@2",
+    "baseItemId": "T3_MEAL_OMELETTE",
+    "nameEs": "Tortilla de pollo",
+    "nameEn": "Chicken Omelette",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 118,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_OMELETTE@3",
+    "baseItemId": "T3_MEAL_OMELETTE",
+    "nameEs": "Tortilla de pollo",
+    "nameEn": "Chicken Omelette",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 252,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE",
+    "baseItemId": "T3_MEAL_PIE",
+    "nameEs": "Pastel de pollo",
+    "nameEn": "Chicken Pie",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 53,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE_FISH",
+    "baseItemId": "T3_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las sierras",
+    "nameEn": "Upland Coldeye Pie",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 81,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las sierras",
+        "nameEn": "Upland Coldeye"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE_FISH@1",
+    "baseItemId": "T3_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las sierras",
+    "nameEn": "Upland Coldeye Pie",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 147,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las sierras",
+        "nameEn": "Upland Coldeye"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE_FISH@2",
+    "baseItemId": "T3_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las sierras",
+    "nameEn": "Upland Coldeye Pie",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 281,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las sierras",
+        "nameEn": "Upland Coldeye"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE_FISH@3",
+    "baseItemId": "T3_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las sierras",
+    "nameEn": "Upland Coldeye Pie",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 681,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las sierras",
+        "nameEn": "Upland Coldeye"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_EGG",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Huevos de gallina",
+        "nameEn": "Hen Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE@1",
+    "baseItemId": "T3_MEAL_PIE",
+    "nameEs": "Pastel de pollo",
+    "nameEn": "Chicken Pie",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 75,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE@2",
+    "baseItemId": "T3_MEAL_PIE",
+    "nameEs": "Pastel de pollo",
+    "nameEn": "Chicken Pie",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 120,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_PIE@3",
+    "baseItemId": "T3_MEAL_PIE",
+    "nameEs": "Pastel de pollo",
+    "nameEn": "Chicken Pie",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 253,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST",
+    "baseItemId": "T3_MEAL_ROAST",
+    "nameEs": "Pollo asado",
+    "nameEn": "Roast Chicken",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 58,
+    "materials": [
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST_FISH",
+    "baseItemId": "T3_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla blanca asado",
+    "nameEn": "Roasted Whitefog Snapper",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla blanca",
+        "nameEn": "Whitefog Snapper"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST_FISH@1",
+    "baseItemId": "T3_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla blanca asado",
+    "nameEn": "Roasted Whitefog Snapper",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 144,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla blanca",
+        "nameEn": "Whitefog Snapper"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST_FISH@2",
+    "baseItemId": "T3_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla blanca asado",
+    "nameEn": "Roasted Whitefog Snapper",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 278,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla blanca",
+        "nameEn": "Whitefog Snapper"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST_FISH@3",
+    "baseItemId": "T3_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla blanca asado",
+    "nameEn": "Roasted Whitefog Snapper",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 678,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla blanca",
+        "nameEn": "Whitefog Snapper"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST@1",
+    "baseItemId": "T3_MEAL_ROAST",
+    "nameEs": "Pollo asado",
+    "nameEn": "Roast Chicken",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 81,
+    "materials": [
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST@2",
+    "baseItemId": "T3_MEAL_ROAST",
+    "nameEs": "Pollo asado",
+    "nameEn": "Roast Chicken",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 125,
+    "materials": [
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_ROAST@3",
+    "baseItemId": "T3_MEAL_ROAST",
+    "nameEs": "Pollo asado",
+    "nameEn": "Roast Chicken",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 259,
+    "materials": [
+      {
+        "itemId": "T3_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T2_BEAN",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Frijoles",
+        "nameEn": "Beans"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP",
+    "baseItemId": "T3_MEAL_SOUP",
+    "nameEs": "Sopa de trigo",
+    "nameEn": "Wheat Soup",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 168,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP_FISH",
+    "baseItemId": "T3_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de aguas turbias",
+    "nameEn": "Murkwater Clam Soup",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 231,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de aguas turbias",
+        "nameEn": "Murkwater Clam"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP_FISH@1",
+    "baseItemId": "T3_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de aguas turbias",
+    "nameEn": "Murkwater Clam Soup",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 432,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de aguas turbias",
+        "nameEn": "Murkwater Clam"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP_FISH@2",
+    "baseItemId": "T3_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de aguas turbias",
+    "nameEn": "Murkwater Clam Soup",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 832,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de aguas turbias",
+        "nameEn": "Murkwater Clam"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP_FISH@3",
+    "baseItemId": "T3_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de aguas turbias",
+    "nameEn": "Murkwater Clam Soup",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2033,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de aguas turbias",
+        "nameEn": "Murkwater Clam"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T3_COMFREY",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Consuelda hojabrillante",
+        "nameEn": "Brightleaf Comfrey"
+      },
+      {
+        "itemId": "T3_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de pollo",
+        "nameEn": "Raw Chicken"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP@1",
+    "baseItemId": "T3_MEAL_SOUP",
+    "nameEs": "Sopa de trigo",
+    "nameEn": "Wheat Soup",
+    "tier": 3,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 235,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP@2",
+    "baseItemId": "T3_MEAL_SOUP",
+    "nameEs": "Sopa de trigo",
+    "nameEn": "Wheat Soup",
+    "tier": 3,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 368,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T3_MEAL_SOUP@3",
+    "baseItemId": "T3_MEAL_SOUP",
+    "nameEs": "Sopa de trigo",
+    "nameEn": "Wheat Soup",
+    "tier": 3,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 769,
+    "materials": [
+      {
+        "itemId": "T3_WHEAT",
+        "count": 48,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
       }
     ]
   },
@@ -1393,6 +3362,948 @@
         "category": "other",
         "nameEs": "Cuero grueso",
         "nameEn": "Thick Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD",
+    "baseItemId": "T4_MEAL_SALAD",
+    "nameEs": "Ensalada de rábano",
+    "nameEn": "Turnip Salad",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 168,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD_FISH",
+    "baseItemId": "T4_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de pulpo de aguas medias",
+    "nameEn": "Midwater Octopus Salad",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 231,
+    "materials": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pulpo de aguas medias",
+        "nameEn": "Midwater Octopus"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD_FISH@1",
+    "baseItemId": "T4_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de pulpo de aguas medias",
+    "nameEn": "Midwater Octopus Salad",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 432,
+    "materials": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pulpo de aguas medias",
+        "nameEn": "Midwater Octopus"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD_FISH@2",
+    "baseItemId": "T4_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de pulpo de aguas medias",
+    "nameEn": "Midwater Octopus Salad",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 832,
+    "materials": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pulpo de aguas medias",
+        "nameEn": "Midwater Octopus"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD_FISH@3",
+    "baseItemId": "T4_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de pulpo de aguas medias",
+    "nameEn": "Midwater Octopus Salad",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2033,
+    "materials": [
+      {
+        "itemId": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pulpo de aguas medias",
+        "nameEn": "Midwater Octopus"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 2,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD@1",
+    "baseItemId": "T4_MEAL_SALAD",
+    "nameEs": "Ensalada de rábano",
+    "nameEn": "Turnip Salad",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 235,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD@2",
+    "baseItemId": "T4_MEAL_SALAD",
+    "nameEs": "Ensalada de rábano",
+    "nameEn": "Turnip Salad",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 368,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SALAD@3",
+    "baseItemId": "T4_MEAL_SALAD",
+    "nameEs": "Ensalada de rábano",
+    "nameEn": "Turnip Salad",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 769,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T3_WHEAT",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Manojo de trigo",
+        "nameEn": "Sheaf of Wheat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH",
+    "baseItemId": "T4_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de cabra",
+    "nameEn": "Goat Sandwich",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 55,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH_FISH",
+    "baseItemId": "T4_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha pedregosa",
+    "nameEn": "Stonestream Lurcher Sandwich",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 81,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha pedregosa",
+        "nameEn": "Stonestream Lurcher"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH_FISH@1",
+    "baseItemId": "T4_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha pedregosa",
+    "nameEn": "Stonestream Lurcher Sandwich",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 147,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha pedregosa",
+        "nameEn": "Stonestream Lurcher"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH_FISH@2",
+    "baseItemId": "T4_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha pedregosa",
+    "nameEn": "Stonestream Lurcher Sandwich",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 281,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha pedregosa",
+        "nameEn": "Stonestream Lurcher"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH_FISH@3",
+    "baseItemId": "T4_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha pedregosa",
+    "nameEn": "Stonestream Lurcher Sandwich",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 681,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha pedregosa",
+        "nameEn": "Stonestream Lurcher"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH@1",
+    "baseItemId": "T4_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de cabra",
+    "nameEn": "Goat Sandwich",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH@2",
+    "baseItemId": "T4_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de cabra",
+    "nameEn": "Goat Sandwich",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 122,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_SANDWICH@3",
+    "baseItemId": "T4_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de cabra",
+    "nameEn": "Goat Sandwich",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 255,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T4_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de cabra",
+        "nameEn": "Goat's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW",
+    "baseItemId": "T4_MEAL_STEW",
+    "nameEs": "Guiso de cabra",
+    "nameEn": "Goat Stew",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 61,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW_FISH",
+    "baseItemId": "T4_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua verdosa",
+    "nameEn": "Greenriver Eel Stew",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 77,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua verdosa",
+        "nameEn": "Greenriver Eel"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW_FISH@1",
+    "baseItemId": "T4_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua verdosa",
+    "nameEn": "Greenriver Eel Stew",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 144,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua verdosa",
+        "nameEn": "Greenriver Eel"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW_FISH@2",
+    "baseItemId": "T4_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua verdosa",
+    "nameEn": "Greenriver Eel Stew",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 278,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua verdosa",
+        "nameEn": "Greenriver Eel"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW_FISH@3",
+    "baseItemId": "T4_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua verdosa",
+    "nameEn": "Greenriver Eel Stew",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 678,
+    "materials": [
+      {
+        "itemId": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua verdosa",
+        "nameEn": "Greenriver Eel"
+      },
+      {
+        "itemId": "T4_TURNIP",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BURDOCK",
+        "count": 1,
+        "category": "farm",
+        "nameEs": "Bardana almenada",
+        "nameEn": "Crenellated Burdock"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 3,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW@1",
+    "baseItemId": "T4_MEAL_STEW",
+    "nameEs": "Guiso de cabra",
+    "nameEn": "Goat Stew",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 84,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW@2",
+    "baseItemId": "T4_MEAL_STEW",
+    "nameEs": "Guiso de cabra",
+    "nameEn": "Goat Stew",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 128,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T4_MEAL_STEW@3",
+    "baseItemId": "T4_MEAL_STEW",
+    "nameEs": "Guiso de cabra",
+    "nameEn": "Goat Stew",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 262,
+    "materials": [
+      {
+        "itemId": "T4_TURNIP",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Rábanos",
+        "nameEn": "Turnips"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 4,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T4_MEAT",
+        "count": 8,
+        "category": "meat",
+        "nameEs": "Carne de cabra",
+        "nameEn": "Raw Goat"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 10,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
       }
     ]
   },
@@ -2996,6 +5907,1531 @@
     ]
   },
   {
+    "itemId": "T5_MEAL_OMELETTE",
+    "baseItemId": "T5_MEAL_OMELETTE",
+    "nameEs": "Tortilla de ganso",
+    "nameEn": "Goose Omelette",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 155,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_DRAGONAREA",
+    "baseItemId": "T5_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Almabrillante",
+    "nameEn": "Brightsoul Leyfin Omelette",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 225,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Almabrillante",
+        "nameEn": "Brightsoul Leyfin"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_DRAGONAREA@1",
+    "baseItemId": "T5_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Almabrillante",
+    "nameEn": "Brightsoul Leyfin Omelette",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 425,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Almabrillante",
+        "nameEn": "Brightsoul Leyfin"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_DRAGONAREA@2",
+    "baseItemId": "T5_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Almabrillante",
+    "nameEn": "Brightsoul Leyfin Omelette",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 825,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Almabrillante",
+        "nameEn": "Brightsoul Leyfin"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_DRAGONAREA@3",
+    "baseItemId": "T5_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Almabrillante",
+    "nameEn": "Brightsoul Leyfin Omelette",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2026,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Almabrillante",
+        "nameEn": "Brightsoul Leyfin"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_FISH",
+    "baseItemId": "T5_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río",
+    "nameEn": "Drybrook Crab Omelette",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 225,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río",
+        "nameEn": "Drybrook Crab"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_FISH@1",
+    "baseItemId": "T5_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río",
+    "nameEn": "Drybrook Crab Omelette",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 425,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río",
+        "nameEn": "Drybrook Crab"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_FISH@2",
+    "baseItemId": "T5_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río",
+    "nameEn": "Drybrook Crab Omelette",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 825,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río",
+        "nameEn": "Drybrook Crab"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE_FISH@3",
+    "baseItemId": "T5_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de río",
+    "nameEn": "Drybrook Crab Omelette",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2026,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de río",
+        "nameEn": "Drybrook Crab"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE@1",
+    "baseItemId": "T5_MEAL_OMELETTE",
+    "nameEs": "Tortilla de ganso",
+    "nameEn": "Goose Omelette",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 222,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE@2",
+    "baseItemId": "T5_MEAL_OMELETTE",
+    "nameEs": "Tortilla de ganso",
+    "nameEn": "Goose Omelette",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 355,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_OMELETTE@3",
+    "baseItemId": "T5_MEAL_OMELETTE",
+    "nameEs": "Tortilla de ganso",
+    "nameEn": "Goose Omelette",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 755,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE",
+    "baseItemId": "T5_MEAL_PIE",
+    "nameEs": "Pastel de ganso",
+    "nameEn": "Goose Pie",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 180,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE_FISH",
+    "baseItemId": "T5_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las montañas",
+    "nameEn": "Mountain Blindeye Pie",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 225,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las montañas",
+        "nameEn": "Mountain Blindeye"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE_FISH@1",
+    "baseItemId": "T5_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las montañas",
+    "nameEn": "Mountain Blindeye Pie",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 425,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las montañas",
+        "nameEn": "Mountain Blindeye"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE_FISH@2",
+    "baseItemId": "T5_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las montañas",
+    "nameEn": "Mountain Blindeye Pie",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 825,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las montañas",
+        "nameEn": "Mountain Blindeye"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE_FISH@3",
+    "baseItemId": "T5_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto de las montañas",
+    "nameEn": "Mountain Blindeye Pie",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2026,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de las montañas",
+        "nameEn": "Mountain Blindeye"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE@1",
+    "baseItemId": "T5_MEAL_PIE",
+    "nameEs": "Pastel de ganso",
+    "nameEn": "Goose Pie",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 246,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE@2",
+    "baseItemId": "T5_MEAL_PIE",
+    "nameEs": "Pastel de ganso",
+    "nameEn": "Goose Pie",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 380,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_PIE@3",
+    "baseItemId": "T5_MEAL_PIE",
+    "nameEs": "Pastel de ganso",
+    "nameEn": "Goose Pie",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 780,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T4_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de cabra",
+        "nameEn": "Goat's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST",
+    "baseItemId": "T5_MEAL_ROAST",
+    "nameEs": "Ganso asado",
+    "nameEn": "Roast Goose",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 176,
+    "materials": [
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST_FISH",
+    "baseItemId": "T5_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla ligera asado",
+    "nameEn": "Roasted Clearhaze Snapper",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 225,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla ligera",
+        "nameEn": "Clearhaze Snapper"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST_FISH@1",
+    "baseItemId": "T5_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla ligera asado",
+    "nameEn": "Roasted Clearhaze Snapper",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 425,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla ligera",
+        "nameEn": "Clearhaze Snapper"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST_FISH@2",
+    "baseItemId": "T5_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla ligera asado",
+    "nameEn": "Roasted Clearhaze Snapper",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 825,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla ligera",
+        "nameEn": "Clearhaze Snapper"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST_FISH@3",
+    "baseItemId": "T5_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla ligera asado",
+    "nameEn": "Roasted Clearhaze Snapper",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2026,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla ligera",
+        "nameEn": "Clearhaze Snapper"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST@1",
+    "baseItemId": "T5_MEAL_ROAST",
+    "nameEs": "Ganso asado",
+    "nameEn": "Roast Goose",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 243,
+    "materials": [
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST@2",
+    "baseItemId": "T5_MEAL_ROAST",
+    "nameEs": "Ganso asado",
+    "nameEn": "Roast Goose",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 376,
+    "materials": [
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_ROAST@3",
+    "baseItemId": "T5_MEAL_ROAST",
+    "nameEs": "Ganso asado",
+    "nameEn": "Roast Goose",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 777,
+    "materials": [
+      {
+        "itemId": "T5_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP",
+    "baseItemId": "T5_MEAL_SOUP",
+    "nameEs": "Sopa de col",
+    "nameEn": "Cabbage Soup",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 504,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP_FISH",
+    "baseItemId": "T5_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de pantano negro",
+    "nameEn": "Blackbog Clam Soup",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 672,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de pantano negro",
+        "nameEn": "Blackbog Clam"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP_FISH@1",
+    "baseItemId": "T5_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de pantano negro",
+    "nameEn": "Blackbog Clam Soup",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de pantano negro",
+        "nameEn": "Blackbog Clam"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP_FISH@2",
+    "baseItemId": "T5_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de pantano negro",
+    "nameEn": "Blackbog Clam Soup",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2473,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de pantano negro",
+        "nameEn": "Blackbog Clam"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP_FISH@3",
+    "baseItemId": "T5_MEAL_SOUP_FISH",
+    "nameEs": "Sopa de almeja de pantano negro",
+    "nameEn": "Blackbog Clam Soup",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6076,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Almeja de pantano negro",
+        "nameEn": "Blackbog Clam"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de ganso",
+        "nameEn": "Raw Goose"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP@1",
+    "baseItemId": "T5_MEAL_SOUP",
+    "nameEs": "Sopa de col",
+    "nameEn": "Cabbage Soup",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 704,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP@2",
+    "baseItemId": "T5_MEAL_SOUP",
+    "nameEs": "Sopa de col",
+    "nameEn": "Cabbage Soup",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1105,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T5_MEAL_SOUP@3",
+    "baseItemId": "T5_MEAL_SOUP",
+    "nameEs": "Sopa de col",
+    "nameEn": "Cabbage Soup",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2306,
+    "materials": [
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 144,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
     "itemId": "T5_METALBAR",
     "baseItemId": "T5_METALBAR",
     "nameEs": "Lingote de titanio",
@@ -4585,6 +9021,1004 @@
         "category": "other",
         "nameEs": "Cuero curtido prístino",
         "nameEn": "Pristine Cured Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD",
+    "baseItemId": "T6_MEAL_SALAD",
+    "nameEs": "Ensalada de patata",
+    "nameEn": "Potato Salad",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 504,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD_FISH",
+    "baseItemId": "T6_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de kraken de agua profunda",
+    "nameEn": "Deepwater Kraken Salad",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 672,
+    "materials": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Kraken de agua profunda",
+        "nameEn": "Deepwater Kraken"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD_FISH@1",
+    "baseItemId": "T6_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de kraken de agua profunda",
+    "nameEn": "Deepwater Kraken Salad",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Kraken de agua profunda",
+        "nameEn": "Deepwater Kraken"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD_FISH@2",
+    "baseItemId": "T6_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de kraken de agua profunda",
+    "nameEn": "Deepwater Kraken Salad",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2473,
+    "materials": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Kraken de agua profunda",
+        "nameEn": "Deepwater Kraken"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD_FISH@3",
+    "baseItemId": "T6_MEAL_SALAD_FISH",
+    "nameEs": "Ensalada de kraken de agua profunda",
+    "nameEn": "Deepwater Kraken Salad",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6076,
+    "materials": [
+      {
+        "itemId": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Kraken de agua profunda",
+        "nameEn": "Deepwater Kraken"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD@1",
+    "baseItemId": "T6_MEAL_SALAD",
+    "nameEs": "Ensalada de patata",
+    "nameEn": "Potato Salad",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 704,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD@2",
+    "baseItemId": "T6_MEAL_SALAD",
+    "nameEs": "Ensalada de patata",
+    "nameEn": "Potato Salad",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1105,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SALAD@3",
+    "baseItemId": "T6_MEAL_SALAD",
+    "nameEs": "Ensalada de patata",
+    "nameEn": "Potato Salad",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2306,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T5_CABBAGE",
+        "count": 72,
+        "category": "farm",
+        "nameEs": "Coles",
+        "nameEn": "Cabbage"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH",
+    "baseItemId": "T6_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de carnero",
+    "nameEn": "Mutton Sandwich",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 165,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH_FISH",
+    "baseItemId": "T6_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de agua corriente",
+    "nameEn": "Rushwater Lurcher Sandwich",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 231,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de agua corriente",
+        "nameEn": "Rushwater Lurcher"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH_FISH@1",
+    "baseItemId": "T6_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de agua corriente",
+    "nameEn": "Rushwater Lurcher Sandwich",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 432,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de agua corriente",
+        "nameEn": "Rushwater Lurcher"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH_FISH@2",
+    "baseItemId": "T6_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de agua corriente",
+    "nameEn": "Rushwater Lurcher Sandwich",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 832,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de agua corriente",
+        "nameEn": "Rushwater Lurcher"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH_FISH@3",
+    "baseItemId": "T6_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de agua corriente",
+    "nameEn": "Rushwater Lurcher Sandwich",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2033,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de agua corriente",
+        "nameEn": "Rushwater Lurcher"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH@1",
+    "baseItemId": "T6_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de carnero",
+    "nameEn": "Mutton Sandwich",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 231,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH@2",
+    "baseItemId": "T6_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de carnero",
+    "nameEn": "Mutton Sandwich",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 365,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_SANDWICH@3",
+    "baseItemId": "T6_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de carnero",
+    "nameEn": "Mutton Sandwich",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 765,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T6_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de oveja",
+        "nameEn": "Sheep's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW",
+    "baseItemId": "T6_MEAL_STEW",
+    "nameEs": "Guiso de carnero",
+    "nameEn": "Mutton Stew",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 184,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW_FISH",
+    "baseItemId": "T6_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila rojiza",
+    "nameEn": "Redspring Eel Stew",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 225,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila rojiza",
+        "nameEn": "Redspring Eel"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW_FISH@1",
+    "baseItemId": "T6_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila rojiza",
+    "nameEn": "Redspring Eel Stew",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 425,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila rojiza",
+        "nameEn": "Redspring Eel"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW_FISH@2",
+    "baseItemId": "T6_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila rojiza",
+    "nameEn": "Redspring Eel Stew",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 825,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila rojiza",
+        "nameEn": "Redspring Eel"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW_FISH@3",
+    "baseItemId": "T6_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila rojiza",
+    "nameEn": "Redspring Eel Stew",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2026,
+    "materials": [
+      {
+        "itemId": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila rojiza",
+        "nameEn": "Redspring Eel"
+      },
+      {
+        "itemId": "T6_POTATO",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T6_FOXGLOVE",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Dedalera elusiva",
+        "nameEn": "Elusive Foxglove"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 2,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 9,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW@1",
+    "baseItemId": "T6_MEAL_STEW",
+    "nameEs": "Guiso de carnero",
+    "nameEn": "Mutton Stew",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 251,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW@2",
+    "baseItemId": "T6_MEAL_STEW",
+    "nameEs": "Guiso de carnero",
+    "nameEn": "Mutton Stew",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 384,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T6_MEAL_STEW@3",
+    "baseItemId": "T6_MEAL_STEW",
+    "nameEs": "Guiso de carnero",
+    "nameEn": "Mutton Stew",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 785,
+    "materials": [
+      {
+        "itemId": "T6_POTATO",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Patatas",
+        "nameEn": "Potatoes"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T6_MEAT",
+        "count": 24,
+        "category": "meat",
+        "nameEs": "Carne de carnero",
+        "nameEn": "Raw Mutton"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 30,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
       }
     ]
   },
@@ -6580,6 +12014,1245 @@
     ]
   },
   {
+    "itemId": "T7_MEAL_OMELETTE",
+    "baseItemId": "T7_MEAL_OMELETTE",
+    "nameEs": "Tortilla de cerdo",
+    "nameEn": "Pork Omelette",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 464,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_DRAGONAREA",
+    "baseItemId": "T7_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Dragontina",
+    "nameEn": "Dragonbound Leyfin Omelette",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 672,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Dragontina",
+        "nameEn": "Dragonbound Leyfin"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_DRAGONAREA@1",
+    "baseItemId": "T7_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Dragontina",
+    "nameEn": "Dragonbound Leyfin Omelette",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Dragontina",
+        "nameEn": "Dragonbound Leyfin"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_DRAGONAREA@2",
+    "baseItemId": "T7_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Dragontina",
+    "nameEn": "Dragonbound Leyfin Omelette",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2473,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Dragontina",
+        "nameEn": "Dragonbound Leyfin"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_DRAGONAREA@3",
+    "baseItemId": "T7_MEAL_OMELETTE_DRAGONAREA",
+    "nameEs": "Tortilla de Leyaleta Dragontina",
+    "nameEn": "Dragonbound Leyfin Omelette",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6076,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_DRAGON_AREA_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Leyaleta Dragontina",
+        "nameEn": "Dragonbound Leyfin"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T5_TEASEL",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Cardo de dragón",
+        "nameEn": "Dragon Teasel"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_FISH",
+    "baseItemId": "T7_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de pozo",
+    "nameEn": "Dusthole Crab Omelette",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 672,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de pozo",
+        "nameEn": "Dusthole Crab"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_FISH@1",
+    "baseItemId": "T7_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de pozo",
+    "nameEn": "Dusthole Crab Omelette",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de pozo",
+        "nameEn": "Dusthole Crab"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_FISH@2",
+    "baseItemId": "T7_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de pozo",
+    "nameEn": "Dusthole Crab Omelette",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2473,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de pozo",
+        "nameEn": "Dusthole Crab"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE_FISH@3",
+    "baseItemId": "T7_MEAL_OMELETTE_FISH",
+    "nameEs": "Tortilla de cangrejo de pozo",
+    "nameEn": "Dusthole Crab Omelette",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6076,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Cangrejo de pozo",
+        "nameEn": "Dusthole Crab"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE@1",
+    "baseItemId": "T7_MEAL_OMELETTE",
+    "nameEs": "Tortilla de cerdo",
+    "nameEn": "Pork Omelette",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 665,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE@2",
+    "baseItemId": "T7_MEAL_OMELETTE",
+    "nameEs": "Tortilla de cerdo",
+    "nameEn": "Pork Omelette",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1065,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_OMELETTE@3",
+    "baseItemId": "T7_MEAL_OMELETTE",
+    "nameEs": "Tortilla de cerdo",
+    "nameEn": "Pork Omelette",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2266,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T5_EGG",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Huevos de ganso",
+        "nameEn": "Goose Eggs"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE",
+    "baseItemId": "T7_MEAL_PIE",
+    "nameEs": "Pastel de cerdo",
+    "nameEn": "Pork Pie",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 540,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE_FISH",
+    "baseItemId": "T7_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto dos picos",
+    "nameEn": "Frostpeak Deadeye Pie",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 672,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de dos picos",
+        "nameEn": "Frostpeak Deadeye"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE_FISH@1",
+    "baseItemId": "T7_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto dos picos",
+    "nameEn": "Frostpeak Deadeye Pie",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de dos picos",
+        "nameEn": "Frostpeak Deadeye"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE_FISH@2",
+    "baseItemId": "T7_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto dos picos",
+    "nameEn": "Frostpeak Deadeye Pie",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2473,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de dos picos",
+        "nameEn": "Frostpeak Deadeye"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE_FISH@3",
+    "baseItemId": "T7_MEAL_PIE_FISH",
+    "nameEs": "Pastel de ojo muerto dos picos",
+    "nameEn": "Frostpeak Deadeye Pie",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6076,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Ojo muerto de dos picos",
+        "nameEn": "Frostpeak Deadeye"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 6,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE@1",
+    "baseItemId": "T7_MEAL_PIE",
+    "nameEs": "Pastel de cerdo",
+    "nameEn": "Pork Pie",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 739,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE@2",
+    "baseItemId": "T7_MEAL_PIE",
+    "nameEs": "Pastel de cerdo",
+    "nameEn": "Pork Pie",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1140,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_PIE@3",
+    "baseItemId": "T7_MEAL_PIE",
+    "nameEs": "Pastel de cerdo",
+    "nameEn": "Pork Pie",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2341,
+    "materials": [
+      {
+        "itemId": "T7_CORN",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T3_FLOUR",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T6_MILK",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Leche de oveja",
+        "nameEn": "Sheep's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST",
+    "baseItemId": "T7_MEAL_ROAST",
+    "nameEs": "Cerdo asado",
+    "nameEn": "Roast Pork",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 528,
+    "materials": [
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST_FISH",
+    "baseItemId": "T7_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla pura asado",
+    "nameEn": "Roasted Puremist Snapper",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 652,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla pura",
+        "nameEn": "Puremist Snapper"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST_FISH@1",
+    "baseItemId": "T7_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla pura asado",
+    "nameEn": "Roasted Puremist Snapper",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1253,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla pura",
+        "nameEn": "Puremist Snapper"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST_FISH@2",
+    "baseItemId": "T7_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla pura asado",
+    "nameEn": "Roasted Puremist Snapper",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2454,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla pura",
+        "nameEn": "Puremist Snapper"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST_FISH@3",
+    "baseItemId": "T7_MEAL_ROAST_FISH",
+    "nameEs": "Pargo de niebla pura asado",
+    "nameEn": "Roasted Puremist Snapper",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6056,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Pargo de niebla pura",
+        "nameEn": "Puremist Snapper"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T7_MULLEIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Gordolobo de fuego",
+        "nameEn": "Firetouched Mullein"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST@1",
+    "baseItemId": "T7_MEAL_ROAST",
+    "nameEs": "Cerdo asado",
+    "nameEn": "Roast Pork",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 728,
+    "materials": [
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST@2",
+    "baseItemId": "T7_MEAL_ROAST",
+    "nameEs": "Cerdo asado",
+    "nameEn": "Roast Pork",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1128,
+    "materials": [
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T7_MEAL_ROAST@3",
+    "baseItemId": "T7_MEAL_ROAST",
+    "nameEs": "Cerdo asado",
+    "nameEn": "Roast Pork",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2329,
+    "materials": [
+      {
+        "itemId": "T7_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de cerdo",
+        "nameEn": "Raw Pork"
+      },
+      {
+        "itemId": "T7_CORN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Fardo de maíz",
+        "nameEn": "Bundle of Corn"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
     "itemId": "T7_METALBAR",
     "baseItemId": "T7_METALBAR",
     "nameEs": "Lingote de meteorito",
@@ -8477,6 +15150,731 @@
         "category": "other",
         "nameEs": "Cuero reforzado prístino",
         "nameEn": "Pristine Reinforced Leather"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH",
+    "baseItemId": "T8_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de ternera",
+    "nameEn": "Beef Sandwich",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 494,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH_FISH",
+    "baseItemId": "T8_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de trueno",
+    "nameEn": "Thunderfall Lurcher Sandwich",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 672,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de trueno",
+        "nameEn": "Thunderfall Lurcher"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH_FISH@1",
+    "baseItemId": "T8_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de trueno",
+    "nameEn": "Thunderfall Lurcher Sandwich",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1272,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de trueno",
+        "nameEn": "Thunderfall Lurcher"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH_FISH@2",
+    "baseItemId": "T8_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de trueno",
+    "nameEn": "Thunderfall Lurcher Sandwich",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2473,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de trueno",
+        "nameEn": "Thunderfall Lurcher"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH_FISH@3",
+    "baseItemId": "T8_MEAL_SANDWICH_FISH",
+    "nameEs": "Bocadillo de locha de trueno",
+    "nameEn": "Thunderfall Lurcher Sandwich",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6076,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Locha de trueno",
+        "nameEn": "Thunderfall Lurcher"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH@1",
+    "baseItemId": "T8_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de ternera",
+    "nameEn": "Beef Sandwich",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 694,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH@2",
+    "baseItemId": "T8_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de ternera",
+    "nameEn": "Beef Sandwich",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1094,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SANDWICH@3",
+    "baseItemId": "T8_MEAL_SANDWICH",
+    "nameEs": "Bocadillo de ternera",
+    "nameEn": "Beef Sandwich",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2295,
+    "materials": [
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 18,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_SPECIAL_FOOD_DRAKE_EGG",
+    "baseItemId": "T8_MEAL_SPECIAL_FOOD_DRAKE_EGG",
+    "nameEs": "Galletas de Huevo de Draco",
+    "nameEn": "Drake Egg Biscuits",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 99,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T3_FLOUR",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Harina",
+        "nameEn": "Flour"
+      },
+      {
+        "itemId": "T8_BUTTER",
+        "count": 12,
+        "category": "farm",
+        "nameEs": "Manteca de vaca",
+        "nameEn": "Cow's Butter"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 24,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T8_FARM_DRAKE_BABY",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Huevo de Draco Ala de Fuego",
+        "nameEn": "Firewing Drake Egg"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW",
+    "baseItemId": "T8_MEAL_STEW",
+    "nameEs": "Guiso de ternera",
+    "nameEn": "Beef Stew",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 551,
+    "materials": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW_FISH",
+    "baseItemId": "T8_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua podrida",
+    "nameEn": "Deadwater Eel Stew",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 652,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua podrida",
+        "nameEn": "Deadwater Eel"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW_FISH@1",
+    "baseItemId": "T8_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua podrida",
+    "nameEn": "Deadwater Eel Stew",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 1253,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua podrida",
+        "nameEn": "Deadwater Eel"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW_FISH@2",
+    "baseItemId": "T8_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua podrida",
+    "nameEn": "Deadwater Eel Stew",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 2454,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua podrida",
+        "nameEn": "Deadwater Eel"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW_FISH@3",
+    "baseItemId": "T8_MEAL_STEW_FISH",
+    "nameEs": "Guiso de anguila de agua podrida",
+    "nameEn": "Deadwater Eel Stew",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 1,
+    "craftingFocus": 6056,
+    "materials": [
+      {
+        "itemId": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1,
+        "category": "fish",
+        "nameEs": "Anguila de agua podrida",
+        "nameEn": "Deadwater Eel"
+      },
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T8_YARROW",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Milenrama demoníaca",
+        "nameEn": "Ghoul Yarrow"
+      },
+      {
+        "itemId": "T8_MILK",
+        "count": 6,
+        "category": "farm",
+        "nameEs": "Leche de vaca",
+        "nameEn": "Cow's Milk"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 27,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW@1",
+    "baseItemId": "T8_MEAL_STEW",
+    "nameEs": "Guiso de ternera",
+    "nameEn": "Beef Stew",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 752,
+    "materials": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL1",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado básica",
+        "nameEn": "Basic Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW@2",
+    "baseItemId": "T8_MEAL_STEW",
+    "nameEs": "Guiso de ternera",
+    "nameEn": "Beef Stew",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 1152,
+    "materials": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL2",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado extravagante",
+        "nameEn": "Fancy Fish Sauce"
+      }
+    ]
+  },
+  {
+    "itemId": "T8_MEAL_STEW@3",
+    "baseItemId": "T8_MEAL_STEW",
+    "nameEs": "Guiso de ternera",
+    "nameEn": "Beef Stew",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "cooking",
+    "batchSize": 10,
+    "craftingFocus": 2353,
+    "materials": [
+      {
+        "itemId": "T8_PUMPKIN",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Calabaza",
+        "nameEn": "Pumpkin"
+      },
+      {
+        "itemId": "T4_BREAD",
+        "count": 36,
+        "category": "farm",
+        "nameEs": "Pan",
+        "nameEn": "Bread"
+      },
+      {
+        "itemId": "T8_MEAT",
+        "count": 72,
+        "category": "meat",
+        "nameEs": "Carne de ternera",
+        "nameEn": "Raw Beef"
+      },
+      {
+        "itemId": "T1_FISHSAUCE_LEVEL3",
+        "count": 90,
+        "category": "extract",
+        "nameEs": "Salsa de pescado especial",
+        "nameEn": "Special Fish Sauce"
       }
     ]
   },

@@ -82,6 +82,9 @@ function specialtyLabel(row: RecipeRowData): string {
   if (row.recipe.stationType === "refining") {
     return `${row.specialtyActive ? "con" : "sin"} especialidad de refinado, ${focusLabel}`;
   }
+  if (row.recipe.stationType === "cooking") {
+    return `${row.specialtyActive ? "con" : "sin"} especialidad de cocina, ${focusLabel}`;
+  }
   return focusLabel;
 }
 
