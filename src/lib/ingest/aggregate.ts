@@ -6,6 +6,7 @@ const WINDOW_DAYS = 30;
 export type CityAggregate = {
   itemId: string;
   city: string;
+  quality: number;
   price: number | null;
   priceAgeSeconds: number | null;
   avgDailyVolume30d: number;
@@ -19,12 +20,20 @@ export type CityAggregate = {
  * reduction happens here: that's Fase 2's job, done client-side against whichever cities the
  * user picked to buy/sell in.
  */
-export function computeCityAggregates(itemId: string, prices: AodpPriceRow[], history: AodpHistoryRow[], now: Date): CityAggregate[] {
-  const historyByLocation = new Map(history.map((h) => [h.location, h]));
+export function computeCityAggregates(
+  itemId: string,
+  prices: AodpPriceRow[],
+  history: AodpHistoryRow[],
+  now: Date,
+  quality = 1,
+): CityAggregate[] {
+  const pricesForQuality = prices.filter((p) => p.quality === quality);
+  const historyForQuality = history.filter((h) => h.quality === quality);
+  const historyByLocation = new Map(historyForQuality.map((h) => [h.location, h]));
   const results: CityAggregate[] = [];
 
   for (const city of [...REAL_CITIES, BLACK_MARKET]) {
-    const priceRow = prices.find((p) => p.city === city);
+    const priceRow = pricesForQuality.find((p) => p.city === city);
     const isBlackMarket = city === BLACK_MARKET;
     const rawPrice = priceRow ? (isBlackMarket ? priceRow.buy_price_max : priceRow.sell_price_min) : 0;
     const rawDate = priceRow ? (isBlackMarket ? priceRow.buy_price_max_date : priceRow.sell_price_min_date) : null;
@@ -34,6 +43,7 @@ export function computeCityAggregates(itemId: string, prices: AodpPriceRow[], hi
     results.push({
       itemId,
       city,
+      quality,
       price: rawPrice > 0 ? rawPrice : null,
       priceAgeSeconds: rawPrice > 0 && rawDate ? Math.round((now.getTime() - parseAodpTimestamp(rawDate).getTime()) / 1000) : null,
       avgDailyVolume30d: avgDailyVolume,

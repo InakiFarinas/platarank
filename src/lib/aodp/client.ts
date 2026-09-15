@@ -12,8 +12,22 @@ const CONTACT = process.env.AODP_CONTACT ?? "unknown";
 const USER_AGENT = `PlataRank/0.1 (+https://github.com/InakiFarinas/platarank; contact: ${CONTACT})`;
 
 let lastRequestAt = 0;
+// All callers -- even ones invoked concurrently via Promise.all -- funnel through this single
+// promise chain, so the MIN_GAP_MS spacing is real regardless of how many logical fetch "streams"
+// are in flight. Without this, concurrent callers each read a stale `lastRequestAt` before any of
+// them updates it and fire in a burst, which is exactly what triggers a 429 storm.
+let queueTail: Promise<void> = Promise.resolve();
 
-async function throttledFetch(url: string): Promise<Response> {
+function throttledFetch(url: string): Promise<Response> {
+  const result = queueTail.then(() => doFetch(url));
+  queueTail = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  return result;
+}
+
+async function doFetch(url: string): Promise<Response> {
   const wait = MIN_GAP_MS - (Date.now() - lastRequestAt);
   if (wait > 0) await sleep(wait);
   lastRequestAt = Date.now();
@@ -56,11 +70,11 @@ function chunkItemIds(itemIds: string[]): string[][] {
   return chunks;
 }
 
-export async function fetchPrices(server: AodpServer, itemIds: string[]): Promise<AodpPriceRow[]> {
+export async function fetchPrices(server: AodpServer, itemIds: string[], qualities: number[] = [1]): Promise<AodpPriceRow[]> {
   const locations = ALL_LOCATIONS.join(",");
   const rows: AodpPriceRow[] = [];
   for (const chunk of chunkItemIds(itemIds)) {
-    const url = `${aodpBaseUrl(server)}/api/v2/stats/prices/${chunk.join(",")}?locations=${encodeURIComponent(locations)}&qualities=1`;
+    const url = `${aodpBaseUrl(server)}/api/v2/stats/prices/${chunk.join(",")}?locations=${encodeURIComponent(locations)}&qualities=${qualities.join(",")}`;
     const res = await throttledFetch(url);
     if (!res.ok) throw new Error(`AODP prices request failed (${res.status}): ${url}`);
     rows.push(...((await res.json()) as AodpPriceRow[]));
@@ -73,6 +87,7 @@ export async function fetchHistory(
   itemIds: string[],
   dateFrom: Date,
   dateTo: Date,
+  qualities: number[] = [1],
 ): Promise<AodpHistoryRow[]> {
   const locations = ALL_LOCATIONS.join(",");
   const date = formatAodpDate(dateFrom);
@@ -81,7 +96,7 @@ export async function fetchHistory(
   for (const chunk of chunkItemIds(itemIds)) {
     const url =
       `${aodpBaseUrl(server)}/api/v2/stats/history/${chunk.join(",")}` +
-      `?locations=${encodeURIComponent(locations)}&qualities=1&time-scale=24&date=${date}&end_date=${endDate}`;
+      `?locations=${encodeURIComponent(locations)}&qualities=${qualities.join(",")}&time-scale=24&date=${date}&end_date=${endDate}`;
     const res = await throttledFetch(url);
     if (!res.ok) throw new Error(`AODP history request failed (${res.status}): ${url}`);
     rows.push(...((await res.json()) as AodpHistoryRow[]));

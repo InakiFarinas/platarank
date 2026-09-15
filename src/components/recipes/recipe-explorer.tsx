@@ -15,7 +15,7 @@ export function RecipeExplorer({
 }: {
   recipes: Recipe[];
   marketByItem: Record<string, CityPricePoint[]>;
-  stationType: "alchemy" | "refining" | "cooking";
+  stationType: "alchemy" | "refining" | "cooking" | "gear";
 }) {
   const [params, setParams] = useState<RecipeMathParams>(DEFAULT_PARAMS);
   const [filters, setFilters] = useState<FilterParams>(DEFAULT_FILTERS);

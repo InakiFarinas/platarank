@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -27,7 +28,7 @@ export function Controls({
   onParamsChange: (params: RecipeMathParams) => void;
   filters: FilterParams;
   onFiltersChange: (filters: FilterParams) => void;
-  stationType: "alchemy" | "refining" | "cooking";
+  stationType: "alchemy" | "refining" | "cooking" | "gear";
 }) {
   function toggleCity(key: "buyCities" | "sellCities", city: Location, checked: boolean) {
     const current = params[key];
@@ -85,36 +86,28 @@ export function Controls({
             />
           </div>
 
-          {stationType === "refining" && (
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Label htmlFor="refining-specialty-switch">Especialidad de refinado</Label>
-                <p className="text-xs text-muted-foreground">
-                  +40% de retorno -- activalo si refinás en la ciudad con especialidad para este recurso.
-                </p>
-              </div>
-              <Switch
-                id="refining-specialty-switch"
-                checked={params.refiningSpecialty}
-                onCheckedChange={(checked) => onParamsChange({ ...params, refiningSpecialty: checked })}
-              />
-            </div>
-          )}
+          <div>
+            <Label className="mb-1.5 block">Ciudad donde craftea</Label>
+            <p className="mb-2 text-xs text-muted-foreground">
+              Cada receta tiene como mucho una ciudad con especialidad para su categoría (potion → Brecilien, wood →
+              Fort Sterling, sword → Thetford, etc.) -- si coincide con esta, aplica el bonus de +15%/+40%.
+            </p>
+            <Select value={params.craftCity} onValueChange={(city) => onParamsChange({ ...params, craftCity: city as Location })}>
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {REAL_CITIES.map((city) => (
+                  <SelectItem key={city} value={city}>
+                    {city}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-          {stationType === "cooking" && (
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Label htmlFor="cooking-specialty-switch">Especialidad de cocina</Label>
-                <p className="text-xs text-muted-foreground">
-                  +15% de retorno -- activalo si cocinás en la ciudad con especialidad de cocina.
-                </p>
-              </div>
-              <Switch
-                id="cooking-specialty-switch"
-                checked={params.cookingSpecialty}
-                onCheckedChange={(checked) => onParamsChange({ ...params, cookingSpecialty: checked })}
-              />
-            </div>
+          {stationType === "gear" && (
+            <QualityWeightsField weights={params.qualityWeights} onChange={(w) => onParamsChange({ ...params, qualityWeights: w })} />
           )}
 
           <NumberField
@@ -187,6 +180,51 @@ function CitySection({
           </label>
           <p className="mt-1 text-xs text-muted-foreground">{extra.note}</p>
         </div>
+      )}
+    </div>
+  );
+}
+
+const QUALITY_LABELS = ["Q1 Normal", "Q2 Bueno", "Q3 Excepcional", "Q4 Excelente", "Q5 Obra maestra"];
+
+function QualityWeightsField({
+  weights,
+  onChange,
+}: {
+  weights: readonly number[];
+  onChange: (weights: number[]) => void;
+}) {
+  const total = weights.reduce((sum, w) => sum + w, 0);
+  return (
+    <div>
+      <Label className="mb-1.5 block">Distribución de calidad al craftear (%)</Label>
+      <p className="mb-2 text-xs text-muted-foreground">
+        Por defecto son los pesos base del juego para foco/comida/nodos en cero (68.9/25/5/1/0.1%) -- la función real
+        con la que suben no está publicada. Si tenés tasas propias observadas, cargalas acá.
+      </p>
+      <div className="grid grid-cols-5 gap-2">
+        {QUALITY_LABELS.map((label, i) => (
+          <div key={label}>
+            <Input
+              type="number"
+              inputMode="decimal"
+              min={0}
+              max={100}
+              value={Math.round(weights[i] * 1000) / 10}
+              onChange={(e) => {
+                const parsed = Number(e.target.value);
+                if (Number.isNaN(parsed)) return;
+                const next = [...weights];
+                next[i] = parsed / 100;
+                onChange(next);
+              }}
+            />
+            <p className="mt-1 text-center text-[11px] text-muted-foreground">{label.split(" ")[0]}</p>
+          </div>
+        ))}
+      </div>
+      {Math.abs(total - 1) > 0.01 && (
+        <p className="mt-1 text-xs text-muted-foreground">Suma actual: {Math.round(total * 100)}% (no hace falta que sea 100%).</p>
       )}
     </div>
   );

@@ -1,15 +1,18 @@
-// Ingester: fetches prices + 30d history for every item referenced by an alchemy recipe,
-// upserts the raw rows, recomputes the derived market_aggregates table, and purges rows
-// past the retention window. Run on a schedule via .github/workflows/ingest.yml.
+// Ingester: fetches prices + 30d history for every item referenced by a recipe and recomputes
+// the derived market_aggregates table. Run on a schedule via .github/workflows/ingest.yml.
+//
+// Raw price/history rows are NOT persisted -- see the note in src/lib/db/schema.ts. They're used
+// in-memory to compute the aggregate, then discarded; only the upserted, storage-bounded
+// market_aggregates rows land in the DB.
 import "dotenv/config";
-import { lt, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { db } from "../src/lib/db/client";
-import { marketAggregates, priceQuotes, recipes, volumeDaily, type Recipe } from "../src/lib/db/schema";
+import { marketAggregates, recipes, type Recipe } from "../src/lib/db/schema";
 import { fetchHistory, fetchPrices } from "../src/lib/aodp/client";
 import { AODP_SERVERS, type AodpServer } from "../src/lib/aodp/cities";
 import { computeCityAggregates } from "../src/lib/ingest/aggregate";
 import recipesJson from "../src/data/generated/recipes.json";
-import { parseAodpTimestamp, type AodpHistoryRow, type AodpPriceRow } from "../src/lib/aodp/types";
+import type { AodpHistoryRow, AodpPriceRow } from "../src/lib/aodp/types";
 
 const recipesData = recipesJson as unknown as Recipe[];
 
@@ -23,20 +26,25 @@ async function main() {
   await syncRecipes();
 
   const itemIds = collectItemIds();
-  console.log(`Fetching prices + history for ${itemIds.length} items...`);
+  const gearItemIds = [...new Set(recipesData.filter((r) => r.stationType === "gear").map((r) => r.itemId))];
+  console.log(`Fetching prices + history for ${itemIds.length} items (${gearItemIds.length} of them gear, Q1-Q5)...`);
 
   const dateFrom = new Date(now.getTime() - RETENTION_DAYS * 24 * 3600 * 1000);
-  const [prices, history] = await Promise.all([
-    fetchPrices(server, itemIds),
-    fetchHistory(server, itemIds, dateFrom, now),
+
+  // Everything trades at quality 1; armas y armaduras ALSO roll quality 2-5, fetched separately
+  // so alchemy/refining/cocina items and every recipe's raw materials don't pay for 5x the payload
+  // they'll never use.
+  const [prices, history, gearPrices, gearHistory] = await Promise.all([
+    fetchPrices(server, itemIds, [1]),
+    fetchHistory(server, itemIds, dateFrom, now, [1]),
+    gearItemIds.length > 0 ? fetchPrices(server, gearItemIds, [2, 3, 4, 5]) : Promise.resolve([]),
+    gearItemIds.length > 0 ? fetchHistory(server, gearItemIds, dateFrom, now, [2, 3, 4, 5]) : Promise.resolve([]),
   ]);
 
-  await storeRawPrices(prices, now);
-  await storeRawHistory(history);
+  const allPrices = [...prices, ...gearPrices];
+  const allHistory = [...history, ...gearHistory];
 
-  await computeAndStoreAggregates(itemIds, prices, history, now);
-
-  await purgeOldRows(now);
+  await computeAndStoreAggregates(itemIds, gearItemIds, allPrices, allHistory, now);
 
   console.log("Ingest complete.");
   process.exit(0);
@@ -61,52 +69,6 @@ function collectItemIds(): string[] {
   return [...ids];
 }
 
-async function storeRawPrices(prices: AodpPriceRow[], fetchedAt: Date) {
-  if (prices.length === 0) return;
-  const rows = prices.map((p) => ({
-    itemId: p.item_id,
-    city: p.city,
-    quality: p.quality,
-    sellPriceMin: p.sell_price_min > 0 ? String(p.sell_price_min) : null,
-    sellPriceMinDate: p.sell_price_min > 0 ? parseAodpTimestamp(p.sell_price_min_date) : null,
-    sellPriceMax: p.sell_price_max > 0 ? String(p.sell_price_max) : null,
-    sellPriceMaxDate: p.sell_price_max > 0 ? parseAodpTimestamp(p.sell_price_max_date) : null,
-    buyPriceMin: p.buy_price_min > 0 ? String(p.buy_price_min) : null,
-    buyPriceMinDate: p.buy_price_min > 0 ? parseAodpTimestamp(p.buy_price_min_date) : null,
-    buyPriceMax: p.buy_price_max > 0 ? String(p.buy_price_max) : null,
-    buyPriceMaxDate: p.buy_price_max > 0 ? parseAodpTimestamp(p.buy_price_max_date) : null,
-    fetchedAt,
-  }));
-  for (const batch of chunk(rows, 500)) {
-    await db.insert(priceQuotes).values(batch);
-  }
-  console.log(`Stored ${rows.length} raw price rows.`);
-}
-
-async function storeRawHistory(history: AodpHistoryRow[]) {
-  const rows = history.flatMap((h) =>
-    h.data.map((point) => ({
-      itemId: h.item_id,
-      city: h.location,
-      quality: h.quality,
-      date: parseAodpTimestamp(point.timestamp),
-      itemCount: point.item_count,
-      avgPrice: String(point.avg_price),
-    })),
-  );
-  if (rows.length === 0) return;
-  for (const batch of chunk(rows, 500)) {
-    await db
-      .insert(volumeDaily)
-      .values(batch)
-      .onConflictDoUpdate({
-        target: [volumeDaily.itemId, volumeDaily.city, volumeDaily.quality, volumeDaily.date],
-        set: { itemCount: sql`excluded.item_count`, avgPrice: sql`excluded.avg_price` },
-      });
-  }
-  console.log(`Stored ${rows.length} raw history rows.`);
-}
-
 function chunk<T>(items: T[], size: number): T[][] {
   const chunks: T[][] = [];
   for (let i = 0; i < items.length; i += size) chunks.push(items.slice(i, i + size));
@@ -115,25 +77,33 @@ function chunk<T>(items: T[], size: number): T[][] {
 
 async function computeAndStoreAggregates(
   itemIds: string[],
+  gearItemIds: string[],
   prices: AodpPriceRow[],
   history: AodpHistoryRow[],
   now: Date,
 ) {
   const pricesByItem = groupBy(prices, (p) => p.item_id);
   const historyByItem = groupBy(history, (h) => h.item_id);
+  const gearItemIdSet = new Set(gearItemIds);
 
-  const rows = itemIds.flatMap((itemId) =>
-    computeCityAggregates(itemId, pricesByItem.get(itemId) ?? [], historyByItem.get(itemId) ?? [], now).map((agg) => ({
-      itemId: agg.itemId,
-      city: agg.city,
-      computedAt: now,
-      price: numOrNull(agg.price),
-      priceAgeSeconds: agg.priceAgeSeconds,
-      avgDailyVolume30d: String(agg.avgDailyVolume30d),
-      daysWithVolume30d: agg.daysWithVolume30d,
-      weightedAvgPrice30d: numOrNull(agg.weightedAvgPrice30d),
-    })),
-  );
+  const rows = itemIds.flatMap((itemId) => {
+    const qualities = gearItemIdSet.has(itemId) ? [1, 2, 3, 4, 5] : [1];
+    return qualities.flatMap((quality) =>
+      computeCityAggregates(itemId, pricesByItem.get(itemId) ?? [], historyByItem.get(itemId) ?? [], now, quality).map(
+        (agg) => ({
+          itemId: agg.itemId,
+          city: agg.city,
+          quality: agg.quality,
+          computedAt: now,
+          price: numOrNull(agg.price),
+          priceAgeSeconds: agg.priceAgeSeconds,
+          avgDailyVolume30d: String(agg.avgDailyVolume30d),
+          daysWithVolume30d: agg.daysWithVolume30d,
+          weightedAvgPrice30d: numOrNull(agg.weightedAvgPrice30d),
+        }),
+      ),
+    );
+  });
 
   for (const batch of chunk(rows, 500)) {
     await db
@@ -151,14 +121,7 @@ async function computeAndStoreAggregates(
         },
       });
   }
-  console.log(`Computed ${rows.length} item-city aggregates for ${itemIds.length} items.`);
-}
-
-async function purgeOldRows(now: Date) {
-  const cutoff = new Date(now.getTime() - RETENTION_DAYS * 24 * 3600 * 1000);
-  await db.delete(priceQuotes).where(lt(priceQuotes.fetchedAt, cutoff));
-  await db.delete(volumeDaily).where(lt(volumeDaily.date, cutoff));
-  console.log(`Purged rows older than ${cutoff.toISOString()}.`);
+  console.log(`Computed ${rows.length} item-city-quality aggregates for ${itemIds.length} items.`);
 }
 
 function numOrNull(v: number | null): string | null {

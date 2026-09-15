@@ -1,0 +1,266 @@
+[
+  {
+    "category": "ore",
+    "city": "Thetford",
+    "kind": "refining",
+    "bonus": 0.4
+  },
+  {
+    "category": "meat_pig",
+    "city": "Thetford",
+    "kind": "meat",
+    "bonus": 0.1
+  },
+  {
+    "category": "mace",
+    "city": "Thetford",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "naturestaff",
+    "city": "Thetford",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "firestaff",
+    "city": "Thetford",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "leather_armor",
+    "city": "Thetford",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "cloth_helmet",
+    "city": "Thetford",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "fiber",
+    "city": "Lymhurst",
+    "kind": "refining",
+    "bonus": 0.4
+  },
+  {
+    "category": "meat_goose",
+    "city": "Lymhurst",
+    "kind": "meat",
+    "bonus": 0.1
+  },
+  {
+    "category": "sword",
+    "city": "Lymhurst",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "bow",
+    "city": "Lymhurst",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "arcanestaff",
+    "city": "Lymhurst",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "leather_helmet",
+    "city": "Lymhurst",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "leather_shoes",
+    "city": "Lymhurst",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "rock",
+    "city": "Bridgewatch",
+    "kind": "refining",
+    "bonus": 0.4
+  },
+  {
+    "category": "meat_goat",
+    "city": "Bridgewatch",
+    "kind": "meat",
+    "bonus": 0.1
+  },
+  {
+    "category": "crossbow",
+    "city": "Bridgewatch",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "dagger",
+    "city": "Bridgewatch",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "cursestaff",
+    "city": "Bridgewatch",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "plate_armor",
+    "city": "Bridgewatch",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "cloth_shoes",
+    "city": "Bridgewatch",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "hide",
+    "city": "Martlock",
+    "kind": "refining",
+    "bonus": 0.4
+  },
+  {
+    "category": "meat_cow",
+    "city": "Martlock",
+    "kind": "meat",
+    "bonus": 0.1
+  },
+  {
+    "category": "axe",
+    "city": "Martlock",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "quarterstaff",
+    "city": "Martlock",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "froststaff",
+    "city": "Martlock",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "plate_shoes",
+    "city": "Martlock",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "offhand",
+    "city": "Martlock",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "wood",
+    "city": "Fort Sterling",
+    "kind": "refining",
+    "bonus": 0.4
+  },
+  {
+    "category": "meat_chicken",
+    "city": "Fort Sterling",
+    "kind": "meat",
+    "bonus": 0.1
+  },
+  {
+    "category": "meat_sheep",
+    "city": "Fort Sterling",
+    "kind": "meat",
+    "bonus": 0.1
+  },
+  {
+    "category": "hammer",
+    "city": "Fort Sterling",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "spear",
+    "city": "Fort Sterling",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "holystaff",
+    "city": "Fort Sterling",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "plate_helmet",
+    "city": "Fort Sterling",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "cloth_armor",
+    "city": "Fort Sterling",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "gatherergear",
+    "city": "Caerleon",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "tools",
+    "city": "Caerleon",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "food",
+    "city": "Caerleon",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "knuckles",
+    "city": "Caerleon",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "shapeshifterstaff",
+    "city": "Caerleon",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "cape",
+    "city": "Brecilien",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "bag",
+    "city": "Brecilien",
+    "kind": "crafting",
+    "bonus": 0.15
+  },
+  {
+    "category": "potion",
+    "city": "Brecilien",
+    "kind": "crafting",
+    "bonus": 0.15
+  }
+]

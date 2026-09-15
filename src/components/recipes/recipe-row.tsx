@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { QualityBadge } from "./quality-badge";
-import { formatAge, formatPercent, formatSilver, enchantLabel } from "./format";
+import { formatAge, formatPercent, formatSilver, enchantLabel, qualityLabel } from "./format";
 import type { RecipeRow as RecipeRowData } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
 
@@ -78,14 +78,9 @@ function Stat({ label, value, mono }: { label: string; value: string; mono?: boo
 
 function specialtyLabel(row: RecipeRowData): string {
   const focusLabel = row.focus ? "con foco" : "sin foco";
-  if (row.recipe.stationType === "alchemy") return `Brecilien, ${focusLabel}`;
-  if (row.recipe.stationType === "refining") {
-    return `${row.specialtyActive ? "con" : "sin"} especialidad de refinado, ${focusLabel}`;
-  }
-  if (row.recipe.stationType === "cooking") {
-    return `${row.specialtyActive ? "con" : "sin"} especialidad de cocina, ${focusLabel}`;
-  }
-  return focusLabel;
+  if (!row.specialtyCity) return `sin especialidad para esta categoría, ${focusLabel}`;
+  const activeLabel = row.specialtyActive ? `con especialidad (${row.specialtyCity})` : `sin especialidad (sería ${row.specialtyCity})`;
+  return `${activeLabel}, ${focusLabel}`;
 }
 
 function RowDetail({ row }: { row: RecipeRowData }) {
@@ -107,6 +102,24 @@ function RowDetail({ row }: { row: RecipeRowData }) {
             <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
             <Row k="Cuota de mercado" v={`${Math.round(row.marketSharePct * 100)}%`} />
           </dl>
+          {row.qualityBreakdown && (
+            <div className="mt-2">
+              <h5 className="mb-1 font-medium text-foreground">Por calidad</h5>
+              <ul className="space-y-0.5">
+                {row.qualityBreakdown.map((q) => (
+                  <li key={q.quality} className={cn("flex items-baseline justify-between gap-3", !q.liquid && "opacity-50")}>
+                    <span className="truncate">
+                      {qualityLabel(q.quality)} ({Math.round(q.weight * 100)}%)
+                    </span>
+                    <span className="shrink-0 font-mono tabular-nums text-foreground">
+                      {q.price !== null ? `${formatSilver(q.price)} plata` : "sin dato"}
+                      {!q.liquid && " -- sin liquidez, no cuenta"}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {row.discarded.length > 0 && (
             <div className="mt-2">
               <h5 className="mb-1 font-medium text-foreground">Descartado</h5>

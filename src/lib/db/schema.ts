@@ -1,4 +1,4 @@
-import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey, index } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey } from "drizzle-orm/pg-core";
 
 export const recipes = pgTable("recipes", {
   itemId: text("item_id").primaryKey(),
@@ -8,6 +8,11 @@ export const recipes = pgTable("recipes", {
   tier: smallint("tier").notNull(),
   enchant: smallint("enchant").notNull(),
   stationType: text("station_type").notNull(),
+  // Item's own craftingcategory from the dump (e.g. "potion", "wood", "sword", "plate_armor").
+  // Null when the item has none (e.g. faction/artifact capes) -- those get no city-specialty
+  // bonus, ever; see src/lib/city-specialties.ts.
+  craftingCategory: text("crafting_category"),
+  maxQualityLevel: smallint("max_quality_level").notNull().default(1),
   batchSize: smallint("batch_size").notNull(),
   craftingFocus: integer("crafting_focus").notNull(),
   materials: jsonb("materials").$type<RecipeMaterial[]>().notNull(),
@@ -23,47 +28,17 @@ export type RecipeMaterial = {
   nameEn: string;
 };
 
-// Raw price snapshots as returned by /stats/prices, one row per item+city+quality.
-// Retention: rows older than 30 days are purged by the ingester.
-export const priceQuotes = pgTable(
-  "price_quotes",
-  {
-    id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
-    itemId: text("item_id").notNull(),
-    city: text("city").notNull(),
-    quality: smallint("quality").notNull().default(1),
-    sellPriceMin: numeric("sell_price_min"),
-    sellPriceMinDate: timestamp("sell_price_min_date", { withTimezone: true }),
-    sellPriceMax: numeric("sell_price_max"),
-    sellPriceMaxDate: timestamp("sell_price_max_date", { withTimezone: true }),
-    buyPriceMin: numeric("buy_price_min"),
-    buyPriceMinDate: timestamp("buy_price_min_date", { withTimezone: true }),
-    buyPriceMax: numeric("buy_price_max"),
-    buyPriceMaxDate: timestamp("buy_price_max_date", { withTimezone: true }),
-    fetchedAt: timestamp("fetched_at", { withTimezone: true }).notNull().defaultNow(),
-  },
-  (t) => [index("price_quotes_item_city_idx").on(t.itemId, t.city, t.fetchedAt)],
-);
+// NOTE on raw retention: the brief originally called for persisting 30 days of raw price_quotes
+// and volume_daily rows (see section 6). That held fine at alchemy/refining/cocina scale (~680
+// items, quality 1 only). Once armas y armaduras added the quality dimension (~5,600 items x up
+// to 5 qualities x 8 cities), a naive raw INSERT per ingest run would write ~236k price rows and
+// ~7M volume rows PER HOURLY RUN -- Supabase's free tier fills in hours, not months. Nothing in
+// the app ever queried these raw tables (only market_aggregates, which upserts and stays bounded
+// at ~236k rows total, not per run), so they were dropped rather than kept empty as dead schema.
+// AODP's own /stats/history endpoint already retains the same 30-day window if a raw recompute is
+// ever needed. This is a deliberate, documented deviation from the original brief.
 
-// Raw daily volume as returned by /stats/history (time-scale=24), one row per item+city+day.
-// Retention: rows older than 30 days are purged by the ingester.
-export const volumeDaily = pgTable(
-  "volume_daily",
-  {
-    itemId: text("item_id").notNull(),
-    city: text("city").notNull(),
-    quality: smallint("quality").notNull().default(1),
-    date: timestamp("date", { withTimezone: true }).notNull(),
-    itemCount: integer("item_count").notNull(),
-    avgPrice: numeric("avg_price").notNull(),
-  },
-  (t) => [
-    primaryKey({ columns: [t.itemId, t.city, t.quality, t.date] }),
-    index("volume_daily_item_idx").on(t.itemId),
-  ],
-);
-
-// Precomputed per-item-per-city aggregates. All recipe math reads from here, never from the raw
+// Precomputed per-item-per-city-per-quality aggregates. All recipe math reads from here, never from the raw
 // tables, so the recipes x cities x scenario combinatoria that Fase 2's city selectors introduce
 // doesn't hit raw rows. Kept per-city (not collapsed cross-city like Fase 1) because Fase 2 needs
 // to recompute the cross-city stat client-side against whatever subset of cities the user picked

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { eq } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates } from "@/lib/db/schema";
 import type { CityPricePoint } from "@/lib/recipe-math";
@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { href: "/es/alquimia", label: "Alquimia" },
   { href: "/es/refinado", label: "Refinado" },
   { href: "/es/cocina", label: "Cocina" },
+  { href: "/es/equipo", label: "Equipo" },
 ] as const;
 
 export async function RecipePage({
@@ -16,19 +17,34 @@ export async function RecipePage({
   title,
   description,
 }: {
-  stationType: "alchemy" | "refining" | "cooking";
+  stationType: "alchemy" | "refining" | "cooking" | "gear";
   title: string;
   description: string;
 }) {
-  const [recipeRows, aggregateRows] = await Promise.all([
-    db.select().from(recipesTable).where(eq(recipesTable.stationType, stationType)),
-    db.select().from(marketAggregates),
-  ]);
+  const recipeRows = await db.select().from(recipesTable).where(eq(recipesTable.stationType, stationType));
+
+  const relevantItemIds = new Set<string>();
+  for (const r of recipeRows) {
+    relevantItemIds.add(r.itemId);
+    for (const m of r.materials) relevantItemIds.add(m.itemId);
+  }
+
+  // Fetch only the aggregates this page's recipes actually reference -- with thousands of gear
+  // items across the whole game, pulling the entire table for every rubro would balloon payload
+  // and query time for no reason.
+  const aggregateRows =
+    relevantItemIds.size > 0
+      ? await db
+          .select()
+          .from(marketAggregates)
+          .where(inArray(marketAggregates.itemId, [...relevantItemIds]))
+      : [];
 
   const marketByItem: Record<string, CityPricePoint[]> = {};
   for (const a of aggregateRows) {
     const point: CityPricePoint = {
       city: a.city,
+      quality: a.quality,
       price: a.price != null ? Number(a.price) : null,
       priceAgeSeconds: a.priceAgeSeconds,
       avgDailyVolume30d: Number(a.avgDailyVolume30d),

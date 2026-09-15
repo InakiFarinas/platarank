@@ -10,13 +10,15 @@ const recipe: Recipe = {
   tier: 6,
   enchant: 0,
   stationType: "alchemy",
+  craftingCategory: "potion",
+  maxQualityLevel: 1,
   batchSize: 5,
   craftingFocus: 0,
   materials: [{ itemId: "T6_FOXGLOVE", count: 72, category: "farm", nameEs: "Dedalera", nameEn: "Foxglove" }],
 };
 
-function point(city: string, price: number | null, volume = 1000): CityPricePoint {
-  return { city, price, priceAgeSeconds: 3600, avgDailyVolume30d: volume, daysWithVolume30d: 30, weightedAvgPrice30d: price };
+function point(city: string, price: number | null, volume = 1000, quality = 1): CityPricePoint {
+  return { city, quality, price, priceAgeSeconds: 3600, avgDailyVolume30d: volume, daysWithVolume30d: 30, weightedAvgPrice30d: price };
 }
 
 function market(overrides: Record<string, CityPricePoint[]>): MarketData {
@@ -84,9 +86,30 @@ describe("computeRecipeRow", () => {
     expect(row.sellRefPrice).toBeNull();
     expect(row.platinumPerDay).toBeNull();
   });
+
+  test("alquimia siempre asume la especialidad de Brecilien, sin importar craftCity", () => {
+    const data = market({
+      T6_POTION_HEAL: [point("Caerleon", 10000)],
+      T6_FOXGLOVE: [point("Caerleon", 100)],
+    });
+    const row = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"], craftCity: "Brecilien" });
+    expect(row.specialtyActive).toBe(true);
+    expect(row.specialtyCity).toBe("Brecilien");
+    expect(row.returnRatePct).toBeCloseTo(0.248, 2); // 18% base + 15% especialidad de crafteo
+
+    const elsewhere = computeRecipeRow(recipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      craftCity: "Caerleon",
+    });
+    expect(elsewhere.specialtyActive).toBe(false);
+    expect(elsewhere.returnRatePct).toBeCloseTo(0.152, 2);
+  });
 });
 
 describe("computeRecipeRow (refinado)", () => {
+  // "wood" es la categoria real de refinado de Fort Sterling (craftingmodifiers.xml).
   const planksRecipe: Recipe = {
     itemId: "T4_PLANKS",
     baseItemId: "T4_PLANKS",
@@ -95,6 +118,8 @@ describe("computeRecipeRow (refinado)", () => {
     tier: 4,
     enchant: 0,
     stationType: "refining",
+    craftingCategory: "wood",
+    maxQualityLevel: 1,
     batchSize: 1,
     craftingFocus: 54,
     materials: [
@@ -114,7 +139,7 @@ describe("computeRecipeRow (refinado)", () => {
     expect(row.feePerBatch).toBeCloseTo(0.235 * 18, 5);
   });
 
-  test("sin especialidad de refinado, el retorno es igual al de alquimia sin especialidad de crafteo", () => {
+  test("craftCity fuera de Fort Sterling: sin especialidad de refinado", () => {
     const data = market({
       T4_PLANKS: [point("Caerleon", 100)],
       T4_WOOD: [point("Caerleon", 10)],
@@ -124,13 +149,13 @@ describe("computeRecipeRow (refinado)", () => {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      refiningSpecialty: false,
+      craftCity: "Caerleon",
     });
     expect(row.specialtyActive).toBe(false);
     expect(row.returnRatePct).toBeCloseTo(0.152, 2); // solo el bonus base de estacion (18%)
   });
 
-  test("con especialidad de refinado activada, el retorno sube al escalon de +40%", () => {
+  test("craftCity en Fort Sterling: especialidad de refinado activa, retorno +40%", () => {
     const data = market({
       T4_PLANKS: [point("Caerleon", 100)],
       T4_WOOD: [point("Caerleon", 10)],
@@ -140,14 +165,16 @@ describe("computeRecipeRow (refinado)", () => {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      refiningSpecialty: true,
+      craftCity: "Fort Sterling",
     });
     expect(row.specialtyActive).toBe(true);
+    expect(row.specialtyCity).toBe("Fort Sterling");
     expect(row.returnRatePct).toBeCloseTo(0.367, 2); // 18% + 40% de especialidad de refinado
   });
 });
 
 describe("computeRecipeRow (cocina)", () => {
+  // "food" es la categoria real de crafteo de Caerleon (craftingmodifiers.xml).
   const soupRecipe: Recipe = {
     itemId: "T5_MEAL_SOUP",
     baseItemId: "T5_MEAL_SOUP",
@@ -156,6 +183,8 @@ describe("computeRecipeRow (cocina)", () => {
     tier: 5,
     enchant: 0,
     stationType: "cooking",
+    craftingCategory: "food",
+    maxQualityLevel: 1,
     batchSize: 10,
     craftingFocus: 504,
     materials: [{ itemId: "T5_CABBAGE", count: 144, category: "farm", nameEs: "Coles", nameEn: "Cabbage" }],
@@ -171,7 +200,7 @@ describe("computeRecipeRow (cocina)", () => {
     expect(row.feePerBatch).toBeCloseTo(0.235 * 45 * 144, 5);
   });
 
-  test("especialidad de cocina sube el retorno al escalon de +15%, no al de refinado", () => {
+  test("Caerleon como craftCity activa la especialidad de cocina (+15%, no +40%)", () => {
     const data = market({
       T5_MEAL_SOUP: [point("Caerleon", 1000)],
       T5_CABBAGE: [point("Caerleon", 10)],
@@ -180,15 +209,100 @@ describe("computeRecipeRow (cocina)", () => {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      cookingSpecialty: false,
+      craftCity: "Brecilien",
     });
     const conEspecialidad = computeRecipeRow(soupRecipe, data, {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      cookingSpecialty: true,
+      craftCity: "Caerleon",
     });
     expect(sinEspecialidad.returnRatePct).toBeCloseTo(0.152, 2);
     expect(conEspecialidad.returnRatePct).toBeCloseTo(0.248, 2); // 18% + 15% (crafting specialty), no +40%
+  });
+});
+
+describe("computeRecipeRow (armas y armaduras)", () => {
+  const swordRecipe: Recipe = {
+    itemId: "T6_MAIN_SWORD",
+    baseItemId: "T6_MAIN_SWORD",
+    nameEs: "Espada ancha",
+    nameEn: "Broadsword",
+    tier: 6,
+    enchant: 0,
+    stationType: "gear",
+    craftingCategory: "sword",
+    maxQualityLevel: 5,
+    batchSize: 1,
+    craftingFocus: 3939,
+    materials: [
+      { itemId: "T6_METALBAR", count: 16, category: "other", nameEs: "Lingote", nameEn: "Metal Bar" },
+      { itemId: "T6_LEATHER", count: 8, category: "other", nameEs: "Cuero", nameEn: "Leather" },
+    ],
+  };
+
+  test("el precio de venta pondera por calidad usando qualityWeights", () => {
+    const data = market({
+      T6_MAIN_SWORD: [
+        point("Caerleon", 1000, 100, 1),
+        point("Caerleon", 1000, 100, 2), // Q1/Q2 cotizan casi igual, tal como describe el brief
+      ],
+      T6_METALBAR: [point("Caerleon", 10)],
+      T6_LEATHER: [point("Caerleon", 10)],
+    });
+    const row = computeRecipeRow(swordRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      qualityWeights: [0.7, 0.3, 0, 0, 0],
+    });
+    // 0.7*1000 + 0.3*1000 = 1000 (ambas calidades al mismo precio)
+    expect(row.sellRefPrice).toBeCloseTo(1000, 5);
+    expect(row.qualityBreakdown).not.toBeNull();
+    expect(row.qualityBreakdown!.find((q) => q.quality === 1)!.liquid).toBe(true);
+  });
+
+  test("una calidad con volumen cero (listing fantasma) se excluye del calculo, no cuenta como precio real", () => {
+    const data = market({
+      T6_MAIN_SWORD: [
+        point("Caerleon", 1000, 100, 1), // liquido
+        point("Caerleon", 139867, 0, 5), // Q5 parado, cero trades -- exactamente el caso del brief
+      ],
+      T6_METALBAR: [point("Caerleon", 10)],
+      T6_LEATHER: [point("Caerleon", 10)],
+    });
+    const row = computeRecipeRow(swordRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      qualityWeights: [0.9, 0, 0, 0, 0.1],
+    });
+    const q5 = row.qualityBreakdown!.find((q) => q.quality === 5)!;
+    expect(q5.liquid).toBe(false);
+    expect(q5.price).toBe(139867); // el precio se ve en el detalle, pero no entra al calculo
+    // 0.9*1000 + 0.1*(excluido) = 900, NO 0.9*1000 + 0.1*139867
+    expect(row.sellRefPrice).toBeCloseTo(900, 5);
+  });
+
+  test("sin ninguna calidad liquida, hasData es false", () => {
+    const data = market({
+      T6_MAIN_SWORD: [point("Caerleon", 1000, 0, 1)],
+      T6_METALBAR: [point("Caerleon", 10)],
+      T6_LEATHER: [point("Caerleon", 10)],
+    });
+    const row = computeRecipeRow(swordRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    expect(row.hasData).toBe(false);
+    expect(row.sellRefPrice).toBeNull();
+  });
+
+  test("el fee de crafteo normal escala con tier y cantidad total de materiales (24 unidades)", () => {
+    const data = market({
+      T6_MAIN_SWORD: [point("Caerleon", 1000, 100, 1)],
+      T6_METALBAR: [point("Caerleon", 10)],
+      T6_LEATHER: [point("Caerleon", 10)],
+    });
+    const row = computeRecipeRow(swordRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    // (235/1000) * 18 * 24 * 1 * 2^(6-4) * 2^0
+    expect(row.feePerBatch).toBeCloseTo(0.235 * 18 * 24 * 4, 5);
   });
 });

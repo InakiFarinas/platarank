@@ -23,3 +23,9 @@ export function formatAge(seconds: number | null): string {
 export function enchantLabel(enchant: number): string {
   return enchant === 0 ? "" : `.${enchant}`;
 }
+
+const QUALITY_NAMES = ["Normal", "Bueno", "Excepcional", "Excelente", "Obra maestra"];
+
+export function qualityLabel(quality: number): string {
+  return `Q${quality} ${QUALITY_NAMES[quality - 1] ?? ""}`.trim();
+}

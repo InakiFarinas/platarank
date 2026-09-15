@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { farmStationFeePerBatch, refiningStationFeePerBatch } from "@/lib/formulas/station-fee";
+import { craftingStationFeePerBatch, farmStationFeePerBatch, refiningStationFeePerBatch } from "@/lib/formulas/station-fee";
 
 describe("farmStationFeePerBatch (alquimia y cocina)", () => {
   // T6_POTION_HEAL@1, lote de 5: 72 T6_FOXGLOVE + 18 T5_EGG + 18 T6_ALCOHOL (todos "farm"),
@@ -91,5 +91,38 @@ describe("refiningStationFeePerBatch", () => {
     // a diferencia de alquimia, refinado no recibe la lista de materiales
     const fee = refiningStationFeePerBatch(8, 4, 235);
     expect(fee).toBeGreaterThan(0);
+  });
+});
+
+describe("craftingStationFeePerBatch (armas y armaduras)", () => {
+  // T6_MAIN_SWORD: 16 T6_METALBAR + 8 T6_LEATHER = 24 unidades, tier 6, sin encantar.
+  test("con tier_artefacto 0 (equipo estandar), el multiplicador de artefacto es 1", () => {
+    const fee = craftingStationFeePerBatch(24, 6, 0, 235);
+    // (235/1000) * 18 * 24 * 1 * 2^(6-4) * 2^0 = 0.235*18*24*4
+    expect(fee).toBeCloseTo(0.235 * 18 * 24 * 4, 5);
+  });
+
+  test("cada tier por encima de T4 duplica el fee", () => {
+    const t4 = craftingStationFeePerBatch(24, 4, 0, 235);
+    const t6 = craftingStationFeePerBatch(24, 6, 0, 235);
+    expect(t6).toBeCloseTo(t4 * 4, 5);
+  });
+
+  test("cada nivel de encantamiento duplica el fee (con tier_artefacto 0)", () => {
+    const ench0 = craftingStationFeePerBatch(24, 6, 0, 235);
+    const ench1 = craftingStationFeePerBatch(24, 6, 1, 235);
+    expect(ench1).toBeCloseTo(ench0 * 2, 5);
+  });
+
+  test("un tier de artefacto mayor a 0 sube el fee", () => {
+    const sinArtefacto = craftingStationFeePerBatch(24, 6, 1, 235, 0);
+    const conRunico = craftingStationFeePerBatch(24, 6, 1, 235, 1);
+    expect(conRunico).toBeGreaterThan(sinArtefacto);
+  });
+
+  test("escala linealmente con la cantidad de materiales", () => {
+    const fee24 = craftingStationFeePerBatch(24, 6, 0, 235);
+    const fee48 = craftingStationFeePerBatch(48, 6, 0, 235);
+    expect(fee48).toBeCloseTo(fee24 * 2, 5);
   });
 });
