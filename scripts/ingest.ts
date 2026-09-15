@@ -7,7 +7,7 @@ import { db } from "../src/lib/db/client";
 import { marketAggregates, priceQuotes, recipes, volumeDaily, type Recipe } from "../src/lib/db/schema";
 import { fetchHistory, fetchPrices } from "../src/lib/aodp/client";
 import { AODP_SERVERS, type AodpServer } from "../src/lib/aodp/cities";
-import { computeItemAggregate } from "../src/lib/ingest/aggregate";
+import { computeCityAggregates } from "../src/lib/ingest/aggregate";
 import recipesJson from "../src/data/generated/recipes.json";
 import { parseAodpTimestamp, type AodpHistoryRow, type AodpPriceRow } from "../src/lib/aodp/types";
 
@@ -122,52 +122,36 @@ async function computeAndStoreAggregates(
   const pricesByItem = groupBy(prices, (p) => p.item_id);
   const historyByItem = groupBy(history, (h) => h.item_id);
 
-  for (const itemId of itemIds) {
-    const agg = computeItemAggregate(itemId, pricesByItem.get(itemId) ?? [], historyByItem.get(itemId) ?? [], now);
+  const rows = itemIds.flatMap((itemId) =>
+    computeCityAggregates(itemId, pricesByItem.get(itemId) ?? [], historyByItem.get(itemId) ?? [], now).map((agg) => ({
+      itemId: agg.itemId,
+      city: agg.city,
+      computedAt: now,
+      price: numOrNull(agg.price),
+      priceAgeSeconds: agg.priceAgeSeconds,
+      avgDailyVolume30d: String(agg.avgDailyVolume30d),
+      daysWithVolume30d: agg.daysWithVolume30d,
+      weightedAvgPrice30d: numOrNull(agg.weightedAvgPrice30d),
+    })),
+  );
+
+  for (const batch of chunk(rows, 500)) {
     await db
       .insert(marketAggregates)
-      .values({
-        itemId: agg.itemId,
-        computedAt: now,
-        sellRefPrice: numOrNull(agg.sellRefPrice),
-        sellRefAgeSeconds: agg.sellRefAgeSeconds,
-        sellRefCitiesCount: agg.sellRefCitiesCount,
-        buyRefPrice: numOrNull(agg.buyRefPrice),
-        buyRefAgeSeconds: agg.buyRefAgeSeconds,
-        buyRefCitiesCount: agg.buyRefCitiesCount,
-        bmSellPrice: numOrNull(agg.bmSellPrice),
-        bmSellAgeSeconds: agg.bmSellAgeSeconds,
-        bmDiscardReason: agg.bmDiscardReason,
-        avgDailyVolume30d: String(agg.avgDailyVolume30d),
-        bmAvgDailyVolume30d: String(agg.bmAvgDailyVolume30d),
-        daysWithVolume30d: agg.daysWithVolume30d,
-        qualityScore: agg.qualityScore,
-        brecilienCovered: agg.brecilienCovered,
-        discarded: agg.discarded,
-      })
+      .values(batch)
       .onConflictDoUpdate({
-        target: marketAggregates.itemId,
+        target: [marketAggregates.itemId, marketAggregates.city, marketAggregates.quality],
         set: {
-          computedAt: now,
-          sellRefPrice: numOrNull(agg.sellRefPrice),
-          sellRefAgeSeconds: agg.sellRefAgeSeconds,
-          sellRefCitiesCount: agg.sellRefCitiesCount,
-          buyRefPrice: numOrNull(agg.buyRefPrice),
-          buyRefAgeSeconds: agg.buyRefAgeSeconds,
-          buyRefCitiesCount: agg.buyRefCitiesCount,
-          bmSellPrice: numOrNull(agg.bmSellPrice),
-          bmSellAgeSeconds: agg.bmSellAgeSeconds,
-          bmDiscardReason: agg.bmDiscardReason,
-          avgDailyVolume30d: String(agg.avgDailyVolume30d),
-          bmAvgDailyVolume30d: String(agg.bmAvgDailyVolume30d),
-          daysWithVolume30d: agg.daysWithVolume30d,
-          qualityScore: agg.qualityScore,
-          brecilienCovered: agg.brecilienCovered,
-          discarded: agg.discarded,
+          computedAt: sql`excluded.computed_at`,
+          price: sql`excluded.price`,
+          priceAgeSeconds: sql`excluded.price_age_seconds`,
+          avgDailyVolume30d: sql`excluded.avg_daily_volume_30d`,
+          daysWithVolume30d: sql`excluded.days_with_volume_30d`,
+          weightedAvgPrice30d: sql`excluded.weighted_avg_price_30d`,
         },
       });
   }
-  console.log(`Computed aggregates for ${itemIds.length} items.`);
+  console.log(`Computed ${rows.length} item-city aggregates for ${itemIds.length} items.`);
 }
 
 async function purgeOldRows(now: Date) {

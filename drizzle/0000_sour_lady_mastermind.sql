@@ -1,22 +1,14 @@
 CREATE TABLE "market_aggregates" (
-	"item_id" text PRIMARY KEY NOT NULL,
+	"item_id" text NOT NULL,
+	"city" text NOT NULL,
 	"quality" smallint DEFAULT 1 NOT NULL,
 	"computed_at" timestamp with time zone DEFAULT now() NOT NULL,
-	"sell_ref_price" numeric,
-	"sell_ref_age_seconds" integer,
-	"sell_ref_cities_count" smallint DEFAULT 0 NOT NULL,
-	"buy_ref_price" numeric,
-	"buy_ref_age_seconds" integer,
-	"buy_ref_cities_count" smallint DEFAULT 0 NOT NULL,
-	"bm_sell_price" numeric,
-	"bm_sell_age_seconds" integer,
-	"bm_discard_reason" text,
+	"price" numeric,
+	"price_age_seconds" integer,
 	"avg_daily_volume_30d" numeric DEFAULT '0' NOT NULL,
-	"bm_avg_daily_volume_30d" numeric DEFAULT '0' NOT NULL,
 	"days_with_volume_30d" smallint DEFAULT 0 NOT NULL,
-	"quality_score" smallint DEFAULT 0 NOT NULL,
-	"brecilien_covered" boolean DEFAULT false NOT NULL,
-	"discarded" jsonb DEFAULT '[]'::jsonb NOT NULL
+	"weighted_avg_price_30d" numeric,
+	CONSTRAINT "market_aggregates_item_id_city_quality_pk" PRIMARY KEY("item_id","city","quality")
 );
 --> statement-breakpoint
 CREATE TABLE "price_quotes" (

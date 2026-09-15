@@ -91,9 +91,12 @@ function RowDetail({ row }: { row: RecipeRowData }) {
               v={row.brecilienCovered ? "cotiza este ítem" : "sin cotización para este ítem"}
             />
             <Row k="Score de calidad" v={`${row.qualityScore}/100`} />
-            <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (Brecilien, sin foco)`} />
+            <Row
+              k="Retorno asumido"
+              v={`${Math.round(row.returnRatePct * 100)}% (Brecilien${row.focus ? ", con foco" : ", sin foco"})`}
+            />
             <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
-            <Row k="Cuota de mercado" v="100% (Fase 1)" />
+            <Row k="Cuota de mercado" v={`${Math.round(row.marketSharePct * 100)}%`} />
           </dl>
           {row.discarded.length > 0 && (
             <div className="mt-2">

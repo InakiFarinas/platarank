@@ -32,6 +32,11 @@ typography:
     fontFamily: "Geist Mono, ui-monospace, monospace"
     fontSize: "0.8125rem"
     fontFeature: "tabular-nums"
+  panel-title:
+    fontFamily: "Geist Sans, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 600
+    lineHeight: 1.4
 rounded:
   sm: "6px"
   md: "8px"
@@ -121,7 +126,8 @@ A near-black neutral scale (OKLCH, low chroma, cool-neutral hue ~285) with a sin
 - **Headline** (600, 1.125rem/1.25rem responsive, tight tracking): the page title only ("Alquimia -- Americas").
 - **Body** (400, 0.875rem): the page subtitle, row detail section prose, error/loading copy.
 - **Tabular** (mono, ~0.8125rem, `tabular-nums`): every numeric cell -- rank, margin %, volume, quality score, plata/dia, and every derivation-panel figure (prices, fees, costs).
-- **Label** (400, 0.6875-0.6875rem/[10-11px], slight tracking): column headers, stat captions ("margen", "vol/dia", "plata/dia"), sort-bar caption.
+- **Label** (400, 0.6875rem/11px, slight tracking): column headers, stat captions ("margen", "vol/dia", "plata/dia"), sort-bar caption.
+- **Panel title** (600, 0.875rem, body size at headline weight): titles of secondary surfaces that aren't the page itself -- e.g. the Filtros Sheet's "Filtros y supuestos". Distinct from Headline (reserved for the page `<h1>`) so a panel never visually competes with the page title.
 
 ### Named Rules
 **The Tabular-Nums Rule.** Any value that is a quantity (silver, percent, count, score) renders in mono with `tabular-nums`; any value that is a label or name renders in the proportional sans. Never mix the two roles for legibility's sake.
@@ -134,7 +140,9 @@ Mobile-first, single-column container (`max-w-5xl`, centered), with padding that
 
 **Row density.** Rows are dense by design: `py-2.5` on mobile collapsing to `py-2` on desktop, virtualized at a 52px row-height estimate so hundreds of recipes scan fast on a phone.
 
-**Responsive control fallback.** Sort controls have two forms, not one degraded into the other: a `hidden sm:flex` inline header row of text+icon sort buttons for desktop, and a `sm:hidden` horizontally-scrollable pill/chip bar for mobile. Any future control row (Fase 2 city/market-share filters) should follow this same header-row-desktop / chip-bar-mobile split rather than cramming the desktop row into mobile at small size.
+**Responsive control fallback.** Sort controls have two forms, not one degraded into the other: a `hidden sm:flex` inline header row of text+icon sort buttons for desktop, and a `sm:hidden` horizontally-scrollable pill/chip bar for mobile.
+
+**Exception, documented (Fase 2 Filtros panel):** the city/market-share/focus/rate/filter controls do NOT follow the split above. There are 15+ discrete inputs (7 buy-city checkboxes, 7 sell-city checkboxes + Black Market, a switch, two number fields, two filter fields) -- too many for a chip bar at any breakpoint, and splitting them into a different desktop-vs-mobile layout would mean maintaining two control arrangements for the same form. Instead: one `Sheet` (bottom-anchored on every breakpoint) triggered by a single "Filtros" button, identical on mobile and desktop. Keep this as the pattern for any future control set this size; the header-row/chip-bar split stays reserved for simple 3-5-option controls like sort.
 
 **Row content reflow.** On mobile, secondary stats (margin, volume) stack below/beside the name in a tighter cluster; on desktop they spread into a horizontal stat row. The plata/dia figure and quality bar keep their position and size across breakpoints -- they are the visual anchor at every width.
 
@@ -143,7 +151,7 @@ Mobile-first, single-column container (`max-w-5xl`, centered), with padding that
 Flat. No shadows anywhere in the build (`box-shadow` is absent from every component reviewed). Depth is conveyed entirely through hairline borders (`border-border`, 8%-opacity white) and tonal surface steps (ground -> card -> secondary-surface, each a small lightness step in the same low-chroma hue). The expandable row detail is distinguished from its parent row only by a translucent card-tint background (`bg-card/50`), not a shadow or outline.
 
 ### Named Rules
-**The No-Shadow Rule.** Elevation is never simulated with `box-shadow`. Use a border and/or the next tonal surface step instead.
+**The No-Shadow Rule.** Elevation is never simulated with `box-shadow`. Use a border and/or the next tonal surface step instead. Applies to overlays too: the Filtros `Sheet` sits on `bg-popover` with a single hairline `border-t` where it meets the page, `shadow-lg` stripped from the shadcn default in `ui/sheet.tsx`.
 
 ## Shapes
 

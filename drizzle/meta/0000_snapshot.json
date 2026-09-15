@@ -1,5 +1,5 @@
 {
-  "id": "550066c2-e6a8-4c0a-8a22-56332a002dc5",
+  "id": "54181808-c320-42d0-9b27-bda7aa4f27b5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -11,7 +11,13 @@
         "item_id": {
           "name": "item_id",
           "type": "text",
-          "primaryKey": true,
+          "primaryKey": false,
+          "notNull": true
+        },
+        "city": {
+          "name": "city",
+          "type": "text",
+          "primaryKey": false,
           "notNull": true
         },
         "quality": {
@@ -28,71 +34,20 @@
           "notNull": true,
           "default": "now()"
         },
-        "sell_ref_price": {
-          "name": "sell_ref_price",
+        "price": {
+          "name": "price",
           "type": "numeric",
           "primaryKey": false,
           "notNull": false
         },
-        "sell_ref_age_seconds": {
-          "name": "sell_ref_age_seconds",
+        "price_age_seconds": {
+          "name": "price_age_seconds",
           "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "sell_ref_cities_count": {
-          "name": "sell_ref_cities_count",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        },
-        "buy_ref_price": {
-          "name": "buy_ref_price",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "buy_ref_age_seconds": {
-          "name": "buy_ref_age_seconds",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "buy_ref_cities_count": {
-          "name": "buy_ref_cities_count",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        },
-        "bm_sell_price": {
-          "name": "bm_sell_price",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "bm_sell_age_seconds": {
-          "name": "bm_sell_age_seconds",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "bm_discard_reason": {
-          "name": "bm_discard_reason",
-          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
         "avg_daily_volume_30d": {
           "name": "avg_daily_volume_30d",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'0'"
-        },
-        "bm_avg_daily_volume_30d": {
-          "name": "bm_avg_daily_volume_30d",
           "type": "numeric",
           "primaryKey": false,
           "notNull": true,
@@ -105,31 +60,25 @@
           "notNull": true,
           "default": 0
         },
-        "quality_score": {
-          "name": "quality_score",
-          "type": "smallint",
+        "weighted_avg_price_30d": {
+          "name": "weighted_avg_price_30d",
+          "type": "numeric",
           "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        },
-        "brecilien_covered": {
-          "name": "brecilien_covered",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-        },
-        "discarded": {
-          "name": "discarded",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'[]'::jsonb"
+          "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "market_aggregates_item_id_city_quality_pk": {
+          "name": "market_aggregates_item_id_city_quality_pk",
+          "columns": [
+            "item_id",
+            "city",
+            "quality"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},

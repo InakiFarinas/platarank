@@ -1,7 +1,7 @@
 import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates } from "@/lib/db/schema";
-import { computeRecipeRow, type AggregateLookup } from "@/lib/recipe-math";
-import { AlchemyTable } from "@/components/alchemy/alchemy-table";
+import type { CityPricePoint } from "@/lib/recipe-math";
+import { AlchemyExplorer } from "@/components/alchemy/alchemy-explorer";
 
 export const revalidate = 300;
 
@@ -11,25 +11,18 @@ export default async function AlquimiaPage() {
     db.select().from(marketAggregates),
   ]);
 
-  const lookup: AggregateLookup = new Map(
-    aggregateRows.map((a) => [
-      a.itemId,
-      {
-        sellRefPrice: a.sellRefPrice != null ? Number(a.sellRefPrice) : null,
-        sellRefAgeSeconds: a.sellRefAgeSeconds,
-        sellRefCitiesCount: a.sellRefCitiesCount,
-        buyRefPrice: a.buyRefPrice != null ? Number(a.buyRefPrice) : null,
-        avgDailyVolume30d: Number(a.avgDailyVolume30d),
-        qualityScore: a.qualityScore,
-        brecilienCovered: a.brecilienCovered,
-        discarded: a.discarded,
-      },
-    ]),
-  );
-
-  const rows = recipeRows
-    .map((recipe) => computeRecipeRow(recipe, lookup))
-    .sort((a, b) => (b.platinumPerDay ?? -Infinity) - (a.platinumPerDay ?? -Infinity));
+  const marketByItem: Record<string, CityPricePoint[]> = {};
+  for (const a of aggregateRows) {
+    const point: CityPricePoint = {
+      city: a.city,
+      price: a.price != null ? Number(a.price) : null,
+      priceAgeSeconds: a.priceAgeSeconds,
+      avgDailyVolume30d: Number(a.avgDailyVolume30d),
+      daysWithVolume30d: a.daysWithVolume30d,
+      weightedAvgPrice30d: a.weightedAvgPrice30d != null ? Number(a.weightedAvgPrice30d) : null,
+    };
+    (marketByItem[a.itemId] ??= []).push(point);
+  }
 
   return (
     <main className="mx-auto max-w-5xl px-3 py-4 sm:px-6 sm:py-8">
@@ -40,7 +33,7 @@ export default async function AlquimiaPage() {
           sale cada número.
         </p>
       </header>
-      <AlchemyTable rows={rows} />
+      <AlchemyExplorer recipes={recipeRows} marketByItem={marketByItem} />
       <Footer />
     </main>
   );

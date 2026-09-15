@@ -28,8 +28,9 @@ Data comes from the free public Albion Online Data Project API (community-donate
 
 ## Capabilities and Constraints
 
-- Fase 1 scope: one view, alchemy only, fixed 100% market-share assumption, buying at the cheapest available city (no per-city purchase restriction yet -- that's Fase 2).
-- Every ranked row must expose: the silver-per-day figure, a visible data-quality score (0-100), and an expandable derivation (price source + city + age, materials + costs, station fee, return rate, and every discarded outlier with its reason).
+- Fase 2 is live: separate buy-city and sell-city selectors (Black Market is an explicit opt-in toggle under sell, not just another city), an editable market-share %, a focus on/off switch, an editable station fee rate, and max-age / min-volume filters. All of it is client-side session state (no accounts) held in a Sheet-based Filtros panel; nothing persists across reloads yet.
+- Recipe math moved to the client on purpose: the server ships precomputed per-item-per-city aggregates (`market_aggregates`, one row per item+city), and the browser reduces that small set (<=8 cities per item) against whatever cities/params the user picked, reusing the same outlier-trimming and quality-score formulas that used to run only at ingest time.
+- Every ranked row must expose: the silver-per-day figure, a visible data-quality score (0-100), and an expandable derivation (price source + city + age, materials + costs, station fee, return rate, market share, and every discarded outlier with its reason).
 - Black Market is a structurally different venue (buy orders only, quality >= requested) and must never be presented as just another city column.
 - Data can be missing or stale per city (Brecilien especially); the UI must say so explicitly rather than hide it or fabricate a number.
 - No golden-case captures exist yet to verify fee/return-rate formulas against the live game -- this is an open, tracked gap, not a silent assumption.
@@ -48,7 +49,7 @@ Real market data is live: the ingester has run successfully against AODP America
 - Never show a number without a way to see where it came from; "trust the derivation" is the product's entire pitch.
 - Silence is worse than an ugly caveat: missing/thin data gets flagged in the row, never smoothed over.
 - Mobile is not an afterthought breakpoint -- it's the primary reading context, checked one-handed next to the game.
-- Simple over clever: Fase 1 assumptions (fixed market share, cheapest-city buying) are explicit and temporary, not hidden defaults.
+- Simple over clever: every assumption (market share, station rate, focus, which cities count) is a visible, adjustable control, never a hidden default the user has to reverse-engineer.
 
 ## Accessibility & Inclusion
 

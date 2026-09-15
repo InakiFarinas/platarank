@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { computeItemAggregate } from "@/lib/ingest/aggregate";
+import { computeCityAggregates } from "@/lib/ingest/aggregate";
 import type { AodpHistoryRow, AodpPriceRow } from "@/lib/aodp/types";
 
 const now = new Date("2026-09-15T12:00:00Z");
@@ -21,57 +21,36 @@ function priceRow(city: string, sellMin: number, hoursAgo = 1): AodpPriceRow {
   };
 }
 
-describe("computeItemAggregate", () => {
-  test("descarta el bait y usa la mediana de las ciudades reales para sellRefPrice", () => {
-    const prices = [
-      priceRow("Caerleon", 13000),
-      priceRow("Martlock", 12500),
-      priceRow("Lymhurst", 100_999_666), // troll
-    ];
-    const agg = computeItemAggregate("T6_POTION_HEAL", prices, [], now);
-    expect(agg.sellRefPrice).toBe(12750); // mediana de Caerleon (13000) y Martlock (12500)
-    expect(agg.discarded).toContainEqual({
-      city: "Lymhurst",
-      field: "sell_price_min",
-      price: 100_999_666,
-      reason: "outlier_high",
-    });
-    expect(agg.brecilienCovered).toBe(false);
+describe("computeCityAggregates", () => {
+  test("una fila por cada una de las 8 ubicaciones, con o sin dato", () => {
+    const rows = computeCityAggregates("T6_POTION_HEAL", [priceRow("Caerleon", 13000)], [], now);
+    expect(rows).toHaveLength(8);
+    const caerleon = rows.find((r) => r.city === "Caerleon");
+    expect(caerleon?.price).toBe(13000);
+    expect(caerleon?.priceAgeSeconds).toBe(3600);
+    const martlock = rows.find((r) => r.city === "Martlock");
+    expect(martlock?.price).toBeNull();
   });
 
-  test("sin ninguna cotizacion, sellRefPrice es null y no rompe", () => {
-    const agg = computeItemAggregate("T6_POTION_HEAL", [], [], now);
-    expect(agg.sellRefPrice).toBeNull();
-    expect(agg.qualityScore).toBeLessThan(50);
-  });
-
-  test("black market se descarta si se desvia demasiado del historico ponderado", () => {
+  test("Black Market usa buy_price_max, no sell_price_min", () => {
     const prices: AodpPriceRow[] = [
       {
         item_id: "T6_POTION_HEAL",
         city: "Black Market",
         quality: 1,
-        sell_price_min: 0,
+        sell_price_min: 999999, // no deberia usarse
         sell_price_min_date: "2026-09-15T11:00:00",
         sell_price_max: 0,
         sell_price_max_date: "2026-09-15T11:00:00",
         buy_price_min: 0,
         buy_price_min_date: "2026-09-15T11:00:00",
-        buy_price_max: 299_999,
+        buy_price_max: 29498,
         buy_price_max_date: "2026-09-15T11:00:00",
       },
     ];
-    const history: AodpHistoryRow[] = [
-      {
-        location: "Black Market",
-        item_id: "T6_POTION_HEAL",
-        quality: 1,
-        data: [{ item_count: 10, avg_price: 29498, timestamp: "2026-09-14T00:00:00" }],
-      },
-    ];
-    const agg = computeItemAggregate("T6_POTION_HEAL", prices, history, now);
-    expect(agg.bmSellPrice).toBeNull();
-    expect(agg.bmDiscardReason).toBe("outlier_high");
+    const rows = computeCityAggregates("T6_POTION_HEAL", prices, [], now);
+    const bm = rows.find((r) => r.city === "Black Market");
+    expect(bm?.price).toBe(29498);
   });
 
   test("volumen diario promedia sobre la ventana de 30 dias, no solo sobre los dias con datos", () => {
@@ -83,8 +62,10 @@ describe("computeItemAggregate", () => {
         data: [{ item_count: 300, avg_price: 13000, timestamp: "2026-09-14T00:00:00" }],
       },
     ];
-    const agg = computeItemAggregate("T6_POTION_HEAL", [], history, now);
-    expect(agg.avgDailyVolume30d).toBeCloseTo(10, 5); // 300 / 30
-    expect(agg.daysWithVolume30d).toBe(1);
+    const rows = computeCityAggregates("T6_POTION_HEAL", [], history, now);
+    const caerleon = rows.find((r) => r.city === "Caerleon");
+    expect(caerleon?.avgDailyVolume30d).toBeCloseTo(10, 5); // 300 / 30
+    expect(caerleon?.daysWithVolume30d).toBe(1);
+    expect(caerleon?.weightedAvgPrice30d).toBe(13000);
   });
 });

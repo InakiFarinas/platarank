@@ -1,15 +1,4 @@
-import {
-  pgTable,
-  text,
-  integer,
-  smallint,
-  numeric,
-  timestamp,
-  jsonb,
-  boolean,
-  primaryKey,
-  index,
-} from "drizzle-orm/pg-core";
+import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey, index } from "drizzle-orm/pg-core";
 
 export const recipes = pgTable("recipes", {
   itemId: text("item_id").primaryKey(),
@@ -74,48 +63,30 @@ export const volumeDaily = pgTable(
   ],
 );
 
-// Precomputed per-item aggregates. All recipe math reads from here, never from the raw tables,
-// so combinatoria de recetas x ciudades no pega directo contra filas crudas.
-export const marketAggregates = pgTable("market_aggregates", {
-  itemId: text("item_id").primaryKey(),
-  quality: smallint("quality").notNull().default(1),
-  computedAt: timestamp("computed_at", { withTimezone: true }).notNull().defaultNow(),
+// Precomputed per-item-per-city aggregates. All recipe math reads from here, never from the raw
+// tables, so the recipes x cities x scenario combinatoria that Fase 2's city selectors introduce
+// doesn't hit raw rows. Kept per-city (not collapsed cross-city like Fase 1) because Fase 2 needs
+// to recompute the cross-city stat client-side against whatever subset of cities the user picked
+// as "where I buy" / "where I sell" -- that reduction is cheap (<=8 rows per item) and reuses the
+// same outlier-trimming formulas in the browser.
+export const marketAggregates = pgTable(
+  "market_aggregates",
+  {
+    itemId: text("item_id").notNull(),
+    city: text("city").notNull(),
+    quality: smallint("quality").notNull().default(1),
+    computedAt: timestamp("computed_at", { withTimezone: true }).notNull().defaultNow(),
 
-  // Reference price to SELL this item in a real city market: trimmed median of sell_price_min
-  // across cities (both tails clipped — see lib/formulas/outliers.ts).
-  sellRefPrice: numeric("sell_ref_price"),
-  sellRefAgeSeconds: integer("sell_ref_age_seconds"),
-  sellRefCitiesCount: smallint("sell_ref_cities_count").notNull().default(0),
+    // Black Market has no sell orders, so this holds buy_price_max there (what a seller actually
+    // receives) and sell_price_min everywhere else (what a buyer actually pays).
+    price: numeric("price"),
+    priceAgeSeconds: integer("price_age_seconds"),
 
-  // Reference price to BUY this item as a material in a real city market: trimmed min of
-  // sell_price_min across cities (low tail clipped only).
-  buyRefPrice: numeric("buy_ref_price"),
-  buyRefAgeSeconds: integer("buy_ref_age_seconds"),
-  buyRefCitiesCount: smallint("buy_ref_cities_count").notNull().default(0),
+    avgDailyVolume30d: numeric("avg_daily_volume_30d").notNull().default("0"),
+    daysWithVolume30d: smallint("days_with_volume_30d").notNull().default(0),
+    weightedAvgPrice30d: numeric("weighted_avg_price_30d"),
+  },
+  (t) => [primaryKey({ columns: [t.itemId, t.city, t.quality] })],
+);
 
-  // Black Market: only buy orders exist, so the reference to SELL here is buy_price_max.
-  // No cross-city comparison is possible (it's a single venue), so it is instead checked
-  // against the 30d volume-weighted avg price and discarded (set to null) if it deviates
-  // beyond the same 2.5x threshold used elsewhere.
-  bmSellPrice: numeric("bm_sell_price"),
-  bmSellAgeSeconds: integer("bm_sell_age_seconds"),
-  bmDiscardReason: text("bm_discard_reason"),
-
-  avgDailyVolume30d: numeric("avg_daily_volume_30d").notNull().default("0"),
-  bmAvgDailyVolume30d: numeric("bm_avg_daily_volume_30d").notNull().default("0"),
-  daysWithVolume30d: smallint("days_with_volume_30d").notNull().default(0),
-
-  qualityScore: smallint("quality_score").notNull().default(0),
-  brecilienCovered: boolean("brecilien_covered").notNull().default(false),
-
-  // [{city, field, price, reason}] — every quote excluded by outlier trimming, kept for the
-  // row detail view so nothing is silently dropped.
-  discarded: jsonb("discarded").$type<DiscardedQuote[]>().notNull().default([]),
-});
-
-export type DiscardedQuote = {
-  city: string;
-  field: "sell_price_min" | "buy_price_max";
-  price: number;
-  reason: "outlier_low" | "outlier_high";
-};
+export type MarketAggregateRow = typeof marketAggregates.$inferSelect;
