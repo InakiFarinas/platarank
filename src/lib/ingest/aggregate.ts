@@ -1,81 +1,52 @@
 import { BLACK_MARKET, REAL_CITIES } from "@/lib/aodp/cities";
-import { parseAodpTimestamp, type AodpHistoryRow, type AodpPriceRow } from "@/lib/aodp/types";
+import type { DumpVolumeSummary } from "@/lib/aodp/dumps";
+import { parseAodpTimestamp, type AodpPriceRow } from "@/lib/aodp/types";
 
-const WINDOW_DAYS = 30;
-
-export type CityAggregate = {
+export type CityPrice = {
   itemId: string;
   city: string;
   quality: number;
   price: number | null;
   priceAgeSeconds: number | null;
-  avgDailyVolume30d: number;
-  daysWithVolume30d: number;
-  weightedAvgPrice30d: number | null;
 };
 
+export type CityAggregate = CityPrice & DumpVolumeSummary;
+
+const EMPTY_VOLUME: DumpVolumeSummary = { avgDailyVolume30d: 0, daysWithVolume30d: 0, weightedAvgPrice30d: null };
+
+/** Real cities are keyed off sell_price_min -- what a buyer pays; Black Market is keyed off
+ * buy_price_max -- what a seller receives, since it has no sell orders. */
+export function computeCityPrice(itemId: string, prices: AodpPriceRow[], now: Date, city: string, quality: number): CityPrice {
+  const priceRow = prices.find((p) => p.city === city && p.quality === quality);
+  const isBlackMarket = city === BLACK_MARKET;
+  const rawPrice = priceRow ? (isBlackMarket ? priceRow.buy_price_max : priceRow.sell_price_min) : 0;
+  const rawDate = priceRow ? (isBlackMarket ? priceRow.buy_price_max_date : priceRow.sell_price_min_date) : null;
+
+  return {
+    itemId,
+    city,
+    quality,
+    price: rawPrice > 0 ? rawPrice : null,
+    priceAgeSeconds: rawPrice > 0 && rawDate ? Math.round((now.getTime() - parseAodpTimestamp(rawDate).getTime()) / 1000) : null,
+  };
+}
+
 /**
- * One row per city (real cities keyed off sell_price_min -- what a buyer pays; Black Market
- * keyed off buy_price_max -- what a seller receives, since it has no sell orders). No cross-city
- * reduction happens here: that's Fase 2's job, done client-side against whichever cities the
- * user picked to buy/sell in.
+ * One row per city (real cities off sell_price_min, Black Market off buy_price_max -- see
+ * computeCityPrice). Volume comes from the daily AODP dump (see src/lib/aodp/dumps.ts), keyed by
+ * `${itemId}|${quality}|${city}`; a missing entry means no trades in the last 30 days there. No
+ * cross-city reduction happens here: that's Fase 2's job, done client-side against whichever
+ * cities the user picked to buy/sell in.
  */
 export function computeCityAggregates(
   itemId: string,
   prices: AodpPriceRow[],
-  history: AodpHistoryRow[],
+  volumeSummaries: Map<string, DumpVolumeSummary>,
   now: Date,
   quality = 1,
 ): CityAggregate[] {
-  const pricesForQuality = prices.filter((p) => p.quality === quality);
-  const historyForQuality = history.filter((h) => h.quality === quality);
-  const historyByLocation = new Map(historyForQuality.map((h) => [h.location, h]));
-  const results: CityAggregate[] = [];
-
-  for (const city of [...REAL_CITIES, BLACK_MARKET]) {
-    const priceRow = pricesForQuality.find((p) => p.city === city);
-    const isBlackMarket = city === BLACK_MARKET;
-    const rawPrice = priceRow ? (isBlackMarket ? priceRow.buy_price_max : priceRow.sell_price_min) : 0;
-    const rawDate = priceRow ? (isBlackMarket ? priceRow.buy_price_max_date : priceRow.sell_price_min_date) : null;
-
-    const { avgDailyVolume, daysWithVolume, weightedAvgPrice } = summarizeHistory(historyByLocation.get(city), now);
-
-    results.push({
-      itemId,
-      city,
-      quality,
-      price: rawPrice > 0 ? rawPrice : null,
-      priceAgeSeconds: rawPrice > 0 && rawDate ? Math.round((now.getTime() - parseAodpTimestamp(rawDate).getTime()) / 1000) : null,
-      avgDailyVolume30d: avgDailyVolume,
-      daysWithVolume30d: daysWithVolume,
-      weightedAvgPrice30d: weightedAvgPrice,
-    });
-  }
-
-  return results;
-}
-
-function summarizeHistory(row: AodpHistoryRow | undefined, now: Date) {
-  const cutoff = now.getTime() - WINDOW_DAYS * 24 * 3600 * 1000;
-  if (!row) return { avgDailyVolume: 0, daysWithVolume: 0, weightedAvgPrice: null as number | null };
-
-  const byDay = new Set<string>();
-  let totalVolume = 0;
-  let weightedSum = 0;
-  let weightTotal = 0;
-
-  for (const point of row.data) {
-    const ts = parseAodpTimestamp(point.timestamp).getTime();
-    if (ts < cutoff) continue;
-    if (point.item_count > 0) byDay.add(point.timestamp.slice(0, 10));
-    totalVolume += point.item_count;
-    weightedSum += point.avg_price * point.item_count;
-    weightTotal += point.item_count;
-  }
-
-  return {
-    avgDailyVolume: totalVolume / WINDOW_DAYS,
-    daysWithVolume: byDay.size,
-    weightedAvgPrice: weightTotal > 0 ? weightedSum / weightTotal : null,
-  };
+  return [...REAL_CITIES, BLACK_MARKET].map((city) => ({
+    ...computeCityPrice(itemId, prices, now, city, quality),
+    ...(volumeSummaries.get(`${itemId}|${quality}|${city}`) ?? EMPTY_VOLUME),
+  }));
 }

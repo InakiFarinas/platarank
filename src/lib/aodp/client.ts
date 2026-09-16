@@ -1,5 +1,5 @@
 import { ALL_LOCATIONS, aodpBaseUrl, type AodpServer } from "./cities";
-import type { AodpHistoryRow, AodpPriceRow } from "./types";
+import type { AodpPriceRow } from "./types";
 
 // AODP rate limits (verified against albion-online-data.com/api, 2026-09-16): 180 req/min AND
 // 300 req/5min. The 5-minute cap is the one that binds in steady state -- 300/5min is only 60/min
@@ -107,31 +107,3 @@ export async function fetchPrices(server: AodpServer, itemIds: string[], qualiti
   return rows;
 }
 
-export async function fetchHistory(
-  server: AodpServer,
-  itemIds: string[],
-  dateFrom: Date,
-  dateTo: Date,
-  qualities: number[] = [1],
-): Promise<AodpHistoryRow[]> {
-  const locations = ALL_LOCATIONS.join(",");
-  const date = formatAodpDate(dateFrom);
-  const endDate = formatAodpDate(dateTo);
-  const rows: AodpHistoryRow[] = [];
-  for (const chunk of chunkItemIds(itemIds)) {
-    const url =
-      `${aodpBaseUrl(server)}/api/v2/stats/history/${chunk.join(",")}` +
-      `?locations=${encodeURIComponent(locations)}&qualities=${qualities.join(",")}&time-scale=24&date=${date}&end_date=${endDate}`;
-    const res = await throttledFetch(url);
-    if (!res.ok) throw new Error(`AODP history request failed (${res.status}): ${url}`);
-    rows.push(...((await res.json()) as AodpHistoryRow[]));
-  }
-  return rows;
-}
-
-// YYYY-MM-DD is the documented preferred format (MM-DD-YYYY is also accepted, but not preferred).
-function formatAodpDate(d: Date): string {
-  const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
-  const dd = String(d.getUTCDate()).padStart(2, "0");
-  return `${d.getUTCFullYear()}-${mm}-${dd}`;
-}

@@ -70,3 +70,12 @@ export const marketAggregates = pgTable(
 );
 
 export type MarketAggregateRow = typeof marketAggregates.$inferSelect;
+
+// One row, key "last_dump_url": the daily AODP dump the ingester last fully processed. The
+// ingester runs hourly but the dump only refreshes once a day -- this lets it skip the ~260MB
+// download and full re-parse when today's dump hasn't changed, updating only current prices
+// (cheap REST calls) instead of also recomputing 30-day volume from a dump it already has.
+export const ingestState = pgTable("ingest_state", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+});

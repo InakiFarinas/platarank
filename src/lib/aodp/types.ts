@@ -12,21 +12,6 @@ export type AodpPriceRow = {
   buy_price_max_date: string;
 };
 
-export type AodpHistoryPoint = {
-  /** Sell-order fulfillment count, NOT total market activity. Every "volume" figure this app
-   * shows or ranks by is sell-side volume -- copy says "volumen de ventas", never "del mercado". */
-  item_count: number;
-  avg_price: number;
-  timestamp: string;
-};
-
-export type AodpHistoryRow = {
-  location: string;
-  item_id: string;
-  quality: number;
-  data: AodpHistoryPoint[];
-};
-
 /**
  * AODP timestamps are UTC but come back without a trailing "Z" (e.g. "2026-09-15T04:00:00").
  * Treating them as local time would silently shift every age/freshness calculation.

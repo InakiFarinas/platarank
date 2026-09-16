@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { computeCityAggregates } from "@/lib/ingest/aggregate";
-import type { AodpHistoryRow, AodpPriceRow } from "@/lib/aodp/types";
+import type { DumpVolumeSummary } from "@/lib/aodp/dumps";
+import type { AodpPriceRow } from "@/lib/aodp/types";
 
 const now = new Date("2026-09-15T12:00:00Z");
 
@@ -23,7 +24,7 @@ function priceRow(city: string, sellMin: number, hoursAgo = 1): AodpPriceRow {
 
 describe("computeCityAggregates", () => {
   test("una fila por cada una de las 8 ubicaciones, con o sin dato", () => {
-    const rows = computeCityAggregates("T6_POTION_HEAL", [priceRow("Caerleon", 13000)], [], now);
+    const rows = computeCityAggregates("T6_POTION_HEAL", [priceRow("Caerleon", 13000)], new Map(), now);
     expect(rows).toHaveLength(8);
     const caerleon = rows.find((r) => r.city === "Caerleon");
     expect(caerleon?.price).toBe(13000);
@@ -48,24 +49,24 @@ describe("computeCityAggregates", () => {
         buy_price_max_date: "2026-09-15T11:00:00",
       },
     ];
-    const rows = computeCityAggregates("T6_POTION_HEAL", prices, [], now);
+    const rows = computeCityAggregates("T6_POTION_HEAL", prices, new Map(), now);
     const bm = rows.find((r) => r.city === "Black Market");
     expect(bm?.price).toBe(29498);
   });
 
-  test("volumen diario promedia sobre la ventana de 30 dias, no solo sobre los dias con datos", () => {
-    const history: AodpHistoryRow[] = [
-      {
-        location: "Caerleon",
-        item_id: "T6_POTION_HEAL",
-        quality: 1,
-        data: [{ item_count: 300, avg_price: 13000, timestamp: "2026-09-14T00:00:00" }],
-      },
-    ];
-    const rows = computeCityAggregates("T6_POTION_HEAL", [], history, now);
+  test("el volumen sale del resumen del dump, keyeado por itemId|quality|city", () => {
+    const volumeSummaries = new Map<string, DumpVolumeSummary>([
+      ["T6_POTION_HEAL|1|Caerleon", { avgDailyVolume30d: 10, daysWithVolume30d: 1, weightedAvgPrice30d: 13000 }],
+    ]);
+    const rows = computeCityAggregates("T6_POTION_HEAL", [], volumeSummaries, now);
     const caerleon = rows.find((r) => r.city === "Caerleon");
-    expect(caerleon?.avgDailyVolume30d).toBeCloseTo(10, 5); // 300 / 30
+    expect(caerleon?.avgDailyVolume30d).toBe(10);
     expect(caerleon?.daysWithVolume30d).toBe(1);
     expect(caerleon?.weightedAvgPrice30d).toBe(13000);
+
+    const martlock = rows.find((r) => r.city === "Martlock");
+    expect(martlock?.avgDailyVolume30d).toBe(0);
+    expect(martlock?.daysWithVolume30d).toBe(0);
+    expect(martlock?.weightedAvgPrice30d).toBeNull();
   });
 });

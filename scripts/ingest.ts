@@ -1,22 +1,25 @@
-// Ingester: fetches prices + 30d history for every item referenced by a recipe and recomputes
+// Ingester: fetches current prices for every item referenced by a recipe (REST, hourly) and
+// 30-day volume from AODP's daily dump (only re-parsed when a new dump appears), then recomputes
 // the derived market_aggregates table. Run on a schedule via .github/workflows/ingest.yml.
 //
-// Raw price/history rows are NOT persisted -- see the note in src/lib/db/schema.ts. They're used
-// in-memory to compute the aggregate, then discarded; only the upserted, storage-bounded
-// market_aggregates rows land in the DB.
+// Raw price rows are NOT persisted -- see the note in src/lib/db/schema.ts. They're used in-memory
+// to compute the aggregate, then discarded; only the upserted, storage-bounded market_aggregates
+// rows land in the DB.
 import "dotenv/config";
-import { sql } from "drizzle-orm";
+import { sql, eq } from "drizzle-orm";
 import { db } from "../src/lib/db/client";
-import { marketAggregates, recipes, type Recipe } from "../src/lib/db/schema";
-import { fetchHistory, fetchPrices } from "../src/lib/aodp/client";
-import { AODP_SERVERS, type AodpServer } from "../src/lib/aodp/cities";
-import { computeCityAggregates } from "../src/lib/ingest/aggregate";
+import { ingestState, marketAggregates, recipes, type Recipe } from "../src/lib/db/schema";
+import { fetchPrices } from "../src/lib/aodp/client";
+import { AODP_SERVERS, ALL_LOCATIONS as REAL_CITIES_AND_BM, type AodpServer } from "../src/lib/aodp/cities";
+import { findLatestDumpUrl, fetchDumpVolumeSummaries, type DumpVolumeSummary } from "../src/lib/aodp/dumps";
+import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
+import { computeCityAggregates, computeCityPrice } from "../src/lib/ingest/aggregate";
 import recipesJson from "../src/data/generated/recipes.json";
-import type { AodpHistoryRow, AodpPriceRow } from "../src/lib/aodp/types";
+import type { AodpPriceRow } from "../src/lib/aodp/types";
 
 const recipesData = recipesJson as unknown as Recipe[];
 
-const RETENTION_DAYS = 30;
+const LAST_DUMP_URL_KEY = "last_dump_url";
 const server: AodpServer = (process.env.AODP_SERVER as AodpServer) ?? AODP_SERVERS.americas;
 
 async function main() {
@@ -27,27 +30,45 @@ async function main() {
 
   const itemIds = collectItemIds();
   const gearItemIds = [...new Set(recipesData.filter((r) => r.stationType === "gear").map((r) => r.itemId))];
-  console.log(`Fetching prices + history for ${itemIds.length} items (${gearItemIds.length} of them gear, Q1-Q5)...`);
+  const gearItemIdSet = new Set(gearItemIds);
+  console.log(`Fetching prices for ${itemIds.length} items (${gearItemIds.length} of them gear, Q1-Q5)...`);
 
-  const dateFrom = new Date(now.getTime() - RETENTION_DAYS * 24 * 3600 * 1000);
-
-  // Everything trades at quality 1; armas y armaduras ALSO roll quality 2-5, fetched separately
-  // so alchemy/refining/cocina items and every recipe's raw materials don't pay for 5x the payload
-  // they'll never use.
-  const [prices, history, gearPrices, gearHistory] = await Promise.all([
+  const [prices, gearPrices] = await Promise.all([
     fetchPrices(server, itemIds, [1]),
-    fetchHistory(server, itemIds, dateFrom, now, [1]),
     gearItemIds.length > 0 ? fetchPrices(server, gearItemIds, [2, 3, 4, 5]) : Promise.resolve([]),
-    gearItemIds.length > 0 ? fetchHistory(server, gearItemIds, dateFrom, now, [2, 3, 4, 5]) : Promise.resolve([]),
   ]);
-
   const allPrices = [...prices, ...gearPrices];
-  const allHistory = [...history, ...gearHistory];
 
-  await computeAndStoreAggregates(itemIds, gearItemIds, allPrices, allHistory, now);
+  const dumpUrl = await findLatestDumpUrl(server);
+  const lastProcessedUrl = await getLastProcessedDumpUrl();
+  const isNewDump = dumpUrl !== lastProcessedUrl;
+
+  if (isNewDump) {
+    console.log(`New daily dump detected (${dumpUrl}); downloading and recomputing 30-day volume...`);
+    const clusterIdToLocation = await fetchClusterIdToLocation();
+    const volumeSummaries = await fetchDumpVolumeSummaries(dumpUrl, new Set(itemIds), clusterIdToLocation, now);
+    console.log(`Parsed volume for ${volumeSummaries.size} item-city-quality combinations from the dump.`);
+    await storeFullAggregates(itemIds, gearItemIdSet, allPrices, volumeSummaries, now);
+    await setLastProcessedDumpUrl(dumpUrl);
+  } else {
+    console.log(`Dump unchanged since last run (${dumpUrl}); refreshing prices only.`);
+    await storePriceOnlyUpdates(itemIds, gearItemIdSet, allPrices, now);
+  }
 
   console.log("Ingest complete.");
   process.exit(0);
+}
+
+async function getLastProcessedDumpUrl(): Promise<string | null> {
+  const rows = await db.select().from(ingestState).where(eq(ingestState.key, LAST_DUMP_URL_KEY));
+  return rows[0]?.value ?? null;
+}
+
+async function setLastProcessedDumpUrl(url: string) {
+  await db
+    .insert(ingestState)
+    .values({ key: LAST_DUMP_URL_KEY, value: url })
+    .onConflictDoUpdate({ target: ingestState.key, set: { value: url } });
 }
 
 async function syncRecipes() {
@@ -75,33 +96,30 @@ function chunk<T>(items: T[], size: number): T[][] {
   return chunks;
 }
 
-async function computeAndStoreAggregates(
+/** Full recompute: prices + volume, for when a new daily dump just landed. */
+async function storeFullAggregates(
   itemIds: string[],
-  gearItemIds: string[],
+  gearItemIdSet: Set<string>,
   prices: AodpPriceRow[],
-  history: AodpHistoryRow[],
+  volumeSummaries: Map<string, DumpVolumeSummary>,
   now: Date,
 ) {
   const pricesByItem = groupBy(prices, (p) => p.item_id);
-  const historyByItem = groupBy(history, (h) => h.item_id);
-  const gearItemIdSet = new Set(gearItemIds);
 
   const rows = itemIds.flatMap((itemId) => {
     const qualities = gearItemIdSet.has(itemId) ? [1, 2, 3, 4, 5] : [1];
     return qualities.flatMap((quality) =>
-      computeCityAggregates(itemId, pricesByItem.get(itemId) ?? [], historyByItem.get(itemId) ?? [], now, quality).map(
-        (agg) => ({
-          itemId: agg.itemId,
-          city: agg.city,
-          quality: agg.quality,
-          computedAt: now,
-          price: numOrNull(agg.price),
-          priceAgeSeconds: agg.priceAgeSeconds,
-          avgDailyVolume30d: String(agg.avgDailyVolume30d),
-          daysWithVolume30d: agg.daysWithVolume30d,
-          weightedAvgPrice30d: numOrNull(agg.weightedAvgPrice30d),
-        }),
-      ),
+      computeCityAggregates(itemId, pricesByItem.get(itemId) ?? [], volumeSummaries, now, quality).map((agg) => ({
+        itemId: agg.itemId,
+        city: agg.city,
+        quality: agg.quality,
+        computedAt: now,
+        price: numOrNull(agg.price),
+        priceAgeSeconds: agg.priceAgeSeconds,
+        avgDailyVolume30d: String(agg.avgDailyVolume30d),
+        daysWithVolume30d: agg.daysWithVolume30d,
+        weightedAvgPrice30d: numOrNull(agg.weightedAvgPrice30d),
+      })),
     );
   });
 
@@ -121,7 +139,48 @@ async function computeAndStoreAggregates(
         },
       });
   }
-  console.log(`Computed ${rows.length} item-city-quality aggregates for ${itemIds.length} items.`);
+  console.log(`Computed ${rows.length} item-city-quality aggregates (prices + volume) for ${itemIds.length} items.`);
+}
+
+/** Cheap hourly path: current price only, leaving the dump-derived volume columns untouched. */
+async function storePriceOnlyUpdates(itemIds: string[], gearItemIdSet: Set<string>, prices: AodpPriceRow[], now: Date) {
+  const pricesByItem = groupBy(prices, (p) => p.item_id);
+
+  const rows = itemIds.flatMap((itemId) => {
+    const qualities = gearItemIdSet.has(itemId) ? [1, 2, 3, 4, 5] : [1];
+    return qualities.flatMap((quality) =>
+      [...REAL_CITIES_AND_BM].map((city) => {
+        const cp = computeCityPrice(itemId, pricesByItem.get(itemId) ?? [], now, city, quality);
+        return {
+          itemId: cp.itemId,
+          city: cp.city,
+          quality: cp.quality,
+          computedAt: now,
+          price: numOrNull(cp.price),
+          priceAgeSeconds: cp.priceAgeSeconds,
+          // Required by the insert type; ignored by onConflictDoUpdate's set below, which omits them.
+          avgDailyVolume30d: "0",
+          daysWithVolume30d: 0,
+          weightedAvgPrice30d: null as string | null,
+        };
+      }),
+    );
+  });
+
+  for (const batch of chunk(rows, 500)) {
+    await db
+      .insert(marketAggregates)
+      .values(batch)
+      .onConflictDoUpdate({
+        target: [marketAggregates.itemId, marketAggregates.city, marketAggregates.quality],
+        set: {
+          computedAt: sql`excluded.computed_at`,
+          price: sql`excluded.price`,
+          priceAgeSeconds: sql`excluded.price_age_seconds`,
+        },
+      });
+  }
+  console.log(`Refreshed prices for ${rows.length} item-city-quality combinations (volume left untouched).`);
 }
 
 function numOrNull(v: number | null): string | null {
