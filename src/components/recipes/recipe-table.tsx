@@ -51,7 +51,7 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
 
   return (
     <div className="rounded-md border border-border">
-      <div className="flex items-center gap-2 overflow-x-auto border-b border-border px-3 py-2 sm:hidden">
+      <div className="flex items-center gap-2 overflow-x-auto border-b-2 border-double border-border px-3 py-2 sm:hidden">
         <span className="shrink-0 text-[11px] text-muted-foreground">Ordenar:</span>
         <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/dia" />
         <MobileSortChip active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" />
@@ -59,7 +59,7 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
         <MobileSortChip active={sortKey === "quality"} desc={desc} onClick={() => toggleSort("quality")} label="Calidad" />
       </div>
 
-      <div className="hidden items-center gap-4 border-b border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
+      <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
         <span className="w-8 shrink-0">#</span>
         <span className="flex-1">Ítem</span>
         <div className="flex items-center gap-6">

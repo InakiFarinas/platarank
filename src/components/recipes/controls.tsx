@@ -48,7 +48,7 @@ export function Controls({
       />
       <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>Filtros y supuestos</SheetTitle>
+          <SheetTitle className="font-heading text-base">Filtros y supuestos</SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col gap-6 px-4 pb-6">
@@ -200,7 +200,9 @@ function QualityWeightsField({
       <Label className="mb-1.5 block">Distribución de calidad al craftear (%)</Label>
       <p className="mb-2 text-xs text-muted-foreground">
         Por defecto son los pesos base del juego para foco/comida/nodos en cero (68.9/25/5/1/0.1%) -- la función real
-        con la que suben no está publicada. Si tenés tasas propias observadas, cargalas acá.
+        con la que suben no está publicada. La estación de crafteo SÍ te muestra tus porcentajes exactos (ícono de
+        info cerca del toggle de foco, o al pasar el mouse sobre la barra de calidades) -- cargalos acá para tu spec
+        y comida actuales.
       </p>
       <div className="grid grid-cols-5 gap-2">
         {QUALITY_LABELS.map((label, i) => (

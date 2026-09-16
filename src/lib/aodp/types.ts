@@ -13,6 +13,8 @@ export type AodpPriceRow = {
 };
 
 export type AodpHistoryPoint = {
+  /** Sell-order fulfillment count, NOT total market activity. Every "volume" figure this app
+   * shows or ranks by is sell-side volume -- copy says "volumen de ventas", never "del mercado". */
   item_count: number;
   avg_price: number;
   timestamp: string;

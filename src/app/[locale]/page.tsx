@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { WaxSeal } from "@/components/icons/wax-seal";
 
 export const metadata: Metadata = {
   title: "Ranking de crafteo por plata realizable por dia",
   description:
-    "PlataRank ordena recetas de Albion Online (alquimia, refinado, cocina, armas y armaduras) por margen x volumen diario del mercado, no por margen unitario.",
+    "PlataRank ordena recetas de Albion Online (alquimia, refinado, cocina, armas y armaduras) por margen x volumen diario de ventas, no por margen unitario.",
   alternates: { canonical: "/es" },
 };
 
@@ -17,21 +18,22 @@ const RUBROS = [
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-3xl px-3 py-8 sm:px-6 sm:py-12">
-      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">PlataRank</h1>
+    <main className="mx-auto max-w-3xl px-3 py-10 sm:px-6 sm:py-16">
+      <WaxSeal className="h-10 w-10 text-money" />
+      <h1 className="mt-3 font-heading text-3xl tracking-tight sm:text-4xl">PlataRank</h1>
       <p className="mt-3 text-sm text-muted-foreground sm:text-base">
         Ranking de crafteo de Albion Online por <strong className="text-foreground">plata realizable por dia</strong> --
-        ganancia unitaria x volumen diario del mercado x la cuota que asumis llevarte -- en vez de margen unitario solo.
+        ganancia unitaria x volumen diario de ventas x la cuota que asumis llevarte -- en vez de margen unitario solo.
         Cada fila muestra su score de calidad de dato y se puede abrir para ver de donde sale cada numero.
       </p>
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+      <ul className="mt-8 grid gap-3 border-t-2 border-double border-border pt-6 sm:grid-cols-2">
         {RUBROS.map((r) => (
           <li key={r.href}>
             <Link
               href={r.href}
-              className="block rounded-md border border-border p-4 transition-colors hover:border-foreground/30 hover:bg-muted/50"
+              className="block rounded-md border border-border p-4 transition-colors hover:border-money/40 hover:bg-muted/50"
             >
-              <div className="font-medium">{r.label}</div>
+              <div className="font-heading text-lg">{r.label}</div>
               <div className="mt-1 text-xs text-muted-foreground">{r.detail}</div>
             </Link>
           </li>

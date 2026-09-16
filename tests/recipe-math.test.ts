@@ -15,10 +15,11 @@ const recipe: Recipe = {
   batchSize: 5,
   craftingFocus: 0,
   materials: [{ itemId: "T6_FOXGLOVE", count: 72, category: "farm", nameEs: "Dedalera", nameEn: "Foxglove" }],
+  materialItemValue: "2880",
 };
 
-function point(city: string, price: number | null, volume = 1000, quality = 1): CityPricePoint {
-  return { city, quality, price, priceAgeSeconds: 3600, avgDailyVolume30d: volume, daysWithVolume30d: 30, weightedAvgPrice30d: price };
+function point(city: string, price: number | null, volume = 1000, quality = 1, days = 30): CityPricePoint {
+  return { city, quality, price, priceAgeSeconds: 3600, avgDailyVolume30d: volume, daysWithVolume30d: days, weightedAvgPrice30d: price };
 }
 
 function market(overrides: Record<string, CityPricePoint[]>): MarketData {
@@ -126,17 +127,18 @@ describe("computeRecipeRow (refinado)", () => {
       { itemId: "T4_WOOD", count: 2, category: "other", nameEs: "Troncos", nameEn: "Logs" },
       { itemId: "T3_PLANKS", count: 1, category: "other", nameEs: "Tablas T3", nameEn: "Planks T3" },
     ],
+    materialItemValue: "1000",
   };
 
-  test("el fee de refinado no depende de los materiales, solo de tier y encantamiento", () => {
+  test("el fee usa la formula universal Item Value x Tax x 0.001125, redondeada", () => {
     const data = market({
       T4_PLANKS: [point("Caerleon", 100)],
       T4_WOOD: [point("Caerleon", 10)],
       T3_PLANKS: [point("Caerleon", 20)],
     });
     const row = computeRecipeRow(planksRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
-    // (235/1000) * 18 * 2^(4-4) * 2^0 = 0.235 * 18
-    expect(row.feePerBatch).toBeCloseTo(0.235 * 18, 5);
+    // 1000 * 235 * 0.001125 = 264.375 -> redondeado a 264
+    expect(row.feePerBatch).toBe(264);
   });
 
   test("craftCity fuera de Fort Sterling: sin especialidad de refinado", () => {
@@ -188,16 +190,17 @@ describe("computeRecipeRow (cocina)", () => {
     batchSize: 10,
     craftingFocus: 504,
     materials: [{ itemId: "T5_CABBAGE", count: 144, category: "farm", nameEs: "Coles", nameEn: "Cabbage" }],
+    materialItemValue: "3000",
   };
 
-  test("el fee de cocina usa la misma formula que alquimia (materiales de granja)", () => {
+  test("el fee de cocina usa la misma formula universal que el resto de los rubros", () => {
     const data = market({
       T5_MEAL_SOUP: [point("Caerleon", 1000)],
       T5_CABBAGE: [point("Caerleon", 10)],
     });
     const row = computeRecipeRow(soupRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
-    // (235/1000) * 45 * 144
-    expect(row.feePerBatch).toBeCloseTo(0.235 * 45 * 144, 5);
+    // 3000 * 235 * 0.001125 = 793.125 -> redondeado a 793
+    expect(row.feePerBatch).toBe(793);
   });
 
   test("Caerleon como craftCity activa la especialidad de cocina (+15%, no +40%)", () => {
@@ -239,6 +242,7 @@ describe("computeRecipeRow (armas y armaduras)", () => {
       { itemId: "T6_METALBAR", count: 16, category: "other", nameEs: "Lingote", nameEn: "Metal Bar" },
       { itemId: "T6_LEATHER", count: 8, category: "other", nameEs: "Cuero", nameEn: "Leather" },
     ],
+    materialItemValue: "2000",
   };
 
   test("el precio de venta pondera por calidad usando qualityWeights", () => {
@@ -284,6 +288,24 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     expect(row.sellRefPrice).toBeCloseTo(900, 5);
   });
 
+  test("una calidad con una sola venta en 30 dias (volumen > 0 pero pocos dias) tampoco cuenta como liquida", () => {
+    const data = market({
+      T6_MAIN_SWORD: [
+        point("Caerleon", 1000, 100, 1), // liquido
+        point("Caerleon", 50000, 5, 5, 1), // Q5: una sola venta en un dia -- volume > 0 pero no es liquidez real
+      ],
+    });
+    const row = computeRecipeRow(swordRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      qualityWeights: [0.9, 0, 0, 0, 0.1],
+    });
+    const q5 = row.qualityBreakdown!.find((q) => q.quality === 5)!;
+    expect(q5.liquid).toBe(false);
+    expect(row.sellRefPrice).toBeCloseTo(900, 5);
+  });
+
   test("sin ninguna calidad liquida, hasData es false", () => {
     const data = market({
       T6_MAIN_SWORD: [point("Caerleon", 1000, 0, 1)],
@@ -295,14 +317,37 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     expect(row.sellRefPrice).toBeNull();
   });
 
-  test("el fee de crafteo normal escala con tier y cantidad total de materiales (24 unidades)", () => {
+  test("el fee de equipo usa la misma formula universal (Item Value x Tax x 0.001125)", () => {
     const data = market({
       T6_MAIN_SWORD: [point("Caerleon", 1000, 100, 1)],
       T6_METALBAR: [point("Caerleon", 10)],
       T6_LEATHER: [point("Caerleon", 10)],
     });
     const row = computeRecipeRow(swordRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
-    // (235/1000) * 18 * 24 * 1 * 2^(6-4) * 2^0
-    expect(row.feePerBatch).toBeCloseTo(0.235 * 18 * 24 * 4, 5);
+    // 2000 * 235 * 0.001125 = 528.75 -> redondeado a 529
+    expect(row.feePerBatch).toBe(529);
+  });
+
+  test("un material de artefacto nunca tiene RRR, aunque los materiales refinados de la misma receta si", () => {
+    const artifactRecipe: Recipe = {
+      ...swordRecipe,
+      materials: [...swordRecipe.materials, { itemId: "T6_ARTEFACT_2H_SWORD_AVALON", count: 4, category: "artifact", nameEs: "Artefacto", nameEn: "Artifact" }],
+    };
+    const data = market({
+      T6_MAIN_SWORD: [point("Caerleon", 1000, 100, 1)],
+      T6_METALBAR: [point("Caerleon", 10)],
+      T6_LEATHER: [point("Caerleon", 10)],
+      T6_ARTEFACT_2H_SWORD_AVALON: [point("Caerleon", 10)],
+    });
+    const row = computeRecipeRow(artifactRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon"],
+      focus: true,
+    });
+    const artifactLine = row.materials.find((m) => m.itemId === "T6_ARTEFACT_2H_SWORD_AVALON")!;
+    const refinedLine = row.materials.find((m) => m.itemId === "T6_METALBAR")!;
+    expect(artifactLine.effectiveCount).toBe(4); // full count, 0% RRR
+    expect(refinedLine.effectiveCount).toBeLessThan(refinedLine.count); // RRR applies normally
   });
 });

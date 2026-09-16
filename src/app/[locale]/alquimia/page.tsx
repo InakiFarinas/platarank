@@ -14,7 +14,7 @@ export default function AlquimiaPage() {
     <RecipePage
       stationType="alchemy"
       title="Alquimia -- Americas"
-      description="Ranking por plata realizable por dia: margen x volumen diario del mercado. Tocá una fila para ver de dónde sale cada número."
+      description="Ranking por plata realizable por dia: margen x volumen diario de ventas. Tocá una fila para ver de dónde sale cada número."
     />
   );
 }

@@ -1,23 +1,28 @@
 ---
 name: PlataRank
-description: Dark trading-floor ticker for Albion Online alchemy recipes, ranked by realizable silver/day.
+description: Dark guild-ledger noticeboard for Albion Online crafting recipes, ranked by realizable silver/day.
 colors:
-  operate-ground: "oklch(0.14 0.003 285)"
-  card-surface: "oklch(0.19 0.004 285)"
-  foreground: "oklch(0.94 0.003 285)"
-  muted-surface: "oklch(0.23 0.004 285)"
-  muted-foreground: "oklch(0.62 0.006 285)"
-  hairline-border: "oklch(1 0 0 / 8%)"
-  secondary-surface: "oklch(0.25 0.004 285)"
-  money-amber: "oklch(0.78 0.16 68)"
-  money-foreground: "oklch(0.145 0 0)"
+  guild-ground: "oklch(0.16 0.017 55)"
+  ledger-card: "oklch(0.21 0.02 55)"
+  parchment-ink: "oklch(0.92 0.018 75)"
+  secondary-surface: "oklch(0.27 0.022 55)"
+  muted-surface: "oklch(0.24 0.02 55)"
+  muted-foreground: "oklch(0.67 0.03 65)"
+  hairline-border: "oklch(0.8 0.04 65 / 13%)"
+  coin-gold: "oklch(0.78 0.16 68)"
+  coin-gold-foreground: "oklch(0.16 0.02 60)"
 typography:
   headline:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "1.125rem"
-    fontWeight: 600
+    fontFamily: "IM Fell English, Georgia, serif"
+    fontSize: "1.25rem"
+    fontWeight: 400
     lineHeight: 1.3
     letterSpacing: "-0.01em"
+  panel-title:
+    fontFamily: "IM Fell English, Georgia, serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.4
   body:
     fontFamily: "Geist Sans, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.875rem"
@@ -32,15 +37,10 @@ typography:
     fontFamily: "Geist Mono, ui-monospace, monospace"
     fontSize: "0.8125rem"
     fontFeature: "tabular-nums"
-  panel-title:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 600
-    lineHeight: 1.4
 rounded:
-  sm: "6px"
-  md: "8px"
-  lg: "10px"
+  sm: "5px"
+  md: "6px"
+  lg: "8px"
   full: "9999px"
 spacing:
   row-x: "12px"
@@ -55,17 +55,17 @@ spacing:
 components:
   row-item:
     backgroundColor: "transparent"
-    textColor: "{colors.foreground}"
+    textColor: "{colors.parchment-ink}"
     padding: "10px 12px"
   row-item-hover:
     backgroundColor: "color-mix(in oklch, {colors.secondary-surface} 40%, transparent)"
   row-detail:
-    backgroundColor: "color-mix(in oklch, {colors.card-surface} 50%, transparent)"
+    backgroundColor: "color-mix(in oklch, {colors.ledger-card} 50%, transparent)"
     textColor: "{colors.muted-foreground}"
     padding: "12px 12px"
   sort-chip-active:
-    backgroundColor: "color-mix(in oklch, {colors.money-amber} 10%, transparent)"
-    textColor: "{colors.money-amber}"
+    backgroundColor: "color-mix(in oklch, {colors.coin-gold} 10%, transparent)"
+    textColor: "{colors.coin-gold}"
     rounded: "{rounded.full}"
     padding: "4px 10px"
   sort-chip-inactive:
@@ -75,7 +75,7 @@ components:
     padding: "4px 10px"
   badge-tier:
     backgroundColor: "{colors.secondary-surface}"
-    textColor: "{colors.foreground}"
+    textColor: "{colors.parchment-ink}"
     rounded: "{rounded.sm}"
     typography: "{typography.tabular}"
 ---
@@ -84,109 +84,125 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Operate-Mode Trading Ticker"**
+**Creative North Star: "The Guild Ledger"**
 
-PlataRank is a single-purpose Operate surface, not a marketing page: a near-black ground read one-handed next to the game, where the only color statement is a warm amber reserved for the number that matters. The build confirms the direction contract's thesis exactly -- plata/dia renders as the largest, only-colored figure in each row (`text-money`, `font-mono`, `text-base sm:text-lg font-semibold`), while margin and volume sit as small muted stats stacked beside it. There is no hero, no marketing copy, no light mode: `<html class="dark">` is hardcoded in the root layout, confirming dark-only is a real product decision, not a default left unconfigured.
+PlataRank stayed a single-purpose Operate surface -- dark, dense, read one-handed next to the game -- but its chrome was rebuilt as a merchant guild's account-hall noticeboard rather than a trading-floor ticker. The ground shifted from a cool near-black neutral (hue 285) to a warm, candlelit umber (hue ~55-75, OKLCH), and the sticky header, sort-bar dividers, and the home page's rubro divider all now carry a double ruled line (`border-double border-b-2` / `border-t-2`) standing in for a ledger's ruled hairline. IM Fell English, a legible period print face, now carries the page `<h1>` and panel titles (the Filtros Sheet's "Filtros y supuestos", the rubro card labels); Geist Sans keeps every body/label role and Geist Mono keeps every numeric value untouched -- a deliberate legibility call, not an oversight. A single hand-drawn wax-seal SVG mark (`WaxSeal`, one stroke weight, no fill gradients) sits beside the "PlataRank" wordmark in the nav and as the home page's masthead.
 
-Density and legibility drive every layout call: hairline borders instead of shadows, a virtualized row list tuned to a 52px estimate, and tabular-nums monospace on every number so columns hold their alignment while scrolling fast on a phone. The system does not reach for icons, badges, or color to create hierarchy where restraint already does the job -- the one amber accent is rationed to two roles and never leaks into buttons or navigation.
+The world stops at the frame. The direction contract's thesis -- "ornament lives in chrome only, data rows stay exactly as dense/unadorned as before" -- holds in the build: the row list, its virtualization, the expandable derivation panel, badges, selects, sheets, and the Quality Bar's bar/track shape are byte-identical in structure to the prior world, restyled only through the same CSS custom properties. The one structural change inside a data row is additive, not decorative: illiquid quality-breakdown prices now carry `underline decoration-dashed decoration-muted-foreground underline-offset-4` alongside their existing reduced opacity, so stale/illiquid state reads even in grayscale or under color-blindness, not only through alpha.
+
+Note on the direction contract's raise: the contract proposed the quality score become "a wax-seal ink-fill gauge, not a bar." That did not ship -- `QualityBadge`/the quality bar kept its exact prior bar-and-track shape; only its surrounding palette shifted. This DESIGN.md documents the bar as built, not the gauge as proposed.
 
 **Key Characteristics:**
-- Dark-only "Operate ground" -- no light theme exists or is planned.
-- One accent color, two jobs: the plata/dia figure and active sort state. Nothing else uses it.
-- Tabular-nums monospace on every numeric value; proportional sans on every label.
-- Zero shadows; hairline borders and tonal surface steps carry all separation.
-- Dense, mobile-first row rhythm with an expandable inline detail panel per row.
+- Dark-only "guild ground" -- warm oak/umber (hue ~55-75), replacing the old cool-zinc neutral; no light theme exists or is planned.
+- One accent color, unchanged in value, now doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure and active sort state.
+- IM Fell English carries headlines and panel titles only; Geist Sans stays on body/labels; Geist Mono stays untouched on every number.
+- Double ruled hairlines (`border-double border-b-2`) mark every major chrome divider -- header, sort-bar, home-page rubro divider.
+- Stale/illiquid data is now marked by line form (dashed underline) in addition to color/alpha, not by color alone.
+- Data-row density, the row+expandable-detail interaction, and the Quality Bar's shape are unchanged from the prior world.
 
 ## Colors
 
-A near-black neutral scale (OKLCH, low chroma, cool-neutral hue ~285) with a single warm amber accent lifted straight from Albion's own silver-coin color, not a generic SaaS blue.
+A warm, low-to-mid-chroma umber/parchment scale (OKLCH, hue ~55-75, candlelit rather than screen-lit) with the same single coin-gold accent carried forward unchanged in value from the prior world.
 
 ### Primary
-- **Money Amber** (`oklch(0.78 0.16 68)`): reserved for exactly two things -- the plata/dia figure (the row's largest, boldest number) and the active sort state (desktop `SortHeader` label color, mobile `MobileSortChip` border/background/text). Also drives `:focus-visible` outlines and the text-selection tint. It does not appear on any button, badge, or navigation element.
+- **Coin Gold** (`oklch(0.78 0.16 68)`): reserved for exactly two things -- the plata/dia figure (the row's largest, boldest number) and the active sort state (desktop `SortHeader` label color, mobile `MobileSortChip` border/background/text). Also drives `:focus-visible` outlines, the text-selection tint, and the wax-seal icon fill. It does not appear on any button, badge, or navigation element beyond the wordmark mark.
 
 ### Neutral
-- **Operate Ground** (`oklch(0.14 0.003 285)`): page background.
-- **Card Surface** (`oklch(0.19 0.004 285)`): row-detail panel background (used at 50% opacity), popover/card surfaces.
-- **Secondary Surface** (`oklch(0.25 0.004 285)`): tier badges, row hover state (`hover:bg-accent/40`), sort-chip inactive backgrounds.
-- **Foreground** (`oklch(0.94 0.003 285)`): primary text.
-- **Muted Foreground** (`oklch(0.62 0.006 285)`): secondary stats, labels, timestamps, inactive sort icons.
-- **Hairline Border** (`oklch(1 0 0 / 8%)`): the only separator device in the system -- every row, header, and container edge.
+- **Guild Ground** (`oklch(0.16 0.017 55)`): page background -- warm near-black umber, replacing the old cool-zinc `oklch(0.14 0.003 285)`.
+- **Ledger Card** (`oklch(0.21 0.02 55)`): row-detail panel background (used at 50% opacity), popover/card surfaces.
+- **Secondary Surface** (`oklch(0.27 0.022 55)`): tier badges, row hover state, sort-chip inactive backgrounds.
+- **Parchment Ink** (`oklch(0.92 0.018 75)`): primary text -- warmer and slightly higher-chroma than the old cool-white foreground.
+- **Muted Foreground** (`oklch(0.67 0.03 65)`): secondary stats, labels, timestamps, inactive sort icons.
+- **Hairline Border** (`oklch(0.8 0.04 65 / 13%)`): sepia/bronze-tinted, the base separator device -- carried at 1px on ordinary row borders and doubled (`border-double border-b-2`) at the chrome dividers named by the Registration-Plate Rule below.
 
 ### Named Rules
-**The One Amber Rule.** The accent is rationed to the plata/dia figure and active sort state. A retry button, a badge, or a nav item never carries it -- confirmed by the error page's retry button, which uses a plain hairline border and `hover:bg-accent`, not the money color.
+**The One Coin Rule.** The accent is rationed to the plata/dia figure and active sort state (carried forward unchanged from the prior world). A retry button, a badge, or a nav item never carries it, except the single wax-seal wordmark mark.
+
+**The Registration-Plate Rule.** Every major chrome divider is a deliberate ruled hairline, not a plain 1px rule: the sticky page header (`border-b-2 border-double`), the desktop and mobile sort-bar dividers in the table (`border-b-2 border-double`), and the home page's divider above the rubro grid (`border-t-2 border-double`). Ordinary row-to-row separators inside the table stay plain 1px hairlines -- the double rule is reserved for structural, once-per-surface dividers, not every seam.
 
 ## Typography
 
-**Body/Label Font:** Geist Sans (system-ui, sans-serif fallback) -- the shadcn default workhorse sans, not a display face.
-**Tabular/Mono Font:** Geist Mono (ui-monospace fallback), applied with `tabular-nums` to every numeric value.
+**Display/Heading Font:** IM Fell English (Georgia, serif fallback) -- a legible period print face, not a blackletter or display-fantasy face.
+**Body/Label Font:** Geist Sans (system-ui, sans-serif fallback) -- unchanged from the prior world.
+**Tabular/Mono Font:** Geist Mono (ui-monospace fallback), applied with `tabular-nums` to every numeric value -- unchanged from the prior world.
 
-**Character:** A quiet, utilitarian pairing. The sans carries labels and prose; the mono exists purely to make numbers scan and align in a dense table, never for decorative effect.
+**Character:** A print/ledger heading paired with the same quiet utilitarian sans-and-mono body pairing as before. The heading face supplies the account-hall period signal in short bursts (page titles, panel titles); it never touches body copy, labels, or numbers, so density and scanability are untouched.
 
 ### Hierarchy
-- **Headline** (600, 1.125rem/1.25rem responsive, tight tracking): the page title only ("Alquimia -- Americas").
-- **Body** (400, 0.875rem): the page subtitle, row detail section prose, error/loading copy.
-- **Tabular** (mono, ~0.8125rem, `tabular-nums`): every numeric cell -- rank, margin %, volume, quality score, plata/dia, and every derivation-panel figure (prices, fees, costs).
-- **Label** (400, 0.6875rem/11px, slight tracking): column headers, stat captions ("margen", "vol/dia", "plata/dia"), sort-bar caption.
-- **Panel title** (600, 0.875rem, body size at headline weight): titles of secondary surfaces that aren't the page itself -- e.g. the Filtros Sheet's "Filtros y supuestos". Distinct from Headline (reserved for the page `<h1>`) so a panel never visually competes with the page title.
+- **Headline** (IM Fell English, 400, 1.25rem/1.5rem responsive, tight tracking): the page `<h1>` only (e.g. "Alquimia -- Americas"), and the home page's "PlataRank" masthead at 1.875rem/2.25rem.
+- **Panel title** (IM Fell English, 400, 1rem): titles of secondary surfaces that aren't the page itself -- the Filtros Sheet's "Filtros y supuestos" -- and the rubro card labels on the home page. Distinct from Headline so a panel never visually competes with the page title.
+- **Body** (Geist Sans, 400, 0.875rem): the page subtitle, row detail section prose, error/loading copy, home page description.
+- **Tabular** (Geist Mono, ~0.8125rem, `tabular-nums`): every numeric cell -- rank, margin %, volume, quality score, plata/dia, and every derivation-panel figure.
+- **Label** (Geist Sans, 400, 0.6875rem/11px, slight tracking): column headers, stat captions, sort-bar caption.
 
 ### Named Rules
-**The Tabular-Nums Rule.** Any value that is a quantity (silver, percent, count, score) renders in mono with `tabular-nums`; any value that is a label or name renders in the proportional sans. Never mix the two roles for legibility's sake.
+**The Heading-In-Chrome-Only Rule.** IM Fell English is confined to the page `<h1>`, Sheet/panel titles, and the home page's rubro labels -- never a data-row name, a stat caption, or a numeric value. Anything that is data, not chrome, stays on Geist Sans or Geist Mono.
+
+**The Tabular-Nums Rule.** Any value that is a quantity (silver, percent, count, score) renders in mono with `tabular-nums`; any value that is a label or name renders in the proportional sans. Unchanged from the prior world.
 
 ## Layout
 
-Mobile-first, single-column container (`max-w-5xl`, centered), with padding that scales from dense mobile (`px-3 py-4`) to a slightly looser desktop (`sm:px-6 sm:py-8`). The table itself is the first viewport -- no hero.
+Mobile-first, single-column container (`max-w-5xl` for the ranked-list pages, `max-w-3xl` for the home page, centered), padding scaling from dense mobile (`px-3 py-4`) to a slightly looser desktop (`sm:px-6 sm:py-8`). Unchanged from the prior world.
 
-**Sticky header pattern.** The page title block is `sticky top-0 z-20`, bleeds edge-to-edge via negative margin (`-mx-3 sm:-mx-6`) then re-pads, and sits on `bg-background/95` with `backdrop-blur` so content scrolls underneath a legible, non-opaque title bar. This is the standard header treatment for any Operate-mode page in this project.
+**Sticky header pattern.** The page title block is `sticky top-0 z-20`, bleeds edge-to-edge via negative margin then re-pads, sits on `bg-background/95` with `backdrop-blur`, and now closes with a double ruled line (`border-b-2 border-double`) instead of the old single hairline. The wax-seal mark sits beside the "PlataRank" wordmark inside this header's nav row.
 
-**Multi-surface structure (Fase 3 complete).** The project has four ranked-list pages (`/alquimia`, `/refinado`, `/cocina`, `/equipo`). All four share one server component (`recipe-page.tsx`) that owns the sticky header, a small text-link nav row (muted-foreground default, foreground on hover, no active-state treatment yet), the `RecipeExplorer` + `RecipeTable`, and the footer -- so every surface is pixel-identical in chrome by construction, not by convention. A new station type extends this same component with a `stationType` prop rather than forking the page; only the title, description, and the params/controls that differ per station type branch inside the shared components. Two such branches exist: a single global "ciudad donde craftea" `Select` (replaces what was per-rubro specialty switches -- one control now resolves the right city-specialty bonus for every station type via each recipe's own `craftingCategory`), and Equipo's quality-weights 5-input grid, shown only when `stationType === "gear"`.
+**Multi-surface structure.** All four ranked-list pages (`/alquimia`, `/refinado`, `/cocina`, `/equipo`) share one server component (`recipe-page.tsx`) that owns the sticky header, nav, `RecipeExplorer`/`RecipeTable`, and footer -- unchanged from the prior world, now carrying the ruled-header treatment by construction.
 
-**Row density.** Rows are dense by design: `py-2.5` on mobile collapsing to `py-2` on desktop, virtualized at a 52px row-height estimate so hundreds of recipes scan fast on a phone.
+**Row density.** Rows are dense by design: `py-2.5` on mobile collapsing to `py-2` on desktop, virtualized at a 52px row-height estimate. Unchanged from the prior world -- the redesign's explicit constraint was "ornament in the frame, density intact."
 
-**Responsive control fallback.** Sort controls have two forms, not one degraded into the other: a `hidden sm:flex` inline header row of text+icon sort buttons for desktop, and a `sm:hidden` horizontally-scrollable pill/chip bar for mobile.
+**Responsive control fallback.** Sort controls keep two forms: a `hidden sm:flex` inline header row of text+icon sort buttons for desktop, and a `sm:hidden` horizontally-scrollable pill/chip bar for mobile, each row now closed off by the same double ruled divider instead of a plain hairline.
 
-**Exception, documented (Fase 2 Filtros panel):** the city/market-share/focus/rate/filter controls do NOT follow the split above. There are 15+ discrete inputs (7 buy-city checkboxes, 7 sell-city checkboxes + Black Market, a switch, two number fields, two filter fields) -- too many for a chip bar at any breakpoint, and splitting them into a different desktop-vs-mobile layout would mean maintaining two control arrangements for the same form. Instead: one `Sheet` (bottom-anchored on every breakpoint) triggered by a single "Filtros" button, identical on mobile and desktop. Keep this as the pattern for any future control set this size; the header-row/chip-bar split stays reserved for simple 3-5-option controls like sort.
-
-**Row content reflow.** On mobile, secondary stats (margin, volume) stack below/beside the name in a tighter cluster; on desktop they spread into a horizontal stat row. The plata/dia figure and quality bar keep their position and size across breakpoints -- they are the visual anchor at every width.
+**Ambient texture.** `body` carries a subtle SVG fractal-noise grain (`feTurbulence`, desaturated, 5% opacity, tiled) over the flat umber ground -- the one new ambient/material cue, replacing nothing (the prior world had no body texture).
 
 ## Elevation & Depth
 
-Flat. No shadows anywhere in the build (`box-shadow` is absent from every component reviewed). Depth is conveyed entirely through hairline borders (`border-border`, 8%-opacity white) and tonal surface steps (ground -> card -> secondary-surface, each a small lightness step in the same low-chroma hue). The expandable row detail is distinguished from its parent row only by a translucent card-tint background (`bg-card/50`), not a shadow or outline.
+Flat. No `box-shadow` in the build. Depth is conveyed through hairline borders (now sepia/bronze-tinted, `oklch(0.8 0.04 65 / 13%)`) and tonal surface steps (ground -> card -> secondary-surface), plus the new grain texture, which reads as material (paper/parchment grain) rather than as elevation. The expandable row detail is distinguished from its parent row only by a translucent card-tint background (`bg-card/50`), not a shadow.
 
 ### Named Rules
-**The No-Shadow Rule.** Elevation is never simulated with `box-shadow`. Use a border and/or the next tonal surface step instead. Applies to overlays too: the Filtros `Sheet` sits on `bg-popover` with a single hairline `border-t` where it meets the page (`shadow-lg` stripped from the shadcn default in `ui/sheet.tsx`), and the "ciudad donde craftea" `Select`'s popup keeps only its `ring-1 ring-foreground/10` hairline (`shadow-md` stripped from `ui/select.tsx` the same way).
+**The No-Shadow Rule.** Elevation is never simulated with `box-shadow`. Use a border and/or the next tonal surface step instead -- carried forward unchanged; the Filtros `Sheet` and the "ciudad donde craftea" `Select` both still ship with shadcn's default `shadow-md`/`shadow-lg` stripped in favor of a hairline ring/border.
 
 ## Shapes
 
-Two radius vocabularies, used consistently: **soft-rectangular** (`rounded-md`, ~8px) for containers -- the table wrapper, tier badges, loading skeletons -- and **full pill** (`rounded-full`) for anything representing a toggleable/measured state -- sort chips, the quality-score bar track and fill, the scrollbar thumb. Borders are always hairline (1px, 8% white); there is no double-border or thick-stroke treatment anywhere in the build.
+Two radius vocabularies, unchanged in kind though slightly tighter in value: **soft-rectangular** (`rounded-md`, ~6px, down from ~8px after `--radius` moved from 0.625rem to 0.5rem) for containers -- the table wrapper, tier badges, home-page rubro cards -- and **full pill** (`rounded-full`) for anything representing a toggleable/measured state -- sort chips, the quality-score bar track/fill, the scrollbar thumb. Borders are hairline (1px) at ordinary seams; the new **double rule** (2px, `border-double`) marks the chrome dividers named by the Registration-Plate Rule. There is no thick single-stroke or hard-offset shadow treatment anywhere in the build -- the world is candlelit ledger, not neobrutalist.
 
 ## Components
 
 ### Row + Expandable Detail (signature component)
-The core interaction pattern of the whole surface. Each recipe is a full-width `<button>` row (rank, name + tier/ench badge, stats, plata/dia) that toggles an inline detail panel on click -- no navigation, no modal. A `ChevronDown` icon rotates 180deg to indicate open state. The detail panel (`bg-card/50`, two-column grid on desktop, single column on mobile) exposes the full derivation: price source, city count, data age, Brecilien coverage, quality score, return rate, specialty city, station fee, every material's cost contribution, and every discarded outlier with its reason. Gear rows add one more list, "Por calidad": all five quality levels with their weight, price, and a dimmed (`opacity-50`) treatment plus "sin liquidez, no cuenta" for any quality excluded by the zero-volume gate -- illiquid data stays visible, just visually deprioritized, never hidden. This is the product's "receipt one tap away" promise made structural, not decorative -- every ranked-list surface reuses this exact row/detail split rather than a separate details page.
+The core interaction pattern of the whole surface, structurally unchanged from the prior world. Each recipe is a full-width `<button>` row (rank, name + tier/enchant badge, stats, plata/dia) that toggles an inline detail panel on click. A `ChevronDown` icon rotates 180deg to indicate open state. The detail panel exposes the full derivation. Gear rows add a "Por calidad" list; the illiquid-quality price now additionally carries `underline decoration-dashed decoration-muted-foreground underline-offset-4` on top of its existing `opacity-70` treatment -- the Line-Not-Hue Rule below.
 
 ### Quality Bar
-A thin horizontal bar (`h-1.5 w-10`, `rounded-full` track in muted, filled proportionally to score) paired with the raw numeric score in mono, wrapped in a tooltip that explains city coverage and Brecilien status on hover/focus. Fill color is amber when score >= 60, muted-foreground otherwise -- it is a signal-strength meter, never a pass/fail badge or traffic-light. Do not replace this with a colored status badge; the bar-chart-as-chip is the confirmed pattern.
+A thin horizontal bar (`rounded-full` track in muted, filled proportionally to score) paired with the raw numeric score in mono. Shape and mechanism are unchanged from the prior world; only its palette shifted with the rest of the system. The direction contract proposed replacing this with a wax-seal ink-fill gauge -- that did not ship, and this DESIGN.md documents the bar as built.
 
 ### Sort Controls
-Desktop: inline text+icon buttons in the table header row (`ArrowUp`/`ArrowDown`/`ArrowUpDown` from lucide), active state colored amber. Mobile: a horizontally-scrollable row of full-pill chips with a border, same icon logic, active state gets an amber border/background tint/text. Both forms toggle the same sort state and always default to descending on first select.
+Desktop: inline text+icon buttons in the table header row, active state colored coin-gold. Mobile: a horizontally-scrollable row of full-pill chips, active state gets a coin-gold border/background tint/text. Both rows now sit above a double ruled divider instead of a plain hairline. Unchanged otherwise.
+
+### Ruled Header / Ruled Divider (signature motif)
+The double-line rule (`border-b-2 border-double` / `border-t-2 border-double`, sepia hairline color) is the system's one new structural motif, appearing at exactly three places: the sticky page header, the table's sort-bar row (both desktop and mobile forms), and the home page's divider above the rubro grid. It never appears on ordinary row-to-row separators or inside the row-detail panel.
+
+### Wax Seal (signature mark)
+A single hand-drawn SVG icon (`WaxSeal`, two concentric circles plus a six-point star cross, one stroke weight, `currentColor`) used as the wordmark mark beside "PlataRank" in every page's nav and as the home page's masthead glyph, always rendered in coin-gold. It is the system's only glyph icon used decoratively rather than functionally (all other icons -- `ChevronDown`, `ArrowUp`/`ArrowDown`/`ArrowUpDown`, `SlidersHorizontal` -- are Lucide functional-UI icons, unchanged from the prior world).
 
 ### Badges
-Stock shadcn `Badge`, used narrowly: `secondary` variant for the tier/enchant tag (`T4.2`, mono tabular numerals), `outline` variant for the "datos insuficientes" (insufficient data) flag. Never used as a quality or status indicator -- that role belongs to the Quality Bar.
+Stock shadcn `Badge`, used narrowly: `secondary` variant for the tier/enchant tag, `outline` variant for "datos insuficientes". Unchanged from the prior world.
 
 ### Buttons
-Only two button treatments appear in the build: the plain-bordered retry button on the error page (`rounded-md border border-border`, `hover:bg-accent`, no accent color) and the row/chip buttons described above. There is no filled primary-amber button anywhere -- confirming the One Amber Rule extends to interactive controls, not just static figures.
+Only two button treatments appear in the build: the plain-bordered retry/Filtros button (`rounded-md border border-border`, `hover:bg-accent`, no accent color) and the row/chip buttons described above. Unchanged from the prior world -- there is still no filled primary-coin-gold button anywhere.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** reserve the money-amber accent for realized/ranked silver figures and active sort/filter state only.
-- **Do** render every quantity (price, percent, count, score) in mono with `tabular-nums`; render every name/label in proportional sans.
-- **Do** use hairline borders and tonal surface steps for separation and depth; never a shadow.
-- **Do** pair any new sortable/filterable control with both a desktop inline-header form and a mobile chip-bar form, per the confirmed responsive split.
-- **Do** keep new ranked-list surfaces (Fase 2 city controls, Fase 3 station types) on the row + expandable-detail pattern rather than introducing a details page or modal.
+- **Do** reserve coin-gold for the plata/dia figure, active sort/filter state, and the wax-seal mark only.
+- **Do** confine IM Fell English to the page `<h1>`, Sheet/panel titles, and rubro card labels -- never a data value or row name.
+- **Do** render every quantity in Geist Mono with `tabular-nums`; every name/label in Geist Sans.
+- **Do** use a double ruled line (`border-double border-b-2`/`border-t-2`) for structural, once-per-surface chrome dividers (sticky header, sort-bar, home rubro divider); keep ordinary row separators as plain 1px hairlines.
+- **Do** mark stale/illiquid values with both reduced opacity and a dashed underline (the Line-Not-Hue Rule), so state survives grayscale.
+- **Do** keep new ranked-list surfaces on the row + expandable-detail pattern with density and the Quality Bar's existing bar/track shape untouched.
 
 ### Don't:
-- **Don't** introduce a light theme variant; dark-only is a confirmed product decision (`<html class="dark">` is hardcoded), not an unfinished default.
-- **Don't** render a data-quality or confidence score as a colored badge or traffic-light; the thin horizontal bar is the system's only quality-signal device.
-- **Don't** spread the amber accent onto buttons, nav, or non-ranking UI -- it stays rationed to the two roles above.
-- **Don't** add box-shadows for elevation; step to the next tonal surface or add a hairline border instead.
+- **Don't** introduce a light theme variant; dark-only is a confirmed product decision (`<html class="dark">` is hardcoded).
+- **Don't** add blackletter, gilt/illuminated-manuscript ornament, or additional glyph icons beyond the single wax-seal mark -- the direction contract explicitly refused a fantasy-game skin.
+- **Don't** add box-shadows or hard-offset shadows for elevation or "medieval" flavor; step to the next tonal surface or a hairline/double-rule border instead.
+- **Don't** spread coin-gold onto buttons, nav text, or non-ranking UI beyond the wax-seal mark.
+- **Don't** let chrome ornament (heading face, double rules) migrate into data rows; row density and the row's internal typography stay exactly as before.
+- **Don't** treat the quality gauge as a wax-seal ink-fill device; the build kept the plain bar/track shape -- style any future quality-signal change as a palette change, not a shape invention.
+</content>

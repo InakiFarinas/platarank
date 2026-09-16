@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, IM_Fell_English } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -14,8 +14,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const imFell = IM_Fell_English({
+  variable: "--font-im-fell",
+  weight: "400",
+  subsets: ["latin"],
+});
+
 const DESCRIPTION =
-  "Ranking de crafteo de Albion Online por plata realizable por dia (margen x volumen diario del mercado), no por margen unitario.";
+  "Ranking de crafteo de Albion Online por plata realizable por dia (margen x volumen diario de ventas), no por margen unitario.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,7 +44,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${imFell.variable} antialiased`}>
         <TooltipProvider delay={150}>{children}</TooltipProvider>
       </body>
     </html>

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-15T00:00:00.000Z",
+  "generatedAt": "2026-09-16T00:00:00.000Z",
   "title": "Design System: PlataRank",
   "extensions": {
     "colorMeta": {
-      "money-amber": {
+      "coin-gold": {
         "role": "primary",
-        "displayName": "Money Amber",
+        "displayName": "Coin Gold",
         "canonical": "oklch(0.78 0.16 68)",
         "tonalRamp": [
           "oklch(0.20 0.05 68)",
@@ -19,42 +19,63 @@
           "oklch(0.90 0.10 68)"
         ]
       },
-      "operate-ground": {
+      "guild-ground": {
         "role": "neutral",
-        "displayName": "Operate Ground",
-        "canonical": "oklch(0.14 0.003 285)",
+        "displayName": "Guild Ground",
+        "canonical": "oklch(0.16 0.017 55)",
         "tonalRamp": [
-          "oklch(0.10 0.003 285)",
-          "oklch(0.14 0.003 285)",
-          "oklch(0.19 0.004 285)",
-          "oklch(0.23 0.004 285)",
-          "oklch(0.25 0.004 285)",
-          "oklch(0.40 0.004 285)",
-          "oklch(0.62 0.006 285)",
-          "oklch(0.94 0.003 285)"
+          "oklch(0.10 0.012 55)",
+          "oklch(0.16 0.017 55)",
+          "oklch(0.21 0.02 55)",
+          "oklch(0.24 0.02 55)",
+          "oklch(0.27 0.022 55)",
+          "oklch(0.40 0.03 60)",
+          "oklch(0.67 0.03 65)",
+          "oklch(0.92 0.018 75)"
         ]
       },
-      "card-surface": {
+      "ledger-card": {
         "role": "neutral",
-        "displayName": "Card Surface",
-        "canonical": "oklch(0.19 0.004 285)"
+        "displayName": "Ledger Card",
+        "canonical": "oklch(0.21 0.02 55)"
       },
       "secondary-surface": {
         "role": "neutral",
         "displayName": "Secondary Surface",
-        "canonical": "oklch(0.25 0.004 285)"
+        "canonical": "oklch(0.27 0.022 55)"
+      },
+      "muted-surface": {
+        "role": "neutral",
+        "displayName": "Muted Surface",
+        "canonical": "oklch(0.24 0.02 55)"
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Muted Foreground",
+        "canonical": "oklch(0.67 0.03 65)"
       },
       "hairline-border": {
         "role": "neutral",
         "displayName": "Hairline Border",
-        "canonical": "oklch(1 0 0 / 8%)"
+        "canonical": "oklch(0.8 0.04 65 / 13%)"
+      },
+      "parchment-ink": {
+        "role": "neutral",
+        "displayName": "Parchment Ink",
+        "canonical": "oklch(0.92 0.018 75)"
+      },
+      "coin-gold-foreground": {
+        "role": "neutral",
+        "displayName": "Coin Gold Foreground",
+        "canonical": "oklch(0.16 0.02 60)"
       }
     },
     "typographyMeta": {
-      "headline": { "displayName": "Headline", "purpose": "Page title only, e.g. 'Alquimia -- Americas'." },
-      "body": { "displayName": "Body", "purpose": "Subtitles, prose, error/loading copy." },
-      "tabular": { "displayName": "Tabular", "purpose": "Every numeric value: rank, margin, volume, quality score, plata/dia, derivation figures." },
-      "label": { "displayName": "Label", "purpose": "Column headers and stat captions." }
+      "headline": { "displayName": "Headline", "purpose": "Page title only, in IM Fell English, e.g. 'Alquimia -- Americas'." },
+      "panel-title": { "displayName": "Panel Title", "purpose": "IM Fell English titles of secondary surfaces: the Filtros Sheet's 'Filtros y supuestos', home page rubro card labels." },
+      "body": { "displayName": "Body", "purpose": "Subtitles, prose, error/loading copy, in Geist Sans." },
+      "tabular": { "displayName": "Tabular", "purpose": "Every numeric value in Geist Mono with tabular-nums: rank, margin, volume, quality score, plata/dia, derivation figures." },
+      "label": { "displayName": "Label", "purpose": "Column headers and stat captions, in Geist Sans." }
     },
     "breakpoints": [
       { "name": "sm", "value": "640px" }
@@ -65,62 +86,85 @@
       "name": "Recipe Row",
       "kind": "custom",
       "refersTo": "row-item",
-      "description": "Full-width toggle button showing rank, name, tier badge, margin/volume stats, quality bar, and the amber plata/dia figure; expands an inline derivation panel on click.",
-      "html": "<button class=\"ds-row\"><span class=\"ds-row-rank\">1</span><span class=\"ds-row-name\">Poción de Vida Mayor <span class=\"ds-badge-tier\">T6.1</span></span><span class=\"ds-row-stat\">+34%<em>margen</em></span><span class=\"ds-row-money\">128k<em>plata/dia</em></span></button>",
-      "css": ".ds-row { display: flex; align-items: center; gap: 16px; width: 100%; padding: 10px 12px; background: transparent; border: none; border-bottom: 1px solid oklch(1 0 0 / 8%); color: oklch(0.94 0.003 285); text-align: left; font-family: 'Geist Sans', ui-sans-serif, sans-serif; transition: background 0.15s; } .ds-row:hover { background: color-mix(in oklch, oklch(0.25 0.004 285) 40%, transparent); } .ds-row:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; } .ds-row-rank { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: oklch(0.62 0.006 285); } .ds-row-name { flex: 1; font-size: 14px; font-weight: 500; } .ds-badge-tier { margin-left: 6px; padding: 1px 6px; border-radius: 6px; background: oklch(0.25 0.004 285); font-family: 'Geist Mono', monospace; font-size: 10px; } .ds-row-stat { text-align: right; font-size: 12px; color: oklch(0.62 0.006 285); font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; } .ds-row-stat em { display: block; font-style: normal; font-size: 10px; } .ds-row-money { text-align: right; font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 16px; color: oklch(0.78 0.16 68); } .ds-row-money em { display: block; font-style: normal; font-size: 10px; color: oklch(0.62 0.006 285); }"
+      "description": "Full-width toggle button showing rank, name, tier badge, margin/volume stats, quality bar, and the coin-gold plata/dia figure; expands an inline derivation panel on click. Structurally unchanged from the prior world -- only its palette shifted.",
+      "html": "<button class=\"ds-row\"><span class=\"ds-row-rank\">1</span><span class=\"ds-row-name\">Pocion de Vida Mayor <span class=\"ds-badge-tier\">T6.1</span></span><span class=\"ds-row-stat\">+34%<em>margen</em></span><span class=\"ds-row-money\">128k<em>plata/dia</em></span></button>",
+      "css": ".ds-row { display: flex; align-items: center; gap: 16px; width: 100%; padding: 10px 12px; background: transparent; border: none; border-bottom: 1px solid oklch(0.8 0.04 65 / 13%); color: oklch(0.92 0.018 75); text-align: left; font-family: 'Geist Sans', ui-sans-serif, sans-serif; transition: background 0.15s; } .ds-row:hover { background: color-mix(in oklch, oklch(0.27 0.022 55) 40%, transparent); } .ds-row:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; } .ds-row-rank { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: oklch(0.67 0.03 65); } .ds-row-name { flex: 1; font-size: 14px; font-weight: 500; } .ds-badge-tier { margin-left: 6px; padding: 1px 6px; border-radius: 5px; background: oklch(0.27 0.022 55); font-family: 'Geist Mono', monospace; font-size: 10px; } .ds-row-stat { text-align: right; font-size: 12px; color: oklch(0.67 0.03 65); font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; } .ds-row-stat em { display: block; font-style: normal; font-size: 10px; } .ds-row-money { text-align: right; font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 16px; color: oklch(0.78 0.16 68); } .ds-row-money em { display: block; font-style: normal; font-size: 10px; color: oklch(0.67 0.03 65); }"
     },
     {
       "name": "Quality Bar",
       "kind": "custom",
       "refersTo": "quality-bar-fill",
-      "description": "Thin horizontal bar chip signaling data-quality score strength, not a pass/fail badge.",
+      "description": "Thin horizontal bar chip signaling data-quality score strength. Shape/mechanism unchanged from the prior world; the direction contract's proposed wax-seal ink-fill gauge did not ship.",
       "html": "<span class=\"ds-quality\"><span class=\"ds-quality-track\"><span class=\"ds-quality-fill\" style=\"width:72%\"></span></span><span class=\"ds-quality-score\">72</span></span>",
-      "css": ".ds-quality { display: inline-flex; align-items: center; gap: 6px; } .ds-quality-track { width: 40px; height: 6px; border-radius: 9999px; background: oklch(0.23 0.004 285); overflow: hidden; } .ds-quality-fill { display: block; height: 100%; border-radius: 9999px; background: oklch(0.78 0.16 68); } .ds-quality-score { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 11px; color: oklch(0.62 0.006 285); }"
+      "css": ".ds-quality { display: inline-flex; align-items: center; gap: 6px; } .ds-quality-track { width: 40px; height: 6px; border-radius: 9999px; background: oklch(0.24 0.02 55); overflow: hidden; } .ds-quality-fill { display: block; height: 100%; border-radius: 9999px; background: oklch(0.78 0.16 68); } .ds-quality-score { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 11px; color: oklch(0.67 0.03 65); }"
+    },
+    {
+      "name": "Sticky Ruled Header",
+      "kind": "custom",
+      "refersTo": "row-item",
+      "description": "Sticky title block topped by the wax-seal wordmark and nav, closed by a double ruled hairline (the Registration-Plate Rule) instead of the prior single hairline.",
+      "html": "<header class=\"ds-header\"><nav class=\"ds-header-nav\"><svg class=\"ds-wax-seal\" viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"12\" cy=\"12\" r=\"9.5\" stroke=\"currentColor\" stroke-width=\"1.4\"/><circle cx=\"12\" cy=\"12\" r=\"6.25\" stroke=\"currentColor\" stroke-width=\"1.1\"/><path d=\"M12 7.2 13.1 9.9 16 10.1 13.7 12 14.5 14.8 12 13.1 9.5 14.8 10.3 12 8 10.1 10.9 9.9Z\" fill=\"currentColor\"/></svg><span>PlataRank</span></nav><h1 class=\"ds-header-title\">Alquimia -- Americas</h1><p class=\"ds-header-sub\">Ranking por plata realizable por dia.</p></header>",
+      "css": ".ds-header { position: sticky; top: 0; z-index: 20; padding: 12px; border-bottom: 2px double oklch(0.8 0.04 65 / 13%); background: color-mix(in oklch, oklch(0.16 0.017 55) 95%, transparent); backdrop-filter: blur(8px); } .ds-header-nav { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; font-size: 12px; font-family: 'Geist Sans', sans-serif; color: oklch(0.92 0.018 75); } .ds-wax-seal { width: 14px; height: 14px; color: oklch(0.78 0.16 68); } .ds-header-title { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; font-weight: 400; letter-spacing: -0.01em; color: oklch(0.92 0.018 75); margin: 0; } .ds-header-sub { margin: 2px 0 0; font-size: 14px; color: oklch(0.67 0.03 65); }"
     },
     {
       "name": "Sort Chip (mobile)",
       "kind": "chip",
       "refersTo": "sort-chip-active",
-      "description": "Pill-shaped sort toggle for the mobile fallback bar; active state carries the amber accent.",
+      "description": "Pill-shaped sort toggle for the mobile fallback bar, now sitting under a double ruled divider; active state carries coin-gold.",
       "html": "<button class=\"ds-chip ds-chip-active\">Plata/dia <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 5v14M19 12l-7 7-7-7\"/></svg></button>",
-      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 9999px; border: 1px solid oklch(1 0 0 / 8%); background: transparent; color: oklch(0.62 0.006 285); font-family: 'Geist Sans', sans-serif; font-size: 12px; white-space: nowrap; } .ds-chip-active { border-color: color-mix(in oklch, oklch(0.78 0.16 68) 50%, transparent); background: color-mix(in oklch, oklch(0.78 0.16 68) 10%, transparent); color: oklch(0.78 0.16 68); } .ds-chip:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; }"
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 9999px; border: 1px solid oklch(0.8 0.04 65 / 13%); background: transparent; color: oklch(0.67 0.03 65); font-family: 'Geist Sans', sans-serif; font-size: 12px; white-space: nowrap; } .ds-chip-active { border-color: color-mix(in oklch, oklch(0.78 0.16 68) 50%, transparent); background: color-mix(in oklch, oklch(0.78 0.16 68) 10%, transparent); color: oklch(0.78 0.16 68); } .ds-chip:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; }"
     },
     {
-      "name": "Sticky Page Header",
+      "name": "Per-Quality Breakdown Row",
       "kind": "custom",
+      "refersTo": "row-detail",
+      "description": "Gear-only list inside the row detail panel ('Por calidad'); illiquid qualities now carry a dashed underline on the price value in addition to reduced opacity (the Line-Not-Hue Rule), plus a 'sin liquidez, no cuenta' note.",
+      "html": "<div class=\"ds-quality-row\"><span>Q3 Excepcional</span><span class=\"ds-quality-row-price\">4.2k</span></div><div class=\"ds-quality-row ds-quality-row-illiquid\"><span>Q5 Obra maestra</span><span class=\"ds-quality-row-illiquid-price\">sin liquidez, no cuenta</span></div>",
+      "css": ".ds-quality-row { display: flex; justify-content: space-between; padding: 4px 0; font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: oklch(0.92 0.018 75); } .ds-quality-row-price { color: oklch(0.92 0.018 75); } .ds-quality-row-illiquid { opacity: 0.7; color: oklch(0.67 0.03 65); } .ds-quality-row-illiquid-price { text-decoration: underline dashed oklch(0.67 0.03 65); text-underline-offset: 4px; }"
+    },
+    {
+      "name": "Home Rubro Card",
+      "kind": "card",
       "refersTo": "row-item",
-      "description": "Sticky, blurred title block used at the top of every Operate-mode page.",
-      "html": "<header class=\"ds-header\"><h1 class=\"ds-header-title\">Alquimia -- Americas</h1><p class=\"ds-header-sub\">Ranking por plata realizable por dia.</p></header>",
-      "css": ".ds-header { position: sticky; top: 0; z-index: 20; padding: 12px; border-bottom: 1px solid oklch(1 0 0 / 8%); background: color-mix(in oklch, oklch(0.14 0.003 285) 95%, transparent); backdrop-filter: blur(8px); } .ds-header-title { font-family: 'Geist Sans', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: oklch(0.94 0.003 285); margin: 0; } .ds-header-sub { margin: 2px 0 0; font-size: 14px; color: oklch(0.62 0.006 285); }"
+      "description": "Landing-page link card for each crafting rubro; title in IM Fell English, sits below a double ruled top divider.",
+      "html": "<a class=\"ds-rubro-card\"><div class=\"ds-rubro-title\">Alquimia</div><div class=\"ds-rubro-detail\">Pociones -- 174 recetas</div></a>",
+      "css": ".ds-rubro-card { display: block; border-radius: 6px; border: 1px solid oklch(0.8 0.04 65 / 13%); padding: 16px; color: oklch(0.92 0.018 75); text-decoration: none; transition: border-color 0.15s, background 0.15s; } .ds-rubro-card:hover { border-color: color-mix(in oklch, oklch(0.78 0.16 68) 40%, transparent); background: color-mix(in oklch, oklch(0.24 0.02 55) 50%, transparent); } .ds-rubro-title { font-family: 'IM Fell English', Georgia, serif; font-size: 18px; } .ds-rubro-detail { margin-top: 4px; font-size: 12px; color: oklch(0.67 0.03 65); }"
     }
   ],
   "narrative": {
-    "northStar": "The Operate-Mode Trading Ticker",
-    "overview": "PlataRank is a single-purpose Operate surface, not a marketing page: a near-black ground read one-handed next to the game, where the only color statement is a warm amber reserved for the number that matters. The build confirms the direction contract's thesis exactly -- plata/dia renders as the largest, only-colored figure in each row (text-money, font-mono, text-base sm:text-lg font-semibold), while margin and volume sit as small muted stats stacked beside it. There is no hero, no marketing copy, no light mode: <html class=\"dark\"> is hardcoded in the root layout, confirming dark-only is a real product decision, not a default left unconfigured. Density and legibility drive every layout call: hairline borders instead of shadows, a virtualized row list tuned to a 52px estimate, and tabular-nums monospace on every number so columns hold their alignment while scrolling fast on a phone. The system does not reach for icons, badges, or color to create hierarchy where restraint already does the job -- the one amber accent is rationed to two roles and never leaks into buttons or navigation.",
+    "northStar": "The Guild Ledger",
+    "overview": "PlataRank stayed a single-purpose Operate surface -- dark, dense, read one-handed next to the game -- but its chrome was rebuilt as a merchant guild's account-hall noticeboard rather than a trading-floor ticker. The ground shifted from a cool near-black neutral (hue 285) to a warm, candlelit umber (hue ~55-75, OKLCH), and the sticky header, sort-bar dividers, and the home page's rubro divider all now carry a double ruled line (border-double border-b-2 / border-t-2) standing in for a ledger's ruled hairline. IM Fell English, a legible period print face, now carries the page h1 and panel titles (the Filtros Sheet's 'Filtros y supuestos', the rubro card labels); Geist Sans keeps every body/label role and Geist Mono keeps every numeric value untouched -- a deliberate legibility call, not an oversight. A single hand-drawn wax-seal SVG mark sits beside the 'PlataRank' wordmark in the nav and as the home page's masthead.\n\nThe world stops at the frame. The direction contract's thesis -- 'ornament lives in chrome only, data rows stay exactly as dense/unadorned as before' -- holds in the build: the row list, its virtualization, the expandable derivation panel, badges, selects, sheets, and the Quality Bar's bar/track shape are byte-identical in structure to the prior world, restyled only through the same CSS custom properties. The one structural change inside a data row is additive, not decorative: illiquid quality-breakdown prices now carry a dashed underline alongside their existing reduced opacity, so stale/illiquid state reads even in grayscale, not only through alpha.\n\nNote: the direction contract proposed the quality score become 'a wax-seal ink-fill gauge, not a bar.' That did not ship -- the quality bar kept its exact prior bar-and-track shape; only its surrounding palette shifted. This system documents the bar as built, not the gauge as proposed.",
     "keyCharacteristics": [
-      "Dark-only \"Operate ground\" -- no light theme exists or is planned.",
-      "One accent color, two jobs: the plata/dia figure and active sort state. Nothing else uses it.",
-      "Tabular-nums monospace on every numeric value; proportional sans on every label.",
-      "Zero shadows; hairline borders and tonal surface steps carry all separation.",
-      "Dense, mobile-first row rhythm with an expandable inline detail panel per row."
+      "Dark-only \"guild ground\" -- warm oak/umber (hue ~55-75), replacing the old cool-zinc neutral; no light theme exists or is planned.",
+      "One accent color, unchanged in value, now doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure and active sort state.",
+      "IM Fell English carries headlines and panel titles only; Geist Sans stays on body/labels; Geist Mono stays untouched on every number.",
+      "Double ruled hairlines (border-double border-b-2) mark every major chrome divider -- header, sort-bar, home-page rubro divider.",
+      "Stale/illiquid data is now marked by line form (dashed underline) in addition to color/alpha, not by color alone.",
+      "Data-row density, the row+expandable-detail interaction, and the Quality Bar's shape are unchanged from the prior world."
     ],
     "rules": [
-      { "name": "The One Amber Rule", "body": "The accent is rationed to the plata/dia figure and active sort state. A retry button, a badge, or a nav item never carries it -- confirmed by the error page's retry button, which uses a plain hairline border and hover:bg-accent, not the money color.", "section": "colors" },
-      { "name": "The Tabular-Nums Rule", "body": "Any value that is a quantity (silver, percent, count, score) renders in mono with tabular-nums; any value that is a label or name renders in the proportional sans. Never mix the two roles for legibility's sake.", "section": "typography" },
-      { "name": "The No-Shadow Rule", "body": "Elevation is never simulated with box-shadow. Use a border and/or the next tonal surface step instead.", "section": "elevation" }
+      { "name": "The One Coin Rule", "body": "The accent is rationed to the plata/dia figure and active sort state (carried forward unchanged from the prior world). A retry button, a badge, or a nav item never carries it, except the single wax-seal wordmark mark.", "section": "colors" },
+      { "name": "The Registration-Plate Rule", "body": "Every major chrome divider is a deliberate ruled hairline, not a plain 1px rule: the sticky page header, the desktop and mobile sort-bar dividers, and the home page's divider above the rubro grid all use border-double border-b-2/border-t-2. Ordinary row-to-row separators inside the table stay plain 1px hairlines.", "section": "colors" },
+      { "name": "The Heading-In-Chrome-Only Rule", "body": "IM Fell English is confined to the page h1, Sheet/panel titles, and rubro card labels -- never a data-row name, a stat caption, or a numeric value.", "section": "typography" },
+      { "name": "The Tabular-Nums Rule", "body": "Any value that is a quantity (silver, percent, count, score) renders in mono with tabular-nums; any value that is a label or name renders in the proportional sans. Unchanged from the prior world.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Elevation is never simulated with box-shadow. Use a border and/or the next tonal surface step instead -- carried forward unchanged.", "section": "elevation" }
     ],
     "dos": [
-      "Do reserve the money-amber accent for realized/ranked silver figures and active sort/filter state only.",
-      "Do render every quantity (price, percent, count, score) in mono with tabular-nums; render every name/label in proportional sans.",
-      "Do use hairline borders and tonal surface steps for separation and depth; never a shadow.",
-      "Do pair any new sortable/filterable control with both a desktop inline-header form and a mobile chip-bar form, per the confirmed responsive split.",
-      "Do keep new ranked-list surfaces (Fase 2 city controls, Fase 3 station types) on the row + expandable-detail pattern rather than introducing a details page or modal."
+      "Do reserve coin-gold for the plata/dia figure, active sort/filter state, and the wax-seal mark only.",
+      "Do confine IM Fell English to the page h1, Sheet/panel titles, and rubro card labels -- never a data value or row name.",
+      "Do render every quantity in Geist Mono with tabular-nums; every name/label in Geist Sans.",
+      "Do use a double ruled line (border-double border-b-2/border-t-2) for structural, once-per-surface chrome dividers; keep ordinary row separators as plain 1px hairlines.",
+      "Do mark stale/illiquid values with both reduced opacity and a dashed underline (the Line-Not-Hue Rule), so state survives grayscale.",
+      "Do keep new ranked-list surfaces on the row + expandable-detail pattern with density and the Quality Bar's existing bar/track shape untouched."
     ],
     "donts": [
-      "Don't introduce a light theme variant; dark-only is a confirmed product decision (<html class=\"dark\"> is hardcoded), not an unfinished default.",
-      "Don't render a data-quality or confidence score as a colored badge or traffic-light; the thin horizontal bar is the system's only quality-signal device.",
-      "Don't spread the amber accent onto buttons, nav, or non-ranking UI -- it stays rationed to the two roles above.",
-      "Don't add box-shadows for elevation; step to the next tonal surface or add a hairline border instead."
+      "Don't introduce a light theme variant; dark-only is a confirmed product decision (<html class=\"dark\"> is hardcoded).",
+      "Don't add blackletter, gilt/illuminated-manuscript ornament, or additional glyph icons beyond the single wax-seal mark -- the direction contract explicitly refused a fantasy-game skin.",
+      "Don't add box-shadows or hard-offset shadows for elevation or \"medieval\" flavor; step to the next tonal surface or a hairline/double-rule border instead.",
+      "Don't spread coin-gold onto buttons, nav text, or non-ranking UI beyond the wax-seal mark.",
+      "Don't let chrome ornament (heading face, double rules) migrate into data rows; row density and the row's internal typography stay exactly as before.",
+      "Don't treat the quality gauge as a wax-seal ink-fill device; the build kept the plain bar/track shape -- style any future quality-signal change as a palette change, not a shape invention."
     ]
   }
 }
+</content>

@@ -11,6 +11,7 @@ import type { RecipeMaterial } from "../src/lib/db/schema";
 
 const ITEMS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/items.json";
 const FORMATTED_ITEMS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/formatted/items.json";
+const WORLD_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/formatted/world.json";
 const CRAFTING_MODIFIERS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/craftingmodifiers.xml";
 const GAMEDATA_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/gamedata.xml";
 const GENERATED_DIR = path.join(__dirname, "..", "src", "data", "generated");
@@ -18,18 +19,13 @@ const RECIPES_OUTPUT_PATH = path.join(GENERATED_DIR, "recipes.json");
 const CITY_SPECIALTIES_OUTPUT_PATH = path.join(GENERATED_DIR, "city-specialties.json");
 const QUALITY_MECHANICS_OUTPUT_PATH = path.join(GENERATED_DIR, "quality-mechanics.json");
 
-// Only the 7 real cities have a name in the game; craftingmodifiers.xml also lists ~140 other
-// clusters (hideouts, Outlands islands) we don't need yet. Verified against the file's own
-// <!--cityname--> comments and the clusterids the brief called out.
-const CLUSTER_ID_TO_CITY: Record<string, string> = {
-  "0000": "Thetford",
-  "1000": "Lymhurst",
-  "2000": "Bridgewatch",
-  "3004": "Martlock",
-  "4000": "Fort Sterling",
-  "3003": "Caerleon",
-  "5000": "Brecilien",
-};
+// The 7 real cities, by name -- these are as stable as any proper noun in the game and aren't the
+// drift risk. Their numeric cluster IDs (0000, 3003, 3004, ...) are the fragile part: those used to
+// be hand-copied from craftingmodifiers.xml's own <!--cityname--> comments, which is exactly the
+// kind of opaque id a game patch could silently renumber with no compiler or runtime error to catch
+// it. Resolved from world.json instead (see resolveClusterIds), so a renumber is picked up on the
+// next fetch-game-data run rather than mistranscribed by hand.
+const REAL_CITY_NAMES = ["Thetford", "Lymhurst", "Bridgewatch", "Martlock", "Fort Sterling", "Caerleon", "Brecilien"];
 
 type RawCraftResource = { "@uniquename": string; "@count": string; "@enchantmentlevel"?: string };
 type RawCraftingRequirements = {
@@ -86,6 +82,14 @@ type Recipe = {
   batchSize: number;
   craftingFocus: number;
   materials: RecipeMaterial[];
+  materialItemValue: number;
+};
+
+/** Every raw item container in items.json, keyed by uniquename, as far as we need for item-value lookup. */
+type RawIndexedItem = {
+  "@uniquename": string;
+  "@itemvalue"?: string;
+  craftingrequirements?: RawCraftingRequirements | RawCraftingRequirements[];
 };
 
 // Weapons and armor pieces this project ranks (see brief section 7). Excludes "tools" and
@@ -124,16 +128,17 @@ const ARMOR_CATEGORIES = new Set([
 
 async function main() {
   console.log("Downloading ao-bin-dumps...");
-  const [itemsRoot, formattedItems, craftingModifiersXml, gamedataXml] = await Promise.all([
+  const [itemsRoot, formattedItems, worldJson, craftingModifiersXml, gamedataXml] = await Promise.all([
     fetchJson<{
       items: {
         consumableitem: RawConsumableItem[];
         simpleitem: RawSimpleItem[];
         weapon: RawGearItem[];
         equipmentitem: RawGearItem[];
-      };
+      } & Record<string, RawIndexedItem | RawIndexedItem[]>;
     }>(ITEMS_URL),
     fetchJson<LocalizedItem[]>(FORMATTED_ITEMS_URL),
+    fetchJson<{ Index: string; UniqueName: string }[]>(WORLD_URL),
     fetchText(CRAFTING_MODIFIERS_URL),
     fetchText(GAMEDATA_URL),
   ]);
@@ -147,7 +152,11 @@ async function main() {
     });
   }
 
-  await writeCitySpecialties(craftingModifiersXml);
+  const itemValueIndex = buildItemValueIndex(itemsRoot.items);
+  const itemValueCache = new Map<string, number | null>();
+  const clusterIdToCity = resolveClusterIds(worldJson);
+
+  await writeCitySpecialties(craftingModifiersXml, clusterIdToCity);
   await writeQualityMechanics(gamedataXml);
 
   const potions = itemsRoot.items.consumableitem.filter(
@@ -160,7 +169,7 @@ async function main() {
     const tier = Number(potion["@tier"]);
     const category = potion["@craftingcategory"] ?? null;
 
-    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "alchemy", category, 1, potion.craftingrequirements!, names));
+    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "alchemy", category, 1, potion.craftingrequirements!, names, itemValueIndex, itemValueCache));
 
     const enchantments = potion.enchantments?.enchantment;
     if (enchantments) {
@@ -168,7 +177,7 @@ async function main() {
         const level = Number(ench["@enchantmentlevel"]);
         const itemId = `${baseItemId}@${level}`;
         const cr = pickCraftingRequirements(asArray(ench.craftingrequirements));
-        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "alchemy", category, 1, cr, names));
+        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "alchemy", category, 1, cr, names, itemValueIndex, itemValueCache));
       }
     }
   }
@@ -184,7 +193,7 @@ async function main() {
     const tier = Number(meal["@tier"]);
     const category = meal["@craftingcategory"] ?? null;
 
-    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "cooking", category, 1, meal.craftingrequirements!, names));
+    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "cooking", category, 1, meal.craftingrequirements!, names, itemValueIndex, itemValueCache));
 
     const enchantments = meal.enchantments?.enchantment;
     if (enchantments) {
@@ -192,7 +201,7 @@ async function main() {
         const level = Number(ench["@enchantmentlevel"]);
         const itemId = `${baseItemId}@${level}`;
         const cr = pickCraftingRequirements(asArray(ench.craftingrequirements));
-        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "cooking", category, 1, cr, names));
+        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "cooking", category, 1, cr, names, itemValueIndex, itemValueCache));
       }
     }
   }
@@ -213,7 +222,7 @@ async function main() {
     // Resource category (wood/ore/fiber/hide/rock) lives on the BASE item, not on every enchant
     // level's own entry -- read craftingcategory off the plain simpleitem record if present.
     const category = (item as RawSimpleItem & { "@craftingcategory"?: string })["@craftingcategory"] ?? null;
-    recipes.push(buildRecipe(itemId, baseItemId, tier, enchant, "refining", category, 1, cr, names));
+    recipes.push(buildRecipe(itemId, baseItemId, tier, enchant, "refining", category, 1, cr, names, itemValueIndex, itemValueCache));
   }
 
   // Armas y armaduras (Fase 3, seccion 7). Incluye TODO -- equipo estandar y lineas especiales de
@@ -231,7 +240,7 @@ async function main() {
     const category = gear["@craftingcategory"] ?? null;
     const maxQuality = Number(gear["@maxqualitylevel"] ?? 1);
 
-    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "gear", category, maxQuality, gear.craftingrequirements!, names));
+    recipes.push(buildRecipe(baseItemId, baseItemId, tier, 0, "gear", category, maxQuality, gear.craftingrequirements!, names, itemValueIndex, itemValueCache));
 
     const enchantments = gear.enchantments?.enchantment;
     if (enchantments) {
@@ -239,7 +248,7 @@ async function main() {
         const level = Number(ench["@enchantmentlevel"]);
         const itemId = `${baseItemId}@${level}`;
         const cr = pickCraftingRequirements(asArray(ench.craftingrequirements));
-        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "gear", category, maxQuality, cr, names));
+        recipes.push(buildRecipe(itemId, baseItemId, tier, level, "gear", category, maxQuality, cr, names, itemValueIndex, itemValueCache));
       }
     }
   }
@@ -259,6 +268,8 @@ function buildRecipe(
   maxQualityLevel: number,
   cr: RawCraftingRequirements,
   names: Map<string, { es: string; en: string }>,
+  itemValueIndex: Map<string, ItemValueEntry>,
+  itemValueCache: Map<string, number | null>,
 ): Recipe {
   const materials = asArray(cr.craftresource ?? []).map((r) => {
     const materialId = resolveItemId(r["@uniquename"], r["@enchantmentlevel"], names);
@@ -271,6 +282,13 @@ function buildRecipe(
       nameEn: materialNames?.en ?? materialId,
     } satisfies RecipeMaterial;
   });
+
+  // The engine excludes artifacts from Item Value entirely -- confirmed in-game, not an assumption.
+  const materialItemValue = materials.reduce((sum, m) => {
+    if (m.category === "artifact") return sum;
+    const iv = resolveItemValue(m.itemId, itemValueIndex, itemValueCache);
+    return sum + (iv ?? 0) * m.count;
+  }, 0);
 
   const itemNames = names.get(itemId);
   return {
@@ -286,7 +304,66 @@ function buildRecipe(
     batchSize: Number(cr["@amountcrafted"] ?? 1),
     craftingFocus: Number(cr["@craftingfocus"] ?? 0),
     materials,
+    materialItemValue,
   };
+}
+
+type ItemValueEntry = { itemValue: number | null; craftingRequirements: RawCraftingRequirements[] | null };
+
+/** Indexes every item in items.json (all ~20 containers, not just the 4 we parse recipes from) by
+ * uniquename, keeping only what's needed to resolve a static Item Value: its own @itemvalue when
+ * the dump states one, or its own crafting recipe when it doesn't (see resolveItemValue). */
+function buildItemValueIndex(items: Record<string, unknown>): Map<string, ItemValueEntry> {
+  const index = new Map<string, ItemValueEntry>();
+  for (const [key, value] of Object.entries(items)) {
+    if (key.startsWith("@")) continue;
+    for (const item of asArray(value as RawIndexedItem | RawIndexedItem[])) {
+      if (!item || typeof item !== "object" || !item["@uniquename"]) continue;
+      index.set(item["@uniquename"], {
+        itemValue: item["@itemvalue"] !== undefined ? Number(item["@itemvalue"]) : null,
+        craftingRequirements: item.craftingrequirements ? asArray(item.craftingrequirements) : null,
+      });
+    }
+  }
+  return index;
+}
+
+/**
+ * A material's Item Value is either stated directly (@itemvalue, true for every base/gathered
+ * resource) or has to be derived recursively from its own crafting recipe (true for a handful of
+ * cocina intermediates like butter/alcohol/bread, which only carry a sub-recipe in the dump).
+ * Memoized per fetch-game-data run since the same T4_METALBAR etc. is resolved thousands of times.
+ */
+function resolveItemValue(itemId: string, index: Map<string, ItemValueEntry>, cache: Map<string, number | null>): number | null {
+  const bareId = itemId.replace(/@\d+$/, "");
+  if (cache.has(bareId)) return cache.get(bareId)!;
+  const entry = index.get(bareId);
+  if (!entry) {
+    cache.set(bareId, null);
+    return null;
+  }
+  if (entry.itemValue !== null) {
+    cache.set(bareId, entry.itemValue);
+    return entry.itemValue;
+  }
+  if (entry.craftingRequirements && entry.craftingRequirements.length > 0) {
+    cache.set(bareId, null); // cycle guard while this id is being resolved
+    const cr = pickCraftingRequirements(entry.craftingRequirements);
+    let sum = 0;
+    for (const m of asArray(cr.craftresource ?? [])) {
+      if (/FACTION|QUESTITEM|^UNIQUE_|EVENT/.test(m["@uniquename"])) continue;
+      const sub = resolveItemValue(m["@uniquename"], index, cache);
+      if (sub === null) {
+        cache.set(bareId, null);
+        return null;
+      }
+      sum += sub * Number(m["@count"]);
+    }
+    cache.set(bareId, sum);
+    return sum;
+  }
+  cache.set(bareId, null);
+  return null;
 }
 
 /**
@@ -331,9 +408,22 @@ async function fetchText(url: string): Promise<string> {
   return res.text();
 }
 
+/** Looks each real city up by name in world.json to get its current cluster id -- the exact reverse
+ * of the old hand-maintained id->name table, so a game-side renumber surfaces as a loud "not found
+ * in world.json" error on the next run instead of a silently wrong city. */
+function resolveClusterIds(worldJson: { Index: string; UniqueName: string }[]): Record<string, string> {
+  const clusterIdToCity: Record<string, string> = {};
+  for (const cityName of REAL_CITY_NAMES) {
+    const entry = worldJson.find((w) => w.UniqueName === cityName && /^\d+$/.test(w.Index));
+    if (!entry) throw new Error(`City "${cityName}" not found in world.json -- did the game rename or remove it?`);
+    clusterIdToCity[entry.Index] = cityName;
+  }
+  return clusterIdToCity;
+}
+
 type CitySpecialty = { category: string; city: string; kind: "crafting" | "refining" | "meat"; bonus: number };
 
-async function writeCitySpecialties(xml: string) {
+async function writeCitySpecialties(xml: string, clusterIdToCity: Record<string, string>) {
   const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@" });
   const parsed = parser.parse(xml) as {
     craftingmodifiers: {
@@ -348,7 +438,7 @@ async function writeCitySpecialties(xml: string) {
 
   const specialties: CitySpecialty[] = [];
   for (const location of asArray(parsed.craftingmodifiers.craftinglocation)) {
-    const city = CLUSTER_ID_TO_CITY[location["@clusterid"]];
+    const city = clusterIdToCity[location["@clusterid"]];
     if (!city) continue; // one of the ~140 other clusters (hideouts, islands) -- not needed yet
 
     for (const modifier of asArray(location.craftingmodifier ?? [])) {

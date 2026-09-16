@@ -99,6 +99,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
             />
             <Row k="Score de calidad" v={`${row.qualityScore}/100`} />
             <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row)})`} />
+            <Row k="Item Value (materiales, lote)" v={formatSilver(Number(row.recipe.materialItemValue))} />
             <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
             <Row k="Cuota de mercado" v={`${Math.round(row.marketSharePct * 100)}%`} />
           </dl>
@@ -107,11 +108,16 @@ function RowDetail({ row }: { row: RecipeRowData }) {
               <h5 className="mb-1 font-medium text-foreground">Por calidad</h5>
               <ul className="space-y-0.5">
                 {row.qualityBreakdown.map((q) => (
-                  <li key={q.quality} className={cn("flex items-baseline justify-between gap-3", !q.liquid && "opacity-50")}>
+                  <li key={q.quality} className={cn("flex items-baseline justify-between gap-3", !q.liquid && "opacity-70")}>
                     <span className="truncate">
                       {qualityLabel(q.quality)} ({Math.round(q.weight * 100)}%)
                     </span>
-                    <span className="shrink-0 font-mono tabular-nums text-foreground">
+                    <span
+                      className={cn(
+                        "shrink-0 font-mono tabular-nums text-foreground",
+                        !q.liquid && "underline decoration-dashed decoration-muted-foreground underline-offset-4",
+                      )}
+                    >
                       {q.price !== null ? `${formatSilver(q.price)} plata` : "sin dato"}
                       {!q.liquid && " -- sin liquidez, no cuenta"}
                     </span>

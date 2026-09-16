@@ -1,21 +1,30 @@
 import { ALL_LOCATIONS, aodpBaseUrl, type AodpServer } from "./cities";
 import type { AodpHistoryRow, AodpPriceRow } from "./types";
 
-// AODP rate limits (verified against api-info.html, 2026-09-15): 180 req/min, 300 req/5min.
-// We stay well under both with a single sequential queue plus a fixed minimum gap between
-// requests, and back off exponentially on 429 instead of guessing a retry delay.
-const MIN_GAP_MS = 400; // ~150 req/min ceiling, leaves headroom under the 180/min limit
+// AODP rate limits (verified against albion-online-data.com/api, 2026-09-16): 180 req/min AND
+// 300 req/5min. The 5-minute cap is the one that binds in steady state -- 300/5min is only 60/min
+// sustained, well under the 180/min ceiling. A flat 400ms gap (150/min) satisfies the 1-minute cap
+// but blows through 300 in under 2.5 minutes of continuous fetching, which is exactly what a
+// multi-thousand-item ingest run does. A real sliding-window limiter tracks both windows at once:
+// it lets short bursts run up to 180/min the way a flat gap can't, but never lets the trailing
+// 5-minute count exceed 300, so a long run settles at the true 60/min sustained rate instead of
+// 429ing partway through.
+const LIMIT_PER_MINUTE = 180;
+const WINDOW_1M_MS = 60_000;
+const LIMIT_PER_5MINUTES = 300;
+const WINDOW_5M_MS = 5 * 60_000;
 const MAX_RETRIES = 5;
 const MAX_URL_LENGTH = 4000; // AODP's documented limit is 4096; leave margin for the path+query
 
 const CONTACT = process.env.AODP_CONTACT ?? "unknown";
 const USER_AGENT = `PlataRank/0.1 (+https://github.com/InakiFarinas/platarank; contact: ${CONTACT})`;
 
-let lastRequestAt = 0;
-// All callers -- even ones invoked concurrently via Promise.all -- funnel through this single
-// promise chain, so the MIN_GAP_MS spacing is real regardless of how many logical fetch "streams"
-// are in flight. Without this, concurrent callers each read a stale `lastRequestAt` before any of
-// them updates it and fire in a burst, which is exactly what triggers a 429 storm.
+// Timestamps of every request sent within the trailing 5-minute window (also covers the 1-minute
+// window, which is a subset of it). All callers -- even ones invoked concurrently via Promise.all
+// -- funnel through this single promise chain, so the window is real regardless of how many
+// logical fetch "streams" are in flight; without it, concurrent callers would each check the
+// window before any of them records their own request and fire in a burst.
+const requestTimestamps: number[] = [];
 let queueTail: Promise<void> = Promise.resolve();
 
 function throttledFetch(url: string): Promise<Response> {
@@ -27,10 +36,26 @@ function throttledFetch(url: string): Promise<Response> {
   return result;
 }
 
+async function waitForSlot(): Promise<void> {
+  for (;;) {
+    const now = Date.now();
+    while (requestTimestamps.length > 0 && now - requestTimestamps[0] >= WINDOW_5M_MS) {
+      requestTimestamps.shift();
+    }
+    const countIn1m = requestTimestamps.filter((t) => now - t < WINDOW_1M_MS).length;
+    const countIn5m = requestTimestamps.length;
+    if (countIn1m < LIMIT_PER_MINUTE && countIn5m < LIMIT_PER_5MINUTES) {
+      requestTimestamps.push(now);
+      return;
+    }
+    const bindingWindowMs = countIn5m >= LIMIT_PER_5MINUTES ? WINDOW_5M_MS : WINDOW_1M_MS;
+    const oldestBinding = countIn5m >= LIMIT_PER_5MINUTES ? requestTimestamps[0] : requestTimestamps.find((t) => now - t < WINDOW_1M_MS)!;
+    await sleep(Math.max(bindingWindowMs - (now - oldestBinding) + 10, 10));
+  }
+}
+
 async function doFetch(url: string): Promise<Response> {
-  const wait = MIN_GAP_MS - (Date.now() - lastRequestAt);
-  if (wait > 0) await sleep(wait);
-  lastRequestAt = Date.now();
+  await waitForSlot();
 
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     const res = await fetch(url, {
@@ -104,8 +129,9 @@ export async function fetchHistory(
   return rows;
 }
 
+// YYYY-MM-DD is the documented preferred format (MM-DD-YYYY is also accepted, but not preferred).
 function formatAodpDate(d: Date): string {
   const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
   const dd = String(d.getUTCDate()).padStart(2, "0");
-  return `${mm}-${dd}-${d.getUTCFullYear()}`;
+  return `${d.getUTCFullYear()}-${mm}-${dd}`;
 }

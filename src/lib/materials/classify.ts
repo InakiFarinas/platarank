@@ -27,6 +27,9 @@ const FARM_SUFFIXES = [
 export function classifyMaterial(itemId: string): MaterialCategory {
   if (itemId.includes("_ALCHEMY_EXTRACT_")) return "extract";
   if (itemId.includes("_ALCHEMY_RARE_")) return "artifact";
+  // Runic/soul/relic/avalonian materials in gear recipes (e.g. T4_ARTEFACT_2H_...) -- excluded from
+  // the crafting-fee material count the same way alchemy's rare tonics are (see station-fee.ts).
+  if (itemId.includes("_ARTEFACT_")) return "artifact";
   // Fish sauce is cocina's enrichment ingredient for enchanted meals -- same role as arcane
   // extract for potions, so it gets the same treatment (excluded from the fee, not "farm").
   if (itemId.includes("_FISHSAUCE_")) return "extract";

@@ -16,6 +16,11 @@ export const recipes = pgTable("recipes", {
   batchSize: smallint("batch_size").notNull(),
   craftingFocus: integer("crafting_focus").notNull(),
   materials: jsonb("materials").$type<RecipeMaterial[]>().notNull(),
+  // Sum of every non-artifact material's real @itemvalue (from items.json), each multiplied by its
+  // recipe count -- the static "IV" the game's own crafting-fee formula is built on. Resolved
+  // recursively at build time in fetch-game-data.ts when a material has no stored @itemvalue of its
+  // own (e.g. cocina's butter/alcohol/bread only carry a sub-recipe, not a value). See station-fee.ts.
+  materialItemValue: numeric("material_item_value").notNull().default("0"),
 });
 
 export type Recipe = typeof recipes.$inferSelect;

@@ -1,4 +1,4 @@
-import { craftingStationFeePerBatch, farmStationFeePerBatch, refiningStationFeePerBatch } from "@/lib/formulas/station-fee";
+import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { netSellMultiplier } from "@/lib/formulas/market-tax";
 import { returnRate } from "@/lib/formulas/return-rate";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
@@ -9,6 +9,10 @@ import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import type { Recipe, RecipeMaterial } from "@/lib/db/schema";
 
 const WINDOW_DAYS = 30;
+// A single trade in 30 days still passes `volume > 0` and can carry a fantasy price into the
+// blend. Require the quality to have actually traded on more than a handful of days before it
+// counts as liquid.
+const MIN_LIQUID_DAYS = 3;
 
 export type CityPricePoint = {
   city: string;
@@ -46,7 +50,7 @@ export type RecipeMathParams = {
 export const DEFAULT_PARAMS: RecipeMathParams = {
   buyCities: [...REAL_CITIES],
   sellCities: [...REAL_CITIES, BLACK_MARKET],
-  marketShare: 1,
+  marketShare: 0.1,
   focus: false,
   stationRatePer100Nutrition: 235,
   craftCity: "Brecilien",
@@ -96,7 +100,6 @@ export type RecipeRow = {
 };
 
 export function computeRecipeRow(recipe: Recipe, market: MarketData, params: RecipeMathParams): RecipeRow {
-  const isRefining = recipe.stationType === "refining";
   const isGear = recipe.stationType === "gear";
 
   const spec = getCitySpecialty(recipe.craftingCategory);
@@ -117,7 +120,10 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     );
     const buyQuotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price! }));
     const buyStat = robustStat(buyQuotes, "min");
-    const effectiveCount = m.count * (1 - returnRatePct);
+    // Hard engine rule: artifacts (runic/soul/relic/avalonian, plus faction crests and base mounts,
+    // neither of which this app recipes) never get RRR, regardless of focus or city specialty.
+    const materialReturnRatePct = m.category === "artifact" ? 0 : returnRatePct;
+    const effectiveCount = m.count * (1 - materialReturnRatePct);
     return {
       ...m,
       buyRefPrice: buyStat.value,
@@ -126,12 +132,7 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     };
   });
 
-  const totalMaterialUnits = recipe.materials.reduce((sum, m) => sum + m.count, 0);
-  const feePerBatch = isGear
-    ? craftingStationFeePerBatch(totalMaterialUnits, recipe.tier, recipe.enchant, params.stationRatePer100Nutrition)
-    : isRefining
-      ? refiningStationFeePerBatch(recipe.tier, recipe.enchant, params.stationRatePer100Nutrition)
-      : farmStationFeePerBatch(recipe.materials, params.stationRatePer100Nutrition);
+  const feePerBatch = craftingFeePerBatch(Number(recipe.materialItemValue), params.stationRatePer100Nutrition);
   const feePerUnit = feePerBatch / recipe.batchSize;
 
   const allMaterialsPriced = materials.every((m) => m.costContribution !== null);
@@ -233,7 +234,8 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
     const quotes: CityQuote[] = points.filter((p) => p.price !== null).map((p) => ({ city: p.city, price: p.price! }));
     const stat = robustStat(quotes, "median");
     const volume = points.reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
-    const liquid = volume > 0 && stat.value !== null;
+    const daysWithVolume = Math.max(0, ...points.map((p) => p.daysWithVolume30d));
+    const liquid = volume > 0 && daysWithVolume >= MIN_LIQUID_DAYS && stat.value !== null;
     const weight = params.qualityWeights[quality - 1] ?? 0;
 
     breakdown.push({ quality, weight, price: stat.value, citiesCount: stat.result.kept.length, avgDailyVolume30d: volume, liquid });

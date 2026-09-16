@@ -5,8 +5,6 @@ export type ReturnRateInputs = {
   cityCraftingSpecialty: boolean;
   cityRefiningSpecialty: boolean;
   focus: boolean;
-  /** Whether artifact tiers count toward return rate. Unconfirmed in-game; default true. */
-  artifactsCountTowardReturn?: boolean;
 };
 
 export const BASE_STATION_BONUS = 0.18;
