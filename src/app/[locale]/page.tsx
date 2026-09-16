@@ -24,7 +24,7 @@ export default function HomePage() {
       <p className="mt-3 text-sm text-muted-foreground sm:text-base">
         Ranking de crafteo de Albion Online por <strong className="text-foreground">plata realizable por dia</strong> --
         ganancia unitaria x volumen diario de ventas x la cuota que asumis llevarte -- en vez de margen unitario solo.
-        Cada fila muestra su score de calidad de dato y se puede abrir para ver de donde sale cada numero.
+        Cada fila se puede abrir para ver de donde sale cada numero: precio, ciudad, antiguedad, y que se descarto como outlier.
       </p>
       <ul className="mt-8 grid gap-3 border-t-2 border-double border-border pt-6 sm:grid-cols-2">
         {RUBROS.map((r) => (

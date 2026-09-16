@@ -2,13 +2,11 @@ import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { netSellMultiplier } from "@/lib/formulas/market-tax";
 import { returnRate } from "@/lib/formulas/return-rate";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
-import { computeQualityScore } from "@/lib/formulas/quality-score";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { BASE_QUALITY_WEIGHTS } from "@/lib/quality-mechanics";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import type { Recipe, RecipeMaterial } from "@/lib/db/schema";
 
-const WINDOW_DAYS = 30;
 // A single trade in 30 days still passes `volume > 0` and can carry a fantasy price into the
 // blend. Require the quality to have actually traded on more than a handful of days before it
 // counts as liquid.
@@ -78,7 +76,6 @@ export type RecipeRow = {
   sellRefPrice: number | null;
   sellRefAgeSeconds: number | null;
   sellRefCitiesCount: number;
-  qualityScore: number;
   brecilienCovered: boolean;
   avgDailyVolume30d: number;
   discarded: { city: string; price: number; reason: string }[];
@@ -150,7 +147,6 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     sellRefPrice: sellSide.sellRefPriceGross,
     sellRefAgeSeconds: sellSide.oldestAgeSeconds,
     sellRefCitiesCount: sellSide.citiesCount,
-    qualityScore: sellSide.qualityScore,
     brecilienCovered: sellSide.brecilienCovered,
     avgDailyVolume30d: sellSide.avgDailyVolume30d,
     discarded: sellSide.discarded,
@@ -176,7 +172,6 @@ type SellSide = {
   oldestAgeSeconds: number | null;
   citiesCount: number;
   avgDailyVolume30d: number;
-  qualityScore: number;
   brecilienCovered: boolean;
   discarded: { city: string; price: number; reason: string }[];
   qualityBreakdown: QualityBreakdownEntry[] | null;
@@ -190,25 +185,12 @@ function computeSingleQualitySellSide(itemId: string, market: MarketData, params
 
   const oldestAgeSeconds = oldestAge(points, stat.result.kept.map((q) => q.city));
   const avgDailyVolume30d = points.reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
-  const daysWithVolume30d = Math.max(0, ...points.map((p) => p.daysWithVolume30d));
-  const historicalWeighted = volumeWeightedAverage(points);
-  const deviationFromHistorical =
-    stat.value !== null && historicalWeighted !== null ? Math.abs(stat.value - historicalWeighted) / historicalWeighted : 0;
-
-  const qualityScore = computeQualityScore({
-    oldestQuoteAgeHours: oldestAgeSeconds !== null ? oldestAgeSeconds / 3600 : 9999,
-    citiesQuoted: quotes.length,
-    daysWithVolume: daysWithVolume30d,
-    windowDays: WINDOW_DAYS,
-    deviationFromHistorical,
-  });
 
   return {
     sellRefPriceGross: stat.value,
     oldestAgeSeconds,
     citiesCount: stat.result.kept.length,
     avgDailyVolume30d,
-    qualityScore,
     brecilienCovered: points.some((p) => p.city === "Brecilien" && p.price !== null),
     discarded: stat.result.discarded,
     qualityBreakdown: null,
@@ -247,31 +229,18 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
     }
   }
 
-  // Quality score is driven by Q1 (the bulk of any real crafter's output) since that's the
-  // liquidity/coverage/freshness a ranking decision actually rests on.
+  // Sell reference (age/city-count/discards) for the row detail is driven by Q1, the bulk of any
+  // real crafter's output.
   const q1Points = allPoints.filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
   const q1Quotes: CityQuote[] = q1Points.filter((p) => p.price !== null).map((p) => ({ city: p.city, price: p.price! }));
   const q1Stat = robustStat(q1Quotes, "median");
   const oldestAgeSeconds = oldestAge(q1Points, q1Stat.result.kept.map((q) => q.city));
-  const daysWithVolume30d = Math.max(0, ...q1Points.map((p) => p.daysWithVolume30d));
-  const historicalWeighted = volumeWeightedAverage(q1Points);
-  const deviationFromHistorical =
-    q1Stat.value !== null && historicalWeighted !== null ? Math.abs(q1Stat.value - historicalWeighted) / historicalWeighted : 0;
-
-  const qualityScore = computeQualityScore({
-    oldestQuoteAgeHours: oldestAgeSeconds !== null ? oldestAgeSeconds / 3600 : 9999,
-    citiesQuoted: q1Quotes.length,
-    daysWithVolume: daysWithVolume30d,
-    windowDays: WINDOW_DAYS,
-    deviationFromHistorical,
-  });
 
   return {
     sellRefPriceGross: anyPriced ? sellRefPriceGross : null,
     oldestAgeSeconds,
     citiesCount: q1Stat.result.kept.length,
     avgDailyVolume30d,
-    qualityScore,
     brecilienCovered: q1Points.some((p) => p.city === "Brecilien" && p.price !== null),
     discarded: q1Stat.result.discarded,
     qualityBreakdown: breakdown,
@@ -281,15 +250,4 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
 function oldestAge(points: CityPricePoint[], cities: string[]): number | null {
   const ages = points.filter((p) => cities.includes(p.city) && p.priceAgeSeconds !== null).map((p) => p.priceAgeSeconds!);
   return ages.length > 0 ? Math.max(...ages) : null;
-}
-
-function volumeWeightedAverage(points: CityPricePoint[]): number | null {
-  let weightedSum = 0;
-  let weightTotal = 0;
-  for (const p of points) {
-    if (p.weightedAvgPrice30d === null) continue;
-    weightedSum += p.weightedAvgPrice30d * p.avgDailyVolume30d;
-    weightTotal += p.avgDailyVolume30d;
-  }
-  return weightTotal > 0 ? weightedSum / weightTotal : null;
 }

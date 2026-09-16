@@ -74,7 +74,7 @@
       "headline": { "displayName": "Headline", "purpose": "Page title only, in IM Fell English, e.g. 'Alquimia -- Americas'." },
       "panel-title": { "displayName": "Panel Title", "purpose": "IM Fell English titles of secondary surfaces: the Filtros Sheet's 'Filtros y supuestos', home page rubro card labels." },
       "body": { "displayName": "Body", "purpose": "Subtitles, prose, error/loading copy, in Geist Sans." },
-      "tabular": { "displayName": "Tabular", "purpose": "Every numeric value in Geist Mono with tabular-nums: rank, margin, volume, quality score, plata/dia, derivation figures." },
+      "tabular": { "displayName": "Tabular", "purpose": "Every numeric value in Geist Mono with tabular-nums: rank, margin, volume, plata/dia, derivation figures." },
       "label": { "displayName": "Label", "purpose": "Column headers and stat captions, in Geist Sans." }
     },
     "breakpoints": [
@@ -86,17 +86,9 @@
       "name": "Recipe Row",
       "kind": "custom",
       "refersTo": "row-item",
-      "description": "Full-width toggle button showing rank, name, tier badge, margin/volume stats, quality bar, and the coin-gold plata/dia figure; expands an inline derivation panel on click. Structurally unchanged from the prior world -- only its palette shifted.",
+      "description": "Full-width toggle button showing rank, name, tier badge, margin/volume stats, and the coin-gold plata/dia figure; expands an inline derivation panel on click. Structurally unchanged from the prior world -- only its palette shifted. Desktop only as of the mobile card-view pass; mobile uses the Contract Card instead.",
       "html": "<button class=\"ds-row\"><span class=\"ds-row-rank\">1</span><span class=\"ds-row-name\">Pocion de Vida Mayor <span class=\"ds-badge-tier\">T6.1</span></span><span class=\"ds-row-stat\">+34%<em>margen</em></span><span class=\"ds-row-money\">128k<em>plata/dia</em></span></button>",
       "css": ".ds-row { display: flex; align-items: center; gap: 16px; width: 100%; padding: 10px 12px; background: transparent; border: none; border-bottom: 1px solid oklch(0.8 0.04 65 / 13%); color: oklch(0.92 0.018 75); text-align: left; font-family: 'Geist Sans', ui-sans-serif, sans-serif; transition: background 0.15s; } .ds-row:hover { background: color-mix(in oklch, oklch(0.27 0.022 55) 40%, transparent); } .ds-row:focus-visible { outline: 2px solid oklch(0.78 0.16 68); outline-offset: 2px; } .ds-row-rank { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: oklch(0.67 0.03 65); } .ds-row-name { flex: 1; font-size: 14px; font-weight: 500; } .ds-badge-tier { margin-left: 6px; padding: 1px 6px; border-radius: 5px; background: oklch(0.27 0.022 55); font-family: 'Geist Mono', monospace; font-size: 10px; } .ds-row-stat { text-align: right; font-size: 12px; color: oklch(0.67 0.03 65); font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; } .ds-row-stat em { display: block; font-style: normal; font-size: 10px; } .ds-row-money { text-align: right; font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 16px; color: oklch(0.78 0.16 68); } .ds-row-money em { display: block; font-style: normal; font-size: 10px; color: oklch(0.67 0.03 65); }"
-    },
-    {
-      "name": "Quality Bar",
-      "kind": "custom",
-      "refersTo": "quality-bar-fill",
-      "description": "Thin horizontal bar chip signaling data-quality score strength. Shape/mechanism unchanged from the prior world; the direction contract's proposed wax-seal ink-fill gauge did not ship.",
-      "html": "<span class=\"ds-quality\"><span class=\"ds-quality-track\"><span class=\"ds-quality-fill\" style=\"width:72%\"></span></span><span class=\"ds-quality-score\">72</span></span>",
-      "css": ".ds-quality { display: inline-flex; align-items: center; gap: 6px; } .ds-quality-track { width: 40px; height: 6px; border-radius: 9999px; background: oklch(0.24 0.02 55); overflow: hidden; } .ds-quality-fill { display: block; height: 100%; border-radius: 9999px; background: oklch(0.78 0.16 68); } .ds-quality-score { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-size: 11px; color: oklch(0.67 0.03 65); }"
     },
     {
       "name": "Sticky Ruled Header",
@@ -133,14 +125,15 @@
   ],
   "narrative": {
     "northStar": "The Guild Ledger",
-    "overview": "PlataRank stayed a single-purpose Operate surface -- dark, dense, read one-handed next to the game -- but its chrome was rebuilt as a merchant guild's account-hall noticeboard rather than a trading-floor ticker. The ground shifted from a cool near-black neutral (hue 285) to a warm, candlelit umber (hue ~55-75, OKLCH), and the sticky header, sort-bar dividers, and the home page's rubro divider all now carry a double ruled line (border-double border-b-2 / border-t-2) standing in for a ledger's ruled hairline. IM Fell English, a legible period print face, now carries the page h1 and panel titles (the Filtros Sheet's 'Filtros y supuestos', the rubro card labels); Geist Sans keeps every body/label role and Geist Mono keeps every numeric value untouched -- a deliberate legibility call, not an oversight. A single hand-drawn wax-seal SVG mark sits beside the 'PlataRank' wordmark in the nav and as the home page's masthead.\n\nThe world stops at the frame. The direction contract's thesis -- 'ornament lives in chrome only, data rows stay exactly as dense/unadorned as before' -- holds in the build: the row list, its virtualization, the expandable derivation panel, badges, selects, sheets, and the Quality Bar's bar/track shape are byte-identical in structure to the prior world, restyled only through the same CSS custom properties. The one structural change inside a data row is additive, not decorative: illiquid quality-breakdown prices now carry a dashed underline alongside their existing reduced opacity, so stale/illiquid state reads even in grayscale, not only through alpha.\n\nNote: the direction contract proposed the quality score become 'a wax-seal ink-fill gauge, not a bar.' That did not ship -- the quality bar kept its exact prior bar-and-track shape; only its surrounding palette shifted. This system documents the bar as built, not the gauge as proposed.",
+    "overview": "PlataRank stayed a single-purpose Operate surface -- dark, dense, read one-handed next to the game -- but its chrome was rebuilt as a merchant guild's account-hall noticeboard rather than a trading-floor ticker. The ground shifted from a cool near-black neutral (hue 285) to a warm, candlelit umber (hue ~55-75, OKLCH), and the sticky header, sort-bar dividers, and the home page's rubro divider all now carry a double ruled line (border-double border-b-2 / border-t-2) standing in for a ledger's ruled hairline. IM Fell English, a legible period print face, now carries the page h1 and panel titles (the Filtros Sheet's 'Filtros y supuestos', the rubro card labels); Geist Sans keeps every body/label role and Geist Mono keeps every numeric value untouched -- a deliberate legibility call, not an oversight. A single hand-drawn wax-seal SVG mark sits beside the 'PlataRank' wordmark in the nav and as the home page's masthead.\n\nThe world stops at the frame. The direction contract's thesis -- 'ornament lives in chrome only, data rows stay exactly as dense/unadorned as before' -- holds in the build: the row list, its virtualization, the expandable derivation panel, badges, selects, and sheets are byte-identical in structure to the prior world, restyled only through the same CSS custom properties. The one structural change inside a data row is additive, not decorative: illiquid quality-breakdown prices now carry a dashed underline alongside their existing reduced opacity, so stale/illiquid state reads even in grayscale, not only through alpha.\n\nNote: the direction contract proposed the data-quality score become 'a wax-seal ink-fill gauge, not a bar.' A plain bar shipped first, a wax-seal gauge shipped later on mobile only, and then the score was removed entirely, project-wide, at explicit user request -- no bar, no gauge, no score anywhere in the UI anymore. The signals it summarized (city coverage, data age, discarded outliers) are still visible individually in the derivation panel.",
     "keyCharacteristics": [
       "Dark-only \"guild ground\" -- warm oak/umber (hue ~55-75), replacing the old cool-zinc neutral; no light theme exists or is planned.",
       "One accent color, unchanged in value, now doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure and active sort state.",
       "IM Fell English carries headlines and panel titles only; Geist Sans stays on body/labels; Geist Mono stays untouched on every number.",
       "Double ruled hairlines (border-double border-b-2) mark every major chrome divider -- header, sort-bar, home-page rubro divider.",
       "Stale/illiquid data is now marked by line form (dashed underline) in addition to color/alpha, not by color alone.",
-      "Data-row density, the row+expandable-detail interaction, and the Quality Bar's shape are unchanged from the prior world."
+      "Data-row density and the row+expandable-detail interaction are unchanged from the prior world.",
+      "The 0-100 data-quality score (bar and, later, mobile wax-seal gauge) was removed project-wide at explicit user request; no synthesized quality score exists anywhere in the UI."
     ],
     "rules": [
       { "name": "The One Coin Rule", "body": "The accent is rationed to the plata/dia figure and active sort state (carried forward unchanged from the prior world). A retry button, a badge, or a nav item never carries it, except the single wax-seal wordmark mark.", "section": "colors" },
@@ -155,7 +148,7 @@
       "Do render every quantity in Geist Mono with tabular-nums; every name/label in Geist Sans.",
       "Do use a double ruled line (border-double border-b-2/border-t-2) for structural, once-per-surface chrome dividers; keep ordinary row separators as plain 1px hairlines.",
       "Do mark stale/illiquid values with both reduced opacity and a dashed underline (the Line-Not-Hue Rule), so state survives grayscale.",
-      "Do keep new ranked-list surfaces on the row + expandable-detail pattern with density and the Quality Bar's existing bar/track shape untouched."
+      "Do keep new ranked-list surfaces on the row + expandable-detail pattern with density untouched."
     ],
     "donts": [
       "Don't introduce a light theme variant; dark-only is a confirmed product decision (<html class=\"dark\"> is hardcoded).",
@@ -163,8 +156,7 @@
       "Don't add box-shadows or hard-offset shadows for elevation or \"medieval\" flavor; step to the next tonal surface or a hairline/double-rule border instead.",
       "Don't spread coin-gold onto buttons, nav text, or non-ranking UI beyond the wax-seal mark.",
       "Don't let chrome ornament (heading face, double rules) migrate into data rows; row density and the row's internal typography stay exactly as before.",
-      "Don't treat the quality gauge as a wax-seal ink-fill device; the build kept the plain bar/track shape -- style any future quality-signal change as a palette change, not a shape invention."
+      "Don't reintroduce a synthesized 0-100 data-quality score in any shape (bar, gauge, seal) -- it was tried twice and removed both times at explicit user request; the derivation panel's individual signals are the source of truth for data trust now."
     ]
   }
 }
-</content>

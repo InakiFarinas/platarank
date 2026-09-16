@@ -1,17 +1,8 @@
-import Link from "next/link";
 import { eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates } from "@/lib/db/schema";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
-import { WaxSeal } from "@/components/icons/wax-seal";
-
-const NAV_ITEMS = [
-  { href: "/es/alquimia", label: "Alquimia" },
-  { href: "/es/refinado", label: "Refinado" },
-  { href: "/es/cocina", label: "Cocina" },
-  { href: "/es/equipo", label: "Equipo" },
-] as const;
 
 export async function RecipePage({
   stationType,
@@ -57,22 +48,13 @@ export async function RecipePage({
 
   return (
     <main className="mx-auto max-w-5xl px-3 py-4 sm:px-6 sm:py-8">
-      <header className="sticky top-0 z-20 -mx-3 mb-4 border-b-2 border-double border-border bg-background/95 px-3 py-3 backdrop-blur sm:-mx-6 sm:mb-6 sm:px-6">
-        <nav className="mb-2 flex items-center gap-4 text-xs">
-          <Link href="/es" className="flex items-center gap-1.5 font-medium text-foreground hover:text-money">
-            <WaxSeal className="h-3.5 w-3.5 text-money" />
-            PlataRank
-          </Link>
-          {NAV_ITEMS.map((item) => (
-            <Link key={item.href} href={item.href} className="text-muted-foreground hover:text-foreground">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <h1 className="font-heading text-xl tracking-tight sm:text-2xl">{title}</h1>
-        <p className="text-sm text-muted-foreground">{description}</p>
-      </header>
-      <RecipeExplorer recipes={recipeRows} marketByItem={marketByItem} stationType={stationType} />
+      <RecipeExplorer
+        recipes={recipeRows}
+        marketByItem={marketByItem}
+        stationType={stationType}
+        title={title}
+        description={description}
+      />
       <Footer />
     </main>
   );

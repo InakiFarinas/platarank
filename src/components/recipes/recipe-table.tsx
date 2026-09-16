@@ -7,12 +7,11 @@ import { RecipeRowItem } from "./recipe-row";
 import type { RecipeRow } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
 
-type SortKey = "margin" | "volume" | "quality" | "platinumPerDay";
+type SortKey = "margin" | "volume" | "platinumPerDay";
 
 const SORT_ACCESSORS: Record<SortKey, (r: RecipeRow) => number> = {
   margin: (r) => r.marginPct ?? -Infinity,
   volume: (r) => r.avgDailyVolume30d,
-  quality: (r) => r.qualityScore,
   platinumPerDay: (r) => r.platinumPerDay ?? -Infinity,
 };
 
@@ -29,7 +28,11 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
   const virtualizer = useVirtualizer({
     count: sortedRows.length,
     getScrollElement: () => scrollRef.current,
-    estimateSize: () => 52,
+    // Mobile renders a taller contract card, desktop the old 52px dense row; measureElement
+    // corrects the real size right after mount, so this constant only has to avoid a big jump --
+    // it must NOT depend on window/viewport, or the SSR guess (always 52) would mismatch the
+    // client's first render and trip a hydration error on the sizer's inline height style.
+    estimateSize: () => 96,
     overscan: 12,
   });
 
@@ -56,7 +59,6 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
         <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/dia" />
         <MobileSortChip active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" />
         <MobileSortChip active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Volumen" />
-        <MobileSortChip active={sortKey === "quality"} desc={desc} onClick={() => toggleSort("quality")} label="Calidad" />
       </div>
 
       <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
@@ -65,7 +67,6 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
         <div className="flex items-center gap-6">
           <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" width="w-12" />
           <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/dia" width="w-12" />
-          <SortHeader active={sortKey === "quality"} desc={desc} onClick={() => toggleSort("quality")} label="Calidad" width="w-16" left />
           <SortHeader
             active={sortKey === "platinumPerDay"}
             desc={desc}

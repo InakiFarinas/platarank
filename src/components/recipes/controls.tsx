@@ -1,12 +1,10 @@
 "use client";
 
 import { SlidersHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -40,13 +38,16 @@ export function Controls({
     <Sheet>
       <SheetTrigger
         render={
-          <Button variant="outline" size="sm" className="gap-1.5">
-            <SlidersHorizontal className="h-3.5 w-3.5" />
-            Filtros
-          </Button>
+          <button
+            type="button"
+            aria-label="Filtros y supuestos"
+            className="fixed bottom-4 right-4 z-30 flex h-13 w-13 items-center justify-center rounded-full border-2 border-double border-border bg-card text-foreground transition-colors hover:bg-accent/60 sm:bottom-6 sm:right-6"
+          >
+            <SlidersHorizontal className="h-5 w-5" />
+          </button>
         }
       />
-      <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto">
+      <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto border-t-2 border-double">
         <SheetHeader>
           <SheetTitle className="font-heading text-base">Filtros y supuestos</SheetTitle>
         </SheetHeader>
@@ -86,25 +87,11 @@ export function Controls({
             />
           </div>
 
-          <div>
-            <Label className="mb-1.5 block">Ciudad donde craftea</Label>
-            <p className="mb-2 text-xs text-muted-foreground">
-              Cada receta tiene como mucho una ciudad con especialidad para su categoría (potion → Brecilien, wood →
-              Fort Sterling, sword → Thetford, etc.) -- si coincide con esta, aplica el bonus de +15%/+40%.
-            </p>
-            <Select value={params.craftCity} onValueChange={(city) => onParamsChange({ ...params, craftCity: city as Location })}>
-              <SelectTrigger className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {REAL_CITIES.map((city) => (
-                  <SelectItem key={city} value={city}>
-                    {city}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+          <p className="text-xs text-muted-foreground">
+            El escudo junto a la navegación elige dónde craftea: cada receta tiene como mucho una ciudad con
+            especialidad para su categoría (potion → Brecilien, wood → Fort Sterling, sword → Thetford, etc.) -- si
+            coincide, aplica el bonus de +15%/+40%.
+          </p>
 
           {stationType === "gear" && (
             <QualityWeightsField weights={params.qualityWeights} onChange={(w) => onParamsChange({ ...params, qualityWeights: w })} />
