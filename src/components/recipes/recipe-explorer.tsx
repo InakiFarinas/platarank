@@ -3,24 +3,24 @@
 import { useMemo, useState } from "react";
 import { RecipeTable } from "./recipe-table";
 import { RecipeHeader } from "./recipe-header";
-import { Controls, type FilterParams } from "./controls";
+import { Controls, DEFAULT_FILTERS, type FilterParams } from "./controls";
 import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type RecipeMathParams, type RecipeRow } from "@/lib/recipe-math";
 import { getCitySpecialty, type CitySpecialty } from "@/lib/city-specialties";
 import type { Recipe } from "@/lib/db/schema";
 import type { Location } from "@/lib/aodp/cities";
 
-const DEFAULT_FILTERS: FilterParams = { maxAgeHours: null, minVolume: null };
-
 export function RecipeExplorer({
   recipes,
   marketByItem,
-  stationType,
+  initialRows,
   title,
   description,
 }: {
   recipes: Recipe[];
   marketByItem: Record<string, CityPricePoint[]>;
-  stationType: "alchemy" | "refining" | "cooking" | "gear";
+  /** Pre-reduced with DEFAULT_PARAMS on the server -- reused as-is until the player changes a
+   * control, so first paint skips the client-side recompute over every recipe. */
+  initialRows: RecipeRow[];
   title: string;
   description: string;
 }) {
@@ -29,7 +29,10 @@ export function RecipeExplorer({
 
   const market = useMemo(() => new Map(Object.entries(marketByItem)), [marketByItem]);
 
-  const allRows = useMemo(() => recipes.map((r) => computeRecipeRow(r, market, params)), [recipes, market, params]);
+  const allRows = useMemo(
+    () => (params === DEFAULT_PARAMS ? initialRows : recipes.map((r) => computeRecipeRow(r, market, params))),
+    [recipes, market, params, initialRows],
+  );
 
   const rows = useMemo(() => applyFilters(allRows, filters), [allRows, filters]);
 
@@ -60,13 +63,7 @@ export function RecipeExplorer({
         Mostrando {rows.length} de {allRows.length} recetas.
       </p>
       <RecipeTable rows={rows} />
-      <Controls
-        params={params}
-        onParamsChange={setParams}
-        filters={filters}
-        onFiltersChange={setFilters}
-        stationType={stationType}
-      />
+      <Controls params={params} onParamsChange={setParams} filters={filters} onFiltersChange={setFilters} />
     </div>
   );
 }

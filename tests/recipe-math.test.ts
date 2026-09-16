@@ -245,12 +245,9 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     materialItemValue: "2000",
   };
 
-  test("el precio de venta pondera por calidad usando qualityWeights", () => {
+  test("el precio de venta pondera las 5 calidades por los pesos base del juego (68.9/25/5/1/0.1%)", () => {
     const data = market({
-      T6_MAIN_SWORD: [
-        point("Caerleon", 1000, 100, 1),
-        point("Caerleon", 1000, 100, 2), // Q1/Q2 cotizan casi igual, tal como describe el brief
-      ],
+      T6_MAIN_SWORD: [1, 2, 3, 4, 5].map((q) => point("Caerleon", 1000, 100, q)),
       T6_METALBAR: [point("Caerleon", 10)],
       T6_LEATHER: [point("Caerleon", 10)],
     });
@@ -258,9 +255,9 @@ describe("computeRecipeRow (armas y armaduras)", () => {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      qualityWeights: [0.7, 0.3, 0, 0, 0],
     });
-    // 0.7*1000 + 0.3*1000 = 1000 (ambas calidades al mismo precio)
+    // Los pesos base suman 1.0, asi que con las 5 calidades liquidas al mismo precio el resultado
+    // pesado es ese mismo precio, sin importar la distribucion exacta entre calidades.
     expect(row.sellRefPrice).toBeCloseTo(1000, 5);
     expect(row.qualityBreakdown).not.toBeNull();
     expect(row.qualityBreakdown!.find((q) => q.quality === 1)!.liquid).toBe(true);
@@ -279,13 +276,12 @@ describe("computeRecipeRow (armas y armaduras)", () => {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      qualityWeights: [0.9, 0, 0, 0, 0.1],
     });
     const q5 = row.qualityBreakdown!.find((q) => q.quality === 5)!;
     expect(q5.liquid).toBe(false);
     expect(q5.price).toBe(139867); // el precio se ve en el detalle, pero no entra al calculo
-    // 0.9*1000 + 0.1*(excluido) = 900, NO 0.9*1000 + 0.1*139867
-    expect(row.sellRefPrice).toBeCloseTo(900, 5);
+    // 0.689*1000 (peso base de Q1) -- Q5 excluido no cuenta ni su 0.1% de peso
+    expect(row.sellRefPrice).toBeCloseTo(689, 5);
   });
 
   test("una calidad con una sola venta en 30 dias (volumen > 0 pero pocos dias) tampoco cuenta como liquida", () => {
@@ -299,11 +295,10 @@ describe("computeRecipeRow (armas y armaduras)", () => {
       ...DEFAULT_PARAMS,
       sellCities: ["Caerleon"],
       buyCities: ["Caerleon"],
-      qualityWeights: [0.9, 0, 0, 0, 0.1],
     });
     const q5 = row.qualityBreakdown!.find((q) => q.quality === 5)!;
     expect(q5.liquid).toBe(false);
-    expect(row.sellRefPrice).toBeCloseTo(900, 5);
+    expect(row.sellRefPrice).toBeCloseTo(689, 5);
   });
 
   test("sin ninguna calidad liquida, hasData es false", () => {

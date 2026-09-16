@@ -15,7 +15,7 @@ export default function EquipoPage() {
     <RecipePage
       stationType="gear"
       title="Armas y armaduras -- Americas"
-      description="Ranking por plata realizable por dia crafteando equipo. El precio de venta pondera las 5 calidades por tu distribucion asumida, y descarta las que no tienen liquidez real. Tocá una fila para ver de dónde sale cada número."
+      description="Ranking por plata realizable por dia crafteando equipo. El precio de venta pondera las 5 calidades por los pesos base del juego, y descarta las que no tienen liquidez real. Tocá una fila para ver de dónde sale cada número."
     />
   );
 }

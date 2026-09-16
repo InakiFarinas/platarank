@@ -38,10 +38,6 @@ export type RecipeMathParams = {
    * via each recipe's own craftingCategory (potion -> Brecilien, wood -> Fort Sterling, sword ->
    * Thetford, etc. -- see src/lib/city-specialties.ts, parsed from craftingmodifiers.xml). */
   craftCity: Location;
-  /** Gear only (Q1..Q5). Defaults to the base CraftingQualityChances weights; the real function
-   * that shifts these with focus/food/Destiny Board isn't published, so this is the player's own
-   * observed-rates override, not a promise. */
-  qualityWeights: readonly number[];
   /** Rows whose sell reference is older than this are still shown but flagged; filtering happens in the UI layer. */
 };
 
@@ -52,7 +48,6 @@ export const DEFAULT_PARAMS: RecipeMathParams = {
   focus: false,
   stationRatePer100Nutrition: 235,
   craftCity: "Brecilien",
-  qualityWeights: BASE_QUALITY_WEIGHTS,
 };
 
 export type MaterialLine = RecipeMaterial & {
@@ -76,7 +71,6 @@ export type RecipeRow = {
   sellRefPrice: number | null;
   sellRefAgeSeconds: number | null;
   sellRefCitiesCount: number;
-  brecilienCovered: boolean;
   avgDailyVolume30d: number;
   discarded: { city: string; price: number; reason: string }[];
   returnRatePct: number;
@@ -147,7 +141,6 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     sellRefPrice: sellSide.sellRefPriceGross,
     sellRefAgeSeconds: sellSide.oldestAgeSeconds,
     sellRefCitiesCount: sellSide.citiesCount,
-    brecilienCovered: sellSide.brecilienCovered,
     avgDailyVolume30d: sellSide.avgDailyVolume30d,
     discarded: sellSide.discarded,
     returnRatePct,
@@ -172,7 +165,6 @@ type SellSide = {
   oldestAgeSeconds: number | null;
   citiesCount: number;
   avgDailyVolume30d: number;
-  brecilienCovered: boolean;
   discarded: { city: string; price: number; reason: string }[];
   qualityBreakdown: QualityBreakdownEntry[] | null;
 };
@@ -191,7 +183,6 @@ function computeSingleQualitySellSide(itemId: string, market: MarketData, params
     oldestAgeSeconds,
     citiesCount: stat.result.kept.length,
     avgDailyVolume30d,
-    brecilienCovered: points.some((p) => p.city === "Brecilien" && p.price !== null),
     discarded: stat.result.discarded,
     qualityBreakdown: null,
   };
@@ -218,7 +209,7 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
     const volume = points.reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
     const daysWithVolume = Math.max(0, ...points.map((p) => p.daysWithVolume30d));
     const liquid = volume > 0 && daysWithVolume >= MIN_LIQUID_DAYS && stat.value !== null;
-    const weight = params.qualityWeights[quality - 1] ?? 0;
+    const weight = BASE_QUALITY_WEIGHTS[quality - 1] ?? 0;
 
     breakdown.push({ quality, weight, price: stat.value, citiesCount: stat.result.kept.length, avgDailyVolume30d: volume, liquid });
 
@@ -241,7 +232,6 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
     oldestAgeSeconds,
     citiesCount: q1Stat.result.kept.length,
     avgDailyVolume30d,
-    brecilienCovered: q1Points.some((p) => p.city === "Brecilien" && p.price !== null),
     discarded: q1Stat.result.discarded,
     qualityBreakdown: breakdown,
   };

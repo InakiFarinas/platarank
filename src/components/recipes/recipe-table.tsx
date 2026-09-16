@@ -7,11 +7,13 @@ import { RecipeRowItem } from "./recipe-row";
 import type { RecipeRow } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
 
-type SortKey = "margin" | "volume" | "platinumPerDay";
+type SortKey = "margin" | "volume" | "cost" | "sellPrice" | "platinumPerDay";
 
 const SORT_ACCESSORS: Record<SortKey, (r: RecipeRow) => number> = {
   margin: (r) => r.marginPct ?? -Infinity,
   volume: (r) => r.avgDailyVolume30d,
+  cost: (r) => r.costPerUnit ?? -Infinity,
+  sellPrice: (r) => r.sellRefPrice ?? -Infinity,
   platinumPerDay: (r) => r.platinumPerDay ?? -Infinity,
 };
 
@@ -64,6 +66,11 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
       <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
         <span className="w-8 shrink-0">#</span>
         <span className="flex-1">Ítem</span>
+        <div className="hidden items-center gap-6 xl:flex">
+          <SortHeader active={sortKey === "cost"} desc={desc} onClick={() => toggleSort("cost")} label="Costo" width="w-14" />
+          <SortHeader active={sortKey === "sellPrice"} desc={desc} onClick={() => toggleSort("sellPrice")} label="Precio venta" width="w-20" />
+          <span className="w-24 shrink-0">Ciudad bono</span>
+        </div>
         <div className="flex items-center gap-6">
           <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" width="w-12" />
           <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/dia" width="w-12" />
@@ -114,13 +121,15 @@ function MobileSortChip({
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
       className={cn(
-        "flex shrink-0 items-center gap-1 rounded-full border border-border px-2.5 py-1 text-xs transition-colors",
+        "relative flex shrink-0 items-center gap-1 rounded-full border border-border px-2.5 py-1 text-xs transition-colors after:absolute after:-inset-y-2.5 after:inset-x-0 after:content-['']",
         active ? "border-money/50 bg-money/10 text-money" : "text-muted-foreground",
       )}
     >
       {label}
       <Icon className="h-3 w-3" />
+      {active && <span className="sr-only">, orden {desc ? "descendente" : "ascendente"}</span>}
     </button>
   );
 }
@@ -145,6 +154,7 @@ function SortHeader({
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
       className={cn(
         "flex items-center gap-1 transition-colors hover:text-foreground",
         left ? "justify-start" : "justify-end",
@@ -155,6 +165,7 @@ function SortHeader({
       {left && <Icon className="h-3 w-3" />}
       {label}
       {!left && <Icon className="h-3 w-3" />}
+      {active && <span className="sr-only">, orden {desc ? "descendente" : "ascendente"}</span>}
     </button>
   );
 }

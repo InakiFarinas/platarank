@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { SlidersHorizontal } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -8,25 +9,25 @@ import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
-import type { RecipeMathParams } from "@/lib/recipe-math";
+import { DEFAULT_PARAMS, type RecipeMathParams } from "@/lib/recipe-math";
 
 export type FilterParams = {
   maxAgeHours: number | null;
   minVolume: number | null;
 };
 
+export const DEFAULT_FILTERS: FilterParams = { maxAgeHours: null, minVolume: null };
+
 export function Controls({
   params,
   onParamsChange,
   filters,
   onFiltersChange,
-  stationType,
 }: {
   params: RecipeMathParams;
   onParamsChange: (params: RecipeMathParams) => void;
   filters: FilterParams;
   onFiltersChange: (filters: FilterParams) => void;
-  stationType: "alchemy" | "refining" | "cooking" | "gear";
 }) {
   function toggleCity(key: "buyCities" | "sellCities", city: Location, checked: boolean) {
     const current = params[key];
@@ -53,82 +54,97 @@ export function Controls({
         </SheetHeader>
 
         <div className="flex flex-col gap-6 px-4 pb-6">
-          <CitySection
-            title="Comprar materiales en"
-            cities={REAL_CITIES}
-            selected={params.buyCities}
-            onToggle={(city, checked) => toggleCity("buyCities", city, checked)}
-          />
+          <section className="flex flex-col gap-6">
+            <h2 className="font-heading text-sm text-muted-foreground">Supuestos de cálculo</h2>
 
-          <CitySection
-            title="Vender el ítem en"
-            cities={REAL_CITIES}
-            selected={params.sellCities}
-            onToggle={(city, checked) => toggleCity("sellCities", city, checked)}
-            extra={{
-              label: "Black Market",
-              checked: params.sellCities.includes(BLACK_MARKET),
-              onToggle: (checked) => toggleCity("sellCities", BLACK_MARKET, checked),
-              note: "Solo órdenes de compra -- vendés contra la oferta más alta, sin garantía de que siga ahí.",
-            }}
-          />
-
-          <Separator />
-
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <Label htmlFor="focus-switch">Foco activado</Label>
-              <p className="text-xs text-muted-foreground">+59% de retorno de materiales.</p>
-            </div>
-            <Switch
-              id="focus-switch"
-              checked={params.focus}
-              onCheckedChange={(checked) => onParamsChange({ ...params, focus: checked })}
+            <CitySection
+              title="Comprar materiales en"
+              cities={REAL_CITIES}
+              selected={params.buyCities}
+              onToggle={(city, checked) => toggleCity("buyCities", city, checked)}
             />
-          </div>
 
-          <p className="text-xs text-muted-foreground">
-            El escudo junto a la navegación elige dónde craftea: cada receta tiene como mucho una ciudad con
-            especialidad para su categoría (potion → Brecilien, wood → Fort Sterling, sword → Thetford, etc.) -- si
-            coincide, aplica el bonus de +15%/+40%.
-          </p>
+            <CitySection
+              title="Vender el ítem en"
+              cities={REAL_CITIES}
+              selected={params.sellCities}
+              onToggle={(city, checked) => toggleCity("sellCities", city, checked)}
+              extra={{
+                label: "Black Market",
+                checked: params.sellCities.includes(BLACK_MARKET),
+                onToggle: (checked) => toggleCity("sellCities", BLACK_MARKET, checked),
+                note: "Solo órdenes de compra -- vendés contra la oferta más alta, sin garantía de que siga ahí.",
+              }}
+            />
 
-          {stationType === "gear" && (
-            <QualityWeightsField weights={params.qualityWeights} onChange={(w) => onParamsChange({ ...params, qualityWeights: w })} />
-          )}
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <Label htmlFor="focus-switch">Foco activado</Label>
+                <p className="text-xs text-muted-foreground">+59% de retorno de materiales.</p>
+              </div>
+              <Switch
+                id="focus-switch"
+                checked={params.focus}
+                onCheckedChange={(checked) => onParamsChange({ ...params, focus: checked })}
+              />
+            </div>
 
-          <NumberField
-            label="Cuota de mercado (%)"
-            value={Math.round(params.marketShare * 100)}
-            min={1}
-            max={100}
-            onChange={(v) => v !== null && onParamsChange({ ...params, marketShare: v / 100 })}
-          />
+            <p className="text-xs text-muted-foreground">
+              El escudo junto a la navegación elige dónde craftea: cada receta tiene como mucho una ciudad con
+              especialidad para su categoría (potion → Brecilien, wood → Fort Sterling, sword → Thetford, etc.) -- si
+              coincide, aplica el bonus de +15%/+40%.
+            </p>
 
-          <NumberField
-            label="Tarifa de estación (por 100 nutrición)"
-            value={params.stationRatePer100Nutrition}
-            min={0}
-            onChange={(v) => v !== null && onParamsChange({ ...params, stationRatePer100Nutrition: v })}
-          />
+            <NumberField
+              label="Cuota de mercado (%)"
+              value={Math.round(params.marketShare * 100)}
+              min={1}
+              max={100}
+              onChange={(v) => v !== null && onParamsChange({ ...params, marketShare: v / 100 })}
+            />
+
+            <NumberField
+              label="Tarifa de estación (por 100 nutrición)"
+              value={params.stationRatePer100Nutrition}
+              min={0}
+              onChange={(v) => v !== null && onParamsChange({ ...params, stationRatePer100Nutrition: v })}
+            />
+          </section>
 
           <Separator />
 
-          <NumberField
-            label="Antigüedad máxima del dato (horas)"
-            placeholder="sin límite"
-            value={filters.maxAgeHours}
-            min={0}
-            onChange={(v) => onFiltersChange({ ...filters, maxAgeHours: v })}
-          />
+          <section className="flex flex-col gap-6">
+            <h2 className="font-heading text-sm text-muted-foreground">Filtros de listado</h2>
 
-          <NumberField
-            label="Volumen mínimo diario"
-            placeholder="sin mínimo"
-            value={filters.minVolume}
-            min={0}
-            onChange={(v) => onFiltersChange({ ...filters, minVolume: v })}
-          />
+            <NumberField
+              label="Antigüedad máxima del dato (horas)"
+              placeholder="sin límite"
+              value={filters.maxAgeHours}
+              min={0}
+              onChange={(v) => onFiltersChange({ ...filters, maxAgeHours: v })}
+            />
+
+            <NumberField
+              label="Volumen mínimo diario"
+              placeholder="sin mínimo"
+              value={filters.minVolume}
+              min={0}
+              onChange={(v) => onFiltersChange({ ...filters, minVolume: v })}
+            />
+          </section>
+
+          <Separator />
+
+          <button
+            type="button"
+            onClick={() => {
+              onParamsChange(DEFAULT_PARAMS);
+              onFiltersChange(DEFAULT_FILTERS);
+            }}
+            className="self-start text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
+          >
+            Restaurar valores por defecto
+          </button>
         </div>
       </SheetContent>
     </Sheet>
@@ -172,53 +188,6 @@ function CitySection({
   );
 }
 
-const QUALITY_LABELS = ["Q1 Normal", "Q2 Bueno", "Q3 Excepcional", "Q4 Excelente", "Q5 Obra maestra"];
-
-function QualityWeightsField({
-  weights,
-  onChange,
-}: {
-  weights: readonly number[];
-  onChange: (weights: number[]) => void;
-}) {
-  const total = weights.reduce((sum, w) => sum + w, 0);
-  return (
-    <div>
-      <Label className="mb-1.5 block">Distribución de calidad al craftear (%)</Label>
-      <p className="mb-2 text-xs text-muted-foreground">
-        Por defecto son los pesos base del juego para foco/comida/nodos en cero (68.9/25/5/1/0.1%) -- la función real
-        con la que suben no está publicada. La estación de crafteo SÍ te muestra tus porcentajes exactos (ícono de
-        info cerca del toggle de foco, o al pasar el mouse sobre la barra de calidades) -- cargalos acá para tu spec
-        y comida actuales.
-      </p>
-      <div className="grid grid-cols-5 gap-2">
-        {QUALITY_LABELS.map((label, i) => (
-          <div key={label}>
-            <Input
-              type="number"
-              inputMode="decimal"
-              min={0}
-              max={100}
-              value={Math.round(weights[i] * 1000) / 10}
-              onChange={(e) => {
-                const parsed = Number(e.target.value);
-                if (Number.isNaN(parsed)) return;
-                const next = [...weights];
-                next[i] = parsed / 100;
-                onChange(next);
-              }}
-            />
-            <p className="mt-1 text-center text-[11px] text-muted-foreground">{label.split(" ")[0]}</p>
-          </div>
-        ))}
-      </div>
-      {Math.abs(total - 1) > 0.01 && (
-        <p className="mt-1 text-xs text-muted-foreground">Suma actual: {Math.round(total * 100)}% (no hace falta que sea 100%).</p>
-      )}
-    </div>
-  );
-}
-
 function NumberField({
   label,
   value,
@@ -234,10 +203,14 @@ function NumberField({
   max?: number;
   placeholder?: string;
 }) {
+  const id = useId();
   return (
     <div>
-      <Label className="mb-1.5 block">{label}</Label>
+      <Label htmlFor={id} className="mb-1.5 block">
+        {label}
+      </Label>
       <Input
+        id={id}
         type="number"
         inputMode="numeric"
         value={value ?? ""}

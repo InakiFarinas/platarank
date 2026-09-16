@@ -1,7 +1,7 @@
 import { eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates } from "@/lib/db/schema";
-import type { CityPricePoint } from "@/lib/recipe-math";
+import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint } from "@/lib/recipe-math";
 import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
 
 export async function RecipePage({
@@ -46,12 +46,19 @@ export async function RecipePage({
     (marketByItem[a.itemId] ??= []).push(point);
   }
 
+  // Reduced with DEFAULT_PARAMS once here (server, at the ISR revalidation cadence) instead of in
+  // every visitor's browser on hydration -- for /equipo's ~5,632 rows x 5 qualities that recompute
+  // was measured at 10-20+ seconds on first paint. The client only re-runs computeRecipeRow itself
+  // once the player actually changes a control away from the defaults.
+  const market = new Map(Object.entries(marketByItem));
+  const initialRows = recipeRows.map((r) => computeRecipeRow(r, market, DEFAULT_PARAMS));
+
   return (
-    <main className="mx-auto max-w-5xl px-3 py-4 sm:px-6 sm:py-8">
+    <main className="mx-auto max-w-[1600px] px-3 py-4 sm:px-6 sm:py-8 lg:px-8">
       <RecipeExplorer
         recipes={recipeRows}
         marketByItem={marketByItem}
-        stationType={stationType}
+        initialRows={initialRows}
         title={title}
         description={description}
       />

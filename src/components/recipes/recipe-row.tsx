@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown, Droplet, ScrollText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -32,6 +32,7 @@ export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number 
  * as before per the Guild Ledger world's "ornament in chrome only" constraint. */
 function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
   const [open, setOpen] = useState(false);
+  const detailId = useId();
   const { recipe } = row;
 
   return (
@@ -39,6 +40,8 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls={detailId}
         className="flex w-full items-center gap-4 px-3 py-2 text-left transition-colors hover:bg-accent/40"
       >
         <div className="w-8 shrink-0">
@@ -65,6 +68,12 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
           )}
         </div>
 
+        <div className="hidden items-center justify-end gap-6 xl:flex">
+          <Stat label="costo" value={row.costPerUnit !== null ? formatSilver(row.costPerUnit) : "--"} mono />
+          <Stat label="precio venta" value={row.sellRefPrice !== null ? formatSilver(row.sellRefPrice) : "--"} mono />
+          <Stat label="ciudad bono" value={row.specialtyCity ?? "--"} />
+        </div>
+
         <div className="flex items-center justify-end gap-6">
           <Stat label="margen" value={formatPercent(row.marginPct)} mono />
           <Stat label="vol/dia" value={formatSilver(row.avgDailyVolume30d)} mono />
@@ -74,7 +83,11 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
         </div>
       </button>
 
-      {open && <RowDetail row={row} />}
+      {open && (
+        <div id={detailId}>
+          <RowDetail row={row} />
+        </div>
+      )}
     </div>
   );
 }
@@ -150,13 +163,18 @@ function ContractCard({ row }: { row: RecipeRowData }) {
 function QualityGems({ breakdown }: { breakdown: QualityBreakdownEntry[] }) {
   return (
     <div className="flex items-center gap-1">
-      {breakdown.map((q) => (
-        <span
-          key={q.quality}
-          title={`${qualityLabel(q.quality)}${q.liquid ? "" : " -- sin liquidez, no cuenta"}`}
-          className={cn("h-2 w-2 rotate-45", q.liquid && q.price !== null ? "bg-money" : "bg-muted-foreground/30")}
-        />
-      ))}
+      {breakdown.map((q) => {
+        const label = `${qualityLabel(q.quality)}${q.liquid ? "" : " -- sin liquidez, no cuenta"}`;
+        return (
+          <span
+            key={q.quality}
+            role="img"
+            aria-label={label}
+            title={label}
+            className={cn("h-2 w-2 rotate-45", q.liquid && q.price !== null ? "bg-money" : "bg-muted-foreground/30")}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -187,10 +205,6 @@ function RowDetail({ row }: { row: RecipeRowData }) {
             <Row k="Precio de referencia" v={row.sellRefPrice !== null ? `${formatSilver(row.sellRefPrice)} plata` : "sin datos"} />
             <Row k="Mediana entre" v={`${row.sellRefCitiesCount} ciudades`} />
             <Row k="Dato más viejo usado" v={formatAge(row.sellRefAgeSeconds)} />
-            <Row
-              k="Brecilien"
-              v={row.brecilienCovered ? "cotiza este ítem" : "sin cotización para este ítem"}
-            />
             <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row)})`} />
             <Row k="Item Value (materiales, lote)" v={formatSilver(Number(row.recipe.materialItemValue))} />
             <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
@@ -201,13 +215,14 @@ function RowDetail({ row }: { row: RecipeRowData }) {
               <h5 className="mb-1 font-medium text-foreground">Por calidad</h5>
               <ul className="space-y-0.5">
                 {row.qualityBreakdown.map((q) => (
-                  <li key={q.quality} className={cn("flex items-baseline justify-between gap-3", !q.liquid && "opacity-70")}>
-                    <span className="truncate">
-                      {qualityLabel(q.quality)} ({Math.round(q.weight * 100)}%)
-                    </span>
+                  <li
+                    key={q.quality}
+                    className={cn("flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5", !q.liquid && "opacity-70")}
+                  >
+                    <span>{qualityLabel(q.quality)}</span>
                     <span
                       className={cn(
-                        "shrink-0 font-mono tabular-nums text-foreground",
+                        "ml-auto shrink-0 font-mono tabular-nums text-foreground",
                         !q.liquid && "underline decoration-dashed decoration-muted-foreground underline-offset-4",
                       )}
                     >
