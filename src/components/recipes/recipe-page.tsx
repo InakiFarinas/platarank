@@ -58,6 +58,9 @@ export async function RecipePage({
     <main className="mx-auto max-w-5xl px-3 py-4 sm:px-6 sm:py-8">
       <header className="sticky top-0 z-20 -mx-3 mb-4 border-b border-border bg-background/95 px-3 py-3 backdrop-blur sm:-mx-6 sm:mb-6 sm:px-6">
         <nav className="mb-2 flex gap-4 text-xs">
+          <Link href="/es" className="font-medium text-foreground hover:text-muted-foreground">
+            PlataRank
+          </Link>
           {NAV_ITEMS.map((item) => (
             <Link key={item.href} href={item.href} className="text-muted-foreground hover:text-foreground">
               {item.label}

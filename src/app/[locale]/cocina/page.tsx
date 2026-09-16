@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { RecipePage } from "@/components/recipes/recipe-page";
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Cocina",
+  description: "Ranking de platos de Albion Online por plata realizable por dia. 183 recetas, servidor Americas.",
+  alternates: { canonical: "/es/cocina" },
+};
 
 export default function CocinaPage() {
   return (

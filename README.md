@@ -12,7 +12,7 @@ PlataRank mete el volumen diario de trades (expuesto desde siempre por la API p�
 2. **Fee de estación correcto.** Plata por cada 100 de nutrición consumida (no un porcentaje plano), con una fórmula específica por tipo de estación -- alquimia y cocina dependen de los materiales de la receta (granja, carne, pescado), refinado depende solo del tier y el encantamiento, armas/armaduras dependen del tier, el encantamiento y la cantidad total de materiales.
 3. **Datos de mercado sucios, tratados como tal.** Recorte de outliers asimétrico, mediana entre ciudades (nunca el máximo), Brecilien marcado explícitamente cuando no cotiza, y en armas/armaduras un gate de liquidez por calidad: una calidad sin trades reales no entra al cálculo aunque tenga un listing publicado.
 
-## Estado (Fase 3 completa)
+## Estado (Fase 4 completa)
 
 - Un servidor (Americas), sin cuentas ni pagos.
 - Cuatro rubros en producción: **alquimia** (`/alquimia`, 174 recetas), **refinado** (`/refinado`, 115 recetas), **cocina** (`/cocina`, 183 recetas) y **equipo** (`/equipo`, ~5.600 recetas de armas y armaduras, incluyendo líneas de facción/hellgate cuyos artefactos raros van a quedar con "datos insuficientes" cuando no tengan precio confiable de mercado -- mismo comportamiento honesto que el resto, no un caso especial).
@@ -23,6 +23,7 @@ PlataRank mete el volumen diario de trades (expuesto desde siempre por la API p�
 - El tier de artefacto (rúnico/alma/reliquia/avaloniano) de la fórmula de fee de crafteo normal queda fijo en 0 para todas las recetas: el equipo estándar no consume artefacto en su craft directo (solo en la mejora opcional por runas, un camino distinto que no modelamos), y las líneas especiales que sí lo consumen no tienen forma de derivar su tier de rareza desde el dump. Documentado, no oculto.
 - **Gap conocido de performance en `/equipo`**: calcular las 5.632 filas (cada una ponderando 5 calidades x hasta 8 ciudades) corre client-side en cada visita -- SSG acelera el HTML del servidor, pero no el recálculo en el navegador. Medido en 10-20+ segundos hasta la primera fila visible en esta sesión. Necesita mover el cálculo al servidor o paginar/virtualizar antes de calcular -- marcado, no resuelto en esta ronda.
 - **Gap conocido de escala en el ingester**: sigue corriendo todo por hora con una sola prioridad, aunque el brief pide explícitamente una cola priorizada una vez que el catálogo creciera. Con ~7.030 ítems una corrida ya tarda varios minutos.
+- **SEO (Fase 4)**: página de inicio real en `/es` (antes `/` redirigía directo a `/alquimia`), metadata por ruta (`title`/`description`/canonical) en las cuatro páginas de rubro, `sitemap.xml` y `robots.txt` generados desde `src/app/sitemap.ts`/`robots.ts`, y OpenGraph/Twitter card por defecto en el layout raíz. `NEXT_PUBLIC_SITE_URL` controla el dominio absoluto usado en metadata/sitemap (ver `.env.example`).
 
 ## Stack
 

@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
   if (hasLocale) return NextResponse.next();
 
   const url = request.nextUrl.clone();
-  url.pathname = pathname === "/" ? `/${DEFAULT_LOCALE}/alquimia` : `/${DEFAULT_LOCALE}${pathname}`;
+  url.pathname = pathname === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${pathname}`;
   return NextResponse.redirect(url);
 }
 

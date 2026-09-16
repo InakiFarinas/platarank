@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const DESCRIPTION =
+  "Ranking de crafteo de Albion Online por plata realizable por dia (margen x volumen diario del mercado), no por margen unitario.";
+
 export const metadata: Metadata = {
-  title: "PlataRank",
-  description: "Ranking de crafteo de Albion Online por plata realizable por dia, no por margen unitario.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: "PlataRank", template: "%s -- PlataRank" },
+  description: DESCRIPTION,
+  openGraph: {
+    siteName: "PlataRank",
+    type: "website",
+    locale: "es_AR",
+    title: "PlataRank",
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary",
+    title: "PlataRank",
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

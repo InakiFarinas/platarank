@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { RecipePage } from "@/components/recipes/recipe-page";
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Refinado",
+  description: "Ranking de materiales refinados de Albion Online por plata realizable por dia. 115 recetas, servidor Americas.",
+  alternates: { canonical: "/es/refinado" },
+};
 
 export default function RefinadoPage() {
   return (

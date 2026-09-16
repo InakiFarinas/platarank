@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { RecipePage } from "@/components/recipes/recipe-page";
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Armas y armaduras",
+  description:
+    "Ranking de equipo de Albion Online por plata realizable por dia, ponderando las 5 calidades por liquidez real. ~5.600 recetas, servidor Americas.",
+  alternates: { canonical: "/es/equipo" },
+};
 
 export default function EquipoPage() {
   return (
