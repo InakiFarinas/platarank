@@ -74,7 +74,7 @@ type Recipe = {
   nameEn: string;
   tier: number;
   enchant: number;
-  stationType: "alchemy" | "refining" | "cooking" | "gear";
+  stationType: "alchemy" | "refining" | "cooking" | "gear" | "mount";
   /** Item's own craftingcategory (e.g. "potion", "wood", "sword", "plate_armor"). Null when the
    * dump has none (e.g. faction/artifact capes) -- those get no city-specialty bonus, ever. */
   craftingCategory: string | null;
@@ -94,7 +94,7 @@ type RawIndexedItem = {
 
 // Weapons and armor pieces this project ranks (see brief section 7). Excludes "tools" and
 // "gatherergear" (Caerleon's OTHER two crafting specialties -- gathering gear, not "armas y
-// armaduras") and "bag"/"cape" (Brecilien's other two, out of this rubro's scope).
+// armaduras"). Bags and capes (Brecilien's specialties) ARE included, via ARMOR_CATEGORIES below.
 const WEAPON_CATEGORIES = new Set([
   "arcanestaff",
   "axe",
@@ -124,6 +124,8 @@ const ARMOR_CATEGORIES = new Set([
   "plate_helmet",
   "plate_shoes",
   "offhand",
+  "bag",
+  "cape",
 ]);
 
 async function main() {
@@ -251,6 +253,22 @@ async function main() {
         recipes.push(buildRecipe(itemId, baseItemId, tier, level, "gear", category, maxQuality, cr, names, itemValueIndex, itemValueCache));
       }
     }
+  }
+
+  // Monturas: sin categoria de crafteo en el dump (ninguna ciudad tiene bono para ellas) y sin
+  // encantamientos. Se descartan las que exigen fichas/eventos intransables y las "UNIQUE_" de
+  // eventos/recompensas -- solo quedan las que un jugador puede craftear comprando materiales.
+  const mounts = (itemsRoot.items.mount as unknown as RawGearItem[]).filter(
+    (m) =>
+      m.craftingrequirements &&
+      asArray(m.craftingrequirements.craftresource ?? []).length > 0 &&
+      names.has(m["@uniquename"]) &&
+      !/^UNIQUE_/.test(m["@uniquename"]) &&
+      !hasBlockedMaterial(m.craftingrequirements),
+  );
+  for (const mount of mounts) {
+    const itemId = mount["@uniquename"];
+    recipes.push(buildRecipe(itemId, itemId, Number(mount["@tier"]), 0, "mount", null, 1, mount.craftingrequirements!, names, itemValueIndex, itemValueCache));
   }
 
   recipes.sort((a, b) => a.itemId.localeCompare(b.itemId));

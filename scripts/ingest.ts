@@ -13,7 +13,7 @@ import { fetchPrices } from "../src/lib/aodp/client";
 import { AODP_SERVERS, ALL_LOCATIONS as REAL_CITIES_AND_BM, type AodpServer } from "../src/lib/aodp/cities";
 import { findLatestDumpUrl, fetchDumpVolumeSummaries, type DumpVolumeSummary } from "../src/lib/aodp/dumps";
 import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
-import { computeCityAggregates, computeCityPrice } from "../src/lib/ingest/aggregate";
+import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsurdPrices } from "../src/lib/ingest/aggregate";
 import recipesJson from "../src/data/generated/recipes.json";
 import type { AodpPriceRow } from "../src/lib/aodp/types";
 
@@ -37,7 +37,11 @@ async function main() {
     fetchPrices(server, itemIds, [1]),
     gearItemIds.length > 0 ? fetchPrices(server, gearItemIds, [2, 3, 4, 5]) : Promise.resolve([]),
   ]);
-  const allPrices = [...prices, ...gearPrices];
+  const { prices: allPrices, dropped } = dropAbsurdPrices([...prices, ...gearPrices]);
+  if (dropped.length > 0) {
+    console.log(`Dropped ${dropped.length} absurd sell prices (>${ABSURD_PRICE_FACTOR}x the other cities' median):`);
+    for (const p of dropped.slice(0, 20)) console.log(`  ${p.item_id} q${p.quality} ${p.city}: ${p.sell_price_min}`);
+  }
 
   const dumpUrl = await findLatestDumpUrl(server);
   const lastProcessedUrl = await getLastProcessedDumpUrl();

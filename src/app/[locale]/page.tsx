@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, CheckCircle2, FlaskConical, Hammer, Scroll, Shield, TrendingUp, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, CheckCircle2, FlaskConical, Hammer, PawPrint, Scroll, Shield, TrendingUp, UtensilsCrossed } from "lucide-react";
 import { ShieldBadge } from "@/components/icons/shield-badge";
 import { SpriteIcon } from "@/components/icons/sprite-icon";
 import { SiteFooter } from "@/components/site-footer";
@@ -18,7 +18,8 @@ const STATIONS = [
   { href: "/es/alquimia", label: "Alquimia", count: "174 recetas", Icon: FlaskConical },
   { href: "/es/refinado", label: "Refinado", count: "115 recetas", Icon: Hammer },
   { href: "/es/cocina", label: "Cocina", count: "183 recetas", Icon: UtensilsCrossed },
-  { href: "/es/equipo", label: "Equipo", count: "~5.600 recetas", Icon: Shield },
+  { href: "/es/equipo", label: "Equipo", count: "~5.700 recetas", Icon: Shield },
+  { href: "/es/monturas", label: "Monturas", count: "29 recetas", Icon: PawPrint },
 ] as const;
 
 const FEATURES = [
@@ -49,15 +50,15 @@ const MOCK_ROWS = [
 ] as const;
 
 const CHECKLIST = [
-  "4 tipos de estaciones: Alquimia, Refinado, Cocina y Equipo",
-  "+5.600 recetas de armas y armaduras",
+  "5 tipos de estaciones: Alquimia, Refinado, Cocina, Equipo y Monturas",
+  "+5.700 recetas de armas, armaduras, bolsas y capas",
   "Especialidades de ciudades por categoria de receta",
   "Calculo de calidad real en equipo (Q1-Q5)",
 ] as const;
 
 const STATS = [
-  { value: "6.072", label: "Recetas totales" },
-  { value: "4", label: "Estaciones de crafteo" },
+  { value: "6.212", label: "Recetas totales" },
+  { value: "5", label: "Estaciones de crafteo" },
   { value: "24/7", label: "Datos actualizados" },
 ] as const;
 
@@ -204,16 +205,16 @@ export default function HomePage() {
         <section className="border-b border-money/20 bg-money/[0.03] px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="text-center">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-money">Explora las 4 estaciones</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-money">Explora las 5 estaciones</span>
               <h2 className="mt-2 font-display text-2xl uppercase tracking-tight sm:text-3xl">
-                Los cuatro gremios de crafteo
+                Los cinco gremios de crafteo
               </h2>
               <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground sm:text-base">
                 Desde pociones hasta armaduras, encontra las recetas mas rentables de cada estacion y hace que tu
                 tiempo en Albion rinda al maximo.
               </p>
             </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {STATIONS.map(({ href, label, count, Icon }) => (
                 <Link
                   key={href}

@@ -30,6 +30,9 @@ export function classifyMaterial(itemId: string): MaterialCategory {
   // Runic/soul/relic/avalonian materials in gear recipes (e.g. T4_ARTEFACT_2H_...) -- excluded from
   // the crafting-fee material count the same way alchemy's rare tonics are (see station-fee.ts).
   if (itemId.includes("_ARTEFACT_")) return "artifact";
+  // A base mount consumed by a mount recipe (e.g. T5_MOUNT_HORSE inside the armored horse) never
+  // gets RRR and doesn't count toward the fee, same engine rule as artifacts.
+  if (itemId.includes("_MOUNT_")) return "artifact";
   // Fish sauce is cocina's enrichment ingredient for enchanted meals -- same role as arcane
   // extract for potions, so it gets the same treatment (excluded from the fee, not "farm").
   if (itemId.includes("_FISHSAUCE_")) return "extract";

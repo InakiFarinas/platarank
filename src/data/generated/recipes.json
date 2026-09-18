@@ -392,6 +392,66 @@
     "materialItemValue": 64
   },
   {
+    "itemId": "T2_BAG",
+    "baseItemId": "T2_BAG",
+    "nameEs": "Bolsa del novato",
+    "nameEn": "Novice's Bag",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 280,
+    "materials": [
+      {
+        "itemId": "T2_CLOTH",
+        "count": 12,
+        "category": "other",
+        "nameEs": "Tela simple",
+        "nameEn": "Simple Cloth"
+      },
+      {
+        "itemId": "T2_LEATHER",
+        "count": 12,
+        "category": "other",
+        "nameEs": "Cuero firme",
+        "nameEn": "Stiff Leather"
+      }
+    ],
+    "materialItemValue": 96
+  },
+  {
+    "itemId": "T2_CAPE",
+    "baseItemId": "T2_CAPE",
+    "nameEs": "Capa del novato",
+    "nameEn": "Novice's Cape",
+    "tier": 2,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 140,
+    "materials": [
+      {
+        "itemId": "T2_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela simple",
+        "nameEn": "Simple Cloth"
+      },
+      {
+        "itemId": "T2_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero firme",
+        "nameEn": "Stiff Leather"
+      }
+    ],
+    "materialItemValue": 32
+  },
+  {
     "itemId": "T2_CLOTH",
     "baseItemId": "T2_CLOTH",
     "nameEs": "Tela simple",
@@ -1481,6 +1541,66 @@
       }
     ],
     "materialItemValue": 128
+  },
+  {
+    "itemId": "T3_BAG",
+    "baseItemId": "T3_BAG",
+    "nameEs": "Bolsa del obrero",
+    "nameEn": "Journeyman's Bag",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 490,
+    "materials": [
+      {
+        "itemId": "T3_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ],
+    "materialItemValue": 128
+  },
+  {
+    "itemId": "T3_CAPE",
+    "baseItemId": "T3_CAPE",
+    "nameEs": "Capa del obrero",
+    "nameEn": "Journeyman's Cape",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 245,
+    "materials": [
+      {
+        "itemId": "T3_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela pulcra",
+        "nameEn": "Neat Cloth"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ],
+    "materialItemValue": 64
   },
   {
     "itemId": "T3_CLOTH",
@@ -3514,6 +3634,66 @@
       }
     ],
     "materialItemValue": 8
+  },
+  {
+    "itemId": "T3_MOUNT_HORSE",
+    "baseItemId": "T3_MOUNT_HORSE",
+    "nameEs": "Caballo de montar del obrero",
+    "nameEn": "Journeyman's Riding Horse",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 613,
+    "materials": [
+      {
+        "itemId": "T3_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del obrero",
+        "nameEn": "Journeyman's Horse"
+      },
+      {
+        "itemId": "T3_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero grueso",
+        "nameEn": "Thick Leather"
+      }
+    ],
+    "materialItemValue": 160
+  },
+  {
+    "itemId": "T3_MOUNT_OX",
+    "baseItemId": "T3_MOUNT_OX",
+    "nameEs": "Buey de transporte del obrero",
+    "nameEn": "Journeyman's Transport Ox",
+    "tier": 3,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 919,
+    "materials": [
+      {
+        "itemId": "T3_FARM_OX_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Buey del obrero",
+        "nameEn": "Journeyman's Ox"
+      },
+      {
+        "itemId": "T3_PLANKS",
+        "count": 30,
+        "category": "other",
+        "nameEs": "Tablas de castaño",
+        "nameEn": "Chestnut Planks"
+      }
+    ],
+    "materialItemValue": 240
   },
   {
     "itemId": "T3_OFF_BOOK",
@@ -22594,6 +22774,491 @@
     "materialItemValue": 4096
   },
   {
+    "itemId": "T4_BAG",
+    "baseItemId": "T4_BAG",
+    "nameEs": "Bolsa del iniciado",
+    "nameEn": "Adept's Bag",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 858,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina",
+        "nameEn": "Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado",
+        "nameEn": "Worked Leather"
+      }
+    ],
+    "materialItemValue": 256
+  },
+  {
+    "itemId": "T4_BAG_INSIGHT",
+    "baseItemId": "T4_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del iniciado",
+    "nameEn": "Adept's Satchel of Insight",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 858,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina",
+        "nameEn": "Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado",
+        "nameEn": "Worked Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 256
+  },
+  {
+    "itemId": "T4_BAG_INSIGHT@1",
+    "baseItemId": "T4_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del iniciado",
+    "nameEn": "Adept's Satchel of Insight",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1501,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina poco común",
+        "nameEn": "Uncommon Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado poco común",
+        "nameEn": "Uncommon Worked Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T4_BAG_INSIGHT@2",
+    "baseItemId": "T4_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del iniciado",
+    "nameEn": "Adept's Satchel of Insight",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2626,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina rara",
+        "nameEn": "Rare Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado raro",
+        "nameEn": "Rare Worked Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T4_BAG_INSIGHT@3",
+    "baseItemId": "T4_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del iniciado",
+    "nameEn": "Adept's Satchel of Insight",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina excepcional",
+        "nameEn": "Exceptional Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado excepcional",
+        "nameEn": "Exceptional Worked Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T4_BAG_INSIGHT@4",
+    "baseItemId": "T4_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del iniciado",
+    "nameEn": "Adept's Satchel of Insight",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina prístina",
+        "nameEn": "Pristine Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado prístino",
+        "nameEn": "Pristine Worked Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T4_BAG@1",
+    "baseItemId": "T4_BAG",
+    "nameEs": "Bolsa del iniciado",
+    "nameEn": "Adept's Bag",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1501,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina poco común",
+        "nameEn": "Uncommon Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado poco común",
+        "nameEn": "Uncommon Worked Leather"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T4_BAG@2",
+    "baseItemId": "T4_BAG",
+    "nameEs": "Bolsa del iniciado",
+    "nameEn": "Adept's Bag",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2626,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina rara",
+        "nameEn": "Rare Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado raro",
+        "nameEn": "Rare Worked Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T4_BAG@3",
+    "baseItemId": "T4_BAG",
+    "nameEs": "Bolsa del iniciado",
+    "nameEn": "Adept's Bag",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina excepcional",
+        "nameEn": "Exceptional Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado excepcional",
+        "nameEn": "Exceptional Worked Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T4_BAG@4",
+    "baseItemId": "T4_BAG",
+    "nameEs": "Bolsa del iniciado",
+    "nameEn": "Adept's Bag",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela fina prístina",
+        "nameEn": "Pristine Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero trabajado prístino",
+        "nameEn": "Pristine Worked Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T4_CAPE",
+    "baseItemId": "T4_CAPE",
+    "nameEs": "Capa del iniciado",
+    "nameEn": "Adept's Cape",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 429,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela fina",
+        "nameEn": "Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero trabajado",
+        "nameEn": "Worked Leather"
+      }
+    ],
+    "materialItemValue": 128
+  },
+  {
+    "itemId": "T4_CAPE@1",
+    "baseItemId": "T4_CAPE",
+    "nameEs": "Capa del iniciado",
+    "nameEn": "Adept's Cape",
+    "tier": 4,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 750,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela fina poco común",
+        "nameEn": "Uncommon Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero trabajado poco común",
+        "nameEn": "Uncommon Worked Leather"
+      }
+    ],
+    "materialItemValue": 256
+  },
+  {
+    "itemId": "T4_CAPE@2",
+    "baseItemId": "T4_CAPE",
+    "nameEs": "Capa del iniciado",
+    "nameEn": "Adept's Cape",
+    "tier": 4,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1313,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela fina rara",
+        "nameEn": "Rare Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero trabajado raro",
+        "nameEn": "Rare Worked Leather"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T4_CAPE@3",
+    "baseItemId": "T4_CAPE",
+    "nameEs": "Capa del iniciado",
+    "nameEn": "Adept's Cape",
+    "tier": 4,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2298,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela fina excepcional",
+        "nameEn": "Exceptional Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero trabajado excepcional",
+        "nameEn": "Exceptional Worked Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T4_CAPE@4",
+    "baseItemId": "T4_CAPE",
+    "nameEs": "Capa del iniciado",
+    "nameEn": "Adept's Cape",
+    "tier": 4,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4021,
+    "materials": [
+      {
+        "itemId": "T4_CLOTH_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela fina prístina",
+        "nameEn": "Pristine Fine Cloth"
+      },
+      {
+        "itemId": "T4_LEATHER_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero trabajado prístino",
+        "nameEn": "Pristine Worked Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
     "itemId": "T4_CLOTH",
     "baseItemId": "T4_CLOTH",
     "nameEs": "Tela fina",
@@ -32922,6 +33587,96 @@
       }
     ],
     "materialItemValue": 256
+  },
+  {
+    "itemId": "T4_MOUNT_GIANTSTAG",
+    "baseItemId": "T4_MOUNT_GIANTSTAG",
+    "nameEs": "Ciervo gigante del iniciado",
+    "nameEn": "Adept's Giant Stag",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 1072,
+    "materials": [
+      {
+        "itemId": "T4_FARM_GIANTSTAG_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Ciervo gigante domado del iniciado",
+        "nameEn": "Adept's Tame Giant Stag"
+      },
+      {
+        "itemId": "T4_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero trabajado",
+        "nameEn": "Worked Leather"
+      }
+    ],
+    "materialItemValue": 320
+  },
+  {
+    "itemId": "T4_MOUNT_HORSE",
+    "baseItemId": "T4_MOUNT_HORSE",
+    "nameEs": "Caballo de montar del iniciado",
+    "nameEn": "Adept's Riding Horse",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 1072,
+    "materials": [
+      {
+        "itemId": "T4_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del iniciado",
+        "nameEn": "Adept's Horse"
+      },
+      {
+        "itemId": "T4_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero trabajado",
+        "nameEn": "Worked Leather"
+      }
+    ],
+    "materialItemValue": 320
+  },
+  {
+    "itemId": "T4_MOUNT_OX",
+    "baseItemId": "T4_MOUNT_OX",
+    "nameEs": "Buey de transporte del iniciado",
+    "nameEn": "Adept's Transport Ox",
+    "tier": 4,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 1608,
+    "materials": [
+      {
+        "itemId": "T4_FARM_OX_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Buey del iniciado",
+        "nameEn": "Adept's Ox"
+      },
+      {
+        "itemId": "T4_PLANKS",
+        "count": 30,
+        "category": "other",
+        "nameEs": "Tablas de pino",
+        "nameEn": "Pine Planks"
+      }
+    ],
+    "materialItemValue": 480
   },
   {
     "itemId": "T4_OFF_BOOK",
@@ -58545,6 +59300,491 @@
     "materialItemValue": 8192
   },
   {
+    "itemId": "T5_BAG",
+    "baseItemId": "T5_BAG",
+    "nameEs": "Bolsa del experto",
+    "nameEn": "Expert's Bag",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1501,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada",
+        "nameEn": "Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido",
+        "nameEn": "Cured Leather"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T5_BAG_INSIGHT",
+    "baseItemId": "T5_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del experto",
+    "nameEn": "Expert's Satchel of Insight",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1501,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada",
+        "nameEn": "Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido",
+        "nameEn": "Cured Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T5_BAG_INSIGHT@1",
+    "baseItemId": "T5_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del experto",
+    "nameEn": "Expert's Satchel of Insight",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2626,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada poco común",
+        "nameEn": "Uncommon Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido poco común",
+        "nameEn": "Uncommon Cured Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T5_BAG_INSIGHT@2",
+    "baseItemId": "T5_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del experto",
+    "nameEn": "Expert's Satchel of Insight",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada rara",
+        "nameEn": "Rare Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido raro",
+        "nameEn": "Rare Cured Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T5_BAG_INSIGHT@3",
+    "baseItemId": "T5_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del experto",
+    "nameEn": "Expert's Satchel of Insight",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada excepcional",
+        "nameEn": "Exceptional Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido excepcional",
+        "nameEn": "Exceptional Cured Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T5_BAG_INSIGHT@4",
+    "baseItemId": "T5_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del experto",
+    "nameEn": "Expert's Satchel of Insight",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada prístina",
+        "nameEn": "Pristine Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido prístino",
+        "nameEn": "Pristine Cured Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T5_BAG@1",
+    "baseItemId": "T5_BAG",
+    "nameEs": "Bolsa del experto",
+    "nameEn": "Expert's Bag",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2626,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada poco común",
+        "nameEn": "Uncommon Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido poco común",
+        "nameEn": "Uncommon Cured Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T5_BAG@2",
+    "baseItemId": "T5_BAG",
+    "nameEs": "Bolsa del experto",
+    "nameEn": "Expert's Bag",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada rara",
+        "nameEn": "Rare Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido raro",
+        "nameEn": "Rare Cured Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T5_BAG@3",
+    "baseItemId": "T5_BAG",
+    "nameEs": "Bolsa del experto",
+    "nameEn": "Expert's Bag",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada excepcional",
+        "nameEn": "Exceptional Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido excepcional",
+        "nameEn": "Exceptional Cured Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T5_BAG@4",
+    "baseItemId": "T5_BAG",
+    "nameEs": "Bolsa del experto",
+    "nameEn": "Expert's Bag",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela decorada prístina",
+        "nameEn": "Pristine Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero curtido prístino",
+        "nameEn": "Pristine Cured Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T5_CAPE",
+    "baseItemId": "T5_CAPE",
+    "nameEs": "Capa del experto",
+    "nameEn": "Expert's Cape",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 750,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela decorada",
+        "nameEn": "Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero curtido",
+        "nameEn": "Cured Leather"
+      }
+    ],
+    "materialItemValue": 256
+  },
+  {
+    "itemId": "T5_CAPE@1",
+    "baseItemId": "T5_CAPE",
+    "nameEs": "Capa del experto",
+    "nameEn": "Expert's Cape",
+    "tier": 5,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1313,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela decorada poco común",
+        "nameEn": "Uncommon Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero curtido poco común",
+        "nameEn": "Uncommon Cured Leather"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T5_CAPE@2",
+    "baseItemId": "T5_CAPE",
+    "nameEs": "Capa del experto",
+    "nameEn": "Expert's Cape",
+    "tier": 5,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2298,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela decorada rara",
+        "nameEn": "Rare Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero curtido raro",
+        "nameEn": "Rare Cured Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T5_CAPE@3",
+    "baseItemId": "T5_CAPE",
+    "nameEs": "Capa del experto",
+    "nameEn": "Expert's Cape",
+    "tier": 5,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4021,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela decorada excepcional",
+        "nameEn": "Exceptional Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero curtido excepcional",
+        "nameEn": "Exceptional Cured Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T5_CAPE@4",
+    "baseItemId": "T5_CAPE",
+    "nameEs": "Capa del experto",
+    "nameEn": "Expert's Cape",
+    "tier": 5,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 7037,
+    "materials": [
+      {
+        "itemId": "T5_CLOTH_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela decorada prístina",
+        "nameEn": "Pristine Ornate Cloth"
+      },
+      {
+        "itemId": "T5_LEATHER_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero curtido prístino",
+        "nameEn": "Pristine Cured Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
     "itemId": "T5_CLOTH",
     "baseItemId": "T5_CLOTH",
     "nameEs": "Tela decorada",
@@ -69492,6 +70732,126 @@
       }
     ],
     "materialItemValue": 512.02
+  },
+  {
+    "itemId": "T5_MOUNT_ARMORED_HORSE",
+    "baseItemId": "T5_MOUNT_ARMORED_HORSE",
+    "nameEs": "Caballo blindado del experto",
+    "nameEn": "Expert's Armored Horse",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 2814,
+    "materials": [
+      {
+        "itemId": "T5_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del experto",
+        "nameEn": "Expert's Horse"
+      },
+      {
+        "itemId": "T5_CLOTH",
+        "count": 10,
+        "category": "other",
+        "nameEs": "Tela decorada",
+        "nameEn": "Ornate Cloth"
+      },
+      {
+        "itemId": "T5_METALBAR",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Lingote de titanio",
+        "nameEn": "Titanium Steel Bar"
+      }
+    ],
+    "materialItemValue": 960
+  },
+  {
+    "itemId": "T5_MOUNT_ARMORED_HORSE_SKIN_01",
+    "baseItemId": "T5_MOUNT_ARMORED_HORSE_SKIN_01",
+    "nameEs": "Caballo de guerra del experto",
+    "nameEn": "Expert's Warhorse",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T5_MOUNT_ARMORED_HORSE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Caballo blindado del experto",
+        "nameEn": "Expert's Armored Horse"
+      }
+    ],
+    "materialItemValue": 0
+  },
+  {
+    "itemId": "T5_MOUNT_HORSE",
+    "baseItemId": "T5_MOUNT_HORSE",
+    "nameEs": "Caballo de montar del experto",
+    "nameEn": "Expert's Riding Horse",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 1876,
+    "materials": [
+      {
+        "itemId": "T5_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del experto",
+        "nameEn": "Expert's Horse"
+      },
+      {
+        "itemId": "T5_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero curtido",
+        "nameEn": "Cured Leather"
+      }
+    ],
+    "materialItemValue": 640
+  },
+  {
+    "itemId": "T5_MOUNT_OX",
+    "baseItemId": "T5_MOUNT_OX",
+    "nameEs": "Buey de transporte del experto",
+    "nameEn": "Expert's Transport Ox",
+    "tier": 5,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 2814,
+    "materials": [
+      {
+        "itemId": "T5_FARM_OX_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Buey del experto",
+        "nameEn": "Expert's Ox"
+      },
+      {
+        "itemId": "T5_PLANKS",
+        "count": 30,
+        "category": "other",
+        "nameEs": "Tablas de cedro",
+        "nameEn": "Cedar Planks"
+      }
+    ],
+    "materialItemValue": 960
   },
   {
     "itemId": "T5_OFF_BOOK",
@@ -95085,6 +96445,491 @@
     "materialItemValue": 16384
   },
   {
+    "itemId": "T6_BAG",
+    "baseItemId": "T6_BAG",
+    "nameEs": "Bolsa del maestro",
+    "nameEn": "Master's Bag",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2626,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa",
+        "nameEn": "Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T6_BAG_INSIGHT",
+    "baseItemId": "T6_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del maestro",
+    "nameEn": "Master's Satchel of Insight",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2626,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa",
+        "nameEn": "Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T6_BAG_INSIGHT@1",
+    "baseItemId": "T6_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del maestro",
+    "nameEn": "Master's Satchel of Insight",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa poco común",
+        "nameEn": "Uncommon Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido poco común",
+        "nameEn": "Uncommon Hardened Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T6_BAG_INSIGHT@2",
+    "baseItemId": "T6_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del maestro",
+    "nameEn": "Master's Satchel of Insight",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa rara",
+        "nameEn": "Rare Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido raro",
+        "nameEn": "Rare Hardened Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T6_BAG_INSIGHT@3",
+    "baseItemId": "T6_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del maestro",
+    "nameEn": "Master's Satchel of Insight",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa excepcional",
+        "nameEn": "Exceptional Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido excepcional",
+        "nameEn": "Exceptional Hardened Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T6_BAG_INSIGHT@4",
+    "baseItemId": "T6_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del maestro",
+    "nameEn": "Master's Satchel of Insight",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 24630,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa prístina",
+        "nameEn": "Pristine Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido prístino",
+        "nameEn": "Pristine Hardened Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T6_BAG@1",
+    "baseItemId": "T6_BAG",
+    "nameEs": "Bolsa del maestro",
+    "nameEn": "Master's Bag",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa poco común",
+        "nameEn": "Uncommon Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido poco común",
+        "nameEn": "Uncommon Hardened Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T6_BAG@2",
+    "baseItemId": "T6_BAG",
+    "nameEs": "Bolsa del maestro",
+    "nameEn": "Master's Bag",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa rara",
+        "nameEn": "Rare Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido raro",
+        "nameEn": "Rare Hardened Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T6_BAG@3",
+    "baseItemId": "T6_BAG",
+    "nameEs": "Bolsa del maestro",
+    "nameEn": "Master's Bag",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa excepcional",
+        "nameEn": "Exceptional Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido excepcional",
+        "nameEn": "Exceptional Hardened Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T6_BAG@4",
+    "baseItemId": "T6_BAG",
+    "nameEs": "Bolsa del maestro",
+    "nameEn": "Master's Bag",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 24630,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela suntuosa prístina",
+        "nameEn": "Pristine Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero endurecido prístino",
+        "nameEn": "Pristine Hardened Leather"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T6_CAPE",
+    "baseItemId": "T6_CAPE",
+    "nameEs": "Capa del maestro",
+    "nameEn": "Master's Cape",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 1313,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela suntuosa",
+        "nameEn": "Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      }
+    ],
+    "materialItemValue": 512
+  },
+  {
+    "itemId": "T6_CAPE@1",
+    "baseItemId": "T6_CAPE",
+    "nameEs": "Capa del maestro",
+    "nameEn": "Master's Cape",
+    "tier": 6,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2298,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela suntuosa poco común",
+        "nameEn": "Uncommon Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero endurecido poco común",
+        "nameEn": "Uncommon Hardened Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T6_CAPE@2",
+    "baseItemId": "T6_CAPE",
+    "nameEs": "Capa del maestro",
+    "nameEn": "Master's Cape",
+    "tier": 6,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4021,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela suntuosa rara",
+        "nameEn": "Rare Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero endurecido raro",
+        "nameEn": "Rare Hardened Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T6_CAPE@3",
+    "baseItemId": "T6_CAPE",
+    "nameEs": "Capa del maestro",
+    "nameEn": "Master's Cape",
+    "tier": 6,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 7037,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela suntuosa excepcional",
+        "nameEn": "Exceptional Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero endurecido excepcional",
+        "nameEn": "Exceptional Hardened Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T6_CAPE@4",
+    "baseItemId": "T6_CAPE",
+    "nameEs": "Capa del maestro",
+    "nameEn": "Master's Cape",
+    "tier": 6,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 12315,
+    "materials": [
+      {
+        "itemId": "T6_CLOTH_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela suntuosa prístina",
+        "nameEn": "Pristine Lavish Cloth"
+      },
+      {
+        "itemId": "T6_LEATHER_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero endurecido prístino",
+        "nameEn": "Pristine Hardened Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
     "itemId": "T6_CLOTH",
     "baseItemId": "T6_CLOTH",
     "nameEs": "Tela suntuosa",
@@ -105469,6 +107314,186 @@
       }
     ],
     "materialItemValue": 1024
+  },
+  {
+    "itemId": "T6_MOUNT_ARMORED_HORSE",
+    "baseItemId": "T6_MOUNT_ARMORED_HORSE",
+    "nameEs": "Caballo blindado del maestro",
+    "nameEn": "Master's Armored Horse",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 4924,
+    "materials": [
+      {
+        "itemId": "T6_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del maestro",
+        "nameEn": "Master's Horse"
+      },
+      {
+        "itemId": "T6_CLOTH",
+        "count": 10,
+        "category": "other",
+        "nameEs": "Tela suntuosa",
+        "nameEn": "Lavish Cloth"
+      },
+      {
+        "itemId": "T6_METALBAR",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Lingote de runita",
+        "nameEn": "Runite Steel Bar"
+      }
+    ],
+    "materialItemValue": 1920
+  },
+  {
+    "itemId": "T6_MOUNT_ARMORED_HORSE_SKIN_01",
+    "baseItemId": "T6_MOUNT_ARMORED_HORSE_SKIN_01",
+    "nameEs": "Caballo de guerra del maestro",
+    "nameEn": "Master's Warhorse",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T6_MOUNT_ARMORED_HORSE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Caballo blindado del maestro",
+        "nameEn": "Master's Armored Horse"
+      }
+    ],
+    "materialItemValue": 0
+  },
+  {
+    "itemId": "T6_MOUNT_DIREWOLF",
+    "baseItemId": "T6_MOUNT_DIREWOLF",
+    "nameEs": "Huargo",
+    "nameEn": "Direwolf",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 3283,
+    "materials": [
+      {
+        "itemId": "T6_FARM_DIREWOLF_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Huargo domado",
+        "nameEn": "Tame Direwolf"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      }
+    ],
+    "materialItemValue": 1280
+  },
+  {
+    "itemId": "T6_MOUNT_GIANTSTAG_MOOSE",
+    "baseItemId": "T6_MOUNT_GIANTSTAG_MOOSE",
+    "nameEs": "Alce",
+    "nameEn": "Moose",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 3283,
+    "materials": [
+      {
+        "itemId": "T6_FARM_GIANTSTAG_MOOSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Alce domado",
+        "nameEn": "Tame Moose"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      }
+    ],
+    "materialItemValue": 1280
+  },
+  {
+    "itemId": "T6_MOUNT_HORSE",
+    "baseItemId": "T6_MOUNT_HORSE",
+    "nameEs": "Caballo de montar del maestro",
+    "nameEn": "Master's Riding Horse",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 3283,
+    "materials": [
+      {
+        "itemId": "T6_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del maestro",
+        "nameEn": "Master's Horse"
+      },
+      {
+        "itemId": "T6_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero endurecido",
+        "nameEn": "Hardened Leather"
+      }
+    ],
+    "materialItemValue": 1280
+  },
+  {
+    "itemId": "T6_MOUNT_OX",
+    "baseItemId": "T6_MOUNT_OX",
+    "nameEs": "Buey de transporte del maestro",
+    "nameEn": "Master's Transport Ox",
+    "tier": 6,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 4924,
+    "materials": [
+      {
+        "itemId": "T6_FARM_OX_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Buey del maestro",
+        "nameEn": "Master's Ox"
+      },
+      {
+        "itemId": "T6_PLANKS",
+        "count": 30,
+        "category": "other",
+        "nameEs": "Tablas de roble rojo",
+        "nameEn": "Bloodoak Planks"
+      }
+    ],
+    "materialItemValue": 1920
   },
   {
     "itemId": "T6_OFF_BOOK",
@@ -131484,6 +133509,491 @@
     "materialItemValue": 32768
   },
   {
+    "itemId": "T7_BAG",
+    "baseItemId": "T7_BAG",
+    "nameEs": "Bolsa del gran maestro",
+    "nameEn": "Grandmaster's Bag",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta",
+        "nameEn": "Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T7_BAG_INSIGHT",
+    "baseItemId": "T7_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del gran maestro",
+    "nameEn": "Grandmaster's Satchel of Insight",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4596,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta",
+        "nameEn": "Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T7_BAG_INSIGHT@1",
+    "baseItemId": "T7_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del gran maestro",
+    "nameEn": "Grandmaster's Satchel of Insight",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta poco común",
+        "nameEn": "Uncommon Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado poco común",
+        "nameEn": "Uncommon Reinforced Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T7_BAG_INSIGHT@2",
+    "baseItemId": "T7_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del gran maestro",
+    "nameEn": "Grandmaster's Satchel of Insight",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta rara",
+        "nameEn": "Rare Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado raro",
+        "nameEn": "Rare Reinforced Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T7_BAG_INSIGHT@3",
+    "baseItemId": "T7_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del gran maestro",
+    "nameEn": "Grandmaster's Satchel of Insight",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 24630,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta excepcional",
+        "nameEn": "Exceptional Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado excepcional",
+        "nameEn": "Exceptional Reinforced Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T7_BAG_INSIGHT@4",
+    "baseItemId": "T7_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del gran maestro",
+    "nameEn": "Grandmaster's Satchel of Insight",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 43102,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta prístina",
+        "nameEn": "Pristine Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado prístino",
+        "nameEn": "Pristine Reinforced Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 32768
+  },
+  {
+    "itemId": "T7_BAG@1",
+    "baseItemId": "T7_BAG",
+    "nameEs": "Bolsa del gran maestro",
+    "nameEn": "Grandmaster's Bag",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta poco común",
+        "nameEn": "Uncommon Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado poco común",
+        "nameEn": "Uncommon Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T7_BAG@2",
+    "baseItemId": "T7_BAG",
+    "nameEs": "Bolsa del gran maestro",
+    "nameEn": "Grandmaster's Bag",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta rara",
+        "nameEn": "Rare Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado raro",
+        "nameEn": "Rare Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T7_BAG@3",
+    "baseItemId": "T7_BAG",
+    "nameEs": "Bolsa del gran maestro",
+    "nameEn": "Grandmaster's Bag",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 24630,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta excepcional",
+        "nameEn": "Exceptional Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado excepcional",
+        "nameEn": "Exceptional Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T7_BAG@4",
+    "baseItemId": "T7_BAG",
+    "nameEs": "Bolsa del gran maestro",
+    "nameEn": "Grandmaster's Bag",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 43102,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela opulenta prístina",
+        "nameEn": "Pristine Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero reforzado prístino",
+        "nameEn": "Pristine Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 32768
+  },
+  {
+    "itemId": "T7_CAPE",
+    "baseItemId": "T7_CAPE",
+    "nameEs": "Capa del gran maestro",
+    "nameEn": "Grandmaster's Cape",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 2298,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela opulenta",
+        "nameEn": "Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 1024
+  },
+  {
+    "itemId": "T7_CAPE@1",
+    "baseItemId": "T7_CAPE",
+    "nameEs": "Capa del gran maestro",
+    "nameEn": "Grandmaster's Cape",
+    "tier": 7,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4021,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela opulenta poco común",
+        "nameEn": "Uncommon Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero reforzado poco común",
+        "nameEn": "Uncommon Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T7_CAPE@2",
+    "baseItemId": "T7_CAPE",
+    "nameEs": "Capa del gran maestro",
+    "nameEn": "Grandmaster's Cape",
+    "tier": 7,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 7037,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela opulenta rara",
+        "nameEn": "Rare Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero reforzado raro",
+        "nameEn": "Rare Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T7_CAPE@3",
+    "baseItemId": "T7_CAPE",
+    "nameEs": "Capa del gran maestro",
+    "nameEn": "Grandmaster's Cape",
+    "tier": 7,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 12315,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela opulenta excepcional",
+        "nameEn": "Exceptional Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero reforzado excepcional",
+        "nameEn": "Exceptional Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T7_CAPE@4",
+    "baseItemId": "T7_CAPE",
+    "nameEs": "Capa del gran maestro",
+    "nameEn": "Grandmaster's Cape",
+    "tier": 7,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 21551,
+    "materials": [
+      {
+        "itemId": "T7_CLOTH_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela opulenta prístina",
+        "nameEn": "Pristine Opulent Cloth"
+      },
+      {
+        "itemId": "T7_LEATHER_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero reforzado prístino",
+        "nameEn": "Pristine Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
     "itemId": "T7_CLOTH",
     "baseItemId": "T7_CLOTH",
     "nameEs": "Tela opulenta",
@@ -142121,6 +144631,186 @@
       }
     ],
     "materialItemValue": 2048
+  },
+  {
+    "itemId": "T7_MOUNT_ARMORED_HORSE",
+    "baseItemId": "T7_MOUNT_ARMORED_HORSE",
+    "nameEs": "Caballo blindado del gran maestro",
+    "nameEn": "Grandmaster's Armored Horse",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 8617,
+    "materials": [
+      {
+        "itemId": "T7_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del gran maestro",
+        "nameEn": "Grandmaster's Horse"
+      },
+      {
+        "itemId": "T7_CLOTH",
+        "count": 10,
+        "category": "other",
+        "nameEs": "Tela opulenta",
+        "nameEn": "Opulent Cloth"
+      },
+      {
+        "itemId": "T7_METALBAR",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Lingote de meteorito",
+        "nameEn": "Meteorite Steel Bar"
+      }
+    ],
+    "materialItemValue": 3840
+  },
+  {
+    "itemId": "T7_MOUNT_ARMORED_HORSE_SKIN_01",
+    "baseItemId": "T7_MOUNT_ARMORED_HORSE_SKIN_01",
+    "nameEs": "Caballo de guerra del gran maestro",
+    "nameEn": "Grandmaster's Warhorse",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T7_MOUNT_ARMORED_HORSE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Caballo blindado del gran maestro",
+        "nameEn": "Grandmaster's Armored Horse"
+      }
+    ],
+    "materialItemValue": 0
+  },
+  {
+    "itemId": "T7_MOUNT_DIREBOAR",
+    "baseItemId": "T7_MOUNT_DIREBOAR",
+    "nameEs": "Jabalí ensillado",
+    "nameEn": "Saddled Direboar",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 5745,
+    "materials": [
+      {
+        "itemId": "T7_FARM_DIREBOAR_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Jabalí domado",
+        "nameEn": "Tame Direboar"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 2560
+  },
+  {
+    "itemId": "T7_MOUNT_HORSE",
+    "baseItemId": "T7_MOUNT_HORSE",
+    "nameEs": "Caballo de montar del gran maestro",
+    "nameEn": "Grandmaster's Riding Horse",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 5745,
+    "materials": [
+      {
+        "itemId": "T7_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del gran maestro",
+        "nameEn": "Grandmaster's Horse"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 2560
+  },
+  {
+    "itemId": "T7_MOUNT_OX",
+    "baseItemId": "T7_MOUNT_OX",
+    "nameEs": "Buey de transporte del gran maestro",
+    "nameEn": "Grandmaster's Transport Ox",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 8617,
+    "materials": [
+      {
+        "itemId": "T7_FARM_OX_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Buey del gran maestro",
+        "nameEn": "Grandmaster's Ox"
+      },
+      {
+        "itemId": "T7_PLANKS",
+        "count": 30,
+        "category": "other",
+        "nameEs": "Tablas de cortezaceniza",
+        "nameEn": "Ashenbark Planks"
+      }
+    ],
+    "materialItemValue": 3840
+  },
+  {
+    "itemId": "T7_MOUNT_SWAMPDRAGON",
+    "baseItemId": "T7_MOUNT_SWAMPDRAGON",
+    "nameEs": "Dragón de pantano ensillado",
+    "nameEn": "Saddled Swamp Dragon",
+    "tier": 7,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 5745,
+    "materials": [
+      {
+        "itemId": "T7_FARM_SWAMPDRAGON_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Dragón de pantano domado",
+        "nameEn": "Tame Swamp Dragon"
+      },
+      {
+        "itemId": "T7_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero reforzado",
+        "nameEn": "Reinforced Leather"
+      }
+    ],
+    "materialItemValue": 2560
   },
   {
     "itemId": "T7_OFF_BOOK",
@@ -168367,6 +171057,491 @@
     "materialItemValue": 65536
   },
   {
+    "itemId": "T8_BAG",
+    "baseItemId": "T8_BAG",
+    "nameEs": "Bolsa del anciano",
+    "nameEn": "Elder's Bag",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca",
+        "nameEn": "Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T8_BAG_INSIGHT",
+    "baseItemId": "T8_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del anciano",
+    "nameEn": "Elder's Satchel of Insight",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 8042,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca",
+        "nameEn": "Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T8_BAG_INSIGHT@1",
+    "baseItemId": "T8_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del anciano",
+    "nameEn": "Elder's Satchel of Insight",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca poco común",
+        "nameEn": "Uncommon Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido poco común",
+        "nameEn": "Uncommon Fortified Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T8_BAG_INSIGHT@2",
+    "baseItemId": "T8_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del anciano",
+    "nameEn": "Elder's Satchel of Insight",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 24630,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca rara",
+        "nameEn": "Rare Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido raro",
+        "nameEn": "Rare Fortified Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T8_BAG_INSIGHT@3",
+    "baseItemId": "T8_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del anciano",
+    "nameEn": "Elder's Satchel of Insight",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 43102,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca excepcional",
+        "nameEn": "Exceptional Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido excepcional",
+        "nameEn": "Exceptional Fortified Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 32768
+  },
+  {
+    "itemId": "T8_BAG_INSIGHT@4",
+    "baseItemId": "T8_BAG_INSIGHT",
+    "nameEs": "Bolsa de visión del anciano",
+    "nameEn": "Elder's Satchel of Insight",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 75429,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca prístina",
+        "nameEn": "Pristine Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido prístino",
+        "nameEn": "Pristine Fortified Leather"
+      },
+      {
+        "itemId": "T4_SKILLBOOK_STANDARD",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Tomo de conocimiento del iniciado",
+        "nameEn": "Adept's Tome of Insight"
+      }
+    ],
+    "materialItemValue": 65536
+  },
+  {
+    "itemId": "T8_BAG@1",
+    "baseItemId": "T8_BAG",
+    "nameEs": "Bolsa del anciano",
+    "nameEn": "Elder's Bag",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 14074,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca poco común",
+        "nameEn": "Uncommon Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL1@1",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido poco común",
+        "nameEn": "Uncommon Fortified Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T8_BAG@2",
+    "baseItemId": "T8_BAG",
+    "nameEs": "Bolsa del anciano",
+    "nameEn": "Elder's Bag",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 24630,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca rara",
+        "nameEn": "Rare Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL2@2",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido raro",
+        "nameEn": "Rare Fortified Leather"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T8_BAG@3",
+    "baseItemId": "T8_BAG",
+    "nameEs": "Bolsa del anciano",
+    "nameEn": "Elder's Bag",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 43102,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca excepcional",
+        "nameEn": "Exceptional Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL3@3",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido excepcional",
+        "nameEn": "Exceptional Fortified Leather"
+      }
+    ],
+    "materialItemValue": 32768
+  },
+  {
+    "itemId": "T8_BAG@4",
+    "baseItemId": "T8_BAG",
+    "nameEs": "Bolsa del anciano",
+    "nameEn": "Elder's Bag",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "bag",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 75429,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Tela barroca prístina",
+        "nameEn": "Pristine Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL4@4",
+        "count": 8,
+        "category": "other",
+        "nameEs": "Cuero fortalecido prístino",
+        "nameEn": "Pristine Fortified Leather"
+      }
+    ],
+    "materialItemValue": 65536
+  },
+  {
+    "itemId": "T8_CAPE",
+    "baseItemId": "T8_CAPE",
+    "nameEs": "Capa del anciano",
+    "nameEn": "Elder's Cape",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 4021,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela barroca",
+        "nameEn": "Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 2048
+  },
+  {
+    "itemId": "T8_CAPE@1",
+    "baseItemId": "T8_CAPE",
+    "nameEs": "Capa del anciano",
+    "nameEn": "Elder's Cape",
+    "tier": 8,
+    "enchant": 1,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 7037,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela barroca poco común",
+        "nameEn": "Uncommon Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL1@1",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero fortalecido poco común",
+        "nameEn": "Uncommon Fortified Leather"
+      }
+    ],
+    "materialItemValue": 4096
+  },
+  {
+    "itemId": "T8_CAPE@2",
+    "baseItemId": "T8_CAPE",
+    "nameEs": "Capa del anciano",
+    "nameEn": "Elder's Cape",
+    "tier": 8,
+    "enchant": 2,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 12315,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela barroca rara",
+        "nameEn": "Rare Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL2@2",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero fortalecido raro",
+        "nameEn": "Rare Fortified Leather"
+      }
+    ],
+    "materialItemValue": 8192
+  },
+  {
+    "itemId": "T8_CAPE@3",
+    "baseItemId": "T8_CAPE",
+    "nameEs": "Capa del anciano",
+    "nameEn": "Elder's Cape",
+    "tier": 8,
+    "enchant": 3,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 21551,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela barroca excepcional",
+        "nameEn": "Exceptional Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL3@3",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero fortalecido excepcional",
+        "nameEn": "Exceptional Fortified Leather"
+      }
+    ],
+    "materialItemValue": 16384
+  },
+  {
+    "itemId": "T8_CAPE@4",
+    "baseItemId": "T8_CAPE",
+    "nameEs": "Capa del anciano",
+    "nameEn": "Elder's Cape",
+    "tier": 8,
+    "enchant": 4,
+    "stationType": "gear",
+    "craftingCategory": "cape",
+    "maxQualityLevel": 5,
+    "batchSize": 1,
+    "craftingFocus": 37715,
+    "materials": [
+      {
+        "itemId": "T8_CLOTH_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Tela barroca prístina",
+        "nameEn": "Pristine Baroque Cloth"
+      },
+      {
+        "itemId": "T8_LEATHER_LEVEL4@4",
+        "count": 4,
+        "category": "other",
+        "nameEs": "Cuero fortalecido prístino",
+        "nameEn": "Pristine Fortified Leather"
+      }
+    ],
+    "materialItemValue": 32768
+  },
+  {
     "itemId": "T8_CLOTH",
     "baseItemId": "T8_CLOTH",
     "nameEs": "Tela barroca",
@@ -178802,6 +181977,246 @@
       }
     ],
     "materialItemValue": 4096
+  },
+  {
+    "itemId": "T8_MOUNT_ARMORED_HORSE",
+    "baseItemId": "T8_MOUNT_ARMORED_HORSE",
+    "nameEs": "Caballo blindado del anciano",
+    "nameEn": "Elder's Armored Horse",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 15080,
+    "materials": [
+      {
+        "itemId": "T8_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del anciano",
+        "nameEn": "Elder's Horse"
+      },
+      {
+        "itemId": "T8_CLOTH",
+        "count": 10,
+        "category": "other",
+        "nameEs": "Tela barroca",
+        "nameEn": "Baroque Cloth"
+      },
+      {
+        "itemId": "T8_METALBAR",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Lingote de adamantio",
+        "nameEn": "Adamantium Steel Bar"
+      }
+    ],
+    "materialItemValue": 7680
+  },
+  {
+    "itemId": "T8_MOUNT_ARMORED_HORSE_SKIN_01",
+    "baseItemId": "T8_MOUNT_ARMORED_HORSE_SKIN_01",
+    "nameEs": "Caballo de guerra del anciano",
+    "nameEn": "Elder's Warhorse",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 0,
+    "materials": [
+      {
+        "itemId": "T8_MOUNT_ARMORED_HORSE",
+        "count": 1,
+        "category": "artifact",
+        "nameEs": "Caballo blindado del anciano",
+        "nameEn": "Elder's Armored Horse"
+      }
+    ],
+    "materialItemValue": 0
+  },
+  {
+    "itemId": "T8_MOUNT_DIREBEAR",
+    "baseItemId": "T8_MOUNT_DIREBEAR",
+    "nameEs": "Oso gigante ensillado",
+    "nameEn": "Saddled Direbear",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 10053,
+    "materials": [
+      {
+        "itemId": "T8_FARM_DIREBEAR_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Oso gigante domado",
+        "nameEn": "Tame Direbear"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 5120
+  },
+  {
+    "itemId": "T8_MOUNT_DRAKE_FIRE",
+    "baseItemId": "T8_MOUNT_DRAKE_FIRE",
+    "nameEs": "Draco Ala de Fuego",
+    "nameEn": "Firewing Drake",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 10053,
+    "materials": [
+      {
+        "itemId": "T8_FARM_DRAKE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Draco Ala de Fuego Domado",
+        "nameEn": "Tame Firewing Drake"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 5120
+  },
+  {
+    "itemId": "T8_MOUNT_HORSE",
+    "baseItemId": "T8_MOUNT_HORSE",
+    "nameEs": "Caballo de montar del anciano",
+    "nameEn": "Elder's Riding Horse",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 10053,
+    "materials": [
+      {
+        "itemId": "T8_FARM_HORSE_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Caballo del anciano",
+        "nameEn": "Elder's Horse"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 5120
+  },
+  {
+    "itemId": "T8_MOUNT_MAMMOTH_TRANSPORT",
+    "baseItemId": "T8_MOUNT_MAMMOTH_TRANSPORT",
+    "nameEs": "Mamut de transporte del anciano",
+    "nameEn": "Elder's Transport Mammoth",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 10053,
+    "materials": [
+      {
+        "itemId": "T8_FARM_MAMMOTH_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Mamut domado",
+        "nameEn": "Tame Mammoth"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 5120
+  },
+  {
+    "itemId": "T8_MOUNT_OX",
+    "baseItemId": "T8_MOUNT_OX",
+    "nameEs": "Buey de transporte del anciano",
+    "nameEn": "Elder's Transport Ox",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 15080,
+    "materials": [
+      {
+        "itemId": "T8_FARM_OX_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Buey del anciano",
+        "nameEn": "Elder's Ox"
+      },
+      {
+        "itemId": "T8_PLANKS",
+        "count": 30,
+        "category": "other",
+        "nameEs": "Tablas de maderablanca",
+        "nameEn": "Whitewood Planks"
+      }
+    ],
+    "materialItemValue": 7680
+  },
+  {
+    "itemId": "T8_MOUNT_RABBIT_EASTER",
+    "baseItemId": "T8_MOUNT_RABBIT_EASTER",
+    "nameEs": "Conejo primaveral",
+    "nameEn": "Spring Cottontail",
+    "tier": 8,
+    "enchant": 0,
+    "stationType": "mount",
+    "craftingCategory": null,
+    "maxQualityLevel": 1,
+    "batchSize": 1,
+    "craftingFocus": 10053,
+    "materials": [
+      {
+        "itemId": "T8_FARM_RABBIT_EASTER_GROWN",
+        "count": 1,
+        "category": "other",
+        "nameEs": "Conejo primaveral domado",
+        "nameEn": "Tame Spring Cottontail"
+      },
+      {
+        "itemId": "T8_LEATHER",
+        "count": 20,
+        "category": "other",
+        "nameEs": "Cuero fortalecido",
+        "nameEn": "Fortified Leather"
+      }
+    ],
+    "materialItemValue": 5120
   },
   {
     "itemId": "T8_OFF_BOOK",

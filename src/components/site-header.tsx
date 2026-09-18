@@ -8,7 +8,7 @@ import { Logo } from "@/components/logo";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
-import { CITY_THEMES } from "@/lib/city-theme";
+import { BANNER_COUNT, BANNER_SRC, CITY_THEMES, type CityTheme } from "@/lib/city-theme";
 import type { CitySpecialty } from "@/lib/city-specialties";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,8 @@ const NAV_ITEMS = [
   { href: "/es/alquimia", label: "Alquimia", count: 174 },
   { href: "/es/refinado", label: "Refinado", count: 115 },
   { href: "/es/cocina", label: "Cocina", count: 183 },
-  { href: "/es/equipo", label: "Equipo", count: 5632 },
+  { href: "/es/equipo", label: "Equipo", count: 5711 },
+  { href: "/es/monturas", label: "Monturas", count: 29 },
 ] as const;
 
 const BONUS_LABEL: Record<CitySpecialty["kind"], string> = {
@@ -58,7 +59,6 @@ export function SiteHeader({
 }) {
   const pathname = usePathname();
   const currentTheme = recipeControls ? CITY_THEMES[recipeControls.craftCity] : null;
-  const CurrentIcon = currentTheme?.Icon;
   const [menuOpen, setMenuOpen] = useState(false);
 
   // The mobile menu opens fresh on every navigation instead of staying open across the route
@@ -139,7 +139,7 @@ export function SiteHeader({
           </SheetContent>
         </Sheet>
 
-        {recipeControls && currentTheme && CurrentIcon ? (
+        {recipeControls && currentTheme ? (
           <div className="ml-2 flex shrink-0 items-center gap-1.5">
             <div className="hidden sm:block">
               <ServerBadge />
@@ -157,29 +157,17 @@ export function SiteHeader({
                   currentTheme.text,
                 )}
               >
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-current/40 bg-black/30 p-0.5">
-                  <CurrentIcon className="h-full w-full" />
-                </span>
+                <CityGlyph theme={currentTheme} />
                 <span className="font-medium">{recipeControls.craftCity}</span>
                 <ChevronDown className="h-3 w-3 opacity-70" />
               </SelectTrigger>
               <SelectContent align="end" alignItemWithTrigger={false} className="min-w-56">
                 {REAL_CITIES.map((city) => {
                   const theme = CITY_THEMES[city];
-                  const Icon = theme.Icon;
                   const bonus = recipeControls.cityBonuses.get(city);
                   return (
                     <SelectItem key={city} value={city} className="gap-2 py-1.5">
-                      <span
-                        className={cn(
-                          "flex h-5 w-5 shrink-0 items-center justify-center rounded border p-0.5",
-                          theme.border,
-                          theme.bg,
-                          theme.text,
-                        )}
-                      >
-                        <Icon className="h-full w-full" />
-                      </span>
+                      <CityGlyph theme={theme} />
                       <span className="flex-1">{city}</span>
                       {bonus && (
                         <span className="shrink-0 rounded-full bg-money/10 px-1.5 py-0.5 font-mono text-[11px] tabular-nums text-money">
@@ -210,6 +198,45 @@ export function SiteHeader({
         </div>
       )}
     </header>
+  );
+}
+
+/** The city selector's badge: a slice of the real Albion banner sheet for the six cities that
+ * have one, the fallback glyph for Black Market, or nothing for Brecilien (not in the banner
+ * sheet -- no substitute logo, per the Faction Banner Rule). Each banner frame is a tall wooden
+ * standard (plaque + flag + pointed tail) with the colored emblem in a fixed vertical band; the
+ * badge zooms into that band (measured in public/banners.png: natural 1243x864, 6 equal frames,
+ * emblem band vertically centered around y=498) instead of squashing the whole flag into a square. */
+const BANNER_NATURAL_WIDTH = 1243;
+const BANNER_NATURAL_HEIGHT = 864;
+const BANNER_EMBLEM_CENTER_Y = 498;
+const BADGE_PX = 20; // matches h-5 w-5
+
+function CityGlyph({ theme }: { theme: CityTheme }) {
+  if (theme.bannerIndex === undefined && !theme.Icon) return null;
+  const frameWidth = BANNER_NATURAL_WIDTH / BANNER_COUNT;
+  const scale = BADGE_PX / frameWidth;
+  const bgWidth = BANNER_NATURAL_WIDTH * scale;
+  const bgHeight = BANNER_NATURAL_HEIGHT * scale;
+  const posX = theme.bannerIndex !== undefined ? -(theme.bannerIndex * frameWidth * scale) : 0;
+  const posY = -(BANNER_EMBLEM_CENTER_Y * scale - BADGE_PX / 2);
+  return (
+    <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded border border-current/40 bg-black/30">
+      {theme.bannerIndex !== undefined ? (
+        <span
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${BANNER_SRC})`,
+            backgroundSize: `${bgWidth}px ${bgHeight}px`,
+            backgroundPosition: `${posX}px ${posY}px`,
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      ) : theme.Icon ? (
+        <theme.Icon className="h-full w-full p-0.5" />
+      ) : null}
+    </span>
   );
 }
 

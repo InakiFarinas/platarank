@@ -10,7 +10,7 @@ export async function RecipePage({
   title,
   description,
 }: {
-  stationType: "alchemy" | "refining" | "cooking" | "gear";
+  stationType: "alchemy" | "refining" | "cooking" | "gear" | "mount";
   title: string;
   description: string;
 }) {
