@@ -14,33 +14,42 @@ export type CityAggregate = CityPrice & DumpVolumeSummary;
 
 const EMPTY_VOLUME: DumpVolumeSummary = { avgDailyVolume30d: 0, daysWithVolume30d: 0, weightedAvgPrice30d: null };
 
-/** A real-city sell price this many times above the median of the item's other cities is treated
- * as a bogus listing (e.g. a 195M order on a ~13k potion) -- far beyond any real inter-city spread. */
+/** A real-city sell price this many times above the median of the item's OTHER quotes (any city,
+ * any quality, plus Black Market bids) is treated as a bogus listing (e.g. a 195M order on a ~13k
+ * potion) -- far beyond any real inter-city or inter-quality spread. */
 export const ABSURD_PRICE_FACTOR = 20;
-const MIN_OTHER_CITIES = 2;
+/** Below this, wide spreads are normal thin-market noise (cheap artifacts sell for 113 in one city
+ * and 5,000 in another), so nothing is dropped no matter the ratio. */
+export const ABSURD_PRICE_FLOOR = 100_000;
+const MIN_REFERENCE_QUOTES = 2;
 
 /** Zeroes out (-> "no price" downstream) real-city sell_price_min values that are absurdly above
- * what the same item/quality sells for elsewhere. Needs 2+ other cities to compare against, so a
- * lone quote is never dropped. Returns a new array plus how many rows were cleared. */
+ * what the same item trades at elsewhere. Comparing across qualities and Black Market too (not
+ * just same-quality cities) catches gear whose only Q1 quote is the troll one. Needs 2+ other
+ * quotes and a price of at least ABSURD_PRICE_FLOOR, so a lone or cheap quote is never dropped. */
 export function dropAbsurdPrices(prices: AodpPriceRow[]): { prices: AodpPriceRow[]; dropped: AodpPriceRow[] } {
   const realCities = new Set<string>(REAL_CITIES);
-  const groups = new Map<string, AodpPriceRow[]>();
+  const byItem = new Map<string, AodpPriceRow[]>();
   for (const p of prices) {
-    if (!realCities.has(p.city) || p.sell_price_min <= 0) continue;
-    const key = `${p.item_id}|${p.quality}`;
-    const list = groups.get(key);
+    const list = byItem.get(p.item_id);
     if (list) list.push(p);
-    else groups.set(key, [p]);
+    else byItem.set(p.item_id, [p]);
   }
 
+  const quoteOf = (p: AodpPriceRow) => (realCities.has(p.city) ? p.sell_price_min : p.city === BLACK_MARKET ? p.buy_price_max : 0);
+
   const absurd = new Set<AodpPriceRow>();
-  for (const group of groups.values()) {
-    if (group.length < MIN_OTHER_CITIES + 1) continue;
-    for (const p of group) {
-      const others = group.filter((o) => o !== p).map((o) => o.sell_price_min);
-      const sorted = others.sort((a, b) => a - b);
-      const mid = Math.floor(sorted.length / 2);
-      const med = sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+  for (const rows of byItem.values()) {
+    for (const p of rows) {
+      if (!realCities.has(p.city) || p.sell_price_min < ABSURD_PRICE_FLOOR) continue;
+      const others = rows
+        .filter((o) => o !== p)
+        .map(quoteOf)
+        .filter((v) => v > 0)
+        .sort((a, b) => a - b);
+      if (others.length < MIN_REFERENCE_QUOTES) continue;
+      const mid = Math.floor(others.length / 2);
+      const med = others.length % 2 === 0 ? (others[mid - 1] + others[mid]) / 2 : others[mid];
       if (p.sell_price_min > med * ABSURD_PRICE_FACTOR) absurd.add(p);
     }
   }

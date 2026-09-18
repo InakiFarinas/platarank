@@ -45,7 +45,9 @@ async function main() {
 
   const dumpUrl = await findLatestDumpUrl(server);
   const lastProcessedUrl = await getLastProcessedDumpUrl();
-  const isNewDump = dumpUrl !== lastProcessedUrl;
+  // FORCE_DUMP=1 re-parses today's dump even if already processed -- needed after new recipes are
+  // added, since otherwise their volume stays empty until tomorrow's dump.
+  const isNewDump = dumpUrl !== lastProcessedUrl || process.env.FORCE_DUMP === "1";
 
   if (isNewDump) {
     console.log(`New daily dump detected (${dumpUrl}); downloading and recomputing 30-day volume...`);
