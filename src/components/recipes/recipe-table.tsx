@@ -1,8 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
-import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpDown } from "lucide-react";
 import { RecipeRowItem } from "./recipe-row";
 import type { RecipeRow } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
@@ -17,26 +16,41 @@ const SORT_ACCESSORS: Record<SortKey, (r: RecipeRow) => number> = {
   platinumPerDay: (r) => r.platinumPerDay ?? -Infinity,
 };
 
-export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
+const PAGE_SIZE = 10;
+
+export function RecipeTable({
+  rows,
+  isFiltered,
+  onClearFilters,
+  className,
+}: {
+  rows: RecipeRow[];
+  /** Whether the empty `rows` is because a search/filter narrowed it there, as opposed to this
+   * rubro genuinely having no data yet -- the two need different messages, since "volvé a mirar en
+   * un rato" is actively misleading for a search typo (see /impeccable critique 2026-09-18). */
+  isFiltered: boolean;
+  onClearFilters: () => void;
+  className?: string;
+}) {
   const [sortKey, setSortKey] = useState<SortKey>("platinumPerDay");
   const [desc, setDesc] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [page, setPage] = useState(0);
 
   const sortedRows = useMemo(() => {
     const accessor = SORT_ACCESSORS[sortKey];
     return [...rows].sort((a, b) => (desc ? accessor(b) - accessor(a) : accessor(a) - accessor(b)));
   }, [rows, sortKey, desc]);
 
-  const virtualizer = useVirtualizer({
-    count: sortedRows.length,
-    getScrollElement: () => scrollRef.current,
-    // Mobile renders a taller contract card, desktop the old 52px dense row; measureElement
-    // corrects the real size right after mount, so this constant only has to avoid a big jump --
-    // it must NOT depend on window/viewport, or the SSR guess (always 52) would mismatch the
-    // client's first render and trip a hydration error on the sizer's inline height style.
-    estimateSize: () => 96,
-    overscan: 12,
-  });
+  const pageCount = Math.max(1, Math.ceil(sortedRows.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount - 1);
+
+  // Sorting or a filter change can shrink the list out from under the current page (or reorder
+  // it entirely) -- always land back on page 1 rather than showing an empty or stale page.
+  useEffect(() => {
+    setPage(0);
+  }, [rows, sortKey, desc]);
+
+  const pageRows = sortedRows.slice(currentPage * PAGE_SIZE, currentPage * PAGE_SIZE + PAGE_SIZE);
 
   function toggleSort(key: SortKey) {
     if (key === sortKey) setDesc((d) => !d);
@@ -49,13 +63,26 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
   if (rows.length === 0) {
     return (
       <div className="rounded-md border border-border px-4 py-10 text-center text-sm text-muted-foreground">
-        Todavía no hay recetas cargadas. El ingester corre por hora -- volvé a mirar en un rato.
+        {isFiltered ? (
+          <>
+            <p>No hay recetas que coincidan con la búsqueda o los filtros actuales.</p>
+            <button
+              type="button"
+              onClick={onClearFilters}
+              className="mt-2 text-money underline underline-offset-2 hover:text-money/80"
+            >
+              Quitar búsqueda y filtros
+            </button>
+          </>
+        ) : (
+          <p>Todavía no hay recetas cargadas. El ingester corre por hora -- volvé a mirar en un rato.</p>
+        )}
       </div>
     );
   }
 
   return (
-    <div className="rounded-md border border-border">
+    <div className={cn("mb-20 flex flex-col rounded-md border border-border lg:mb-0 lg:min-h-0 lg:flex-1", className)}>
       <div className="flex items-center gap-2 overflow-x-auto border-b-2 border-double border-border px-3 py-2 sm:hidden">
         <span className="shrink-0 text-[11px] text-muted-foreground">Ordenar:</span>
         <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/dia" />
@@ -66,12 +93,12 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
       <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
         <span className="w-8 shrink-0">#</span>
         <span className="flex-1">Ítem</span>
-        <div className="hidden items-center gap-6 xl:flex">
+        <div className="hidden items-center gap-4 xl:flex">
           <SortHeader active={sortKey === "cost"} desc={desc} onClick={() => toggleSort("cost")} label="Costo" width="w-14" />
           <SortHeader active={sortKey === "sellPrice"} desc={desc} onClick={() => toggleSort("sellPrice")} label="Precio venta" width="w-20" />
-          <span className="w-24 shrink-0">Ciudad bono</span>
         </div>
-        <div className="flex items-center gap-6">
+        <span className="hidden w-20 shrink-0 lg:block">Ciudad bono</span>
+        <div className="flex items-center gap-4 xl:gap-6">
           <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" width="w-12" />
           <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/dia" width="w-12" />
           <SortHeader
@@ -84,24 +111,55 @@ export function RecipeTable({ rows }: { rows: RecipeRow[] }) {
         </div>
       </div>
 
-      <div ref={scrollRef} className="max-h-[70vh] overflow-y-auto">
-        <div style={{ height: virtualizer.getTotalSize(), position: "relative" }}>
-          {virtualizer.getVirtualItems().map((virtualRow) => {
-            const row = sortedRows[virtualRow.index];
-            return (
-              <div
-                key={row.recipe.itemId}
-                ref={virtualizer.measureElement}
-                data-index={virtualRow.index}
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${virtualRow.start}px)` }}
-              >
-                <RecipeRowItem row={row} rank={virtualRow.index + 1} />
-              </div>
-            );
-          })}
+      <div className="lg:flex-1">
+        {pageRows.map((row, i) => (
+          <RecipeRowItem key={row.recipe.itemId} row={row} rank={currentPage * PAGE_SIZE + i + 1} />
+        ))}
+      </div>
+
+      <div className="mt-auto flex items-center justify-between gap-3 border-t-2 border-double border-border px-3 py-2.5 text-xs text-muted-foreground">
+        <span>
+          Página <span className="font-mono tabular-nums text-foreground">{currentPage + 1}</span> de{" "}
+          <span className="font-mono tabular-nums text-foreground">{pageCount}</span>
+        </span>
+        <div className="flex items-center gap-1.5">
+          <PageButton onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={currentPage === 0} label="Página anterior">
+            <ArrowLeft className="h-3.5 w-3.5" />
+          </PageButton>
+          <PageButton
+            onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+            disabled={currentPage >= pageCount - 1}
+            label="Página siguiente"
+          >
+            <ArrowRight className="h-3.5 w-3.5" />
+          </PageButton>
         </div>
       </div>
     </div>
+  );
+}
+
+function PageButton({
+  onClick,
+  disabled,
+  label,
+  children,
+}: {
+  onClick: () => void;
+  disabled: boolean;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground transition-colors after:absolute after:-inset-1.5 after:content-[''] hover:border-money/40 hover:text-money disabled:pointer-events-none disabled:opacity-30"
+    >
+      {children}
+    </button>
   );
 }
 

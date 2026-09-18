@@ -1,3 +1,36 @@
 {
-  "buildPath": "code"
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/components/home/landing-header.tsx"
+        ],
+        "createdAt": "2026-09-18T01:56:19.777Z",
+        "reason": "tab-underline nav pattern: rounded-t-sm + border-b-2 is the active/hover tab indicator, not a rounded card border clash"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/components/recipes/recipe-header.tsx"
+        ],
+        "createdAt": "2026-09-18T02:13:26.136Z",
+        "reason": "tab-underline nav pattern: rounded-t-sm + border-b-2 is the active/hover rubro-tab indicator, not a rounded card border clash (same false positive already confirmed and ignored for landing-header.tsx)"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/components/site-header.tsx"
+        ],
+        "createdAt": "2026-09-18T04:59:07.522Z",
+        "reason": "tab-underline nav pattern (rounded-t-sm + border-b-2 active-tab indicator), same false positive already confirmed and ignored for the header files this component replaces"
+      }
+    ]
+  }
 }

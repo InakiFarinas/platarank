@@ -7,6 +7,8 @@ import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { formatAge, formatPercent, formatSilver, enchantLabel, qualityLabel } from "./format";
 import { itemIconUrl } from "@/lib/item-icons";
+import { CITY_THEMES } from "@/lib/city-theme";
+import type { Location } from "@/lib/aodp/cities";
 import type { QualityBreakdownEntry, RecipeRow as RecipeRowData } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +16,15 @@ const DISCARD_REASON_LABEL: Record<string, string> = {
   outlier_low: "descartado: precio anormalmente bajo (posible bait)",
   outlier_high: "descartado: precio anormalmente alto (posible troll listing)",
 };
+
+/** Screen readers otherwise get the row's raw concatenated text nodes (name, tier badge, every
+ * stat) with no structure -- this gives the row/card button a clean, single accessible name. */
+function rowAriaLabel(row: RecipeRowData): string {
+  const { recipe } = row;
+  const tier = `T${recipe.tier}${enchantLabel(recipe.enchant)}`;
+  const dataNote = row.hasData ? "" : ", datos insuficientes";
+  return `${recipe.nameEs}, ${tier}, ${formatSilver(row.platinumPerDay)} plata por día${dataNote}. Ver detalle.`;
+}
 
 export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number }) {
   return (
@@ -42,7 +53,8 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={detailId}
-        className="flex w-full items-center gap-4 px-3 py-2 text-left transition-colors hover:bg-accent/40"
+        aria-label={rowAriaLabel(row)}
+        className="flex w-full items-center gap-4 px-3 py-3.5 text-left transition-colors hover:bg-accent/40"
       >
         <div className="w-8 shrink-0">
           <span className="font-mono text-xs tabular-nums text-muted-foreground">{rank}</span>
@@ -52,10 +64,8 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
           <ChevronDown
             className={cn("h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")}
           />
-          <div className="flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded border border-border bg-secondary/60">
-            {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
-            <img src={itemIconUrl(recipe.itemId)} alt="" className="h-5 w-5 object-contain" loading="lazy" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
+          <img src={itemIconUrl(recipe.itemId)} alt="" className="h-6 w-6 shrink-0 object-contain" loading="lazy" />
           <span className="truncate text-sm font-medium">{recipe.nameEs}</span>
           <Badge variant="secondary" className="shrink-0 font-mono text-[11px] tabular-nums">
             T{recipe.tier}
@@ -68,13 +78,19 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
           )}
         </div>
 
-        <div className="hidden items-center justify-end gap-6 xl:flex">
+        <div className="hidden items-center justify-end gap-4 xl:flex">
           <Stat label="costo" value={row.costPerUnit !== null ? formatSilver(row.costPerUnit) : "--"} mono />
           <Stat label="precio venta" value={row.sellRefPrice !== null ? formatSilver(row.sellRefPrice) : "--"} mono />
-          <Stat label="ciudad bono" value={row.specialtyCity ?? "--"} />
+        </div>
+        <div className="hidden w-20 shrink-0 text-right lg:block">
+          <Stat
+            label="ciudad bono"
+            value={row.specialtyCity ?? "--"}
+            className={row.specialtyCity ? CITY_THEMES[row.specialtyCity as Location]?.text : undefined}
+          />
         </div>
 
-        <div className="flex items-center justify-end gap-6">
+        <div className="flex items-center justify-end gap-4 xl:gap-6">
           <Stat label="margen" value={formatPercent(row.marginPct)} mono />
           <Stat label="vol/dia" value={formatSilver(row.avgDailyVolume30d)} mono />
           <div className="w-24 text-right">
@@ -104,13 +120,15 @@ function ContractCard({ row }: { row: RecipeRowData }) {
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger
         render={
-          <button type="button" className="block w-full px-3 py-3 text-left transition-colors hover:bg-accent/40">
+          <button
+            type="button"
+            aria-label={rowAriaLabel(row)}
+            className="block w-full px-3 py-3 text-left transition-colors hover:bg-accent/40"
+          >
             <div className="flex items-start justify-between gap-3">
               <div className="flex min-w-0 flex-1 items-center gap-2.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border bg-secondary/60">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
-                  <img src={itemIconUrl(recipe.itemId)} alt="" className="h-8 w-8 object-contain" loading="lazy" />
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
+                <img src={itemIconUrl(recipe.itemId)} alt="" className="h-10 w-10 shrink-0 object-contain" loading="lazy" />
                 <div className="min-w-0">
                   <span className="block truncate text-sm font-medium">{recipe.nameEs}</span>
                   <div className="mt-0.5 flex items-center gap-1">
@@ -179,10 +197,10 @@ function QualityGems({ breakdown }: { breakdown: QualityBreakdownEntry[] }) {
   );
 }
 
-function Stat({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+function Stat({ label, value, mono, className }: { label: string; value: string; mono?: boolean; className?: string }) {
   return (
     <div className="text-right">
-      <div className={cn("text-xs text-foreground", mono && "font-mono tabular-nums")}>{value}</div>
+      <div className={cn("text-xs text-foreground", mono && "font-mono tabular-nums", className)}>{value}</div>
       <div className="text-[11px] text-muted-foreground">{label}</div>
     </div>
   );
@@ -240,7 +258,8 @@ function RowDetail({ row }: { row: RecipeRowData }) {
               <ul className="space-y-0.5">
                 {row.discarded.map((d, i) => (
                   <li key={i} className="text-muted-foreground">
-                    {d.city}: {formatSilver(d.price)} -- {DISCARD_REASON_LABEL[d.reason] ?? d.reason}
+                    <span className={CITY_THEMES[d.city as Location]?.text}>{d.city}</span>: {formatSilver(d.price)} --{" "}
+                    {DISCARD_REASON_LABEL[d.reason] ?? d.reason}
                   </li>
                 ))}
               </ul>

@@ -3,6 +3,7 @@ import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates } from "@/lib/db/schema";
 import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint } from "@/lib/recipe-math";
 import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
+import { SiteFooter } from "@/components/site-footer";
 
 export async function RecipePage({
   stationType,
@@ -54,7 +55,7 @@ export async function RecipePage({
   const initialRows = recipeRows.map((r) => computeRecipeRow(r, market, DEFAULT_PARAMS));
 
   return (
-    <main className="mx-auto max-w-[1600px] px-3 py-4 sm:px-6 sm:py-8 lg:px-8">
+    <main className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-0 sm:pb-8">
       <RecipeExplorer
         recipes={recipeRows}
         marketByItem={marketByItem}
@@ -69,17 +70,19 @@ export async function RecipePage({
 
 function Footer() {
   return (
-    <footer className="mt-8 border-t border-border pt-4 text-xs text-muted-foreground">
-      Datos de mercado cortesía de{" "}
-      <a
-        href="https://www.albion-online-data.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline underline-offset-2 hover:text-foreground"
-      >
-        The Albion Online Data Project
-      </a>
-      . Recetas extraídas del dump oficial del cliente (ao-bin-dumps).
-    </footer>
+    <SiteFooter className="mt-8">
+      <p className="text-xs text-muted-foreground">
+        Datos de mercado cortesía de{" "}
+        <a
+          href="https://www.albion-online-data.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-foreground"
+        >
+          The Albion Online Data Project
+        </a>
+        . Recetas extraídas del dump oficial del cliente (ao-bin-dumps).
+      </p>
+    </SiteFooter>
   );
 }

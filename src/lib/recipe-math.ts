@@ -126,7 +126,9 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
   const feePerBatch = craftingFeePerBatch(Number(recipe.materialItemValue), params.stationRatePer100Nutrition);
   const feePerUnit = feePerBatch / recipe.batchSize;
 
-  const allMaterialsPriced = materials.every((m) => m.costContribution !== null);
+  // `.every()` on an empty array is vacuously true -- a recipe whose materials list itself failed
+  // to resolve (not just unpriced) must not read as "zero-cost", so require at least one material.
+  const allMaterialsPriced = materials.length > 0 && materials.every((m) => m.costContribution !== null);
   const materialCostPerBatch = allMaterialsPriced ? materials.reduce((sum, m) => sum + (m.costContribution ?? 0), 0) : null;
   const costPerUnit = materialCostPerBatch !== null ? materialCostPerBatch / recipe.batchSize + feePerUnit : null;
 

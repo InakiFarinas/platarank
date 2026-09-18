@@ -11,7 +11,16 @@ colors:
   hairline-border: "oklch(0.8 0.04 65 / 13%)"
   coin-gold: "oklch(0.78 0.16 68)"
   coin-gold-foreground: "oklch(0.16 0.02 60)"
+  crest: "oklch(0.36 0.13 25)"
+  forest: "oklch(0.4 0.06 155)"
 typography:
+  display:
+    fontFamily: "Cinzel, Georgia, serif"
+    fontSize: "1.25rem"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "0em"
+    textTransform: "uppercase"
   headline:
     fontFamily: "IM Fell English, Georgia, serif"
     fontSize: "1.25rem"
@@ -92,11 +101,13 @@ The world stops at the frame. The direction contract's thesis -- "ornament lives
 
 Note on the data-quality score's history, since it changed direction twice: the original direction contract proposed rendering it as "a wax-seal ink-fill gauge, not a bar," which the first finish review declined in favor of keeping the plain `QualityBadge` bar. A later mobile-first pass then shipped the wax-seal gauge anyway, scoped to the mobile Contract Card only, on an explicit user request overriding that earlier restraint call. The user then asked to remove the data-quality score entirely -- both the desktop bar and the mobile seal are gone, along with the row-detail's "Score de calidad" line and the formula that computed it (`computeQualityScore`). The signals it used to summarize (city coverage, data age, discarded outliers) are still visible individually in the derivation panel; they are no longer synthesized into one 0-100 number anywhere in the UI.
 
+**2026-09 update -- "Guild Ceremony" chrome pass.** The home page (`/es`) was rebuilt as the ceremonial front door to the guild ledger: a Cinzel display face (bold, uppercase, tracked) now carries its hero `<h1>`/`<h2>`s alongside new shield-shaped icon badges (`ShieldBadge`), a dashed `rule-fleur` section divider, and two homepage-only accent tokens (`crest`, a deep burgundy, and `forest`, a muted green) that do not appear on the four ranked-list pages. That same Cinzel display face was then carried into the shared `RecipeHeader` (`recipe-header.tsx`) so every page's `<h1>` and the "PlataRank" wordmark speak with one voice; the rubro nav tabs moved from a bordered box to an underline (`border-b-2`) to match the home page's own nav pattern, and the header/footer wax-seal frame became circular (matching the home page) instead of the old `rounded-md` square. This is a deliberate widening, not scope creep: the ranked-list pages' **data rows, sort controls, filters, and Sheets are untouched** -- only the page-level chrome (title, nav, wordmark, footer) picked up the new voice. `crest`/`forest` and `ShieldBadge` stay home-page-only for now; nothing below assumes they've spread further.
+
 **Key Characteristics:**
 - Dark-only "guild ground" -- warm oak/umber (hue ~55-75), replacing the old cool-zinc neutral; no light theme exists or is planned.
-- One accent color, unchanged in value, now doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure and active sort state.
-- IM Fell English carries headlines and panel titles only; Geist Sans stays on body/labels; Geist Mono stays untouched on every number.
-- Double ruled hairlines (`border-double border-b-2`) mark every major chrome divider -- header, sort-bar, home-page rubro divider.
+- One accent color, unchanged in value, now doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure, active sort state, and (since the Guild Ceremony pass) the active rubro-tab underline and wax-seal mark everywhere.
+- Cinzel (display, bold uppercase) now carries every page's `<h1>` and the "PlataRank" wordmark; IM Fell English still carries secondary panel titles (the Filtros Sheet's "Filtros y supuestos"); Geist Sans stays on body/labels; Geist Mono stays untouched on every number.
+- Double ruled hairlines (`border-double border-b-2`) mark every major chrome divider -- header, sort-bar, home-page section dividers; a dashed `rule-fleur` divider marks the home page's footer and feature sections specifically.
 - Stale/illiquid data is now marked by line form (dashed underline) in addition to color/alpha, not by color alone.
 - Data-row density and the row+expandable-detail interaction are unchanged from the prior world.
 
@@ -116,7 +127,7 @@ A warm, low-to-mid-chroma umber/parchment scale (OKLCH, hue ~55-75, candlelit ra
 - **Hairline Border** (`oklch(0.8 0.04 65 / 13%)`): sepia/bronze-tinted, the base separator device -- carried at 1px on ordinary row borders and doubled (`border-double border-b-2`) at the chrome dividers named by the Registration-Plate Rule below.
 
 ### Named Rules
-**The One Coin Rule.** The accent is rationed to the plata/dia figure and active sort state (carried forward unchanged from the prior world). A retry button, a badge, or a nav item never carries it, except the single wax-seal wordmark mark. The city selector's faction colors (see the Faction Banner Rule) are the one other deliberate exception, scoped to exactly that control.
+**The One Coin Rule.** The accent is rationed to the plata/dia figure, active sort state, the wax-seal wordmark mark, and the active rubro-tab underline (the last two were already true before the Guild Ceremony pass, just under-documented here). A retry button or an inactive nav item never carries it. The city selector's faction colors (see the Faction Banner Rule) are the one other deliberate exception, scoped to exactly that control. `crest` and `forest` (home-page-only accents) are outside this rule entirely -- they exist to give the home page a second and third hue, not to widen coin-gold's own reach.
 
 **The Faction Banner Rule.** The "ciudad donde craftea" selector (trigger + dropdown) carries a saturated per-city color -- Bridgewatch amber, Fort Sterling cyan, Lymhurst emerald, Martlock blue, Thetford purple, Caerleon red, Brecilien fuchsia, Black Market yellow-on-stone -- plus a bold flat emblem glyph (`src/components/icons/city-emblems.tsx`, a bridge arch, fort tower, leaf, mountain, rune-diamond, skull, fae spark, and market coin, one per city), an explicit user request overriding the One Coin Rule for identity purposes. Two things keep it from spreading: (1) it never touches any other control, row, or button -- city identity is exactly one control's business; (2) the emblem glyphs are solid `fill="currentColor"` shapes, a deliberately different icon language from WaxSeal's thin two-stroke line work, since a badge this small (~20px) needs a bold silhouette to read at all -- don't mix the two languages or reuse an emblem glyph as a WaxSeal-style line icon.
 
@@ -124,21 +135,22 @@ A warm, low-to-mid-chroma umber/parchment scale (OKLCH, hue ~55-75, candlelit ra
 
 ## Typography
 
-**Display/Heading Font:** IM Fell English (Georgia, serif fallback) -- a legible period print face, not a blackletter or display-fantasy face.
+**Display Font:** Cinzel (Georgia, serif fallback), bold, uppercase, tight tracking -- carries every page's `<h1>` and the "PlataRank" wordmark since the Guild Ceremony pass. A ceremonial Roman-capitals face, not a blackletter or fantasy-display face.
+**Secondary Heading Font:** IM Fell English (Georgia, serif fallback) -- a legible period print face, now confined to secondary panel titles (the Filtros Sheet's "Filtros y supuestos").
 **Body/Label Font:** Geist Sans (system-ui, sans-serif fallback) -- unchanged from the prior world.
 **Tabular/Mono Font:** Geist Mono (ui-monospace fallback), applied with `tabular-nums` to every numeric value -- unchanged from the prior world.
 
-**Character:** A print/ledger heading paired with the same quiet utilitarian sans-and-mono body pairing as before. The heading face supplies the account-hall period signal in short bursts (page titles, panel titles); it never touches body copy, labels, or numbers, so density and scanability are untouched.
+**Character:** A ceremonial display face for the one `<h1>` per page and the wordmark, a quieter print face for secondary panel titles, and the same utilitarian sans-and-mono body pairing as before. Neither heading face touches body copy, labels, or numbers, so density and scanability are untouched.
 
 ### Hierarchy
-- **Headline** (IM Fell English, 400, 1.25rem/1.5rem responsive, tight tracking): the page `<h1>` only (e.g. "Alquimia -- Americas"), and the home page's "PlataRank" masthead at 1.875rem/2.25rem.
-- **Panel title** (IM Fell English, 400, 1rem): titles of secondary surfaces that aren't the page itself -- the Filtros Sheet's "Filtros y supuestos" -- and the rubro card labels on the home page. Distinct from Headline so a panel never visually competes with the page title.
+- **Display** (Cinzel, 700, uppercase, 1.25rem/1.5rem responsive, tight tracking): the page `<h1>` only (e.g. "ALQUIMIA -- AMERICAS"), the "PlataRank" wordmark in every header/footer, and the home page's hero/section `<h1>`/`<h2>`s at up to 3.75rem.
+- **Panel title** (IM Fell English, 400, 1rem): titles of secondary surfaces that aren't the page itself -- the Filtros Sheet's "Filtros y supuestos". Distinct from Display so a panel never visually competes with the page title.
 - **Body** (Geist Sans, 400, 0.875rem): the page subtitle, row detail section prose, error/loading copy, home page description.
 - **Tabular** (Geist Mono, ~0.8125rem, `tabular-nums`): every numeric cell -- rank, margin %, volume, plata/dia, and every derivation-panel figure.
 - **Label** (Geist Sans, 400, 0.6875rem/11px, slight tracking): column headers, stat captions, sort-bar caption.
 
 ### Named Rules
-**The Heading-In-Chrome-Only Rule.** IM Fell English is confined to the page `<h1>`, Sheet/panel titles, and the home page's rubro labels -- never a data-row name, a stat caption, or a numeric value. Anything that is data, not chrome, stays on Geist Sans or Geist Mono.
+**The Heading-In-Chrome-Only Rule.** Cinzel is confined to the page `<h1>` and the wordmark; IM Fell English is confined to secondary Sheet/panel titles -- neither ever touches a data-row name, a stat caption, or a numeric value. Anything that is data, not chrome, stays on Geist Sans or Geist Mono.
 
 **The Tabular-Nums Rule.** Any value that is a quantity (silver, percent, count, score) renders in mono with `tabular-nums`; any value that is a label or name renders in the proportional sans. Unchanged from the prior world.
 
@@ -175,7 +187,7 @@ The core interaction pattern of the whole surface, structurally unchanged from t
 **Wide-desktop columns (`xl:` and up only).** Once the container widened to `max-w-[1600px]`, three more stats earned real screen space without crowding the row at any narrower width: Costo (cost per unit), Precio venta (sell reference price), and Ciudad bono (the recipe category's specialty city, or `--` when none). All three reuse fields `computeRecipeRow` already produced for the derivation panel -- nothing new was computed to fill the wider table, keeping every number traceable to the same source it always had. Costo and Precio venta are sortable through the same `SortKey`/`SORT_ACCESSORS` mechanism as the existing columns; Ciudad bono is a label only, not sortable (it's not a meaningful ranking axis on its own).
 
 ### Rubro Tabs (header nav)
-The four rubro nav links render as small rounded-`md` tabs instead of plain text links, each now carrying a recipe-count pill (174 / 115 / 183 / 5.6k, hardcoded in `NAV_ITEMS` the same way the home page's rubro cards already hardcode their counts): active gets `border-money/50 bg-money/10 text-money` with a `bg-money/20` count pill, inactive gets a fully transparent border, `bg-secondary/40 text-muted-foreground`, and a `bg-background/60` count pill. Inactive tabs' border stays transparent rather than absent so hover/active don't shift layout, and because a colorless border alongside `rounded-md` doesn't trip the border/radius-clash the mechanical detector flags for a *visible*, differently-weighted border-plus-radius combination (confirmed clean on re-scan).
+The four rubro nav links each carry a recipe-count pill (174 / 115 / 183 / 5.6k, hardcoded in `NAV_ITEMS` the same way the home page's station cards hardcode their counts). Since the Guild Ceremony pass, the active/inactive distinction is an underline, matching the home page's own nav: active gets `border-b-2 border-money text-money` with a `bg-money/20` count pill; inactive gets `border-b-2 border-transparent text-muted-foreground` (hover tints the border `border-money/30`) with a `bg-background/60` count pill. No background fill on either state -- the tab reads as underlined text, not a boxed pill.
 
 ### City Selector (header control, faction-themed)
 A compact `Select` trigger in the header nav showing the current "ciudad donde craftea" and letting the player change it globally without opening the Filtros sheet -- replaces the old in-sheet "Ciudad donde craftea" `Select` (the Filtros sheet now carries a one-line pointer to the header control instead). Trigger and every dropdown item are colored per the Faction Banner Rule: a small bordered/tinted badge (`border`/`bg`/`text` from `CITY_THEMES`, `src/lib/city-theme.ts`) holding that city's flat emblem glyph, followed by the name. Each dropdown item also carries a coin-gold pill badge naming its bonus for the current rubro ("+15% crafteo" / "+40% refinado"), computed from that rubro's actual recipe categories against `city-specialties.json` (`RecipeExplorer`'s `cityBonuses` map) -- a city with no specialty for this rubro's categories gets no badge, not a "sin bono" placeholder. The dropdown popup is widened past its default anchor-matched width (`min-w-56`) so the bonus badge never clips on a narrow trigger.
@@ -199,7 +211,10 @@ Desktop: inline text+icon buttons in the table header row, active state colored 
 The double-line rule (`border-b-2 border-double` / `border-t-2 border-double`, sepia hairline color) is the system's one new structural motif, appearing at exactly three places: the sticky page header, the table's sort-bar row (both desktop and mobile forms), and the home page's divider above the rubro grid. It never appears on ordinary row-to-row separators or inside the row-detail panel.
 
 ### Wax Seal (signature mark)
-A single hand-drawn SVG icon (`WaxSeal`, two concentric circles plus a six-point star cross, one stroke weight, `currentColor`) used as the wordmark mark beside "PlataRank" in every page's nav and as the home page's masthead glyph, always rendered in coin-gold. It is the system's only glyph icon used decoratively rather than functionally (all other icons -- `ChevronDown`, `ArrowUp`/`ArrowDown`/`ArrowUpDown`, `SlidersHorizontal` -- are Lucide functional-UI icons, unchanged from the prior world).
+A single hand-drawn SVG icon (`WaxSeal`, two concentric circles plus a six-point star cross, one stroke weight, `currentColor`) used as the wordmark mark beside "PlataRank" in every page's nav and footer, and as the home page's masthead/CTA glyph, always rendered in coin-gold. Since the Guild Ceremony pass its frame is a circular badge (`rounded-full border-money/50 bg-money/10` with a layered ring `box-shadow` echoing a pressed wax seal) everywhere it appears, replacing the earlier `rounded-md` square frame -- one consistent asset/frame across home page, `RecipeHeader`, and `recipe-page.tsx`'s footer. It is the system's only glyph icon used decoratively rather than functionally (all other icons -- `ChevronDown`, `ArrowUp`/`ArrowDown`/`ArrowUpDown`, `SlidersHorizontal` -- are Lucide functional-UI icons, unchanged from the prior world).
+
+### Footer (page-level chrome)
+Every page (home and all four ranked-list pages) closes with a dashed `rule-fleur` divider above a footer row: the wax-seal + Cinzel "PlataRank" wordmark on one side, attribution/disclaimer copy on the other. Shared visually across all five pages since the Guild Ceremony pass; each page still owns its own footer markup (no shared `Footer` component yet).
 
 ### Badges
 Stock shadcn `Badge`, used narrowly: `secondary` variant for the tier/enchant tag, `outline` variant for "datos insuficientes". Unchanged from the prior world.
@@ -210,8 +225,8 @@ Only two button treatments appear in the build: the plain-bordered retry/Filtros
 ## Do's and Don'ts
 
 ### Do:
-- **Do** reserve coin-gold for the plata/dia figure, active sort/filter state, and the wax-seal mark only.
-- **Do** confine IM Fell English to the page `<h1>`, Sheet/panel titles, and rubro card labels -- never a data value or row name.
+- **Do** reserve coin-gold for the plata/dia figure, active sort/filter state, the wax-seal mark, and the active rubro-tab underline only.
+- **Do** confine Cinzel to the page `<h1>` and the "PlataRank" wordmark, and IM Fell English to secondary Sheet/panel titles -- never a data value or row name.
 - **Do** render every quantity in Geist Mono with `tabular-nums`; every name/label in Geist Sans.
 - **Do** use a double ruled line (`border-double border-b-2`/`border-t-2`) for structural, once-per-surface chrome dividers (sticky header, sort-bar, home rubro divider); keep ordinary row separators as plain 1px hairlines.
 - **Do** mark stale/illiquid values with both reduced opacity and a dashed underline (the Line-Not-Hue Rule), so state survives grayscale.
@@ -220,9 +235,10 @@ Only two button treatments appear in the build: the plain-bordered retry/Filtros
 
 ### Don't:
 - **Don't** introduce a light theme variant; dark-only is a confirmed product decision (`<html class="dark">` is hardcoded).
-- **Don't** treat "no gilt ornament" as absolute -- it was tried once (a small gold corner flourish on the header, referencing an ornate laurel-and-gem border image) and the user removed it again shortly after. The original refusal was of an unscoped, everywhere fantasy skin; judge a future ornament request on its own merits rather than reflexively citing either the refusal or this history, but don't assume decorative gilt is wanted by default either -- ask.
-- **Don't** add box-shadows or hard-offset shadows for elevation or "medieval" flavor; step to the next tonal surface or a hairline/double-rule border instead.
-- **Don't** spread coin-gold onto buttons, nav text, or non-ranking UI beyond the wax-seal mark.
+- **Don't** treat "no gilt ornament" as absolute -- it was tried once (a small gold corner flourish on the header, referencing an ornate laurel-and-gem border image) and the user removed it again shortly after; a later explicit request then asked for a full ceremonial pass on the home page plus the shared chrome (see the Guild Ceremony update above), so the constraint is scoped to unrequested/unscoped ornament, not ornament as such. Judge a future ornament request on its own merits.
+- **Don't** add box-shadows or hard-offset shadows for elevation; step to the next tonal surface or a hairline/double-rule border instead. The wax-seal's own ring `box-shadow` is a named exception (emphasis on one small decorative mark, not surface elevation) -- don't generalize it into an elevation device elsewhere.
+- **Don't** spread coin-gold onto buttons or non-ranking UI beyond the wax-seal mark, the active rubro-tab underline, the plata/dia figure, and active sort state -- that is the full list, not a starting point.
+- **Don't** let `crest`/`forest` or `ShieldBadge` migrate from the home page into the ranked-list pages without an explicit request -- they are a deliberately home-page-only accent, not the next step in this widening.
 - **Don't** let chrome ornament (heading face, double rules) migrate into data rows; row density and the row's internal typography stay exactly as before.
 - **Don't** reintroduce a synthesized 0-100 data-quality score (bar, seal, or otherwise) -- it was tried in two different shapes and removed both times at explicit user request. The derivation panel's individual signals (city count, data age, discarded outliers) are the source of truth for data trust now.
 </content>

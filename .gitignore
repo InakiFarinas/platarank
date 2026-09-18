@@ -38,4 +38,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# impeccable live-mode scratch state
+/.impeccable/live/
 next-env.d.ts

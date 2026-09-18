@@ -1,0 +1,29 @@
+import type { ReactNode } from "react";
+import { Logo } from "@/components/logo";
+
+/** Shared footer lockup (rule-fleur divider + wax-seal wordmark) used by the home page and every
+ * ranked-list page; each caller supplies its own attribution/disclaimer copy as children. */
+export function SiteFooter({
+  className,
+  containerClassName,
+  children,
+}: {
+  className?: string;
+  containerClassName?: string;
+  children: ReactNode;
+}) {
+  return (
+    <footer className={className}>
+      <div className={containerClassName}>
+        <div className="rule-fleur mb-4" />
+        <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div className="flex items-center gap-2">
+            <Logo size="sm" />
+            <span className="font-display text-sm uppercase tracking-wide">PlataRank</span>
+          </div>
+          {children}
+        </div>
+      </div>
+    </footer>
+  );
+}

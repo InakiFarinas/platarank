@@ -41,6 +41,11 @@
   --color-card: var(--card);
   --color-money: var(--money);
   --color-money-foreground: var(--money-foreground);
+  --color-crest: var(--crest);
+  --color-crest-foreground: var(--crest-foreground);
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
+  --font-display: var(--font-cinzel);
   --font-tabular: var(--font-geist-mono);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -51,41 +56,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Dark-only app (see DESIGN.md): `<html class="dark">` is hardcoded in layout.tsx and there is no
+   theme toggle, so `.dark` below is the only palette that ever renders. `--radius` has no light
+   counterpart to override, so it's the one token that actually lives here. */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
   --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --money: oklch(0.7 0.16 66);
-  --money-foreground: oklch(0.145 0 0);
 }
 
 .dark {
@@ -125,6 +100,10 @@
   --sidebar-ring: oklch(0.6 0.04 65);
   --money: oklch(0.78 0.16 68);
   --money-foreground: oklch(0.16 0.02 60);
+  --crest: oklch(0.36 0.13 25);
+  --crest-foreground: oklch(0.93 0.03 75);
+  --forest: oklch(0.4 0.06 155);
+  --forest-foreground: oklch(0.93 0.03 75);
 }
 
 @layer base {
@@ -160,5 +139,24 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--muted-foreground);
+  }
+}
+
+@layer utilities {
+  .rule-fleur {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .rule-fleur::before,
+  .rule-fleur::after {
+    content: "";
+    height: 2px;
+    flex: 1;
+    background: repeating-linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--money) 55%, transparent) 0 6px,
+      transparent 6px 10px
+    );
   }
 }
