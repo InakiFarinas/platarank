@@ -25,6 +25,7 @@ type Recent = { itemId: string; name: string };
 
 const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
 const RECENTS_KEY = "platarank:calc-recents";
+const PINNED_KEY = "platarank:calc-pinned";
 const STATION_LABEL: Record<string, string> = {
   alchemy: "Alquimia",
   refining: "Refinado",
@@ -247,6 +248,24 @@ export function Calculator() {
     }
     setTimeout(() => setCopyState("idle"), 2500);
   }
+
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem(PINNED_KEY);
+      if (saved) setPinned(JSON.parse(saved));
+    } catch {
+      // A missing or corrupt value just means no comparison is pinned.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (pinned) sessionStorage.setItem(PINNED_KEY, JSON.stringify(pinned));
+      else sessionStorage.removeItem(PINNED_KEY);
+    } catch {
+      // Storage can be blocked (private windows); the comparison then lasts until reload.
+    }
+  }, [pinned]);
 
   const hiddenCities = calc ? REAL_CITIES.length - new Set([craftCity, calc.spec?.city].filter(Boolean)).size : 0;
 
@@ -646,7 +665,7 @@ export function Calculator() {
           </div>
 
           {/* Ledger */}
-          <aside id="balance" className="scroll-mt-24 lg:sticky lg:top-24">
+          <aside id="balance" className="scroll-mt-24 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
             <section className="rounded-md border-2 border-double border-money/30 bg-card/60">
               <header className="flex items-baseline justify-between gap-3 border-b border-border px-4 py-2.5">
                 <h3 className="font-heading text-base">Balance</h3>
@@ -800,13 +819,15 @@ function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name
   ];
   return (
     <div className="mt-2 rounded-md border border-border bg-background/40 p-3 text-xs">
-      <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 gap-y-1">
-        <span className="text-muted-foreground">&nbsp;</span>
-        <span className="max-w-24 truncate text-right text-muted-foreground" title={pinned.name}>
-          Fijado: {pinned.name}
+      <div className="grid grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 gap-y-1">
+        <span aria-hidden="true" />
+        <span className="pb-1 text-right leading-tight">
+          <span className="block text-[11px] text-muted-foreground">Fijado</span>
+          <span className="block break-words">{pinned.name}</span>
         </span>
-        <span className="max-w-24 truncate text-right text-muted-foreground" title={name}>
-          Actual: {name}
+        <span className="pb-1 text-right leading-tight">
+          <span className="block text-[11px] text-muted-foreground">Actual</span>
+          <span className="block break-words">{name}</span>
         </span>
         {rows.map((r) => (
           <div key={r.label} className="contents">
