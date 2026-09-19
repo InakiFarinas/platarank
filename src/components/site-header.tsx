@@ -9,7 +9,7 @@ import { Logo } from "@/components/logo";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
-import { BANNER_COUNT, BANNER_SRC, CITY_THEMES, type CityTheme } from "@/lib/city-theme";
+import { CITY_THEMES, type CityTheme } from "@/lib/city-theme";
 import type { CitySpecialty } from "@/lib/city-specialties";
 import { cn } from "@/lib/utils";
 
@@ -203,35 +203,31 @@ export function SiteHeader({
   );
 }
 
-/** The city selector's badge: a slice of the real Albion banner sheet for the six cities that
- * have one, the fallback glyph for Black Market, or nothing for Brecilien (not in the banner
- * sheet -- no substitute logo, per the Faction Banner Rule). Each banner frame is a tall wooden
- * standard (plaque + flag + pointed tail) with the colored emblem in a fixed vertical band; the
- * badge zooms into that band (measured in public/banners.png: natural 1243x864, 6 equal frames,
- * emblem band vertically centered around y=498) instead of squashing the whole flag into a square. */
-const BANNER_NATURAL_WIDTH = 1243;
-const BANNER_NATURAL_HEIGHT = 864;
-const BANNER_EMBLEM_CENTER_Y = 498;
+/** The city selector's badge: the emblem area of the city's standalone banner image, the fallback
+ * glyph for Black Market, or nothing for Brecilien (no banner -- no substitute logo, per the Faction
+ * Banner Rule). Each banner is a tall wooden standard (plaque + flag + pointed tail, natural
+ * 410x962) with the colored emblem centered around (205, 470); the badge zooms into a ~300px square
+ * there instead of squashing the whole flag into a square. */
+const BANNER_WIDTH = 410;
+const BANNER_HEIGHT = 962;
+const EMBLEM_CENTER_X = 205;
+const EMBLEM_CENTER_Y = 470;
+const EMBLEM_SPAN = 300;
 const BADGE_PX = 20; // matches h-5 w-5
 
-function CityGlyph({ theme }: { theme: CityTheme }) {
-  if (theme.bannerIndex === undefined && !theme.Icon) return null;
-  const frameWidth = BANNER_NATURAL_WIDTH / BANNER_COUNT;
-  const scale = BADGE_PX / frameWidth;
-  const bgWidth = BANNER_NATURAL_WIDTH * scale;
-  const bgHeight = BANNER_NATURAL_HEIGHT * scale;
-  const posX = theme.bannerIndex !== undefined ? -(theme.bannerIndex * frameWidth * scale) : 0;
-  const posY = -(BANNER_EMBLEM_CENTER_Y * scale - BADGE_PX / 2);
+export function CityGlyph({ theme }: { theme: CityTheme }) {
+  if (!theme.banner && !theme.Icon) return null;
+  const scale = BADGE_PX / EMBLEM_SPAN;
   return (
     <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded border border-current/40 bg-black/30">
-      {theme.bannerIndex !== undefined ? (
+      {theme.banner ? (
         <span
           aria-hidden="true"
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${BANNER_SRC})`,
-            backgroundSize: `${bgWidth}px ${bgHeight}px`,
-            backgroundPosition: `${posX}px ${posY}px`,
+            backgroundImage: `url(${theme.banner})`,
+            backgroundSize: `${BANNER_WIDTH * scale}px ${BANNER_HEIGHT * scale}px`,
+            backgroundPosition: `${-(EMBLEM_CENTER_X * scale - BADGE_PX / 2)}px ${-(EMBLEM_CENTER_Y * scale - BADGE_PX / 2)}px`,
             backgroundRepeat: "no-repeat",
           }}
         />
