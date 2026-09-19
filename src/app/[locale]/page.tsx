@@ -1,98 +1,71 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, CheckCircle2, FlaskConical, Hammer, PawPrint, Scroll, Shield, TrendingUp, UtensilsCrossed } from "lucide-react";
-import { ShieldBadge } from "@/components/icons/shield-badge";
-import { SpriteIcon } from "@/components/icons/sprite-icon";
+import { ArrowRight, CheckCircle2, TrendingUp } from "lucide-react";
+import { formatSilver } from "@/components/recipes/format";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { itemIconUrl } from "@/lib/item-icons";
+import { getRecipeCounts, getTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
+
+// The ranking preview is live data: refresh it on the same cadence as the ranking pages.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Ranking de crafteo por plata realizable por dia",
+  title: "Ranking de crafteo por plata realizable por día",
   description:
-    "PlataRank ordena recetas de Albion Online (alquimia, refinado, cocina, armas y armaduras) por margen x volumen diario de ventas, no por margen unitario.",
+    "PlataRank ordena las recetas de Albion Online (alquimia, refinado, cocina, equipo y monturas) por ganancia × volumen diario de ventas, no por margen unitario. Con calculadora, sesiones y alertas por Discord.",
   alternates: { canonical: "/es" },
 };
 
 const STATIONS = [
-  { href: "/es/alquimia", label: "Alquimia", count: "174 recetas", Icon: FlaskConical },
-  { href: "/es/refinado", label: "Refinado", count: "115 recetas", Icon: Hammer },
-  { href: "/es/cocina", label: "Cocina", count: "183 recetas", Icon: UtensilsCrossed },
-  { href: "/es/equipo", label: "Equipo", count: "~5.700 recetas", Icon: Shield },
-  { href: "/es/monturas", label: "Monturas", count: "29 recetas", Icon: PawPrint },
+  { type: "alchemy", href: "/es/alquimia", label: "Alquimia", note: "Pociones" },
+  { type: "refining", href: "/es/refinado", label: "Refinado", note: "Tablas, lingotes, tela y cuero" },
+  { type: "cooking", href: "/es/cocina", label: "Cocina", note: "Comidas" },
+  { type: "gear", href: "/es/equipo", label: "Equipo", note: "Armas, armaduras, bolsas y capas" },
+  { type: "mount", href: "/es/monturas", label: "Monturas", note: "Animales de montura" },
 ] as const;
 
-const FEATURES = [
-  {
-    title: "Ranking por plata por dia",
-    text: "No solo margen, tambien volumen.",
-  },
-  {
-    title: "Calculo detallado",
-    text: "Precio, ciudad, fecha y descartes. Todo visible.",
-  },
-  {
-    title: "Especialidades de ciudades",
-    text: "Una sola seleccion, todas las recetas.",
-  },
-  {
-    title: "Datos actualizados",
-    text: "Con la API de Albion Online y el cliente de juego.",
-  },
+const CAPABILITIES = [
+  "Ranking por plata por día: el margen se multiplica por el volumen real de ventas.",
+  "Calculadora con retorno, foco, tarifa de estación e impuestos, y enlaces para compartir tu cálculo.",
+  "Sesiones de crafteo para sumar varios ítems y cargar tus números reales.",
+  "Alertas por Discord cuando una receta guardada supera la ganancia que definas.",
 ] as const;
 
-const MOCK_ROWS = [
-  { name: "Pocion de invisibilidad", plataDia: "412.350", margen: "1.240", volumen: "320" },
-  { name: "Pocion de resistencia", plataDia: "368.920", margen: "1.105", volumen: "287" },
-  { name: "Pocion de curacion", plataDia: "312.450", margen: "915", volumen: "341" },
-  { name: "Pocion de energia", plataDia: "260.770", margen: "780", volumen: "276" },
-  { name: "Pocion de fuerza", plataDia: "224.180", margen: "650", volumen: "243" },
-] as const;
+const DISCORD_URL = "https://discord.gg/ZZRcGSEXeh";
 
-const CHECKLIST = [
-  "5 tipos de estaciones: Alquimia, Refinado, Cocina, Equipo y Monturas",
-  "+5.700 recetas de armas, armaduras, bolsas y capas",
-  "Especialidades de ciudades por categoria de receta",
-  "Calculo de calidad real en equipo (Q1-Q5)",
-] as const;
+async function loadLive(): Promise<{ top: TopRecipe[]; counts: Record<string, number> }> {
+  try {
+    const [top, counts] = await Promise.all([getTopRecipes(5), getRecipeCounts()]);
+    return { top, counts };
+  } catch {
+    // The page must still render if the database is unreachable; it just loses the live block.
+    return { top: [], counts: {} };
+  }
+}
 
-const STATS = [
-  { value: "6.212", label: "Recetas totales" },
-  { value: "5", label: "Estaciones de crafteo" },
-  { value: "24/7", label: "Datos actualizados" },
-] as const;
+export default async function HomePage() {
+  const { top, counts } = await loadLive();
+  const totalRecipes = Object.values(counts).reduce((a, b) => a + b, 0);
 
-export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main>
-        {/* Hero: guild banner + charter headline, over the keep-at-dusk key art */}
+      <main id="contenido">
         <section className="relative overflow-hidden border-b border-money/20">
-          <Image
-            src="/hero.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[75%_center]"
-          />
+          <Image src="/hero.png" alt="" fill priority sizes="100vw" className="object-cover object-[75%_center]" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/10 sm:via-background/70 sm:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
 
           <div className="relative mx-auto max-w-6xl px-3 py-20 sm:px-6 sm:py-28 lg:px-8">
             <div className="max-w-lg">
-              <div className="rule-fleur">
-                <span className="shrink-0 text-[11px] font-medium uppercase tracking-[0.2em] text-money">
-                  El ledger del gremio
-                </span>
-              </div>
-              <h1 className="mt-5 font-display text-4xl uppercase leading-[1.05] tracking-tight sm:text-6xl">
-                Maximiza tu <span className="text-money">plata</span> en Albion Online
+              <h1 className="font-display text-4xl uppercase leading-[1.05] tracking-tight sm:text-6xl">
+                Maximizá tu <span className="text-money">plata</span> en Albion Online
               </h1>
               <p className="mt-5 max-w-md text-sm text-muted-foreground sm:text-base">
-                Descubri que recetas de crafteo te dan mas plata por dia, con datos reales de volumen de ventas,
-                precios y todas las formulas de calculo.
+                Descubrí qué recetas de crafteo te dan más plata por día, con datos reales de volumen de ventas, precios y todas las fórmulas de
+                cálculo a la vista.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <Link
@@ -110,55 +83,23 @@ export default function HomePage() {
                   Abrir calculadora
                 </Link>
               </div>
-
-              <dl className="mt-10 grid max-w-md grid-cols-3 divide-x divide-money/20 border-y border-money/20 py-4">
-                {STATS.map((s) => (
-                  <div key={s.label} className="px-3 text-center first:pl-0">
-                    <dt className="font-display text-lg text-money sm:text-xl">{s.value}</dt>
-                    <dd className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">{s.label}</dd>
-                  </div>
-                ))}
-              </dl>
+              <p className="mt-8 border-t border-money/20 pt-4 text-xs text-muted-foreground">
+                {totalRecipes > 0 ? `${totalRecipes.toLocaleString("es-AR")} recetas · ` : ""}5 estaciones · servidor Américas · precios actualizados cada hora
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Guild charter: feature articles */}
-        <section className="border-b border-border px-3 py-14 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="text-center">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-money">El codigo del gremio</span>
-              <h2 className="mt-2 font-display text-2xl uppercase tracking-tight sm:text-3xl">Como funciona PlataRank</h2>
-            </div>
-            <div className="mt-10 grid gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-              {FEATURES.map(({ title, text }, i) => (
-                <div key={title} className="relative bg-card px-5 py-6">
-                  <span className="absolute right-3 top-3 font-display text-3xl text-money/10">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <SpriteIcon src="/icons.png" index={i} count={FEATURES.length} className="h-16 w-12" />
-                  <div className="mt-4 font-heading text-base">{title}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">{text}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Ledger scroll: sample ranking */}
         <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
-            <div className="order-2 lg:order-1">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-money">El decreto real</span>
-              <h2 className="mt-2 font-display text-2xl uppercase tracking-tight sm:text-3xl">
-                Informacion clara para tomar mejores decisiones
-              </h2>
+          <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Lo que más rinde hoy</h2>
               <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                Revisa el ranking completo de recetas, con el desglose detallado de cada calculo y los datos que lo
-                respaldan. Sin suposiciones, sin vueltas.
+                Ordenamos por plata realizable por día: ganancia por unidad × volumen de ventas × cuota de mercado. Una receta con margen alto que casi
+                no se vende rinde menos que una de margen chico que se vende todo el día.
               </p>
               <ul className="mt-5 space-y-2.5">
-                {CHECKLIST.map((item) => (
+                {CAPABILITIES.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-money" />
                     <span>{item}</span>
@@ -167,77 +108,93 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="order-1 overflow-hidden rounded-sm border-2 border-double border-money/30 bg-card lg:order-2">
-              <div className="flex items-center gap-2 border-b-2 border-double border-money/30 bg-money/5 px-4 py-3">
-                <Scroll className="h-4 w-4 text-money" />
-                <span className="font-heading text-sm">Pergamino de Alquimia</span>
-              </div>
-              <div className="hidden grid-cols-[1.5fr_repeat(3,1fr)] gap-2 border-b border-border px-4 py-2 text-[11px] text-muted-foreground sm:grid">
-                <span>Receta</span>
-                <span className="text-right">Plata/dia</span>
-                <span className="text-right">Margen</span>
-                <span className="text-right">Volumen</span>
-              </div>
-              {MOCK_ROWS.map((r, i) => (
-                <div key={r.name} className={`px-4 py-2.5 text-xs ${i % 2 === 1 ? "bg-money/[0.03]" : ""}`}>
-                  {/* Mobile: labeled key-value layout so figures never lose their meaning */}
-                  <div className="flex items-start justify-between gap-3 sm:hidden">
-                    <span className="min-w-0 flex-1 leading-snug">{r.name}</span>
-                    <span className="shrink-0 text-right font-mono text-money tabular-nums">{r.plataDia}</span>
-                  </div>
-                  <div className="mt-1 flex gap-4 text-[11px] text-muted-foreground sm:hidden">
-                    <span>
-                      Margen <span className="font-mono tabular-nums">{r.margen}</span>
-                    </span>
-                    <span>
-                      Volumen <span className="font-mono tabular-nums">{r.volumen}</span>
-                    </span>
-                  </div>
-
-                  {/* Desktop: aligned columns */}
-                  <div className="hidden grid-cols-[1.5fr_repeat(3,1fr)] items-center gap-2 sm:grid">
-                    <span className="min-w-0 leading-snug">{r.name}</span>
-                    <span className="text-right font-mono text-money tabular-nums">{r.plataDia}</span>
-                    <span className="text-right font-mono text-muted-foreground tabular-nums">{r.margen}</span>
-                    <span className="text-right font-mono text-muted-foreground tabular-nums">{r.volumen}</span>
-                  </div>
+            {top.length > 0 && (
+              <div className="overflow-hidden rounded-sm border-2 border-double border-money/30 bg-card">
+                <div className="flex items-baseline justify-between gap-3 border-b-2 border-double border-money/30 bg-money/5 px-4 py-3">
+                  <h3 className="font-heading text-sm">Las mejores recetas ahora</h3>
+                  <span className="text-xs text-muted-foreground">plata por día · Brecilien, sin foco</span>
                 </div>
-              ))}
-            </div>
+                <ul className="divide-y divide-border">
+                  {top.map(({ label, row }) => {
+                    const r = row.recipe;
+                    return (
+                      <li key={r.itemId}>
+                        <Link
+                          href={`/es/calculadora?item=${encodeURIComponent(r.itemId)}`}
+                          className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-money/5"
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={itemIconUrl(r.itemId, 1, 64)} alt="" className="h-10 w-10 shrink-0" />
+                          <span className="min-w-0 flex-1">
+                            <span className="block truncate text-sm">
+                              {r.nameEs} T{r.tier}
+                              {r.enchant > 0 ? `.${r.enchant}` : ""}
+                            </span>
+                            <span className="block text-xs text-muted-foreground">
+                              {label} · margen {row.marginPct === null ? "--" : `${Math.round(row.marginPct * 100)}%`} · volumen {formatSilver(row.avgDailyVolume30d)}
+                            </span>
+                          </span>
+                          <span className="shrink-0 text-right font-mono text-sm tabular-nums text-money">{formatSilver(row.platinumPerDay)}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p className="border-t border-border px-4 py-2 text-xs text-muted-foreground">
+                  Tocá una receta para abrirla en la calculadora. Los rankings completos están más abajo.
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* The four guild halls */}
         <section className="border-b border-money/20 bg-money/[0.03] px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="text-center">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-money">Explora las 5 estaciones</span>
-              <h2 className="mt-2 font-display text-2xl uppercase tracking-tight sm:text-3xl">
-                Los cinco gremios de crafteo
-              </h2>
-              <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground sm:text-base">
-                Desde pociones hasta armaduras, encontra las recetas mas rentables de cada estacion y hace que tu
-                tiempo en Albion rinda al maximo.
-              </p>
-            </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {STATIONS.map(({ href, label, count, Icon }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="group rounded-sm border border-border bg-card p-5 transition-colors hover:border-money/50"
-                >
-                  <ShieldBadge>
-                    <Icon className="h-5 w-5" />
-                  </ShieldBadge>
-                  <div className="mt-4 font-display text-lg uppercase tracking-tight">{label}</div>
-                  <div className="mt-0.5 text-xs text-muted-foreground">{count}</div>
-                  <div className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-money">
-                    Ver recetas
-                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                  </div>
-                </Link>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Elegí tu estación</h2>
+            <ul className="mt-6 divide-y divide-border rounded-sm border border-border bg-card">
+              {STATIONS.map(({ type, href, label, note }) => (
+                <li key={href}>
+                  <Link href={href} className="group flex items-center gap-4 px-4 py-3.5 transition-colors hover:bg-money/5">
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-display text-base uppercase tracking-tight">{label}</span>
+                      <span className="block text-xs text-muted-foreground">{note}</span>
+                    </span>
+                    {counts[type] !== undefined && (
+                      <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">
+                        {counts[type].toLocaleString("es-AR")} recetas
+                      </span>
+                    )}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-money transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                </li>
               ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Avisos y alertas en Discord</h2>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              Todos los días publicamos en el Discord las mejores recetas. Y con tu cuenta podés guardar cálculos y recibir un aviso cuando una receta
+              supera la ganancia que definas. Es gratis.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-sm border border-money bg-money px-5 py-2.5 text-sm font-medium tracking-wide text-money-foreground transition-opacity hover:opacity-90"
+              >
+                Unirme al Discord
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <Link
+                href="/es/metodologia"
+                className="inline-flex items-center rounded-sm border border-border px-5 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Cómo calculamos todo
+              </Link>
             </div>
           </div>
         </section>
@@ -255,7 +212,7 @@ export default function HomePage() {
             </a>{" "}
             &middot; Cliente del juego &middot; Actualizado cada hora
           </p>
-          <p className="text-xs text-muted-foreground">Esta herramienta no esta afiliada a Sandbox Interactive. Uso no oficial.</p>
+          <p className="text-xs text-muted-foreground">Esta herramienta no está afiliada a Sandbox Interactive. Uso no oficial.</p>
         </SiteFooter>
       </main>
     </>
