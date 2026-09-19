@@ -481,7 +481,8 @@ export function Calculator() {
                             type="button"
                             onClick={() =>
                               setMatOverrides((o) => {
-                                const { [m.itemId]: _removed, ...rest } = o;
+                                const rest = { ...o };
+                                delete rest[m.itemId];
                                 return rest;
                               })
                             }
