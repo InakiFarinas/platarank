@@ -103,6 +103,12 @@ export default function HomePage() {
                   Ver recetas rentables
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+                <Link
+                  href="/es/calculadora"
+                  className="inline-flex items-center gap-2 rounded-sm border border-money/50 bg-money/10 px-5 py-2.5 text-sm font-medium tracking-wide text-money transition-colors hover:bg-money/20"
+                >
+                  Abrir calculadora
+                </Link>
               </div>
 
               <dl className="mt-10 grid max-w-md grid-cols-3 divide-x divide-money/20 border-y border-money/20 py-4">

@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState } from "react";
-import { ChevronDown, Droplet, ScrollText } from "lucide-react";
+import { Calculator, ChevronDown, Droplet, ScrollText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -216,6 +217,13 @@ function specialtyLabel(row: RecipeRowData): string {
 function RowDetail({ row }: { row: RecipeRowData }) {
   return (
     <div className="bg-card/50 px-3 py-3 text-xs sm:px-9">
+      <Link
+        href={`/es/calculadora?item=${encodeURIComponent(row.recipe.itemId)}`}
+        className="mb-3 inline-flex items-center gap-1.5 rounded-sm border border-money/50 bg-money/10 px-2.5 py-1 font-medium text-money transition-colors hover:bg-money/20"
+      >
+        <Calculator className="h-3.5 w-3.5" />
+        Abrir en la calculadora
+      </Link>
       <div className="grid gap-4 sm:grid-cols-2">
         <section>
           <h4 className="mb-1.5 font-medium text-foreground">Venta</h4>

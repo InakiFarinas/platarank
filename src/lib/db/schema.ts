@@ -1,4 +1,4 @@
-import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey, uuid } from "drizzle-orm/pg-core";
 
 export const recipes = pgTable("recipes", {
   itemId: text("item_id").primaryKey(),
@@ -78,4 +78,17 @@ export type MarketAggregateRow = typeof marketAggregates.$inferSelect;
 export const ingestState = pgTable("ingest_state", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),
+});
+
+// Saved calculator plans. Created via Supabase migration (RLS: each user only sees their own rows,
+// accessed with supabase-js from the browser, never through Drizzle) -- declared here only so
+// drizzle-kit push doesn't treat the table as unknown and try to drop it.
+export const plans = pgTable("plans", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id").notNull(),
+  name: text("name").notNull(),
+  itemId: text("item_id").notNull(),
+  params: jsonb("params").notNull(),
+  snapshot: jsonb("snapshot").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
