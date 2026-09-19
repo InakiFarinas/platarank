@@ -167,7 +167,7 @@ function ItemRow({ item, api }: { item: SessionItem; api: SessionsApi }) {
   return (
     <li className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[auto_minmax(0,1fr)_8rem_8rem_6.5rem_auto]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={itemIconUrl(item.item_id, item.params.quality, 64)} alt="" className="h-10 w-10" />
+      <img src={itemIconUrl(item.item_id, item.params.quality, 64)} alt="" width={40} height={40} className="h-10 w-10" />
       <div className="min-w-0">
         <Link href={`/es/calculadora?item=${encodeURIComponent(item.item_id)}`} className="block truncate text-sm hover:text-money">
           {item.item_name}

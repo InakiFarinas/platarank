@@ -129,7 +129,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
             <div className="flex items-start justify-between gap-3">
               <div className="flex min-w-0 flex-1 items-center gap-2.5">
                 {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
-                <img src={itemIconUrl(recipe.itemId)} alt="" className="h-10 w-10 shrink-0 object-contain" loading="lazy" />
+                <img src={itemIconUrl(recipe.itemId)} alt="" width={40} height={40} className="h-10 w-10 shrink-0 object-contain" loading="lazy" />
                 <div className="min-w-0">
                   <span className="block truncate text-sm font-medium">{recipe.nameEs}</span>
                   <div className="mt-0.5 flex items-center gap-1">

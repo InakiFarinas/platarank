@@ -135,7 +135,7 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
           <div className="flex items-center gap-3">
           <button type="button" onClick={() => onOpen(p.item_id, p.params)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={itemIconUrl(p.item_id, p.params.quality, 64)} alt="" className="h-10 w-10 shrink-0" />
+            <img src={itemIconUrl(p.item_id, p.params.quality, 64)} alt="" width={40} height={40} className="h-10 w-10 shrink-0" />
             <span className="min-w-0">
               <span className="block truncate text-sm">{p.name}</span>
               <span className="block text-xs text-muted-foreground">

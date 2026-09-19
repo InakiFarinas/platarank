@@ -618,7 +618,7 @@ export function Calculator() {
                       className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 py-3 sm:grid-cols-[auto_minmax(0,1fr)_9rem_6.5rem]"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={itemIconUrl(m.itemId, 1, 64)} alt="" className="h-10 w-10" />
+                      <img src={itemIconUrl(m.itemId, 1, 64)} alt="" width={40} height={40} className="h-10 w-10" />
                       <div className="min-w-0">
                         <div className="truncate text-sm">{m.nameEs}</div>
                         <div className="text-xs text-muted-foreground">
@@ -937,7 +937,7 @@ function EmptyState({
                   className="flex w-full items-center gap-2.5 rounded-md border border-border px-2.5 py-2 text-left text-sm transition-colors duration-150 hover:bg-accent/40"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={itemIconUrl(r.itemId, 1, 64)} alt="" className="h-8 w-8 shrink-0" />
+                  <img src={itemIconUrl(r.itemId, 1, 64)} alt="" width={32} height={32} className="h-8 w-8 shrink-0" />
                   <span className="truncate">{r.name}</span>
                 </button>
               </li>

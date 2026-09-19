@@ -124,7 +124,7 @@ export default async function HomePage() {
                           className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-money/5"
                         >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={itemIconUrl(r.itemId, 1, 64)} alt="" className="h-10 w-10 shrink-0" />
+                          <img src={itemIconUrl(r.itemId, 1, 64)} alt="" width={40} height={40} className="h-10 w-10 shrink-0" />
                           <span className="min-w-0 flex-1">
                             <span className="block truncate text-sm">
                               {r.nameEs} T{r.tier}
