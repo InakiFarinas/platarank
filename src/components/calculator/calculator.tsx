@@ -4,17 +4,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { History, Search } from "lucide-react";
 import { CityGlyph } from "@/components/site-header";
 import { enchantLabel, formatAge } from "@/components/recipes/format";
-import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
-import { getCitySpecialty } from "@/lib/city-specialties";
+import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import { CITY_THEMES } from "@/lib/city-theme";
 import { itemIconUrl } from "@/lib/item-icons";
-import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
-import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
-import { returnRate } from "@/lib/formulas/return-rate";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
+import { computeCraft } from "@/lib/craft-calc";
 import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/calculator/plans-panel";
+import { WebhookForm } from "@/components/alerts/alerts-ui";
+import { useAlerts } from "@/components/alerts/use-alerts";
 import { AddToSession } from "@/components/sessions/add-to-session";
 import { Field, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
@@ -24,7 +23,6 @@ type ItemData = { recipe: Recipe; market: Record<string, CityPricePoint[]>; vari
 type Recent = { itemId: string; name: string };
 
 const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
-const SETUP_FEE = 0.025;
 const RECENTS_KEY = "platarank:calc-recents";
 const STATION_LABEL: Record<string, string> = {
   alchemy: "Alquimia",
@@ -64,6 +62,7 @@ export function Calculator() {
   const [matOverrides, setMatOverrides] = useState<Record<string, number>>({});
 
   const plansApi = usePlans();
+  const alertsApi = useAlerts(plansApi.signedIn === true);
   const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -130,72 +129,13 @@ export function Calculator() {
     setMatOverrides(p.matOverrides);
   }
 
-  const calc = useMemo(() => {
-    if (!data) return null;
-    const { recipe, market } = data;
-    const spec = getCitySpecialty(recipe.craftingCategory);
-    const specActive = spec !== null && spec.city === craftCity;
-    const rrr = returnRate({
-      cityCraftingSpecialty: specActive && spec!.kind === "crafting",
-      cityRefiningSpecialty: specActive && spec!.kind === "refining",
-      focus,
-    });
-
-    const materials = recipe.materials.map((m) => {
-      const points = (market[m.itemId] ?? []).filter((p) => p.quality === 1 && p.price !== null && p.city !== BLACK_MARKET);
-      const quotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price! }));
-      const stat = robustStat(quotes, "min");
-      const cheapest = stat.result.kept.find((q) => q.price === stat.value)?.city ?? null;
-      const price = matOverrides[m.itemId] ?? stat.value ?? 0;
-      const noReturn = m.category === "artifact";
-      return { m, price, auto: stat.value, cheapest, noReturn, effective: m.count * (1 - (noReturn ? 0 : rrr)) };
-    });
-
-    const sellPoints = (market[recipe.itemId] ?? []).filter(
-      (p) => p.quality === quality && p.price !== null && (blackMarket ? p.city === BLACK_MARKET : p.city !== BLACK_MARKET),
-    );
-    const sellStat = robustStat(sellPoints.map((p) => ({ city: p.city, price: p.price! })), "median");
-    const sellPrice = sellOverride ?? sellStat.value ?? 0;
-    const ages = sellPoints.map((p) => p.priceAgeSeconds).filter((a): a is number => a !== null);
-    const volume = sellPoints.reduce((s, p) => s + p.avgDailyVolume30d, 0);
-
-    const crafts = Math.ceil(qty / recipe.batchSize);
-    const produced = crafts * recipe.batchSize;
-    const feePerCraft = craftingFeePerBatch(Number(recipe.materialItemValue), feeRate);
-    const materialsTotal = materials.reduce((s, x) => s + x.price * x.effective, 0) * crafts;
-    const feeTotal = feePerCraft * crafts;
-    const cost = materialsTotal + feeTotal + extraCost;
-    const taxRate = (premium ? 0.04 : 0.08) + SETUP_FEE;
-    const gross = sellPrice * produced;
-    const revenue = gross * (1 - taxRate);
-    const profit = revenue - cost;
-
-    return {
-      spec,
-      specActive,
-      rrr,
-      materials,
-      sellPrice,
-      sellAuto: sellStat.value,
-      sellCities: sellStat.result.kept.length,
-      oldestAge: ages.length ? Math.max(...ages) : null,
-      volume,
-      crafts,
-      produced,
-      feePerCraft,
-      materialsTotal,
-      feeTotal,
-      cost,
-      taxRate,
-      gross,
-      revenue,
-      profit,
-      margin: cost > 0 ? profit / cost : null,
-      perUnit: produced > 0 ? profit / produced : 0,
-      focusTotal: focus ? recipe.craftingFocus * crafts : 0,
-      unpriced: materials.filter((x) => x.auto === null && matOverrides[x.m.itemId] === undefined).length,
-    };
-  }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides]);
+  const calc = useMemo(
+    () =>
+      data
+        ? computeCraft(data.recipe, data.market, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides })
+        : null,
+    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides],
+  );
 
   const tiers = data ? [...new Set(data.variants.map((v) => v.tier))].sort((a, b) => a - b) : [];
   const enchants = data ? data.variants.filter((v) => v.tier === data.recipe.tier).map((v) => v.enchant).sort((a, b) => a - b) : [];
@@ -281,7 +221,12 @@ export function Calculator() {
 
       {tab === "plans" ? (
         <Panel title="Planificaciones" className="mt-4">
-          <PlanList api={plansApi} onOpen={openPlan} />
+          {plansApi.signedIn && plansApi.plans.length > 0 && (
+            <div className="mb-4">
+              <WebhookForm api={alertsApi} />
+            </div>
+          )}
+          <PlanList api={plansApi} alertsApi={alertsApi} onOpen={openPlan} />
         </Panel>
       ) : !data || !calc || !draft ? (
         <EmptyState loading={loading} recents={recents} onPick={load} onFocusSearch={() => searchRef.current?.focus()} />

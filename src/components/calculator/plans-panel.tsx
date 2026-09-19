@@ -2,22 +2,14 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
+import type { CraftParams } from "@/lib/craft-calc";
+import { AlertControl } from "@/components/alerts/alerts-ui";
+import type { AlertsApi } from "@/components/alerts/use-alerts";
 import { createClient } from "@/lib/supabase/client";
 import { itemIconUrl } from "@/lib/item-icons";
 import { cn } from "@/lib/utils";
 
-export type PlanParams = {
-  qty: number;
-  premium: boolean;
-  blackMarket: boolean;
-  quality: number;
-  craftCity: string;
-  focus: boolean;
-  feeRate: number;
-  extraCost: number;
-  sellOverride: number | null;
-  matOverrides: Record<string, number>;
-};
+export type PlanParams = CraftParams;
 export type PlanSnapshot = { cost: number; revenue: number; profit: number; sellPrice: number };
 export type Plan = { id: string; name: string; item_id: string; params: PlanParams; snapshot: PlanSnapshot; created_at: string };
 export type PlanDraft = { itemId: string; itemName: string; params: PlanParams; snapshot: PlanSnapshot };
@@ -119,7 +111,7 @@ export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }
   );
 }
 
-export function PlanList({ api, onOpen }: { api: PlansApi; onOpen: (itemId: string, params: PlanParams) => void }) {
+export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi: AlertsApi; onOpen: (itemId: string, params: PlanParams) => void }) {
   if (api.signedIn === null) return null;
   if (!api.signedIn) {
     return (
@@ -138,7 +130,8 @@ export function PlanList({ api, onOpen }: { api: PlansApi; onOpen: (itemId: stri
   return (
     <ul className="divide-y divide-border">
       {api.plans.map((p) => (
-        <li key={p.id} className="flex items-center gap-3 py-2.5">
+        <li key={p.id} className="py-2.5">
+          <div className="flex items-center gap-3">
           <button type="button" onClick={() => onOpen(p.item_id, p.params)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={itemIconUrl(p.item_id, p.params.quality, 64)} alt="" className="h-10 w-10 shrink-0" />
@@ -161,6 +154,10 @@ export function PlanList({ api, onOpen }: { api: PlansApi; onOpen: (itemId: stri
           >
             <Trash2 className="h-4 w-4" />
           </button>
+          </div>
+          <div className="mt-1.5 pl-[3.25rem]">
+            <AlertControl planId={p.id} currentProfit={p.snapshot.profit} api={alertsApi} />
+          </div>
         </li>
       ))}
     </ul>

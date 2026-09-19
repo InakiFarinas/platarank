@@ -14,6 +14,7 @@ import { AODP_SERVERS, ALL_LOCATIONS as REAL_CITIES_AND_BM, type AodpServer } fr
 import { findLatestDumpUrl, fetchDumpVolumeSummaries, type DumpVolumeSummary } from "../src/lib/aodp/dumps";
 import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
 import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsurdPrices } from "../src/lib/ingest/aggregate";
+import { runAlerts } from "../src/lib/ingest/alerts";
 import recipesJson from "../src/data/generated/recipes.json";
 import type { AodpPriceRow } from "../src/lib/aodp/types";
 
@@ -59,6 +60,13 @@ async function main() {
   } else {
     console.log(`Dump unchanged since last run (${dumpUrl}); refreshing prices only.`);
     await storePriceOnlyUpdates(itemIds, gearItemIdSet, allPrices, now);
+  }
+
+  try {
+    await runAlerts(now);
+  } catch (err) {
+    // Alerts are best-effort: a Discord/DB hiccup must not fail the price ingest itself.
+    console.error("Alert check failed:", err);
   }
 
   console.log("Ingest complete.");

@@ -25,6 +25,11 @@ export default function PrivacidadPage() {
         cuenta y solo vos podés verlos.
       </p>
 
+      <p>
+        <strong>Avisos por Discord:</strong> si activás alertas, guardamos la URL del webhook que nos des y el umbral de cada alerta. Usamos esa
+        URL únicamente para enviarte tus avisos y podés quitarla cuando quieras desde Planificaciones.
+      </p>
+
       <h2>Cookies y almacenamiento</h2>
       <ul>
         <li>Cookies de sesión necesarias para mantenerte conectado si iniciás sesión.</li>

@@ -1,4 +1,4 @@
-import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey, uuid } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, smallint, numeric, timestamp, jsonb, primaryKey, uuid, boolean } from "drizzle-orm/pg-core";
 
 export const recipes = pgTable("recipes", {
   itemId: text("item_id").primaryKey(),
@@ -90,5 +90,27 @@ export const plans = pgTable("plans", {
   itemId: text("item_id").notNull(),
   params: jsonb("params").notNull(),
   snapshot: jsonb("snapshot").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// Discord alerts (also created via Supabase migration with RLS; the ingester reads them with the
+// service connection, which bypasses RLS). One alert per plan: fires when the plan's profit,
+// recomputed with fresh prices, crosses `threshold`.
+export const userSettings = pgTable("user_settings", {
+  userId: uuid("user_id").primaryKey(),
+  discordWebhookUrl: text("discord_webhook_url"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const alerts = pgTable("alerts", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id").notNull(),
+  planId: uuid("plan_id").notNull(),
+  threshold: numeric("threshold").notNull(),
+  enabled: boolean("enabled").notNull().default(true),
+  lastState: text("last_state"),
+  lastProfit: numeric("last_profit"),
+  lastCheckedAt: timestamp("last_checked_at", { withTimezone: true }),
+  lastError: text("last_error"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
