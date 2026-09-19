@@ -15,6 +15,7 @@ import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/calculator/plans-panel";
+import { AddToSession } from "@/components/sessions/add-to-session";
 import { Field, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
 type Hit = { itemId: string; baseItemId: string; nameEs: string; tier: number; stationType: string };
@@ -551,6 +552,10 @@ export function Calculator() {
 
                 <div className="border-t border-border pt-3">
                   <SavePlanForm api={plansApi} draft={draft} />
+                </div>
+
+                <div className="border-t border-border pt-3">
+                  <AddToSession draft={draft} />
                 </div>
               </div>
             </section>

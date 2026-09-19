@@ -21,6 +21,7 @@ const NAV_ITEMS = [
   { href: "/es/equipo", label: "Equipo", count: 5711 },
   { href: "/es/monturas", label: "Monturas", count: 29 },
   { href: "/es/calculadora", label: "Calculadora", count: null },
+  { href: "/es/sesiones", label: "Sesiones", count: null },
 ] as const;
 
 const BONUS_LABEL: Record<CitySpecialty["kind"], string> = {
