@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
+import { AuthButton } from "@/components/auth-button";
 import { Logo } from "@/components/logo";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -36,7 +37,7 @@ function isActive(pathname: string | null, href: string): boolean {
 }
 
 /** The one header shared by the home page and all four ranked-list pages. The nav (logo, tabs,
- * "Ver ranking" CTA) is always the same; `title`/`description` and `recipeControls` are opt-in
+ * "Entrar con Discord" button) is always the same; `title`/`description` and `recipeControls` are opt-in
  * so only the ranked-list pages render the page-title block and the city/server selectors. */
 export function SiteHeader({
   title,
@@ -179,14 +180,14 @@ export function SiteHeader({
                 })}
               </SelectContent>
             </Select>
+            <div className="hidden sm:block">
+              <AuthButton />
+            </div>
           </div>
         ) : (
-          <Link
-            href="/es/alquimia"
-            className="ml-2 hidden shrink-0 rounded-sm border border-money/50 bg-money/10 px-3 py-1.5 text-xs font-medium tracking-wide text-money transition-colors hover:bg-money/20 sm:inline-flex"
-          >
-            Ver ranking
-          </Link>
+          <div className="ml-2 hidden sm:block">
+            <AuthButton />
+          </div>
             )}
           </nav>
         </div>
