@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { itemIconUrl } from "@/lib/item-icons";
 import { cn } from "@/lib/utils";
 import { Panel } from "@/components/calculator/ui";
@@ -65,7 +65,7 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
   const [confirming, setConfirming] = useState(false);
   return (
     <Panel
-      title={session.name}
+      title={<SessionName session={session} api={api} />}
       aside={
         <span className="flex items-center gap-3">
           <span>{new Date(session.created_at).toLocaleDateString("es-AR")}</span>
@@ -112,6 +112,53 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
         </span>
       </div>
     </Panel>
+  );
+}
+
+/** Session title with inline rename: pencil -> input, Enter or blur saves, Escape cancels. */
+function SessionName({ session, api }: { session: CraftingSession; api: SessionsApi }) {
+  const [editing, setEditing] = useState(false);
+  const [text, setText] = useState(session.name);
+
+  if (!editing) {
+    return (
+      <span className="flex items-center gap-2">
+        {session.name}
+        <button
+          type="button"
+          aria-label={`Renombrar la sesión ${session.name}`}
+          onClick={() => {
+            setText(session.name);
+            setEditing(true);
+          }}
+          className="relative text-muted-foreground transition-colors hover:text-foreground after:absolute after:-inset-2 after:content-['']"
+        >
+          <Pencil className="h-3.5 w-3.5" />
+        </button>
+      </span>
+    );
+  }
+
+  const commit = () => {
+    setEditing(false);
+    if (text.trim() !== "" && text.trim() !== session.name) void api.renameSession(session.id, text);
+  };
+
+  return (
+    <input
+      autoFocus
+      onFocus={(e) => e.currentTarget.select()}
+      value={text}
+      maxLength={80}
+      aria-label="Nombre de la sesión"
+      onChange={(e) => setText(e.target.value)}
+      onBlur={commit}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") commit();
+        if (e.key === "Escape") setEditing(false);
+      }}
+      className="h-8 w-full min-w-0 rounded-md border border-money bg-background px-2 font-heading text-base outline-none ring-2 ring-money/30"
+    />
   );
 }
 

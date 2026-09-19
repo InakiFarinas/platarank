@@ -112,7 +112,7 @@ export function Field({ label, hint, children, className }: { label: string; hin
 }
 
 /** Panel with an IM Fell title -- the same ledger-card vocabulary the ranking pages use. */
-export function Panel({ title, aside, children, className }: { title: string; aside?: ReactNode; children: ReactNode; className?: string }) {
+export function Panel({ title, aside, children, className }: { title: ReactNode; aside?: ReactNode; children: ReactNode; className?: string }) {
   return (
     <section className={cn("rounded-md border border-border bg-card/40", className)}>
       <header className="flex items-baseline justify-between gap-3 border-b border-border px-4 py-2.5">
