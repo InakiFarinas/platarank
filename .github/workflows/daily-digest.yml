@@ -25,5 +25,6 @@ jobs:
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm tsx scripts/daily-digest.ts
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          # Read-only role once rotated; falls back to the old secret until then.
+          DATABASE_URL: ${{ secrets.DATABASE_URL_READONLY || secrets.DATABASE_URL }}
           DISCORD_DAILY_WEBHOOK: ${{ secrets.DISCORD_DAILY_WEBHOOK }}
