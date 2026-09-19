@@ -31,6 +31,9 @@ export function SiteFooter({
           <a href="https://discord.gg/ZZRcGSEXeh" target="_blank" rel="noopener noreferrer" className="text-money hover:underline">
             Discord de la comunidad
           </a>
+          <a href="https://ko-fi.com/lacolo" target="_blank" rel="noopener noreferrer" className="text-money hover:underline">
+            Apoyar en Ko-fi
+          </a>
         </nav>
       </div>
     </footer>
