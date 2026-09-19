@@ -21,7 +21,7 @@ export function Segmented<T extends string | number>({
 }) {
   return (
     <div className={className}>
-      <span className="text-[11px] text-muted-foreground">{label}</span>
+      <span className="text-xs text-muted-foreground">{label}</span>
       <div
         role="radiogroup"
         aria-label={label}
@@ -119,8 +119,8 @@ export function Field({ label, hint, children, className }: { label: string; hin
   return (
     <div className={className}>
       <div className="flex min-h-4 items-baseline justify-between gap-2">
-        <span className="text-[11px] text-muted-foreground">{label}</span>
-        {hint && <span className="text-[11px] text-muted-foreground">{hint}</span>}
+        <span className="text-xs text-muted-foreground">{label}</span>
+        {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
       </div>
       <div className="mt-1">{children}</div>
     </div>

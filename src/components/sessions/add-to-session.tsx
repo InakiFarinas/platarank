@@ -26,8 +26,8 @@ export function AddToSession({ draft }: { draft: PlanDraft }) {
   return (
     <div>
       <div className="mb-1.5 flex items-baseline justify-between">
-        <span className="text-[11px] text-muted-foreground">Agregar a sesión</span>
-        <Link href="/es/sesiones" className="text-[11px] text-money underline underline-offset-2">
+        <span className="text-xs text-muted-foreground">Agregar a sesión</span>
+        <Link href="/es/sesiones" className="text-xs text-money underline underline-offset-2">
           Ver sesiones
         </Link>
       </div>

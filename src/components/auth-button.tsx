@@ -42,7 +42,7 @@ function AuthControls() {
       <div className="flex shrink-0 items-center gap-2">
         {meta.avatar_url && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={meta.avatar_url} alt="" className="h-7 w-7 rounded-full border border-border" />
+          <img src={meta.avatar_url} alt="" width={28} height={28} className="h-7 w-7 rounded-full border border-border" />
         )}
         <span className="hidden max-w-28 truncate text-xs text-muted-foreground md:inline">{name}</span>
         <button

@@ -128,7 +128,7 @@ export function SiteHeader({
                     {item.count !== null && (
                       <span
                         className={cn(
-                          "rounded-full px-1.5 py-px font-mono text-[11px] tabular-nums",
+                          "rounded-full px-1.5 py-px font-mono text-xs tabular-nums",
                           active ? "bg-money/20 text-money" : "bg-background/60 text-muted-foreground",
                         )}
                       >
@@ -173,7 +173,7 @@ export function SiteHeader({
                       <CityGlyph theme={theme} />
                       <span className="flex-1">{city}</span>
                       {bonus && (
-                        <span className="shrink-0 rounded-full bg-money/10 px-1.5 py-0.5 font-mono text-[11px] tabular-nums text-money">
+                        <span className="shrink-0 rounded-full bg-money/10 px-1.5 py-0.5 font-mono text-xs tabular-nums text-money">
                           {BONUS_LABEL[bonus.kind]}
                         </span>
                       )}
@@ -277,7 +277,7 @@ function NavTab({ href, label, count, active }: { href: string; label: string; c
       {count !== null && (
         <span
           className={cn(
-            "rounded-full px-1.5 py-px font-mono text-[11px] tabular-nums",
+            "rounded-full px-1.5 py-px font-mono text-xs tabular-nums",
             active ? "bg-money/20 text-money" : "bg-background/60 text-muted-foreground",
           )}
         >

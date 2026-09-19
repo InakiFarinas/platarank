@@ -118,7 +118,7 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
           {!api.webhook && <p className="mb-2 text-xs text-destructive">Primero configurá tu webhook de Discord arriba.</p>}
           <div className="flex flex-wrap items-end gap-2">
             <label className="block w-40">
-              <span className="text-[11px] text-muted-foreground">Avisar cuando la ganancia llegue a</span>
+              <span className="text-xs text-muted-foreground">Avisar cuando la ganancia llegue a</span>
               <div className="mt-1">
                 <SilverInput label="Umbral de ganancia" value={threshold} onChange={setThreshold} />
               </div>
@@ -150,18 +150,18 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
               </>
             )}
           </div>
-          <p className="mt-2 text-[11px] text-muted-foreground">
+          <p className="mt-2 text-xs text-muted-foreground">
             Se revisa cada hora con los precios nuevos y te avisa una sola vez cuando cruza el umbral (no repite mientras siga arriba).
           </p>
           {alert && (
-            <p className="mt-1 text-[11px] text-muted-foreground">
+            <p className="mt-1 text-xs text-muted-foreground">
               {alert.last_checked_at
                 ? `Última revisión: ${new Date(alert.last_checked_at).toLocaleString("es-AR")}${alert.last_profit !== null ? ` · ganancia ${fmt(alert.last_profit)}` : ""}`
                 : "Todavía no se revisó; pasa en la próxima actualización de precios."}
               {!alert.enabled && " · en pausa"}
             </p>
           )}
-          {alert?.last_error && <p className="mt-1 text-[11px] text-destructive">{alert.last_error}</p>}
+          {alert?.last_error && <p className="mt-1 text-xs text-destructive">{alert.last_error}</p>}
         </div>
       )}
     </div>

@@ -172,7 +172,7 @@ function ItemRow({ item, api }: { item: SessionItem; api: SessionsApi }) {
         <Link href={`/es/calculadora?item=${encodeURIComponent(item.item_id)}`} className="block truncate text-sm hover:text-money">
           {item.item_name}
         </Link>
-        <div className="text-[11px] text-muted-foreground">
+        <div className="text-xs text-muted-foreground">
           ×{item.params.qty} · {item.params.craftCity} · {t.isReal ? "con datos reales" : "estimado"}
         </div>
       </div>
@@ -230,7 +230,7 @@ function ActualField({
 
   return (
     <label className={className}>
-      <span className="block text-[11px] text-muted-foreground">{label}</span>
+      <span className="block text-xs text-muted-foreground">{label}</span>
       <input
         inputMode="numeric"
         value={text}

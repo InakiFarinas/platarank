@@ -13,7 +13,7 @@ export default function CalculadoraPage() {
   return (
     <>
       <SiteHeader title="Calculadora de crafteo" description="Elegí un ítem y ajustá precios, premium, foco y ciudad. Todo el cálculo es visible." />
-      <main className="mx-auto max-w-5xl px-3 pb-8 sm:px-6">
+      <main id="contenido" className="mx-auto max-w-5xl px-3 pb-8 sm:px-6">
         <Calculator />
         <SiteFooter className="mt-8">
           <p className="text-xs text-muted-foreground">Datos de mercado: Albion Online Data Project.</p>

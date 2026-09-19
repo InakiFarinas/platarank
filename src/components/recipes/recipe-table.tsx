@@ -84,13 +84,13 @@ export function RecipeTable({
   return (
     <div className={cn("mb-20 flex flex-col rounded-md border border-border lg:mb-0 lg:min-h-0 lg:flex-1", className)}>
       <div className="flex items-center gap-2 overflow-x-auto border-b-2 border-double border-border px-3 py-2 sm:hidden">
-        <span className="shrink-0 text-[11px] text-muted-foreground">Ordenar:</span>
+        <span className="shrink-0 text-xs text-muted-foreground">Ordenar:</span>
         <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/dia" />
         <MobileSortChip active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" />
         <MobileSortChip active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Volumen" />
       </div>
 
-      <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-[11px] text-muted-foreground sm:flex">
+      <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-xs text-muted-foreground sm:flex">
         <span className="w-8 shrink-0">#</span>
         <span className="flex-1">Ítem</span>
         <div className="hidden items-center gap-4 xl:flex">

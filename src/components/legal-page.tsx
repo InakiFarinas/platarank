@@ -6,7 +6,7 @@ export function LegalPage({ title, updated, children }: { title: string; updated
   return (
     <>
       <SiteHeader title={title} description={`Última actualización: ${updated}`} />
-      <main className="mx-auto max-w-3xl px-3 pb-8 sm:px-6">
+      <main id="contenido" className="mx-auto max-w-3xl px-3 pb-8 sm:px-6">
         <div className="space-y-4 text-sm leading-relaxed text-muted-foreground [&_a]:text-money [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-8 [&_h2]:font-heading [&_h2]:text-base [&_h2]:text-foreground [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-foreground">
           {children}
         </div>

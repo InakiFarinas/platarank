@@ -138,7 +138,7 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
             <img src={itemIconUrl(p.item_id, p.params.quality, 64)} alt="" className="h-10 w-10 shrink-0" />
             <span className="min-w-0">
               <span className="block truncate text-sm">{p.name}</span>
-              <span className="block text-[11px] text-muted-foreground">
+              <span className="block text-xs text-muted-foreground">
                 {new Date(p.created_at).toLocaleDateString("es-AR")} · ×{p.params.qty} · {p.params.craftCity}
               </span>
             </span>

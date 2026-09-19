@@ -252,7 +252,7 @@ export function NameSearchField({ value, onChange }: { value: string; onChange: 
           type="button"
           onClick={() => onChange("")}
           aria-label="Limpiar búsqueda"
-          className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded text-muted-foreground hover:text-foreground"
+          className="absolute right-0.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded text-muted-foreground hover:text-foreground"
         >
           <X className="h-3.5 w-3.5" />
         </button>

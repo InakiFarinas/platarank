@@ -350,7 +350,7 @@ export function Calculator() {
                   )}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={itemIconUrl(h.itemId, 1, 64)} alt="" className="h-8 w-8" />
+                  <img src={itemIconUrl(h.itemId, 1, 64)} alt="" width={32} height={32} className="h-8 w-8" />
                   <span className="flex-1">{h.nameEs}</span>
                   <span className="text-xs text-muted-foreground">{STATION_LABEL[h.stationType] ?? h.stationType}</span>
                 </li>
@@ -422,7 +422,7 @@ export function Calculator() {
             <section className="rounded-md border border-border bg-card/40 p-4">
               <div className="flex items-center gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={itemIconUrl(data.recipe.itemId, quality, 128)} alt="" className="h-16 w-16 shrink-0" />
+                <img src={itemIconUrl(data.recipe.itemId, quality, 128)} alt="" width={64} height={64} className="h-16 w-16 shrink-0" />
                 <div className="min-w-0">
                   <h2 className="font-heading text-2xl leading-tight">{data.recipe.nameEs}</h2>
                   <p className="mt-0.5 text-xs text-muted-foreground">
@@ -488,7 +488,7 @@ export function Calculator() {
               </div>
 
               <div className="mt-4">
-                <span className="text-[11px] text-muted-foreground">Ciudad de crafteo</span>
+                <span className="text-xs text-muted-foreground">Ciudad de crafteo</span>
                 <div className="mt-1 grid grid-cols-3 gap-1.5 sm:grid-cols-4">
                   {[...REAL_CITIES]
                     .sort((x, y) => Number(calc.spec?.city === y) - Number(calc.spec?.city === x))
@@ -504,7 +504,7 @@ export function Calculator() {
                         aria-pressed={active}
                         onClick={() => setCraftCity(city)}
                         className={cn(
-                          "flex h-11 flex-col items-center justify-center gap-0.5 rounded-md border px-1 text-[11px] leading-none transition-colors duration-150",
+                          "flex h-11 flex-col items-center justify-center gap-0.5 rounded-md border px-1 text-xs leading-none transition-colors duration-150",
                           active ? cn(theme.border, theme.bg, theme.text) : "border-border text-muted-foreground hover:bg-accent/40 hover:text-foreground",
                         )}
                       >
@@ -512,7 +512,7 @@ export function Calculator() {
                           <CityGlyph theme={theme} />
                           <span className="truncate font-medium">{city}</span>
                         </span>
-                        {bonus && <span className="font-mono text-[11px] text-money">{bonus} bono</span>}
+                        {bonus && <span className="font-mono text-xs text-money">{bonus} bono</span>}
                       </button>
                     );
                   })}
@@ -621,7 +621,7 @@ export function Calculator() {
                       <img src={itemIconUrl(m.itemId, 1, 64)} alt="" className="h-10 w-10" />
                       <div className="min-w-0">
                         <div className="truncate text-sm">{m.nameEs}</div>
-                        <div className="text-[11px] text-muted-foreground">
+                        <div className="text-xs text-muted-foreground">
                           <span className="font-mono">
                             {m.count} → {effective.toFixed(2).replace(".", ",")}
                           </span>
@@ -647,12 +647,12 @@ export function Calculator() {
                                 return rest;
                               })
                             }
-                            className="mt-1 block text-[11px] text-money underline underline-offset-2"
+                            className="mt-1 block text-xs text-money underline underline-offset-2"
                           >
                             volver a auto
                           </button>
                         )}
-                        {auto === null && !edited && <span className="mt-1 block text-[11px] text-destructive">sin precio: escribilo</span>}
+                        {auto === null && !edited && <span className="mt-1 block text-xs text-destructive">sin precio: escribilo</span>}
                       </div>
                       <div className="col-start-3 row-start-1 text-right font-mono text-sm tabular-nums sm:col-start-4">
                         {fmt(price * effective * calc.crafts)}
@@ -697,7 +697,7 @@ export function Calculator() {
                   <div className="flex items-baseline justify-between gap-3">
                     <span className="font-heading text-base">
                       Ganancia
-                      {calc.incomplete && <span className="ml-2 font-sans text-[11px] text-destructive">incompleta</span>}
+                      {calc.incomplete && <span className="ml-2 font-sans text-xs text-destructive">incompleta</span>}
                     </span>
                     <span
                       className={cn(
@@ -775,7 +775,7 @@ export function Calculator() {
                     </div>
                   )}
                 </div>
-                <p className="text-[11px] text-muted-foreground">
+                <p className="text-xs text-muted-foreground">
                   Retorno, tarifa de estación e impuestos: <Link href="/es/metodologia" className="text-money underline underline-offset-2">cómo se calcula</Link>.
                 </p>
               </div>
@@ -785,7 +785,7 @@ export function Calculator() {
           {/* Phone: the balance is a scroll away, so its bottom line stays in reach. */}
           <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t-2 border-double border-money/30 bg-card px-4 py-2.5 lg:hidden">
             <div>
-              <div className="text-[11px] text-muted-foreground">Ganancia{calc.incomplete && " (incompleta)"}</div>
+              <div className="text-xs text-muted-foreground">Ganancia{calc.incomplete && " (incompleta)"}</div>
               <div
                 className={cn("font-mono text-lg tabular-nums", calc.incomplete ? "text-muted-foreground" : calc.profit >= 0 ? "text-money" : "text-destructive")}
               >
@@ -822,11 +822,11 @@ function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name
       <div className="grid grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 gap-y-1">
         <span aria-hidden="true" />
         <span className="pb-1 text-right leading-tight">
-          <span className="block text-[11px] text-muted-foreground">Fijado</span>
+          <span className="block text-xs text-muted-foreground">Fijado</span>
           <span className="block break-words">{pinned.name}</span>
         </span>
         <span className="pb-1 text-right leading-tight">
-          <span className="block text-[11px] text-muted-foreground">Actual</span>
+          <span className="block text-xs text-muted-foreground">Actual</span>
           <span className="block break-words">{name}</span>
         </span>
         {rows.map((r) => (

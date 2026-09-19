@@ -66,14 +66,14 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
             className={cn("h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")}
           />
           {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
-          <img src={itemIconUrl(recipe.itemId)} alt="" className="h-6 w-6 shrink-0 object-contain" loading="lazy" />
+          <img src={itemIconUrl(recipe.itemId)} alt="" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" loading="lazy" />
           <span className="truncate text-sm font-medium">{recipe.nameEs}</span>
-          <Badge variant="secondary" className="shrink-0 font-mono text-[11px] tabular-nums">
+          <Badge variant="secondary" className="shrink-0 font-mono text-xs tabular-nums">
             T{recipe.tier}
             {enchantLabel(recipe.enchant)}
           </Badge>
           {!row.hasData && (
-            <Badge variant="outline" className="shrink-0 text-[11px] text-muted-foreground">
+            <Badge variant="outline" className="shrink-0 text-xs text-muted-foreground">
               datos insuficientes
             </Badge>
           )}
@@ -133,12 +133,12 @@ function ContractCard({ row }: { row: RecipeRowData }) {
                 <div className="min-w-0">
                   <span className="block truncate text-sm font-medium">{recipe.nameEs}</span>
                   <div className="mt-0.5 flex items-center gap-1">
-                    <Badge variant="secondary" className="font-mono text-[11px] tabular-nums">
+                    <Badge variant="secondary" className="font-mono text-xs tabular-nums">
                       T{recipe.tier}
                       {enchantLabel(recipe.enchant)}
                     </Badge>
                     {!row.hasData && (
-                      <Badge variant="outline" className="text-[11px] text-muted-foreground">
+                      <Badge variant="outline" className="text-xs text-muted-foreground">
                         datos insuficientes
                       </Badge>
                     )}
@@ -153,7 +153,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
                 >
                   {formatSilver(row.platinumPerDay)}
                 </div>
-                <div className="text-[11px] text-muted-foreground">plata/dia</div>
+                <div className="text-xs text-muted-foreground">plata/dia</div>
                 <ScrollText className="mt-1 h-3.5 w-3.5 text-muted-foreground/60" aria-hidden="true" />
               </div>
             </div>
@@ -202,7 +202,7 @@ function Stat({ label, value, mono, className }: { label: string; value: string;
   return (
     <div className="text-right">
       <div className={cn("text-xs text-foreground", mono && "font-mono tabular-nums", className)}>{value}</div>
-      <div className="text-[11px] text-muted-foreground">{label}</div>
+      <div className="text-xs text-muted-foreground">{label}</div>
     </div>
   );
 }
