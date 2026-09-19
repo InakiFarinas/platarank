@@ -4,7 +4,9 @@ import { db } from "@/lib/db/client";
 import { marketAggregates, recipes } from "@/lib/db/schema";
 import type { CityPricePoint } from "@/lib/recipe-math";
 
-/** One recipe + the market points for it and its materials + its sibling tier/enchant variants. */
+const CACHE_HEADERS = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=900" };
+
+/** One recipe +the market points for it and its materials + its sibling tier/enchant variants. */
 export async function GET(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id");
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
@@ -37,5 +39,9 @@ export async function GET(request: NextRequest) {
       weightedAvgPrice30d: a.weightedAvgPrice30d != null ? Number(a.weightedAvgPrice30d) : null,
     });
   }
-  return NextResponse.json({ recipe, market, variants: siblings.map(({ itemId, tier, enchant }) => ({ itemId, tier, enchant })) });
+  // Prices refresh hourly: let the CDN/browser absorb repeat lookups instead of hitting the DB.
+  return NextResponse.json(
+    { recipe, market, variants: siblings.map(({ itemId, tier, enchant }) => ({ itemId, tier, enchant })) },
+    { headers: CACHE_HEADERS },
+  );
 }

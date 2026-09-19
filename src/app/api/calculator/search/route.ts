@@ -21,5 +21,6 @@ export async function GET(request: NextRequest) {
     .where(and(eq(recipes.enchant, 0), or(ilike(recipes.nameEs, like), ilike(recipes.nameEn, like))))
     .orderBy(recipes.nameEs, recipes.tier)
     .limit(40);
-  return NextResponse.json(rows);
+  // Recipes only change when the game data is regenerated, so this is safe to cache for a long time.
+  return NextResponse.json(rows, { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } });
 }

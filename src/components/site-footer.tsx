@@ -23,6 +23,11 @@ export function SiteFooter({
           </div>
           {children}
         </div>
+        <nav aria-label="Legal" className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground sm:justify-start">
+          <a href="/es/metodologia" className="hover:text-foreground">Metodología</a>
+          <a href="/es/privacidad" className="hover:text-foreground">Privacidad</a>
+          <a href="/es/terminos" className="hover:text-foreground">Términos</a>
+        </nav>
       </div>
     </footer>
   );
