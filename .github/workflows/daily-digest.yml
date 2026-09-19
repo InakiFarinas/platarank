@@ -1,0 +1,24 @@
+name: Daily Discord digest
+
+on:
+  schedule:
+    - cron: "0 15 * * *" # 12:00 hora de Argentina
+  workflow_dispatch: {}
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v5
+        with:
+          version: 12
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm tsx scripts/daily-digest.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DISCORD_DAILY_WEBHOOK: ${{ secrets.DISCORD_DAILY_WEBHOOK }}
