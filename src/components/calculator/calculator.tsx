@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, History, Search } from "lucide-react";
 import { CityGlyph } from "@/components/site-header";
@@ -32,6 +33,52 @@ const STATION_LABEL: Record<string, string> = {
   mount: "Monturas",
 };
 
+const DEFAULTS = { qty: 1, premium: true, blackMarket: false, quality: 1, craftCity: "Brecilien", focus: false, feeRate: 235, extraCost: 0 };
+
+/** Everything the player set, as a shareable query string; only non-default values are written. */
+function paramsToQuery(itemId: string, p: PlanParams): string {
+  const q = new URLSearchParams({ item: itemId });
+  if (p.qty !== DEFAULTS.qty) q.set("q", String(p.qty));
+  if (p.craftCity !== DEFAULTS.craftCity) q.set("city", p.craftCity);
+  if (p.focus) q.set("focus", "1");
+  if (!p.premium) q.set("free", "1");
+  if (p.blackMarket) q.set("bm", "1");
+  if (p.quality !== DEFAULTS.quality) q.set("ql", String(p.quality));
+  if (p.feeRate !== DEFAULTS.feeRate) q.set("fee", String(p.feeRate));
+  if (p.extraCost !== DEFAULTS.extraCost) q.set("extra", String(p.extraCost));
+  if (p.sellOverride !== null) q.set("sell", String(p.sellOverride));
+  const mo = Object.entries(p.matOverrides);
+  if (mo.length > 0) q.set("mo", mo.map(([id, v]) => `${id}:${v}`).join(";"));
+  return q.toString();
+}
+
+function paramsFromUrl(sp: URLSearchParams): Partial<PlanParams> {
+  const int = (key: string, min: number) => {
+    const v = Number(sp.get(key));
+    return sp.has(key) && Number.isFinite(v) && v >= min ? Math.round(v) : undefined;
+  };
+  const city = sp.get("city");
+  const matOverrides: Record<string, number> = {};
+  for (const part of (sp.get("mo") ?? "").split(";")) {
+    const [id, v] = part.split(":");
+    const n = Number(v);
+    if (id && Number.isFinite(n) && n >= 0) matOverrides[id] = Math.round(n);
+  }
+  const ql = int("ql", 1);
+  return {
+    qty: int("q", 1),
+    craftCity: city && (REAL_CITIES as readonly string[]).includes(city) ? city : undefined,
+    focus: sp.get("focus") === "1" ? true : undefined,
+    premium: sp.get("free") === "1" ? false : undefined,
+    blackMarket: sp.get("bm") === "1" ? true : undefined,
+    quality: ql && ql <= 5 ? ql : undefined,
+    feeRate: int("fee", 0),
+    extraCost: int("extra", 0),
+    sellOverride: int("sell", 0),
+    matOverrides: Object.keys(matOverrides).length > 0 ? matOverrides : undefined,
+  };
+}
+
 function readRecents(): Recent[] {
   try {
     return JSON.parse(localStorage.getItem(RECENTS_KEY) ?? "[]");
@@ -52,6 +99,8 @@ export function Calculator() {
   const [advOpen, setAdvOpen] = useState(false);
   const [saveOpen, setSaveOpen] = useState(false);
   const [srcOpen, setSrcOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [announce, setAnnounce] = useState("");
   const [recents, setRecents] = useState<Recent[]>([]);
 
   const [qty, setQty] = useState(1);
@@ -71,8 +120,21 @@ export function Calculator() {
 
   useEffect(() => {
     setRecents(readRecents());
-    const id = new URLSearchParams(window.location.search).get("item");
-    if (id) void load(id);
+    const sp = new URLSearchParams(window.location.search);
+    const id = sp.get("item");
+    if (id) void load(id).then((ok) => ok && applyParams(paramsFromUrl(sp)));
+  }, []);
+
+  // "/" jumps to the search box, like most tools with a global search.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target instanceof Element ? e.target : null;
+      if (e.key !== "/" || t?.closest("input, textarea, select, [contenteditable]")) return;
+      e.preventDefault();
+      searchRef.current?.focus();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
@@ -117,7 +179,6 @@ export function Calculator() {
     setMatOverrides({});
     setHits([]);
     setQuery("");
-    window.history.replaceState(null, "", `?item=${encodeURIComponent(id)}`);
     const entry = { itemId: id, name: `${next.recipe.nameEs} T${next.recipe.tier}${enchantLabel(next.recipe.enchant)}` };
     const updated = [entry, ...readRecents().filter((r) => r.itemId !== id)].slice(0, 6);
     setRecents(updated);
@@ -129,18 +190,22 @@ export function Calculator() {
     return true;
   }
 
+  function applyParams(p: Partial<PlanParams>) {
+    if (p.qty !== undefined) setQty(p.qty);
+    if (p.premium !== undefined) setPremium(p.premium);
+    if (p.blackMarket !== undefined) setBlackMarket(p.blackMarket);
+    if (p.quality !== undefined) setQuality(p.quality);
+    if (p.craftCity !== undefined) setCraftCity(p.craftCity as Location);
+    if (p.focus !== undefined) setFocus(p.focus);
+    if (p.feeRate !== undefined) setFeeRate(p.feeRate);
+    if (p.extraCost !== undefined) setExtraCost(p.extraCost);
+    if (p.sellOverride !== undefined) setSellOverride(p.sellOverride);
+    if (p.matOverrides !== undefined) setMatOverrides(p.matOverrides);
+  }
+
   async function openPlan(id: string, p: PlanParams) {
     if (!(await load(id))) return;
-    setQty(p.qty);
-    setPremium(p.premium);
-    setBlackMarket(p.blackMarket);
-    setQuality(p.quality);
-    setCraftCity(p.craftCity as Location);
-    setFocus(p.focus);
-    setFeeRate(p.feeRate);
-    setExtraCost(p.extraCost);
-    setSellOverride(p.sellOverride);
-    setMatOverrides(p.matOverrides);
+    applyParams(p);
   }
 
   const calc = useMemo(
@@ -150,6 +215,36 @@ export function Calculator() {
         : null,
     [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides],
   );
+
+  // Keep the address bar a shareable snapshot of the calculation.
+  useEffect(() => {
+    if (!data) return;
+    window.history.replaceState(
+      null,
+      "",
+      `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides })}`,
+    );
+  }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides]);
+
+  // Screen readers hear the bottom line once typing pauses, not on every keystroke.
+  useEffect(() => {
+    if (!calc) return;
+    const t = setTimeout(
+      () => setAnnounce(`Ganancia ${calc.profit >= 0 ? "" : "menos "}${fmt(Math.abs(calc.profit))}${calc.incomplete ? ", incompleta" : ""}`),
+      900,
+    );
+    return () => clearTimeout(t);
+  }, [calc]);
+
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  }
 
   const tiers = data ? [...new Set(data.variants.map((v) => v.tier))].sort((a, b) => a - b) : [];
   const enchants = data ? data.variants.filter((v) => v.tier === data.recipe.tier).map((v) => v.enchant).sort((a, b) => a - b) : [];
@@ -368,8 +463,10 @@ export function Calculator() {
 
               <div className="mt-4">
                 <span className="text-[11px] text-muted-foreground">Ciudad de crafteo</span>
-                <div className="mt-1 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
-                  {REAL_CITIES.map((city) => {
+                <div className="mt-1 grid grid-cols-3 gap-1.5 sm:grid-cols-4">
+                  {[...REAL_CITIES]
+                    .sort((x, y) => Number(calc.spec?.city === y) - Number(calc.spec?.city === x))
+                    .map((city) => {
                     const theme = CITY_THEMES[city];
                     const active = city === craftCity;
                     const bonus = calc.spec && calc.spec.city === city ? (calc.spec.kind === "refining" ? "+40%" : "+15%") : null;
@@ -448,7 +545,7 @@ export function Calculator() {
               </button>
               {advOpen && (
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  <Field label="Tarifa de estación (por 100 nutrición)">
+                  <Field label="Tarifa de estación (por 100 nutrición)" hint="la fija el dueño de la estación">
                     <SilverInput label="Tarifa de estación" value={feeRate} onChange={setFeeRate} />
                   </Field>
                   <Field label="Costos extra (total)">
@@ -468,7 +565,8 @@ export function Calculator() {
               title="Materiales"
               aside={
                 <>
-                  Retorno <span className="font-mono text-money">{(calc.rrr * 100).toFixed(1).replace(".", ",")}%</span>
+                  <span title="Parte de los materiales que el juego te devuelve al craftear">Retorno</span>{" "}
+                  <span className="font-mono text-money">{(calc.rrr * 100).toFixed(1).replace(".", ",")}%</span>
                   {calc.specActive && ` · bono de ${calc.spec!.city}`}
                 </>
               }
@@ -531,9 +629,19 @@ export function Calculator() {
           {/* Ledger */}
           <aside id="balance" className="scroll-mt-24 lg:sticky lg:top-24">
             <section className="rounded-md border-2 border-double border-money/30 bg-card/60">
-              <header className="border-b border-border px-4 py-2.5">
+              <header className="flex items-baseline justify-between gap-3 border-b border-border px-4 py-2.5">
                 <h3 className="font-heading text-base">Balance</h3>
+                <button
+                  type="button"
+                  onClick={copyLink}
+                  className="text-xs text-money underline-offset-2 transition-colors hover:underline"
+                >
+                  {copied ? "Enlace copiado" : "Copiar enlace"}
+                </button>
               </header>
+              <span role="status" className="sr-only">
+                {announce}
+              </span>
               <div className="space-y-4 p-4 text-sm">
                 <dl className="space-y-1.5">
                   <Line label={`Materiales (${calc.crafts} ${calc.crafts === 1 ? "craft" : "crafts"})`} value={fmt(calc.materialsTotal)} />
@@ -548,7 +656,7 @@ export function Calculator() {
                 </dl>
 
                 <div className="border-t-2 border-double border-money/30 pt-3">
-                  <div role="status" className="flex items-baseline justify-between gap-3">
+                  <div className="flex items-baseline justify-between gap-3">
                     <span className="font-heading text-base">
                       Ganancia
                       {calc.incomplete && <span className="ml-2 font-sans text-[11px] text-destructive">incompleta</span>}
@@ -608,6 +716,9 @@ export function Calculator() {
                     </div>
                   )}
                 </div>
+                <p className="text-[11px] text-muted-foreground">
+                  Retorno, tarifa de estación e impuestos: <Link href="/es/metodologia" className="text-money underline underline-offset-2">cómo se calcula</Link>.
+                </p>
               </div>
             </section>
           </aside>
@@ -617,7 +728,6 @@ export function Calculator() {
             <div>
               <div className="text-[11px] text-muted-foreground">Ganancia{calc.incomplete && " (incompleta)"}</div>
               <div
-                role="status"
                 className={cn("font-mono text-lg tabular-nums", calc.incomplete ? "text-muted-foreground" : calc.profit >= 0 ? "text-money" : "text-destructive")}
               >
                 {calc.profit >= 0 ? "+" : "−"}

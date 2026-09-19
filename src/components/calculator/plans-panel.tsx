@@ -112,6 +112,7 @@ export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }
 }
 
 export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi: AlertsApi; onOpen: (itemId: string, params: PlanParams) => void }) {
+  const [confirmId, setConfirmId] = useState<string | null>(null);
   if (api.signedIn === null) return null;
   if (!api.signedIn) {
     return (
@@ -146,14 +147,32 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
             {p.snapshot.profit >= 0 ? "+" : ""}
             {fmt(p.snapshot.profit)}
           </span>
-          <button
-            type="button"
-            aria-label={`Borrar ${p.name}`}
-            onClick={() => api.remove(p.id)}
-            className="relative p-1.5 text-muted-foreground transition-colors hover:text-destructive after:absolute after:-inset-1.5 after:content-['']"
-          >
-            <Trash2 className="h-4 w-4" />
-          </button>
+          {confirmId === p.id ? (
+            <span className="flex items-center gap-2 text-xs">
+              <button
+                type="button"
+                onClick={() => {
+                  setConfirmId(null);
+                  void api.remove(p.id);
+                }}
+                className="text-destructive underline underline-offset-2"
+              >
+                Borrar
+              </button>
+              <button type="button" onClick={() => setConfirmId(null)} className="text-muted-foreground underline underline-offset-2">
+                Cancelar
+              </button>
+            </span>
+          ) : (
+            <button
+              type="button"
+              aria-label={`Borrar ${p.name}`}
+              onClick={() => setConfirmId(p.id)}
+              className="relative p-1.5 text-muted-foreground transition-colors hover:text-destructive after:absolute after:-inset-1.5 after:content-['']"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          )}
           </div>
           <div className="mt-1.5 pl-[3.25rem]">
             <AlertControl planId={p.id} currentProfit={p.snapshot.profit} api={alertsApi} />
