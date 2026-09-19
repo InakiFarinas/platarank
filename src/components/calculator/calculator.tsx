@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, History, Search } from "lucide-react";
+import { ChevronDown, History, Pin, Search } from "lucide-react";
 import { CityGlyph } from "@/components/site-header";
 import { enchantLabel, formatAge } from "@/components/recipes/format";
 import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -16,7 +16,7 @@ import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
 import { AddToSession } from "@/components/sessions/add-to-session";
-import { Field, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
+import { Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
 type Hit = { itemId: string; baseItemId: string; nameEs: string; tier: number; stationType: string };
 type Variant = { itemId: string; tier: number; enchant: number };
@@ -99,7 +99,9 @@ export function Calculator() {
   const [advOpen, setAdvOpen] = useState(false);
   const [saveOpen, setSaveOpen] = useState(false);
   const [srcOpen, setSrcOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "ok" | "fail">("idle");
+  const [citiesOpen, setCitiesOpen] = useState(false);
+  const [pinned, setPinned] = useState<PinnedCalc | null>(null);
   const [announce, setAnnounce] = useState("");
   const [recents, setRecents] = useState<Recent[]>([]);
 
@@ -239,12 +241,14 @@ export function Calculator() {
   async function copyLink() {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopyState("ok");
     } catch {
-      setCopied(false);
+      setCopyState("fail");
     }
+    setTimeout(() => setCopyState("idle"), 2500);
   }
+
+  const hiddenCities = calc ? REAL_CITIES.length - new Set([craftCity, calc.spec?.city].filter(Boolean)).size : 0;
 
   const tiers = data ? [...new Set(data.variants.map((v) => v.tier))].sort((a, b) => a - b) : [];
   const enchants = data ? data.variants.filter((v) => v.tier === data.recipe.tier).map((v) => v.enchant).sort((a, b) => a - b) : [];
@@ -354,6 +358,8 @@ export function Calculator() {
               key={key}
               type="button"
               role="tab"
+              id={`tab-${key}`}
+              aria-controls="calc-panel"
               aria-selected={tab === key}
               tabIndex={tab === key ? 0 : -1}
               onClick={() => setTab(key)}
@@ -378,6 +384,7 @@ export function Calculator() {
         </p>
       )}
 
+      <div role="tabpanel" id="calc-panel" aria-labelledby={`tab-${tab}`}>
       {tab === "plans" ? (
         <Panel title="Planificaciones" className="mt-4">
           {plansApi.signedIn && plansApi.plans.length > 0 && (
@@ -466,6 +473,7 @@ export function Calculator() {
                 <div className="mt-1 grid grid-cols-3 gap-1.5 sm:grid-cols-4">
                   {[...REAL_CITIES]
                     .sort((x, y) => Number(calc.spec?.city === y) - Number(calc.spec?.city === x))
+                    .filter((city) => citiesOpen || city === craftCity || city === calc.spec?.city)
                     .map((city) => {
                     const theme = CITY_THEMES[city];
                     const active = city === craftCity;
@@ -490,6 +498,17 @@ export function Calculator() {
                     );
                   })}
                 </div>
+                {(hiddenCities > 0 || citiesOpen) && (
+                  <button
+                    type="button"
+                    aria-expanded={citiesOpen}
+                    onClick={() => setCitiesOpen((o) => !o)}
+                    className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", citiesOpen && "rotate-180")} />
+                    {citiesOpen ? "Mostrar menos ciudades" : `Otras ciudades (${hiddenCities})`}
+                  </button>
+                )}
               </div>
 
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -545,7 +564,7 @@ export function Calculator() {
               </button>
               {advOpen && (
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  <Field label="Tarifa de estación (por 100 nutrición)" hint="la fija el dueño de la estación">
+                  <Field label="Tarifa de estación (por 100 nutrición)" hint={<InfoTip term="¿Qué es?" text="Plata que cobra la estación por cada 100 de nutrición que consume tu craft. La fija el dueño de la estación y la ves en el juego como tarifa de uso." />}>
                     <SilverInput label="Tarifa de estación" value={feeRate} onChange={setFeeRate} />
                   </Field>
                   <Field label="Costos extra (total)">
@@ -565,7 +584,7 @@ export function Calculator() {
               title="Materiales"
               aside={
                 <>
-                  <span title="Parte de los materiales que el juego te devuelve al craftear">Retorno</span>{" "}
+                  <InfoTip term="Retorno" text="Porcentaje de los materiales que el juego te devuelve al craftear. Sube con el bono de la ciudad y con el foco; los artefactos nunca devuelven." />{" "}
                   <span className="font-mono text-money">{(calc.rrr * 100).toFixed(1).replace(".", ",")}%</span>
                   {calc.specActive && ` · bono de ${calc.spec!.city}`}
                 </>
@@ -636,7 +655,7 @@ export function Calculator() {
                   onClick={copyLink}
                   className="text-xs text-money underline-offset-2 transition-colors hover:underline"
                 >
-                  {copied ? "Enlace copiado" : "Copiar enlace"}
+                  {copyState === "ok" ? "Enlace copiado" : copyState === "fail" ? "No se pudo copiar" : "Copiar enlace"}
                 </button>
               </header>
               <span role="status" className="sr-only">
@@ -700,6 +719,27 @@ export function Calculator() {
                 <div className="border-t border-border pt-3">
                   <button
                     type="button"
+                    onClick={() =>
+                      setPinned({
+                        name: draft.itemName,
+                        profit: calc.profit,
+                        margin: calc.margin,
+                        perUnit: calc.perUnit,
+                        volume: calc.volume,
+                        incomplete: calc.incomplete,
+                      })
+                    }
+                    className="flex items-center gap-1.5 text-xs text-money underline-offset-2 hover:underline"
+                  >
+                    <Pin className="h-3.5 w-3.5" />
+                    {pinned ? "Fijar este en lugar del anterior" : "Fijar para comparar"}
+                  </button>
+                  {pinned && <CompareCard pinned={pinned} name={draft.itemName} calc={calc} onClear={() => setPinned(null)} />}
+                </div>
+
+                <div className="border-t border-border pt-3">
+                  <button
+                    type="button"
                     aria-expanded={saveOpen}
                     onClick={() => setSaveOpen((o) => !o)}
                     className="flex w-full items-center justify-between rounded-sm border border-money/50 bg-money/10 px-3 py-2 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20"
@@ -740,6 +780,46 @@ export function Calculator() {
           </div>
         </div>
       )}
+      </div>
+    </div>
+  );
+}
+
+type PinnedCalc = { name: string; profit: number; margin: number | null; perUnit: number; volume: number; incomplete: boolean };
+
+/** Side-by-side of a pinned calculation against the one on screen, so two recipes can be weighed
+ * without writing numbers down. The better profit is the only value in gold. */
+function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name: string; calc: ReturnType<typeof computeCraft>; onClear: () => void }) {
+  const pct = (m: number | null) => (m === null ? "--" : `${Math.round(m * 100)}%`);
+  const currentBetter = calc.profit > pinned.profit;
+  const rows: { label: string; a: string; b: string; win?: "a" | "b" }[] = [
+    { label: "Ganancia", a: fmt(pinned.profit), b: fmt(calc.profit), win: currentBetter ? "b" : pinned.profit > calc.profit ? "a" : undefined },
+    { label: "Margen", a: pct(pinned.margin), b: pct(calc.margin) },
+    { label: "Por unidad", a: fmt(pinned.perUnit), b: fmt(calc.perUnit) },
+    { label: "Volumen", a: fmt(pinned.volume), b: fmt(calc.volume) },
+  ];
+  return (
+    <div className="mt-2 rounded-md border border-border bg-background/40 p-3 text-xs">
+      <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 gap-y-1">
+        <span className="text-muted-foreground">&nbsp;</span>
+        <span className="max-w-24 truncate text-right text-muted-foreground" title={pinned.name}>
+          Fijado: {pinned.name}
+        </span>
+        <span className="max-w-24 truncate text-right text-muted-foreground" title={name}>
+          Actual: {name}
+        </span>
+        {rows.map((r) => (
+          <div key={r.label} className="contents">
+            <span className="text-muted-foreground">{r.label}</span>
+            <span className={cn("text-right font-mono tabular-nums", r.win === "a" && !pinned.incomplete && "text-money")}>{r.a}</span>
+            <span className={cn("text-right font-mono tabular-nums", r.win === "b" && !calc.incomplete && "text-money")}>{r.b}</span>
+          </div>
+        ))}
+      </div>
+      {(pinned.incomplete || calc.incomplete) && <p className="mt-2 text-destructive">Alguno de los dos tiene datos incompletos; no lo tomes como comparación real.</p>}
+      <button type="button" onClick={onClear} className="mt-2 text-muted-foreground underline underline-offset-2 hover:text-foreground">
+        Quitar comparación
+      </button>
     </div>
   );
 }

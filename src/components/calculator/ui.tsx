@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
+import { HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /** Mutually exclusive choice rendered as a joined button group -- clearer than a switch when both
@@ -136,5 +137,32 @@ export function Panel({ title, aside, children, className }: { title: ReactNode;
       </header>
       <div className="p-4">{children}</div>
     </section>
+  );
+}
+
+/** A term followed by a "?" that opens a short explanation on tap, click or Enter -- unlike a
+ * title attribute, it works on a phone and with the keyboard. Closes on blur or Escape. */
+export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="relative inline-flex items-center gap-1">
+      {term}
+      <button
+        type="button"
+        aria-label={`Qué significa: ${typeof term === "string" ? term : "este término"}`}
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        onBlur={() => setOpen(false)}
+        onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
+        className="relative text-muted-foreground transition-colors hover:text-foreground after:absolute after:-inset-2 after:content-['']"
+      >
+        <HelpCircle className="h-3.5 w-3.5" />
+      </button>
+      {open && (
+        <span role="tooltip" className="absolute right-0 top-full z-30 mt-1.5 w-64 rounded-md border border-border bg-popover p-2.5 text-left text-xs font-normal normal-case leading-snug text-foreground">
+          {text}
+        </span>
+      )}
+    </span>
   );
 }
