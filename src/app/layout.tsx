@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Geist, Geist_Mono, IM_Fell_English } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -41,7 +42,8 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/opengraph-image"],
     title: "PlataRank",
     description: DESCRIPTION,
   },
@@ -52,6 +54,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="es" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} ${imFell.variable} ${cinzel.variable} antialiased`}>
         <TooltipProvider delay={150}>{children}</TooltipProvider>
+        <Analytics />
       </body>
     </html>
   );
