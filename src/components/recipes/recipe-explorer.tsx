@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Controls, FiltersPanel, NameSearchField, DEFAULT_FILTERS, type FilterParams } from "./controls";
 import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type RecipeMathParams, type RecipeRow } from "@/lib/recipe-math";
 import { getCitySpecialty, type CitySpecialty } from "@/lib/city-specialties";
+import { applyFilters } from "@/lib/recipe-filters";
 import { parseStateFromUrl, writeStateToUrl } from "./url-state";
 import type { Recipe } from "@/lib/db/schema";
 import type { Location } from "@/lib/aodp/cities";
@@ -15,6 +16,9 @@ export function RecipeExplorer({
   recipes,
   marketByItem,
   initialRows,
+  totalCount,
+  categories,
+  remoteStation,
   title,
   description,
 }: {
@@ -23,6 +27,12 @@ export function RecipeExplorer({
   /** Pre-reduced with DEFAULT_PARAMS on the server -- reused as-is until the player changes a
    * control, so first paint skips the client-side recompute over every recipe. */
   initialRows: RecipeRow[];
+  /** How many recipes exist for this station (initialRows may be only the top slice). */
+  totalCount: number;
+  /** Distinct craftingCategory values of the station, for the city-bonus badges. */
+  categories: string[];
+  /** When set, `recipes`/`marketByItem` are empty and non-default views are ranked by /api/rank. */
+  remoteStation?: "gear";
   title: string;
   description: string;
 }) {
@@ -55,10 +65,50 @@ export function RecipeExplorer({
 
   const market = useMemo(() => new Map(Object.entries(marketByItem)), [marketByItem]);
 
-  const allRows = useMemo(
-    () => (params === DEFAULT_PARAMS ? initialRows : recipes.map((r) => computeRecipeRow(r, market, params))),
-    [recipes, market, params, initialRows],
-  );
+  const isDefaultView = params === DEFAULT_PARAMS && JSON.stringify(filters) === JSON.stringify(DEFAULT_FILTERS);
+  const [remoteResult, setRemoteResult] = useState<{ rows: RecipeRow[]; total: number } | null>(null);
+  const [remoteLoading, setRemoteLoading] = useState(false);
+  const [remoteError, setRemoteError] = useState(false);
+
+  // Large stations: ask the server to rank under the current assumptions/filters (debounced).
+  useEffect(() => {
+    if (!remoteStation) return;
+    if (isDefaultView) {
+      setRemoteResult(null);
+      setRemoteError(false);
+      return;
+    }
+    const ctrl = new AbortController();
+    const t = setTimeout(async () => {
+      setRemoteLoading(true);
+      setRemoteError(false);
+      try {
+        const res = await fetch("/api/rank", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ station: remoteStation, params, filters }),
+          signal: ctrl.signal,
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        setRemoteResult(await res.json());
+        setRemoteLoading(false);
+      } catch (err) {
+        if ((err as Error).name === "AbortError") return;
+        setRemoteError(true);
+        setRemoteLoading(false);
+      }
+    }, 300);
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
+    };
+  }, [remoteStation, isDefaultView, params, filters]);
+
+  const allRows = useMemo(() => {
+    if (remoteStation) return remoteResult?.rows ?? initialRows;
+    return params === DEFAULT_PARAMS ? initialRows : recipes.map((r) => computeRecipeRow(r, market, params));
+  }, [remoteStation, remoteResult, recipes, market, params, initialRows]);
+  const totalMatching = remoteStation ? (remoteResult?.total ?? totalCount) : allRows.length;
 
   const rows = useMemo(() => applyFilters(allRows, filters), [allRows, filters]);
 
@@ -67,14 +117,13 @@ export function RecipeExplorer({
   // within one rubro every matching category shares the same kind (crafting for alquimia/cocina/
   // equipo, refining for refinado), so at most one badge per city here.
   const cityBonuses = useMemo(() => {
-    const categories = new Set(recipes.map((r) => r.craftingCategory).filter((c): c is string => c !== null));
     const bonuses = new Map<Location, CitySpecialty>();
     for (const category of categories) {
       const spec = getCitySpecialty(category);
       if (spec) bonuses.set(spec.city as Location, spec);
     }
     return bonuses;
-  }, [recipes]);
+  }, [categories]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -95,8 +144,11 @@ export function RecipeExplorer({
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              Mostrando {rows.length} de {allRows.length} recetas.
-              {isPending && (
+              {remoteStation && totalMatching > rows.length
+                ? `Mostrando las ${rows.length} mejores de ${totalMatching} recetas.`
+                : `Mostrando ${rows.length} de ${totalMatching} recetas.`}
+              {remoteError && <span className="text-destructive">No se pudo recalcular. Probá de nuevo.</span>}
+              {(isPending || remoteLoading) && (
                 <span className="inline-flex items-center gap-1 text-money">
                   <Loader2 className="h-3 w-3 animate-spin" aria-hidden="true" />
                   Recalculando con los nuevos supuestos...
@@ -110,9 +162,9 @@ export function RecipeExplorer({
               rows={rows}
               isFiltered={filters.nameQuery !== "" || filters.maxAgeHours !== null || filters.minVolume !== null}
               onClearFilters={() => applyFilterParams(DEFAULT_FILTERS)}
-              className={isPending ? "pointer-events-none opacity-60 transition-opacity" : "transition-opacity"}
+              className={isPending || remoteLoading ? "pointer-events-none opacity-60 transition-opacity" : "transition-opacity"}
             />
-            {isPending && (
+            {(isPending || remoteLoading) && (
               <div
                 className="pointer-events-none absolute inset-x-0 top-16 flex justify-center"
                 role="status"
@@ -207,24 +259,3 @@ function ActiveFilterChips({
   );
 }
 
-/** Strips accents so "pocion" matches "Poción" -- players typing on a phone next to the game
- * shouldn't have to hit the right diacritic to find an item. */
-function normalize(s: string): string {
-  return s
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase();
-}
-
-function applyFilters(rows: RecipeRow[], filters: FilterParams): RecipeRow[] {
-  const query = normalize(filters.nameQuery.trim());
-  return rows.filter((r) => {
-    if (query !== "" && !normalize(r.recipe.nameEs).includes(query)) return false;
-    if (filters.maxAgeHours !== null) {
-      const ageHours = r.sellRefAgeSeconds !== null ? r.sellRefAgeSeconds / 3600 : Infinity;
-      if (ageHours > filters.maxAgeHours) return false;
-    }
-    if (filters.minVolume !== null && r.avgDailyVolume30d < filters.minVolume) return false;
-    return true;
-  });
-}

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { and, eq, ilike, or } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
+import { normalize } from "@/lib/recipe-filters";
 import { db } from "@/lib/db/client";
 import { recipes } from "@/lib/db/schema";
 
@@ -7,7 +8,9 @@ import { recipes } from "@/lib/db/schema";
 export async function GET(request: NextRequest) {
   const q = (request.nextUrl.searchParams.get("q") ?? "").trim();
   if (q.length < 2) return NextResponse.json([]);
-  const like = `%${q.replace(/[%_]/g, "")}%`;
+  // Accent-insensitive on both sides ("pocion" finds "Poción"); English names have no accents.
+  const like = `%${normalize(q).replace(/[%_]/g, "")}%`;
+  const fold = (col: unknown) => sql`translate(lower(${col}), 'áéíóúüñ', 'aeiouun')`;
   const rows = await db
     .select({
       itemId: recipes.itemId,
@@ -18,7 +21,7 @@ export async function GET(request: NextRequest) {
       stationType: recipes.stationType,
     })
     .from(recipes)
-    .where(and(eq(recipes.enchant, 0), or(ilike(recipes.nameEs, like), ilike(recipes.nameEn, like))))
+    .where(and(eq(recipes.enchant, 0), sql`(${fold(recipes.nameEs)} like ${like} or ${fold(recipes.nameEn)} like ${like})`))
     .orderBy(recipes.nameEs, recipes.tier)
     .limit(40);
   // Recipes only change when the game data is regenerated, so this is safe to cache for a long time.

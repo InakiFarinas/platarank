@@ -9,15 +9,12 @@ import { Switch } from "@/components/ui/switch";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import { CITY_THEMES } from "@/lib/city-theme";
 import { DEFAULT_PARAMS, type RecipeMathParams } from "@/lib/recipe-math";
+import { DEFAULT_FILTERS, type FilterParams } from "@/lib/recipe-filters";
 import { cn } from "@/lib/utils";
 
-export type FilterParams = {
-  nameQuery: string;
-  maxAgeHours: number | null;
-  minVolume: number | null;
-};
+export type { FilterParams };
 
-export const DEFAULT_FILTERS: FilterParams = { nameQuery: "", maxAgeHours: null, minVolume: null };
+export { DEFAULT_FILTERS };
 
 type ControlsProps = {
   params: RecipeMathParams;

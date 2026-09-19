@@ -42,3 +42,5 @@ yarn-error.log*
 # impeccable live-mode scratch state
 /.impeccable/live/
 next-env.d.ts
+
+.vercel

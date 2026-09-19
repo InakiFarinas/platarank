@@ -1,68 +1,64 @@
-import { eq, inArray } from "drizzle-orm";
-import { db } from "@/lib/db/client";
-import { recipes as recipesTable, marketAggregates } from "@/lib/db/schema";
-import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint } from "@/lib/recipe-math";
+import { computeRecipeRow, DEFAULT_PARAMS } from "@/lib/recipe-math";
 import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
 import { SiteFooter } from "@/components/site-footer";
+import { loadStationData, rankStation, ROW_LIMIT, type StationType } from "@/lib/server/station-data";
+import { DEFAULT_FILTERS } from "@/lib/recipe-filters";
+
+/** Stations too big to ship whole to the browser (gear: ~5,700 recipes made a ~50MB page). They
+ * send only the top rows and recompute server-side via /api/rank when the player changes something. */
+const REMOTE_STATIONS: StationType[] = ["gear"];
 
 export async function RecipePage({
   stationType,
   title,
   description,
 }: {
-  stationType: "alchemy" | "refining" | "cooking" | "gear" | "mount";
+  stationType: StationType;
   title: string;
   description: string;
 }) {
-  const recipeRows = await db.select().from(recipesTable).where(eq(recipesTable.stationType, stationType));
-
-  const relevantItemIds = new Set<string>();
-  for (const r of recipeRows) {
-    relevantItemIds.add(r.itemId);
-    for (const m of r.materials) relevantItemIds.add(m.itemId);
-  }
-
-  // Fetch only the aggregates this page's recipes actually reference -- with thousands of gear
-  // items across the whole game, pulling the entire table for every rubro would balloon payload
-  // and query time for no reason.
-  const aggregateRows =
-    relevantItemIds.size > 0
-      ? await db
-          .select()
-          .from(marketAggregates)
-          .where(inArray(marketAggregates.itemId, [...relevantItemIds]))
-      : [];
-
-  const marketByItem: Record<string, CityPricePoint[]> = {};
-  for (const a of aggregateRows) {
-    const point: CityPricePoint = {
-      city: a.city,
-      quality: a.quality,
-      price: a.price != null ? Number(a.price) : null,
-      priceAgeSeconds: a.priceAgeSeconds,
-      avgDailyVolume30d: Number(a.avgDailyVolume30d),
-      daysWithVolume30d: a.daysWithVolume30d,
-      weightedAvgPrice30d: a.weightedAvgPrice30d != null ? Number(a.weightedAvgPrice30d) : null,
-    };
-    (marketByItem[a.itemId] ??= []).push(point);
-  }
+  const data = await loadStationData(stationType);
+  const categories = [...new Set(data.recipes.map((r) => r.craftingCategory).filter((c): c is string => c !== null))];
 
   // Reduced with DEFAULT_PARAMS once here (server, at the ISR revalidation cadence) instead of in
-  // every visitor's browser on hydration -- for /equipo's ~5,632 rows x 5 qualities that recompute
-  // was measured at 10-20+ seconds on first paint. The client only re-runs computeRecipeRow itself
-  // once the player actually changes a control away from the defaults.
-  const market = new Map(Object.entries(marketByItem));
-  const initialRows = recipeRows.map((r) => computeRecipeRow(r, market, DEFAULT_PARAMS));
+  // every visitor's browser on hydration. The client only recomputes once the player changes a
+  // control away from the defaults.
+  const remote = REMOTE_STATIONS.includes(stationType);
 
-  return (
-    <main className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-0 sm:pb-8">
+  let content;
+  if (remote) {
+    const { rows, total } = rankStation(data, DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
+    content = (
       <RecipeExplorer
-        recipes={recipeRows}
-        marketByItem={marketByItem}
-        initialRows={initialRows}
+        recipes={[]}
+        marketByItem={{}}
+        initialRows={rows}
+        totalCount={total}
+        categories={categories}
+        remoteStation="gear"
         title={title}
         description={description}
       />
+    );
+  } else {
+    const market = new Map(Object.entries(data.marketByItem));
+    const initialRows = data.recipes.map((r) => computeRecipeRow(r, market, DEFAULT_PARAMS));
+    content = (
+      <RecipeExplorer
+        recipes={data.recipes}
+        marketByItem={data.marketByItem}
+        initialRows={initialRows}
+        totalCount={initialRows.length}
+        categories={categories}
+        title={title}
+        description={description}
+      />
+    );
+  }
+
+  return (
+    <main className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-0 sm:pb-8">
+      {content}
       <Footer />
     </main>
   );
