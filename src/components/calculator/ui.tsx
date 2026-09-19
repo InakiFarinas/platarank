@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { cloneElement, isValidElement, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
 import { HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -72,6 +72,7 @@ export function SilverInput({
   className,
   invalid,
   edited,
+  id,
 }: {
   value: number;
   onChange: (v: number) => void;
@@ -79,6 +80,7 @@ export function SilverInput({
   className?: string;
   invalid?: boolean;
   edited?: boolean;
+  id?: string;
 }) {
   const [text, setText] = useState(fmtInt(value));
   const [focused, setFocused] = useState(false);
@@ -89,6 +91,7 @@ export function SilverInput({
 
   return (
     <input
+      id={id}
       inputMode="numeric"
       aria-label={label}
       value={text}
@@ -102,7 +105,7 @@ export function SilverInput({
       }}
       onChange={(e) => {
         const digits = e.target.value.replace(/\D/g, "");
-        const n = digits === "" ? 0 : Number(digits);
+        const n = digits === "" ? 0 : Math.min(Number(digits.slice(0, 12)), 999_999_999_999);
         setText(digits === "" ? "" : fmtInt(n));
         onChange(n);
       }}
@@ -116,13 +119,14 @@ export function SilverInput({
 }
 
 export function Field({ label, hint, children, className }: { label: string; hint?: ReactNode; children: ReactNode; className?: string }) {
+  const id = useId();
   return (
     <div className={className}>
       <div className="flex min-h-4 items-baseline justify-between gap-2">
-        <span className="text-xs text-muted-foreground">{label}</span>
+        <label htmlFor={id} className="text-xs text-muted-foreground">{label}</label>
         {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
       </div>
-      <div className="mt-1">{children}</div>
+      <div className="mt-1">{isValidElement(children) ? cloneElement(children as ReactElement<{ id?: string }>, { id }) : children}</div>
     </div>
   );
 }
@@ -144,6 +148,7 @@ export function Panel({ title, aside, children, className }: { title: ReactNode;
  * title attribute, it works on a phone and with the keyboard. Closes on blur or Escape. */
 export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
   const [open, setOpen] = useState(false);
+  const tipId = useId();
   return (
     <span className="relative inline-flex items-center gap-1">
       {term}
@@ -151,6 +156,7 @@ export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
         type="button"
         aria-label={`Qué significa: ${typeof term === "string" ? term : "este término"}`}
         aria-expanded={open}
+        aria-describedby={open ? tipId : undefined}
         onClick={() => setOpen((o) => !o)}
         onBlur={() => setOpen(false)}
         onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
@@ -159,7 +165,7 @@ export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
         <HelpCircle className="h-3.5 w-3.5" />
       </button>
       {open && (
-        <span role="tooltip" className="absolute right-0 top-full z-30 mt-1.5 w-64 rounded-md border border-border bg-popover p-2.5 text-left text-xs font-normal normal-case leading-snug text-foreground">
+        <span role="tooltip" id={tipId} className="absolute right-0 top-full z-30 mt-1.5 w-64 rounded-md border border-border bg-popover p-2.5 text-left text-xs font-normal normal-case leading-snug text-foreground">
           {text}
         </span>
       )}

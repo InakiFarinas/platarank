@@ -93,6 +93,8 @@ export function Calculator() {
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<Hit[]>([]);
   const [searching, setSearching] = useState(false);
+  const [searchFailed, setSearchFailed] = useState(false);
+  const loadSeq = useRef(0);
   const [data, setData] = useState<ItemData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<{ message: string; retryId?: string } | null>(null);
@@ -147,37 +149,54 @@ export function Calculator() {
       return;
     }
     setSearching(true);
+    setSearchFailed(false);
+    const ctrl = new AbortController();
     const t = setTimeout(async () => {
-      const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}`);
-      if (res.ok) {
+      try {
+        const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}`, { signal: ctrl.signal });
+        if (!res.ok) throw new Error(String(res.status));
         setHits(await res.json());
         setActive(0);
+        setSearching(false);
+      } catch (err) {
+        if ((err as Error).name === "AbortError") return;
+        setHits([]);
+        setSearchFailed(true);
+        setSearching(false);
       }
-      setSearching(false);
     }, 250);
-    return () => clearTimeout(t);
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
+    };
   }, [query]);
 
-  async function load(id: string): Promise<boolean> {
+  async function load(id: string, keepQuality = false): Promise<boolean> {
+    const seq = ++loadSeq.current;
     setError(null);
     setLoading(true);
-    let res: Response;
+    let next: ItemData;
     try {
-      res = await fetch(`/api/calculator/item?id=${encodeURIComponent(id)}`);
+      const res = await fetch(`/api/calculator/item?id=${encodeURIComponent(id)}`);
+      if (seq !== loadSeq.current) return false;
+      if (res.status === 404) {
+        setLoading(false);
+        setError({ message: "No se encontró ese ítem." });
+        return false;
+      }
+      if (!res.ok) throw new Error(String(res.status));
+      next = await res.json();
     } catch {
+      if (seq !== loadSeq.current) return false;
       setLoading(false);
-      setError({ message: "No se pudo cargar el ítem. Revisá tu conexión.", retryId: id });
+      setError({ message: "No se pudo cargar el ítem. Revisá tu conexión y probá de nuevo.", retryId: id });
       return false;
     }
+    if (seq !== loadSeq.current) return false;
     setLoading(false);
-    if (!res.ok) {
-      setError({ message: "No se encontró ese ítem." });
-      return false;
-    }
-    const next: ItemData = await res.json();
     setData(next);
     setTab("calc");
-    setQuality(1);
+    if (!keepQuality) setQuality(1);
     setSellOverride(null);
     setMatOverrides({});
     setHits([]);
@@ -222,11 +241,19 @@ export function Calculator() {
   // Keep the address bar a shareable snapshot of the calculation.
   useEffect(() => {
     if (!data) return;
-    window.history.replaceState(
-      null,
-      "",
-      `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides })}`,
-    );
+    // Debounced and guarded: Safari throws SecurityError past ~100 replaceState calls per 30 s.
+    const t = setTimeout(() => {
+      try {
+        window.history.replaceState(
+          null,
+          "",
+          `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides })}`,
+        );
+      } catch {
+        // The address bar just stops mirroring the calculation; nothing else depends on it.
+      }
+    }, 300);
+    return () => clearTimeout(t);
   }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides]);
 
   // Screen readers hear the bottom line once typing pauses, not on every keystroke.
@@ -315,6 +342,7 @@ export function Calculator() {
               aria-controls="calc-hits"
               aria-autocomplete="list"
               aria-activedescendant={hits.length > 0 && active >= 0 ? `calc-hit-${active}` : undefined}
+              onBlur={() => setHits([])}
               placeholder="Buscar ítem: poción, bastón, capa, montura…"
               aria-label="Buscar ítem"
               className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
@@ -322,11 +350,17 @@ export function Calculator() {
             {searching && <span className="shrink-0 text-xs text-muted-foreground">Buscando…</span>}
           </label>
           <span role="status" className="sr-only">
-            {hits.length > 0 ? `${hits.length} resultados` : ""}
+            {hits.length > 0
+              ? `${hits.length} resultados`
+              : searchFailed
+                ? "No se pudo buscar"
+                : query.trim().length >= 2 && !searching
+                  ? "Sin resultados"
+                  : ""}
           </span>
           {query.trim().length >= 2 && !searching && hits.length === 0 && (
             <p className="absolute inset-x-0 top-full z-20 mt-1 rounded-md border border-border bg-popover px-3 py-3 text-sm text-muted-foreground">
-              Sin resultados para &quot;{query.trim()}&quot;.
+              {searchFailed ? "No se pudo buscar. Revisá tu conexión y seguí escribiendo para reintentar." : `Sin resultados para "${query.trim()}".`}
             </p>
           )}
           {hits.length > 0 && (
@@ -334,6 +368,7 @@ export function Calculator() {
               id="calc-hits"
               role="listbox"
               aria-label="Resultados"
+              onMouseDown={(e) => e.preventDefault()}
               className="absolute inset-x-0 top-full z-20 mt-1 max-h-80 overflow-auto rounded-md border border-border bg-popover"
             >
               {hits.map((h, i) => (
@@ -363,7 +398,12 @@ export function Calculator() {
           role="tablist"
           aria-label="Secciones"
           onKeyDown={(e) => {
-            if (e.key === "ArrowLeft" || e.key === "ArrowRight") setTab((t) => (t === "calc" ? "plans" : "calc"));
+            const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+            if (!keys.includes(e.key)) return;
+            e.preventDefault();
+            const next = e.key === "Home" ? "calc" : e.key === "End" ? "plans" : tab === "calc" ? "plans" : "calc";
+            setTab(next);
+            document.getElementById(`tab-${next}`)?.focus();
           }}
           className="flex shrink-0 rounded-md border border-border p-0.5"
         >
@@ -406,6 +446,7 @@ export function Calculator() {
       <div role="tabpanel" id="calc-panel" aria-labelledby={`tab-${tab}`}>
       {tab === "plans" ? (
         <Panel title="Planificaciones" className="mt-4">
+          <h2 className="sr-only">Planificaciones guardadas</h2>
           {plansApi.signedIn && plansApi.plans.length > 0 && (
             <div className="mb-4">
               <WebhookForm api={alertsApi} />
@@ -416,7 +457,7 @@ export function Calculator() {
       ) : !data || !calc || !draft ? (
         <EmptyState loading={loading} recents={recents} onPick={load} onFocusSearch={() => searchRef.current?.focus()} />
       ) : (
-        <div className="mt-4 grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_23rem]">
+        <div aria-busy={loading} className={cn("mt-4 grid items-start gap-4 transition-opacity duration-150 lg:grid-cols-[minmax(0,1fr)_23rem]", loading && "opacity-60")}>
           <div className="space-y-4">
             {/* Item + tier/enchant */}
             <section className="rounded-md border border-border bg-card/40 p-4">
@@ -437,7 +478,7 @@ export function Calculator() {
                   options={tiers.map((t) => ({ value: t, text: `T${t}` }))}
                   onChange={(t) => {
                     const id = variantId(t, data.recipe.enchant);
-                    if (id) void load(id);
+                    if (id) void load(id, true);
                   }}
                 />
                 <Segmented
@@ -446,7 +487,7 @@ export function Calculator() {
                   options={enchants.map((e) => ({ value: e, text: `.${e}` }))}
                   onChange={(e) => {
                     const id = variantId(data.recipe.tier, e);
-                    if (id) void load(id);
+                    if (id) void load(id, true);
                   }}
                 />
               </div>
@@ -522,7 +563,7 @@ export function Calculator() {
                     type="button"
                     aria-expanded={citiesOpen}
                     onClick={() => setCitiesOpen((o) => !o)}
-                    className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                    className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", citiesOpen && "rotate-180")} />
                     {citiesOpen ? "Mostrar menos ciudades" : `Otras ciudades (${hiddenCities})`}
@@ -532,13 +573,13 @@ export function Calculator() {
 
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 <Field label="Cantidad a craftear">
-                  <SilverInput label="Cantidad a craftear" value={qty} onChange={(v) => setQty(Math.max(1, v))} />
+                  <SilverInput label="Cantidad a craftear" value={qty} onChange={(v) => setQty(Math.min(1_000_000, Math.max(1, v)))} />
                 </Field>
                 <Field
                   label="Precio de venta (c/u)"
                   hint={
                     sellOverride !== null ? (
-                      <button type="button" onClick={() => setSellOverride(null)} className="text-money underline underline-offset-2">
+                      <button type="button" onClick={() => setSellOverride(null)} className="py-1 text-money underline underline-offset-2">
                         volver a auto
                       </button>
                     ) : calc.oldestAge !== null ? (
@@ -575,7 +616,7 @@ export function Calculator() {
                 type="button"
                 aria-expanded={advOpen}
                 onClick={() => setAdvOpen((o) => !o)}
-                className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                className="mt-4 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", advOpen && "rotate-180")} />
                 Configuración avanzada
@@ -647,7 +688,7 @@ export function Calculator() {
                                 return rest;
                               })
                             }
-                            className="mt-1 block text-xs text-money underline underline-offset-2"
+                            className="mt-1 block py-1.5 text-xs text-money underline underline-offset-2"
                           >
                             volver a auto
                           </button>
@@ -672,13 +713,14 @@ export function Calculator() {
                 <button
                   type="button"
                   onClick={copyLink}
-                  className="text-xs text-money underline-offset-2 transition-colors hover:underline"
+                  className="py-1.5 text-xs text-money underline-offset-2 transition-colors hover:underline"
                 >
                   {copyState === "ok" ? "Enlace copiado" : copyState === "fail" ? "No se pudo copiar" : "Copiar enlace"}
                 </button>
               </header>
               <span role="status" className="sr-only">
                 {announce}
+                {copyState === "ok" ? " Enlace copiado" : copyState === "fail" ? " No se pudo copiar el enlace" : ""}
               </span>
               <div className="space-y-4 p-4 text-sm">
                 <dl className="space-y-1.5">
@@ -727,7 +769,7 @@ export function Calculator() {
                     type="button"
                     aria-expanded={srcOpen}
                     onClick={() => setSrcOpen((o) => !o)}
-                    className="mt-2 flex items-center gap-1.5 text-xs text-money underline-offset-2 hover:underline"
+                    className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-money underline-offset-2 hover:underline"
                   >
                     <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", srcOpen && "rotate-180")} />
                     De dónde sale el precio de venta
@@ -748,7 +790,7 @@ export function Calculator() {
                         incomplete: calc.incomplete,
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-money underline-offset-2 hover:underline"
+                    className="flex items-center gap-1.5 py-1.5 text-xs text-money underline-offset-2 hover:underline"
                   >
                     <Pin className="h-3.5 w-3.5" />
                     {pinned ? "Fijar este en lugar del anterior" : "Fijar para comparar"}
@@ -783,7 +825,7 @@ export function Calculator() {
           </aside>
 
           {/* Phone: the balance is a scroll away, so its bottom line stays in reach. */}
-          <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t-2 border-double border-money/30 bg-card px-4 py-2.5 lg:hidden">
+          <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t-2 border-double border-money/30 bg-card px-4 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] lg:hidden">
             <div>
               <div className="text-xs text-muted-foreground">Ganancia{calc.incomplete && " (incompleta)"}</div>
               <div
@@ -838,7 +880,7 @@ function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name
         ))}
       </div>
       {(pinned.incomplete || calc.incomplete) && <p className="mt-2 text-destructive">Alguno de los dos tiene datos incompletos; no lo tomes como comparación real.</p>}
-      <button type="button" onClick={onClear} className="mt-2 text-muted-foreground underline underline-offset-2 hover:text-foreground">
+      <button type="button" onClick={onClear} className="mt-2 py-1.5 text-muted-foreground underline underline-offset-2 hover:text-foreground">
         Quitar comparación
       </button>
     </div>

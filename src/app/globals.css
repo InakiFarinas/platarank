@@ -81,7 +81,7 @@
   --muted-foreground: oklch(0.67 0.03 65);
   --accent: oklch(0.27 0.022 55);
   --accent-foreground: oklch(0.92 0.018 75);
-  --destructive: oklch(0.6 0.19 30);
+  --destructive: oklch(0.66 0.19 30);
   --border: oklch(0.8 0.04 65 / 13%);
   --input: oklch(0.8 0.04 65 / 16%);
   --ring: oklch(0.6 0.04 65);
@@ -118,6 +118,7 @@
   html {
     @apply font-sans;
     color-scheme: dark;
+    scroll-padding-bottom: 5rem;
   }
   ::selection {
     background: color-mix(in oklch, var(--money) 35%, transparent);
