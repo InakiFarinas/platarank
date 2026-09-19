@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { History, Search } from "lucide-react";
+import { ChevronDown, History, Search } from "lucide-react";
 import { CityGlyph } from "@/components/site-header";
 import { enchantLabel, formatAge } from "@/components/recipes/format";
 import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -47,7 +47,11 @@ export function Calculator() {
   const [searching, setSearching] = useState(false);
   const [data, setData] = useState<ItemData | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<{ message: string; retryId?: string } | null>(null);
+  const [active, setActive] = useState(-1);
+  const [advOpen, setAdvOpen] = useState(false);
+  const [saveOpen, setSaveOpen] = useState(false);
+  const [srcOpen, setSrcOpen] = useState(false);
   const [recents, setRecents] = useState<Recent[]>([]);
 
   const [qty, setQty] = useState(1);
@@ -80,7 +84,10 @@ export function Calculator() {
     setSearching(true);
     const t = setTimeout(async () => {
       const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}`);
-      if (res.ok) setHits(await res.json());
+      if (res.ok) {
+        setHits(await res.json());
+        setActive(0);
+      }
       setSearching(false);
     }, 250);
     return () => clearTimeout(t);
@@ -89,10 +96,17 @@ export function Calculator() {
   async function load(id: string): Promise<boolean> {
     setError(null);
     setLoading(true);
-    const res = await fetch(`/api/calculator/item?id=${encodeURIComponent(id)}`);
+    let res: Response;
+    try {
+      res = await fetch(`/api/calculator/item?id=${encodeURIComponent(id)}`);
+    } catch {
+      setLoading(false);
+      setError({ message: "No se pudo cargar el ítem. Revisá tu conexión.", retryId: id });
+      return false;
+    }
     setLoading(false);
     if (!res.ok) {
-      setError("No se encontró ese ítem.");
+      setError({ message: "No se encontró ese ítem." });
       return false;
     }
     const next: ItemData = await res.json();
@@ -163,38 +177,78 @@ export function Calculator() {
               ref={searchRef}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (hits.length === 0) return;
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setActive((i) => (i + 1) % hits.length);
+                } else if (e.key === "ArrowUp") {
+                  e.preventDefault();
+                  setActive((i) => (i - 1 + hits.length) % hits.length);
+                } else if (e.key === "Enter" && hits[active]) {
+                  e.preventDefault();
+                  void load(hits[active].itemId);
+                } else if (e.key === "Escape") {
+                  setHits([]);
+                }
+              }}
+              role="combobox"
+              aria-expanded={hits.length > 0}
+              aria-controls="calc-hits"
+              aria-autocomplete="list"
+              aria-activedescendant={hits.length > 0 && active >= 0 ? `calc-hit-${active}` : undefined}
               placeholder="Buscar ítem: poción, bastón, capa, montura…"
               aria-label="Buscar ítem"
               className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
             {searching && <span className="shrink-0 text-xs text-muted-foreground">Buscando…</span>}
           </label>
+          <span role="status" className="sr-only">
+            {hits.length > 0 ? `${hits.length} resultados` : ""}
+          </span>
           {query.trim().length >= 2 && !searching && hits.length === 0 && (
             <p className="absolute inset-x-0 top-full z-20 mt-1 rounded-md border border-border bg-popover px-3 py-3 text-sm text-muted-foreground">
               Sin resultados para &quot;{query.trim()}&quot;.
             </p>
           )}
           {hits.length > 0 && (
-            <ul className="absolute inset-x-0 top-full z-20 mt-1 max-h-80 overflow-auto rounded-md border border-border bg-popover">
-              {hits.map((h) => (
-                <li key={h.itemId}>
-                  <button
-                    type="button"
-                    onClick={() => load(h.itemId)}
-                    className="flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition-colors duration-150 hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={itemIconUrl(h.itemId, 1, 64)} alt="" className="h-8 w-8" />
-                    <span className="flex-1">{h.nameEs}</span>
-                    <span className="text-xs text-muted-foreground">{STATION_LABEL[h.stationType] ?? h.stationType}</span>
-                  </button>
+            <ul
+              id="calc-hits"
+              role="listbox"
+              aria-label="Resultados"
+              className="absolute inset-x-0 top-full z-20 mt-1 max-h-80 overflow-auto rounded-md border border-border bg-popover"
+            >
+              {hits.map((h, i) => (
+                <li
+                  key={h.itemId}
+                  id={`calc-hit-${i}`}
+                  role="option"
+                  aria-selected={i === active}
+                  onMouseEnter={() => setActive(i)}
+                  onClick={() => load(h.itemId)}
+                  className={cn(
+                    "flex w-full cursor-pointer items-center gap-3 px-3 py-2 text-left text-sm transition-colors duration-150",
+                    i === active && "bg-accent/40",
+                  )}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={itemIconUrl(h.itemId, 1, 64)} alt="" className="h-8 w-8" />
+                  <span className="flex-1">{h.nameEs}</span>
+                  <span className="text-xs text-muted-foreground">{STATION_LABEL[h.stationType] ?? h.stationType}</span>
                 </li>
               ))}
             </ul>
           )}
         </div>
 
-        <div role="tablist" className="flex shrink-0 rounded-md border border-border p-0.5">
+        <div
+          role="tablist"
+          aria-label="Secciones"
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft" || e.key === "ArrowRight") setTab((t) => (t === "calc" ? "plans" : "calc"));
+          }}
+          className="flex shrink-0 rounded-md border border-border p-0.5"
+        >
           {(
             [
               ["calc", "Calculadora"],
@@ -206,6 +260,7 @@ export function Calculator() {
               type="button"
               role="tab"
               aria-selected={tab === key}
+              tabIndex={tab === key ? 0 : -1}
               onClick={() => setTab(key)}
               className={cn(
                 "h-9 rounded-[5px] px-3.5 text-xs font-medium transition-colors duration-150",
@@ -217,7 +272,16 @@ export function Calculator() {
           ))}
         </div>
       </div>
-      {error && <p className="mt-2 text-sm text-destructive">{error}</p>}
+      {error && (
+        <p role="alert" className="mt-2 text-sm text-destructive">
+          {error.message}
+          {error.retryId && (
+            <button type="button" onClick={() => load(error.retryId!)} className="ml-2 underline underline-offset-2">
+              Reintentar
+            </button>
+          )}
+        </p>
+      )}
 
       {tab === "plans" ? (
         <Panel title="Planificaciones" className="mt-4">
@@ -280,7 +344,7 @@ export function Calculator() {
                   onChange={(v) => setPremium(v === "p")}
                 />
                 <Segmented
-                  label="Vender en"
+                  label="Mercado de venta"
                   value={blackMarket ? "bm" : "royal"}
                   options={[
                     { value: "royal", text: "Ciudades" },
@@ -324,7 +388,7 @@ export function Calculator() {
                           <CityGlyph theme={theme} />
                           <span className="truncate font-medium">{city}</span>
                         </span>
-                        {bonus && <span className="font-mono text-[10px] text-money">{bonus} bono</span>}
+                        {bonus && <span className="font-mono text-[11px] text-money">{bonus} bono</span>}
                       </button>
                     );
                   })}
@@ -370,13 +434,28 @@ export function Calculator() {
                     }}
                   />
                 )}
-                <Field label="Tarifa de estación (por 100 nutrición)">
-                  <SilverInput label="Tarifa de estación" value={feeRate} onChange={setFeeRate} />
-                </Field>
-                <Field label="Costos extra (total)">
-                  <SilverInput label="Costos extra" value={extraCost} onChange={setExtraCost} />
-                </Field>
               </div>
+
+              <button
+                type="button"
+                aria-expanded={advOpen}
+                onClick={() => setAdvOpen((o) => !o)}
+                className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", advOpen && "rotate-180")} />
+                Configuración avanzada
+                {(feeRate !== 235 || extraCost > 0) && <span className="text-money">(editada)</span>}
+              </button>
+              {advOpen && (
+                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  <Field label="Tarifa de estación (por 100 nutrición)">
+                    <SilverInput label="Tarifa de estación" value={feeRate} onChange={setFeeRate} />
+                  </Field>
+                  <Field label="Costos extra (total)">
+                    <SilverInput label="Costos extra" value={extraCost} onChange={setExtraCost} />
+                  </Field>
+                </div>
+              )}
               {calc.sellAuto === null && sellOverride === null && (
                 <p className="mt-3 text-xs text-destructive">
                   Sin precio de venta reciente para esta calidad y mercado. Escribí uno a mano para calcular.
@@ -458,7 +537,7 @@ export function Calculator() {
               <div className="space-y-4 p-4 text-sm">
                 <dl className="space-y-1.5">
                   <Line label={`Materiales (${calc.crafts} ${calc.crafts === 1 ? "craft" : "crafts"})`} value={fmt(calc.materialsTotal)} />
-                  <Line label={`Estación (${fmt(calc.feePerCraft)} × ${calc.crafts})`} value={fmt(calc.feeTotal)} />
+                  <Line label={`Estación (${fmt(calc.feePerCraft)} por craft × ${calc.crafts})`} value={fmt(calc.feeTotal)} />
                   {extraCost > 0 && <Line label="Costos extra" value={fmt(extraCost)} />}
                   <Line label="Inversión" value={fmt(calc.cost)} total />
                 </dl>
@@ -469,38 +548,65 @@ export function Calculator() {
                 </dl>
 
                 <div className="border-t-2 border-double border-money/30 pt-3">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <span className="font-heading text-base">Ganancia</span>
-                    <span className={cn("font-mono text-2xl tabular-nums", calc.profit >= 0 ? "text-money" : "text-destructive")}>
+                  <div role="status" className="flex items-baseline justify-between gap-3">
+                    <span className="font-heading text-base">
+                      Ganancia
+                      {calc.incomplete && <span className="ml-2 font-sans text-[11px] text-destructive">incompleta</span>}
+                    </span>
+                    <span
+                      className={cn(
+                        "font-mono text-2xl tabular-nums",
+                        calc.incomplete ? "text-muted-foreground" : calc.profit >= 0 ? "text-money" : "text-destructive",
+                      )}
+                    >
                       {calc.profit >= 0 ? "+" : "−"}
                       {fmt(Math.abs(calc.profit))}
                     </span>
                   </div>
+                  {calc.incomplete && (
+                    <p className="mt-2 text-xs text-destructive">
+                      {calc.unpriced > 0 &&
+                        `${calc.unpriced} ${calc.unpriced === 1 ? "material sin precio cuenta" : "materiales sin precio cuentan"} como 0. `}
+                      {calc.sellAuto === null && sellOverride === null && "Falta el precio de venta. "}
+                      Completá lo que falta para que la ganancia sea real.
+                    </p>
+                  )}
                   <dl className="mt-2 space-y-1 text-xs">
                     <Line label="Margen sobre inversión" value={calc.margin === null ? "--" : `${Math.round(calc.margin * 100)}%`} muted />
                     <Line label="Ganancia por unidad" value={fmt(calc.perUnit)} muted />
                     {focus && <Line label="Foco necesario (sin maestrías)" value={fmt(calc.focusTotal)} muted />}
                     <Line label="Volumen de ventas (por día)" value={fmt(calc.volume)} muted />
-                    <Line
-                      label="Precio de venta"
-                      value={sellOverride !== null ? "editado" : `${calc.sellCities} ${calc.sellCities === 1 ? "mercado" : "mercados"}`}
-                      muted
-                    />
                   </dl>
-                  {calc.unpriced > 0 && (
-                    <p className="mt-3 text-xs text-destructive">
-                      {calc.unpriced} {calc.unpriced === 1 ? "material sin precio cuenta" : "materiales sin precio cuentan"} como 0: la ganancia
-                      está inflada hasta que los completes.
-                    </p>
+                  <button
+                    type="button"
+                    aria-expanded={srcOpen}
+                    onClick={() => setSrcOpen((o) => !o)}
+                    className="mt-2 flex items-center gap-1.5 text-xs text-money underline-offset-2 hover:underline"
+                  >
+                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", srcOpen && "rotate-180")} />
+                    De dónde sale el precio de venta
+                  </button>
+                  {srcOpen && <SellSource calc={calc} edited={sellOverride !== null} quality={quality} />}
+                </div>
+
+                <div className="border-t border-border pt-3">
+                  <button
+                    type="button"
+                    aria-expanded={saveOpen}
+                    onClick={() => setSaveOpen((o) => !o)}
+                    className="flex w-full items-center justify-between rounded-sm border border-money/50 bg-money/10 px-3 py-2 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20"
+                  >
+                    Guardar este cálculo
+                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", saveOpen && "rotate-180")} />
+                  </button>
+                  {saveOpen && (
+                    <div className="mt-3 space-y-3">
+                      <SavePlanForm api={plansApi} draft={draft} />
+                      <div className="border-t border-border pt-3">
+                        <AddToSession draft={draft} />
+                      </div>
+                    </div>
                   )}
-                </div>
-
-                <div className="border-t border-border pt-3">
-                  <SavePlanForm api={plansApi} draft={draft} />
-                </div>
-
-                <div className="border-t border-border pt-3">
-                  <AddToSession draft={draft} />
                 </div>
               </div>
             </section>
@@ -509,8 +615,11 @@ export function Calculator() {
           {/* Phone: the balance is a scroll away, so its bottom line stays in reach. */}
           <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t-2 border-double border-money/30 bg-card px-4 py-2.5 lg:hidden">
             <div>
-              <div className="text-[11px] text-muted-foreground">Ganancia</div>
-              <div className={cn("font-mono text-lg tabular-nums", calc.profit >= 0 ? "text-money" : "text-destructive")}>
+              <div className="text-[11px] text-muted-foreground">Ganancia{calc.incomplete && " (incompleta)"}</div>
+              <div
+                role="status"
+                className={cn("font-mono text-lg tabular-nums", calc.incomplete ? "text-muted-foreground" : calc.profit >= 0 ? "text-money" : "text-destructive")}
+              >
                 {calc.profit >= 0 ? "+" : "−"}
                 {fmt(Math.abs(calc.profit))}
               </div>
@@ -520,6 +629,40 @@ export function Calculator() {
             </a>
           </div>
         </div>
+      )}
+    </div>
+  );
+}
+
+const DISCARD_REASON: Record<string, string> = {
+  outlier_low: "muy por debajo de la mediana",
+  outlier_high: "muy por encima de la mediana",
+};
+
+function SellSource({ calc, edited, quality }: { calc: ReturnType<typeof computeCraft>; edited: boolean; quality: number }) {
+  return (
+    <div className="mt-2 rounded-md border border-border bg-background/40 p-3 text-xs">
+      {edited && <p className="mb-2 text-money">Estás usando un precio escrito a mano; las cotizaciones son solo de referencia.</p>}
+      {calc.sellBreakdown.length === 0 ? (
+        <p className="text-muted-foreground">No hay cotizaciones recientes para esta calidad y mercado.</p>
+      ) : (
+        <>
+          <p className="mb-2 text-muted-foreground">
+            Mediana de {calc.sellCities} {calc.sellCities === 1 ? "mercado" : "mercados"} (calidad Q{quality}). Las cotizaciones muy lejos de la mediana se descartan.
+          </p>
+          <ul className="divide-y divide-border">
+            {calc.sellBreakdown.map((q) => (
+              <li key={q.city} className={cn("flex items-baseline justify-between gap-3 py-1.5", q.discarded && "opacity-60")}>
+                <span>
+                  {q.city}
+                  <span className="ml-2 text-muted-foreground">{formatAge(q.ageSeconds)}</span>
+                  {q.discarded && <span className="ml-2 text-destructive">descartado: {DISCARD_REASON[q.discarded] ?? q.discarded}</span>}
+                </span>
+                <span className="font-mono tabular-nums">{fmt(q.price)}</span>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

@@ -21,19 +21,34 @@ export function Segmented<T extends string | number>({
   return (
     <div className={className}>
       <span className="text-[11px] text-muted-foreground">{label}</span>
-      <div role="radiogroup" aria-label={label} className="mt-1 flex overflow-hidden rounded-md border border-border">
-        {options.map((o) => {
+      <div
+        role="radiogroup"
+        aria-label={label}
+        onKeyDown={(e) => {
+          const keys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"];
+          if (!keys.includes(e.key)) return;
+          e.preventDefault();
+          const i = Math.max(0, options.findIndex((o) => o.value === value));
+          const next = (i + (e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 1) + options.length) % options.length;
+          onChange(options[next].value);
+          (e.currentTarget.querySelectorAll("[role=radio]")[next] as HTMLElement | undefined)?.focus();
+        }}
+        className="mt-1 flex overflow-hidden rounded-md border border-border"
+      >
+        {options.map((o, idx) => {
           const active = o.value === value;
+          const focusable = active || (idx === 0 && !options.some((x) => x.value === value));
           return (
             <button
               key={String(o.value)}
               type="button"
               role="radio"
               aria-checked={active}
+              tabIndex={focusable ? 0 : -1}
               title={o.title}
               onClick={() => onChange(o.value)}
               className={cn(
-                "relative h-9 flex-1 px-2.5 text-xs font-medium transition-colors duration-150 not-first:border-l not-first:border-border",
+                "relative h-11 flex-1 px-2.5 sm:h-9 text-xs font-medium transition-colors duration-150 not-first:border-l not-first:border-border",
                 active ? "bg-money/15 text-money" : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
               )}
             >
@@ -91,7 +106,7 @@ export function SilverInput({
         onChange(n);
       }}
       className={cn(
-        "h-9 w-full rounded-md border bg-background px-2.5 text-right font-mono text-sm tabular-nums outline-none transition-colors duration-150 focus-visible:border-money focus-visible:ring-2 focus-visible:ring-money/30",
+        "h-11 w-full rounded-md border bg-background px-2.5 text-right font-mono sm:h-9 text-sm tabular-nums outline-none transition-colors duration-150 focus-visible:border-money focus-visible:ring-2 focus-visible:ring-money/30",
         invalid ? "border-dashed border-destructive/70" : edited ? "border-money/60" : "border-border",
         className,
       )}

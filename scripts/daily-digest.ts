@@ -30,7 +30,7 @@ async function main() {
   // Fresh, actually-traded rows only: a stale or near-zero-volume listing can top the ranking with
   // a number nobody could realize.
   const filters = { nameQuery: "", maxAgeHours: 24, minVolume: 10 };
-  const all: { label: string; path: string; row: ReturnType<typeof rankStation>["rows"][number] }[] = [];
+  const all: { label: string; row: ReturnType<typeof rankStation>["rows"][number] }[] = [];
   for (const s of STATIONS) {
     const data = await loadStationData(s.type);
     // Rank deep (not just TOP) since the sanity checks below discard rows after ranking.
@@ -39,7 +39,7 @@ async function main() {
       const points = data.marketByItem[row.recipe.itemId] ?? [];
       const biggest = points.reduce((a, b) => (b.avgDailyVolume30d > (a?.avgDailyVolume30d ?? -1) ? b : a), points[0]);
       if (!biggest || biggest.daysWithVolume30d < MIN_DAYS_OF_TOP_VOLUME) continue;
-      all.push({ label: s.label, path: s.path, row });
+      all.push({ label: s.label, row });
     }
   }
   all.sort((a, b) => (b.row.platinumPerDay ?? 0) - (a.row.platinumPerDay ?? 0));
@@ -49,7 +49,7 @@ async function main() {
     process.exit(0);
   }
 
-  const lines = top.map(({ label, path, row }, i) => {
+  const lines = top.map(({ label, row }, i) => {
     const r = row.recipe;
     const enchant = r.enchant > 0 ? `.${r.enchant}` : "";
     const margin = row.marginPct === null ? "--" : `${Math.round(row.marginPct * 100)}%`;

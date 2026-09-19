@@ -47,6 +47,16 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     (pt) => pt.quality === p.quality && pt.price !== null && (p.blackMarket ? pt.city === BLACK_MARKET : pt.city !== BLACK_MARKET),
   );
   const sellStat = robustStat(sellPoints.map((pt) => ({ city: pt.city, price: pt.price! })), "median");
+  const discardedByCity = new Map(sellStat.result.discarded.map((d) => [d.city, d.reason]));
+  const sellBreakdown = sellPoints
+    .map((pt) => ({
+      city: pt.city,
+      price: pt.price!,
+      ageSeconds: pt.priceAgeSeconds,
+      volume: pt.avgDailyVolume30d,
+      discarded: discardedByCity.get(pt.city) ?? null,
+    }))
+    .sort((a, b) => a.price - b.price);
   const sellPrice = p.sellOverride ?? sellStat.value ?? 0;
   const ages = sellPoints.map((pt) => pt.priceAgeSeconds).filter((a): a is number => a !== null);
   const volume = sellPoints.reduce((s, pt) => s + pt.avgDailyVolume30d, 0);
@@ -69,6 +79,7 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     materials,
     sellPrice,
     sellAuto: sellStat.value,
+    sellBreakdown,
     sellCities: sellStat.result.kept.length,
     oldestAge: ages.length ? Math.max(...ages) : null,
     volume,
@@ -85,6 +96,10 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     margin: cost > 0 ? profit / cost : null,
     perUnit: produced > 0 ? profit / produced : 0,
     focusTotal: p.focus ? recipe.craftingFocus * crafts : 0,
+    /** True when the profit figure rests on a missing price (materials counted as 0 or no sell price). */
+    incomplete:
+      materials.some((x) => x.auto === null && p.matOverrides[x.m.itemId] === undefined) ||
+      (sellStat.value === null && p.sellOverride === null),
     unpriced: materials.filter((x) => x.auto === null && p.matOverrides[x.m.itemId] === undefined).length,
   };
 }

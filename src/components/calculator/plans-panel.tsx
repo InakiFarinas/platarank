@@ -99,7 +99,7 @@ export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }
               setSaved(true);
             }
           }}
-          className="h-9 shrink-0 rounded-sm border border-money bg-money px-3 text-xs font-medium tracking-wide text-money-foreground transition-opacity duration-150 hover:opacity-90 disabled:opacity-50"
+          className="h-9 shrink-0 rounded-sm border border-money/50 bg-money/10 px-3 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20 disabled:opacity-50"
         >
           {busy ? "Guardando…" : "Guardar"}
         </button>
