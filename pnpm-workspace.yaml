@@ -1,3 +1,7 @@
+# postcss ships nested inside next with known advisories (build-time only); force the patched line.
+overrides:
+  postcss: ">=8.5.23"
+
 allowBuilds:
   esbuild: true
   unrs-resolver: true

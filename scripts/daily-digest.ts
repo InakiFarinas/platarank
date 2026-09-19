@@ -30,6 +30,7 @@ async function main() {
 
   const payload = {
     username: "PlataRank",
+    allowed_mentions: { parse: [] },
     embeds: [
       {
         title: "Las mejores recetas de hoy",
