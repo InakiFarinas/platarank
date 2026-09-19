@@ -1,3 +1,4 @@
+import { formatInt } from "@/lib/format";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -45,18 +46,17 @@ async function loadLive(): Promise<{ top: TopRecipe[]; counts: Record<string, nu
   }
 }
 
-const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
 
 /** The #1 recipe's own arithmetic, one unit at a time, so the headline number can be checked by hand. */
 function HowItAdds({ row }: { row: TopRecipe["row"] }) {
   if (row.costPerUnit === null || row.sellRefPrice === null || row.revenuePerUnitNet === null || row.profitPerUnit === null) return null;
   const r = row.recipe;
   const lines: { label: string; value: string; total?: boolean }[] = [
-    { label: "Costo por unidad (materiales y tarifa)", value: fmt(row.costPerUnit) },
-    { label: "Precio de venta (mediana de ciudades)", value: fmt(row.sellRefPrice) },
-    { label: "Ingreso neto tras impuestos", value: fmt(row.revenuePerUnitNet) },
-    { label: "Ganancia por unidad", value: fmt(row.profitPerUnit), total: true },
-    { label: `× volumen diario de ventas × ${Math.round(row.marketSharePct * 100)}% de cuota`, value: fmt(row.avgDailyVolume30d) },
+    { label: "Costo por unidad (materiales y tarifa)", value: formatInt(row.costPerUnit) },
+    { label: "Precio de venta (mediana de ciudades)", value: formatInt(row.sellRefPrice) },
+    { label: "Ingreso neto tras impuestos", value: formatInt(row.revenuePerUnitNet) },
+    { label: "Ganancia por unidad", value: formatInt(row.profitPerUnit), total: true },
+    { label: `× volumen diario de ventas × ${Math.round(row.marketSharePct * 100)}% de cuota`, value: formatInt(row.avgDailyVolume30d) },
   ];
   return (
     <div className="overflow-hidden rounded-sm border border-border bg-card">
@@ -73,7 +73,7 @@ function HowItAdds({ row }: { row: TopRecipe["row"] }) {
         ))}
         <div className="flex items-baseline justify-between gap-3 border-t-2 border-double border-money/30 pt-2">
           <dt className="font-heading text-base">Plata por día</dt>
-          <dd className="font-mono text-lg tabular-nums text-money">{fmt(row.platinumPerDay ?? 0)}</dd>
+          <dd className="font-mono text-lg tabular-nums text-money">{formatInt(row.platinumPerDay ?? 0)}</dd>
         </div>
       </dl>
     </div>
@@ -122,7 +122,7 @@ export default async function HomePage() {
                 </Link>
               </div>
               <p className="mt-8 border-t border-money/20 pt-4 text-xs text-muted-foreground">
-                {totalRecipes > 0 ? `${totalRecipes.toLocaleString("es-AR")} recetas · ` : ""}5 estaciones · servidor Américas · precios actualizados cada hora ·{" "}
+                {totalRecipes > 0 ? `${formatInt(totalRecipes)} recetas · ` : ""}5 estaciones · servidor Américas · precios actualizados cada hora ·{" "}
                 <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="text-money underline underline-offset-2">
                   Discord de la comunidad
                 </a>
@@ -206,7 +206,7 @@ export default async function HomePage() {
                     </span>
                     {counts[type] !== undefined && (
                       <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">
-                        {counts[type].toLocaleString("es-AR")} recetas
+                        {formatInt(counts[type])} recetas
                       </span>
                     )}
                     <ArrowRight className="h-4 w-4 shrink-0 text-money transition-transform group-hover:translate-x-0.5" />

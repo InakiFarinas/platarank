@@ -1,5 +1,6 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, History, Pin, Search } from "lucide-react";
@@ -23,7 +24,6 @@ type Variant = { itemId: string; tier: number; enchant: number };
 type ItemData = { recipe: Recipe; market: Record<string, CityPricePoint[]>; variants: Variant[] };
 type Recent = { itemId: string; name: string };
 
-const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
 const RECENTS_KEY = "platarank:calc-recents";
 const PINNED_KEY = "platarank:calc-pinned";
 const STATION_LABEL: Record<string, string> = {
@@ -260,7 +260,7 @@ export function Calculator() {
   useEffect(() => {
     if (!calc) return;
     const t = setTimeout(
-      () => setAnnounce(`Ganancia ${calc.profit >= 0 ? "" : "menos "}${fmt(Math.abs(calc.profit))}${calc.incomplete ? ", incompleta" : ""}`),
+      () => setAnnounce(`Ganancia ${calc.profit >= 0 ? "" : "menos "}${formatInt(Math.abs(calc.profit))}${calc.incomplete ? ", incompleta" : ""}`),
       900,
     );
     return () => clearTimeout(t);
@@ -467,7 +467,7 @@ export function Calculator() {
                 <div className="min-w-0">
                   <h2 className="font-heading text-2xl leading-tight">{data.recipe.nameEs}</h2>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    {STATION_LABEL[data.recipe.stationType]} · lote de {data.recipe.batchSize} · foco base {fmt(data.recipe.craftingFocus)}
+                    {STATION_LABEL[data.recipe.stationType]} · lote de {data.recipe.batchSize} · foco base {formatInt(data.recipe.craftingFocus)}
                   </p>
                 </div>
               </div>
@@ -696,7 +696,7 @@ export function Calculator() {
                         {auto === null && !edited && <span className="mt-1 block text-xs text-destructive">sin precio: escribilo</span>}
                       </div>
                       <div className="col-start-3 row-start-1 text-right font-mono text-sm tabular-nums sm:col-start-4">
-                        {fmt(price * effective * calc.crafts)}
+                        {formatInt(price * effective * calc.crafts)}
                       </div>
                     </li>
                   );
@@ -724,15 +724,15 @@ export function Calculator() {
               </span>
               <div className="space-y-4 p-4 text-sm">
                 <dl className="space-y-1.5">
-                  <Line label={`Materiales (${calc.crafts} ${calc.crafts === 1 ? "craft" : "crafts"})`} value={fmt(calc.materialsTotal)} />
-                  <Line label={`Estación (${fmt(calc.feePerCraft)} por craft × ${calc.crafts})`} value={fmt(calc.feeTotal)} />
-                  {extraCost > 0 && <Line label="Costos extra" value={fmt(extraCost)} />}
-                  <Line label="Inversión" value={fmt(calc.cost)} total />
+                  <Line label={`Materiales (${calc.crafts} ${calc.crafts === 1 ? "craft" : "crafts"})`} value={formatInt(calc.materialsTotal)} />
+                  <Line label={`Estación (${formatInt(calc.feePerCraft)} por craft × ${calc.crafts})`} value={formatInt(calc.feeTotal)} />
+                  {extraCost > 0 && <Line label="Costos extra" value={formatInt(extraCost)} />}
+                  <Line label="Inversión" value={formatInt(calc.cost)} total />
                 </dl>
                 <dl className="space-y-1.5">
-                  <Line label={`Bruto (${fmt(calc.produced)} × ${fmt(calc.sellPrice)})`} value={fmt(calc.gross)} />
-                  <Line label={`Impuestos ${(calc.taxRate * 100).toFixed(1).replace(".", ",")}%`} value={`−${fmt(calc.gross * calc.taxRate)}`} />
-                  <Line label="Ingreso neto" value={fmt(calc.revenue)} total />
+                  <Line label={`Bruto (${formatInt(calc.produced)} × ${formatInt(calc.sellPrice)})`} value={formatInt(calc.gross)} />
+                  <Line label={`Impuestos ${(calc.taxRate * 100).toFixed(1).replace(".", ",")}%`} value={`−${formatInt(calc.gross * calc.taxRate)}`} />
+                  <Line label="Ingreso neto" value={formatInt(calc.revenue)} total />
                 </dl>
 
                 <div className="border-t-2 border-double border-money/30 pt-3">
@@ -748,7 +748,7 @@ export function Calculator() {
                       )}
                     >
                       {calc.profit >= 0 ? "+" : "−"}
-                      {fmt(Math.abs(calc.profit))}
+                      {formatInt(Math.abs(calc.profit))}
                     </span>
                   </div>
                   {calc.incomplete && (
@@ -761,9 +761,9 @@ export function Calculator() {
                   )}
                   <dl className="mt-2 space-y-1 text-xs">
                     <Line label="Margen sobre inversión" value={calc.margin === null ? "--" : `${Math.round(calc.margin * 100)}%`} muted />
-                    <Line label="Ganancia por unidad" value={fmt(calc.perUnit)} muted />
-                    {focus && <Line label="Foco necesario (sin maestrías)" value={fmt(calc.focusTotal)} muted />}
-                    <Line label="Volumen de ventas (por día)" value={fmt(calc.volume)} muted />
+                    <Line label="Ganancia por unidad" value={formatInt(calc.perUnit)} muted />
+                    {focus && <Line label="Foco necesario (sin maestrías)" value={formatInt(calc.focusTotal)} muted />}
+                    <Line label="Volumen de ventas (por día)" value={formatInt(calc.volume)} muted />
                   </dl>
                   <button
                     type="button"
@@ -832,7 +832,7 @@ export function Calculator() {
                 className={cn("font-mono text-lg tabular-nums", calc.incomplete ? "text-muted-foreground" : calc.profit >= 0 ? "text-money" : "text-destructive")}
               >
                 {calc.profit >= 0 ? "+" : "−"}
-                {fmt(Math.abs(calc.profit))}
+                {formatInt(Math.abs(calc.profit))}
               </div>
             </div>
             <a href="#balance" className="rounded-sm border border-money bg-money px-3.5 py-2 text-xs font-medium tracking-wide text-money-foreground">
@@ -854,10 +854,10 @@ function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name
   const pct = (m: number | null) => (m === null ? "--" : `${Math.round(m * 100)}%`);
   const currentBetter = calc.profit > pinned.profit;
   const rows: { label: string; a: string; b: string; win?: "a" | "b" }[] = [
-    { label: "Ganancia", a: fmt(pinned.profit), b: fmt(calc.profit), win: currentBetter ? "b" : pinned.profit > calc.profit ? "a" : undefined },
+    { label: "Ganancia", a: formatInt(pinned.profit), b: formatInt(calc.profit), win: currentBetter ? "b" : pinned.profit > calc.profit ? "a" : undefined },
     { label: "Margen", a: pct(pinned.margin), b: pct(calc.margin) },
-    { label: "Por unidad", a: fmt(pinned.perUnit), b: fmt(calc.perUnit) },
-    { label: "Volumen", a: fmt(pinned.volume), b: fmt(calc.volume) },
+    { label: "Por unidad", a: formatInt(pinned.perUnit), b: formatInt(calc.perUnit) },
+    { label: "Volumen", a: formatInt(pinned.volume), b: formatInt(calc.volume) },
   ];
   return (
     <div className="mt-2 rounded-md border border-border bg-background/40 p-3 text-xs">
@@ -911,7 +911,7 @@ function SellSource({ calc, edited, quality }: { calc: ReturnType<typeof compute
                   <span className="ml-2 text-muted-foreground">{formatAge(q.ageSeconds)}</span>
                   {q.discarded && <span className="ml-2 text-destructive">descartado: {DISCARD_REASON[q.discarded] ?? q.discarded}</span>}
                 </span>
-                <span className="font-mono tabular-nums">{fmt(q.price)}</span>
+                <span className="font-mono tabular-nums">{formatInt(q.price)}</span>
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
 import { cloneElement, isValidElement, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
 import { HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -62,7 +63,6 @@ export function Segmented<T extends string | number>({
   );
 }
 
-const fmtInt = (n: number) => Math.round(n).toLocaleString("es-AR");
 
 /** Integer input that shows thousands separators (es-AR) while typing. */
 export function SilverInput({
@@ -82,11 +82,11 @@ export function SilverInput({
   edited?: boolean;
   id?: string;
 }) {
-  const [text, setText] = useState(fmtInt(value));
+  const [text, setText] = useState(formatInt(value));
   const [focused, setFocused] = useState(false);
 
   useEffect(() => {
-    if (!focused) setText(fmtInt(value));
+    if (!focused) setText(formatInt(value));
   }, [value, focused]);
 
   return (
@@ -101,12 +101,12 @@ export function SilverInput({
       }}
       onBlur={() => {
         setFocused(false);
-        setText(fmtInt(value));
+        setText(formatInt(value));
       }}
       onChange={(e) => {
         const digits = e.target.value.replace(/\D/g, "");
         const n = digits === "" ? 0 : Math.min(Number(digits.slice(0, 12)), 999_999_999_999);
-        setText(digits === "" ? "" : fmtInt(n));
+        setText(digits === "" ? "" : formatInt(n));
         onChange(n);
       }}
       className={cn(

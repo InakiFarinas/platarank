@@ -1,12 +1,12 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
 import { useState } from "react";
 import { Bell } from "lucide-react";
 import { SilverInput } from "@/components/calculator/ui";
 import { WEBHOOK_PATTERN, type AlertsApi, type PlanAlert } from "@/components/alerts/use-alerts";
 import { cn } from "@/lib/utils";
 
-const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
 
 /** Where alerts get delivered: a Discord webhook the user creates in their own channel. */
 export function WebhookForm({ api }: { api: AlertsApi }) {
@@ -110,7 +110,7 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
         )}
       >
         <Bell className="h-3.5 w-3.5" />
-        {active ? `Aviso al superar ${fmt(alert!.threshold)}` : "Avisarme por Discord"}
+        {active ? `Aviso al superar ${formatInt(alert!.threshold)}` : "Avisarme por Discord"}
       </button>
 
       {open && (
@@ -156,7 +156,7 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
           {alert && (
             <p className="mt-1 text-xs text-muted-foreground">
               {alert.last_checked_at
-                ? `Última revisión: ${new Date(alert.last_checked_at).toLocaleString("es-AR")}${alert.last_profit !== null ? ` · ganancia ${fmt(alert.last_profit)}` : ""}`
+                ? `Última revisión: ${new Date(alert.last_checked_at).toLocaleString("es-AR")}${alert.last_profit !== null ? ` · ganancia ${formatInt(alert.last_profit)}` : ""}`
                 : "Todavía no se revisó; pasa en la próxima actualización de precios."}
               {!alert.enabled && " · en pausa"}
             </p>

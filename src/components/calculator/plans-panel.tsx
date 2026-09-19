@@ -1,5 +1,6 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
 import { useCallback, useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import type { CraftParams } from "@/lib/craft-calc";
@@ -14,7 +15,6 @@ export type PlanSnapshot = { cost: number; revenue: number; profit: number; sell
 export type Plan = { id: string; name: string; item_id: string; params: PlanParams; snapshot: PlanSnapshot; created_at: string };
 export type PlanDraft = { itemId: string; itemName: string; params: PlanParams; snapshot: PlanSnapshot };
 
-const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
 
 export function usePlans() {
   const [signedIn, setSignedIn] = useState<boolean | null>(null);
@@ -145,7 +145,7 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
           </button>
           <span className={cn("font-mono text-sm tabular-nums", p.snapshot.profit >= 0 ? "text-money" : "text-destructive")}>
             {p.snapshot.profit >= 0 ? "+" : ""}
-            {fmt(p.snapshot.profit)}
+            {formatInt(p.snapshot.profit)}
           </span>
           {confirmId === p.id ? (
             <span className="flex items-center gap-2 text-xs">

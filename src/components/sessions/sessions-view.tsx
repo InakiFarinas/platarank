@@ -1,5 +1,6 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Pencil, Trash2 } from "lucide-react";
@@ -8,8 +9,7 @@ import { cn } from "@/lib/utils";
 import { Panel } from "@/components/calculator/ui";
 import { itemTotals, sessionTotals, useSessions, type CraftingSession, type SessionItem, type SessionsApi } from "@/components/sessions/use-sessions";
 
-const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
-const signed = (n: number) => `${n >= 0 ? "+" : "−"}${fmt(Math.abs(n))}`;
+const signed = (n: number) => `${n >= 0 ? "+" : "−"}${formatInt(Math.abs(n))}`;
 
 export function SessionsView() {
   const api = useSessions();
@@ -104,7 +104,7 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
         <span className="font-heading text-base">Ganancia de la sesión</span>
         <span className="flex items-baseline gap-4">
           <span className="text-xs text-muted-foreground">
-            invertido <span className="font-mono">{fmt(totals.cost)}</span> · ingreso <span className="font-mono">{fmt(totals.revenue)}</span>
+            invertido <span className="font-mono">{formatInt(totals.cost)}</span> · ingreso <span className="font-mono">{formatInt(totals.revenue)}</span>
           </span>
           <span className={cn("font-mono text-xl tabular-nums", totals.profit >= 0 ? "text-money" : "text-destructive")}>
             {signed(totals.profit)}
@@ -220,11 +220,11 @@ function ActualField({
   onCommit: (v: number | null) => void;
   className?: string;
 }) {
-  const [text, setText] = useState(actual === null ? "" : fmt(actual));
+  const [text, setText] = useState(actual === null ? "" : formatInt(actual));
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    setText(actual === null ? "" : fmt(actual));
+    setText(actual === null ? "" : formatInt(actual));
   }, [actual]);
   useEffect(() => () => void (timer.current && clearTimeout(timer.current)), []);
 
@@ -234,11 +234,11 @@ function ActualField({
       <input
         inputMode="numeric"
         value={text}
-        placeholder={fmt(estimate)}
+        placeholder={formatInt(estimate)}
         aria-label={label}
         onChange={(e) => {
           const digits = e.target.value.replace(/\D/g, "");
-          setText(digits === "" ? "" : fmt(Number(digits)));
+          setText(digits === "" ? "" : formatInt(Number(digits)));
           if (timer.current) clearTimeout(timer.current);
           timer.current = setTimeout(() => onCommit(digits === "" ? null : Number(digits)), 700);
         }}

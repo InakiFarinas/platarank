@@ -1,3 +1,4 @@
+import { formatInt } from "@/lib/format";
 import { and, eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { alerts, marketAggregates, plans, recipes, userSettings, type Recipe } from "@/lib/db/schema";
@@ -5,7 +6,6 @@ import { computeCraft, type CraftParams } from "@/lib/craft-calc";
 import type { CityPricePoint } from "@/lib/recipe-math";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
-const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
 
 /** Re-prices every enabled alert's saved plan with the freshly ingested market data and posts to
  * the user's Discord webhook when profit crosses the threshold from below. Notifies on the
@@ -69,12 +69,15 @@ export async function runAlerts(now: Date) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: "PlataRank",
+          // plan.name is user text: never let it ping @everyone/@here or roles.
+          allowed_mentions: { parse: [] },
           content:
             `**${plan.name}** superó tu umbral.\n` +
-            `Ganancia: **${fmt(result.profit)}** (umbral ${fmt(threshold)}) · margen ${result.margin === null ? "--" : Math.round(result.margin * 100) + "%"}\n` +
-            `Inversión ${fmt(result.cost)} → ingreso neto ${fmt(result.revenue)}\n` +
+            `Ganancia: **${formatInt(result.profit)}** (umbral ${formatInt(threshold)}) · margen ${result.margin === null ? "--" : Math.round(result.margin * 100) + "%"}\n` +
+            `Inversión ${formatInt(result.cost)} → ingreso neto ${formatInt(result.revenue)}\n` +
             `${SITE_URL}/es/calculadora?item=${encodeURIComponent(plan.itemId)}`,
         }),
+        redirect: "error",
         signal: AbortSignal.timeout(8000),
       }).catch(() => null);
       if (res?.ok) sent++;
