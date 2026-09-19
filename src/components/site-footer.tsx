@@ -28,6 +28,9 @@ export function SiteFooter({
           <Link href="/es/metodologia" className="hover:text-foreground">Metodología</Link>
           <Link href="/es/privacidad" className="hover:text-foreground">Privacidad</Link>
           <Link href="/es/terminos" className="hover:text-foreground">Términos</Link>
+          <a href="https://discord.gg/ZZRcGSEXeh" target="_blank" rel="noopener noreferrer" className="text-money hover:underline">
+            Discord de la comunidad
+          </a>
         </nav>
       </div>
     </footer>
