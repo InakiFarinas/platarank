@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, TrendingUp } from "lucide-react";
-import { formatSilver } from "@/components/recipes/format";
+import { formatAge, formatSilver } from "@/components/recipes/format";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { itemIconUrl } from "@/lib/item-icons";
@@ -45,9 +45,47 @@ async function loadLive(): Promise<{ top: TopRecipe[]; counts: Record<string, nu
   }
 }
 
+const fmt = (n: number) => Math.round(n).toLocaleString("es-AR");
+
+/** The #1 recipe's own arithmetic, one unit at a time, so the headline number can be checked by hand. */
+function HowItAdds({ row }: { row: TopRecipe["row"] }) {
+  if (row.costPerUnit === null || row.sellRefPrice === null || row.revenuePerUnitNet === null || row.profitPerUnit === null) return null;
+  const r = row.recipe;
+  const lines: { label: string; value: string; total?: boolean }[] = [
+    { label: "Costo por unidad (materiales y tarifa)", value: fmt(row.costPerUnit) },
+    { label: "Precio de venta (mediana de ciudades)", value: fmt(row.sellRefPrice) },
+    { label: "Ingreso neto tras impuestos", value: fmt(row.revenuePerUnitNet) },
+    { label: "Ganancia por unidad", value: fmt(row.profitPerUnit), total: true },
+    { label: `× volumen diario de ventas × ${Math.round(row.marketSharePct * 100)}% de cuota`, value: fmt(row.avgDailyVolume30d) },
+  ];
+  return (
+    <div className="overflow-hidden rounded-sm border border-border bg-card">
+      <h3 className="border-b border-border px-4 py-2.5 font-heading text-sm">
+        Cómo sale el número de {r.nameEs} T{r.tier}
+        {r.enchant > 0 ? `.${r.enchant}` : ""}
+      </h3>
+      <dl className="space-y-1.5 px-4 py-3 text-sm">
+        {lines.map((l) => (
+          <div key={l.label} className={`flex items-baseline justify-between gap-3 ${l.total ? "border-t border-border pt-1.5 font-medium" : ""}`}>
+            <dt className={l.total ? "" : "text-muted-foreground"}>{l.label}</dt>
+            <dd className="font-mono tabular-nums">{l.value}</dd>
+          </div>
+        ))}
+        <div className="flex items-baseline justify-between gap-3 border-t-2 border-double border-money/30 pt-2">
+          <dt className="font-heading text-base">Plata por día</dt>
+          <dd className="font-mono text-lg tabular-nums text-money">{fmt(row.platinumPerDay ?? 0)}</dd>
+        </div>
+      </dl>
+    </div>
+  );
+}
+
 export default async function HomePage() {
   const { top, counts } = await loadLive();
   const totalRecipes = Object.values(counts).reduce((a, b) => a + b, 0);
+  const best = top[0];
+  const oldestAge = top.length > 0 ? Math.max(...top.map((t) => t.row.sellRefAgeSeconds ?? 0)) : null;
+  const rankingHref = best ? `/es/${best.path}` : "/es/alquimia";
 
   return (
     <>
@@ -69,7 +107,7 @@ export default async function HomePage() {
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <Link
-                  href="/es/alquimia"
+                  href={rankingHref}
                   className="inline-flex items-center gap-2 rounded-sm border border-money bg-money px-5 py-2.5 text-sm font-medium tracking-wide text-money-foreground shadow-[0_0_0_3px_var(--background),0_0_0_4px_color-mix(in_oklch,var(--money)_40%,transparent)] transition-opacity hover:opacity-90"
                 >
                   <TrendingUp className="h-4 w-4" />
@@ -84,7 +122,10 @@ export default async function HomePage() {
                 </Link>
               </div>
               <p className="mt-8 border-t border-money/20 pt-4 text-xs text-muted-foreground">
-                {totalRecipes > 0 ? `${totalRecipes.toLocaleString("es-AR")} recetas · ` : ""}5 estaciones · servidor Américas · precios actualizados cada hora
+                {totalRecipes > 0 ? `${totalRecipes.toLocaleString("es-AR")} recetas · ` : ""}5 estaciones · servidor Américas · precios actualizados cada hora ·{" "}
+                <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="text-money underline underline-offset-2">
+                  Discord de la comunidad
+                </a>
               </p>
             </div>
           </div>
@@ -108,6 +149,7 @@ export default async function HomePage() {
               </ul>
             </div>
 
+            <div className="space-y-4">
             {top.length > 0 && (
               <div className="overflow-hidden rounded-sm border-2 border-double border-money/30 bg-card">
                 <div className="flex items-baseline justify-between gap-3 border-b-2 border-double border-money/30 bg-money/5 px-4 py-3">
@@ -141,10 +183,13 @@ export default async function HomePage() {
                   })}
                 </ul>
                 <p className="border-t border-border px-4 py-2 text-xs text-muted-foreground">
-                  Tocá una receta para abrirla en la calculadora. Los rankings completos están más abajo.
+                  Tocá una receta para abrirla en la calculadora. Precio más viejo usado: {formatAge(oldestAge)}.
                 </p>
               </div>
             )}
+
+            {best && <HowItAdds row={best.row} />}
+            </div>
           </div>
         </section>
 
