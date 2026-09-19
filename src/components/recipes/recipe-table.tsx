@@ -75,7 +75,7 @@ export function RecipeTable({
             </button>
           </>
         ) : (
-          <p>Todavía no hay recetas cargadas. El ingester corre por hora -- volvé a mirar en un rato.</p>
+          <p>Todavía no hay recetas cargadas. Los datos se actualizan cada hora -- volvé a mirar en un rato.</p>
         )}
       </div>
     );
@@ -85,7 +85,7 @@ export function RecipeTable({
     <div className={cn("mb-20 flex flex-col rounded-md border border-border lg:mb-0 lg:min-h-0 lg:flex-1", className)}>
       <div className="flex items-center gap-2 overflow-x-auto border-b-2 border-double border-border px-3 py-2 sm:hidden">
         <span className="shrink-0 text-xs text-muted-foreground">Ordenar:</span>
-        <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/dia" />
+        <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/día" />
         <MobileSortChip active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" />
         <MobileSortChip active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Volumen" />
       </div>
@@ -100,12 +100,12 @@ export function RecipeTable({
         <span className="hidden w-20 shrink-0 lg:block">Ciudad bono</span>
         <div className="flex items-center gap-4 xl:gap-6">
           <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" width="w-12" />
-          <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/dia" width="w-12" />
+          <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/día" width="w-12" />
           <SortHeader
             active={sortKey === "platinumPerDay"}
             desc={desc}
             onClick={() => toggleSort("platinumPerDay")}
-            label="Plata/dia"
+            label="Plata/día"
             width="w-24"
           />
         </div>

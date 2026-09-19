@@ -69,6 +69,7 @@ export function RecipeExplorer({
   const [remoteResult, setRemoteResult] = useState<{ rows: RecipeRow[]; total: number } | null>(null);
   const [remoteLoading, setRemoteLoading] = useState(false);
   const [remoteError, setRemoteError] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
 
   // Large stations: ask the server to rank under the current assumptions/filters (debounced).
   useEffect(() => {
@@ -102,7 +103,7 @@ export function RecipeExplorer({
       clearTimeout(t);
       ctrl.abort();
     };
-  }, [remoteStation, isDefaultView, params, filters]);
+  }, [remoteStation, isDefaultView, params, filters, retryKey]);
 
   const allRows = useMemo(() => {
     if (remoteStation) return remoteResult?.rows ?? initialRows;
@@ -147,14 +148,28 @@ export function RecipeExplorer({
               {remoteStation && totalMatching > rows.length
                 ? `Mostrando las ${rows.length} mejores de ${totalMatching} recetas.`
                 : `Mostrando ${rows.length} de ${totalMatching} recetas.`}
-              {remoteError && <span className="text-destructive">No se pudo recalcular. Probá de nuevo.</span>}
               {(isPending || remoteLoading) && (
                 <span className="inline-flex items-center gap-1 text-money">
-                  <Loader2 className="h-3 w-3 animate-spin" aria-hidden="true" />
+                  <Loader2 className="h-3 w-3 animate-spin motion-reduce:animate-none" aria-hidden="true" />
                   Recalculando con los nuevos supuestos...
                 </span>
               )}
             </p>
+            <div role="status" aria-live="polite" className="sr-only">
+              {isPending || remoteLoading ? "Recalculando con los nuevos supuestos" : ""}
+            </div>
+            {remoteError && (
+              <p role="alert" className="flex items-center gap-2 text-xs text-destructive">
+                No se pudo recalcular; la lista muestra el cálculo anterior.
+                <button
+                  type="button"
+                  onClick={() => setRetryKey((n) => n + 1)}
+                  className="rounded-sm border border-destructive/50 px-2 py-0.5 hover:bg-destructive/10"
+                >
+                  Reintentar
+                </button>
+              </p>
+            )}
             <ActiveFilterChips params={params} onParamsChange={applyParams} filters={filters} onFiltersChange={applyFilterParams} />
           </div>
           <div className="relative">
@@ -167,8 +182,7 @@ export function RecipeExplorer({
             {(isPending || remoteLoading) && (
               <div
                 className="pointer-events-none absolute inset-x-0 top-16 flex justify-center"
-                role="status"
-                aria-live="polite"
+                aria-hidden="true"
               >
                 <div className="flex items-center gap-2 rounded-full border border-money/50 bg-background/95 px-3 py-1.5 text-xs text-money shadow-none">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />

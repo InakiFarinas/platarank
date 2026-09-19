@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useState } from "react";
+import { useId, useState, useSyncExternalStore } from "react";
 import { Calculator, ChevronDown, Droplet, ScrollText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -27,17 +27,23 @@ function rowAriaLabel(row: RecipeRowData): string {
   return `${recipe.nameEs}, ${tier}, ${formatSilver(row.platinumPerDay)} plata por día${dataNote}. Ver detalle.`;
 }
 
+const WIDE_QUERY = "(min-width: 640px)";
+
+function subscribeWide(onChange: () => void) {
+  const mq = window.matchMedia(WIDE_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+/** Only one variant is mounted at a time (the other used to sit in the DOM under `display: none`,
+ * doubling every row and its Sheet). The server snapshot is desktop, matching the SSR markup. */
+function useIsWide() {
+  return useSyncExternalStore(subscribeWide, () => window.matchMedia(WIDE_QUERY).matches, () => true);
+}
+
 export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number }) {
-  return (
-    <div className="border-b border-border">
-      <div className="sm:hidden">
-        <ContractCard row={row} />
-      </div>
-      <div className="hidden sm:block">
-        <LedgerRow row={row} rank={rank} />
-      </div>
-    </div>
-  );
+  const wide = useIsWide();
+  return <div className="border-b border-border">{wide ? <LedgerRow row={row} rank={rank} /> : <ContractCard row={row} />}</div>;
 }
 
 /** Desktop: the original dense ledger row, unchanged -- density and inline expand stay exactly
@@ -55,7 +61,7 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
         aria-expanded={open}
         aria-controls={detailId}
         aria-label={rowAriaLabel(row)}
-        className="flex w-full items-center gap-4 px-3 py-3.5 text-left transition-colors hover:bg-accent/40"
+        className={cn("flex w-full items-center gap-4 px-3 py-3.5 text-left transition-colors hover:bg-accent/40", !row.hasData && "opacity-70")}
       >
         <div className="w-8 shrink-0">
           <span className="font-mono text-xs tabular-nums text-muted-foreground">{rank}</span>
@@ -93,24 +99,22 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
 
         <div className="flex items-center justify-end gap-4 xl:gap-6">
           <Stat label="margen" value={formatPercent(row.marginPct)} mono />
-          <Stat label="vol/dia" value={formatSilver(row.avgDailyVolume30d)} mono />
+          <Stat label="vol/día" value={formatSilver(row.avgDailyVolume30d)} mono />
           <div className="w-24 text-right">
             <div className="font-mono text-lg font-semibold tabular-nums text-money">{formatSilver(row.platinumPerDay)}</div>
           </div>
         </div>
       </button>
 
-      {open && (
-        <div id={detailId}>
-          <RowDetail row={row} />
-        </div>
-      )}
+      <div id={detailId} hidden={!open}>
+        {open && <RowDetail row={row} />}
+      </div>
     </div>
   );
 }
 
 /** Mobile: "Registro de Contratos" -- each recipe as its own contract card instead of a dense
- * table row. Item render + name + tier center, plata/dia hero metric top-right, liquidity +
+ * table row. Item render + name + tier center, plata/día hero metric top-right, liquidity +
  * quality gems in the body. The whole card is the tap target for the derivation sheet -- a small
  * pergamino icon under the hero figure is the only affordance, not a full-width button. */
 function ContractCard({ row }: { row: RecipeRowData }) {
@@ -124,7 +128,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
           <button
             type="button"
             aria-label={rowAriaLabel(row)}
-            className="block w-full px-3 py-3 text-left transition-colors hover:bg-accent/40"
+            className={cn("block w-full px-3 py-3 text-left transition-colors hover:bg-accent/40", !row.hasData && "opacity-70")}
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex min-w-0 flex-1 items-center gap-2.5">
@@ -147,13 +151,8 @@ function ContractCard({ row }: { row: RecipeRowData }) {
               </div>
 
               <div className="flex shrink-0 flex-col items-end text-right">
-                <div
-                  className="font-mono text-xl font-semibold tabular-nums text-money"
-                  style={{ textShadow: "0 0 14px color-mix(in oklch, var(--money) 55%, transparent)" }}
-                >
-                  {formatSilver(row.platinumPerDay)}
-                </div>
-                <div className="text-xs text-muted-foreground">plata/dia</div>
+                <div className="font-mono text-xl font-semibold tabular-nums text-money">{formatSilver(row.platinumPerDay)}</div>
+                <div className="text-xs text-muted-foreground">plata/día</div>
                 <ScrollText className="mt-1 h-3.5 w-3.5 text-muted-foreground/60" aria-hidden="true" />
               </div>
             </div>
@@ -162,14 +161,14 @@ function ContractCard({ row }: { row: RecipeRowData }) {
               <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Droplet className="h-3 w-3" />
                 <span className="font-mono tabular-nums text-foreground">{formatSilver(row.avgDailyVolume30d)}</span>
-                /dia
+                /día
               </div>
               {row.qualityBreakdown && <QualityGems breakdown={row.qualityBreakdown} />}
             </div>
           </button>
         }
       />
-      <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto border-t-2 border-double">
+      <SheetContent side="bottom" className="max-h-[85dvh] overflow-y-auto border-t-2 border-double">
         <SheetHeader>
           <SheetTitle className="font-heading text-base">{recipe.nameEs}</SheetTitle>
         </SheetHeader>
@@ -226,7 +225,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
       </Link>
       <div className="grid gap-4 sm:grid-cols-2">
         <section>
-          <h4 className="mb-1.5 font-medium text-foreground">Venta</h4>
+          <h3 className="mb-1.5 font-medium text-foreground">Venta</h3>
           <dl className="space-y-1 text-muted-foreground">
             <Row k="Precio de referencia" v={row.sellRefPrice !== null ? `${formatSilver(row.sellRefPrice)} plata` : "sin datos"} />
             <Row k="Mediana entre" v={`${row.sellRefCitiesCount} ciudades`} />
@@ -238,7 +237,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
           </dl>
           {row.qualityBreakdown && (
             <div className="mt-2">
-              <h5 className="mb-1 font-medium text-foreground">Por calidad</h5>
+              <h4 className="mb-1 font-medium text-foreground">Por calidad</h4>
               <ul className="space-y-0.5">
                 {row.qualityBreakdown.map((q) => (
                   <li
@@ -262,7 +261,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
           )}
           {row.discarded.length > 0 && (
             <div className="mt-2">
-              <h5 className="mb-1 font-medium text-foreground">Descartado</h5>
+              <h4 className="mb-1 font-medium text-foreground">Descartado</h4>
               <ul className="space-y-0.5">
                 {row.discarded.map((d, i) => (
                   <li key={i} className="text-muted-foreground">
@@ -276,7 +275,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
         </section>
 
         <section>
-          <h4 className="mb-1.5 font-medium text-foreground">Materiales (lote de {row.recipe.batchSize})</h4>
+          <h3 className="mb-1.5 font-medium text-foreground">Materiales (lote de {row.recipe.batchSize})</h3>
           <dl className="space-y-1 text-muted-foreground">
             {row.materials.map((m) => (
               <Row

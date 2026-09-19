@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState, type ComponentType, type ReactNode } from "react";
-import { ArrowDownToLine, ArrowUpFromLine, Search, SlidersHorizontal, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -68,7 +68,7 @@ export function Controls(props: ControlsProps) {
           </button>
         }
       />
-      <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto border-t-2 border-double lg:hidden">
+      <SheetContent side="bottom" className="max-h-[85dvh] overflow-y-auto border-t-2 border-double lg:hidden">
         <SheetHeader className="flex-row items-center justify-between gap-4 space-y-0">
           <SheetTitle className="font-heading text-base">Filtros y supuestos</SheetTitle>
           {isChanged && (
@@ -167,7 +167,7 @@ function FilterFields({
           <summary className="cursor-pointer select-none font-medium text-foreground marker:content-none">
             <span className="inline-flex items-center gap-1">
               ¿Qué hace el bono de ciudad?
-              <span className="text-muted-foreground transition-transform group-open:rotate-180">⌄</span>
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" />
             </span>
           </summary>
           <p className="mt-1.5">
@@ -315,12 +315,12 @@ function CitySection({
       </div>
       {extra && (
         <div className="mt-2 rounded-md border border-border px-3 py-2">
-          <label className="flex items-center gap-2 text-sm">
+          <label className="flex min-h-9 items-center gap-2 text-sm">
             <input
               type="checkbox"
               checked={extra.checked}
               onChange={(e) => extra.onToggle(e.target.checked)}
-              className="h-3.5 w-3.5 accent-money"
+              className="h-5 w-5 accent-money"
             />
             {extra.label}
           </label>
