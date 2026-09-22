@@ -72,9 +72,9 @@ export function SiteHeader({
 
   // Horizontal padding/max-width is shared by the sticky nav strip and the (non-sticky) title
   // block below it, so both line up with each other and with the rest of the page's content --
-  // zero on the ranked-list pages, whose `<main>` is edge-to-edge by design (the breathing room
-  // there lives in the gap between the filters sidebar and the table, not around the outside).
-  const containerClasses = bleed ? "px-3 sm:px-0" : "mx-auto max-w-6xl px-3 sm:px-6 lg:px-8";
+  // the gutter stays at every width (not just mobile): `sm:px-0` used to zero it out past 640px,
+  // pinning the logo and nav flush to the browser edge on every laptop/desktop width.
+  const containerClasses = bleed ? "px-3 sm:px-6 lg:px-8" : "mx-auto max-w-6xl px-3 sm:px-6 lg:px-8";
 
   return (
     <header>

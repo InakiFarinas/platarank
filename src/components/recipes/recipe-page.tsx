@@ -57,7 +57,7 @@ export async function RecipePage({
   }
 
   return (
-    <main id="contenido" className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-0 sm:pb-8">
+    <main id="contenido" className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-6 sm:pb-8 lg:px-8">
       {content}
       <Footer />
     </main>
