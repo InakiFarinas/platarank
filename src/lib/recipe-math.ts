@@ -2,7 +2,7 @@ import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { netSellMultiplier } from "@/lib/formulas/market-tax";
 import { returnRate } from "@/lib/formulas/return-rate";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
-import { BREEDING_FEED_ITEMS, breedingCostSilver, isBreedable } from "@/lib/formulas/breeding";
+import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { BASE_QUALITY_WEIGHTS } from "@/lib/quality-mechanics";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -122,13 +122,26 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     ? computeGearSellSide(recipe.itemId, market, params)
     : computeSingleQualitySellSide(recipe.itemId, market, params);
 
-  // Only resolved when the toggle is on and this recipe actually has a breedable material -- every
-  // other row (the overwhelming majority, including every non-monturas recipe) skips this entirely.
-  const cheapestFeedPrice = params.breedOwnMount ? cheapestBreedingFeedPrice(market, params.buyCities) : null;
+  // Cached per row: plants and meat feed prices are the same for every breedable material in this
+  // recipe, and most recipes have none at all -- both pools resolve lazily, on first use.
+  const feedPriceCache = new Map<"plants" | "meat", number | null>();
+  const cheapestFeedPrice = (category: "plants" | "meat") => {
+    if (!feedPriceCache.has(category)) {
+      const items = category === "meat" ? BREEDING_MEAT_ITEMS : BREEDING_FEED_ITEMS;
+      feedPriceCache.set(category, cheapestMarketPrice(market, params.buyCities, items));
+    }
+    return feedPriceCache.get(category)!;
+  };
 
   const materials: MaterialLine[] = recipe.materials.map((m) => {
-    const bred = params.breedOwnMount && isBreedable(m.itemId);
-    const breedCost = bred ? breedingCostSilver(m.itemId, cheapestFeedPrice) : null;
+    const breeding = params.breedOwnMount ? breedingPriceInputs(m.itemId) : null;
+    const breedCost = breeding
+      ? breedingCostSilver(
+          m.itemId,
+          breeding.babyItemId !== null ? cheapestMarketPrice(market, params.buyCities, [breeding.babyItemId]) : null,
+          cheapestFeedPrice(breeding.feedItems === BREEDING_MEAT_ITEMS ? "meat" : "plants"),
+        )
+      : null;
 
     let buyRefPrice: number | null;
     if (breedCost !== null) {
@@ -275,11 +288,12 @@ function oldestAge(points: CityPricePoint[], cities: string[]): number | null {
   return ages.length > 0 ? Math.max(...ages) : null;
 }
 
-/** Cheapest of the 8 tier-equivalent crops (T1_CARROT..T8_PUMPKIN), any of which feeds a bred
- * horse/ox for the same nutrition -- see src/lib/formulas/breeding.ts. */
-function cheapestBreedingFeedPrice(market: MarketData, buyCities: Location[]): number | null {
+/** Cheapest quote for any of the given items across the buy cities -- used for breeding's feed
+ * pools (any tier-equivalent crop or cut of meat feeds the same) and for a baby animal that trades
+ * on the market instead of a fixed NPC price (a single-item list there). */
+function cheapestMarketPrice(market: MarketData, buyCities: Location[], itemIds: readonly string[]): number | null {
   const quotes: CityQuote[] = [];
-  for (const itemId of BREEDING_FEED_ITEMS) {
+  for (const itemId of itemIds) {
     for (const p of market.get(itemId) ?? []) {
       if (p.quality === 1 && buyCities.includes(p.city as Location) && p.price !== null) quotes.push({ city: p.city, price: p.price });
     }

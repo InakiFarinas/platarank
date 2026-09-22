@@ -390,4 +390,39 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     const withoutBreeding = computeRecipeRow(mountRecipe, data, { ...params, breedOwnMount: false });
     expect(withoutBreeding.materials.find((m) => m.itemId === "T5_FARM_HORSE_GROWN")!.buyRefPrice).toBe(999999);
   });
+
+  test("criar una montura sin precio de cria fijo compra la cria mas barata en el mercado y la alimenta con carne", () => {
+    const wolfRecipe: Recipe = {
+      itemId: "T6_MOUNT_DIREWOLF",
+      baseItemId: "T6_MOUNT_DIREWOLF",
+      nameEs: "Huargo",
+      nameEn: "Direwolf",
+      tier: 6,
+      enchant: 0,
+      stationType: "mount",
+      craftingCategory: null,
+      maxQualityLevel: 1,
+      batchSize: 1,
+      craftingFocus: 0,
+      materials: [{ itemId: "T6_FARM_DIREWOLF_GROWN", count: 1, category: "other", nameEs: "Huargo domado", nameEn: "Tame Direwolf" }],
+      materialItemValue: "1",
+    };
+    const data = market({
+      T6_MOUNT_DIREWOLF: [point("Caerleon", 500000, 100, 1)],
+      T6_FARM_DIREWOLF_GROWN: [point("Caerleon", 999999)], // must be ignored when breeding
+      T6_FARM_DIREWOLF_BABY: [point("Martlock", 40000), point("Caerleon", 38000)], // cheapest across buyCities
+      T3_MEAT: [point("Caerleon", 400)],
+      T4_MEAT: [point("Caerleon", 350)], // cheaper -- must be the one picked
+    });
+    const row = computeRecipeRow(wolfRecipe, data, {
+      ...DEFAULT_PARAMS,
+      sellCities: ["Caerleon"],
+      buyCities: ["Caerleon", "Martlock"],
+      breedOwnMount: true,
+    });
+    const line = row.materials.find((m) => m.itemId === "T6_FARM_DIREWOLF_GROWN")!;
+    // Baby: cheapest of the two city quotes (38000). Feed: 64 meat x 350 (cheapest tier) = 22400.
+    expect(line.bred).toBe(true);
+    expect(line.buyRefPrice).toBe(38000 + 64 * 350);
+  });
 });

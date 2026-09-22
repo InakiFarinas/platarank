@@ -2,7 +2,7 @@ import { BLACK_MARKET } from "@/lib/aodp/cities";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
 import { saleTaxRate } from "@/lib/formulas/market-tax";
-import { BREEDING_FEED_ITEMS, breedingCostSilver, isBreedable } from "@/lib/formulas/breeding";
+import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { returnRate } from "@/lib/formulas/return-rate";
 import type { CityPricePoint } from "@/lib/recipe-math";
@@ -24,12 +24,13 @@ export type CraftParams = {
   breedOwnMount?: boolean;
 };
 
-/** Cheapest of the 8 tier-equivalent crops (T1_CARROT..T8_PUMPKIN), any of which feeds a bred
- * horse/ox for the same nutrition -- see src/lib/formulas/breeding.ts. Royal cities only, same as
- * every other material price in the calculator (Black Market has no sell orders to buy against). */
-function cheapestBreedingFeedPrice(market: Record<string, CityPricePoint[]>): number | null {
+/** Cheapest quote for any of the given items, royal cities only -- same as every other material
+ * price in the calculator (Black Market has no sell orders to buy against). Used for breeding's
+ * feed pools (any tier-equivalent crop or cut of meat feeds the same) and for a baby animal that
+ * trades on the market instead of a fixed NPC price (a single-item list there). */
+function cheapestMarketPrice(market: Record<string, CityPricePoint[]>, itemIds: readonly string[]): number | null {
   const quotes: CityQuote[] = [];
-  for (const itemId of BREEDING_FEED_ITEMS) {
+  for (const itemId of itemIds) {
     for (const pt of market[itemId] ?? []) {
       if (pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET) quotes.push({ city: pt.city, price: pt.price });
     }
@@ -48,11 +49,23 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     focus: p.focus,
   });
 
-  const cheapestFeedPrice = p.breedOwnMount ? cheapestBreedingFeedPrice(market) : null;
+  const feedPriceCache = new Map<"plants" | "meat", number | null>();
+  const cheapestFeedPrice = (category: "plants" | "meat") => {
+    if (!feedPriceCache.has(category)) {
+      feedPriceCache.set(category, cheapestMarketPrice(market, category === "meat" ? BREEDING_MEAT_ITEMS : BREEDING_FEED_ITEMS));
+    }
+    return feedPriceCache.get(category)!;
+  };
 
   const materials = recipe.materials.map((m) => {
-    const bred = Boolean(p.breedOwnMount) && isBreedable(m.itemId);
-    const breedCost = bred ? breedingCostSilver(m.itemId, cheapestFeedPrice) : null;
+    const breeding = p.breedOwnMount ? breedingPriceInputs(m.itemId) : null;
+    const breedCost = breeding
+      ? breedingCostSilver(
+          m.itemId,
+          breeding.babyItemId !== null ? cheapestMarketPrice(market, [breeding.babyItemId]) : null,
+          cheapestFeedPrice(breeding.feedItems === BREEDING_MEAT_ITEMS ? "meat" : "plants"),
+        )
+      : null;
 
     let stat: ReturnType<typeof robustStat>;
     let cheapest: string | null;

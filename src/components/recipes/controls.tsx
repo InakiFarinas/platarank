@@ -204,7 +204,7 @@ function FilterFields({
         {stationType === "mount" && (
           <div>
             <div className="flex items-center justify-between gap-4">
-              <Label htmlFor="breed-switch">Criar caballo/buey en vez de comprarlo</Label>
+              <Label htmlFor="breed-switch">Criar el animal base en vez de comprarlo</Label>
               <Switch
                 id="breed-switch"
                 checked={params.breedOwnMount}
@@ -212,9 +212,10 @@ function FilterFields({
               />
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
-              Reemplaza el precio de mercado del animal adulto por el costo de criarlo vos: la cría al Mercader de granja (precio fijo) más el
-              alimento más barato disponible. Solo caballo y buey tienen precio de cría fijo -- las demás monturas (ciervo, lobo, dragón de
-              pantano...) no cambian.
+              Reemplaza el precio de mercado del animal adulto por el costo de criarlo vos: caballo y buey usan la cría de precio fijo del
+              Mercader de granja; ciervo, alce, huargo, jabalí, oso, dragón de pantano y mamut usan la cría más barata que otro jugador esté
+              vendiendo. En todos los casos se suma el alimento más barato disponible. El Draco Ala de Fuego y el Conejo primaveral (evento)
+              no tienen un costo de cría real que calcular y no cambian.
             </p>
           </div>
         )}

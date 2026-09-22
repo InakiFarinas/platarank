@@ -3,7 +3,7 @@ import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates, type Recipe } from "@/lib/db/schema";
 import { computeRecipeRow, SORT_ACCESSORS, type CityPricePoint, type RecipeMathParams, type RecipeRow, type SortKey } from "@/lib/recipe-math";
 import { applyFilters, type FilterParams } from "@/lib/recipe-filters";
-import { BREEDING_FEED_ITEMS } from "@/lib/formulas/breeding";
+import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
 
 /** Rows shipped per ranking view of a large station (gear). */
 export const ROW_LIMIT = 300;
@@ -20,10 +20,11 @@ export async function loadStationData(stationType: StationType): Promise<Station
     relevantItemIds.add(r.itemId);
     for (const m of r.materials) relevantItemIds.add(m.itemId);
   }
-  // Monturas: the "criar por tu cuenta" toggle prices feed crops that aren't a material of any
-  // mount recipe (see src/lib/formulas/breeding.ts), so they'd otherwise never be fetched here.
+  // Monturas: the "criar por tu cuenta" toggle prices feed crops and market-traded babies that
+  // aren't a material of any mount recipe (see src/lib/formulas/breeding.ts), so they'd otherwise
+  // never be fetched here.
   if (stationType === "mount") {
-    for (const itemId of BREEDING_FEED_ITEMS) relevantItemIds.add(itemId);
+    for (const itemId of ALL_BREEDING_MARKET_ITEMS) relevantItemIds.add(itemId);
   }
 
   // Fetch only the aggregates this station's recipes actually reference -- with thousands of gear

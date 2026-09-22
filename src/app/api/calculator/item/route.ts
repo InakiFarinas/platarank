@@ -3,7 +3,7 @@ import { eq, inArray, like } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { marketAggregates, recipes } from "@/lib/db/schema";
 import type { CityPricePoint } from "@/lib/recipe-math";
-import { BREEDING_FEED_ITEMS } from "@/lib/formulas/breeding";
+import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
 
 const CACHE_HEADERS = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=900" };
 
@@ -27,9 +27,10 @@ export async function GET(request: NextRequest) {
   ).filter((v) => tierless(v.baseItemId) === suffix);
 
   const ids = [recipe.itemId, ...recipe.materials.map((m) => m.itemId)];
-  // Monturas: the "criar por tu cuenta" toggle prices feed crops that aren't a material of the
-  // recipe itself (see src/lib/formulas/breeding.ts), so they'd otherwise never be fetched here.
-  if (recipe.stationType === "mount") ids.push(...BREEDING_FEED_ITEMS);
+  // Monturas: the "criar por tu cuenta" toggle prices feed crops and market-traded babies that
+  // aren't a material of the recipe itself (see src/lib/formulas/breeding.ts), so they'd otherwise
+  // never be fetched here.
+  if (recipe.stationType === "mount") ids.push(...ALL_BREEDING_MARKET_ITEMS);
   const rows = await db.select().from(marketAggregates).where(inArray(marketAggregates.itemId, ids));
   const market: Record<string, CityPricePoint[]> = {};
   for (const a of rows) {
