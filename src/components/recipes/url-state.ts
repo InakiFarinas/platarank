@@ -30,6 +30,7 @@ export function writeStateToUrl(params: RecipeMathParams, filters: FilterParams)
     q.set("tarifa", String(params.stationRatePer100Nutrition));
   }
   if (params.craftCity !== DEFAULT_PARAMS.craftCity) q.set("craftea", params.craftCity);
+  if (params.breedOwnMount !== DEFAULT_PARAMS.breedOwnMount) q.set("cria", params.breedOwnMount ? "1" : "0");
   if (filters.nameQuery !== DEFAULT_FILTERS.nameQuery) q.set("nombre", filters.nameQuery);
   if (filters.maxAgeHours !== DEFAULT_FILTERS.maxAgeHours) q.set("antiguedad", String(filters.maxAgeHours));
   if (filters.minVolume !== DEFAULT_FILTERS.minVolume) q.set("volumen", String(filters.minVolume));
@@ -60,6 +61,7 @@ export function parseStateFromUrl(): { params: RecipeMathParams; filters: Filter
   if (q.has("craftea") && (ALL_LOCATIONS as readonly string[]).includes(q.get("craftea")!)) {
     params.craftCity = q.get("craftea") as Location;
   }
+  if (q.has("cria")) params.breedOwnMount = q.get("cria") === "1";
   if (q.has("nombre")) filters.nameQuery = q.get("nombre")!;
   if (q.has("antiguedad")) {
     const v = Number(q.get("antiguedad"));

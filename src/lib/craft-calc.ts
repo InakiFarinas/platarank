@@ -2,12 +2,14 @@ import { BLACK_MARKET } from "@/lib/aodp/cities";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
 import { saleTaxRate } from "@/lib/formulas/market-tax";
+import { BREEDING_FEED_ITEMS, breedingCostSilver, isBreedable } from "@/lib/formulas/breeding";
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { returnRate } from "@/lib/formulas/return-rate";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 
-/** Everything the player controls in the crafting calculator. Also what a saved plan stores. */
+/** Everything the player controls in the crafting calculator. Also what a saved plan stores.
+ * `breedOwnMount` is undefined on plans saved before this existed -- reads as falsy, same as false. */
 export type CraftParams = {
   qty: number;
   premium: boolean;
@@ -19,7 +21,21 @@ export type CraftParams = {
   extraCost: number;
   sellOverride: number | null;
   matOverrides: Record<string, number>;
+  breedOwnMount?: boolean;
 };
+
+/** Cheapest of the 8 tier-equivalent crops (T1_CARROT..T8_PUMPKIN), any of which feeds a bred
+ * horse/ox for the same nutrition -- see src/lib/formulas/breeding.ts. Royal cities only, same as
+ * every other material price in the calculator (Black Market has no sell orders to buy against). */
+function cheapestBreedingFeedPrice(market: Record<string, CityPricePoint[]>): number | null {
+  const quotes: CityQuote[] = [];
+  for (const itemId of BREEDING_FEED_ITEMS) {
+    for (const pt of market[itemId] ?? []) {
+      if (pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET) quotes.push({ city: pt.city, price: pt.price });
+    }
+  }
+  return robustStat(quotes, "min").value;
+}
 
 /** One item's crafting result under the given assumptions -- shared by the calculator (browser)
  * and the alert checker (ingest), so both always agree on the number. */
@@ -32,14 +48,26 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     focus: p.focus,
   });
 
+  const cheapestFeedPrice = p.breedOwnMount ? cheapestBreedingFeedPrice(market) : null;
+
   const materials = recipe.materials.map((m) => {
-    const points = (market[m.itemId] ?? []).filter((pt) => pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET);
-    const quotes: CityQuote[] = points.map((pt) => ({ city: pt.city, price: pt.price! }));
-    const stat = robustStat(quotes, "min");
-    const cheapest = stat.result.kept.find((q) => q.price === stat.value)?.city ?? null;
+    const bred = Boolean(p.breedOwnMount) && isBreedable(m.itemId);
+    const breedCost = bred ? breedingCostSilver(m.itemId, cheapestFeedPrice) : null;
+
+    let stat: ReturnType<typeof robustStat>;
+    let cheapest: string | null;
+    if (breedCost !== null) {
+      stat = { value: breedCost, result: { kept: [], discarded: [] } };
+      cheapest = null;
+    } else {
+      const points = (market[m.itemId] ?? []).filter((pt) => pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET);
+      const quotes: CityQuote[] = points.map((pt) => ({ city: pt.city, price: pt.price! }));
+      stat = robustStat(quotes, "min");
+      cheapest = stat.result.kept.find((q) => q.price === stat.value)?.city ?? null;
+    }
     const price = p.matOverrides[m.itemId] ?? stat.value ?? 0;
     const noReturn = m.category === "artifact";
-    return { m, price, auto: stat.value, cheapest, noReturn, effective: m.count * (1 - (noReturn ? 0 : rrr)) };
+    return { m, price, auto: stat.value, cheapest, noReturn, bred: breedCost !== null, effective: m.count * (1 - (noReturn ? 0 : rrr)) };
   });
 
   const sellPoints = (market[recipe.itemId] ?? []).filter(

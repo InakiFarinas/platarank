@@ -35,6 +35,7 @@ export async function RecipePage({
         initialRows={rows}
         totalCount={total}
         categories={categories}
+        stationType={stationType}
         remoteStation="gear"
         title={title}
         description={description}
@@ -50,6 +51,7 @@ export async function RecipePage({
         initialRows={initialRows}
         totalCount={initialRows.length}
         categories={categories}
+        stationType={stationType}
         title={title}
         description={description}
       />

@@ -3,6 +3,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { alerts, marketAggregates, plans, recipes, userSettings, type Recipe } from "@/lib/db/schema";
 import { computeCraft, type CraftParams } from "@/lib/craft-calc";
+import { BREEDING_FEED_ITEMS } from "@/lib/formulas/breeding";
 import type { CityPricePoint } from "@/lib/recipe-math";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
@@ -30,6 +31,9 @@ export async function runAlerts(now: Date) {
   for (const r of recipeRows) {
     marketIds.add(r.itemId);
     for (const m of r.materials) marketIds.add(m.itemId);
+    // A saved mount plan may have "criar por tu cuenta" on -- price its feed crops too, or
+    // re-pricing would silently fall back to the market price it was saved to avoid.
+    if (r.stationType === "mount") for (const itemId of BREEDING_FEED_ITEMS) marketIds.add(itemId);
   }
   const market: Record<string, CityPricePoint[]> = {};
   for (const a of await db.select().from(marketAggregates).where(inArray(marketAggregates.itemId, [...marketIds]))) {
