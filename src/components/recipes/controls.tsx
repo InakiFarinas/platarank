@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useId, useState, type ComponentType, type ReactNode } from "react";
-import { ArrowDownToLine, ArrowUpFromLine, ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, Search, SlidersHorizontal, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import { CITY_THEMES } from "@/lib/city-theme";
+import type { CitySpecialty } from "@/lib/city-specialties";
 import { DEFAULT_PARAMS, type RecipeMathParams } from "@/lib/recipe-math";
 import { DEFAULT_FILTERS, type FilterParams } from "@/lib/recipe-filters";
+import { BONUS_LABEL, CityGlyph } from "@/components/site-header";
+import type { StationType } from "@/lib/server/station-data";
 import { cn } from "@/lib/utils";
 
 export type { FilterParams };
@@ -21,6 +24,11 @@ type ControlsProps = {
   onParamsChange: (params: RecipeMathParams) => void;
   filters: FilterParams;
   onFiltersChange: (filters: FilterParams) => void;
+  /** Which bonus (if any) each city offers for this rubro's recipe categories -- badges the
+   * "Ciudad de crafteo" selector's options, same map the header's city selector used to badge. */
+  cityBonuses: Map<Location, CitySpecialty>;
+  /** Only /monturas shows the "criar el animal base" toggle. */
+  stationType: StationType;
 };
 
 function useFilterActions({ params, onParamsChange, filters, onFiltersChange }: ControlsProps) {
@@ -119,6 +127,8 @@ function FilterFields({
   onParamsChange,
   filters,
   onFiltersChange,
+  cityBonuses,
+  stationType,
   resetCount,
   toggleCity,
 }: ControlsProps & {
@@ -127,6 +137,34 @@ function FilterFields({
 }) {
   return (
     <div className="flex flex-col gap-4">
+      <FilterCard title="Ciudad de crafteo">
+        <div className="grid grid-cols-2 gap-1.5 @sm:grid-cols-3">
+          {REAL_CITIES.map((city) => {
+            const theme = CITY_THEMES[city];
+            const active = city === params.craftCity;
+            const bonus = cityBonuses.get(city);
+            return (
+              <button
+                key={city}
+                type="button"
+                aria-pressed={active}
+                onClick={() => onParamsChange({ ...params, craftCity: city })}
+                className={cn(
+                  "relative flex items-center gap-1.5 rounded-md border px-2 py-1.5 text-xs transition-colors after:absolute after:-inset-y-1 after:inset-x-0 after:content-['']",
+                  active ? cn(theme.border, theme.bg, theme.text) : "border-border text-muted-foreground hover:border-money/30 hover:text-foreground",
+                )}
+              >
+                <CityGlyph theme={theme} />
+                <span className="min-w-0 flex-1 truncate text-left font-medium">{city}</span>
+                {bonus && (
+                  <span className="shrink-0 font-mono text-[0.6875rem] tabular-nums text-money">{BONUS_LABEL[bonus.kind]}</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </FilterCard>
+
       <FilterCard title="Ciudades">
         <div className="grid gap-4 @sm:grid-cols-2">
           <CitySection
@@ -163,19 +201,23 @@ function FilterFields({
           />
         </div>
 
-        <details className="group text-xs text-muted-foreground">
-          <summary className="cursor-pointer select-none font-medium text-foreground marker:content-none">
-            <span className="inline-flex items-center gap-1">
-              ¿Qué hace el bono de ciudad?
-              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" />
-            </span>
-          </summary>
-          <p className="mt-1.5">
-            El escudo junto a la navegación elige dónde craftea: cada receta tiene como mucho una ciudad con
-            especialidad para su categoría (potion → Brecilien, wood → Fort Sterling, sword → Thetford, etc.) -- si
-            coincide, aplica el bonus de +15%/+40%.
-          </p>
-        </details>
+        {stationType === "mount" && (
+          <div>
+            <div className="flex items-center justify-between gap-4">
+              <Label htmlFor="breed-switch">Criar caballo/buey en vez de comprarlo</Label>
+              <Switch
+                id="breed-switch"
+                checked={params.breedOwnMount}
+                onCheckedChange={(checked) => onParamsChange({ ...params, breedOwnMount: checked })}
+              />
+            </div>
+            <p className="mt-1.5 text-xs text-muted-foreground">
+              Reemplaza el precio de mercado del animal adulto por el costo de criarlo vos: la cría al Mercader de granja (precio fijo) más el
+              alimento más barato disponible. Solo caballo y buey tienen precio de cría fijo -- las demás monturas (ciervo, lobo, dragón de
+              pantano...) no cambian.
+            </p>
+          </div>
+        )}
 
         <div className="grid gap-4 @sm:grid-cols-2">
           <NumberField
@@ -264,7 +306,7 @@ export function NameSearchField({ value, onChange }: { value: string; onChange: 
 function FilterCard({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="@container rounded-md border border-border bg-card/40 p-4">
-      <h2 className="mb-3 font-heading text-sm text-money">{title}</h2>
+      <h2 className="mb-3 font-heading text-sm">{title}</h2>
       <div className="flex flex-col gap-4">{children}</div>
     </section>
   );
@@ -294,7 +336,6 @@ function CitySection({
       <div className="flex flex-wrap gap-1.5">
         {cities.map((city) => {
           const active = selected.includes(city);
-          const theme = CITY_THEMES[city];
           return (
             <button
               key={city}
@@ -303,9 +344,7 @@ function CitySection({
               onClick={() => onToggle(city, !active)}
               className={cn(
                 "relative rounded-full border px-3 py-1 text-xs transition-colors after:absolute after:-inset-y-1.5 after:inset-x-0 after:content-['']",
-                active
-                  ? cn(theme.border, theme.bg, theme.text)
-                  : "border-border text-muted-foreground hover:border-money/30 hover:text-foreground",
+                active ? "border-money bg-money/10 text-money" : "border-border text-muted-foreground hover:border-money/30 hover:text-foreground",
               )}
             >
               {city}

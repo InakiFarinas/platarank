@@ -3,13 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { AuthButton } from "@/components/auth-button";
 import { Logo } from "@/components/logo";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
-import { CITY_THEMES, type CityTheme } from "@/lib/city-theme";
+import type { CityTheme } from "@/lib/city-theme";
 import type { CitySpecialty } from "@/lib/city-specialties";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +23,9 @@ const NAV_ITEMS = [
   { href: "/es/sesiones", label: "Sesiones", count: null },
 ] as const;
 
-const BONUS_LABEL: Record<CitySpecialty["kind"], string> = {
+/** Shared with the "Ciudad de crafteo" control (now in the Filtros panel, see controls.tsx) so
+ * both name a city's bonus the same way. */
+export const BONUS_LABEL: Record<CitySpecialty["kind"], string> = {
   crafting: "+15% crafteo",
   refining: "+40% refinado",
   meat: "+10% carne",
@@ -39,13 +40,15 @@ function isActive(pathname: string | null, href: string): boolean {
 }
 
 /** The one header shared by the home page and all four ranked-list pages. The nav (logo, tabs,
- * "Entrar con Discord" button) is always the same; `title`/`description` and `recipeControls` are opt-in
- * so only the ranked-list pages render the page-title block and the city/server selectors. */
+ * "Entrar con Discord" button) is always the same; `title`/`description` are opt-in so only the
+ * ranked-list pages render the page-title block. The "ciudad donde craftea" selector used to live
+ * here too; it moved into the Filtros panel (controls.tsx) so it sits next to the other crafting
+ * assumptions instead of competing with the nav for space. */
 export function SiteHeader({
   title,
   description,
   bleed = false,
-  recipeControls,
+  showServerBadge = false,
 }: {
   title?: string;
   description?: string;
@@ -54,14 +57,10 @@ export function SiteHeader({
    * small inset for text, nothing to escape. False on the home page, which needs its own
    * `max-w-6xl` centering since `<main>` there is unconstrained. */
   bleed?: boolean;
-  recipeControls?: {
-    craftCity: Location;
-    onCraftCityChange: (city: Location) => void;
-    cityBonuses: Map<Location, CitySpecialty>;
-  };
+  /** Only the ranked-list pages care which AODP region the data comes from. */
+  showServerBadge?: boolean;
 }) {
   const pathname = usePathname();
-  const currentTheme = recipeControls ? CITY_THEMES[recipeControls.craftCity] : null;
   const [menuOpen, setMenuOpen] = useState(false);
 
   // The mobile menu opens fresh on every navigation instead of staying open across the route
@@ -72,16 +71,27 @@ export function SiteHeader({
 
   // Horizontal padding/max-width is shared by the sticky nav strip and the (non-sticky) title
   // block below it, so both line up with each other and with the rest of the page's content --
-  // the gutter stays at every width (not just mobile): `sm:px-0` used to zero it out past 640px,
-  // pinning the logo and nav flush to the browser edge on every laptop/desktop width.
-  const containerClasses = bleed ? "px-3 sm:px-6 lg:px-8" : "mx-auto max-w-6xl px-3 sm:px-6 lg:px-8";
+  // on the ranked-list pages the header sits inside `<main>`'s own `max-w-[1600px]`, so it needs
+  // its own centering to match that width, plus the same padding `<main>` uses. The gutter itself
+  // stays at every width (not just mobile) -- `sm:px-0` used to zero it out past 640px, pinning
+  // the logo and nav flush to the browser edge on every laptop/desktop width below 1600px.
+  const containerClasses = bleed ? "mx-auto max-w-[1600px] px-3 sm:px-6 lg:px-8" : "mx-auto max-w-6xl px-3 sm:px-6 lg:px-8";
 
   return (
     <header>
       {/* Only the nav strip is sticky -- the page title/description scroll away normally, so the
        * permanent chrome tax on a dense, virtualized ranked-list page stays to the nav's own
-       * height instead of the whole title block (see /impeccable layout finding). */}
-      <div className="sticky top-0 z-20 border-b-2 border-double border-money/30 bg-background/90 backdrop-blur-md">
+       * height instead of the whole title block (see /impeccable layout finding). On the
+       * ranked-list pages this bar lives inside `<main>`'s `max-w-[1600px]`, so it's broken out to
+       * full viewport width here (the trick works regardless of ancestor width) and the width is
+       * reapplied to its content via `containerClasses` above, so the bar's background/border spans
+       * edge to edge like it does on the pages where the header is a sibling of `<main>`. */}
+      <div
+        className={cn(
+          "sticky top-0 z-20 border-b-2 border-double border-money/30 bg-background/90 backdrop-blur-md",
+          bleed && "ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] w-screen",
+        )}
+      >
         <div className={cn(containerClasses, "py-3 sm:py-4")}>
           <nav className={cn("flex items-center gap-2 text-xs", !title && "gap-3 text-sm")}>
             <Link href="/es" className="mr-2 flex shrink-0 items-center gap-2.5 font-medium text-foreground hover:text-money">
@@ -142,55 +152,16 @@ export function SiteHeader({
           </SheetContent>
         </Sheet>
 
-        {recipeControls && currentTheme ? (
-          <div className="ml-2 flex shrink-0 items-center gap-1.5">
+        <div className="ml-2 flex shrink-0 items-center gap-1.5">
+          {showServerBadge && (
             <div className="hidden sm:block">
               <ServerBadge />
             </div>
-
-            <Select
-              value={recipeControls.craftCity}
-              onValueChange={(city) => recipeControls.onCraftCityChange(city as Location)}
-            >
-              <SelectTrigger
-                className={cn(
-                  "relative h-auto shrink-0 gap-1.5 rounded-md border px-2 py-1 text-xs after:absolute after:-inset-y-2 after:inset-x-0 after:content-[''] [&_svg:not([class*='size-'])]:size-3.5",
-                  currentTheme.border,
-                  currentTheme.bg,
-                  currentTheme.text,
-                )}
-              >
-                <CityGlyph theme={currentTheme} />
-                <span className="font-medium">{recipeControls.craftCity}</span>
-                <ChevronDown className="h-3 w-3 opacity-70" />
-              </SelectTrigger>
-              <SelectContent align="end" alignItemWithTrigger={false} className="min-w-56">
-                {REAL_CITIES.map((city) => {
-                  const theme = CITY_THEMES[city];
-                  const bonus = recipeControls.cityBonuses.get(city);
-                  return (
-                    <SelectItem key={city} value={city} className="gap-2 py-1.5">
-                      <CityGlyph theme={theme} />
-                      <span className="flex-1">{city}</span>
-                      {bonus && (
-                        <span className="shrink-0 rounded-full bg-money/10 px-1.5 py-0.5 font-mono text-xs tabular-nums text-money">
-                          {BONUS_LABEL[bonus.kind]}
-                        </span>
-                      )}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <div className="hidden sm:block">
-              <AuthButton />
-            </div>
-          </div>
-        ) : (
-          <div className="ml-2 hidden sm:block">
+          )}
+          <div className="hidden sm:block">
             <AuthButton />
           </div>
-        )}
+        </div>
           </nav>
         </div>
       </div>

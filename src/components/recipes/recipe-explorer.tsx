@@ -5,12 +5,13 @@ import { Loader2, X } from "lucide-react";
 import { RecipeTable } from "./recipe-table";
 import { SiteHeader } from "@/components/site-header";
 import { Controls, FiltersPanel, NameSearchField, DEFAULT_FILTERS, type FilterParams } from "./controls";
-import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type RecipeMathParams, type RecipeRow } from "@/lib/recipe-math";
+import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type RecipeMathParams, type RecipeRow, type SortKey } from "@/lib/recipe-math";
 import { getCitySpecialty, type CitySpecialty } from "@/lib/city-specialties";
 import { applyFilters } from "@/lib/recipe-filters";
 import { parseStateFromUrl, writeStateToUrl } from "./url-state";
 import type { Recipe } from "@/lib/db/schema";
 import type { Location } from "@/lib/aodp/cities";
+import type { StationType } from "@/lib/server/station-data";
 
 export function RecipeExplorer({
   recipes,
@@ -18,6 +19,7 @@ export function RecipeExplorer({
   initialRows,
   totalCount,
   categories,
+  stationType,
   remoteStation,
   title,
   description,
@@ -31,6 +33,8 @@ export function RecipeExplorer({
   totalCount: number;
   /** Distinct craftingCategory values of the station, for the city-bonus badges. */
   categories: string[];
+  /** Which rubro this is -- only /monturas' Filtros shows the "criar el animal base" toggle. */
+  stationType: StationType;
   /** When set, `recipes`/`marketByItem` are empty and non-default views are ranked by /api/rank. */
   remoteStation?: "gear";
   title: string;
@@ -38,6 +42,16 @@ export function RecipeExplorer({
 }) {
   const [params, setParams] = useState<RecipeMathParams>(DEFAULT_PARAMS);
   const [filters, setFilters] = useState<FilterParams>(DEFAULT_FILTERS);
+  const [sortKey, setSortKey] = useState<SortKey>("platinumPerDay");
+  const [desc, setDesc] = useState(true);
+  const isDefaultSort = sortKey === "platinumPerDay" && desc;
+  function onSortChange(key: SortKey) {
+    if (key === sortKey) setDesc((d) => !d);
+    else {
+      setSortKey(key);
+      setDesc(true);
+    }
+  }
 
   // The recompute below can measure 10-20+ seconds on /equipo's ~5,600 rows -- marking the state
   // update as a transition keeps the current rows interactive (and `isPending` visible) instead of
@@ -65,13 +79,17 @@ export function RecipeExplorer({
 
   const market = useMemo(() => new Map(Object.entries(marketByItem)), [marketByItem]);
 
-  const isDefaultView = params === DEFAULT_PARAMS && JSON.stringify(filters) === JSON.stringify(DEFAULT_FILTERS);
+  const isDefaultView = params === DEFAULT_PARAMS && JSON.stringify(filters) === JSON.stringify(DEFAULT_FILTERS) && isDefaultSort;
   const [remoteResult, setRemoteResult] = useState<{ rows: RecipeRow[]; total: number } | null>(null);
   const [remoteLoading, setRemoteLoading] = useState(false);
   const [remoteError, setRemoteError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
 
-  // Large stations: ask the server to rank under the current assumptions/filters (debounced).
+  // Large stations: ask the server to rank under the current assumptions/filters/sort (debounced).
+  // The sort has to be part of this request (not just re-sorted client-side afterward): the server
+  // only ships the top ROW_LIMIT rows, ranked by one column -- re-sorting that slice by a different
+  // column client-side would silently hide the true top rows for that column (P0, /impeccable
+  // critique 2026-09-22).
   useEffect(() => {
     if (!remoteStation) return;
     if (isDefaultView) {
@@ -87,7 +105,7 @@ export function RecipeExplorer({
         const res = await fetch("/api/rank", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ station: remoteStation, params, filters }),
+          body: JSON.stringify({ station: remoteStation, params, filters, sort: { key: sortKey, desc } }),
           signal: ctrl.signal,
         });
         if (!res.ok) throw new Error(String(res.status));
@@ -103,7 +121,7 @@ export function RecipeExplorer({
       clearTimeout(t);
       ctrl.abort();
     };
-  }, [remoteStation, isDefaultView, params, filters, retryKey]);
+  }, [remoteStation, isDefaultView, params, filters, sortKey, desc, retryKey]);
 
   const allRows = useMemo(() => {
     if (remoteStation) return remoteResult?.rows ?? initialRows;
@@ -128,19 +146,17 @@ export function RecipeExplorer({
 
   return (
     <div className="flex flex-col gap-3">
-      <SiteHeader
-        title={title}
-        description={description}
-        bleed
-        recipeControls={{
-          craftCity: params.craftCity,
-          onCraftCityChange: (craftCity) => applyParams({ ...params, craftCity }),
-          cityBonuses,
-        }}
-      />
+      <SiteHeader title={title} description={description} bleed showServerBadge />
       <NameSearchField value={filters.nameQuery} onChange={(nameQuery) => applyFilterParams({ ...filters, nameQuery })} />
       <div className="lg:grid lg:grid-cols-[300px_1fr] lg:items-stretch lg:gap-8">
-        <FiltersPanel params={params} onParamsChange={applyParams} filters={filters} onFiltersChange={applyFilterParams} />
+        <FiltersPanel
+          params={params}
+          onParamsChange={applyParams}
+          filters={filters}
+          onFiltersChange={applyFilterParams}
+          cityBonuses={cityBonuses}
+          stationType={stationType}
+        />
 
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -177,6 +193,9 @@ export function RecipeExplorer({
               rows={rows}
               isFiltered={filters.nameQuery !== "" || filters.maxAgeHours !== null || filters.minVolume !== null}
               onClearFilters={() => applyFilterParams(DEFAULT_FILTERS)}
+              sortKey={sortKey}
+              desc={desc}
+              onSortChange={onSortChange}
               className={isPending || remoteLoading ? "pointer-events-none opacity-60 transition-opacity" : "transition-opacity"}
             />
             {(isPending || remoteLoading) && (
@@ -193,7 +212,14 @@ export function RecipeExplorer({
           </div>
         </div>
       </div>
-      <Controls params={params} onParamsChange={applyParams} filters={filters} onFiltersChange={applyFilterParams} />
+      <Controls
+        params={params}
+        onParamsChange={applyParams}
+        filters={filters}
+        onFiltersChange={applyFilterParams}
+        cityBonuses={cityBonuses}
+        stationType={stationType}
+      />
     </div>
   );
 }
@@ -252,6 +278,13 @@ function ActiveFilterChips({
   if (params.focus !== DEFAULT_PARAMS.focus) {
     chips.push({ key: "focus", label: "Foco activado", onClear: () => onParamsChange({ ...params, focus: DEFAULT_PARAMS.focus }) });
   }
+  if (params.breedOwnMount !== DEFAULT_PARAMS.breedOwnMount) {
+    chips.push({
+      key: "breed",
+      label: "Criando caballo/buey",
+      onClear: () => onParamsChange({ ...params, breedOwnMount: DEFAULT_PARAMS.breedOwnMount }),
+    });
+  }
 
   if (chips.length === 0) return null;
 
@@ -263,7 +296,7 @@ function ActiveFilterChips({
           type="button"
           onClick={chip.onClear}
           aria-label={`Quitar filtro: ${chip.label}`}
-          className="relative flex shrink-0 items-center gap-1 rounded-full border border-money/50 bg-money/10 px-2.5 py-1 text-xs text-money transition-colors after:absolute after:-inset-y-1.5 after:inset-x-0 after:content-[''] hover:bg-money/20"
+          className="relative flex shrink-0 items-center gap-1 rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-xs text-foreground transition-colors after:absolute after:-inset-y-1.5 after:inset-x-0 after:content-[''] hover:bg-accent/40"
         >
           {chip.label}
           <X className="h-3 w-3" />

@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { ALL_LOCATIONS, REAL_CITIES, type Location } from "@/lib/aodp/cities";
-import { DEFAULT_PARAMS, type RecipeMathParams } from "@/lib/recipe-math";
+import { DEFAULT_PARAMS, SORT_ACCESSORS, type RecipeMathParams, type SortKey } from "@/lib/recipe-math";
 import type { FilterParams } from "@/lib/recipe-filters";
 import { loadStationDataCached, rankStation, ROW_LIMIT } from "@/lib/server/station-data";
 
@@ -64,6 +64,9 @@ export async function POST(request: NextRequest) {
     focus: p.focus === true,
     stationRatePer100Nutrition: num(p.stationRatePer100Nutrition, DEFAULT_PARAMS.stationRatePer100Nutrition, 0, 100000),
     craftCity: isLocation(p.craftCity) ? p.craftCity : DEFAULT_PARAMS.craftCity,
+    // Gear never crafts a mount, so this never actually applies here; kept only for type
+    // completeness with the shared RecipeMathParams shape.
+    breedOwnMount: false,
   };
   const filters: FilterParams = {
     nameQuery: typeof f.nameQuery === "string" ? f.nameQuery.slice(0, 80) : "",
@@ -71,13 +74,19 @@ export async function POST(request: NextRequest) {
     minVolume: typeof f.minVolume === "number" ? f.minVolume : null,
   };
 
+  const s = (body.sort ?? {}) as Record<string, unknown>;
+  const sort = {
+    key: typeof s.key === "string" && s.key in SORT_ACCESSORS ? (s.key as SortKey) : "platinumPerDay",
+    desc: s.desc !== false,
+  };
+
   // Key on the sanitized inputs (not the raw body) so equivalent requests share one result.
-  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.focus, params.stationRatePer100Nutrition, params.craftCity, filters]);
+  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.focus, params.stationRatePer100Nutrition, params.craftCity, filters, sort]);
   const cached = results.get(key);
   if (cached && Date.now() - cached.at < RESULT_TTL_MS) return NextResponse.json(cached.body);
 
   const data = await loadStationDataCached("gear");
-  const ranked = rankStation(data, params, filters, ROW_LIMIT);
+  const ranked = rankStation(data, params, filters, ROW_LIMIT, sort);
   results.set(key, { at: Date.now(), body: ranked });
   if (results.size > RESULT_MAX_ENTRIES) results.delete(results.keys().next().value as string);
   return NextResponse.json(ranked);

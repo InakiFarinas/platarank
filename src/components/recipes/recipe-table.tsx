@@ -3,25 +3,18 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpDown } from "lucide-react";
 import { RecipeRowItem } from "./recipe-row";
-import type { RecipeRow } from "@/lib/recipe-math";
+import { SORT_ACCESSORS, type RecipeRow, type SortKey } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
 
-type SortKey = "margin" | "volume" | "cost" | "sellPrice" | "platinumPerDay";
-
-const SORT_ACCESSORS: Record<SortKey, (r: RecipeRow) => number> = {
-  margin: (r) => r.marginPct ?? -Infinity,
-  volume: (r) => r.avgDailyVolume30d,
-  cost: (r) => r.costPerUnit ?? -Infinity,
-  sellPrice: (r) => r.sellRefPrice ?? -Infinity,
-  platinumPerDay: (r) => r.platinumPerDay ?? -Infinity,
-};
-
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 25;
 
 export function RecipeTable({
   rows,
   isFiltered,
   onClearFilters,
+  sortKey,
+  desc,
+  onSortChange,
   className,
 }: {
   rows: RecipeRow[];
@@ -30,12 +23,17 @@ export function RecipeTable({
    * un rato" is actively misleading for a search typo (see /impeccable critique 2026-09-18). */
   isFiltered: boolean;
   onClearFilters: () => void;
+  /** Sort state lives in the parent (not here) so a remote station can re-rank server-side instead
+   * of just re-sorting whatever slice already arrived -- see the P0 note on `rankStation`. */
+  sortKey: SortKey;
+  desc: boolean;
+  onSortChange: (key: SortKey) => void;
   className?: string;
 }) {
-  const [sortKey, setSortKey] = useState<SortKey>("platinumPerDay");
-  const [desc, setDesc] = useState(true);
   const [page, setPage] = useState(0);
 
+  // `rows` already arrives sorted by `sortKey` for a remote station (the server ranked it); for a
+  // local station it doesn't, so this re-sort is a no-op there and the only sort there for here.
   const sortedRows = useMemo(() => {
     const accessor = SORT_ACCESSORS[sortKey];
     return [...rows].sort((a, b) => (desc ? accessor(b) - accessor(a) : accessor(a) - accessor(b)));
@@ -51,14 +49,6 @@ export function RecipeTable({
   }, [rows, sortKey, desc]);
 
   const pageRows = sortedRows.slice(currentPage * PAGE_SIZE, currentPage * PAGE_SIZE + PAGE_SIZE);
-
-  function toggleSort(key: SortKey) {
-    if (key === sortKey) setDesc((d) => !d);
-    else {
-      setSortKey(key);
-      setDesc(true);
-    }
-  }
 
   if (rows.length === 0) {
     return (
@@ -85,26 +75,26 @@ export function RecipeTable({
     <div className={cn("mb-20 flex flex-col rounded-md border border-border lg:mb-0 lg:min-h-0 lg:flex-1", className)}>
       <div className="flex items-center gap-2 overflow-x-auto border-b-2 border-double border-border px-3 py-2 sm:hidden">
         <span className="shrink-0 text-xs text-muted-foreground">Ordenar:</span>
-        <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => toggleSort("platinumPerDay")} label="Plata/día" />
-        <MobileSortChip active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" />
-        <MobileSortChip active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Volumen" />
+        <MobileSortChip active={sortKey === "platinumPerDay"} desc={desc} onClick={() => onSortChange("platinumPerDay")} label="Plata/día" />
+        <MobileSortChip active={sortKey === "margin"} desc={desc} onClick={() => onSortChange("margin")} label="Margen" />
+        <MobileSortChip active={sortKey === "volume"} desc={desc} onClick={() => onSortChange("volume")} label="Volumen" />
       </div>
 
       <div className="hidden items-center gap-4 border-b-2 border-double border-border px-3 py-2 text-xs text-muted-foreground sm:flex">
         <span className="w-8 shrink-0">#</span>
         <span className="flex-1">Ítem</span>
         <div className="hidden items-center gap-4 xl:flex">
-          <SortHeader active={sortKey === "cost"} desc={desc} onClick={() => toggleSort("cost")} label="Costo" width="w-14" />
-          <SortHeader active={sortKey === "sellPrice"} desc={desc} onClick={() => toggleSort("sellPrice")} label="Precio venta" width="w-20" />
+          <SortHeader active={sortKey === "cost"} desc={desc} onClick={() => onSortChange("cost")} label="Costo" width="w-14" />
+          <SortHeader active={sortKey === "sellPrice"} desc={desc} onClick={() => onSortChange("sellPrice")} label="Precio venta" width="w-20" />
         </div>
         <span className="hidden w-20 shrink-0 lg:block">Ciudad bono</span>
         <div className="flex items-center gap-4 xl:gap-6">
-          <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => toggleSort("margin")} label="Margen" width="w-12" />
-          <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => toggleSort("volume")} label="Vol/día" width="w-12" />
+          <SortHeader active={sortKey === "margin"} desc={desc} onClick={() => onSortChange("margin")} label="Margen" width="w-12" />
+          <SortHeader active={sortKey === "volume"} desc={desc} onClick={() => onSortChange("volume")} label="Vol/día" width="w-12" />
           <SortHeader
             active={sortKey === "platinumPerDay"}
             desc={desc}
-            onClick={() => toggleSort("platinumPerDay")}
+            onClick={() => onSortChange("platinumPerDay")}
             label="Plata/día"
             width="w-24"
           />

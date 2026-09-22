@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type MarketData } from "@/lib/recipe-math";
+import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type MarketData, type RecipeMathParams } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 
 const recipe: Recipe = {
@@ -344,5 +344,50 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     const refinedLine = row.materials.find((m) => m.itemId === "T6_METALBAR")!;
     expect(artifactLine.effectiveCount).toBe(4); // full count, 0% RRR
     expect(refinedLine.effectiveCount).toBeLessThan(refinedLine.count); // RRR applies normally
+  });
+
+  test("criar el animal base reemplaza su precio de mercado por el costo de cria, y no toca las demas monturas", () => {
+    const mountRecipe: Recipe = {
+      itemId: "T5_MOUNT_HORSE",
+      baseItemId: "T5_MOUNT_HORSE",
+      nameEs: "Caballo T5",
+      nameEn: "T5 Horse",
+      tier: 5,
+      enchant: 0,
+      stationType: "mount",
+      craftingCategory: null,
+      maxQualityLevel: 1,
+      batchSize: 1,
+      craftingFocus: 0,
+      materials: [
+        { itemId: "T5_FARM_HORSE_GROWN", count: 1, category: "other", nameEs: "Caballo del obrero", nameEn: "Journeyman's Horse" },
+        { itemId: "T4_LEATHER", count: 20, category: "other", nameEs: "Cuero", nameEn: "Leather" },
+        // No breeding data for this family -- must keep using the market price even with the toggle on.
+        { itemId: "T5_FARM_GIANTSTAG_GROWN", count: 1, category: "other", nameEs: "Ciervo", nameEn: "Stag" },
+      ],
+      materialItemValue: "1",
+    };
+    const data = market({
+      T5_MOUNT_HORSE: [point("Caerleon", 100000, 100, 1)],
+      T5_FARM_HORSE_GROWN: [point("Caerleon", 999999)], // market price, must be ignored when breeding
+      T4_LEATHER: [point("Caerleon", 10)],
+      T5_FARM_GIANTSTAG_GROWN: [point("Caerleon", 5000)],
+      T1_CARROT: [point("Caerleon", 50)],
+      T2_BEAN: [point("Caerleon", 30)], // cheaper -- must be the one picked
+    });
+    const params: RecipeMathParams = { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"], breedOwnMount: true };
+    const row = computeRecipeRow(mountRecipe, data, params);
+
+    const horseLine = row.materials.find((m) => m.itemId === "T5_FARM_HORSE_GROWN")!;
+    // T5 horse: 225000 silver baby + 31 feed x 30 (cheapest of the two crops) = 225930.
+    expect(horseLine.bred).toBe(true);
+    expect(horseLine.buyRefPrice).toBe(225_000 + 31 * 30);
+
+    const stagLine = row.materials.find((m) => m.itemId === "T5_FARM_GIANTSTAG_GROWN")!;
+    expect(stagLine.bred).toBe(false);
+    expect(stagLine.buyRefPrice).toBe(5000); // untouched market price
+
+    const withoutBreeding = computeRecipeRow(mountRecipe, data, { ...params, breedOwnMount: false });
+    expect(withoutBreeding.materials.find((m) => m.itemId === "T5_FARM_HORSE_GROWN")!.buyRefPrice).toBe(999999);
   });
 });

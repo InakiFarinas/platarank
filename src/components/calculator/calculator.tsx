@@ -13,6 +13,7 @@ import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 import { computeCraft } from "@/lib/craft-calc";
+import { isBreedable } from "@/lib/formulas/breeding";
 import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/calculator/plans-panel";
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
@@ -34,7 +35,7 @@ const STATION_LABEL: Record<string, string> = {
   mount: "Monturas",
 };
 
-const DEFAULTS = { qty: 1, premium: true, blackMarket: false, quality: 1, craftCity: "Brecilien", focus: false, feeRate: 235, extraCost: 0 };
+const DEFAULTS = { qty: 1, premium: true, blackMarket: false, quality: 1, craftCity: "Brecilien", focus: false, feeRate: 500, extraCost: 0 };
 
 /** Everything the player set, as a shareable query string; only non-default values are written. */
 function paramsToQuery(itemId: string, p: PlanParams): string {
@@ -47,6 +48,7 @@ function paramsToQuery(itemId: string, p: PlanParams): string {
   if (p.quality !== DEFAULTS.quality) q.set("ql", String(p.quality));
   if (p.feeRate !== DEFAULTS.feeRate) q.set("fee", String(p.feeRate));
   if (p.extraCost !== DEFAULTS.extraCost) q.set("extra", String(p.extraCost));
+  if (p.breedOwnMount) q.set("cria", "1");
   if (p.sellOverride !== null) q.set("sell", String(p.sellOverride));
   const mo = Object.entries(p.matOverrides);
   if (mo.length > 0) q.set("mo", mo.map(([id, v]) => `${id}:${v}`).join(";"));
@@ -75,6 +77,7 @@ function paramsFromUrl(sp: URLSearchParams): Partial<PlanParams> {
     quality: ql && ql <= 5 ? ql : undefined,
     feeRate: int("fee", 0),
     extraCost: int("extra", 0),
+    breedOwnMount: sp.get("cria") === "1" ? true : undefined,
     sellOverride: int("sell", 0),
     matOverrides: Object.keys(matOverrides).length > 0 ? matOverrides : undefined,
   };
@@ -116,6 +119,7 @@ export function Calculator() {
   const [focus, setFocus] = useState(false);
   const [feeRate, setFeeRate] = useState(235);
   const [extraCost, setExtraCost] = useState(0);
+  const [breedOwnMount, setBreedOwnMount] = useState(false);
   const [sellOverride, setSellOverride] = useState<number | null>(null);
   const [matOverrides, setMatOverrides] = useState<Record<string, number>>({});
 
@@ -221,6 +225,7 @@ export function Calculator() {
     if (p.focus !== undefined) setFocus(p.focus);
     if (p.feeRate !== undefined) setFeeRate(p.feeRate);
     if (p.extraCost !== undefined) setExtraCost(p.extraCost);
+    if (p.breedOwnMount !== undefined) setBreedOwnMount(p.breedOwnMount);
     if (p.sellOverride !== undefined) setSellOverride(p.sellOverride);
     if (p.matOverrides !== undefined) setMatOverrides(p.matOverrides);
   }
@@ -233,9 +238,21 @@ export function Calculator() {
   const calc = useMemo(
     () =>
       data
-        ? computeCraft(data.recipe, data.market, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides })
+        ? computeCraft(data.recipe, data.market, {
+            qty,
+            premium,
+            blackMarket,
+            quality,
+            craftCity,
+            focus,
+            feeRate,
+            extraCost,
+            breedOwnMount,
+            sellOverride,
+            matOverrides,
+          })
         : null,
-    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides],
+    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, sellOverride, matOverrides],
   );
 
   // Keep the address bar a shareable snapshot of the calculation.
@@ -247,14 +264,14 @@ export function Calculator() {
         window.history.replaceState(
           null,
           "",
-          `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides })}`,
+          `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, sellOverride, matOverrides })}`,
         );
       } catch {
         // The address bar just stops mirroring the calculation; nothing else depends on it.
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides]);
+  }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, sellOverride, matOverrides]);
 
   // Screen readers hear the bottom line once typing pauses, not on every keystroke.
   useEffect(() => {
@@ -306,7 +323,19 @@ export function Calculator() {
       ? {
           itemId: data.recipe.itemId,
           itemName: `${data.recipe.nameEs} T${data.recipe.tier}${enchantLabel(data.recipe.enchant)}`,
-          params: { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, sellOverride, matOverrides } satisfies PlanParams,
+          params: {
+            qty,
+            premium,
+            blackMarket,
+            quality,
+            craftCity,
+            focus,
+            feeRate,
+            extraCost,
+            breedOwnMount,
+            sellOverride,
+            matOverrides,
+          } satisfies PlanParams,
           snapshot: { cost: calc.cost, revenue: calc.revenue, profit: calc.profit, sellPrice: calc.sellPrice },
         }
       : null;
@@ -493,6 +522,48 @@ export function Calculator() {
               </div>
             </section>
 
+            {/* City: the single choice that decides the crafting bonus and fee, so it gets its own
+             * panel up front instead of being one more row inside "Condiciones". */}
+            <Panel title="Ciudad de crafteo">
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                {[...REAL_CITIES]
+                  .sort((x, y) => Number(calc.spec?.city === y) - Number(calc.spec?.city === x))
+                  .filter((city) => citiesOpen || city === craftCity || city === calc.spec?.city)
+                  .map((city) => {
+                  const theme = CITY_THEMES[city];
+                  const active = city === craftCity;
+                  const bonus = calc.spec && calc.spec.city === city ? (calc.spec.kind === "refining" ? "+40%" : "+15%") : null;
+                  return (
+                    <button
+                      key={city}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => setCraftCity(city)}
+                      className={cn(
+                        "flex h-14 flex-col items-center justify-center gap-1 rounded-md border-2 px-1 text-sm leading-none transition-colors duration-150",
+                        active ? cn(theme.border, theme.bg, theme.text) : "border-border text-muted-foreground hover:bg-accent/40 hover:text-foreground",
+                      )}
+                    >
+                      <span className="flex items-center gap-1.5">
+                        <CityGlyph theme={theme} />
+                        <span className="truncate font-medium">{city}</span>
+                      </span>
+                      {bonus && <span className="font-mono text-xs text-money">{bonus} bono</span>}
+                    </button>
+                  );
+                })}
+              </div>
+              {(hiddenCities > 0 || citiesOpen) && (
+                <DisclosureButton
+                  open={citiesOpen}
+                  onToggle={() => setCitiesOpen((o) => !o)}
+                  className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {citiesOpen ? "Mostrar menos ciudades" : `Otras ciudades (${hiddenCities})`}
+                </DisclosureButton>
+              )}
+            </Panel>
+
             {/* Conditions */}
             <Panel title="Condiciones">
               <div className="grid gap-4 sm:grid-cols-3">
@@ -526,46 +597,16 @@ export function Calculator() {
                   ]}
                   onChange={(v) => setFocus(v === "f")}
                 />
-              </div>
-
-              <div className="mt-4">
-                <span className="text-xs text-muted-foreground">Ciudad de crafteo</span>
-                <div className="mt-1 grid grid-cols-3 gap-1.5 sm:grid-cols-4">
-                  {[...REAL_CITIES]
-                    .sort((x, y) => Number(calc.spec?.city === y) - Number(calc.spec?.city === x))
-                    .filter((city) => citiesOpen || city === craftCity || city === calc.spec?.city)
-                    .map((city) => {
-                    const theme = CITY_THEMES[city];
-                    const active = city === craftCity;
-                    const bonus = calc.spec && calc.spec.city === city ? (calc.spec.kind === "refining" ? "+40%" : "+15%") : null;
-                    return (
-                      <button
-                        key={city}
-                        type="button"
-                        aria-pressed={active}
-                        onClick={() => setCraftCity(city)}
-                        className={cn(
-                          "flex h-11 flex-col items-center justify-center gap-0.5 rounded-md border px-1 text-xs leading-none transition-colors duration-150",
-                          active ? cn(theme.border, theme.bg, theme.text) : "border-border text-muted-foreground hover:bg-accent/40 hover:text-foreground",
-                        )}
-                      >
-                        <span className="flex items-center gap-1.5">
-                          <CityGlyph theme={theme} />
-                          <span className="truncate font-medium">{city}</span>
-                        </span>
-                        {bonus && <span className="font-mono text-xs text-money">{bonus} bono</span>}
-                      </button>
-                    );
-                  })}
-                </div>
-                {(hiddenCities > 0 || citiesOpen) && (
-                  <DisclosureButton
-                    open={citiesOpen}
-                    onToggle={() => setCitiesOpen((o) => !o)}
-                    className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {citiesOpen ? "Mostrar menos ciudades" : `Otras ciudades (${hiddenCities})`}
-                  </DisclosureButton>
+                {data.recipe.stationType === "mount" && data.recipe.materials.some((m) => isBreedable(m.itemId)) && (
+                  <Segmented
+                    label="Animal base"
+                    value={breedOwnMount ? "cria" : "compra"}
+                    options={[
+                      { value: "compra", text: "Comprado" },
+                      { value: "cria", text: "Criado" },
+                    ]}
+                    onChange={(v) => setBreedOwnMount(v === "cria")}
+                  />
                 )}
               </div>
 
@@ -647,7 +688,7 @@ export function Calculator() {
               }
             >
               <ul className="-my-1 divide-y divide-border">
-                {calc.materials.map(({ m, price, auto, cheapest, noReturn, effective }) => {
+                {calc.materials.map(({ m, price, auto, cheapest, noReturn, bred, effective }) => {
                   const edited = matOverrides[m.itemId] !== undefined;
                   return (
                     <li
@@ -663,7 +704,7 @@ export function Calculator() {
                             {m.count} → {effective.toFixed(2).replace(".", ",")}
                           </span>
                           {noReturn ? " · sin retorno" : ""}
-                          {cheapest && !edited ? ` · ${cheapest}` : ""}
+                          {bred && !edited ? " · criado, no comprado" : cheapest && !edited ? ` · ${cheapest}` : ""}
                         </div>
                       </div>
                       <div className="col-span-3 row-start-2 sm:col-span-1 sm:col-start-3 sm:row-start-1">

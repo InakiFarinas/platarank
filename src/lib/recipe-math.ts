@@ -2,6 +2,7 @@ import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { netSellMultiplier } from "@/lib/formulas/market-tax";
 import { returnRate } from "@/lib/formulas/return-rate";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
+import { BREEDING_FEED_ITEMS, breedingCostSilver, isBreedable } from "@/lib/formulas/breeding";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { BASE_QUALITY_WEIGHTS } from "@/lib/quality-mechanics";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -39,6 +40,9 @@ export type RecipeMathParams = {
    * Thetford, etc. -- see src/lib/city-specialties.ts, parsed from craftingmodifiers.xml). */
   craftCity: Location;
   /** Rows whose sell reference is older than this are still shown but flagged; filtering happens in the UI layer. */
+  /** Monturas only: cría la montura base (caballo/buey) en vez de comprarla ya crecida -- ver
+   * src/lib/formulas/breeding.ts. Sin efecto en cualquier otro rubro o familia de montura. */
+  breedOwnMount: boolean;
 };
 
 export const DEFAULT_PARAMS: RecipeMathParams = {
@@ -46,14 +50,17 @@ export const DEFAULT_PARAMS: RecipeMathParams = {
   sellCities: [...REAL_CITIES, BLACK_MARKET],
   marketShare: 0.1,
   focus: false,
-  stationRatePer100Nutrition: 235,
+  stationRatePer100Nutrition: 500,
   craftCity: "Brecilien",
+  breedOwnMount: false,
 };
 
 export type MaterialLine = RecipeMaterial & {
   buyRefPrice: number | null;
   effectiveCount: number;
   costContribution: number | null;
+  /** True when `buyRefPrice` is the cost of raising this material yourself, not its market price. */
+  bred: boolean;
 };
 
 export type QualityBreakdownEntry = {
@@ -63,6 +70,16 @@ export type QualityBreakdownEntry = {
   citiesCount: number;
   avgDailyVolume30d: number;
   liquid: boolean;
+};
+
+export type SortKey = "margin" | "volume" | "cost" | "sellPrice" | "platinumPerDay";
+
+export const SORT_ACCESSORS: Record<SortKey, (r: RecipeRow) => number> = {
+  margin: (r) => r.marginPct ?? -Infinity,
+  volume: (r) => r.avgDailyVolume30d,
+  cost: (r) => r.costPerUnit ?? -Infinity,
+  sellPrice: (r) => r.sellRefPrice ?? -Infinity,
+  platinumPerDay: (r) => r.platinumPerDay ?? -Infinity,
 };
 
 export type RecipeRow = {
@@ -105,21 +122,35 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     ? computeGearSellSide(recipe.itemId, market, params)
     : computeSingleQualitySellSide(recipe.itemId, market, params);
 
+  // Only resolved when the toggle is on and this recipe actually has a breedable material -- every
+  // other row (the overwhelming majority, including every non-monturas recipe) skips this entirely.
+  const cheapestFeedPrice = params.breedOwnMount ? cheapestBreedingFeedPrice(market, params.buyCities) : null;
+
   const materials: MaterialLine[] = recipe.materials.map((m) => {
-    const points = (market.get(m.itemId) ?? []).filter(
-      (p) => p.quality === 1 && params.buyCities.includes(p.city as Location) && p.price !== null,
-    );
-    const buyQuotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price! }));
-    const buyStat = robustStat(buyQuotes, "min");
+    const bred = params.breedOwnMount && isBreedable(m.itemId);
+    const breedCost = bred ? breedingCostSilver(m.itemId, cheapestFeedPrice) : null;
+
+    let buyRefPrice: number | null;
+    if (breedCost !== null) {
+      buyRefPrice = breedCost;
+    } else {
+      const points = (market.get(m.itemId) ?? []).filter(
+        (p) => p.quality === 1 && params.buyCities.includes(p.city as Location) && p.price !== null,
+      );
+      const buyQuotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price! }));
+      buyRefPrice = robustStat(buyQuotes, "min").value;
+    }
+
     // Hard engine rule: artifacts (runic/soul/relic/avalonian, plus faction crests and base mounts,
     // neither of which this app recipes) never get RRR, regardless of focus or city specialty.
     const materialReturnRatePct = m.category === "artifact" ? 0 : returnRatePct;
     const effectiveCount = m.count * (1 - materialReturnRatePct);
     return {
       ...m,
-      buyRefPrice: buyStat.value,
+      buyRefPrice,
       effectiveCount,
-      costContribution: buyStat.value !== null ? buyStat.value * effectiveCount : null,
+      costContribution: buyRefPrice !== null ? buyRefPrice * effectiveCount : null,
+      bred: breedCost !== null,
     };
   });
 
@@ -242,4 +273,16 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
 function oldestAge(points: CityPricePoint[], cities: string[]): number | null {
   const ages = points.filter((p) => cities.includes(p.city) && p.priceAgeSeconds !== null).map((p) => p.priceAgeSeconds!);
   return ages.length > 0 ? Math.max(...ages) : null;
+}
+
+/** Cheapest of the 8 tier-equivalent crops (T1_CARROT..T8_PUMPKIN), any of which feeds a bred
+ * horse/ox for the same nutrition -- see src/lib/formulas/breeding.ts. */
+function cheapestBreedingFeedPrice(market: MarketData, buyCities: Location[]): number | null {
+  const quotes: CityQuote[] = [];
+  for (const itemId of BREEDING_FEED_ITEMS) {
+    for (const p of market.get(itemId) ?? []) {
+      if (p.quality === 1 && buyCities.includes(p.city as Location) && p.price !== null) quotes.push({ city: p.city, price: p.price });
+    }
+  }
+  return robustStat(quotes, "min").value;
 }

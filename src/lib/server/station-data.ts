@@ -1,8 +1,9 @@
 import { eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { recipes as recipesTable, marketAggregates, type Recipe } from "@/lib/db/schema";
-import { computeRecipeRow, type CityPricePoint, type RecipeMathParams, type RecipeRow } from "@/lib/recipe-math";
+import { computeRecipeRow, SORT_ACCESSORS, type CityPricePoint, type RecipeMathParams, type RecipeRow, type SortKey } from "@/lib/recipe-math";
 import { applyFilters, type FilterParams } from "@/lib/recipe-filters";
+import { BREEDING_FEED_ITEMS } from "@/lib/formulas/breeding";
 
 /** Rows shipped per ranking view of a large station (gear). */
 export const ROW_LIMIT = 300;
@@ -18,6 +19,11 @@ export async function loadStationData(stationType: StationType): Promise<Station
   for (const r of recipeRows) {
     relevantItemIds.add(r.itemId);
     for (const m of r.materials) relevantItemIds.add(m.itemId);
+  }
+  // Monturas: the "criar por tu cuenta" toggle prices feed crops that aren't a material of any
+  // mount recipe (see src/lib/formulas/breeding.ts), so they'd otherwise never be fetched here.
+  if (stationType === "mount") {
+    for (const itemId of BREEDING_FEED_ITEMS) relevantItemIds.add(itemId);
   }
 
   // Fetch only the aggregates this station's recipes actually reference -- with thousands of gear
@@ -61,18 +67,23 @@ export function loadStationDataCached(stationType: StationType): Promise<Station
 }
 
 /** Ranks every recipe of a station with the given assumptions, filters, and returns the top rows
- * by silver/day plus the total that passed the filters. */
+ * under the given sort (silver/day descending by default) plus the total that passed the filters.
+ * The sort must run BEFORE the slice to `limit` -- ranking by silver/day and then truncating before
+ * re-sorting by another column would silently hide the true top rows for that column (see
+ * /impeccable critique 2026-09-22). */
 export function rankStation(
   data: StationData,
   params: RecipeMathParams,
   filters: FilterParams,
   limit: number,
+  sort: { key: SortKey; desc: boolean } = { key: "platinumPerDay", desc: true },
 ): { rows: RecipeRow[]; total: number } {
   const market = new Map(Object.entries(data.marketByItem));
   const all = applyFilters(
     data.recipes.map((r) => computeRecipeRow(r, market, params)),
     filters,
   );
-  all.sort((a, b) => (b.platinumPerDay ?? -Infinity) - (a.platinumPerDay ?? -Infinity));
+  const accessor = SORT_ACCESSORS[sort.key];
+  all.sort((a, b) => (sort.desc ? accessor(b) - accessor(a) : accessor(a) - accessor(b)));
   return { rows: all.slice(0, limit), total: all.length };
 }

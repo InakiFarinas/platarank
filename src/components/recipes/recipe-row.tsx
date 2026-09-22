@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useId, useState, useSyncExternalStore } from "react";
-import { Calculator, ChevronDown, Droplet, ScrollText } from "lucide-react";
+import { Calculator, ChevronDown, Droplet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -153,7 +153,6 @@ function ContractCard({ row }: { row: RecipeRowData }) {
               <div className="flex shrink-0 flex-col items-end text-right">
                 <div className="font-mono text-xl font-semibold tabular-nums text-money">{formatSilver(row.platinumPerDay)}</div>
                 <div className="text-xs text-muted-foreground">plata/día</div>
-                <ScrollText className="mt-1 h-3.5 w-3.5 text-muted-foreground/60" aria-hidden="true" />
               </div>
             </div>
 
@@ -164,6 +163,11 @@ function ContractCard({ row }: { row: RecipeRowData }) {
                 /día
               </div>
               {row.qualityBreakdown && <QualityGems breakdown={row.qualityBreakdown} />}
+            </div>
+
+            <div className="mt-2.5 flex items-center justify-center gap-1 border-t border-dashed border-border pt-2 text-xs text-muted-foreground">
+              Ver detalle
+              <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
             </div>
           </button>
         }
@@ -283,7 +287,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
                 k={`${m.nameEs} x${m.count}`}
                 v={
                   m.buyRefPrice !== null
-                    ? `${formatSilver(m.buyRefPrice)} c/u -> ${formatSilver(m.costContribution)}`
+                    ? `${formatSilver(m.buyRefPrice)} c/u -> ${formatSilver(m.costContribution)}${m.bred ? " (criado)" : ""}`
                     : "sin dato de precio"
                 }
               />
