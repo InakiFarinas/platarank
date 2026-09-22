@@ -232,7 +232,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
             <Row k="Dato más viejo usado" v={formatAge(row.sellRefAgeSeconds)} />
             <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row)})`} />
             <Row k="Item Value (materiales, lote)" v={formatSilver(Number(row.recipe.materialItemValue))} />
-            <Row k="Fee de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
+            <Row k="Tarifa de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
             <Row k="Cuota de mercado" v={`${Math.round(row.marketSharePct * 100)}%`} />
           </dl>
           {row.qualityBreakdown && (

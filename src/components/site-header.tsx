@@ -190,7 +190,7 @@ export function SiteHeader({
           <div className="ml-2 hidden sm:block">
             <AuthButton />
           </div>
-            )}
+        )}
           </nav>
         </div>
       </div>
