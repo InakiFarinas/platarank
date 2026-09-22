@@ -3,7 +3,7 @@
 import { formatInt } from "@/lib/format";
 import { useState } from "react";
 import { Bell } from "lucide-react";
-import { SilverInput } from "@/components/calculator/ui";
+import { CTA_PRIMARY, CTA_SECONDARY, SilverInput } from "@/components/calculator/ui";
 import { WEBHOOK_PATTERN, type AlertsApi, type PlanAlert } from "@/components/alerts/use-alerts";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +56,7 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
           type="button"
           disabled={busy || !valid}
           onClick={save}
-          className="h-9 rounded-sm border border-money bg-money px-3 text-xs font-medium tracking-wide text-money-foreground transition-opacity duration-150 hover:opacity-90 disabled:opacity-50"
+          className={cn(CTA_PRIMARY, "h-9 px-3 text-xs")}
         >
           Guardar
         </button>
@@ -66,7 +66,7 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
               type="button"
               disabled={busy}
               onClick={test}
-              className="h-9 rounded-sm border border-money/50 bg-money/10 px-3 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20 disabled:opacity-50"
+              className={cn(CTA_SECONDARY, "h-9 px-3 text-xs")}
             >
               Enviar prueba
             </button>
@@ -127,7 +127,7 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
               type="button"
               disabled={threshold <= 0}
               onClick={() => api.saveAlert(planId, threshold)}
-              className="h-9 rounded-sm border border-money bg-money px-3 text-xs font-medium tracking-wide text-money-foreground transition-opacity duration-150 hover:opacity-90 disabled:opacity-50"
+              className={cn(CTA_PRIMARY, "h-9 px-3 text-xs")}
             >
               {alert ? "Actualizar" : "Activar aviso"}
             </button>

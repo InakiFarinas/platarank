@@ -1,12 +1,11 @@
 import { BLACK_MARKET } from "@/lib/aodp/cities";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
+import { saleTaxRate } from "@/lib/formulas/market-tax";
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { returnRate } from "@/lib/formulas/return-rate";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
-
-const SETUP_FEE = 0.025;
 
 /** Everything the player controls in the crafting calculator. Also what a saved plan stores. */
 export type CraftParams = {
@@ -67,7 +66,7 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
   const materialsTotal = materials.reduce((s, x) => s + x.price * x.effective, 0) * crafts;
   const feeTotal = feePerCraft * crafts;
   const cost = materialsTotal + feeTotal + p.extraCost;
-  const taxRate = (p.premium ? 0.04 : 0.08) + SETUP_FEE;
+  const taxRate = saleTaxRate(p.premium);
   const gross = sellPrice * produced;
   const revenue = gross * (1 - taxRate);
   const profit = revenue - cost;

@@ -3,7 +3,7 @@
 import { formatInt } from "@/lib/format";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, History, Pin, Search } from "lucide-react";
+import { History, Pin, Search } from "lucide-react";
 import { CityGlyph } from "@/components/site-header";
 import { enchantLabel, formatAge } from "@/components/recipes/format";
 import { REAL_CITIES, type Location } from "@/lib/aodp/cities";
@@ -17,7 +17,7 @@ import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
 import { AddToSession } from "@/components/sessions/add-to-session";
-import { Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
+import { CTA_PRIMARY, CTA_SECONDARY, DisclosureButton, Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
 type Hit = { itemId: string; baseItemId: string; nameEs: string; tier: number; stationType: string };
 type Variant = { itemId: string; tier: number; enchant: number };
@@ -559,15 +559,13 @@ export function Calculator() {
                   })}
                 </div>
                 {(hiddenCities > 0 || citiesOpen) && (
-                  <button
-                    type="button"
-                    aria-expanded={citiesOpen}
-                    onClick={() => setCitiesOpen((o) => !o)}
+                  <DisclosureButton
+                    open={citiesOpen}
+                    onToggle={() => setCitiesOpen((o) => !o)}
                     className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", citiesOpen && "rotate-180")} />
                     {citiesOpen ? "Mostrar menos ciudades" : `Otras ciudades (${hiddenCities})`}
-                  </button>
+                  </DisclosureButton>
                 )}
               </div>
 
@@ -612,16 +610,14 @@ export function Calculator() {
                 )}
               </div>
 
-              <button
-                type="button"
-                aria-expanded={advOpen}
-                onClick={() => setAdvOpen((o) => !o)}
+              <DisclosureButton
+                open={advOpen}
+                onToggle={() => setAdvOpen((o) => !o)}
                 className="mt-4 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
               >
-                <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", advOpen && "rotate-180")} />
                 Configuración avanzada
                 {(feeRate !== 235 || extraCost > 0) && <span className="text-money">(editada)</span>}
-              </button>
+              </DisclosureButton>
               {advOpen && (
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   <Field label="Tarifa de estación (por 100 nutrición)" hint={<InfoTip term="¿Qué es?" text="Plata que cobra la estación por cada 100 de nutrición que consume tu craft. La fija el dueño de la estación y la ves en el juego como tarifa de uso." />}>
@@ -765,15 +761,13 @@ export function Calculator() {
                     {focus && <Line label="Foco necesario (sin maestrías)" value={formatInt(calc.focusTotal)} muted />}
                     <Line label="Volumen de ventas (por día)" value={formatInt(calc.volume)} muted />
                   </dl>
-                  <button
-                    type="button"
-                    aria-expanded={srcOpen}
-                    onClick={() => setSrcOpen((o) => !o)}
+                  <DisclosureButton
+                    open={srcOpen}
+                    onToggle={() => setSrcOpen((o) => !o)}
                     className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-money underline-offset-2 hover:underline"
                   >
-                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", srcOpen && "rotate-180")} />
                     De dónde sale el precio de venta
-                  </button>
+                  </DisclosureButton>
                   {srcOpen && <SellSource calc={calc} edited={sellOverride !== null} quality={quality} />}
                 </div>
 
@@ -799,15 +793,14 @@ export function Calculator() {
                 </div>
 
                 <div className="border-t border-border pt-3">
-                  <button
-                    type="button"
-                    aria-expanded={saveOpen}
-                    onClick={() => setSaveOpen((o) => !o)}
-                    className="flex w-full items-center justify-between rounded-sm border border-money/50 bg-money/10 px-3 py-2 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20"
+                  <DisclosureButton
+                    open={saveOpen}
+                    onToggle={() => setSaveOpen((o) => !o)}
+                    chevronPosition="end"
+                    className={cn(CTA_SECONDARY, "flex w-full items-center justify-between px-3 py-2 text-xs")}
                   >
                     Guardar este cálculo
-                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-150", saveOpen && "rotate-180")} />
-                  </button>
+                  </DisclosureButton>
                   {saveOpen && (
                     <div className="mt-3 space-y-3">
                       <SavePlanForm api={plansApi} draft={draft} />
@@ -961,7 +954,7 @@ function EmptyState({
       <button
         type="button"
         onClick={onFocusSearch}
-        className="mt-4 rounded-sm border border-money bg-money px-4 py-2 text-sm font-medium tracking-wide text-money-foreground transition-opacity duration-150 hover:opacity-90"
+        className={cn(CTA_PRIMARY, "mt-4 px-4 py-2 text-sm")}
       >
         Buscar ítem
       </button>

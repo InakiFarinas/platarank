@@ -2,8 +2,16 @@
 
 import { formatInt } from "@/lib/format";
 import { cloneElement, isValidElement, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
-import { HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+/** The app's one money-colored CTA look, in filled and outline flavors. Size (height, padding,
+ * text size) stays per-call since it varies by context -- these constants only own color, weight
+ * and the hover/disabled interaction, so a palette or interaction change only needs editing here. */
+export const CTA_PRIMARY =
+  "rounded-sm border border-money bg-money font-medium tracking-wide text-money-foreground transition-opacity duration-150 hover:opacity-90 disabled:opacity-50";
+export const CTA_SECONDARY =
+  "rounded-sm border border-money/50 bg-money/10 font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20 disabled:opacity-50";
 
 /** Mutually exclusive choice rendered as a joined button group -- clearer than a switch when both
  * sides have a name (Premium / Sin premium, Royal / Black Market). */
@@ -170,5 +178,74 @@ export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
         </span>
       )}
     </span>
+  );
+}
+
+/** A toggle button with a chevron that flips 180° when open -- the calculator's own recurring
+ * disclosure pattern ("Otras ciudades", "Configuración avanzada", "De dónde sale el precio",
+ * "Guardar este cálculo"), each of which used to hand-roll the same button + chevron markup. */
+export function DisclosureButton({
+  open,
+  onToggle,
+  children,
+  className,
+  chevronPosition = "start",
+}: {
+  open: boolean;
+  onToggle: () => void;
+  children: ReactNode;
+  className?: string;
+  chevronPosition?: "start" | "end";
+}) {
+  const chevron = <ChevronDown className={cn("h-3.5 w-3.5 shrink-0 transition-transform duration-150", open && "rotate-180")} />;
+  return (
+    <button type="button" aria-expanded={open} onClick={onToggle} className={className}>
+      {chevronPosition === "start" && chevron}
+      {children}
+      {chevronPosition === "end" && chevron}
+    </button>
+  );
+}
+
+/** Trash icon that turns into an inline "Borrar / Cancelar" pair on click, instead of deleting on
+ * the first tap -- shared by every list here (planificaciones, sesiones) that lets the player
+ * remove a saved row. */
+export function ConfirmDelete({
+  confirming,
+  onRequestConfirm,
+  onConfirm,
+  onCancel,
+  label,
+  confirmLabel = "Borrar",
+}: {
+  confirming: boolean;
+  onRequestConfirm: () => void;
+  onConfirm: () => void;
+  onCancel: () => void;
+  /** aria-label for the trash icon button, e.g. `Borrar ${name}`. */
+  label: string;
+  confirmLabel?: string;
+}) {
+  if (confirming) {
+    return (
+      <span className="flex items-center gap-2 text-xs">
+        <button type="button" onClick={onConfirm} className="text-destructive underline underline-offset-2">
+          {confirmLabel}
+        </button>
+        <button type="button" onClick={onCancel} className="text-muted-foreground underline underline-offset-2">
+          Cancelar
+        </button>
+      </span>
+    );
+  }
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      onClick={onRequestConfirm}
+      className="relative p-1.5 text-muted-foreground transition-colors hover:text-destructive after:absolute after:-inset-1.5 after:content-['']"
+    >
+      <Trash2 className="h-4 w-4" />
+    </button>
   );
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Pencil, Trash2 } from "lucide-react";
 import { itemIconUrl } from "@/lib/item-icons";
 import { cn } from "@/lib/utils";
-import { Panel } from "@/components/calculator/ui";
+import { CTA_PRIMARY, ConfirmDelete, Panel } from "@/components/calculator/ui";
 import { itemTotals, sessionTotals, useSessions, type CraftingSession, type SessionItem, type SessionsApi } from "@/components/sessions/use-sessions";
 
 const signed = (n: number) => `${n >= 0 ? "+" : "−"}${formatInt(Math.abs(n))}`;
@@ -34,7 +34,7 @@ export function SessionsView() {
         </p>
         <Link
           href="/es/calculadora"
-          className="mt-4 inline-block rounded-sm border border-money bg-money px-4 py-2 text-sm font-medium tracking-wide text-money-foreground transition-opacity duration-150 hover:opacity-90"
+          className={cn(CTA_PRIMARY, "mt-4 inline-block px-4 py-2 text-sm")}
         >
           Ir a la calculadora
         </Link>
@@ -69,25 +69,14 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
       aside={
         <span className="flex items-center gap-3">
           <span>{new Date(session.created_at).toLocaleDateString("es-AR")}</span>
-          {confirming ? (
-            <span className="flex items-center gap-2">
-              <button type="button" onClick={() => api.deleteSession(session.id)} className="text-destructive underline underline-offset-2">
-                Borrar sesión
-              </button>
-              <button type="button" onClick={() => setConfirming(false)} className="underline underline-offset-2">
-                Cancelar
-              </button>
-            </span>
-          ) : (
-            <button
-              type="button"
-              aria-label={`Borrar la sesión ${session.name}`}
-              onClick={() => setConfirming(true)}
-              className="relative text-muted-foreground transition-colors hover:text-destructive after:absolute after:-inset-2 after:content-['']"
-            >
-              <Trash2 className="h-4 w-4" />
-            </button>
-          )}
+          <ConfirmDelete
+            confirming={confirming}
+            onRequestConfirm={() => setConfirming(true)}
+            onConfirm={() => api.deleteSession(session.id)}
+            onCancel={() => setConfirming(false)}
+            label={`Borrar la sesión ${session.name}`}
+            confirmLabel="Borrar sesión"
+          />
         </span>
       }
     >

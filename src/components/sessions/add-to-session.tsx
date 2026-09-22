@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { PlanDraft } from "@/components/calculator/plans-panel";
+import { CTA_SECONDARY } from "@/components/calculator/ui";
 import { useSessions } from "@/components/sessions/use-sessions";
+import { cn } from "@/lib/utils";
 
 const NEW = "__new__";
 
@@ -62,7 +64,7 @@ export function AddToSession({ draft }: { draft: PlanDraft }) {
               setDone(`${draft.itemName} agregado.`);
             }
           }}
-          className="h-9 shrink-0 rounded-sm border border-money/50 bg-money/10 px-3 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20 disabled:opacity-50"
+          className={cn(CTA_SECONDARY, "h-9 shrink-0 px-3 text-xs")}
         >
           {busy ? "Agregando…" : "Agregar"}
         </button>

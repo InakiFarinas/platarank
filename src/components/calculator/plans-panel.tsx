@@ -2,12 +2,12 @@
 
 import { formatInt } from "@/lib/format";
 import { useCallback, useEffect, useState } from "react";
-import { Trash2 } from "lucide-react";
 import type { CraftParams } from "@/lib/craft-calc";
 import { AlertControl } from "@/components/alerts/alerts-ui";
 import type { AlertsApi } from "@/components/alerts/use-alerts";
 import { createClient } from "@/lib/supabase/client";
 import { itemIconUrl } from "@/lib/item-icons";
+import { CTA_SECONDARY, ConfirmDelete } from "@/components/calculator/ui";
 import { cn } from "@/lib/utils";
 
 export type PlanParams = CraftParams;
@@ -99,7 +99,7 @@ export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }
               setSaved(true);
             }
           }}
-          className="h-9 shrink-0 rounded-sm border border-money/50 bg-money/10 px-3 text-xs font-medium tracking-wide text-money transition-colors duration-150 hover:bg-money/20 disabled:opacity-50"
+          className={cn(CTA_SECONDARY, "h-9 shrink-0 px-3 text-xs")}
         >
           {busy ? "Guardando…" : "Guardar"}
         </button>
@@ -147,32 +147,16 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
             {p.snapshot.profit >= 0 ? "+" : ""}
             {formatInt(p.snapshot.profit)}
           </span>
-          {confirmId === p.id ? (
-            <span className="flex items-center gap-2 text-xs">
-              <button
-                type="button"
-                onClick={() => {
-                  setConfirmId(null);
-                  void api.remove(p.id);
-                }}
-                className="text-destructive underline underline-offset-2"
-              >
-                Borrar
-              </button>
-              <button type="button" onClick={() => setConfirmId(null)} className="text-muted-foreground underline underline-offset-2">
-                Cancelar
-              </button>
-            </span>
-          ) : (
-            <button
-              type="button"
-              aria-label={`Borrar ${p.name}`}
-              onClick={() => setConfirmId(p.id)}
-              className="relative p-1.5 text-muted-foreground transition-colors hover:text-destructive after:absolute after:-inset-1.5 after:content-['']"
-            >
-              <Trash2 className="h-4 w-4" />
-            </button>
-          )}
+          <ConfirmDelete
+            confirming={confirmId === p.id}
+            onRequestConfirm={() => setConfirmId(p.id)}
+            onConfirm={() => {
+              setConfirmId(null);
+              void api.remove(p.id);
+            }}
+            onCancel={() => setConfirmId(null)}
+            label={`Borrar ${p.name}`}
+          />
           </div>
           <div className="mt-1.5 pl-[3.25rem]">
             <AlertControl planId={p.id} currentProfit={p.snapshot.profit} api={alertsApi} />
