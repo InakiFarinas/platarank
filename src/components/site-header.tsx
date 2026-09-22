@@ -89,7 +89,7 @@ export function SiteHeader({
               <span className="hidden font-display text-xl tracking-wide sm:inline sm:text-2xl">PlataRank</span>
             </Link>
 
-        <div className="hidden min-w-0 flex-1 items-center gap-1.5 lg:flex">
+        <div className="hidden min-w-0 flex-1 items-center gap-1 xl:flex">
           {NAV_ITEMS.map((item) => (
             <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href)} />
           ))}
@@ -101,7 +101,7 @@ export function SiteHeader({
               <button
                 type="button"
                 aria-label="Abrir menú"
-                className="relative ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground after:absolute after:-inset-2 after:content-[''] lg:hidden"
+                className="relative ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground after:absolute after:-inset-2 after:content-[''] xl:hidden"
               >
                 <Menu className="h-4 w-4" />
               </button>
@@ -267,7 +267,7 @@ function NavTab({ href, label, count, active }: { href: string; label: string; c
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "relative flex shrink-0 items-center gap-1.5 rounded-t-sm border-b-2 px-2.5 py-1 text-xs transition-colors after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']",
+        "relative flex shrink-0 items-center gap-1.5 rounded-t-sm border-b-2 px-2 py-1 text-xs transition-colors after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']",
         active
           ? "border-money text-money"
           : "border-transparent text-muted-foreground hover:border-money/30 hover:text-foreground",
