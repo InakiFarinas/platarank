@@ -33,6 +33,9 @@ export function classifyMaterial(itemId: string): MaterialCategory {
   // A base mount consumed by a mount recipe (e.g. T5_MOUNT_HORSE inside the armored horse) never
   // gets RRR and doesn't count toward the fee, same engine rule as artifacts.
   if (itemId.includes("_MOUNT_")) return "artifact";
+  // Tomes of Insight (Bolsa de visión's skill-book material) never get RRR either -- same engine
+  // rule as runic/soul/relic/avalonian materials, confirmed by the user 2026-09-23.
+  if (itemId.includes("_SKILLBOOK_")) return "artifact";
   // Fish sauce is cocina's enrichment ingredient for enchanted meals -- same role as arcane
   // extract for potions, so it gets the same treatment (excluded from the fee, not "farm").
   if (itemId.includes("_FISHSAUCE_")) return "extract";
