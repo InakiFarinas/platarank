@@ -61,6 +61,8 @@ export type MaterialLine = RecipeMaterial & {
   costContribution: number | null;
   /** True when `buyRefPrice` is the cost of raising this material yourself, not its market price. */
   bred: boolean;
+  /** Which city gave `buyRefPrice` -- null when bred (no city to go buy it in) or unpriced. */
+  cheapestCity: string | null;
 };
 
 export type QualityBreakdownEntry = {
@@ -144,6 +146,7 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
       : null;
 
     let buyRefPrice: number | null;
+    let cheapestCity: string | null = null;
     if (breedCost !== null) {
       buyRefPrice = breedCost;
     } else {
@@ -151,7 +154,9 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
         (p) => p.quality === 1 && params.buyCities.includes(p.city as Location) && p.price !== null,
       );
       const buyQuotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
-      buyRefPrice = robustStat(buyQuotes, "min").value;
+      const buyStat = robustStat(buyQuotes, "min");
+      buyRefPrice = buyStat.value;
+      cheapestCity = buyStat.result.kept.find((q) => q.price === buyStat.value)?.city ?? null;
     }
 
     // Hard engine rule: artifacts (runic/soul/relic/avalonian, plus faction crests and base mounts,
@@ -164,6 +169,7 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
       effectiveCount,
       costContribution: buyRefPrice !== null ? buyRefPrice * effectiveCount : null,
       bred: breedCost !== null,
+      cheapestCity,
     };
   });
 

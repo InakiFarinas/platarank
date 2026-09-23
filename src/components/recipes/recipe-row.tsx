@@ -288,7 +288,9 @@ function RowDetail({ row }: { row: RecipeRowData }) {
                 k={`${m.nameEs} x${m.count}`}
                 v={
                   m.buyRefPrice !== null
-                    ? `${formatSilver(m.buyRefPrice)} c/u -> ${formatSilver(m.costContribution)}${m.bred ? " (criado)" : ""}`
+                    ? `${formatSilver(m.buyRefPrice)} c/u -> ${formatSilver(m.costContribution)}${
+                        m.bred ? " (criado)" : m.cheapestCity ? ` · ${m.cheapestCity}` : ""
+                      }`
                     : "sin dato de precio"
                 }
               />
