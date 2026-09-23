@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 const DISCARD_REASON_LABEL: Record<string, string> = {
   outlier_low: "descartado: precio anormalmente bajo (posible bait)",
   outlier_high: "descartado: precio anormalmente alto (posible troll listing)",
+  outlier_self: "descartado: muy lejos del propio promedio de 30 días de esa ciudad (posible bait)",
 };
 
 /** Screen readers otherwise get the row's raw concatenated text nodes (name, tier badge, every

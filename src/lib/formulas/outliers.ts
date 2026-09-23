@@ -1,14 +1,23 @@
 // Asymmetric outlier trimming for cross-city price quotes.
 //
-// Rules (see brief section 4): with fewer than 3 quotes, nothing is filtered -- there's nothing
-// to compare against, and filtering at n=2 can leave you with the bad one. With 3+, trim against
-// the median of the set, and only the tail that affects the statistic you're about to compute:
-// the low tail for a min, the high tail for a max, both tails for a median.
+// Rules (see brief section 4): with fewer than 3 quotes, nothing is cross-city-filtered -- there's
+// nothing to compare against, and filtering at n=2 can leave you with the bad one. With 3+, trim
+// against the median of the set, and only the tail that affects the statistic you're about to
+// compute: the low tail for a min, the high tail for a max, both tails for a median.
 export const LOW_OUTLIER_FACTOR = 0.4;
 export const HIGH_OUTLIER_FACTOR = 2.5;
 
-export type CityQuote = { city: string; price: number };
-export type DiscardReason = "outlier_low" | "outlier_high";
+export type CityQuote = {
+  city: string;
+  price: number;
+  /** That city's own 30-day weighted average, when known. A live price this far from the city's
+   * OWN history is a bait/stale listing regardless of how many other cities are being compared --
+   * this is the only check that can catch a lone quote (n=1), where cross-city trimming has
+   * nothing to trim against (see /impeccable bug report 2026-09-23: a single Brecilien listing at
+   * 16.0M against its own weighted 33.3k average inflated a recipe to 2.8B plata/día). */
+  selfRef?: number | null;
+};
+export type DiscardReason = "outlier_low" | "outlier_high" | "outlier_self";
 export type TrimTarget = "min" | "max" | "median";
 
 export type TrimResult = {
@@ -17,19 +26,28 @@ export type TrimResult = {
 };
 
 export function trimOutliers(quotes: CityQuote[], target: TrimTarget): TrimResult {
-  if (quotes.length < 3) {
-    return { kept: quotes, discarded: [] };
+  const discarded: (CityQuote & { reason: DiscardReason })[] = [];
+  const selfChecked: CityQuote[] = [];
+  for (const q of quotes) {
+    if (q.selfRef != null && (q.price < q.selfRef * LOW_OUTLIER_FACTOR || q.price > q.selfRef * HIGH_OUTLIER_FACTOR)) {
+      discarded.push({ ...q, reason: "outlier_self" });
+    } else {
+      selfChecked.push(q);
+    }
   }
 
-  const med = median(quotes.map((q) => q.price));
+  if (selfChecked.length < 3) {
+    return { kept: selfChecked, discarded };
+  }
+
+  const med = median(selfChecked.map((q) => q.price));
   const low = med * LOW_OUTLIER_FACTOR;
   const high = med * HIGH_OUTLIER_FACTOR;
   const trimLow = target === "min" || target === "median";
   const trimHigh = target === "max" || target === "median";
 
   const kept: CityQuote[] = [];
-  const discarded: (CityQuote & { reason: DiscardReason })[] = [];
-  for (const q of quotes) {
+  for (const q of selfChecked) {
     if (trimLow && q.price < low) {
       discarded.push({ ...q, reason: "outlier_low" });
     } else if (trimHigh && q.price > high) {

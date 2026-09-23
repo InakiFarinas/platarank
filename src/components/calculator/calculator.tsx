@@ -924,6 +924,7 @@ function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name
 const DISCARD_REASON: Record<string, string> = {
   outlier_low: "muy por debajo de la mediana",
   outlier_high: "muy por encima de la mediana",
+  outlier_self: "muy lejos del propio promedio de 30 días de esa ciudad",
 };
 
 function SellSource({ calc, edited, quality }: { calc: ReturnType<typeof computeCraft>; edited: boolean; quality: number }) {

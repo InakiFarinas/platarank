@@ -32,7 +32,8 @@ function cheapestMarketPrice(market: Record<string, CityPricePoint[]>, itemIds: 
   const quotes: CityQuote[] = [];
   for (const itemId of itemIds) {
     for (const pt of market[itemId] ?? []) {
-      if (pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET) quotes.push({ city: pt.city, price: pt.price });
+      if (pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET)
+        quotes.push({ city: pt.city, price: pt.price, selfRef: pt.weightedAvgPrice30d });
     }
   }
   return robustStat(quotes, "min").value;
@@ -74,7 +75,7 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
       cheapest = null;
     } else {
       const points = (market[m.itemId] ?? []).filter((pt) => pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET);
-      const quotes: CityQuote[] = points.map((pt) => ({ city: pt.city, price: pt.price! }));
+      const quotes: CityQuote[] = points.map((pt) => ({ city: pt.city, price: pt.price!, selfRef: pt.weightedAvgPrice30d }));
       stat = robustStat(quotes, "min");
       cheapest = stat.result.kept.find((q) => q.price === stat.value)?.city ?? null;
     }
@@ -86,7 +87,10 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
   const sellPoints = (market[recipe.itemId] ?? []).filter(
     (pt) => pt.quality === p.quality && pt.price !== null && (p.blackMarket ? pt.city === BLACK_MARKET : pt.city !== BLACK_MARKET),
   );
-  const sellStat = robustStat(sellPoints.map((pt) => ({ city: pt.city, price: pt.price! })), "median");
+  const sellStat = robustStat(
+    sellPoints.map((pt) => ({ city: pt.city, price: pt.price!, selfRef: pt.weightedAvgPrice30d })),
+    "median",
+  );
   const discardedByCity = new Map(sellStat.result.discarded.map((d) => [d.city, d.reason]));
   const sellBreakdown = sellPoints
     .map((pt) => ({
@@ -98,8 +102,13 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     }))
     .sort((a, b) => a.price - b.price);
   const sellPrice = p.sellOverride ?? sellStat.value ?? 0;
-  const ages = sellPoints.map((pt) => pt.priceAgeSeconds).filter((a): a is number => a !== null);
-  const volume = sellPoints.reduce((s, pt) => s + pt.avgDailyVolume30d, 0);
+  // Only the cities whose price actually fed `sellStat` may lend their volume to it -- a city with
+  // real daily volume but no live price (or a discarded bait listing) must not inflate plata/día
+  // through a price that isn't its own (see outliers.ts's outlier_self note).
+  const keptSellCities = new Set(sellStat.result.kept.map((q) => q.city));
+  const keptSellPoints = sellPoints.filter((pt) => keptSellCities.has(pt.city));
+  const ages = keptSellPoints.map((pt) => pt.priceAgeSeconds).filter((a): a is number => a !== null);
+  const volume = keptSellPoints.reduce((s, pt) => s + pt.avgDailyVolume30d, 0);
 
   const crafts = Math.ceil(p.qty / recipe.batchSize);
   const produced = crafts * recipe.batchSize;

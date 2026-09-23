@@ -150,7 +150,7 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
       const points = (market.get(m.itemId) ?? []).filter(
         (p) => p.quality === 1 && params.buyCities.includes(p.city as Location) && p.price !== null,
       );
-      const buyQuotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price! }));
+      const buyQuotes: CityQuote[] = points.map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
       buyRefPrice = robustStat(buyQuotes, "min").value;
     }
 
@@ -218,11 +218,17 @@ type SellSide = {
 /** Alquimia, refinado, cocina: everything trades at quality 1, so this is the whole story. */
 function computeSingleQualitySellSide(itemId: string, market: MarketData, params: RecipeMathParams): SellSide {
   const points = (market.get(itemId) ?? []).filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
-  const quotes: CityQuote[] = points.filter((p) => p.price !== null).map((p) => ({ city: p.city, price: p.price! }));
+  const quotes: CityQuote[] = points
+    .filter((p) => p.price !== null)
+    .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
   const stat = robustStat(quotes, "median");
 
-  const oldestAgeSeconds = oldestAge(points, stat.result.kept.map((q) => q.city));
-  const avgDailyVolume30d = points.reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
+  // Volume is only real for the cities whose price actually fed the reference above -- a city with
+  // real daily volume but no live price today must not lend its volume to a price from a different,
+  // single bait-listing city (see the outlier_self note in outliers.ts).
+  const keptCities = new Set(stat.result.kept.map((q) => q.city));
+  const oldestAgeSeconds = oldestAge(points, [...keptCities]);
+  const avgDailyVolume30d = points.filter((p) => keptCities.has(p.city)).reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
 
   return {
     sellRefPriceGross: stat.value,
@@ -250,10 +256,13 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
 
   for (let quality = 1; quality <= 5; quality++) {
     const points = allPoints.filter((p) => p.quality === quality && params.sellCities.includes(p.city as Location));
-    const quotes: CityQuote[] = points.filter((p) => p.price !== null).map((p) => ({ city: p.city, price: p.price! }));
+    const quotes: CityQuote[] = points
+      .filter((p) => p.price !== null)
+      .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
     const stat = robustStat(quotes, "median");
-    const volume = points.reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
-    const daysWithVolume = Math.max(0, ...points.map((p) => p.daysWithVolume30d));
+    const keptCities = new Set(stat.result.kept.map((q) => q.city));
+    const volume = points.filter((p) => keptCities.has(p.city)).reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
+    const daysWithVolume = Math.max(0, ...points.filter((p) => keptCities.has(p.city)).map((p) => p.daysWithVolume30d));
     const liquid = volume > 0 && daysWithVolume >= MIN_LIQUID_DAYS && stat.value !== null;
     const weight = BASE_QUALITY_WEIGHTS[quality - 1] ?? 0;
 
@@ -269,7 +278,9 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
   // Sell reference (age/city-count/discards) for the row detail is driven by Q1, the bulk of any
   // real crafter's output.
   const q1Points = allPoints.filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
-  const q1Quotes: CityQuote[] = q1Points.filter((p) => p.price !== null).map((p) => ({ city: p.city, price: p.price! }));
+  const q1Quotes: CityQuote[] = q1Points
+    .filter((p) => p.price !== null)
+    .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
   const q1Stat = robustStat(q1Quotes, "median");
   const oldestAgeSeconds = oldestAge(q1Points, q1Stat.result.kept.map((q) => q.city));
 
@@ -295,7 +306,8 @@ function cheapestMarketPrice(market: MarketData, buyCities: Location[], itemIds:
   const quotes: CityQuote[] = [];
   for (const itemId of itemIds) {
     for (const p of market.get(itemId) ?? []) {
-      if (p.quality === 1 && buyCities.includes(p.city as Location) && p.price !== null) quotes.push({ city: p.city, price: p.price });
+      if (p.quality === 1 && buyCities.includes(p.city as Location) && p.price !== null)
+        quotes.push({ city: p.city, price: p.price, selfRef: p.weightedAvgPrice30d });
     }
   }
   return robustStat(quotes, "min").value;
