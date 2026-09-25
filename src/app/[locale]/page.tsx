@@ -93,7 +93,7 @@ export default async function HomePage() {
       <SiteHeader />
       <main id="contenido">
         <section className="relative overflow-hidden border-b border-money/20">
-          <Image src="/hero.png" alt="" fill priority sizes="100vw" className="object-cover object-[75%_center]" />
+          <Image src="/hero.webp" alt="" fill priority sizes="100vw" className="object-cover object-[75%_center]" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/10 sm:via-background/70 sm:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
 
@@ -102,14 +102,14 @@ export default async function HomePage() {
               <h1 className="font-display text-4xl uppercase leading-[1.05] tracking-tight sm:text-6xl">
                 Maximizá tu <span className="text-money">plata</span> en Albion Online
               </h1>
-              <p className="mt-5 max-w-md text-sm text-muted-foreground sm:text-base">
+              <p className="mt-5 max-w-md text-sm text-foreground/85 sm:text-base">
                 Descubrí qué recetas de crafteo te dan más plata por día, con datos reales de volumen de ventas, precios y todas las fórmulas de
                 cálculo a la vista.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <Link
                   href={rankingHref}
-                  className={`${CTA_PRIMARY} inline-flex items-center gap-2 px-5 py-2.5 text-sm outline outline-1 outline-offset-[3px] outline-money/40`}
+                  className={`${CTA_PRIMARY} inline-flex min-h-11 items-center gap-2 px-5 text-sm outline outline-1 outline-offset-[3px] outline-money/40`}
                 >
                   <TrendingUp className="h-4 w-4" />
                   Ver recetas rentables
@@ -117,7 +117,7 @@ export default async function HomePage() {
                 </Link>
                 <Link
                   href="/es/calculadora"
-                  className={`${CTA_SECONDARY} inline-flex items-center gap-2 px-5 py-2.5 text-sm`}
+                  className={`${CTA_SECONDARY} inline-flex min-h-11 items-center gap-2 px-5 text-sm`}
                 >
                   Abrir calculadora
                 </Link>
@@ -230,14 +230,14 @@ export default async function HomePage() {
                 href={DISCORD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${CTA_PRIMARY} inline-flex items-center gap-2 px-5 py-2.5 text-sm`}
+                className={`${CTA_PRIMARY} inline-flex min-h-11 items-center gap-2 px-5 text-sm`}
               >
                 Unirme al Discord
                 <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/es/metodologia"
-                className="inline-flex items-center rounded-sm border border-border px-5 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex min-h-11 items-center rounded-sm border border-border px-5 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 Cómo calculamos todo
               </Link>
