@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-16T00:00:00.000Z",
+  "generatedAt": "2026-09-25T06:41:20.211Z",
   "title": "Design System: PlataRank",
   "extensions": {
     "colorMeta": {
@@ -71,14 +71,44 @@
       }
     },
     "typographyMeta": {
-      "headline": { "displayName": "Headline", "purpose": "Page title only, in IM Fell English, e.g. 'Alquimia -- Americas'." },
-      "panel-title": { "displayName": "Panel Title", "purpose": "IM Fell English titles of secondary surfaces: the Filtros Sheet's 'Filtros y supuestos', home page rubro card labels." },
-      "body": { "displayName": "Body", "purpose": "Subtitles, prose, error/loading copy, in Geist Sans." },
-      "tabular": { "displayName": "Tabular", "purpose": "Every numeric value in Geist Mono with tabular-nums: rank, margin, volume, plata/dia, derivation figures." },
-      "label": { "displayName": "Label", "purpose": "Column headers and stat captions, in Geist Sans." }
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page title only, in IM Fell English, e.g. 'Alquimia -- Americas'."
+      },
+      "panel-title": {
+        "displayName": "Panel Title",
+        "purpose": "IM Fell English titles of secondary surfaces: the Filtros Sheet's 'Filtros y supuestos', home page rubro card labels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Subtitles, prose, error/loading copy, in Geist Sans."
+      },
+      "tabular": {
+        "displayName": "Tabular",
+        "purpose": "Every numeric value in Geist Mono with tabular-nums: rank, margin, volume, plata/dia, derivation figures."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Column headers and stat captions, in Geist Sans."
+      }
     },
     "breakpoints": [
-      { "name": "sm", "value": "640px" }
+      {
+        "name": "sm",
+        "value": "640px"
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "150ms (Tailwind duration-150), color/opacity only",
+        "purpose": "Hover and selected-state changes on buttons, chips, tabs and rows."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transform/translate transitions removed, spinners slowed to 2.5s",
+        "purpose": "Under prefers-reduced-motion the hover color change stays; only movement goes."
+      }
     ]
   },
   "components": [
@@ -121,42 +151,96 @@
       "description": "Landing-page link card for each crafting rubro; title in IM Fell English, sits below a double ruled top divider.",
       "html": "<a class=\"ds-rubro-card\"><div class=\"ds-rubro-title\">Alquimia</div><div class=\"ds-rubro-detail\">Pociones -- 174 recetas</div></a>",
       "css": ".ds-rubro-card { display: block; border-radius: 6px; border: 1px solid oklch(0.8 0.04 65 / 13%); padding: 16px; color: oklch(0.92 0.018 75); text-decoration: none; transition: border-color 0.15s, background 0.15s; } .ds-rubro-card:hover { border-color: color-mix(in oklch, oklch(0.78 0.16 68) 40%, transparent); background: color-mix(in oklch, oklch(0.24 0.02 55) 50%, transparent); } .ds-rubro-title { font-family: 'IM Fell English', Georgia, serif; font-size: 18px; } .ds-rubro-detail { margin-top: 4px; font-size: 12px; color: oklch(0.67 0.03 65); }"
+    },
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled coin-gold; the one action of a section. Built from CTA_PRIMARY.",
+      "html": "<a class=\"ds-cta-primary\">Ver recetas rentables</a>",
+      "css": ".ds-cta-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:5px;font-size:14px;font-weight:500;letter-spacing:.025em;text-decoration:none;cursor:pointer;transition:opacity .15s,background-color .15s;border:1px solid var(--money);background:var(--money);color:var(--money-foreground)}.ds-cta-primary:hover{opacity:.9}.ds-cta-primary:focus-visible{outline:2px solid var(--money);outline-offset:3px}"
+    },
+    {
+      "name": "Secondary CTA",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline-tint coin-gold for the second action or a quiet action. Built from CTA_SECONDARY.",
+      "html": "<a class=\"ds-cta-secondary\">Abrir calculadora</a>",
+      "css": ".ds-cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:5px;font-size:14px;font-weight:500;letter-spacing:.025em;text-decoration:none;cursor:pointer;transition:opacity .15s,background-color .15s;border:1px solid color-mix(in oklch,var(--money) 50%,transparent);background:color-mix(in oklch,var(--money) 10%,transparent);color:var(--money)}.ds-cta-secondary:hover{background:color-mix(in oklch,var(--money) 20%,transparent)}.ds-cta-secondary:focus-visible{outline:2px solid var(--money);outline-offset:3px}"
+    },
+    {
+      "name": "City Tile (selected)",
+      "kind": "custom",
+      "refersTo": "faction-banner-rule",
+      "description": "The selected 'ciudad de crafteo' tile in Filtros/calculator: faction color plus the coin-gold bonus label.",
+      "html": "<button class=\"ds-city-tile\" aria-pressed=\"true\"><span>Brecilien</span><span class=\"ds-city-bonus\">+15% bono</span></button>",
+      "css": ".ds-city-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:56px;padding:0 12px;border:2px solid oklch(0.62 0.22 320);border-radius:6px;background:oklch(0.62 0.22 320 / .15);color:oklch(0.85 0.12 320);font-size:14px;font-weight:500;cursor:pointer}.ds-city-bonus{font-family:ui-monospace,monospace;font-size:12px;color:var(--money)}.ds-city-tile:focus-visible{outline:2px solid var(--money);outline-offset:2px}"
     }
   ],
   "narrative": {
     "northStar": "The Guild Ledger",
-    "overview": "PlataRank stayed a single-purpose Operate surface -- dark, dense, read one-handed next to the game -- but its chrome was rebuilt as a merchant guild's account-hall noticeboard rather than a trading-floor ticker. The ground shifted from a cool near-black neutral (hue 285) to a warm, candlelit umber (hue ~55-75, OKLCH), and the sticky header, sort-bar dividers, and the home page's rubro divider all now carry a double ruled line (border-double border-b-2 / border-t-2) standing in for a ledger's ruled hairline. IM Fell English, a legible period print face, now carries the page h1 and panel titles (the Filtros Sheet's 'Filtros y supuestos', the rubro card labels); Geist Sans keeps every body/label role and Geist Mono keeps every numeric value untouched -- a deliberate legibility call, not an oversight. A single hand-drawn wax-seal SVG mark sits beside the 'PlataRank' wordmark in the nav and as the home page's masthead.\n\nThe world stops at the frame. The direction contract's thesis -- 'ornament lives in chrome only, data rows stay exactly as dense/unadorned as before' -- holds in the build: the row list, its virtualization, the expandable derivation panel, badges, selects, and sheets are byte-identical in structure to the prior world, restyled only through the same CSS custom properties. The one structural change inside a data row is additive, not decorative: illiquid quality-breakdown prices now carry a dashed underline alongside their existing reduced opacity, so stale/illiquid state reads even in grayscale, not only through alpha.\n\nNote: the direction contract proposed the data-quality score become 'a wax-seal ink-fill gauge, not a bar.' A plain bar shipped first, a wax-seal gauge shipped later on mobile only, and then the score was removed entirely, project-wide, at explicit user request -- no bar, no gauge, no score anywhere in the UI anymore. The signals it summarized (city coverage, data age, discarded outliers) are still visible individually in the derivation panel.",
+    "overview": "PlataRank stayed a single-purpose Operate surface -- dark, dense, read one-handed next to the game -- but its chrome was rebuilt as a merchant guild's account-hall noticeboard rather than a trading-floor ticker. The ground shifted from a cool near-black neutral (hue 285) to a warm, candlelit umber (hue ~55-75, OKLCH), and the sticky header, sort-bar dividers, and the home page's rubro divider all now carry a double ruled line (`border-double border-b-2` / `border-t-2`) standing in for a ledger's ruled hairline. IM Fell English, a legible period print face, now carries the page `<h1>` and panel titles (the Filtros Sheet's \"Filtros y supuestos\", the rubro card labels); Geist Sans keeps every body/label role and Geist Mono keeps every numeric value untouched -- a deliberate legibility call, not an oversight. A single hand-drawn wax-seal SVG mark (`WaxSeal`, one stroke weight, no fill gradients) sits beside the \"PlataRank\" wordmark in the nav and as the home page's masthead.\n\nThe world stops at the frame. The direction contract's thesis -- \"ornament lives in chrome only, data rows stay exactly as dense/unadorned as before\" -- holds in the build: the row list, its virtualization, the expandable derivation panel, badges, selects, and sheets are byte-identical in structure to the prior world, restyled only through the same CSS custom properties. The one structural change inside a data row is additive, not decorative: illiquid quality-breakdown prices now carry `underline decoration-dashed decoration-muted-foreground underline-offset-4` alongside their existing reduced opacity, so stale/illiquid state reads even in grayscale or under color-blindness, not only through alpha.\n\nNote on the data-quality score's history, since it changed direction twice: the original direction contract proposed rendering it as \"a wax-seal ink-fill gauge, not a bar,\" which the first finish review declined in favor of keeping the plain `QualityBadge` bar. A later mobile-first pass then shipped the wax-seal gauge anyway, scoped to the mobile Contract Card only, on an explicit user request overriding that earlier restraint call. The user then asked to remove the data-quality score entirely -- both the desktop bar and the mobile seal are gone, along with the row-detail's \"Score de calidad\" line and the formula that computed it (`computeQualityScore`). The signals it used to summarize (city coverage, data age, discarded outliers) are still visible individually in the derivation panel; they are no longer synthesized into one 0-100 number anywhere in the UI.\n\n**2026-09 update -- \"Guild Ceremony\" chrome pass.** The home page (`/es`) was rebuilt as the ceremonial front door to the guild ledger: a Cinzel display face (bold, uppercase, tracked) now carries its hero `<h1>`/`<h2>`s alongside new shield-shaped icon badges (`ShieldBadge`), a dashed `rule-fleur` section divider, and two homepage-only accent tokens (`crest`, a deep burgundy, and `forest`, a muted green) that do not appear on the four ranked-list pages. That same Cinzel display face was then carried into the shared `RecipeHeader` (`recipe-header.tsx`) so every page's `<h1>` and the \"PlataRank\" wordmark speak with one voice; the rubro nav tabs moved from a bordered box to an underline (`border-b-2`) to match the home page's own nav pattern, and the header/footer wax-seal frame became circular (matching the home page) instead of the old `rounded-md` square. This is a deliberate widening, not scope creep: the ranked-list pages' **data rows, sort controls, filters, and Sheets are untouched** -- only the page-level chrome (title, nav, wordmark, footer) picked up the new voice. `crest`/`forest` and `ShieldBadge` stay home-page-only for now; nothing below assumes they've spread further.\n\n**2026-09 update -- shared shell, calculator, and the trust pass.** One `SiteHeader` (`site-header.tsx`) now serves the home page, the ranked-list pages, the calculator, sessions, and the legal pages: logo, an 8-item nav (Inicio, Alquimia, Refinado, Cocina, Equipo, Monturas, Calculadora, Sesiones), and the Discord login. The \"ciudad donde craftea\" control left the header and became the first card of the Filtros panel (and its own panel in the calculator), so the header stays about navigation. The calculator (`/es/calculadora`) grew three tabs -- Calculadora, Planificaciones, Transporte -- built from the same `Panel`/`Segmented`/`Field` primitives (`calculator/ui.tsx`), and money-colored actions got two shared classes (`CTA_PRIMARY`, `CTA_SECONDARY` in `src/lib/cta.ts`) instead of per-page copies. Trust rules from PRODUCT.md reached the UI: every material shows the cheapest city to buy in, a price that is far from its own 30-day average is discarded and named as such, and empty data reads \"datos insuficientes\" rather than a number.",
     "keyCharacteristics": [
       "Dark-only \"guild ground\" -- warm oak/umber (hue ~55-75), replacing the old cool-zinc neutral; no light theme exists or is planned.",
-      "One accent color, unchanged in value, now doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure and active sort state.",
-      "IM Fell English carries headlines and panel titles only; Geist Sans stays on body/labels; Geist Mono stays untouched on every number.",
-      "Double ruled hairlines (border-double border-b-2) mark every major chrome divider -- header, sort-bar, home-page rubro divider.",
+      "One accent color, unchanged in value, doing double duty as coin-gold and wax-seal ink: reserved for the plata/dia figure, active/selected state (sort, filter chips, tabs, toggles), the money-colored CTAs and inline links, and the wax-seal mark. It never marks decoration or section headings.",
+      "Cinzel (display, bold uppercase) now carries every page's `<h1>` and the \"PlataRank\" wordmark; IM Fell English still carries secondary panel titles (the Filtros Sheet's \"Filtros y supuestos\"); Geist Sans stays on body/labels; Geist Mono stays untouched on every number.",
+      "Double ruled hairlines (`border-double border-b-2`) mark every major chrome divider -- header, sort-bar, home-page section dividers; a dashed `rule-fleur` divider marks the home page's footer and feature sections specifically.",
       "Stale/illiquid data is now marked by line form (dashed underline) in addition to color/alpha, not by color alone.",
-      "Data-row density and the row+expandable-detail interaction are unchanged from the prior world.",
-      "The 0-100 data-quality score (bar and, later, mobile wax-seal gauge) was removed project-wide at explicit user request; no synthesized quality score exists anywhere in the UI."
+      "Data-row density and the row+expandable-detail interaction are unchanged from the prior world."
     ],
     "rules": [
-      { "name": "The One Coin Rule", "body": "The accent is rationed to the plata/dia figure and active sort state (carried forward unchanged from the prior world). A retry button, a badge, or a nav item never carries it, except the single wax-seal wordmark mark.", "section": "colors" },
-      { "name": "The Registration-Plate Rule", "body": "Every major chrome divider is a deliberate ruled hairline, not a plain 1px rule: the sticky page header, the desktop and mobile sort-bar dividers, and the home page's divider above the rubro grid all use border-double border-b-2/border-t-2. Ordinary row-to-row separators inside the table stay plain 1px hairlines.", "section": "colors" },
-      { "name": "The Heading-In-Chrome-Only Rule", "body": "IM Fell English is confined to the page h1, Sheet/panel titles, and rubro card labels -- never a data-row name, a stat caption, or a numeric value.", "section": "typography" },
-      { "name": "The Tabular-Nums Rule", "body": "Any value that is a quantity (silver, percent, count, score) renders in mono with tabular-nums; any value that is a label or name renders in the proportional sans. Unchanged from the prior world.", "section": "typography" },
-      { "name": "The No-Shadow Rule", "body": "Elevation is never simulated with box-shadow. Use a border and/or the next tonal surface step instead -- carried forward unchanged.", "section": "elevation" }
+      {
+        "name": "The One Coin Rule",
+        "body": "Coin-gold means \"money, or the thing you have chosen\": the plata/dia figure, active/selected state, the money CTAs, and the wax-seal mark. Filter section titles and the chips that restate an active filter stay neutral (`text-foreground`, `bg-secondary/40`), so gold keeps one meaning. The city selector's faction colors (see the Faction Banner Rule) are the one other deliberate exception, scoped to exactly that control. `crest` and `forest` (home-page-only accents) are outside this rule entirely -- they exist to give the home page a second and third hue, not to widen coin-gold's own reach.",
+        "section": "colors"
+      },
+      {
+        "name": "The Faction Banner Rule",
+        "body": "The \"ciudad donde craftea\" selector -- the first card of the Filtros panel on the ranked-list pages and the \"Ciudad de crafteo\" panel in the calculator -- carries a saturated per-city color (Bridgewatch amber, Fort Sterling cyan, Lymhurst emerald, Martlock blue, Thetford purple, Caerleon red, Brecilien fuchsia, Black Market yellow-on-stone) plus the city's banner emblem (`CityGlyph`), an explicit user request overriding the One Coin Rule for identity purposes. It never touches any other control: the buy/sell city toggles right below it in Filtros use the neutral selected state (`border-money bg-money/10`), because twelve saturated buttons would dilute the one control that is allowed a palette.",
+        "section": "colors"
+      },
+      {
+        "name": "The Registration-Plate Rule",
+        "body": "Every major chrome divider is a deliberate ruled hairline, not a plain 1px rule: the sticky page header (`border-b-2 border-double`), the desktop and mobile sort-bar dividers in the table (`border-b-2 border-double`), and the home page's divider above the rubro grid (`border-t-2 border-double`). Ordinary row-to-row separators inside the table stay plain 1px hairlines -- the double rule is reserved for structural, once-per-surface dividers, not every seam.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heading-In-Chrome-Only Rule",
+        "body": "Cinzel is confined to the page `<h1>` and the wordmark; IM Fell English is confined to secondary Sheet/panel titles -- neither ever touches a data-row name, a stat caption, or a numeric value. Anything that is data, not chrome, stays on Geist Sans or Geist Mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular-Nums Rule",
+        "body": "Any value that is a quantity (silver, percent, count, score) renders in mono with `tabular-nums`; any value that is a label or name renders in the proportional sans. Unchanged from the prior world.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "Elevation is never simulated with `box-shadow`. Use a border and/or the next tonal surface step instead; the Filtros `Sheet` and the `Select` popups ship with shadcn's default `shadow-md`/`shadow-lg` stripped. The hero's primary CTA gets its offset ring from `outline` (`outline-1 outline-offset-[3px] outline-money/40`), not a shadow.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do reserve coin-gold for the plata/dia figure, active sort/filter state, and the wax-seal mark only.",
-      "Do confine IM Fell English to the page h1, Sheet/panel titles, and rubro card labels -- never a data value or row name.",
-      "Do render every quantity in Geist Mono with tabular-nums; every name/label in Geist Sans.",
-      "Do use a double ruled line (border-double border-b-2/border-t-2) for structural, once-per-surface chrome dividers; keep ordinary row separators as plain 1px hairlines.",
-      "Do mark stale/illiquid values with both reduced opacity and a dashed underline (the Line-Not-Hue Rule), so state survives grayscale.",
-      "Do keep new ranked-list surfaces on the row + expandable-detail pattern with density untouched."
+      "**Do** reserve coin-gold for the plata/dia figure, active/selected state, the money CTAs and links, and the wax-seal mark; keep section titles and restating chips neutral.",
+      "**Do** confine Cinzel to the page `<h1>` and the \"PlataRank\" wordmark, and IM Fell English to secondary Sheet/panel titles -- never a data value or row name.",
+      "**Do** render every quantity in Geist Mono with `tabular-nums`; every name/label in Geist Sans.",
+      "**Do** use a double ruled line (`border-double border-b-2`/`border-t-2`) for structural, once-per-surface chrome dividers (sticky header, sort-bar, home rubro divider); keep ordinary row separators as plain 1px hairlines.",
+      "**Do** mark stale/illiquid values with both reduced opacity and a dashed underline (the Line-Not-Hue Rule), so state survives grayscale.",
+      "**Do** keep the desktop row + expandable-detail pattern's density untouched; mobile's Contract Card is its own composition, not a squeezed copy of the desktop row.",
+      "**Do** keep the Faction Banner Rule's saturated per-city colors and emblem glyphs confined to the city selector -- it is the one control allowed a full palette, not a precedent for adding color elsewhere.",
+      "**Do** build any money-colored button from `CTA_PRIMARY` or `CTA_SECONDARY` (`src/lib/cta.ts`) and add only size and layout classes.",
+      "**Do** give any small text link a 24px-tall hit area (`min-h-6` or an `after:-inset-*` pad), and keep touch targets on the mobile-first surfaces at 44px.",
+      "**Do** keep color feedback under `prefers-reduced-motion`; remove movement (transforms, spinners), not the hover change itself."
     ],
     "donts": [
-      "Don't introduce a light theme variant; dark-only is a confirmed product decision (<html class=\"dark\"> is hardcoded).",
-      "Don't add blackletter, gilt/illuminated-manuscript ornament, or additional glyph icons beyond the single wax-seal mark -- the direction contract explicitly refused a fantasy-game skin.",
-      "Don't add box-shadows or hard-offset shadows for elevation or \"medieval\" flavor; step to the next tonal surface or a hairline/double-rule border instead.",
-      "Don't spread coin-gold onto buttons, nav text, or non-ranking UI beyond the wax-seal mark.",
-      "Don't let chrome ornament (heading face, double rules) migrate into data rows; row density and the row's internal typography stay exactly as before.",
-      "Don't reintroduce a synthesized 0-100 data-quality score in any shape (bar, gauge, seal) -- it was tried twice and removed both times at explicit user request; the derivation panel's individual signals are the source of truth for data trust now."
+      "**Don't** introduce a light theme variant; dark-only is a confirmed product decision (`<html class=\"dark\">` is hardcoded).",
+      "**Don't** treat \"no gilt ornament\" as absolute -- it was tried once (a small gold corner flourish on the header, referencing an ornate laurel-and-gem border image) and the user removed it again shortly after; a later explicit request then asked for a full ceremonial pass on the home page plus the shared chrome (see the Guild Ceremony update above), so the constraint is scoped to unrequested/unscoped ornament, not ornament as such. Judge a future ornament request on its own merits.",
+      "**Don't** add box-shadows or hard-offset shadows for elevation; step to the next tonal surface or a hairline/double-rule border instead, and use `outline` for an offset ring. The wax-seal's own ring `box-shadow` is a named exception (emphasis on one small decorative mark, not surface elevation) -- don't generalize it into an elevation device elsewhere.",
+      "**Don't** spread coin-gold onto decoration: section titles, chips that only restate a filter, loading text, or a second primary CTA competing in the same section.",
+      "**Don't** let `crest`/`forest` or `ShieldBadge` migrate from the home page into the ranked-list pages without an explicit request -- they are a deliberately home-page-only accent, not the next step in this widening.",
+      "**Don't** let chrome ornament (heading face, double rules) migrate into data rows; row density and the row's internal typography stay exactly as before.",
+      "**Don't** show a number the data can't support: a price far from its own 30-day average is discarded and named (`outlier_self`), and a recipe with no trustworthy price reads \"datos insuficientes\", never a large figure.",
+      "**Don't** reintroduce a synthesized 0-100 data-quality score (bar, seal, or otherwise) -- it was tried in two different shapes and removed both times at explicit user request. The derivation panel's individual signals (city count, data age, discarded outliers) are the source of truth for data trust now."
     ]
   }
 }
