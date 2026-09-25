@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { computeCraft } from "@/lib/craft-calc";
 import { isBreedable } from "@/lib/formulas/breeding";
 import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/calculator/plans-panel";
+import { TransportTool } from "@/components/transport/transport-tool";
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
 import { AddToSession } from "@/components/sessions/add-to-session";
@@ -92,7 +93,7 @@ function readRecents(): Recent[] {
 }
 
 export function Calculator() {
-  const [tab, setTab] = useState<"calc" | "plans">("calc");
+  const [tab, setTab] = useState<"calc" | "plans" | "transport">("calc");
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<Hit[]>([]);
   const [searching, setSearching] = useState(false);
@@ -430,7 +431,10 @@ export function Calculator() {
             const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
             if (!keys.includes(e.key)) return;
             e.preventDefault();
-            const next = e.key === "Home" ? "calc" : e.key === "End" ? "plans" : tab === "calc" ? "plans" : "calc";
+            const order = ["calc", "plans", "transport"] as const;
+            const i = order.indexOf(tab);
+            const next =
+              e.key === "Home" ? order[0] : e.key === "End" ? order[order.length - 1] : order[(i + (e.key === "ArrowLeft" ? -1 : 1) + order.length) % order.length];
             setTab(next);
             document.getElementById(`tab-${next}`)?.focus();
           }}
@@ -440,6 +444,7 @@ export function Calculator() {
             [
               ["calc", "Calculadora"],
               ["plans", `Planificaciones${plansApi.plans.length ? ` (${plansApi.plans.length})` : ""}`],
+              ["transport", "Transporte"],
             ] as const
           ).map(([key, label]) => (
             <button
@@ -483,6 +488,8 @@ export function Calculator() {
           )}
           <PlanList api={plansApi} alertsApi={alertsApi} onOpen={openPlan} />
         </Panel>
+      ) : tab === "transport" ? (
+        <TransportTool />
       ) : !data || !calc || !draft ? (
         <EmptyState loading={loading} recents={recents} onPick={load} onFocusSearch={() => searchRef.current?.focus()} />
       ) : (
