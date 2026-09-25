@@ -114,3 +114,11 @@ export const alerts = pgTable("alerts", {
   lastError: text("last_error"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+// Precomputed default ranking for large stations (gear); see supabase/rank-snapshots.sql.
+export const rankSnapshots = pgTable("rank_snapshots", {
+  stationType: text("station_type").primaryKey(),
+  rows: jsonb("rows").$type<unknown[]>().notNull(),
+  total: integer("total").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});

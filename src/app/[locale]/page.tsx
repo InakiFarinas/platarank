@@ -10,7 +10,7 @@ import { itemIconUrl } from "@/lib/item-icons";
 import { getRecipeCounts, getTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
 
 // The ranking preview is live data: refresh it on the same cadence as the ranking pages.
-export const revalidate = 300;
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Ranking de crafteo por plata realizable por día",

@@ -1,7 +1,8 @@
 import { computeRecipeRow, DEFAULT_PARAMS } from "@/lib/recipe-math";
 import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
 import { SiteFooter } from "@/components/site-footer";
-import { loadStationData, rankStation, ROW_LIMIT, type StationType } from "@/lib/server/station-data";
+import { loadRankSnapshot, loadStationData, rankStation, ROW_LIMIT, type StationType } from "@/lib/server/station-data";
+import recipesJson from "@/data/generated/recipes.json";
 import { DEFAULT_FILTERS } from "@/lib/recipe-filters";
 
 /** Stations too big to ship whole to the browser (gear: ~5,700 recipes made a ~50MB page). They
@@ -17,8 +18,10 @@ export async function RecipePage({
   title: string;
   description: string;
 }) {
-  const data = await loadStationData(stationType);
-  const categories = [...new Set(data.recipes.map((r) => r.craftingCategory).filter((c): c is string => c !== null))];
+  // Categories only feed the city-bonus badges, and recipes.json already has them -- no DB read.
+  const categories = [
+    ...new Set((recipesJson as { stationType: string; craftingCategory: string | null }[]).filter((r) => r.stationType === stationType).map((r) => r.craftingCategory).filter((c): c is string => c !== null)),
+  ];
 
   // Reduced with DEFAULT_PARAMS once here (server, at the ISR revalidation cadence) instead of in
   // every visitor's browser on hydration. The client only recomputes once the player changes a
@@ -27,7 +30,8 @@ export async function RecipePage({
 
   let content;
   if (remote) {
-    const { rows, total } = rankStation(data, DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
+    // Precomputed by the ingester; the fallback (first deploy, before its first run) loads everything.
+    const { rows, total } = (await loadRankSnapshot(stationType)) ?? rankStation(await loadStationData(stationType), DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
     content = (
       <RecipeExplorer
         recipes={[]}
@@ -42,6 +46,7 @@ export async function RecipePage({
       />
     );
   } else {
+    const data = await loadStationData(stationType);
     const market = new Map(Object.entries(data.marketByItem));
     const initialRows = data.recipes.map((r) => computeRecipeRow(r, market, DEFAULT_PARAMS));
     content = (
