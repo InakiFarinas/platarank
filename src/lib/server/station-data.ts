@@ -104,7 +104,7 @@ export async function loadRankSnapshot(stationType: StationType): Promise<{ rows
 }
 
 export async function refreshRankSnapshot(stationType: StationType): Promise<void> {
-  const ranked = rankStation(await loadStationData(stationType), DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
+  const ranked = rankStation(await loadStationDataCached(stationType), DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
   await db
     .insert(rankSnapshots)
     .values({ stationType, rows: ranked.rows, total: ranked.total })

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
+import { CTA_SECONDARY } from "@/lib/cta";
 import { createClient } from "@/lib/supabase/client";
 
 function DiscordMark({ className }: { className?: string }) {
@@ -66,7 +67,7 @@ function AuthControls() {
           options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(window.location.pathname)}` },
         })
       }
-      className="inline-flex shrink-0 items-center gap-1.5 rounded-sm border border-money/50 bg-money/10 px-3 py-1.5 text-xs font-medium tracking-wide text-money transition-colors hover:bg-money/20"
+      className={`${CTA_SECONDARY} inline-flex shrink-0 items-center gap-1.5 px-3 py-1.5 text-xs`}
     >
       <DiscordMark className="h-4 w-4" />
       Entrar con Discord

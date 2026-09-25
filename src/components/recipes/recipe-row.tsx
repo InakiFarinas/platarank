@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { formatAge, formatPercent, formatSilver, enchantLabel, qualityLabel } from "./format";
+import { CTA_SECONDARY } from "@/lib/cta";
 import { itemIconUrl } from "@/lib/item-icons";
 import { CITY_THEMES } from "@/lib/city-theme";
 import type { Location } from "@/lib/aodp/cities";
@@ -223,7 +224,7 @@ function RowDetail({ row }: { row: RecipeRowData }) {
     <div className="bg-card/50 px-3 py-3 text-xs sm:px-9">
       <Link
         href={`/es/calculadora?item=${encodeURIComponent(row.recipe.itemId)}`}
-        className="mb-3 inline-flex items-center gap-1.5 rounded-sm border border-money/50 bg-money/10 px-2.5 py-1 font-medium text-money transition-colors hover:bg-money/20"
+        className={`${CTA_SECONDARY} mb-3 inline-flex items-center gap-1.5 px-2.5 py-1`}
       >
         <Calculator className="h-3.5 w-3.5" />
         Abrir en la calculadora

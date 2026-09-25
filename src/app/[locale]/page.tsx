@@ -6,8 +6,9 @@ import { ArrowRight, CheckCircle2, TrendingUp } from "lucide-react";
 import { formatAge, formatSilver } from "@/components/recipes/format";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { CTA_PRIMARY, CTA_SECONDARY } from "@/lib/cta";
 import { itemIconUrl } from "@/lib/item-icons";
-import { getRecipeCounts, getTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
+import { getRecipeCounts, loadTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
 
 // The ranking preview is live data: refresh it on the same cadence as the ranking pages.
 export const revalidate = 3600;
@@ -38,7 +39,7 @@ const DISCORD_URL = "https://discord.gg/ZZRcGSEXeh";
 
 async function loadLive(): Promise<{ top: TopRecipe[]; counts: Record<string, number> }> {
   try {
-    const [top, counts] = await Promise.all([getTopRecipes(5), getRecipeCounts()]);
+    const [top, counts] = await Promise.all([loadTopRecipes(5), getRecipeCounts()]);
     return { top, counts };
   } catch {
     // The page must still render if the database is unreachable; it just loses the live block.
@@ -108,7 +109,7 @@ export default async function HomePage() {
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <Link
                   href={rankingHref}
-                  className="inline-flex items-center gap-2 rounded-sm border border-money bg-money px-5 py-2.5 text-sm font-medium tracking-wide text-money-foreground shadow-[0_0_0_3px_var(--background),0_0_0_4px_color-mix(in_oklch,var(--money)_40%,transparent)] transition-opacity hover:opacity-90"
+                  className={`${CTA_PRIMARY} inline-flex items-center gap-2 px-5 py-2.5 text-sm outline outline-1 outline-offset-[3px] outline-money/40`}
                 >
                   <TrendingUp className="h-4 w-4" />
                   Ver recetas rentables
@@ -116,7 +117,7 @@ export default async function HomePage() {
                 </Link>
                 <Link
                   href="/es/calculadora"
-                  className="inline-flex items-center gap-2 rounded-sm border border-money/50 bg-money/10 px-5 py-2.5 text-sm font-medium tracking-wide text-money transition-colors hover:bg-money/20"
+                  className={`${CTA_SECONDARY} inline-flex items-center gap-2 px-5 py-2.5 text-sm`}
                 >
                   Abrir calculadora
                 </Link>
@@ -229,7 +230,7 @@ export default async function HomePage() {
                 href={DISCORD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-sm border border-money bg-money px-5 py-2.5 text-sm font-medium tracking-wide text-money-foreground transition-opacity hover:opacity-90"
+                className={`${CTA_PRIMARY} inline-flex items-center gap-2 px-5 py-2.5 text-sm`}
               >
                 Unirme al Discord
                 <ArrowRight className="h-4 w-4" />
