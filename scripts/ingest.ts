@@ -16,6 +16,7 @@ import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
 import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsurdPrices } from "../src/lib/ingest/aggregate";
 import { runAlerts } from "../src/lib/ingest/alerts";
 import { refreshRankSnapshot } from "../src/lib/server/station-data";
+import { refreshTopRecipesSnapshot } from "../src/lib/server/top-recipes";
 import recipesJson from "../src/data/generated/recipes.json";
 import type { AodpPriceRow } from "../src/lib/aodp/types";
 
@@ -75,7 +76,8 @@ async function main() {
   if (isNewDump || now.getUTCHours() % 6 === 0 || process.env.FORCE_SNAPSHOT === "1") {
     try {
       await refreshRankSnapshot("gear");
-      console.log("Refreshed the gear rank snapshot.");
+      await refreshTopRecipesSnapshot();
+      console.log("Refreshed the gear and home snapshots.");
     } catch (err) {
       console.error("Rank snapshot refresh failed:", err);
     }

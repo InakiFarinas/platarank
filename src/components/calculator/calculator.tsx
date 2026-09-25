@@ -876,7 +876,7 @@ export function Calculator() {
                 {formatInt(Math.abs(calc.profit))}
               </div>
             </div>
-            <a href="#balance" className="rounded-sm border border-money bg-money px-3.5 py-2 text-xs font-medium tracking-wide text-money-foreground">
+            <a href="#balance" className={`${CTA_PRIMARY} px-3.5 py-2 text-xs`}>
               Ver balance
             </a>
           </div>
