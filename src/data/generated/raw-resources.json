@@ -1,0 +1,212 @@
+[
+  {
+    "itemId": "T2_FIBER",
+    "tier": 2,
+    "category": "FIBER",
+    "nameEs": "Algodón"
+  },
+  {
+    "itemId": "T3_FIBER",
+    "tier": 3,
+    "category": "FIBER",
+    "nameEs": "Lino"
+  },
+  {
+    "itemId": "T4_FIBER",
+    "tier": 4,
+    "category": "FIBER",
+    "nameEs": "Cáñamo"
+  },
+  {
+    "itemId": "T5_FIBER",
+    "tier": 5,
+    "category": "FIBER",
+    "nameEs": "Duranta"
+  },
+  {
+    "itemId": "T6_FIBER",
+    "tier": 6,
+    "category": "FIBER",
+    "nameEs": "Algodón ambarino"
+  },
+  {
+    "itemId": "T7_FIBER",
+    "tier": 7,
+    "category": "FIBER",
+    "nameEs": "Lino solar"
+  },
+  {
+    "itemId": "T8_FIBER",
+    "tier": 8,
+    "category": "FIBER",
+    "nameEs": "Cáñamo fantasma"
+  },
+  {
+    "itemId": "T2_HIDE",
+    "tier": 2,
+    "category": "HIDE",
+    "nameEs": "Piel dura"
+  },
+  {
+    "itemId": "T3_HIDE",
+    "tier": 3,
+    "category": "HIDE",
+    "nameEs": "Piel fina"
+  },
+  {
+    "itemId": "T4_HIDE",
+    "tier": 4,
+    "category": "HIDE",
+    "nameEs": "Piel media"
+  },
+  {
+    "itemId": "T5_HIDE",
+    "tier": 5,
+    "category": "HIDE",
+    "nameEs": "Piel pesada"
+  },
+  {
+    "itemId": "T6_HIDE",
+    "tier": 6,
+    "category": "HIDE",
+    "nameEs": "Piel fornida"
+  },
+  {
+    "itemId": "T7_HIDE",
+    "tier": 7,
+    "category": "HIDE",
+    "nameEs": "Piel gruesa"
+  },
+  {
+    "itemId": "T8_HIDE",
+    "tier": 8,
+    "category": "HIDE",
+    "nameEs": "Piel resistente"
+  },
+  {
+    "itemId": "T2_ORE",
+    "tier": 2,
+    "category": "ORE",
+    "nameEs": "Mineral de cobre"
+  },
+  {
+    "itemId": "T3_ORE",
+    "tier": 3,
+    "category": "ORE",
+    "nameEs": "Mineral de estaño"
+  },
+  {
+    "itemId": "T4_ORE",
+    "tier": 4,
+    "category": "ORE",
+    "nameEs": "Mineral de hierro"
+  },
+  {
+    "itemId": "T5_ORE",
+    "tier": 5,
+    "category": "ORE",
+    "nameEs": "Mineral de titanio"
+  },
+  {
+    "itemId": "T6_ORE",
+    "tier": 6,
+    "category": "ORE",
+    "nameEs": "Mineral de runita"
+  },
+  {
+    "itemId": "T7_ORE",
+    "tier": 7,
+    "category": "ORE",
+    "nameEs": "Mineral de meteorito"
+  },
+  {
+    "itemId": "T8_ORE",
+    "tier": 8,
+    "category": "ORE",
+    "nameEs": "Mineral de adamantio"
+  },
+  {
+    "itemId": "T2_ROCK",
+    "tier": 2,
+    "category": "ROCK",
+    "nameEs": "Piedra caliza"
+  },
+  {
+    "itemId": "T3_ROCK",
+    "tier": 3,
+    "category": "ROCK",
+    "nameEs": "Arenisca"
+  },
+  {
+    "itemId": "T4_ROCK",
+    "tier": 4,
+    "category": "ROCK",
+    "nameEs": "Travertino"
+  },
+  {
+    "itemId": "T5_ROCK",
+    "tier": 5,
+    "category": "ROCK",
+    "nameEs": "Granito"
+  },
+  {
+    "itemId": "T6_ROCK",
+    "tier": 6,
+    "category": "ROCK",
+    "nameEs": "Pizarra"
+  },
+  {
+    "itemId": "T7_ROCK",
+    "tier": 7,
+    "category": "ROCK",
+    "nameEs": "Basalto"
+  },
+  {
+    "itemId": "T8_ROCK",
+    "tier": 8,
+    "category": "ROCK",
+    "nameEs": "Mármol"
+  },
+  {
+    "itemId": "T2_WOOD",
+    "tier": 2,
+    "category": "WOOD",
+    "nameEs": "Troncos de abedul"
+  },
+  {
+    "itemId": "T3_WOOD",
+    "tier": 3,
+    "category": "WOOD",
+    "nameEs": "Troncos de castaño"
+  },
+  {
+    "itemId": "T4_WOOD",
+    "tier": 4,
+    "category": "WOOD",
+    "nameEs": "Troncos de pino"
+  },
+  {
+    "itemId": "T5_WOOD",
+    "tier": 5,
+    "category": "WOOD",
+    "nameEs": "Troncos de cedro"
+  },
+  {
+    "itemId": "T6_WOOD",
+    "tier": 6,
+    "category": "WOOD",
+    "nameEs": "Troncos de roble rojo"
+  },
+  {
+    "itemId": "T7_WOOD",
+    "tier": 7,
+    "category": "WOOD",
+    "nameEs": "Troncos de cortezaceniza"
+  },
+  {
+    "itemId": "T8_WOOD",
+    "tier": 8,
+    "category": "WOOD",
+    "nameEs": "Troncos de maderablanca"
+  }
+]
