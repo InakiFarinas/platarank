@@ -15,6 +15,7 @@ import { findLatestDumpUrl, fetchDumpVolumeSummaries, type DumpVolumeSummary } f
 import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
 import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsurdPrices } from "../src/lib/ingest/aggregate";
 import { runAlerts } from "../src/lib/ingest/alerts";
+import { refreshRankSnapshot } from "../src/lib/server/station-data";
 import recipesJson from "../src/data/generated/recipes.json";
 import type { AodpPriceRow } from "../src/lib/aodp/types";
 
@@ -67,6 +68,17 @@ async function main() {
   } catch (err) {
     // Alerts are best-effort: a Discord/DB hiccup must not fail the price ingest itself.
     console.error("Alert check failed:", err);
+  }
+
+  // Reading the gear aggregates back costs ~8 MB of Supabase egress (5 GB/month on the free plan), so
+  // the default-view snapshot refreshes every 6 hours and on a new daily dump, not every run.
+  if (isNewDump || now.getUTCHours() % 6 === 0 || process.env.FORCE_SNAPSHOT === "1") {
+    try {
+      await refreshRankSnapshot("gear");
+      console.log("Refreshed the gear rank snapshot.");
+    } catch (err) {
+      console.error("Rank snapshot refresh failed:", err);
+    }
   }
 
   console.log("Ingest complete.");
