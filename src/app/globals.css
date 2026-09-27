@@ -162,7 +162,32 @@
     );
   }
 }
+/* Community-logo loop (ui/marquee-logo-scroller): two identical copies, so -50% lands on the start. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+.marquee-track {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-copy {
+    display: none;
+  }
   .animate-pulse {
     animation: none;
     opacity: 0.7;
