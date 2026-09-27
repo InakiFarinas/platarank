@@ -68,8 +68,9 @@ async function main() {
 
   const admin = postgres(adminUrl!, { prepare: false, max: 1, connect_timeout: 20 });
   try {
-    await admin.unsafe(`alter role platarank_web with password '${webPw}'`);
-    await admin.unsafe(`alter role platarank_ingest with password '${ingestPw}'`);
+    // Role names are fixed literals (not interpolated), only the password is a query parameter.
+    await admin.unsafe(`alter role platarank_web with password $1`, [webPw]);
+    await admin.unsafe(`alter role platarank_ingest with password $1`, [ingestPw]);
   } finally {
     await admin.end({ timeout: 5 });
   }

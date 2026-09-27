@@ -8,6 +8,10 @@ import type { CityPricePoint } from "@/lib/recipe-math";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
 
+// Client-side only enforces this at input time; user_settings can be written directly via the
+// Supabase REST API, so re-validate before ever fetching a saved webhook URL.
+const WEBHOOK_PATTERN = /^https:\/\/(discord|discordapp)\.com\/api\/webhooks\/[0-9]+\/[A-Za-z0-9_-]+$/;
+
 /** Re-prices every enabled alert's saved plan with the freshly ingested market data and posts to
  * the user's Discord webhook when profit crosses the threshold from below. Notifies on the
  * crossing only (not every hour while it stays above), so it never spams. */
@@ -15,7 +19,7 @@ export async function runAlerts(now: Date) {
   const rows = await db
     .select({ alert: alerts, plan: plans, webhook: userSettings.discordWebhookUrl })
     .from(alerts)
-    .innerJoin(plans, eq(alerts.planId, plans.id))
+    .innerJoin(plans, and(eq(alerts.planId, plans.id), eq(plans.userId, alerts.userId)))
     .leftJoin(userSettings, eq(userSettings.userId, alerts.userId))
     .where(eq(alerts.enabled, true));
   if (rows.length === 0) {
@@ -56,7 +60,7 @@ export async function runAlerts(now: Date) {
       await db.update(alerts).set({ lastError: "La receta ya no existe.", lastCheckedAt: now }).where(eq(alerts.id, alert.id));
       continue;
     }
-    if (!webhook) {
+    if (!webhook || !WEBHOOK_PATTERN.test(webhook)) {
       await db.update(alerts).set({ lastError: "Configurá tu webhook de Discord para recibir avisos.", lastCheckedAt: now }).where(eq(alerts.id, alert.id));
       continue;
     }
