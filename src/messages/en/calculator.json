@@ -105,7 +105,9 @@
     "stationFeeTip": "Silver the station charges for every 100 nutrition your craft uses. The station owner sets it, and you see it in game as the usage fee.",
     "extraCostsLabel": "Extra costs (total)",
     "extraCosts": "Extra costs",
-    "noSellPrice": "No recent sell price for this quality and market. Type one in by hand to calculate."
+    "noSellPrice": "No recent sell price for this quality and market. Type one in by hand to calculate.",
+    "instantSell": "Instant sell: {value} silver (a buy order standing right now, not part of the calculation).",
+    "instantSellCity": "Instant sell: {value} silver in {city} (a buy order standing right now, not part of the calculation)."
   },
   "materials": {
     "title": "Materials",

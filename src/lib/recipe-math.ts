@@ -110,6 +110,10 @@ export type RecipeRow = {
   platinumPerDay: number | null;
   /** Gear only: per-quality price/liquidity, for the row detail's transparency requirement. */
   qualityBreakdown: QualityBreakdownEntry[] | null;
+  /** Best standing buy order, shown only when `sellRefPrice` is null -- informational, never fed
+   * into plata/día (see the note on SellSide.instantGross). */
+  sellInstantPrice: number | null;
+  sellInstantCity: string | null;
 };
 
 export function computeRecipeRow(recipe: Recipe, market: MarketData, params: RecipeMathParams): RecipeRow {
@@ -212,6 +216,8 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     marginPct,
     platinumPerDay,
     qualityBreakdown: sellSide.qualityBreakdown,
+    sellInstantPrice: sellSide.instantGross,
+    sellInstantCity: sellSide.instantCity,
   };
 }
 
@@ -222,6 +228,11 @@ type SellSide = {
   avgDailyVolume30d: number;
   discarded: { city: string; price: number; reason: string }[];
   qualityBreakdown: QualityBreakdownEntry[] | null;
+  /** Best standing buy order at Q1 in a real city -- computed only when there's no sell reference,
+   * shown as an informational fallback ("hay quien te lo compra ya, por X"). Never feeds plata/día:
+   * there's no daily-volume figure attached to a single order the way there is for a real listing. */
+  instantGross: number | null;
+  instantCity: string | null;
 };
 
 /** Sell reference for one quality: the real cities and the Black Market are priced apart -- the
@@ -255,6 +266,10 @@ export function computeSingleQualitySellSide(itemId: string, market: MarketData,
     .filter((p) => keptCities.has(p.city) && p.daysWithVolume30d >= MIN_LIQUID_DAYS)
     .reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
 
+  // Only computed when there's no sell reference at all -- gated so this extra pass never runs on
+  // the common case, which matters at 5,700+ gear rows.
+  const instant = stat.value === null ? bestInstantSellPrice(market, [...REAL_CITIES], itemId) : { value: null, city: null };
+
   return {
     sellRefPriceGross: stat.value,
     oldestAgeSeconds,
@@ -262,6 +277,8 @@ export function computeSingleQualitySellSide(itemId: string, market: MarketData,
     avgDailyVolume30d,
     discarded: stat.result.discarded,
     qualityBreakdown: null,
+    instantGross: instant.value,
+    instantCity: instant.city,
   };
 }
 
@@ -302,6 +319,8 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
   const q1Points = allPoints.filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
   const q1Stat = sellStatSplit(q1Points);
   const oldestAgeSeconds = oldestAge(q1Points, q1Stat.result.kept.map((q) => q.city));
+  // Only computed when no quality is liquid -- same gate as the single-quality path above.
+  const instant = anyPriced ? { value: null, city: null } : bestInstantSellPrice(market, [...REAL_CITIES], itemId);
 
   return {
     sellRefPriceGross: anyPriced ? sellRefPriceGross : null,
@@ -310,6 +329,8 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
     avgDailyVolume30d,
     discarded: q1Stat.result.discarded,
     qualityBreakdown: breakdown,
+    instantGross: instant.value,
+    instantCity: instant.city,
   };
 }
 

@@ -18,8 +18,8 @@ const recipe: Recipe = {
   materialItemValue: "2880",
 };
 
-function point(city: string, price: number | null, volume = 1000, quality = 1, days = 30): CityPricePoint {
-  return { city, quality, price, priceAgeSeconds: 3600, buyPriceMax: null, avgDailyVolume30d: volume, daysWithVolume30d: days, weightedAvgPrice30d: price };
+function point(city: string, price: number | null, volume = 1000, quality = 1, days = 30, buyPriceMax: number | null = null): CityPricePoint {
+  return { city, quality, price, priceAgeSeconds: 3600, buyPriceMax, avgDailyVolume30d: volume, daysWithVolume30d: days, weightedAvgPrice30d: price };
 }
 
 function market(overrides: Record<string, CityPricePoint[]>): MarketData {
@@ -436,5 +436,29 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     // Baby: cheapest of the two city quotes (38000). Feed: 64 meat x 350 (cheapest tier) = 22400.
     expect(line.bred).toBe(true);
     expect(line.buyRefPrice).toBe(38000 + 64 * 350);
+  });
+
+  test("sin precio de venta pero con orden de compra, el fallback informativo aparece sin tocar el ranking", () => {
+    const data = market({
+      T6_POTION_HEAL: [point("Caerleon", null, 0, 1, 30, 12000), point("Martlock", null, 0, 1, 30, 9000)],
+      T6_FOXGLOVE: [point("Caerleon", 100)],
+    });
+    const row = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon", "Martlock"] });
+    expect(row.sellRefPrice).toBe(null);
+    expect(row.hasData).toBe(false);
+    expect(row.platinumPerDay).toBe(null);
+    // The best (not the cheapest) standing buy order across the real cities.
+    expect(row.sellInstantPrice).toBe(12000);
+    expect(row.sellInstantCity).toBe("Caerleon");
+  });
+
+  test("con precio de venta real, no se calcula ningun fallback de venta instantanea", () => {
+    const data = market({
+      T6_POTION_HEAL: [point("Caerleon", 10000, 1000, 1, 30, 50000)],
+      T6_FOXGLOVE: [point("Caerleon", 100)],
+    });
+    const row = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"] });
+    expect(row.sellRefPrice).toBe(10000);
+    expect(row.sellInstantPrice).toBe(null);
   });
 });
