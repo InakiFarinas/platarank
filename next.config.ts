@@ -19,7 +19,16 @@ const supabaseOrigin = (() => {
 
 const reportOnlyCsp = [
   "default-src 'self'",
+  // No 'unsafe-eval' and no inline event-handler attributes (falls back to script-src, which has
+  // neither) -- eval() and onclick="" stay blocked. script-src-elem is split out and does need
+  // 'unsafe-inline': Next's App Router streams hydration data through inline `<script>` tags
+  // (`self.__next_f.push(...)`), and this site's JSON-LD (src/components/json-ld.tsx) is inline
+  // too, per-page and per-recipe content that a fixed hash list can't cover (thousands of recipe
+  // pages). A nonce would fix that, but Next's nonce pattern requires opting every route into
+  // per-request dynamic rendering, which would drop this app's `revalidate`/ISR caching and defeat
+  // the whole egress-conscious architecture (see PRODUCT.md) for a report-only header. Not worth it.
   "script-src 'self'",
+  "script-src-elem 'self' 'unsafe-inline'",
   // style-src-attr needs 'unsafe-inline': the app sets style={{...}} in a few components.
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
