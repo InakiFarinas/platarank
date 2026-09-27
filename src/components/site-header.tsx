@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { href: "/es/cocina", label: "Cocina", count: 183 },
   { href: "/es/equipo", label: "Equipo", count: 5711 },
   { href: "/es/monturas", label: "Monturas", count: 29 },
+  { href: "/es/artefactos", label: "Artefactos", count: null },
   { href: "/es/calculadora", label: "Calculadora", count: null },
   { href: "/es/sesiones", label: "Sesiones", count: null },
 ] as const;

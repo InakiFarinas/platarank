@@ -237,7 +237,7 @@ function sellStatSplit(points: CityPricePoint[]) {
 }
 
 /** Alquimia, refinado, cocina: everything trades at quality 1, so this is the whole story. */
-function computeSingleQualitySellSide(itemId: string, market: MarketData, params: RecipeMathParams): SellSide {
+export function computeSingleQualitySellSide(itemId: string, market: MarketData, params: RecipeMathParams): SellSide {
   const points = (market.get(itemId) ?? []).filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
   // Potions, food, refined goods and mounts don't trade at the Black Market: only real cities count.
   const stat = sellStatSplit(points.filter((p) => p.city !== BLACK_MARKET));
@@ -318,7 +318,7 @@ function oldestAge(points: CityPricePoint[], cities: string[]): number | null {
 /** Cheapest quote for any of the given items across the buy cities -- used for breeding's feed
  * pools (any tier-equivalent crop or cut of meat feeds the same) and for a baby animal that trades
  * on the market instead of a fixed NPC price (a single-item list there). */
-function cheapestMarketPrice(market: MarketData, buyCities: Location[], itemIds: readonly string[]): number | null {
+export function cheapestMarketPrice(market: MarketData, buyCities: Location[], itemIds: readonly string[]): number | null {
   const quotes: CityQuote[] = [];
   for (const itemId of itemIds) {
     for (const p of market.get(itemId) ?? []) {

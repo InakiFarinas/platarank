@@ -18,6 +18,7 @@ const GENERATED_DIR = path.join(__dirname, "..", "src", "data", "generated");
 const RECIPES_OUTPUT_PATH = path.join(GENERATED_DIR, "recipes.json");
 const CITY_SPECIALTIES_OUTPUT_PATH = path.join(GENERATED_DIR, "city-specialties.json");
 const QUALITY_MECHANICS_OUTPUT_PATH = path.join(GENERATED_DIR, "quality-mechanics.json");
+const ARTIFACT_POOLS_OUTPUT_PATH = path.join(GENERATED_DIR, "artifact-pools.json");
 
 // The 7 real cities, by name -- these are as stable as any proper noun in the game and aren't the
 // drift risk. Their numeric cluster IDs (0000, 3003, 3004, ...) are the fragile part: those used to
@@ -291,9 +292,62 @@ async function main() {
     recipes.push(buildRecipe(itemId, itemId, Number(mount["@tier"]), 0, "mount", null, 1, mount.craftingrequirements!, names, itemValueIndex, itemValueCache));
   }
 
+  await writeArtifactPools(itemsRoot.items.simpleitem, [...itemsRoot.items.weapon, ...itemsRoot.items.equipmentitem], names);
+
   recipes.sort((a, b) => a.itemId.localeCompare(b.itemId));
   await writeFile(RECIPES_OUTPUT_PATH, JSON.stringify(recipes, null, 2) + "\n", "utf8");
   console.log(`Wrote ${recipes.length} recipes to ${RECIPES_OUTPUT_PATH}`);
+}
+
+/** Artifact Foundry pools: every artifact whose recipe is N fragments of one kind and tier is a
+ * possible outcome of melding those fragments (the outcome is a uniform random pick, so the dump's
+ * shared input IS the pool). Mist ("_FEY") artifacts are not part of the roulette. Crystal and
+ * dragon shards are other systems and stay out. */
+async function writeArtifactPools(
+  simpleItems: RawSimpleItem[],
+  gearItems: (RawGearItem & { "@shopsubcategory1"?: string })[],
+  names: Map<string, { es: string; en: string }>,
+) {
+  const FRAGMENTS = ["RUNE", "SOUL", "RELIC", "SHARD_AVALONIAN"] as const;
+  // Foundry class of the gear an artifact makes: armor by its material, offhands by type (shield /
+  // torch / book), weapons by family. Shapeshifter staffs are not in any pool.
+  const CLASS_BY_SUBCATEGORY: Record<string, "warrior" | "hunter" | "mage"> = {
+    plate_armor: "warrior", plate_helmet: "warrior", plate_shoes: "warrior",
+    sword: "warrior", axe: "warrior", mace: "warrior", hammer: "warrior", crossbow: "warrior", knuckles: "warrior", shieldtype: "warrior",
+    leather_armor: "hunter", leather_helmet: "hunter", leather_shoes: "hunter",
+    bow: "hunter", spear: "hunter", naturestaff: "hunter", dagger: "hunter", quarterstaff: "hunter", torchtype: "hunter",
+    cloth_armor: "mage", cloth_helmet: "mage", cloth_shoes: "mage",
+    firestaff: "mage", froststaff: "mage", cursestaff: "mage", arcanestaff: "mage", holystaff: "mage", booktype: "mage",
+  };
+  const gearById = new Map(gearItems.map((g) => [g["@uniquename"], g]));
+  const classOf = (artifactId: string) => {
+    const gear = gearById.get(artifactId.replace("_ARTEFACT", ""));
+    if (!gear) return null;
+    const category = gear["@craftingcategory"];
+    // Armor pieces carry their material as craftingcategory; weapons and offhands are told apart by
+    // shop subcategory (a few weapons have a misleading craftingcategory, e.g. gauntlets filed as dagger).
+    const key = category && /_(armor|helmet|shoes)$/.test(category) ? category : gear["@shopsubcategory1"];
+    return (key && CLASS_BY_SUBCATEGORY[key]) ?? null;
+  };
+  const pools = new Map<string, { fragment: string; fragmentId: string; tier: number; fragmentCount: number; artifacts: { itemId: string; nameEs: string; class: "warrior" | "hunter" | "mage" }[] }>();
+  for (const item of simpleItems) {
+    const id = item["@uniquename"];
+    if (!/_ARTEFACT_/.test(id) || /_FEY$/.test(id) || !item.craftingrequirements) continue;
+    const cls = classOf(id);
+    if (!cls) continue; // shapeshifter staffs and anything else outside the three classes
+    const resources = asArray(pickCraftingRequirements(asArray(item.craftingrequirements)).craftresource ?? []);
+    if (resources.length !== 1) continue;
+    const match = resources[0]["@uniquename"].match(/^T(\d)_(.+)$/);
+    if (!match || !(FRAGMENTS as readonly string[]).includes(match[2])) continue;
+    const key = resources[0]["@uniquename"];
+    const pool = pools.get(key) ?? { fragment: match[2], fragmentId: key, tier: Number(match[1]), fragmentCount: Number(resources[0]["@count"]), artifacts: [] };
+    pool.artifacts.push({ itemId: id, nameEs: names.get(id)?.es ?? id, class: cls });
+    pools.set(key, pool);
+  }
+  const sorted = [...pools.values()].sort((a, b) => a.fragment.localeCompare(b.fragment) || a.tier - b.tier);
+  for (const pool of sorted) pool.artifacts.sort((a, b) => a.itemId.localeCompare(b.itemId));
+  await writeFile(ARTIFACT_POOLS_OUTPUT_PATH, JSON.stringify(sorted, null, 2) + "\n", "utf8");
+  console.log(`Wrote ${sorted.length} artifact pools to ${ARTIFACT_POOLS_OUTPUT_PATH}`);
 }
 
 function buildRecipe(

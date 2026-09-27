@@ -15,6 +15,7 @@ import { findLatestDumpUrl, fetchDumpVolumeSummaries, type DumpVolumeSummary } f
 import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
 import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsurdPrices } from "../src/lib/ingest/aggregate";
 import { ALL_BREEDING_MARKET_ITEMS } from "../src/lib/formulas/breeding";
+import { ARTIFACT_MARKET_ITEMS } from "../src/lib/artifacts";
 import { runAlerts } from "../src/lib/ingest/alerts";
 import { refreshRankSnapshot } from "../src/lib/server/station-data";
 import { refreshTopRecipesSnapshot } from "../src/lib/server/top-recipes";
@@ -118,6 +119,8 @@ function collectItemIds(): string[] {
   // Monturas: feed crops/meat and market-traded babies for the "criar por tu cuenta" toggle; they
   // aren't materials of any mount recipe, so they'd otherwise never be priced.
   for (const itemId of ALL_BREEDING_MARKET_ITEMS) ids.add(itemId);
+  // Artifact Foundry (/artefactos): the fragments and every artifact they can roll into.
+  for (const itemId of ARTIFACT_MARKET_ITEMS) ids.add(itemId);
   return [...ids];
 }
 

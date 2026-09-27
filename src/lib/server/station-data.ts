@@ -12,21 +12,8 @@ export type StationType = "alchemy" | "refining" | "cooking" | "gear" | "mount";
 
 export type StationData = { recipes: Recipe[]; marketByItem: Record<string, CityPricePoint[]> };
 
-export async function loadStationData(stationType: StationType): Promise<StationData> {
-  const recipeRows = await db.select().from(recipesTable).where(eq(recipesTable.stationType, stationType));
-
-  const relevantItemIds = new Set<string>();
-  for (const r of recipeRows) {
-    relevantItemIds.add(r.itemId);
-    for (const m of r.materials) relevantItemIds.add(m.itemId);
-  }
-  // Monturas: the "criar por tu cuenta" toggle prices feed crops and market-traded babies that
-  // aren't a material of any mount recipe (see src/lib/formulas/breeding.ts), so they'd otherwise
-  // never be fetched here.
-  if (stationType === "mount") {
-    for (const itemId of ALL_BREEDING_MARKET_ITEMS) relevantItemIds.add(itemId);
-  }
-
+/** Market price points of the given items, grouped by item. */
+export async function loadMarketFor(relevantItemIds: Set<string>): Promise<Record<string, CityPricePoint[]>> {
   // Fetch only the aggregates this station's recipes actually reference -- with thousands of gear
   // items across the whole game, pulling the entire table for every rubro would balloon payload
   // and query time for no reason.
@@ -57,6 +44,25 @@ export async function loadStationData(stationType: StationType): Promise<Station
       weightedAvgPrice30d: a.weightedAvgPrice30d != null ? Number(a.weightedAvgPrice30d) : null,
     });
   }
+  return marketByItem;
+}
+
+export async function loadStationData(stationType: StationType): Promise<StationData> {
+  const recipeRows = await db.select().from(recipesTable).where(eq(recipesTable.stationType, stationType));
+
+  const relevantItemIds = new Set<string>();
+  for (const r of recipeRows) {
+    relevantItemIds.add(r.itemId);
+    for (const m of r.materials) relevantItemIds.add(m.itemId);
+  }
+  // Monturas: the "criar por tu cuenta" toggle prices feed crops and market-traded babies that
+  // aren't a material of any mount recipe (see src/lib/formulas/breeding.ts), so they'd otherwise
+  // never be fetched here.
+  if (stationType === "mount") {
+    for (const itemId of ALL_BREEDING_MARKET_ITEMS) relevantItemIds.add(itemId);
+  }
+
+  const marketByItem = await loadMarketFor(relevantItemIds);
   return { recipes: recipeRows, marketByItem };
 }
 

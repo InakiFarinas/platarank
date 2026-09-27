@@ -10,6 +10,7 @@ const ROUTES: { path: string; changeFrequency: MetadataRoute.Sitemap[number]["ch
   { path: "/cocina", changeFrequency: "hourly", priority: 0.9, live: true },
   { path: "/equipo", changeFrequency: "hourly", priority: 0.9, live: true },
   { path: "/monturas", changeFrequency: "hourly", priority: 0.9, live: true },
+  { path: "/artefactos", changeFrequency: "hourly", priority: 0.8, live: true },
   { path: "/calculadora", changeFrequency: "weekly", priority: 0.8 },
   { path: "/acerca", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-09-27" },
   { path: "/metodologia", changeFrequency: "monthly", priority: 0.6, lastModified: "2026-09-27" },
