@@ -45,7 +45,7 @@ function useNav() {
     locale,
     before: [entry(undefined, t("home"))],
     craft: CRAFT_ITEMS.map((i) => entry(i.route, t(i.route), i.count)),
-    after: [entry("calculator", t("calculator")), entry("sessions", t("sessions"))],
+    after: [entry("calculator", t("calculator"))],
   };
 }
 

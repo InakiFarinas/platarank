@@ -1,6 +1,6 @@
 {
   "title": "Ranking de crafteo de Albion Online por plata realizable por día",
-  "description": "PlataRank ordena las recetas de Albion Online (alquimia, refinado, cocina, equipo y monturas) por ganancia × volumen diario de ventas, no por margen unitario. Con calculadora, sesiones y alertas por Discord.",
+  "description": "PlataRank ordena las recetas de Albion Online (alquimia, refinado, cocina, equipo y monturas) por ganancia × volumen diario de ventas, no por margen unitario. Con calculadora, planificaciones guardadas y alertas por Discord.",
   "stationNotes": {
     "alchemy": "Pociones",
     "refining": "Tablas, lingotes, tela y cuero",
@@ -11,7 +11,7 @@
   "capabilities": [
     "Ranking por plata por día: el margen se multiplica por el volumen real de ventas.",
     "Calculadora con retorno, foco, tarifa de estación e impuestos, y enlaces para compartir tu cálculo.",
-    "Sesiones de crafteo para sumar varios ítems y cargar tus números reales.",
+    "Planificaciones guardadas con la ganancia de hoy y tu resultado real.",
     "Alertas por Discord cuando una receta guardada supera la ganancia que definas."
   ],
   "faq": {

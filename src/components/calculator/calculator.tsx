@@ -17,11 +17,10 @@ import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 import { computeCraft } from "@/lib/craft-calc";
 import { isBreedable } from "@/lib/formulas/breeding";
-import { PlanList, SavePlanForm, usePlans, type PlanParams } from "@/components/calculator/plans-panel";
+import { PlanList, SavePlanForm, usePlans, type OpenedPlan, type Plan, type PlanParams } from "@/components/calculator/plans-panel";
 import { TransportTool } from "@/components/transport/transport-tool";
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
-import { AddToSession } from "@/components/sessions/add-to-session";
 import { CTA_PRIMARY, CTA_SECONDARY, DisclosureButton, Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
 type Hit = { itemId: string; baseItemId: string; nameEs: string; nameEn?: string; tier: number; stationType: string };
@@ -127,6 +126,7 @@ export function Calculator() {
   const [extraCost, setExtraCost] = useState(0);
   const [breedOwnMount, setBreedOwnMount] = useState(false);
   const [journals, setJournals] = useState(true);
+  const [openedPlan, setOpenedPlan] = useState<OpenedPlan | null>(null);
   const [sellOverride, setSellOverride] = useState<number | null>(null);
   const [matOverrides, setMatOverrides] = useState<Record<string, number>>({});
 
@@ -139,6 +139,8 @@ export function Calculator() {
     const sp = new URLSearchParams(window.location.search);
     const id = sp.get("item");
     if (id) void load(id).then((ok) => ok && applyParams(paramsFromUrl(sp)));
+    // Old /sesiones links redirect here (next.config.ts): land on the saved plans.
+    else if (sp.get("tab") === "planes") setTab("plans");
   }, []);
 
   // "/" jumps to the search box, like most tools with a global search.
@@ -206,6 +208,7 @@ export function Calculator() {
     if (seq !== loadSeq.current) return false;
     setLoading(false);
     setData(next);
+    setOpenedPlan(null);
     setTab("calc");
     if (!keepQuality) setQuality(1);
     setSellOverride(null);
@@ -240,9 +243,11 @@ export function Calculator() {
     if (p.matOverrides !== undefined) setMatOverrides(p.matOverrides);
   }
 
-  async function openPlan(id: string, p: PlanParams) {
-    if (!(await load(id))) return;
-    applyParams(p);
+  async function openPlan(plan: Plan) {
+    if (!(await load(plan.item_id))) return;
+    applyParams(plan.params);
+    setOpenedPlan({ id: plan.id, name: plan.name, itemId: plan.item_id });
+    setSaveOpen(true);
   }
 
   const calc = useMemo(
@@ -914,10 +919,7 @@ export function Calculator() {
                   </DisclosureButton>
                   {saveOpen && (
                     <div className="mt-3 space-y-3">
-                      <SavePlanForm api={plansApi} draft={draft} />
-                      <div className="border-t border-border pt-3">
-                        <AddToSession draft={draft} />
-                      </div>
+                      <SavePlanForm api={plansApi} draft={draft} openedPlan={openedPlan} />
                     </div>
                   )}
                 </div>

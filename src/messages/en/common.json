@@ -20,7 +20,6 @@
     "mounts": "Mounts",
     "artifacts": "Artifacts",
     "calculator": "Calculator",
-    "sessions": "Sessions",
     "openMenu": "Open menu"
   },
   "language": { "label": "Language", "es": "Español", "en": "English" },

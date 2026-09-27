@@ -18,7 +18,7 @@ export type PlanAlert = {
 export const WEBHOOK_PATTERN = /^https:\/\/(discord|discordapp)\.com\/api\/webhooks\/[0-9]+\/[A-Za-z0-9_-]+$/;
 
 export function useAlerts(enabled: boolean) {
-  const t = useTranslations("sessions.alerts");
+  const t = useTranslations("calculator.alerts");
   const [alerts, setAlerts] = useState<PlanAlert[]>([]);
   const [webhook, setWebhook] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);

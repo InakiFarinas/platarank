@@ -17,7 +17,6 @@ export const ROUTES = {
   mounts: { es: "monturas", en: "mounts" },
   artifacts: { es: "artefactos", en: "artifacts" },
   calculator: { es: "calculadora", en: "calculator" },
-  sessions: { es: "sesiones", en: "sessions" },
   about: { es: "acerca", en: "about" },
   methodology: { es: "metodologia", en: "methodology" },
   privacy: { es: "privacidad", en: "privacy" },

@@ -20,7 +20,6 @@
     "mounts": "Monturas",
     "artifacts": "Artefactos",
     "calculator": "Calculadora",
-    "sessions": "Sesiones",
     "openMenu": "Abrir menú"
   },
   "language": { "label": "Idioma", "es": "Español", "en": "English" },

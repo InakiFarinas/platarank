@@ -7,8 +7,8 @@
 alter table public.ingest_state enable row level security;
 revoke all on table public.ingest_state from anon, authenticated;
 revoke insert, update, delete, truncate, trigger, references on table public.recipes, public.market_aggregates from anon, authenticated;
-revoke all on table public.plans, public.alerts, public.crafting_sessions, public.session_items, public.user_settings from anon;
-revoke truncate, trigger, references on table public.plans, public.alerts, public.crafting_sessions, public.session_items, public.user_settings from authenticated;
+revoke all on table public.plans, public.alerts, public.user_settings from anon;
+revoke truncate, trigger, references on table public.plans, public.alerts, public.user_settings from authenticated;
 alter default privileges for role postgres in schema public revoke all on tables from anon;
 
 -- 2. Roles.

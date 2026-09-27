@@ -96,7 +96,11 @@ export const plans = pgTable("plans", {
   itemId: text("item_id").notNull(),
   params: jsonb("params").notNull(),
   snapshot: jsonb("snapshot").notNull(),
+  // The player's real result once the craft is done (supabase/plans-update-and-actuals.sql).
+  actualCost: numeric("actual_cost"),
+  actualRevenue: numeric("actual_revenue"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
 // Discord alerts (also created via Supabase migration with RLS; the ingester reads them with the
