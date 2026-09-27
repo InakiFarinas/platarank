@@ -241,8 +241,8 @@ Signed-in surfaces built only from the calculator's `Panel`, `Segmented`, `Field
 ### Breeding toggle (mounts)
 A `Switch` in the Filtros "Supuestos de calculo" card, mount ranking only, with a short line of copy naming the families it covers and the two it doesn't (Draco Ala de Fuego, Conejo primaveral). In the calculator it is an "Animal base" `Segmented` (Comprado / Criado) that appears only when the recipe has a breedable material. The active-filter chip restating it stays neutral per the One Coin Rule.
 
-### Community sponsors (home page)
-A `MarqueeLogoScroller` (`ui/marquee-logo-scroller.tsx`) of bordered `bg-card` logo tiles (`rounded-sm`, hover `border-money/50`), fed by `COMMUNITY_SPONSORS` in `src/lib/sponsors.ts`. Five or more logos loop slowly and pause on hover and keyboard focus; fewer sit in a centered row, and under `prefers-reduced-motion` the loop stops and the row scrolls by hand. Links are `rel="noopener noreferrer sponsored"`, the section says it is advertising, and while the list is empty the section shows the invitation to advertise (Discord) instead of an empty strip. Logos are never invented: an entry needs a real community and its own logo file in `public/comunidades/`.
+### Community sponsors (home page and calculator)
+A `CommunitySponsors` (`community-sponsors.tsx`, a `MarqueeLogoScroller` from `ui/marquee-logo-scroller.tsx`) of bordered `bg-card` logo tiles (`rounded-sm`, hover `border-money/50`), fed by `COMMUNITY_SPONSORS` in `src/lib/sponsors.ts`. Five or more logos loop slowly and pause on hover and keyboard focus; fewer sit in a centered row, and under `prefers-reduced-motion` the loop stops and the row scrolls by hand. Links are `rel="noopener noreferrer sponsored"`, the section says it is advertising, and while the list is empty the section shows the invitation to advertise (Discord) instead of an empty strip. Logos are never invented: an entry needs a real community and its own logo file in `public/comunidades/`.
 
 ### Badges
 Stock shadcn `Badge`, used narrowly: `secondary` variant for the tier/enchant tag, `outline` variant for "datos insuficientes". Unchanged from the prior world.
