@@ -240,6 +240,16 @@ function RowDetail({ row }: { row: RecipeRowData }) {
           <h3 className="mb-1.5 font-medium text-foreground">{t("sale")}</h3>
           <dl className="space-y-1 text-muted-foreground">
             <Row k={t("refPrice")} v={row.sellRefPrice !== null ? t("silverAmount", { value: formatSilver(row.sellRefPrice) }) : t("noData")} />
+            {row.sellRefPrice === null && row.sellInstantPrice !== null && (
+              <Row
+                k={t("instantSell")}
+                v={
+                  row.sellInstantCity
+                    ? t("instantSellAmountCity", { value: formatSilver(row.sellInstantPrice), city: row.sellInstantCity })
+                    : t("instantSellAmount", { value: formatSilver(row.sellInstantPrice) })
+                }
+              />
+            )}
             <Row k={t("medianOf")} v={t("citiesCount", { count: row.sellRefCitiesCount })} />
             <Row k={t("oldestData")} v={formatAge(row.sellRefAgeSeconds, locale)} />
             <Row k={t("assumedReturn")} v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row, t)})`} />

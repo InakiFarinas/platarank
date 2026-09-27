@@ -105,7 +105,9 @@
     "stationFeeTip": "Plata que cobra la estación por cada 100 de nutrición que consume tu craft. La fija el dueño de la estación y la ves en el juego como tarifa de uso.",
     "extraCostsLabel": "Costos extra (total)",
     "extraCosts": "Costos extra",
-    "noSellPrice": "Sin precio de venta reciente para esta calidad y mercado. Escribí uno a mano para calcular."
+    "noSellPrice": "Sin precio de venta reciente para esta calidad y mercado. Escribí uno a mano para calcular.",
+    "instantSell": "Venta instantánea: {value} plata (orden de compra puesta ahora, no forma parte del cálculo).",
+    "instantSellCity": "Venta instantánea: {value} plata en {city} (orden de compra puesta ahora, no forma parte del cálculo)."
   },
   "materials": {
     "title": "Materiales",

@@ -150,6 +150,7 @@ async function storeFullAggregates(
         computedAt: now,
         price: numOrNull(agg.price),
         priceAgeSeconds: agg.priceAgeSeconds,
+        buyPriceMax: numOrNull(agg.buyPriceMax),
         avgDailyVolume30d: String(agg.avgDailyVolume30d),
         daysWithVolume30d: agg.daysWithVolume30d,
         weightedAvgPrice30d: numOrNull(agg.weightedAvgPrice30d),
@@ -157,10 +158,10 @@ async function storeFullAggregates(
     );
   });
 
-  // A combination with no price and no volume carries no information (every reader skips
-  // unpriced points and only counts volume from priced ones), so it isn't stored -- ~70% of them
-  // are empty, and they'd otherwise ship on every ranking load.
-  const kept = rows.filter((r) => r.price !== null || Number(r.avgDailyVolume30d) > 0);
+  // A combination with no price, no volume and no standing buy order carries no information
+  // (every reader skips unpriced points and only counts volume from priced ones), so it isn't
+  // stored -- ~70% of them are empty, and they'd otherwise ship on every ranking load.
+  const kept = rows.filter((r) => r.price !== null || Number(r.avgDailyVolume30d) > 0 || r.buyPriceMax !== null);
   for (const batch of chunk(kept, 500)) {
     await db
       .insert(marketAggregates)
@@ -171,6 +172,7 @@ async function storeFullAggregates(
           computedAt: sql`excluded.computed_at`,
           price: sql`excluded.price`,
           priceAgeSeconds: sql`excluded.price_age_seconds`,
+          buyPriceMax: sql`excluded.buy_price_max`,
           avgDailyVolume30d: sql`excluded.avg_daily_volume_30d`,
           daysWithVolume30d: sql`excluded.days_with_volume_30d`,
           weightedAvgPrice30d: sql`excluded.weighted_avg_price_30d`,
@@ -199,6 +201,7 @@ async function storePriceOnlyUpdates(itemIds: string[], gearItemIdSet: Set<strin
           computedAt: now,
           price: numOrNull(cp.price),
           priceAgeSeconds: cp.priceAgeSeconds,
+          buyPriceMax: numOrNull(cp.buyPriceMax),
           // Required by the insert type; ignored by onConflictDoUpdate's set below, which omits them.
           avgDailyVolume30d: "0",
           daysWithVolume30d: 0,
@@ -208,8 +211,9 @@ async function storePriceOnlyUpdates(itemIds: string[], gearItemIdSet: Set<strin
     );
   });
 
-  // Only priced combinations are written; a combination that lost its price is handled below.
-  const priced = rows.filter((r) => r.price !== null);
+  // Only combinations with a sell price or a standing buy order are written; one that lost both is
+  // handled below.
+  const priced = rows.filter((r) => r.price !== null || r.buyPriceMax !== null);
   for (const batch of chunk(priced, 500)) {
     await db
       .insert(marketAggregates)
@@ -220,16 +224,21 @@ async function storePriceOnlyUpdates(itemIds: string[], gearItemIdSet: Set<strin
           computedAt: sql`excluded.computed_at`,
           price: sql`excluded.price`,
           priceAgeSeconds: sql`excluded.price_age_seconds`,
+          buyPriceMax: sql`excluded.buy_price_max`,
         },
       });
   }
-  // Rows not refreshed above have no live price anymore: clear it (volume stays), then drop the
-  // ones that are now empty.
+  // Rows not refreshed above have neither a live price nor a live buy order anymore: clear both
+  // (volume stays), then drop the ones that are now empty.
   await db
     .update(marketAggregates)
-    .set({ price: null, priceAgeSeconds: null, computedAt: now })
-    .where(sql`${marketAggregates.computedAt} < ${now.toISOString()} and ${marketAggregates.price} is not null`);
-  await db.delete(marketAggregates).where(sql`${marketAggregates.price} is null and ${marketAggregates.avgDailyVolume30d} = 0`);
+    .set({ price: null, buyPriceMax: null, priceAgeSeconds: null, computedAt: now })
+    .where(
+      sql`${marketAggregates.computedAt} < ${now.toISOString()} and (${marketAggregates.price} is not null or ${marketAggregates.buyPriceMax} is not null)`,
+    );
+  await db
+    .delete(marketAggregates)
+    .where(sql`${marketAggregates.price} is null and ${marketAggregates.buyPriceMax} is null and ${marketAggregates.avgDailyVolume30d} = 0`);
   console.log(`Refreshed prices for ${priced.length} of ${rows.length} item-city-quality combinations (volume left untouched).`);
 }
 

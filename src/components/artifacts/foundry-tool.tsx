@@ -21,6 +21,13 @@ const POOL_ORDER: PoolKey[] = ["warrior", "hunter", "mage", "mixed"];
 type Tr = ReturnType<typeof useTranslations<"artifacts.foundry">>;
 const poolLabel = (t: Tr, k: PoolKey) => (k === "mixed" ? t("mixed") : t(`classes.${k}`));
 
+type SellMode = "instant" | "order";
+type Artifact = ArtifactPoolView["artifacts"][number];
+// Artifacts rarely trade, so the honest default is what a standing buy order pays right now, not
+// what your own listing might fetch if it ever fills.
+const DEFAULT_SELL_MODE: SellMode = "instant";
+const grossOf = (a: Artifact, mode: SellMode) => (mode === "instant" ? a.instantGross : a.gross);
+
 const silver = (n: number | null, locale: Locale) => (n === null ? "--" : formatInt(n, locale));
 const signed = (n: number, locale: Locale) => `${n >= 0 ? "+" : "−"}${formatInt(Math.abs(n), locale)}`;
 // 99.6% must not read as 100% (the roll would look risk-free), nor 0.4% as 0%.
@@ -39,12 +46,13 @@ function Direction({ positive }: { positive: boolean }) {
   );
 }
 
-function readUrl(): { fragment?: FragmentKind; tier?: number; pool?: PoolKey } {
+function readUrl(): { fragment?: FragmentKind; tier?: number; pool?: PoolKey; sellMode?: SellMode } {
   const sp = new URLSearchParams(window.location.search);
   const fragment = FRAGMENT_ORDER.find((f) => f === sp.get("f"));
   const tier = TIERS.find((t) => String(t) === sp.get("t"));
   const pool = POOL_ORDER.find((k) => k === sp.get("p"));
-  return { fragment, tier, pool };
+  const sellMode = sp.get("s") === "order" ? "order" : sp.get("s") === "instant" ? "instant" : undefined;
+  return { fragment, tier, pool, sellMode };
 }
 
 export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
@@ -54,6 +62,7 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
   const [fragment, setFragment] = useState<FragmentKind>("RUNE");
   const [tier, setTier] = useState(6);
   const [selected, setSelected] = useState<PoolKey>("mixed");
+  const [sellMode, setSellMode] = useState<SellMode>(DEFAULT_SELL_MODE);
   const [ready, setReady] = useState(false);
 
   // The choice lives in the URL so a link to a specific pool can be shared; read once after mount
@@ -63,6 +72,7 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
     if (url.fragment) setFragment(url.fragment);
     if (url.tier) setTier(url.tier);
     if (url.pool) setSelected(url.pool);
+    if (url.sellMode) setSellMode(url.sellMode);
     setReady(true);
   }, []);
   useEffect(() => {
@@ -71,9 +81,10 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
     if (fragment !== "RUNE") sp.set("f", fragment);
     if (tier !== 6) sp.set("t", String(tier));
     if (selected !== "mixed") sp.set("p", selected);
+    if (sellMode !== DEFAULT_SELL_MODE) sp.set("s", sellMode);
     const qs = sp.toString();
     window.history.replaceState(null, "", `${window.location.pathname}${qs ? `?${qs}` : ""}`);
-  }, [ready, fragment, tier, selected]);
+  }, [ready, fragment, tier, selected, sellMode]);
 
   const pool = pools.find((p) => p.fragment === fragment && p.tier === tier);
 
@@ -82,9 +93,9 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
     return POOL_ORDER.map((key) => {
       const artifacts = key === "mixed" ? pool.artifacts : pool.artifacts.filter((a) => a.class === key);
       const count = key === "mixed" ? MIXED_FRAGMENT_COUNT : pool.fragmentCount;
-      return { key, count, artifacts, result: computeRoll(pool.fragmentPrice, count, artifacts.map((a) => a.gross)) };
+      return { key, count, artifacts, result: computeRoll(pool.fragmentPrice, count, artifacts.map((a) => grossOf(a, sellMode))) };
     });
-  }, [pool]);
+  }, [pool, sellMode]);
 
   // Best expected profit per fragment x tier (over the four pools), to compare the whole landscape at a glance.
   const landscape = useMemo(() => {
@@ -93,18 +104,18 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
       let best: { profit: number; pool: PoolKey } | null = null;
       for (const key of POOL_ORDER) {
         const artifacts = key === "mixed" ? p.artifacts : p.artifacts.filter((a) => a.class === key);
-        const r = computeRoll(p.fragmentPrice, key === "mixed" ? MIXED_FRAGMENT_COUNT : p.fragmentCount, artifacts.map((a) => a.gross));
+        const r = computeRoll(p.fragmentPrice, key === "mixed" ? MIXED_FRAGMENT_COUNT : p.fragmentCount, artifacts.map((a) => grossOf(a, sellMode)));
         if (r.profit !== null && (best === null || r.profit > best.profit)) best = { profit: r.profit, pool: key };
       }
       cells.set(`${p.fragment}-${p.tier}`, best);
     }
     return cells;
-  }, [pools]);
+  }, [pools, sellMode]);
 
   const detail = rows.find((r) => r.key === selected);
   const detailArtifacts = useMemo(
-    () => [...(detail?.artifacts ?? [])].sort((a, b) => (b.gross ?? -1) - (a.gross ?? -1)),
-    [detail],
+    () => [...(detail?.artifacts ?? [])].sort((a, b) => (grossOf(b, sellMode) ?? -1) - (grossOf(a, sellMode) ?? -1)),
+    [detail, sellMode],
   );
   const fragmentName = `${fragLabel(fragment)} T${tier}`;
 
@@ -120,8 +131,17 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
         />
         <Segmented label={t("tier")} value={tier} options={TIERS.map((n) => ({ value: n, text: `T${n}` }))} onChange={setTier} />
       </div>
+      <Segmented
+        label={t("sellMode")}
+        value={sellMode}
+        options={[
+          { value: "instant", text: t("sellModeInstant") },
+          { value: "order", text: t("sellModeOrder") },
+        ]}
+        onChange={setSellMode}
+      />
 
-      {detail && <Verdict pool={pool} detail={detail} fragmentName={fragmentName} />}
+      {detail && <Verdict pool={pool} detail={detail} fragmentName={fragmentName} sellMode={sellMode} />}
 
       <Panel
         title={t("poolsTitle")}
@@ -158,7 +178,7 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
                   <span className="text-sm font-medium sm:text-left">
                     {poolLabel(t, key)}
                     <span className="block text-xs font-normal text-muted-foreground">
-                      {t("poolMeta", { count, priced: result.pricedCount, size: result.poolSize })}
+                      {t(sellMode === "instant" ? "poolMetaInstant" : "poolMeta", { count, priced: result.pricedCount, size: result.poolSize })}
                     </span>
                   </span>
                   <span className={cn("text-right font-mono text-lg font-semibold tabular-nums sm:order-4 sm:text-sm", profitTone(result.profit))}>
@@ -177,7 +197,7 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
           })}
         </ul>
         <div className="mt-3 space-y-1.5 text-xs text-muted-foreground">
-          <p>{t("note1", { net: Math.round(netSellMultiplier() * 1000) / 10 })}</p>
+          <p>{t(sellMode === "instant" ? "note1Instant" : "note1Order", { net: Math.round(netSellMultiplier() * 1000) / 10 })}</p>
           <p>{t("note2", { mixed: MIXED_FRAGMENT_COUNT })}</p>
         </div>
       </Panel>
@@ -234,9 +254,18 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
         <Panel title={t("detailTitle", { pool: poolLabel(t, detail.key) })} aside={t("detailAside", { priced: detail.result.pricedCount, size: detail.artifacts.length })}>
           <ul className="divide-y divide-border text-sm">
             {detailArtifacts.map((a) => {
-              const net = a.gross !== null ? a.gross * netSellMultiplier() : null;
+              const gross = grossOf(a, sellMode);
+              const net = gross !== null ? gross * netSellMultiplier() : null;
               const cost = detail.result.cost;
               const wins = net !== null && cost !== null ? net >= cost : null;
+              const meta =
+                sellMode === "instant"
+                  ? a.instantCity
+                    ? t("instantAt", { city: a.instantCity })
+                    : t("noBuyOrder")
+                  : a.dailyVolume > 0
+                    ? t("perDay", { n: formatInt(a.dailyVolume, locale) })
+                    : t("noSales");
               return (
                 <li key={a.itemId} className="flex items-baseline justify-between gap-3 py-2">
                   <span className="min-w-0 truncate">
@@ -247,7 +276,7 @@ export function FoundryTool({ pools }: { pools: ArtifactPoolView[] }) {
                     <span className={cn("font-mono tabular-nums", wins === null ? "" : wins ? "text-money" : "text-destructive")}>
                       {wins !== null && <Direction positive={wins} />} {silver(net, locale)}
                     </span>
-                    <span className="ml-3 font-mono text-xs tabular-nums text-muted-foreground">{a.dailyVolume > 0 ? t("perDay", { n: formatInt(a.dailyVolume, locale) }) : t("noSales")}</span>
+                    <span className="ml-3 font-mono text-xs tabular-nums text-muted-foreground">{meta}</span>
                   </span>
                 </li>
               );
@@ -270,7 +299,17 @@ function Stat({ label, children, className }: { label: string; children: React.R
 
 /** The answer to "¿conviene?": the selected pool's expected profit as the page's one big figure, or
  * the reason there is no answer. */
-function Verdict({ pool, detail, fragmentName }: { pool: ArtifactPoolView | undefined; detail: { key: PoolKey; count: number; result: RollResult }; fragmentName: string }) {
+function Verdict({
+  pool,
+  detail,
+  fragmentName,
+  sellMode,
+}: {
+  pool: ArtifactPoolView | undefined;
+  detail: { key: PoolKey; count: number; result: RollResult };
+  fragmentName: string;
+  sellMode: SellMode;
+}) {
   const t = useTranslations("artifacts.foundry");
   const locale = useLocale() as Locale;
   const { result } = detail;
@@ -282,7 +321,7 @@ function Verdict({ pool, detail, fragmentName }: { pool: ArtifactPoolView | unde
       <p className="text-sm">{t("verdictNoPrice", { fragment: fragmentName })}</p>
     );
   } else if (result.profit === null) {
-    body = <p className="text-sm">{t("verdictNoSales", { pool: name })}</p>;
+    body = <p className="text-sm">{t(sellMode === "instant" ? "verdictNoBuyOrders" : "verdictNoSales", { pool: name })}</p>;
   } else {
     body = (
       <>

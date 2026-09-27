@@ -1,4 +1,4 @@
-import { BLACK_MARKET } from "@/lib/aodp/cities";
+import { BLACK_MARKET, REAL_CITIES } from "@/lib/aodp/cities";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
 import { saleTaxRate } from "@/lib/formulas/market-tax";
@@ -37,6 +37,18 @@ function cheapestMarketPrice(market: Record<string, CityPricePoint[]>, itemIds: 
     }
   }
   return robustStat(quotes, "min").value;
+}
+
+/** Best standing buy order for an item across the real cities -- what selling it instantly (matching
+ * the order instead of publishing a sell listing and waiting) actually pays. A buy order escrows its
+ * silver up front, so unlike a sell listing it can't be a bait price: no outlier trimming needed. */
+function bestInstantSellPrice(market: Record<string, CityPricePoint[]>, itemId: string, quality: number): { value: number | null; city: string | null } {
+  let best: { value: number; city: string } | null = null;
+  for (const pt of market[itemId] ?? []) {
+    if (pt.quality === quality && (REAL_CITIES as readonly string[]).includes(pt.city) && pt.buyPriceMax !== null && (!best || pt.buyPriceMax > best.value))
+      best = { value: pt.buyPriceMax, city: pt.city };
+  }
+  return best ?? { value: null, city: null };
 }
 
 /** One item's crafting result under the given assumptions -- shared by the calculator (browser)
@@ -103,6 +115,9 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
       discarded: discardedByCity.get(pt.city) ?? null,
     }))
     .sort((a, b) => a.price - b.price);
+  // Informational only, never feeds sellPrice: Black Market's own "price" is already a buy-order
+  // value (see computeCityPrice), so this fallback only applies to the real-city path.
+  const sellInstant = !useBlackMarket && sellStat.value === null ? bestInstantSellPrice(market, recipe.itemId, p.quality) : { value: null, city: null };
   const sellPrice = p.sellOverride ?? sellStat.value ?? 0;
   // Only the cities whose price actually fed `sellStat` may lend their volume to it -- a city with
   // real daily volume but no live price (or a discarded bait listing) must not inflate plata/día
@@ -130,6 +145,8 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     materials,
     sellPrice,
     sellAuto: sellStat.value,
+    sellInstantPrice: sellInstant.value,
+    sellInstantCity: sellInstant.city,
     sellBreakdown,
     sellCities: sellStat.result.kept.length,
     oldestAge: ages.length ? Math.max(...ages) : null,

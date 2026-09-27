@@ -695,6 +695,13 @@ export function Calculator() {
                   {t("conditions.noSellPrice")}
                 </p>
               )}
+              {calc.sellAuto === null && calc.sellInstantPrice !== null && (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {calc.sellInstantCity
+                    ? t("conditions.instantSellCity", { value: fInt(calc.sellInstantPrice), city: calc.sellInstantCity })
+                    : t("conditions.instantSell", { value: fInt(calc.sellInstantPrice) })}
+                </p>
+              )}
             </Panel>
 
             {/* Materials */}
