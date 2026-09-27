@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu as MenuPrimitive } from "@base-ui/react/menu";
+import { ChevronDown, Menu } from "lucide-react";
 import { AuthButton } from "@/components/auth-button";
 import { Logo } from "@/components/logo";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
@@ -12,17 +13,22 @@ import type { CityTheme } from "@/lib/city-theme";
 import type { CitySpecialty } from "@/lib/city-specialties";
 import { cn } from "@/lib/utils";
 
-const NAV_ITEMS = [
-  { href: "/es", label: "Inicio", count: null },
+type NavItem = { href: string; label: string; count: number | null };
+
+const CRAFT_ITEMS: readonly NavItem[] = [
   { href: "/es/alquimia", label: "Alquimia", count: 174 },
   { href: "/es/refinado", label: "Refinado", count: 115 },
   { href: "/es/cocina", label: "Cocina", count: 183 },
   { href: "/es/equipo", label: "Equipo", count: 5711 },
   { href: "/es/monturas", label: "Monturas", count: 29 },
   { href: "/es/artefactos", label: "Artefactos", count: null },
+];
+
+const NAV_BEFORE: readonly NavItem[] = [{ href: "/es", label: "Inicio", count: null }];
+const NAV_AFTER: readonly NavItem[] = [
   { href: "/es/calculadora", label: "Calculadora", count: null },
   { href: "/es/sesiones", label: "Sesiones", count: null },
-] as const;
+];
 
 /** Shared with the "Ciudad de crafteo" control (now in the Filtros panel, see controls.tsx) so
  * both name a city's bonus the same way. */
@@ -101,7 +107,11 @@ export function SiteHeader({
             </Link>
 
         <div className="hidden min-w-0 flex-1 items-center gap-1 xl:flex">
-          {NAV_ITEMS.map((item) => (
+          {NAV_BEFORE.map((item) => (
+            <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href)} />
+          ))}
+          <CraftMenu pathname={pathname} />
+          {NAV_AFTER.map((item) => (
             <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href)} />
           ))}
         </div>
@@ -123,32 +133,17 @@ export function SiteHeader({
               <SheetTitle className="font-display text-base uppercase tracking-wide">PlataRank</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col gap-1 px-4 pb-4">
-              {NAV_ITEMS.map((item) => {
-                const active = isActive(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "flex items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm transition-colors",
-                      active ? "bg-money/10 text-money" : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
-                    )}
-                  >
-                    {item.label}
-                    {item.count !== null && (
-                      <span
-                        className={cn(
-                          "rounded-full px-1.5 py-px font-mono text-xs tabular-nums",
-                          active ? "bg-money/20 text-money" : "bg-background/60 text-muted-foreground",
-                        )}
-                      >
-                        {formatCount(item.count)}
-                      </span>
-                    )}
-                  </Link>
-                );
-              })}
+              {NAV_BEFORE.map((item) => (
+                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href)} />
+              ))}
+              <p className="px-3 pt-3 pb-1 text-xs uppercase tracking-wide text-muted-foreground">Crafteo</p>
+              {CRAFT_ITEMS.map((item) => (
+                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href)} className="pl-6" />
+              ))}
+              <div className="pt-2" />
+              {NAV_AFTER.map((item) => (
+                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href)} />
+              ))}
             </nav>
           </SheetContent>
         </Sheet>
@@ -230,6 +225,72 @@ function ServerBadge() {
         </SelectItem>
       </SelectContent>
     </Select>
+  );
+}
+
+function MobileLink({ item, active, className }: { item: NavItem; active: boolean; className?: string }) {
+  return (
+    <Link
+      href={item.href}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "flex items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm transition-colors",
+        active ? "bg-money/10 text-money" : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
+        className,
+      )}
+    >
+      {item.label}
+      {item.count !== null && (
+        <span
+          className={cn(
+            "rounded-full px-1.5 py-px font-mono text-xs tabular-nums",
+            active ? "bg-money/20 text-money" : "bg-background/60 text-muted-foreground",
+          )}
+        >
+          {formatCount(item.count)}
+        </span>
+      )}
+    </Link>
+  );
+}
+
+/** One "Crafteo" tab grouping every crafting category; active while any of them is the current page. */
+function CraftMenu({ pathname }: { pathname: string | null }) {
+  const active = CRAFT_ITEMS.some((item) => isActive(pathname, item.href));
+  return (
+    <MenuPrimitive.Root>
+      <MenuPrimitive.Trigger
+        className={cn(
+          "relative flex shrink-0 items-center gap-1 rounded-t-sm border-b-2 px-2 py-1 text-xs transition-colors after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']",
+          active ? "border-money text-money" : "border-transparent text-muted-foreground hover:border-money/30 hover:text-foreground",
+        )}
+      >
+        Crafteo
+        <ChevronDown className="h-3 w-3" />
+      </MenuPrimitive.Trigger>
+      <MenuPrimitive.Portal>
+        <MenuPrimitive.Positioner align="start" sideOffset={8} className="z-30">
+          <MenuPrimitive.Popup className="min-w-44 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md outline-none">
+            {CRAFT_ITEMS.map((item) => {
+              const itemActive = isActive(pathname, item.href);
+              return (
+                <MenuPrimitive.LinkItem
+                  key={item.href}
+                  render={<Link href={item.href} aria-current={itemActive ? "page" : undefined} />}
+                  className={cn(
+                    "flex cursor-default items-center justify-between gap-3 rounded-sm px-2.5 py-1.5 text-xs outline-none data-[highlighted]:bg-accent/40",
+                    itemActive ? "text-money" : "text-muted-foreground data-[highlighted]:text-foreground",
+                  )}
+                >
+                  {item.label}
+                  {item.count !== null && <span className="font-mono tabular-nums text-muted-foreground">{formatCount(item.count)}</span>}
+                </MenuPrimitive.LinkItem>
+              );
+            })}
+          </MenuPrimitive.Popup>
+        </MenuPrimitive.Positioner>
+      </MenuPrimitive.Portal>
+    </MenuPrimitive.Root>
   );
 }
 
