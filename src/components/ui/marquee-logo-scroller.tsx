@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 
 export type MarqueeLogo = {
   name: string;
+  /** One line on what the community is, under the name. */
+  description?: string;
   /** Where the logo links to: the community's own site or invite. */
   href: string;
   /** Square icon under /public, shown beside the name. Optional: the tile is text-only without it. */
@@ -23,13 +25,16 @@ function LogoTile({ logo, copy = false }: { logo: MarqueeLogo; copy?: boolean })
       rel="noopener noreferrer sponsored"
       aria-label={copy ? undefined : logo.name}
       tabIndex={copy ? -1 : undefined}
-      className="flex h-20 w-52 shrink-0 items-center justify-center gap-3 rounded-sm border border-border bg-card px-4 transition-colors hover:border-money/50 hover:bg-money/5"
+      className="flex h-24 w-72 shrink-0 items-center justify-center gap-3 rounded-sm border border-border bg-card px-4 transition-colors hover:border-money/50 hover:bg-money/5"
     >
       {logo.src && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={logo.src} alt="" width={48} height={48} loading="lazy" className="h-12 w-12 shrink-0 rounded-sm object-cover" />
       )}
-      <span className={cn("text-balance font-heading text-sm leading-tight", logo.src ? "text-left" : "text-center")}>{logo.name}</span>
+      <span className={cn("min-w-0", logo.src ? "text-left" : "text-center")}>
+        <span className="block text-balance font-heading text-sm leading-tight">{logo.name}</span>
+        {logo.description && <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{logo.description}</span>}
+      </span>
     </a>
   );
 }
