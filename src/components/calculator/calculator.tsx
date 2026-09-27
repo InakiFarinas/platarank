@@ -118,7 +118,7 @@ export function Calculator() {
   const [quality, setQuality] = useState(1);
   const [craftCity, setCraftCity] = useState<Location>("Brecilien");
   const [focus, setFocus] = useState(false);
-  const [feeRate, setFeeRate] = useState(235);
+  const [feeRate, setFeeRate] = useState(DEFAULTS.feeRate);
   const [extraCost, setExtraCost] = useState(0);
   const [breedOwnMount, setBreedOwnMount] = useState(false);
   const [sellOverride, setSellOverride] = useState<number | null>(null);
@@ -666,7 +666,7 @@ export function Calculator() {
                 className="mt-4 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
               >
                 Configuración avanzada
-                {(feeRate !== 235 || extraCost > 0) && <span className="text-money">(editada)</span>}
+                {(feeRate !== DEFAULTS.feeRate || extraCost > 0) && <span className="text-money">(editada)</span>}
               </DisclosureButton>
               {advOpen && (
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

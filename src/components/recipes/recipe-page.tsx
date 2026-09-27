@@ -4,6 +4,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { loadRankSnapshot, loadStationData, rankStation, ROW_LIMIT, type StationType } from "@/lib/server/station-data";
 import recipesJson from "@/data/generated/recipes.json";
 import { DEFAULT_FILTERS } from "@/lib/recipe-filters";
+import { breadcrumbSchema, faqSchema, FaqList, JsonLd } from "@/components/json-ld";
+import { absoluteUrl } from "@/lib/seo";
+import { STATION_SEO, stationFaqs } from "@/lib/station-seo";
 
 /** Stations too big to ship whole to the browser (gear: ~5,700 recipes made a ~50MB page). They
  * send only the top rows and recompute server-side via /api/rank when the player changes something. */
@@ -66,6 +69,7 @@ export async function RecipePage({
   return (
     <main id="contenido" className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-6 sm:pb-8 lg:px-8">
       {content}
+      <StationInfo stationType={stationType} />
       <Footer />
     </main>
   );
@@ -87,5 +91,26 @@ function Footer() {
         . Recetas extraídas del dump oficial del cliente (ao-bin-dumps).
       </p>
     </SiteFooter>
+  );
+}
+
+function StationInfo({ stationType }: { stationType: StationType }) {
+  const seo = STATION_SEO[stationType];
+  const faqs = stationFaqs(stationType);
+  return (
+    <>
+      <JsonLd data={faqSchema(faqs)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "PlataRank", url: absoluteUrl("/es") },
+          { name: seo.name, url: absoluteUrl(`/es/${seo.path}`) },
+        ])}
+      />
+      <section className="mt-12 max-w-3xl">
+        <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Sobre este ranking de {seo.name.toLowerCase()}</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{seo.intro}</p>
+        <FaqList faqs={faqs} className="mt-10" />
+      </section>
+    </>
   );
 }

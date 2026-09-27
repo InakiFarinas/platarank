@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cinzel, Geist, Geist_Mono, IM_Fell_English } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { SITE_URL } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import { DISCORD_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,10 +29,36 @@ const cinzel = Cinzel({
 });
 
 const DESCRIPTION =
-  "Ranking de crafteo de Albion Online por plata realizable por dia (margen x volumen diario de ventas), no por margen unitario.";
+  "Ranking de crafteo de Albion Online por plata realizable por día (margen × volumen diario de ventas), no por margen unitario.";
+
+export const viewport: Viewport = { themeColor: "#17110d" };
+
+const SITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo-og.png`,
+      sameAs: [DISCORD_URL],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      description: DESCRIPTION,
+      inLanguage: "es",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
   title: { default: "PlataRank", template: "%s -- PlataRank" },
   description: DESCRIPTION,
   openGraph: {
@@ -53,6 +80,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} ${imFell.variable} ${cinzel.variable} antialiased`}>
+        <JsonLd data={SITE_SCHEMA} />
         <a
           href="#contenido"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-money focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-money-foreground"

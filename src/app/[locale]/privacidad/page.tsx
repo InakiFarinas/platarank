@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/legal-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Política de privacidad",
-  alternates: { canonical: "/es/privacidad" },
-};
+  description: "Qué datos trata PlataRank, con quién los comparte y qué derechos tenés sobre ellos.",
+  path: "/es/privacidad",
+});
 
 export default function PrivacidadPage() {
   return (
