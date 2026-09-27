@@ -19,7 +19,7 @@ const recipe: Recipe = {
 };
 
 function point(city: string, price: number | null, volume = 1000, quality = 1, days = 30): CityPricePoint {
-  return { city, quality, price, priceAgeSeconds: 3600, avgDailyVolume30d: volume, daysWithVolume30d: days, weightedAvgPrice30d: price };
+  return { city, quality, price, priceAgeSeconds: 3600, buyPriceMax: null, avgDailyVolume30d: volume, daysWithVolume30d: days, weightedAvgPrice30d: price };
 }
 
 function market(overrides: Record<string, CityPricePoint[]>): MarketData {

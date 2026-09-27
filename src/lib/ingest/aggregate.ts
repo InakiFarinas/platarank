@@ -8,6 +8,9 @@ export type CityPrice = {
   quality: number;
   price: number | null;
   priceAgeSeconds: number | null;
+  /** The city's own highest standing buy order, tracked even where `price` is the sell side -- see
+   * the schema note on market_aggregates.buy_price_max. */
+  buyPriceMax: number | null;
 };
 
 export type CityAggregate = CityPrice & DumpVolumeSummary;
@@ -67,6 +70,8 @@ export function computeCityPrice(itemId: string, prices: AodpPriceRow[], now: Da
   const isBlackMarket = city === BLACK_MARKET;
   const rawPrice = priceRow ? (isBlackMarket ? priceRow.buy_price_max : priceRow.sell_price_min) : 0;
   const rawDate = priceRow ? (isBlackMarket ? priceRow.buy_price_max_date : priceRow.sell_price_min_date) : null;
+  // Real cities: track the standing buy order too (Black Market's is already `price` above).
+  const rawBuy = priceRow && !isBlackMarket ? priceRow.buy_price_max : 0;
 
   return {
     itemId,
@@ -74,6 +79,7 @@ export function computeCityPrice(itemId: string, prices: AodpPriceRow[], now: Da
     quality,
     price: rawPrice > 0 ? rawPrice : null,
     priceAgeSeconds: rawPrice > 0 && rawDate ? Math.round((now.getTime() - parseAodpTimestamp(rawDate).getTime()) / 1000) : null,
+    buyPriceMax: rawBuy > 0 ? rawBuy : null,
   };
 }
 

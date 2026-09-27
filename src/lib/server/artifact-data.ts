@@ -1,5 +1,6 @@
+import { REAL_CITIES } from "@/lib/aodp/cities";
 import { loadMarketFor } from "@/lib/server/station-data";
-import { cheapestMarketPrice, computeSingleQualitySellSide, DEFAULT_PARAMS } from "@/lib/recipe-math";
+import { bestInstantSellPrice, cheapestMarketPrice, computeSingleQualitySellSide, DEFAULT_PARAMS } from "@/lib/recipe-math";
 import { ARTIFACT_MARKET_ITEMS, ARTIFACT_POOLS } from "@/lib/artifacts";
 import type { ArtifactClass, FragmentKind } from "@/lib/artifact-roll";
 
@@ -11,7 +12,19 @@ export type ArtifactPoolView = {
   fragmentPrice: number | null;
   /** City where that cheapest fragment quote is, null when there is no price. */
   fragmentCity: string | null;
-  artifacts: { itemId: string; nameEs: string; nameEn: string; class: ArtifactClass; gross: number | null; dailyVolume: number }[];
+  artifacts: {
+    itemId: string;
+    nameEs: string;
+    nameEn: string;
+    class: ArtifactClass;
+    /** Net payout waiting for your own sell order to fill. Null when no sale in the last 30 days. */
+    gross: number | null;
+    dailyVolume: number;
+    /** Net payout matching the best standing buy order right now instead -- artifacts rarely trade,
+     * so waiting for `gross` to fill is often unrealistic. Null when nobody is buying. */
+    instantGross: number | null;
+    instantCity: string | null;
+  }[];
 };
 
 /** Prices for every Foundry pool, reduced server-side to one buy price per fragment and one sell
@@ -34,7 +47,14 @@ export async function loadArtifactPools(): Promise<ArtifactPoolView[]> {
         const side = computeSingleQualitySellSide(a.itemId, market, DEFAULT_PARAMS);
         // A listing with no real sales (fewer than 3 trading days) is not a price you can sell at, same
         // liquidity bar as the gear ranking: leave it out of the average instead of inflating it.
-        return { ...a, gross: side.avgDailyVolume30d > 0 ? side.sellRefPriceGross : null, dailyVolume: side.avgDailyVolume30d };
+        const instant = bestInstantSellPrice(market, [...REAL_CITIES], a.itemId);
+        return {
+          ...a,
+          gross: side.avgDailyVolume30d > 0 ? side.sellRefPriceGross : null,
+          dailyVolume: side.avgDailyVolume30d,
+          instantGross: instant.value,
+          instantCity: instant.city,
+        };
       }),
     };
   });

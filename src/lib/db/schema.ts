@@ -62,6 +62,12 @@ export const marketAggregates = pgTable(
     price: numeric("price"),
     priceAgeSeconds: integer("price_age_seconds"),
 
+    // The highest standing buy order in this city -- what a seller gets by matching it instead of
+    // publishing their own sell order and waiting. Kept for real cities too (Black Market's own
+    // instant-sell price is already `price` above). Mainly useful for goods that rarely trade, like
+    // artifacts: waiting for `price` to actually fill is unrealistic there.
+    buyPriceMax: numeric("buy_price_max"),
+
     avgDailyVolume30d: numeric("avg_daily_volume_30d").notNull().default("0"),
     daysWithVolume30d: smallint("days_with_volume_30d").notNull().default(0),
     weightedAvgPrice30d: numeric("weighted_avg_price_30d"),

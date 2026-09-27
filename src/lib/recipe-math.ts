@@ -18,6 +18,9 @@ export type CityPricePoint = {
   quality: number;
   price: number | null;
   priceAgeSeconds: number | null;
+  /** The city's own highest standing buy order -- what a seller gets by matching it instantly
+   * instead of publishing a sell order and waiting for `price` to fill. */
+  buyPriceMax: number | null;
   avgDailyVolume30d: number;
   daysWithVolume30d: number;
   weightedAvgPrice30d: number | null;
@@ -327,4 +330,18 @@ export function cheapestMarketPrice(market: MarketData, buyCities: Location[], i
     }
   }
   return robustStat(quotes, "min").value;
+}
+
+/** Best standing buy order for an item across the given cities -- what selling it instantly
+ * (matching the order instead of publishing a sell listing and waiting) actually pays. A buy order
+ * escrows its silver up front, so unlike a sell listing it can't be a bait price: no outlier
+ * trimming needed, just the highest one. Used for goods that rarely trade (artifacts), where
+ * waiting for `price` to fill is unrealistic. */
+export function bestInstantSellPrice(market: MarketData, sellCities: Location[], itemId: string): { value: number | null; city: string | null } {
+  let best: { value: number; city: string } | null = null;
+  for (const p of market.get(itemId) ?? []) {
+    if (p.quality === 1 && sellCities.includes(p.city as Location) && p.buyPriceMax !== null && (!best || p.buyPriceMax > best.value))
+      best = { value: p.buyPriceMax, city: p.city };
+  }
+  return best ?? { value: null, city: null };
 }

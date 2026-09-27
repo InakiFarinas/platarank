@@ -39,6 +39,7 @@ export async function loadMarketFor(relevantItemIds: Set<string>): Promise<Recor
       quality: a.quality,
       price: a.price != null ? Number(a.price) : null,
       priceAgeSeconds: a.priceAgeSeconds,
+      buyPriceMax: a.buyPriceMax != null ? Number(a.buyPriceMax) : null,
       avgDailyVolume30d: Number(a.avgDailyVolume30d),
       daysWithVolume30d: a.daysWithVolume30d,
       weightedAvgPrice30d: a.weightedAvgPrice30d != null ? Number(a.weightedAvgPrice30d) : null,
