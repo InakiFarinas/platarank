@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { isLocale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { FoundryTool } from "@/components/artifacts/foundry-tool";
 import { SiteFooter } from "@/components/site-footer";
@@ -7,25 +10,27 @@ import { loadArtifactPools } from "@/lib/server/artifact-data";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = pageMetadata({
-  title: "Fundición de artefactos de Albion Online: valor esperado por tirada",
-  description:
-    "Valor esperado de tirar Runas, Almas, Reliquias o fragmentos de Avalon en la Fundición de artefactos de Albion Online: costo, ganancia, peor y mejor caso y probabilidad de perder, por tier.",
-  path: "/es/artefactos",
-});
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "artifacts" });
+  return pageMetadata({ locale, route: "artifacts", title: t("meta.title"), description: t("meta.description") });
+}
 
-export default async function ArtefactosPage() {
+export default async function ArtefactosPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "artifacts" });
   const pools = await loadArtifactPools();
   return (
     <>
-      <SiteHeader
-        title="Fundición de artefactos"
-        description="Cada tirada da un artefacto al azar del pozo elegido, todos con la misma probabilidad. Acá ves si conviene y cuánto arriesgás."
-      />
+      <SiteHeader title={t("page.title")} description={t("page.description")} />
       <main id="contenido" className="mx-auto max-w-5xl px-3 pb-8 sm:px-6">
         <FoundryTool pools={pools} />
-        <SiteFooter className="mt-8">
-          <p className="text-xs text-muted-foreground">Datos de mercado: Albion Online Data Project.</p>
+        <SiteFooter locale={locale} className="mt-8">
+          <p className="text-xs text-muted-foreground">{t("page.dataCredit")}</p>
         </SiteFooter>
       </main>
     </>

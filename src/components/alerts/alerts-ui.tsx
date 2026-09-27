@@ -3,6 +3,7 @@
 import { formatInt } from "@/lib/format";
 import { useState } from "react";
 import { Bell } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { CTA_PRIMARY, CTA_SECONDARY, SilverInput } from "@/components/calculator/ui";
 import { WEBHOOK_PATTERN, type AlertsApi, type PlanAlert } from "@/components/alerts/use-alerts";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ import { cn } from "@/lib/utils";
 
 /** Where alerts get delivered: a Discord webhook the user creates in their own channel. */
 export function WebhookForm({ api }: { api: AlertsApi }) {
+  const t = useTranslations("sessions.alerts");
+  const locale = useLocale();
   const [url, setUrl] = useState("");
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<string | null>(null);
@@ -23,33 +26,33 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
     setBusy(false);
     if (ok) {
       setUrl("");
-      setNote("Webhook guardado. Probalo para confirmar que llega.");
+      setNote(t("webhookSaved"));
     }
   }
 
   async function test() {
     setBusy(true);
     setNote(null);
-    const res = await fetch("/api/alerts/test", { method: "POST" }).catch(() => null);
+    const res = await fetch("/api/alerts/test", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ locale }) }).catch(() => null);
     setBusy(false);
-    setNote(res?.ok ? "Enviamos un mensaje de prueba a tu canal." : "Discord no aceptó el mensaje. Revisá que el webhook siga existiendo.");
+    setNote(res?.ok ? t("testSent") : t("testFailed"));
   }
 
   return (
     <div className="rounded-md border border-border bg-background/40 p-3">
       <div className="flex items-baseline justify-between gap-3">
-        <h4 className="text-sm font-medium">Avisos por Discord</h4>
-        {api.webhook && <span className="text-xs text-muted-foreground">Webhook configurado</span>}
+        <h4 className="text-sm font-medium">{t("title")}</h4>
+        {api.webhook && <span className="text-xs text-muted-foreground">{t("webhookConfigured")}</span>}
       </div>
       <p className="mt-1 text-xs text-muted-foreground">
-        En tu servidor: Ajustes del canal → Integraciones → Webhooks → Nuevo webhook → Copiar URL. Pegala acá. Solo se usa para enviarte tus avisos.
+        {t("webhookHelp")}
       </p>
       <div className="mt-2 flex flex-wrap gap-2">
         <input
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder={api.webhook ? "Pegá una URL nueva para reemplazarlo" : "https://discord.com/api/webhooks/…"}
-          aria-label="URL del webhook de Discord"
+          placeholder={api.webhook ? t("urlPlaceholderReplace") : "https://discord.com/api/webhooks/…"}
+          aria-label={t("urlLabel")}
           className="h-9 min-w-0 flex-1 basis-56 rounded-md border border-border bg-background px-2.5 text-sm outline-none transition-colors duration-150 placeholder:text-muted-foreground focus-visible:border-money focus-visible:ring-2 focus-visible:ring-money/30"
         />
         <button
@@ -58,7 +61,7 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
           onClick={save}
           className={cn(CTA_PRIMARY, "h-9 px-3 text-xs")}
         >
-          Guardar
+          {t("save")}
         </button>
         {api.webhook && (
           <>
@@ -68,7 +71,7 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
               onClick={test}
               className={cn(CTA_SECONDARY, "h-9 px-3 text-xs")}
             >
-              Enviar prueba
+              {t("sendTest")}
             </button>
             <button
               type="button"
@@ -76,13 +79,13 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
               onClick={() => api.saveWebhook(null)}
               className="h-9 px-2 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
             >
-              Quitar
+              {t("remove")}
             </button>
           </>
         )}
       </div>
       {url.trim() !== "" && !valid && (
-        <p className="mt-1.5 text-xs text-destructive">Tiene que ser una URL de webhook de Discord (https://discord.com/api/webhooks/…).</p>
+        <p className="mt-1.5 text-xs text-destructive">{t("urlInvalid")}</p>
       )}
       <p role="status" className="mt-1.5 min-h-4 text-xs text-muted-foreground">
         {api.error ?? note ?? ""}
@@ -93,6 +96,8 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
 
 /** Bell toggle + threshold editor for one saved plan. */
 export function AlertControl({ planId, currentProfit, api }: { planId: string; currentProfit: number; api: AlertsApi }) {
+  const t = useTranslations("sessions.alerts");
+  const locale = useLocale();
   const alert: PlanAlert | undefined = api.alerts.find((a) => a.plan_id === planId);
   const [open, setOpen] = useState(false);
   const [threshold, setThreshold] = useState(alert ? alert.threshold : Math.max(0, Math.round(currentProfit * 1.5)));
@@ -110,17 +115,17 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
         )}
       >
         <Bell className="h-3.5 w-3.5" />
-        {active ? `Aviso al superar ${formatInt(alert!.threshold)}` : "Avisarme por Discord"}
+        {active ? t("activeLabel", { threshold: formatInt(alert!.threshold) }) : t("notifyMe")}
       </button>
 
       {open && (
         <div className="mt-2 rounded-md border border-border bg-background/40 p-3">
-          {!api.webhook && <p className="mb-2 text-xs text-destructive">Primero configurá tu webhook de Discord arriba.</p>}
+          {!api.webhook && <p className="mb-2 text-xs text-destructive">{t("needWebhook")}</p>}
           <div className="flex flex-wrap items-end gap-2">
             <label className="block w-40">
-              <span className="text-xs text-muted-foreground">Avisar cuando la ganancia llegue a</span>
+              <span className="text-xs text-muted-foreground">{t("notifyWhen")}</span>
               <div className="mt-1">
-                <SilverInput label="Umbral de ganancia" value={threshold} onChange={setThreshold} />
+                <SilverInput label={t("thresholdLabel")} value={threshold} onChange={setThreshold} />
               </div>
             </label>
             <button
@@ -129,7 +134,7 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
               onClick={() => api.saveAlert(planId, threshold)}
               className={cn(CTA_PRIMARY, "h-9 px-3 text-xs")}
             >
-              {alert ? "Actualizar" : "Activar aviso"}
+              {alert ? t("update") : t("activate")}
             </button>
             {alert && (
               <>
@@ -138,27 +143,27 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
                   onClick={() => api.setEnabled(alert.id, !alert.enabled)}
                   className="h-9 px-2 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
                 >
-                  {alert.enabled ? "Pausar" : "Reactivar"}
+                  {alert.enabled ? t("pause") : t("resume")}
                 </button>
                 <button
                   type="button"
                   onClick={() => api.removeAlert(alert.id)}
                   className="h-9 px-2 text-xs text-muted-foreground underline underline-offset-2 hover:text-destructive"
                 >
-                  Borrar
+                  {t("delete")}
                 </button>
               </>
             )}
           </div>
           <p className="mt-2 text-xs text-muted-foreground">
-            Se revisa cada hora con los precios nuevos y te avisa una sola vez cuando cruza el umbral (no repite mientras siga arriba).
+            {t("howItWorks")}
           </p>
           {alert && (
             <p className="mt-1 text-xs text-muted-foreground">
               {alert.last_checked_at
-                ? `Última revisión: ${new Date(alert.last_checked_at).toLocaleString("es-AR")}${alert.last_profit !== null ? ` · ganancia ${formatInt(alert.last_profit)}` : ""}`
-                : "Todavía no se revisó; pasa en la próxima actualización de precios."}
-              {!alert.enabled && " · en pausa"}
+                ? t("lastChecked", { date: new Date(alert.last_checked_at).toLocaleString(locale === "en" ? "en-US" : "es-AR") }) + (alert.last_profit !== null ? t("lastProfit", { profit: formatInt(alert.last_profit) }) : "")
+                : t("neverChecked")}
+              {!alert.enabled && t("paused")}
             </p>
           )}
           {alert?.last_error && <p className="mt-1 text-xs text-destructive">{alert.last_error}</p>}

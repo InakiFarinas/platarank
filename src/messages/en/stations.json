@@ -1,0 +1,110 @@
+{
+  "names": { "alchemy": "Alchemy", "refining": "Refining", "cooking": "Cooking", "gear": "Gear", "mount": "Mounts" },
+  "seo": {
+    "alchemy": {
+      "title": "Albion Online alchemy ranking: potions",
+      "subject": "potions",
+      "intro": "Alchemy turns herbs, eggs and animal materials into potions. This ranking sorts every potion by the silver it earns per day, not by its per-unit margin.",
+      "faqQ": "Which potions are worth crafting in Albion Online?",
+      "faqA": "The ones that earn the most silver per day: those with a decent margin that also sell every day. The ranking updates hourly and the first row is the best option with the assumptions you choose.",
+      "pageTitle": "Alchemy · Americas",
+      "pageDescription": "Ranking by realizable silver per day: margin x daily sales volume. Tap a row to see where each number comes from."
+    },
+    "refining": {
+      "title": "Albion Online refining ranking: planks, bars, cloth and leather",
+      "subject": "refined materials",
+      "intro": "Refining turns raw resources (wood, ore, fiber, hide and stone) into planks, metal bars, cloth, leather and stone blocks. It is the category where each city's resource return matters most.",
+      "faqQ": "Which city gives the best return when refining?",
+      "faqA": "Each city has a refining bonus for a specific resource, which raises the resource return. The ranking shows every city's bonus so you can compare on equal terms.",
+      "pageTitle": "Refining · Americas",
+      "pageDescription": "Ranking by realizable silver per day refining wood, fiber, ore, hide and stone. Tap a row to see where each number comes from."
+    },
+    "cooking": {
+      "title": "Albion Online cooking ranking: meals",
+      "subject": "meals",
+      "intro": "Cooking prepares meals that restore health and energy, and they are among the recipes with the highest daily turnover on the market. Here you can see which ones pay off based on price, volume and return.",
+      "faqQ": "Is cooking profitable in Albion Online?",
+      "faqA": "It depends on the meal and the moment. High-turnover meals can earn more silver per day than others with a bigger margin, and prices shift with the server's consumption. That is why the ranking uses data from the last few hours.",
+      "pageTitle": "Cooking · Americas",
+      "pageDescription": "Ranking by realizable silver per day cooking meals that restore health/energy. Tap a row to see where each number comes from."
+    },
+    "gear": {
+      "title": "Albion Online gear ranking: weapons and armor",
+      "subject": "weapons, armor, bags and capes",
+      "intro": "Gear comes in qualities from Normal to Masterpiece, and each sells at a different price. The ranking weights the five qualities by the game's base odds and discards the ones with no real liquidity.",
+      "faqQ": "How is the sell price of gear calculated?",
+      "faqA": "Each quality's price is weighted by the base chance of getting it when crafting, and qualities with no recent sales are discarded. That way the number reflects what you can actually sell.",
+      "pageTitle": "Weapons and armor · Americas",
+      "pageDescription": "Ranking by realizable silver per day crafting gear. The sell price weights the 5 qualities by the game's base odds and discards the ones with no real liquidity. Tap a row to see where each number comes from."
+    },
+    "mount": {
+      "title": "Albion Online mount ranking",
+      "subject": "mounts",
+      "intro": "Crafting a mount requires an adult animal plus materials. No city gives a crafting bonus to mounts, so the ranking compares only cost, sell price and volume.",
+      "faqQ": "Is crafting mounts worth it in Albion Online?",
+      "faqA": "It works when the sell price covers the adult animal and the materials with a margin, and the mount sells often. High-value mounts sell few per day, so volume weighs heavily in the ranking.",
+      "pageTitle": "Mounts · Americas",
+      "pageDescription": "Ranking by realizable silver per day crafting mounts (adult animal + materials). No city gives a crafting bonus to mounts. Tap a row to see where each number comes from."
+    }
+  },
+  "stationDescription": "Albion Online {subject} ranking by realizable silver per day (profit × sales volume). {count} recipes, Americas server, updated hourly.",
+  "commonFaq": {
+    "silverPerDayQ": "What is silver per day?",
+    "silverPerDayA": "It is the profit per unit multiplied by the daily sales volume and by the market share you assume. A recipe with a high margin that barely sells earns less than a low-margin one that sells all day.",
+    "sourcesQ": "Where do the prices and recipes come from?",
+    "sourcesA": "Prices come from the Albion Online Data Project (Americas server) and recipes from the client's official data dump. Prices update hourly and the full methodology is published."
+  },
+  "info": { "heading": "About this {name} ranking" },
+  "footer": {
+    "marketData": "Market data courtesy of",
+    "recipes": ". Recipes extracted from the client's official data dump (ao-bin-dumps)."
+  },
+  "error": { "title": "We couldn't load the ranking", "body": "There was a problem reading the market data. It may be temporary -- try again.", "retry": "Retry" },
+  "loading": "Loading…",
+  "faqHeading": "Frequently asked questions",
+  "sponsors": {
+    "adTitle": "Advertise your community",
+    "adBody": "If you run a guild, a Discord server or an Albion Online channel, your logo can appear on this page along with a link to your community. Message us on Discord and we will set it up.",
+    "adCta": "Talk on Discord",
+    "title": "Communities that support us",
+    "label": "Albion Online community advertising",
+    "wantIn": "Want your community to be here?",
+    "writeUs": "Message us on Discord",
+    "avalonDesc": "Large Spanish-speaking Avalonian roads community",
+    "panteonDesc": "Spanish-speaking tracking community"
+  },
+  "age": { "none": "no data", "minutes": "{n} min ago", "hours": "{n}h ago", "days": "{n}d ago" },
+  "recipe": {
+    "notFound": "Recipe not found",
+    "title": "How much does it cost to craft {label} in Albion Online",
+    "metaDescription": "{label} costs {cost} silver per unit and sells for {sell}: a profit of {profit} ({margin}) and {perDay} silver per day. Americas server.",
+    "headerDescription": "Crafting cost, profit and silver per day · {station} · Americas",
+    "faqCostQ": "How much does it cost to craft {label}?",
+    "faqCostA": "With current Americas server prices, {cost} silver per unit: materials bought in the cheapest city{returnNote} plus the station fee.",
+    "returnNote": " (with {rate}% resource return)",
+    "faqProfitQ": "Is crafting {label} profitable?",
+    "faqProfitA": "{profitable, select, yes {Yes} other {No}} under these assumptions: a profit of {profit} per unit ({margin} margin) and {perDay} silver per day, with a volume of {volume} daily sales and {share}% market share.",
+    "faqAssumptionsQ": "What assumptions are used?",
+    "faqAssumptionsA": "It is crafted in Brecilien without focus, bought in the cheapest city and sold at the median across cities, after taxes. In the calculator you can change the city, focus and prices.",
+    "summary": "Crafting <b>{label}</b> in Albion Online costs <b>{cost}</b> silver per unit and it sells for <b>{sell}</b>. The profit is <b>{profit}</b> per unit ({margin} margin) and it earns <b>{perDay}</b> silver per day. Oldest price used: {age}.",
+    "noData": "There are not enough prices on the Americas server yet to calculate the cost and profit of <b>{label}</b>. You can enter your own prices in the calculator.",
+    "openCalc": "Open in the calculator",
+    "stationRanking": "{station} ranking",
+    "howHeading": "How the number is worked out",
+    "costPerUnit": "Cost per unit (materials and fee)",
+    "sellPrice": "Sell price (median across cities)",
+    "netRevenue": "Net revenue after taxes",
+    "profitPerUnit": "Profit per unit",
+    "dailyVolume": "Daily sales volume",
+    "silverPerDay": "Silver per day",
+    "materials": "Materials",
+    "colMaterial": "Material",
+    "colQty": "Quantity",
+    "colPrice": "Price",
+    "colCity": "Cheapest city",
+    "bred": "Bred",
+    "variants": "Other tiers and enchantments",
+    "footerData": "Market data: Albion Online Data Project. Default assumptions; details are in the",
+    "methodology": "methodology"
+  }
+}

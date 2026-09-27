@@ -1,6 +1,8 @@
 "use client";
 
 import { formatInt } from "@/lib/format";
+import { useLocale, useTranslations } from "next-intl";
+import type { Locale } from "@/i18n/config";
 import { useCallback, useEffect, useState } from "react";
 import type { CraftParams } from "@/lib/craft-calc";
 import { AlertControl } from "@/components/alerts/alerts-ui";
@@ -17,6 +19,7 @@ export type PlanDraft = { itemId: string; itemName: string; params: PlanParams; 
 
 
 export function usePlans() {
+  const t = useTranslations("calculator.plans");
   const [signedIn, setSignedIn] = useState<boolean | null>(null);
   const [plans, setPlans] = useState<Plan[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -30,9 +33,9 @@ export function usePlans() {
       return;
     }
     const { data, error: err } = await supabase.from("plans").select("*").order("created_at", { ascending: false });
-    if (err) setError("No se pudieron cargar tus planificaciones.");
+    if (err) setError(t("loadFailed"));
     else setPlans(data as Plan[]);
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     void refresh();
@@ -46,7 +49,7 @@ export function usePlans() {
       .from("plans")
       .insert({ name: name.trim() || draft.itemName, item_id: draft.itemId, params: draft.params, snapshot: draft.snapshot });
     if (err) {
-      setError("No se pudo guardar.");
+      setError(t("saveFailed"));
       return false;
     }
     await refresh();
@@ -55,7 +58,7 @@ export function usePlans() {
 
   async function remove(id: string) {
     const { error: err } = await createClient().from("plans").delete().eq("id", id);
-    if (err) setError("No se pudo borrar.");
+    if (err) setError(t("deleteFailed"));
     else setPlans((p) => p.filter((x) => x.id !== id));
   }
 
@@ -65,13 +68,14 @@ export function usePlans() {
 export type PlansApi = ReturnType<typeof usePlans>;
 
 export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }) {
+  const t = useTranslations("calculator.plans");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
 
   if (api.signedIn === null) return null;
   if (!api.signedIn) {
-    return <p className="text-xs text-muted-foreground">Entrá con Discord para guardar este cálculo.</p>;
+    return <p className="text-xs text-muted-foreground">{t("signInToSave")}</p>;
   }
 
   return (
@@ -84,7 +88,7 @@ export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }
             setSaved(false);
           }}
           placeholder={draft.itemName}
-          aria-label="Nombre de la planificación"
+          aria-label={t("nameLabel")}
           className="h-9 min-w-0 flex-1 rounded-md border border-border bg-background px-2.5 text-sm outline-none transition-colors duration-150 placeholder:text-muted-foreground focus-visible:border-money focus-visible:ring-2 focus-visible:ring-money/30"
         />
         <button
@@ -101,30 +105,32 @@ export function SavePlanForm({ api, draft }: { api: PlansApi; draft: PlanDraft }
           }}
           className={cn(CTA_SECONDARY, "h-9 shrink-0 px-3 text-xs")}
         >
-          {busy ? "Guardando…" : "Guardar"}
+          {busy ? t("saving") : t("save")}
         </button>
       </div>
       <p role="status" className="mt-1.5 min-h-4 text-xs text-muted-foreground">
-        {api.error ?? (saved ? "Guardada en Planificaciones." : "")}
+        {api.error ?? (saved ? t("saved") : "")}
       </p>
     </div>
   );
 }
 
 export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi: AlertsApi; onOpen: (itemId: string, params: PlanParams) => void }) {
+  const t = useTranslations("calculator.plans");
+  const locale = useLocale() as Locale;
   const [confirmId, setConfirmId] = useState<string | null>(null);
   if (api.signedIn === null) return null;
   if (!api.signedIn) {
     return (
       <p className="py-10 text-center text-sm text-muted-foreground">
-        Entrá con Discord para guardar tus cálculos y volver a verlos cuando quieras.
+        {t("signInToView")}
       </p>
     );
   }
   if (api.plans.length === 0) {
     return (
       <p className="py-10 text-center text-sm text-muted-foreground">
-        Todavía no guardaste ninguna. Armá un cálculo y usá &quot;Guardar&quot; en el balance.
+        {t("empty")}
       </p>
     );
   }
@@ -139,13 +145,13 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
             <span className="min-w-0">
               <span className="block truncate text-sm">{p.name}</span>
               <span className="block text-xs text-muted-foreground">
-                {new Date(p.created_at).toLocaleDateString("es-AR")} · ×{p.params.qty} · {p.params.craftCity}
+                {new Date(p.created_at).toLocaleDateString(locale === "en" ? "en-US" : "es-AR")} · ×{p.params.qty} · {p.params.craftCity}
               </span>
             </span>
           </button>
           <span className={cn("font-mono text-sm tabular-nums", p.snapshot.profit >= 0 ? "text-money" : "text-destructive")}>
             {p.snapshot.profit >= 0 ? "+" : ""}
-            {formatInt(p.snapshot.profit)}
+            {formatInt(p.snapshot.profit, locale)}
           </span>
           <ConfirmDelete
             confirming={confirmId === p.id}
@@ -155,7 +161,7 @@ export function PlanList({ api, alertsApi, onOpen }: { api: PlansApi; alertsApi:
               void api.remove(p.id);
             }}
             onCancel={() => setConfirmId(null)}
-            label={`Borrar ${p.name}`}
+            label={t("deleteLabel", { name: p.name })}
           />
           </div>
           <div className="mt-1.5 pl-[3.25rem]">

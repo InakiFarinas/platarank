@@ -1,55 +1,28 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LegalPage } from "@/components/legal-page";
+import { isLocale } from "@/i18n/config";
+import { pageMetadata } from "@/lib/seo";
+import Es from "./content/es";
+import En from "./content/en";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Política de privacidad",
-  description: "Qué datos trata PlataRank, con quién los comparte y qué derechos tenés sobre ellos.",
-  path: "/es/privacidad",
-});
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "legal" });
+  return pageMetadata({ locale, route: "privacy", title: t("privacy.title"), description: t("privacy.description") });
+}
 
-export default function PrivacidadPage() {
+export default async function PrivacidadPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "legal" });
   return (
-    <LegalPage title="Política de privacidad" updated="19 de septiembre de 2026">
-      <p>PlataRank es una herramienta gratuita para calcular la rentabilidad de crafteo en Albion Online. Acá explicamos qué datos tratamos.</p>
-
-      <h2>Datos que recibimos</h2>
-      <p>
-        <strong>Sin cuenta:</strong> podés usar los rankings y la calculadora sin registrarte. Los servidores pueden registrar datos técnicos
-        estándar (dirección IP, navegador, páginas visitadas) para operar y proteger el servicio.
-      </p>
-      <p>
-        <strong>Con cuenta de Discord:</strong> si elegís &quot;Entrar con Discord&quot;, recibimos de Discord tu identificador, nombre de usuario,
-        avatar y correo electrónico. Los usamos solo para identificarte y mostrarte tu sesión. No accedemos a tus mensajes, servidores ni amigos.
-      </p>
-      <p>
-        <strong>Planificaciones:</strong> los cálculos que guardes (ítem, cantidades, precios que edites y el resultado) se almacenan asociados a tu
-        cuenta y solo vos podés verlos.
-      </p>
-
-      <p>
-        <strong>Avisos por Discord:</strong> si activás alertas, guardamos la URL del webhook que nos des y el umbral de cada alerta. Usamos esa
-        URL únicamente para enviarte tus avisos y podés quitarla cuando quieras desde Planificaciones.
-      </p>
-
-      <h2>Cookies y almacenamiento</h2>
-      <ul>
-        <li>Cookies de sesión necesarias para mantenerte conectado si iniciás sesión.</li>
-        <li>Preferencias locales del navegador (por ejemplo filtros y ciudad elegida).</li>
-      </ul>
-      <p>Si en el futuro se muestran anuncios de terceros, estos podrán usar cookies propias; en ese caso pediremos tu consentimiento donde corresponda.</p>
-
-      <h2>Con quién compartimos datos</h2>
-      <p>
-        No vendemos tus datos. Usamos <strong>Supabase</strong> (autenticación y base de datos) y <strong>Discord</strong> (inicio de sesión) como
-        proveedores, y el servicio de hosting donde se publica el sitio.
-      </p>
-
-      <h2>Tus derechos</h2>
-      <p>
-        Podés pedir el acceso o la eliminación de tu cuenta y tus planificaciones escribiendo a Discord: <strong>inaki261111</strong>. Podés
-        borrar tus planificaciones en cualquier momento desde la calculadora.
-      </p>
+    <LegalPage locale={locale} title={t("privacy.heading")} updated={t("privacy.updated")}>
+      {locale === "es" ? <Es /> : <En />}
     </LegalPage>
   );
 }

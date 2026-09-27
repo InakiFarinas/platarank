@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 
 export type PlanAlert = {
@@ -17,6 +18,7 @@ export type PlanAlert = {
 export const WEBHOOK_PATTERN = /^https:\/\/(discord|discordapp)\.com\/api\/webhooks\/[0-9]+\/[A-Za-z0-9_-]+$/;
 
 export function useAlerts(enabled: boolean) {
+  const t = useTranslations("sessions.alerts");
   const [alerts, setAlerts] = useState<PlanAlert[]>([]);
   const [webhook, setWebhook] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -27,12 +29,12 @@ export function useAlerts(enabled: boolean) {
       supabase.from("alerts").select("*"),
       supabase.from("user_settings").select("discord_webhook_url").maybeSingle(),
     ]);
-    if (a.error || s.error) setError("No se pudieron cargar tus alertas.");
+    if (a.error || s.error) setError(t("loadError"));
     else {
       setAlerts(a.data as PlanAlert[]);
       setWebhook((s.data?.discord_webhook_url as string | null | undefined) ?? null);
     }
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (enabled) void reload();
@@ -58,18 +60,18 @@ export function useAlerts(enabled: boolean) {
     webhook,
     error,
     saveWebhook: (url: string | null) =>
-      run(createClient().from("user_settings").upsert({ discord_webhook_url: url, updated_at: new Date().toISOString() }), "No se pudo guardar el webhook."),
+      run(createClient().from("user_settings").upsert({ discord_webhook_url: url, updated_at: new Date().toISOString() }), t("saveWebhookError")),
     // Re-arming resets last_state so an already-above plan notifies once when (re)enabled.
     saveAlert: (planId: string, threshold: number) =>
       run(
         createClient()
           .from("alerts")
           .upsert({ plan_id: planId, threshold, enabled: true, last_state: null, last_error: null }, { onConflict: "plan_id" }),
-        "No se pudo guardar la alerta.",
+        t("saveAlertError"),
       ),
     setEnabled: (id: string, on: boolean) =>
-      run(createClient().from("alerts").update({ enabled: on, last_state: on ? null : undefined, last_error: null }).eq("id", id), "No se pudo cambiar la alerta."),
-    removeAlert: (id: string) => run(createClient().from("alerts").delete().eq("id", id), "No se pudo borrar la alerta."),
+      run(createClient().from("alerts").update({ enabled: on, last_state: on ? null : undefined, last_error: null }).eq("id", id), t("toggleError")),
+    removeAlert: (id: string) => run(createClient().from("alerts").delete().eq("id", id), t("removeError")),
   };
 }
 

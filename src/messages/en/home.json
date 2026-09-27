@@ -1,0 +1,71 @@
+{
+  "title": "Albion Online crafting ranking by realizable silver per day",
+  "description": "PlataRank sorts Albion Online recipes (alchemy, refining, cooking, gear and mounts) by profit × daily sales volume, not by per-unit margin. With a calculator, sessions and Discord alerts.",
+  "stationNotes": {
+    "alchemy": "Potions",
+    "refining": "Planks, bars, cloth and leather",
+    "cooking": "Meals",
+    "gear": "Weapons, armor, bags, capes and gathering gear",
+    "mount": "Mount animals"
+  },
+  "capabilities": [
+    "Ranking by silver per day: the margin is multiplied by the real sales volume.",
+    "Calculator with resource return, focus, station fee and taxes, plus links to share your calculation.",
+    "Crafting sessions to add up several items and load your real numbers.",
+    "Discord alerts when a saved recipe goes above the profit you set."
+  ],
+  "faq": {
+    "whatIsQ": "What is PlataRank?",
+    "whatIsA": "PlataRank is a free Albion Online crafting ranking (Americas server). It sorts alchemy, refining, cooking, gear and mount recipes by the silver they earn per day, with prices that update every hour.",
+    "silverPerDayQ": "What is silver per day?",
+    "silverPerDayA": "It is the profit per unit multiplied by the daily sales volume and by the market share you assume. A recipe with a high margin that barely sells earns less than a low-margin one that sells all day.",
+    "whatToCraftQ": "What is worth crafting today in Albion Online?",
+    "whatToCraftA": "The one in the first row of the ranking with your assumptions (city, focus, market share). The block above shows the top five recipes right now, and each station has its own ranking.",
+    "sourcesQ": "Where do the prices and recipes come from?",
+    "sourcesA": "Prices come from the Albion Online Data Project, fed by players, and recipes from the client's official data dump. Outlier prices are filtered out and the detail of each formula is on the methodology page.",
+    "officialQ": "Is PlataRank official?",
+    "officialA": "No. It is a free community tool with no affiliation with Sandbox Interactive."
+  },
+  "how": {
+    "heading": "How the number for {name} is worked out",
+    "cost": "Cost per unit (materials and fee)",
+    "sell": "Sell price (median across cities)",
+    "net": "Net revenue after taxes",
+    "profit": "Profit per unit",
+    "volume": "× daily sales volume × {share}% share",
+    "perDay": "Silver per day"
+  },
+  "hero": {
+    "title": "Maximize your <money>silver</money> in Albion Online",
+    "body": "Find out which crafting recipes earn you the most silver per day, with real sales volume data, prices and every calculation formula in plain sight.",
+    "viewRecipes": "See profitable recipes",
+    "openCalc": "Open calculator",
+    "recipes": "{count} recipes · ",
+    "stats": "5 stations · Americas server · prices updated hourly · ",
+    "discord": "Community Discord"
+  },
+  "top": {
+    "heading": "What pays best today",
+    "intro": "We sort by realizable silver per day: profit per unit × sales volume × market share. A recipe with a high margin that barely sells earns less than a low-margin one that sells all day.",
+    "best": "Right now, the best-earning recipe is <b>{name}</b> ({station}): {perDay} silver per day with the default assumptions.",
+    "listHeading": "The best recipes right now",
+    "listNote": "silver per day · Brecilien, no focus",
+    "meta": "{station} · margin {margin} · volume {volume}",
+    "tap": "Tap a recipe to see its cost and profit. Oldest price used: {age}."
+  },
+  "stations": {
+    "heading": "Pick your station",
+    "recipes": "{count} recipes"
+  },
+  "discord": {
+    "heading": "Discord notices and alerts",
+    "body": "Every day we post the best recipes on Discord. And with your account you can save calculations and get a notice when a recipe goes above the profit you set. It's free.",
+    "join": "Join the Discord",
+    "methodology": "How we calculate everything"
+  },
+  "footer": {
+    "dataFrom": "Data from",
+    "rest": "· Game client · Updated hourly",
+    "disclaimer": "This tool is not affiliated with Sandbox Interactive. Unofficial use."
+  }
+}

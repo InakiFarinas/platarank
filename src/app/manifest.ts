@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+// Static manifest: the install prompt starts at the default (Spanish) locale.
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "PlataRank",

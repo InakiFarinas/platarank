@@ -1,8 +1,26 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
+import { isLocale } from "@/i18n/config";
 
-export const alt = "PlataRank: maximizá tu plata en Albion Online";
+const COPY = {
+  es: {
+    alt: "PlataRank: maximizá tu plata en Albion Online",
+    before: "Descubrí qué crafteos te dan más ",
+    accent: "plata por día ",
+    after: "en Albion Online",
+    sub: "Ranking, calculadora y alertas por Discord",
+  },
+  en: {
+    alt: "PlataRank: maximize your silver in Albion Online",
+    before: "Find out which crafts earn you the most ",
+    accent: "silver per day ",
+    after: "in Albion Online",
+    sub: "Ranking, calculator and Discord alerts",
+  },
+} as const;
+
+export const alt = COPY.es.alt;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -19,7 +37,14 @@ async function loadCinzel(): Promise<ArrayBuffer | null> {
   }
 }
 
-export default async function OpengraphImage() {
+export async function generateImageMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return [{ id: "og", alt: COPY[isLocale(locale) ? locale : "es"].alt, size, contentType }];
+}
+
+export default async function OpengraphImage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const c = COPY[isLocale(locale) ? locale : "es"];
   const [logo, cinzel] = await Promise.all([readFile(path.join(process.cwd(), "public", "logo-og.png")), loadCinzel()]);
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
@@ -45,11 +70,11 @@ export default async function OpengraphImage() {
             PlataRank
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", marginTop: 28, fontSize: 40, lineHeight: 1.25, color: "#c9b99f", maxWidth: 640 }}>
-            <span>Descubrí qué crafteos te dan más&nbsp;</span>
-            <span style={{ color: "#eba23a" }}>plata por día&nbsp;</span>
-            <span>en Albion Online</span>
+            <span>{c.before}</span>
+            <span style={{ color: "#eba23a" }}>{c.accent}</span>
+            <span>{c.after}</span>
           </div>
-          <div style={{ marginTop: 32, fontSize: 28, color: "#9c8b72" }}>Ranking, calculadora y alertas por Discord</div>
+          <div style={{ marginTop: 32, fontSize: 28, color: "#9c8b72" }}>{c.sub}</div>
         </div>
       </div>
     ),

@@ -11,7 +11,7 @@ export type ArtifactPoolView = {
   fragmentPrice: number | null;
   /** City where that cheapest fragment quote is, null when there is no price. */
   fragmentCity: string | null;
-  artifacts: { itemId: string; nameEs: string; class: ArtifactClass; gross: number | null; dailyVolume: number }[];
+  artifacts: { itemId: string; nameEs: string; nameEn: string; class: ArtifactClass; gross: number | null; dailyVolume: number }[];
 };
 
 /** Prices for every Foundry pool, reduced server-side to one buy price per fragment and one sell

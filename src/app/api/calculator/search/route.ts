@@ -8,6 +8,7 @@ import { recipes } from "@/lib/db/schema";
 export async function GET(request: NextRequest) {
   const q = (request.nextUrl.searchParams.get("q") ?? "").trim();
   if (q.length < 2) return NextResponse.json([]);
+  const en = request.nextUrl.searchParams.get("locale") === "en";
   // Accent-insensitive on both sides ("pocion" finds "Poción"); English names have no accents.
   const like = `%${normalize(q).replace(/[%_]/g, "")}%`;
   const fold = (col: unknown) => sql`translate(lower(${col}), 'áéíóúüñ', 'aeiouun')`;
@@ -16,13 +17,20 @@ export async function GET(request: NextRequest) {
       itemId: recipes.itemId,
       baseItemId: recipes.baseItemId,
       nameEs: recipes.nameEs,
+      nameEn: recipes.nameEn,
       tier: recipes.tier,
       enchant: recipes.enchant,
       stationType: recipes.stationType,
     })
     .from(recipes)
-    .where(and(eq(recipes.enchant, 0), sql`(${fold(recipes.nameEs)} like ${like} or ${fold(recipes.nameEn)} like ${like})`))
-    .orderBy(recipes.nameEs, recipes.tier)
+    .where(
+      and(
+        eq(recipes.enchant, 0),
+        // English matches English names only; Spanish keeps matching either name, as before.
+        en ? sql`${fold(recipes.nameEn)} like ${like}` : sql`(${fold(recipes.nameEs)} like ${like} or ${fold(recipes.nameEn)} like ${like})`,
+      ),
+    )
+    .orderBy(en ? recipes.nameEn : recipes.nameEs, recipes.tier)
     .limit(40);
   // Recipes only change when the game data is regenerated, so this is safe to cache for a long time.
   return NextResponse.json(rows, { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } });

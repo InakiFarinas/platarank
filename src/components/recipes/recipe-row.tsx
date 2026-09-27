@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { useId, useState, useSyncExternalStore } from "react";
 import { Calculator, ChevronDown, Droplet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -13,20 +14,18 @@ import { CITY_THEMES } from "@/lib/city-theme";
 import type { Location } from "@/lib/aodp/cities";
 import type { QualityBreakdownEntry, RecipeRow as RecipeRowData } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
+import { localePath, type Locale } from "@/i18n/config";
+import { itemName } from "@/lib/item-names";
 
-const DISCARD_REASON_LABEL: Record<string, string> = {
-  outlier_low: "descartado: precio anormalmente bajo (posible bait)",
-  outlier_high: "descartado: precio anormalmente alto (posible troll listing)",
-  outlier_self: "descartado: muy lejos del propio promedio de 30 días de esa ciudad (posible bait)",
-};
+const DISCARD_REASONS = ["outlier_low", "outlier_high", "outlier_self"];
 
 /** Screen readers otherwise get the row's raw concatenated text nodes (name, tier badge, every
  * stat) with no structure -- this gives the row/card button a clean, single accessible name. */
-function rowAriaLabel(row: RecipeRowData): string {
+function rowAriaLabel(row: RecipeRowData, t: ReturnType<typeof useTranslations>, locale: Locale): string {
   const { recipe } = row;
   const tier = `T${recipe.tier}${enchantLabel(recipe.enchant)}`;
-  const dataNote = row.hasData ? "" : ", datos insuficientes";
-  return `${recipe.nameEs}, ${tier}, ${formatSilver(row.platinumPerDay)} plata por día${dataNote}. Ver detalle.`;
+  const dataNote = row.hasData ? "" : t("insufficientDataSuffix");
+  return t("ariaLabel", { name: itemName(recipe, locale), tier, value: formatSilver(row.platinumPerDay), dataNote });
 }
 
 const WIDE_QUERY = "(min-width: 640px)";
@@ -51,6 +50,8 @@ export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number 
 /** Desktop: the original dense ledger row, unchanged -- density and inline expand stay exactly
  * as before per the Guild Ledger world's "ornament in chrome only" constraint. */
 function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
+  const t = useTranslations("rankingUi.row");
+  const locale = useLocale() as Locale;
   const [open, setOpen] = useState(false);
   const detailId = useId();
   const { recipe } = row;
@@ -62,7 +63,7 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={detailId}
-        aria-label={rowAriaLabel(row)}
+        aria-label={rowAriaLabel(row, t, locale)}
         className={cn("flex w-full items-center gap-4 px-3 py-3.5 text-left transition-colors hover:bg-accent/40", !row.hasData && "opacity-70")}
       >
         <div className="w-8 shrink-0">
@@ -75,33 +76,33 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
           />
           {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
           <img src={itemIconUrl(recipe.itemId)} alt="" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" loading="lazy" />
-          <span className="truncate text-sm font-medium">{recipe.nameEs}</span>
+          <span className="truncate text-sm font-medium">{itemName(recipe, locale)}</span>
           <Badge variant="secondary" className="shrink-0 font-mono text-xs tabular-nums">
             T{recipe.tier}
             {enchantLabel(recipe.enchant)}
           </Badge>
           {!row.hasData && (
             <Badge variant="outline" className="shrink-0 text-xs text-muted-foreground">
-              datos insuficientes
+              {t("insufficientData")}
             </Badge>
           )}
         </div>
 
         <div className="hidden items-center justify-end gap-4 xl:flex">
-          <Stat label="costo" value={row.costPerUnit !== null ? formatSilver(row.costPerUnit) : "--"} mono />
-          <Stat label="precio venta" value={row.sellRefPrice !== null ? formatSilver(row.sellRefPrice) : "--"} mono />
+          <Stat label={t("cost")} value={row.costPerUnit !== null ? formatSilver(row.costPerUnit) : "--"} mono />
+          <Stat label={t("sellPrice")} value={row.sellRefPrice !== null ? formatSilver(row.sellRefPrice) : "--"} mono />
         </div>
         <div className="hidden w-20 shrink-0 text-right lg:block">
           <Stat
-            label="ciudad bono"
+            label={t("bonusCity")}
             value={row.specialtyCity ?? "--"}
             className={row.specialtyCity ? CITY_THEMES[row.specialtyCity as Location]?.text : undefined}
           />
         </div>
 
         <div className="flex items-center justify-end gap-4 xl:gap-6">
-          <Stat label="margen" value={formatPercent(row.marginPct)} mono />
-          <Stat label="vol/día" value={formatSilver(row.avgDailyVolume30d)} mono />
+          <Stat label={t("margin")} value={formatPercent(row.marginPct)} mono />
+          <Stat label={t("volPerDay")} value={formatSilver(row.avgDailyVolume30d)} mono />
           <div className="w-24 text-right">
             <div className="font-mono text-lg font-semibold tabular-nums text-money">{formatSilver(row.platinumPerDay)}</div>
           </div>
@@ -120,6 +121,8 @@ function LedgerRow({ row, rank }: { row: RecipeRowData; rank: number }) {
  * quality gems in the body. The whole card is the tap target for the derivation sheet -- a small
  * pergamino icon under the hero figure is the only affordance, not a full-width button. */
 function ContractCard({ row }: { row: RecipeRowData }) {
+  const t = useTranslations("rankingUi.row");
+  const locale = useLocale() as Locale;
   const [sheetOpen, setSheetOpen] = useState(false);
   const { recipe } = row;
 
@@ -129,7 +132,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
         render={
           <button
             type="button"
-            aria-label={rowAriaLabel(row)}
+            aria-label={rowAriaLabel(row, t, locale)}
             className={cn("block w-full px-3 py-3 text-left transition-colors hover:bg-accent/40", !row.hasData && "opacity-70")}
           >
             <div className="flex items-start justify-between gap-3">
@@ -137,7 +140,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
                 {/* eslint-disable-next-line @next/next/no-img-element -- external CDN, thousands of virtualized rows, next/image adds no benefit here */}
                 <img src={itemIconUrl(recipe.itemId)} alt="" width={40} height={40} className="h-10 w-10 shrink-0 object-contain" loading="lazy" />
                 <div className="min-w-0">
-                  <span className="block truncate text-sm font-medium">{recipe.nameEs}</span>
+                  <span className="block truncate text-sm font-medium">{itemName(recipe, locale)}</span>
                   <div className="mt-0.5 flex items-center gap-1">
                     <Badge variant="secondary" className="font-mono text-xs tabular-nums">
                       T{recipe.tier}
@@ -145,7 +148,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
                     </Badge>
                     {!row.hasData && (
                       <Badge variant="outline" className="text-xs text-muted-foreground">
-                        datos insuficientes
+                        {t("insufficientData")}
                       </Badge>
                     )}
                   </div>
@@ -154,7 +157,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
 
               <div className="flex shrink-0 flex-col items-end text-right">
                 <div className="font-mono text-xl font-semibold tabular-nums text-money">{formatSilver(row.platinumPerDay)}</div>
-                <div className="text-xs text-muted-foreground">plata/día</div>
+                <div className="text-xs text-muted-foreground">{t("silverPerDay")}</div>
               </div>
             </div>
 
@@ -162,13 +165,13 @@ function ContractCard({ row }: { row: RecipeRowData }) {
               <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Droplet className="h-3 w-3" />
                 <span className="font-mono tabular-nums text-foreground">{formatSilver(row.avgDailyVolume30d)}</span>
-                /día
+                {t("perDay")}
               </div>
               {row.qualityBreakdown && <QualityGems breakdown={row.qualityBreakdown} />}
             </div>
 
             <div className="mt-2.5 flex items-center justify-center gap-1 border-t border-dashed border-border pt-2 text-xs text-muted-foreground">
-              Ver detalle
+              {t("viewDetail")}
               <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
             </div>
           </button>
@@ -176,7 +179,7 @@ function ContractCard({ row }: { row: RecipeRowData }) {
       />
       <SheetContent side="bottom" className="max-h-[85dvh] overflow-y-auto border-t-2 border-double">
         <SheetHeader>
-          <SheetTitle className="font-heading text-base">{recipe.nameEs}</SheetTitle>
+          <SheetTitle className="font-heading text-base">{itemName(recipe, locale)}</SheetTitle>
         </SheetHeader>
         <RowDetail row={row} />
       </SheetContent>
@@ -185,10 +188,12 @@ function ContractCard({ row }: { row: RecipeRowData }) {
 }
 
 function QualityGems({ breakdown }: { breakdown: QualityBreakdownEntry[] }) {
+  const t = useTranslations("rankingUi.row");
+  const locale = useLocale() as Locale;
   return (
     <div className="flex items-center gap-1">
       {breakdown.map((q) => {
-        const label = `${qualityLabel(q.quality)}${q.liquid ? "" : " -- sin liquidez, no cuenta"}`;
+        const label = `${qualityLabel(q.quality, locale)}${q.liquid ? "" : t("noLiquidity")}`;
         return (
           <span
             key={q.quality}
@@ -212,53 +217,54 @@ function Stat({ label, value, mono, className }: { label: string; value: string;
   );
 }
 
-function specialtyLabel(row: RecipeRowData): string {
-  const focusLabel = row.focus ? "con foco" : "sin foco";
-  if (!row.specialtyCity) return `sin especialidad para esta categoría, ${focusLabel}`;
-  const activeLabel = row.specialtyActive ? `con especialidad (${row.specialtyCity})` : `sin especialidad (sería ${row.specialtyCity})`;
-  return `${activeLabel}, ${focusLabel}`;
+function specialtyLabel(row: RecipeRowData, t: ReturnType<typeof useTranslations>): string {
+  const focus = row.focus ? t("withFocus") : t("withoutFocus");
+  if (!row.specialtyCity) return t("noSpecialty", { focus });
+  return t(row.specialtyActive ? "specialtyActive" : "specialtyInactive", { city: row.specialtyCity, focus });
 }
 
 function RowDetail({ row }: { row: RecipeRowData }) {
+  const t = useTranslations("rankingUi.row");
+  const locale = useLocale() as Locale;
   return (
     <div className="bg-card/50 px-3 py-3 text-xs sm:px-9">
       <Link
-        href={`/es/calculadora?item=${encodeURIComponent(row.recipe.itemId)}`}
+        href={localePath(locale, "calculator", `?item=${encodeURIComponent(row.recipe.itemId)}`)}
         className={`${CTA_SECONDARY} mb-3 inline-flex items-center gap-1.5 px-2.5 py-1`}
       >
         <Calculator className="h-3.5 w-3.5" />
-        Abrir en la calculadora
+        {t("openCalculator")}
       </Link>
       <div className="grid gap-4 sm:grid-cols-2">
         <section>
-          <h3 className="mb-1.5 font-medium text-foreground">Venta</h3>
+          <h3 className="mb-1.5 font-medium text-foreground">{t("sale")}</h3>
           <dl className="space-y-1 text-muted-foreground">
-            <Row k="Precio de referencia" v={row.sellRefPrice !== null ? `${formatSilver(row.sellRefPrice)} plata` : "sin datos"} />
-            <Row k="Mediana entre" v={`${row.sellRefCitiesCount} ciudades`} />
-            <Row k="Dato más viejo usado" v={formatAge(row.sellRefAgeSeconds)} />
-            <Row k="Retorno asumido" v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row)})`} />
-            <Row k="Item Value (materiales, lote)" v={formatSilver(Number(row.recipe.materialItemValue))} />
-            <Row k="Tarifa de estación (lote)" v={`${formatSilver(row.feePerBatch)} plata`} />
-            <Row k="Cuota de mercado" v={`${Math.round(row.marketSharePct * 100)}%`} />
+            <Row k={t("refPrice")} v={row.sellRefPrice !== null ? t("silverAmount", { value: formatSilver(row.sellRefPrice) }) : t("noData")} />
+            <Row k={t("medianOf")} v={t("citiesCount", { count: row.sellRefCitiesCount })} />
+            <Row k={t("oldestData")} v={formatAge(row.sellRefAgeSeconds, locale)} />
+            <Row k={t("assumedReturn")} v={`${Math.round(row.returnRatePct * 100)}% (${specialtyLabel(row, t)})`} />
+            <Row k={t("itemValue")} v={formatSilver(Number(row.recipe.materialItemValue))} />
+            <Row k={t("stationFeeBatch")} v={t("silverAmount", { value: formatSilver(row.feePerBatch) })} />
+            <Row k={t("marketShare")} v={`${Math.round(row.marketSharePct * 100)}%`} />
           </dl>
           {row.qualityBreakdown && (
             <div className="mt-2">
-              <h4 className="mb-1 font-medium text-foreground">Por calidad</h4>
+              <h4 className="mb-1 font-medium text-foreground">{t("byQuality")}</h4>
               <ul className="space-y-0.5">
                 {row.qualityBreakdown.map((q) => (
                   <li
                     key={q.quality}
                     className={cn("flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5", !q.liquid && "opacity-70")}
                   >
-                    <span>{qualityLabel(q.quality)}</span>
+                    <span>{qualityLabel(q.quality, locale)}</span>
                     <span
                       className={cn(
                         "ml-auto shrink-0 font-mono tabular-nums text-foreground",
                         !q.liquid && "underline decoration-dashed decoration-muted-foreground underline-offset-4",
                       )}
                     >
-                      {q.price !== null ? `${formatSilver(q.price)} plata` : "sin dato"}
-                      {!q.liquid && " -- sin liquidez, no cuenta"}
+                      {q.price !== null ? t("silverAmount", { value: formatSilver(q.price) }) : t("noDataShort")}
+                      {!q.liquid && t("noLiquidity")}
                     </span>
                   </li>
                 ))}
@@ -267,12 +273,12 @@ function RowDetail({ row }: { row: RecipeRowData }) {
           )}
           {row.discarded.length > 0 && (
             <div className="mt-2">
-              <h4 className="mb-1 font-medium text-foreground">Descartado</h4>
+              <h4 className="mb-1 font-medium text-foreground">{t("discarded")}</h4>
               <ul className="space-y-0.5">
                 {row.discarded.map((d, i) => (
                   <li key={i} className="text-muted-foreground">
                     <span className={CITY_THEMES[d.city as Location]?.text}>{d.city}</span>: {formatSilver(d.price)} --{" "}
-                    {DISCARD_REASON_LABEL[d.reason] ?? d.reason}
+                    {DISCARD_REASONS.includes(d.reason) ? t(`discard_${d.reason}` as "discard_outlier_low") : d.reason}
                   </li>
                 ))}
               </ul>
@@ -281,30 +287,30 @@ function RowDetail({ row }: { row: RecipeRowData }) {
         </section>
 
         <section>
-          <h3 className="mb-1.5 font-medium text-foreground">Materiales (lote de {row.recipe.batchSize})</h3>
+          <h3 className="mb-1.5 font-medium text-foreground">{t("materialsBatch", { size: row.recipe.batchSize })}</h3>
           <dl className="space-y-1 text-muted-foreground">
             {row.materials.map((m) => (
               <Row
                 key={m.itemId}
-                k={`${m.nameEs} x${m.count}`}
+                k={`${itemName(m, locale)} x${m.count}`}
                 v={
                   m.buyRefPrice !== null
-                    ? `${formatSilver(m.buyRefPrice)} c/u -> ${formatSilver(m.costContribution)}${
-                        m.bred ? " (criado)" : m.cheapestCity ? ` · ${m.cheapestCity}` : ""
+                    ? `${t("eachTo", { price: formatSilver(m.buyRefPrice), total: formatSilver(m.costContribution) })}${
+                        m.bred ? t("bred") : m.cheapestCity ? ` · ${m.cheapestCity}` : ""
                       }`
-                    : "sin dato de precio"
+                    : t("noPriceData")
                 }
               />
             ))}
           </dl>
           <Separator className="my-2" />
           <dl className="space-y-1 text-muted-foreground">
-            <Row k="Costo por unidad" v={row.costPerUnit !== null ? `${formatSilver(row.costPerUnit)} plata` : "--"} />
+            <Row k={t("costPerUnit")} v={row.costPerUnit !== null ? t("silverAmount", { value: formatSilver(row.costPerUnit) }) : "--"} />
             <Row
-              k="Ingreso neto por unidad"
-              v={row.revenuePerUnitNet !== null ? `${formatSilver(row.revenuePerUnitNet)} plata` : "--"}
+              k={t("netRevenuePerUnit")}
+              v={row.revenuePerUnitNet !== null ? t("silverAmount", { value: formatSilver(row.revenuePerUnitNet) }) : "--"}
             />
-            <Row k="Ganancia por unidad" v={row.profitPerUnit !== null ? `${formatSilver(row.profitPerUnit)} plata` : "--"} />
+            <Row k={t("profitPerUnit")} v={row.profitPerUnit !== null ? t("silverAmount", { value: formatSilver(row.profitPerUnit) }) : "--"} />
           </dl>
         </section>
       </div>

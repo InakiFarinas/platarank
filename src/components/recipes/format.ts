@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/config";
+
 export function formatSilver(value: number | null): string {
   if (value === null) return "--";
   const sign = value < 0 ? "-" : "";
@@ -12,20 +14,27 @@ export function formatPercent(value: number | null): string {
   return `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`;
 }
 
-export function formatAge(seconds: number | null): string {
-  if (seconds === null) return "sin dato";
+export function formatAge(seconds: number | null, locale: Locale = "es"): string {
+  const en = locale === "en";
+  if (seconds === null) return en ? "no data" : "sin dato";
   const hours = seconds / 3600;
-  if (hours < 1) return `hace ${Math.max(1, Math.round(seconds / 60))} min`;
-  if (hours < 48) return `hace ${Math.round(hours)}h`;
-  return `hace ${Math.round(hours / 24)}d`;
+  if (hours < 1) {
+    const min = Math.max(1, Math.round(seconds / 60));
+    return en ? `${min} min ago` : `hace ${min} min`;
+  }
+  if (hours < 48) return en ? `${Math.round(hours)}h ago` : `hace ${Math.round(hours)}h`;
+  return en ? `${Math.round(hours / 24)}d ago` : `hace ${Math.round(hours / 24)}d`;
 }
 
 export function enchantLabel(enchant: number): string {
   return enchant === 0 ? "" : `.${enchant}`;
 }
 
-const QUALITY_NAMES = ["Normal", "Bueno", "Excepcional", "Excelente", "Obra maestra"];
+const QUALITY_NAMES: Record<Locale, string[]> = {
+  es: ["Normal", "Bueno", "Excepcional", "Excelente", "Obra maestra"],
+  en: ["Normal", "Good", "Outstanding", "Excellent", "Masterpiece"],
+};
 
-export function qualityLabel(quality: number): string {
-  return `Q${quality} ${QUALITY_NAMES[quality - 1] ?? ""}`.trim();
+export function qualityLabel(quality: number, locale: Locale = "es"): string {
+  return `Q${quality} ${QUALITY_NAMES[locale][quality - 1] ?? ""}`.trim();
 }

@@ -1,21 +1,28 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Logo } from "@/components/logo";
+import { localePath, type Locale } from "@/i18n/config";
 
 // 24px tall hit area (WCAG 2.2 target size) around 12px text, without changing how the row looks.
 const LEGAL_LINK = "inline-flex min-h-6 items-center hover:text-foreground hover:underline";
 
 /** Shared footer lockup (rule-fleur divider + wax-seal wordmark) used by the home page and every
  * ranked-list page; each caller supplies its own attribution/disclaimer copy as children. */
-export function SiteFooter({
+export async function SiteFooter({
   className,
   containerClassName,
+  locale: localeProp,
   children,
 }: {
   className?: string;
   containerClassName?: string;
+  /** Pass when the caller has it; otherwise read from the request. */
+  locale?: Locale;
   children: ReactNode;
 }) {
+  const locale = localeProp ?? ((await getLocale()) as Locale);
+  const t = await getTranslations({ locale, namespace: "common.footer" });
   return (
     <footer className={className}>
       <div className={containerClassName}>
@@ -27,16 +34,16 @@ export function SiteFooter({
           </div>
           {children}
         </div>
-        <nav aria-label="Legal" className="mt-4 flex flex-wrap justify-center gap-x-5 text-xs text-muted-foreground sm:justify-start">
-          <Link href="/es/metodologia" className={LEGAL_LINK}>Metodología</Link>
-          <Link href="/es/acerca" className={LEGAL_LINK}>Acerca de</Link>
-          <Link href="/es/privacidad" className={LEGAL_LINK}>Privacidad</Link>
-          <Link href="/es/terminos" className={LEGAL_LINK}>Términos</Link>
+        <nav aria-label={t("legalNav")} className="mt-4 flex flex-wrap justify-center gap-x-5 text-xs text-muted-foreground sm:justify-start">
+          <Link href={localePath(locale, "methodology")} className={LEGAL_LINK}>{t("methodology")}</Link>
+          <Link href={localePath(locale, "about")} className={LEGAL_LINK}>{t("about")}</Link>
+          <Link href={localePath(locale, "privacy")} className={LEGAL_LINK}>{t("privacy")}</Link>
+          <Link href={localePath(locale, "terms")} className={LEGAL_LINK}>{t("terms")}</Link>
           <a href="https://discord.gg/ZZRcGSEXeh" target="_blank" rel="noopener noreferrer" className={`${LEGAL_LINK} text-money`}>
-            Discord de la comunidad
+            {t("discord")}
           </a>
           <a href="https://ko-fi.com/lacolo" target="_blank" rel="noopener noreferrer" className={`${LEGAL_LINK} text-money`}>
-            Apoyar en Ko-fi
+            {t("kofi")}
           </a>
         </nav>
       </div>

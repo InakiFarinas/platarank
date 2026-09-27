@@ -5,8 +5,10 @@ import { loadRankSnapshot, loadStationData, rankStation, ROW_LIMIT, type Station
 import recipesJson from "@/data/generated/recipes.json";
 import { DEFAULT_FILTERS } from "@/lib/recipe-filters";
 import { breadcrumbSchema, faqSchema, FaqList, JsonLd } from "@/components/json-ld";
+import { getTranslations } from "next-intl/server";
+import { localePath, stationRoute, type Locale } from "@/i18n/config";
 import { absoluteUrl } from "@/lib/seo";
-import { STATION_SEO, stationFaqs } from "@/lib/station-seo";
+import { getStationSeo, stationFaqs } from "@/lib/station-seo";
 
 /** Stations too big to ship whole to the browser (gear: ~5,700 recipes made a ~50MB page). They
  * send only the top rows and recompute server-side via /api/rank when the player changes something. */
@@ -14,10 +16,12 @@ const REMOTE_STATIONS: StationType[] = ["gear"];
 
 export async function RecipePage({
   stationType,
+  locale,
   title,
   description,
 }: {
   stationType: StationType;
+  locale: Locale;
   title: string;
   description: string;
 }) {
@@ -69,17 +73,18 @@ export async function RecipePage({
   return (
     <main id="contenido" className="mx-auto max-w-[1600px] px-3 pb-4 sm:px-6 sm:pb-8 lg:px-8">
       {content}
-      <StationInfo stationType={stationType} />
-      <Footer />
+      <StationInfo stationType={stationType} locale={locale} />
+      <Footer locale={locale} />
     </main>
   );
 }
 
-function Footer() {
+async function Footer({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "stations" });
   return (
     <SiteFooter className="mt-8">
       <p className="text-xs text-muted-foreground">
-        Datos de mercado cortesía de{" "}
+        {t("footer.marketData")}{" "}
         <a
           href="https://www.albion-online-data.com/"
           target="_blank"
@@ -88,26 +93,27 @@ function Footer() {
         >
           The Albion Online Data Project
         </a>
-        . Recetas extraídas del dump oficial del cliente (ao-bin-dumps).
+        {t("footer.recipes")}
       </p>
     </SiteFooter>
   );
 }
 
-function StationInfo({ stationType }: { stationType: StationType }) {
-  const seo = STATION_SEO[stationType];
-  const faqs = stationFaqs(stationType);
+async function StationInfo({ stationType, locale }: { stationType: StationType; locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "stations" });
+  const seo = await getStationSeo(stationType, locale);
+  const faqs = await stationFaqs(stationType, locale);
   return (
     <>
       <JsonLd data={faqSchema(faqs)} />
       <JsonLd
         data={breadcrumbSchema([
-          { name: "PlataRank", url: absoluteUrl("/es") },
-          { name: seo.name, url: absoluteUrl(`/es/${seo.path}`) },
+          { name: "PlataRank", url: absoluteUrl(localePath(locale)) },
+          { name: seo.name, url: absoluteUrl(localePath(locale, stationRoute(stationType))) },
         ])}
       />
       <section className="mt-12 max-w-3xl">
-        <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Sobre este ranking de {seo.name.toLowerCase()}</h2>
+        <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("info.heading", { name: seo.name.toLocaleLowerCase(locale) })}</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{seo.intro}</p>
         <FaqList faqs={faqs} className="mt-10" />
       </section>

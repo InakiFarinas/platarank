@@ -1,0 +1,28 @@
+{
+  "updatedLabel": "Last updated: {date}",
+  "disclaimer": "This tool is not affiliated with Sandbox Interactive. Unofficial use.",
+  "about": {
+    "title": "About",
+    "heading": "About PlataRank",
+    "description": "What PlataRank is, where its data comes from, how to contact us and why it is not an official Albion Online tool.",
+    "updated": "2026-09-27"
+  },
+  "methodology": {
+    "title": "Methodology: how silver per day is calculated",
+    "heading": "Methodology",
+    "description": "How PlataRank calculates cost, resource return, station fee, taxes and silver per day for every Albion Online recipe, and what its limitations are.",
+    "updated": "2026-09-27"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "heading": "Privacy policy",
+    "description": "What data PlataRank processes, who it is shared with and what rights you have over it.",
+    "updated": "2026-09-19"
+  },
+  "terms": {
+    "title": "Terms of use",
+    "heading": "Terms of use",
+    "description": "Terms of use for PlataRank, an informational and unofficial tool for Albion Online.",
+    "updated": "2026-09-19"
+  }
+}

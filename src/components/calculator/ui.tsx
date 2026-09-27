@@ -1,6 +1,8 @@
 "use client";
 
 import { formatInt } from "@/lib/format";
+import { useLocale, useTranslations } from "next-intl";
+import type { Locale } from "@/i18n/config";
 import { cloneElement, isValidElement, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
 import { ChevronDown, HelpCircle, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -84,12 +86,13 @@ export function SilverInput({
   edited?: boolean;
   id?: string;
 }) {
-  const [text, setText] = useState(formatInt(value));
+  const locale = useLocale() as Locale;
+  const [text, setText] = useState(formatInt(value, locale));
   const [focused, setFocused] = useState(false);
 
   useEffect(() => {
-    if (!focused) setText(formatInt(value));
-  }, [value, focused]);
+    if (!focused) setText(formatInt(value, locale));
+  }, [value, focused, locale]);
 
   return (
     <input
@@ -103,12 +106,12 @@ export function SilverInput({
       }}
       onBlur={() => {
         setFocused(false);
-        setText(formatInt(value));
+        setText(formatInt(value, locale));
       }}
       onChange={(e) => {
         const digits = e.target.value.replace(/\D/g, "");
         const n = digits === "" ? 0 : Math.min(Number(digits.slice(0, 12)), 999_999_999_999);
-        setText(digits === "" ? "" : formatInt(n));
+        setText(digits === "" ? "" : formatInt(n, locale));
         onChange(n);
       }}
       className={cn(
@@ -149,6 +152,7 @@ export function Panel({ title, aside, children, className }: { title: ReactNode;
 /** A term followed by a "?" that opens a short explanation on tap, click or Enter -- unlike a
  * title attribute, it works on a phone and with the keyboard. Closes on blur or Escape. */
 export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
+  const t = useTranslations("calculator.ui");
   const [open, setOpen] = useState(false);
   const tipId = useId();
   return (
@@ -156,7 +160,7 @@ export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
       {term}
       <button
         type="button"
-        aria-label={`Qué significa: ${typeof term === "string" ? term : "este término"}`}
+        aria-label={t("infoTipLabel", { term: typeof term === "string" ? term : t("infoTipFallback") })}
         aria-expanded={open}
         aria-describedby={open ? tipId : undefined}
         onClick={() => setOpen((o) => !o)}
@@ -210,7 +214,7 @@ export function ConfirmDelete({
   onConfirm,
   onCancel,
   label,
-  confirmLabel = "Borrar",
+  confirmLabel,
 }: {
   confirming: boolean;
   onRequestConfirm: () => void;
@@ -220,14 +224,15 @@ export function ConfirmDelete({
   label: string;
   confirmLabel?: string;
 }) {
+  const t = useTranslations("calculator.ui");
   if (confirming) {
     return (
       <span className="flex items-center gap-2 text-xs">
         <button type="button" onClick={onConfirm} className="text-destructive underline underline-offset-2">
-          {confirmLabel}
+          {confirmLabel ?? t("delete")}
         </button>
         <button type="button" onClick={onCancel} className="text-muted-foreground underline underline-offset-2">
-          Cancelar
+          {t("cancel")}
         </button>
       </span>
     );

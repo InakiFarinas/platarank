@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "description": "Ranking de crafteo de Albion Online por plata realizable por día (margen × volumen diario de ventas), no por margen unitario.",
+    "manifestDescription": "Ranking de crafteo de Albion Online por plata realizable por día.",
+    "skipToContent": "Saltar al contenido"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "heading": "No encontramos esa página",
+    "body": "El enlace puede estar mal escrito o la página ya no existe.",
+    "home": "Volver al inicio"
+  },
+  "nav": {
+    "home": "Inicio",
+    "craft": "Crafteo",
+    "alchemy": "Alquimia",
+    "refining": "Refinado",
+    "cooking": "Cocina",
+    "gear": "Equipo",
+    "mounts": "Monturas",
+    "artifacts": "Artefactos",
+    "calculator": "Calculadora",
+    "sessions": "Sesiones",
+    "openMenu": "Abrir menú"
+  },
+  "language": { "label": "Idioma", "es": "Español", "en": "English" },
+  "server": { "noData": "sin datos todavía" },
+  "auth": { "account": "Cuenta", "signOut": "Cerrar sesión", "signIn": "Entrar con Discord" },
+  "bonus": { "crafting": "+15% crafteo", "refining": "+40% refinado", "meat": "+10% carne" },
+  "footer": {
+    "legalNav": "Legal",
+    "methodology": "Metodología",
+    "about": "Acerca de",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "discord": "Discord de la comunidad",
+    "kofi": "Apoyar en Ko-fi"
+  }
+}

@@ -1,22 +1,29 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { isLocale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
-import { STATION_SEO, stationDescription } from "@/lib/station-seo";
+import { getStationSeo, stationDescription } from "@/lib/station-seo";
 import { RecipePage } from "@/components/recipes/recipe-page";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = pageMetadata({
-  title: STATION_SEO.refining.title,
-  description: stationDescription("refining"),
-  path: "/es/refinado",
-});
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  setRequestLocale(locale);
+  return pageMetadata({
+    locale,
+    route: "refining",
+    title: (await getStationSeo("refining", locale)).title,
+    description: await stationDescription("refining", locale),
+  });
+}
 
-export default function RefinadoPage() {
-  return (
-    <RecipePage
-      stationType="refining"
-      title="Refinado · Américas"
-      description="Ranking por plata realizable por día refinando madera, fibra, mineral, cuero y piedra. Tocá una fila para ver de dónde sale cada número."
-    />
-  );
+export default async function RefinadoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  const seo = await getStationSeo("refining", locale);
+  return <RecipePage stationType="refining" locale={locale} title={seo.pageTitle} description={seo.pageDescription} />;
 }

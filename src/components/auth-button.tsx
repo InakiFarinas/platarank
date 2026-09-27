@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { User } from "@supabase/supabase-js";
 import { CTA_SECONDARY } from "@/lib/cta";
 import { createClient } from "@/lib/supabase/client";
@@ -21,6 +22,7 @@ export function AuthButton() {
 }
 
 function AuthControls() {
+  const t = useTranslations("common.auth");
   const [user, setUser] = useState<User | null>(null);
   const [ready, setReady] = useState(false);
 
@@ -38,7 +40,7 @@ function AuthControls() {
 
   if (user) {
     const meta = user.user_metadata as { avatar_url?: string; full_name?: string; name?: string };
-    const name = meta.full_name ?? meta.name ?? "Cuenta";
+    const name = meta.full_name ?? meta.name ?? t("account");
     return (
       <div className="flex shrink-0 items-center gap-2">
         {meta.avatar_url && (
@@ -48,7 +50,7 @@ function AuthControls() {
         <span className="hidden max-w-28 truncate text-xs text-muted-foreground md:inline">{name}</span>
         <button
           type="button"
-          aria-label="Cerrar sesión"
+          aria-label={t("signOut")}
           onClick={() => createClient().auth.signOut()}
           className="rounded-md p-1.5 text-muted-foreground transition-colors hover:text-foreground"
         >
@@ -70,7 +72,7 @@ function AuthControls() {
       className={`${CTA_SECONDARY} inline-flex shrink-0 items-center gap-1.5 px-3 py-1.5 text-xs`}
     >
       <DiscordMark className="h-4 w-4" />
-      Entrar con Discord
+      {t("signIn")}
     </button>
   );
 }

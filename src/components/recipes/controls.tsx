@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState, type ComponentType, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { ArrowDownToLine, ArrowUpFromLine, Search, SlidersHorizontal, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,7 +12,7 @@ import { CITY_THEMES } from "@/lib/city-theme";
 import type { CitySpecialty } from "@/lib/city-specialties";
 import { DEFAULT_PARAMS, type RecipeMathParams } from "@/lib/recipe-math";
 import { DEFAULT_FILTERS, type FilterParams } from "@/lib/recipe-filters";
-import { BONUS_LABEL, CityGlyph } from "@/components/site-header";
+import { CityGlyph } from "@/components/site-header";
 import type { StationType } from "@/lib/server/station-data";
 import { cn } from "@/lib/utils";
 
@@ -58,6 +59,7 @@ function useFilterActions({ params, onParamsChange, filters, onFiltersChange }: 
 /** Mobile: screen space is too scarce for the filters to stay visible, so they live behind a
  * floating button + bottom sheet. Hidden from `lg:` up, where `FiltersPanel` takes over. */
 export function Controls(props: ControlsProps) {
+  const t = useTranslations("rankingUi.controls");
   const { resetCount, toggleCity, resetToDefaults, isChanged } = useFilterActions(props);
 
   return (
@@ -66,7 +68,7 @@ export function Controls(props: ControlsProps) {
         render={
           <button
             type="button"
-            aria-label={isChanged ? "Filtros y supuestos (modificado)" : "Filtros y supuestos"}
+            aria-label={isChanged ? t("filtersAndAssumptionsChanged") : t("filtersAndAssumptions")}
             className="fixed bottom-4 right-4 z-30 flex h-13 w-13 items-center justify-center rounded-full border-2 border-double border-border bg-card text-foreground transition-colors hover:bg-accent/60 sm:bottom-6 sm:right-6 lg:hidden"
           >
             <SlidersHorizontal className="h-5 w-5" />
@@ -78,14 +80,14 @@ export function Controls(props: ControlsProps) {
       />
       <SheetContent side="bottom" className="max-h-[85dvh] overflow-y-auto border-t-2 border-double lg:hidden">
         <SheetHeader className="flex-row items-center justify-between gap-4 space-y-0">
-          <SheetTitle className="font-heading text-base">Filtros y supuestos</SheetTitle>
+          <SheetTitle className="font-heading text-base">{t("filtersAndAssumptions")}</SheetTitle>
           {isChanged && (
             <button
               type="button"
               onClick={resetToDefaults}
               className="shrink-0 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
             >
-              Restaurar valores por defecto
+              {t("restoreDefaults")}
             </button>
           )}
         </SheetHeader>
@@ -101,19 +103,20 @@ export function Controls(props: ControlsProps) {
 /** Desktop: enough room to keep the filters visible at all times as a sidebar, no click required.
  * Hidden below `lg:`, where `Controls`' floating button + sheet takes over instead. */
 export function FiltersPanel(props: ControlsProps) {
+  const t = useTranslations("rankingUi.controls");
   const { resetCount, toggleCity, resetToDefaults, isChanged } = useFilterActions(props);
 
   return (
     <div className="hidden lg:block">
       <div className="mb-3 flex items-center justify-between gap-4">
-        <h2 className="font-heading text-base">Filtros y supuestos</h2>
+        <h2 className="font-heading text-base">{t("filtersAndAssumptions")}</h2>
         {isChanged && (
           <button
             type="button"
             onClick={resetToDefaults}
             className="shrink-0 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
           >
-            Restaurar valores por defecto
+            {t("restoreDefaults")}
           </button>
         )}
       </div>
@@ -135,9 +138,11 @@ function FilterFields({
   resetCount: number;
   toggleCity: (key: "buyCities" | "sellCities", city: Location, checked: boolean) => void;
 }) {
+  const t = useTranslations("rankingUi.controls");
+  const tBonus = useTranslations("common.bonus");
   return (
     <div className="flex flex-col gap-4">
-      <FilterCard title="Ciudad de crafteo">
+      <FilterCard title={t("craftCity")}>
         <div className="grid grid-cols-2 gap-1.5 @sm:grid-cols-3">
           {REAL_CITIES.map((city) => {
             const theme = CITY_THEMES[city];
@@ -157,7 +162,7 @@ function FilterFields({
                 <CityGlyph theme={theme} />
                 <span className="min-w-0 flex-1 truncate text-left font-medium">{city}</span>
                 {bonus && (
-                  <span className="shrink-0 font-mono text-[0.6875rem] tabular-nums text-money">{BONUS_LABEL[bonus.kind]}</span>
+                  <span className="shrink-0 font-mono text-[0.6875rem] tabular-nums text-money">{tBonus(bonus.kind)}</span>
                 )}
               </button>
             );
@@ -165,10 +170,10 @@ function FilterFields({
         </div>
       </FilterCard>
 
-      <FilterCard title="Ciudades">
+      <FilterCard title={t("cities")}>
         <div className="grid gap-4 @sm:grid-cols-2">
           <CitySection
-            title="Comprar materiales en"
+            title={t("buyMaterialsIn")}
             icon={ArrowDownToLine}
             cities={REAL_CITIES}
             selected={params.buyCities}
@@ -176,7 +181,7 @@ function FilterFields({
           />
 
           <CitySection
-            title="Vender el ítem en"
+            title={t("sellItemIn")}
             icon={ArrowUpFromLine}
             cities={REAL_CITIES}
             selected={params.sellCities}
@@ -184,10 +189,10 @@ function FilterFields({
             extra={
               stationType === "gear"
                 ? {
-                    label: "Black Market",
+                    label: t("blackMarket"),
                     checked: params.sellCities.includes(BLACK_MARKET),
                     onToggle: (checked) => toggleCity("sellCities", BLACK_MARKET, checked),
-                    note: "Solo compra: vendés contra la mejor oferta, que puede desaparecer antes de que llegues.",
+                    note: t("blackMarketNote"),
                   }
                 : undefined
             }
@@ -195,9 +200,9 @@ function FilterFields({
         </div>
       </FilterCard>
 
-      <FilterCard title="Supuestos de cálculo">
+      <FilterCard title={t("assumptions")}>
         <div className="flex items-center justify-between gap-4">
-          <Label htmlFor="focus-switch">Foco activado</Label>
+          <Label htmlFor="focus-switch">{t("focus")}</Label>
           <Switch
             id="focus-switch"
             checked={params.focus}
@@ -208,7 +213,7 @@ function FilterFields({
         {stationType === "mount" && (
           <div>
             <div className="flex items-center justify-between gap-4">
-              <Label htmlFor="breed-switch">Criar el animal base en vez de comprarlo</Label>
+              <Label htmlFor="breed-switch">{t("breedLabel")}</Label>
               <Switch
                 id="breed-switch"
                 checked={params.breedOwnMount}
@@ -216,10 +221,7 @@ function FilterFields({
               />
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
-              Reemplaza el precio de mercado del animal adulto por el costo de criarlo vos: caballo y buey usan la cría de precio fijo del
-              Mercader de granja; ciervo, alce, huargo, jabalí, oso, dragón de pantano y mamut usan la cría más barata que otro jugador esté
-              vendiendo. En todos los casos se suma el alimento más barato disponible. El Draco Ala de Fuego y el Conejo primaveral (evento)
-              no tienen un costo de cría real que calcular y no cambian.
+              {t("breedNote")}
             </p>
           </div>
         )}
@@ -227,8 +229,8 @@ function FilterFields({
         <div className="grid gap-4 @sm:grid-cols-2">
           <NumberField
             key={`market-share-${resetCount}`}
-            label="Cuota de mercado (%)"
-            hint="Qué parte del volumen de ventas diario asumís poder capturar vos."
+            label={t("marketShare")}
+            hint={t("marketShareHint")}
             value={Math.round(params.marketShare * 100)}
             min={1}
             max={100}
@@ -238,8 +240,8 @@ function FilterFields({
 
           <NumberField
             key={`station-rate-${resetCount}`}
-            label="Tarifa de estación"
-            hint="Plata que cobra Albion por craftear, cada 100 de nutrición consumida."
+            label={t("stationRate")}
+            hint={t("stationRateHint")}
             value={params.stationRatePer100Nutrition}
             min={0}
             required
@@ -248,12 +250,12 @@ function FilterFields({
         </div>
       </FilterCard>
 
-      <FilterCard title="Filtros de listado">
+      <FilterCard title={t("listFilters")}>
         <div className="grid gap-4 @sm:grid-cols-2">
           <NumberField
             key={`max-age-${resetCount}`}
-            label="Antigüedad máxima (horas)"
-            placeholder="sin límite"
+            label={t("maxAge")}
+            placeholder={t("noLimit")}
             value={filters.maxAgeHours}
             min={0}
             onChange={(v) => onFiltersChange({ ...filters, maxAgeHours: v })}
@@ -261,8 +263,8 @@ function FilterFields({
 
           <NumberField
             key={`min-volume-${resetCount}`}
-            label="Volumen mínimo diario"
-            placeholder="sin mínimo"
+            label={t("minVolume")}
+            placeholder={t("noMinimum")}
             value={filters.minVolume}
             min={0}
             onChange={(v) => onFiltersChange({ ...filters, minVolume: v })}
@@ -279,17 +281,18 @@ function FilterFields({
  * Rendered once, always visible above the table (not inside the Filtros sheet/sidebar), so it
  * doesn't cost mobile an extra tap to reach the control it needs most on the densest rubro. */
 export function NameSearchField({ value, onChange }: { value: string; onChange: (value: string) => void }) {
+  const t = useTranslations("rankingUi.controls");
   const id = useId();
   return (
     <div className="relative">
       <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
       <Label htmlFor={id} className="sr-only">
-        Buscar receta por nombre
+        {t("searchLabel")}
       </Label>
       <Input
         id={id}
         type="search"
-        placeholder="Buscar receta por nombre..."
+        placeholder={t("searchPlaceholder")}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="pl-9 pr-9"
@@ -298,7 +301,7 @@ export function NameSearchField({ value, onChange }: { value: string; onChange: 
         <button
           type="button"
           onClick={() => onChange("")}
-          aria-label="Limpiar búsqueda"
+          aria-label={t("clearSearch")}
           className="absolute right-0.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded text-muted-foreground hover:text-foreground"
         >
           <X className="h-3.5 w-3.5" />
@@ -396,6 +399,7 @@ function NumberField({
   placeholder?: string;
   required?: boolean;
 }) {
+  const t = useTranslations("rankingUi.controls");
   const id = useId();
   const errorId = `${id}-error`;
   const [raw, setRaw] = useState(value === null ? "" : String(value));
@@ -411,7 +415,7 @@ function NumberField({
   function commit(nextRaw: string) {
     if (nextRaw.trim() === "") {
       if (required) {
-        setError("Este campo es obligatorio.");
+        setError(t("required"));
         return;
       }
       setError(null);
@@ -420,13 +424,13 @@ function NumberField({
     }
     const parsed = Number(nextRaw);
     if (Number.isNaN(parsed)) {
-      setError("Ingresá un número válido.");
+      setError(t("invalidNumber"));
       return;
     }
     let clamped = parsed;
     if (min !== undefined && clamped < min) clamped = min;
     if (max !== undefined && clamped > max) clamped = max;
-    setError(clamped !== parsed ? `Ajustado a ${clamped} (${clamped === min ? "mínimo" : "máximo"} permitido).` : null);
+    setError(clamped !== parsed ? t(clamped === min ? "clampedMin" : "clampedMax", { value: clamped }) : null);
     setRaw(String(clamped));
     onChange(clamped);
   }

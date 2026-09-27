@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 /** Renders one schema.org JSON-LD block. `<` is escaped so page data can never close the script tag. */
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }} />;
@@ -22,10 +24,11 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
 }
 
 /** Visible FAQ: the same text that goes in the FAQPage schema, so the markup matches the page. */
-export function FaqList({ faqs, className }: { faqs: Faq[]; className?: string }) {
+export async function FaqList({ faqs, className }: { faqs: Faq[]; className?: string }) {
+  const t = await getTranslations("stations");
   return (
     <div className={className}>
-      <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Preguntas frecuentes</h2>
+      <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("faqHeading")}</h2>
       <dl className="mt-5 space-y-5">
         {faqs.map(({ q, a }) => (
           <div key={q}>

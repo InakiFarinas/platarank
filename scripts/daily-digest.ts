@@ -2,6 +2,7 @@
 // Runs from .github/workflows/daily-digest.yml. DRY_RUN=1 prints the message instead of sending.
 import "dotenv/config";
 import { loadTopRecipes } from "../src/lib/server/top-recipes";
+import { localePath } from "../src/i18n/config";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
 const TOP = 5;
@@ -25,7 +26,7 @@ async function main() {
     const r = row.recipe;
     const enchant = r.enchant > 0 ? `.${r.enchant}` : "";
     const margin = row.marginPct === null ? "--" : `${Math.round(row.marginPct * 100)}%`;
-    return `**${i + 1}. [${r.nameEs} T${r.tier}${enchant}](${SITE_URL}/es/calculadora?item=${encodeURIComponent(r.itemId)})** · ${label}\n${fmt(row.platinumPerDay ?? 0)} plata/día · ganancia ${fmt(row.profitPerUnit ?? 0)} c/u · margen ${margin}`;
+    return `**${i + 1}. [${r.nameEs} T${r.tier}${enchant}](${SITE_URL}${localePath("es", "calculator", `?item=${encodeURIComponent(r.itemId)}`)})** · ${label}\n${fmt(row.platinumPerDay ?? 0)} plata/día · ganancia ${fmt(row.profitPerUnit ?? 0)} c/u · margen ${margin}`;
   });
 
   const payload = {

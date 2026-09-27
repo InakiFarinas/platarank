@@ -1,3 +1,4 @@
+import { localePath } from "@/i18n/config";
 import { formatInt } from "@/lib/format";
 import { and, eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
@@ -86,7 +87,7 @@ export async function runAlerts(now: Date) {
             `**${plan.name}** superó tu umbral.\n` +
             `Ganancia: **${formatInt(result.profit)}** (umbral ${formatInt(threshold)}) · margen ${result.margin === null ? "--" : Math.round(result.margin * 100) + "%"}\n` +
             `Inversión ${formatInt(result.cost)} → ingreso neto ${formatInt(result.revenue)}\n` +
-            `${SITE_URL}/es/calculadora?item=${encodeURIComponent(plan.itemId)}`,
+            `${SITE_URL}${localePath("es", "calculator", `?item=${encodeURIComponent(plan.itemId)}`)}`,
         }),
         redirect: "error",
         signal: AbortSignal.timeout(8000),

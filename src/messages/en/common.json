@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "description": "Albion Online crafting ranking by realizable silver per day (margin × daily sales volume), not by per-unit margin.",
+    "manifestDescription": "Albion Online crafting ranking by realizable silver per day.",
+    "skipToContent": "Skip to content"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "heading": "We couldn't find that page",
+    "body": "The link may be mistyped or the page no longer exists.",
+    "home": "Back to home"
+  },
+  "nav": {
+    "home": "Home",
+    "craft": "Crafting",
+    "alchemy": "Alchemy",
+    "refining": "Refining",
+    "cooking": "Cooking",
+    "gear": "Gear",
+    "mounts": "Mounts",
+    "artifacts": "Artifacts",
+    "calculator": "Calculator",
+    "sessions": "Sessions",
+    "openMenu": "Open menu"
+  },
+  "language": { "label": "Language", "es": "Español", "en": "English" },
+  "server": { "noData": "no data yet" },
+  "auth": { "account": "Account", "signOut": "Sign out", "signIn": "Sign in with Discord" },
+  "bonus": { "crafting": "+15% crafting", "refining": "+40% refining", "meat": "+10% meat" },
+  "footer": {
+    "legalNav": "Legal",
+    "methodology": "Methodology",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "discord": "Community Discord",
+    "kofi": "Support on Ko-fi"
+  }
+}

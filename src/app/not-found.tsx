@@ -1,17 +1,22 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { CTA_PRIMARY } from "@/lib/cta";
+import Link from "next/link";
+import "./globals.css";
 
-export const metadata: Metadata = { title: "Página no encontrada", robots: { index: false } };
+// Fallback for URLs that never reach a locale (bilingual, no i18n context). Locale-prefixed
+// unknown paths render app/[locale]/not-found.tsx instead.
+export const metadata: Metadata = { title: "404", robots: { index: false } };
 
 export default function NotFound() {
   return (
-    <main id="contenido" className="mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center gap-4 px-6 text-center">
-      <h1 className="font-display text-4xl uppercase tracking-tight">No encontramos esa página</h1>
-      <p className="text-sm text-muted-foreground">El enlace puede estar mal escrito o la página ya no existe.</p>
-      <Link href="/es" className={`${CTA_PRIMARY} inline-flex items-center px-5 py-2.5 text-sm`}>
-        Volver al inicio
-      </Link>
-    </main>
+    <html lang="es" className="dark">
+      <body className="antialiased">
+        <main className="mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center gap-4 px-6 text-center">
+          <h1 className="text-3xl font-semibold">404</h1>
+          <p className="text-sm text-muted-foreground">
+            <Link href="/es" className="underline">Volver al inicio</Link> · <Link href="/en" className="underline">Back to home</Link>
+          </p>
+        </main>
+      </body>
+    </html>
   );
 }

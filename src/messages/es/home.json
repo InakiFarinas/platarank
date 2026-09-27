@@ -1,0 +1,71 @@
+{
+  "title": "Ranking de crafteo de Albion Online por plata realizable por día",
+  "description": "PlataRank ordena las recetas de Albion Online (alquimia, refinado, cocina, equipo y monturas) por ganancia × volumen diario de ventas, no por margen unitario. Con calculadora, sesiones y alertas por Discord.",
+  "stationNotes": {
+    "alchemy": "Pociones",
+    "refining": "Tablas, lingotes, tela y cuero",
+    "cooking": "Comidas",
+    "gear": "Armas, armaduras, bolsas, capas y equipo de recolección",
+    "mount": "Animales de montura"
+  },
+  "capabilities": [
+    "Ranking por plata por día: el margen se multiplica por el volumen real de ventas.",
+    "Calculadora con retorno, foco, tarifa de estación e impuestos, y enlaces para compartir tu cálculo.",
+    "Sesiones de crafteo para sumar varios ítems y cargar tus números reales.",
+    "Alertas por Discord cuando una receta guardada supera la ganancia que definas."
+  ],
+  "faq": {
+    "whatIsQ": "¿Qué es PlataRank?",
+    "whatIsA": "PlataRank es un ranking gratuito de crafteo de Albion Online (servidor Américas). Ordena las recetas de alquimia, refinado, cocina, equipo y monturas por la plata que dejan por día, con precios que se actualizan cada hora.",
+    "silverPerDayQ": "¿Qué es la plata por día?",
+    "silverPerDayA": "Es la ganancia por unidad multiplicada por el volumen diario de ventas y por la cuota de mercado que asumas. Una receta con margen alto que casi no se vende rinde menos que una de margen chico que se vende todo el día.",
+    "whatToCraftQ": "¿Qué crafteo conviene hacer hoy en Albion Online?",
+    "whatToCraftA": "El de la primera fila del ranking con tus supuestos (ciudad, foco, cuota de mercado). El bloque de arriba muestra las cinco mejores recetas ahora, y cada estación tiene su propio ranking.",
+    "sourcesQ": "¿De dónde salen los precios y las recetas?",
+    "sourcesA": "Los precios vienen del Albion Online Data Project, alimentado por jugadores, y las recetas del dump oficial del cliente. Los precios raros se filtran y el detalle de cada fórmula está en la página de metodología.",
+    "officialQ": "¿PlataRank es oficial?",
+    "officialA": "No. Es una herramienta de la comunidad, gratuita y sin afiliación con Sandbox Interactive."
+  },
+  "how": {
+    "heading": "Cómo sale el número de {name}",
+    "cost": "Costo por unidad (materiales y tarifa)",
+    "sell": "Precio de venta (mediana de ciudades)",
+    "net": "Ingreso neto tras impuestos",
+    "profit": "Ganancia por unidad",
+    "volume": "× volumen diario de ventas × {share}% de cuota",
+    "perDay": "Plata por día"
+  },
+  "hero": {
+    "title": "Maximizá tu <money>plata</money> en Albion Online",
+    "body": "Descubrí qué recetas de crafteo te dan más plata por día, con datos reales de volumen de ventas, precios y todas las fórmulas de cálculo a la vista.",
+    "viewRecipes": "Ver recetas rentables",
+    "openCalc": "Abrir calculadora",
+    "recipes": "{count} recetas · ",
+    "stats": "5 estaciones · servidor Américas · precios actualizados cada hora · ",
+    "discord": "Discord de la comunidad"
+  },
+  "top": {
+    "heading": "Lo que más rinde hoy",
+    "intro": "Ordenamos por plata realizable por día: ganancia por unidad × volumen de ventas × cuota de mercado. Una receta con margen alto que casi no se vende rinde menos que una de margen chico que se vende todo el día.",
+    "best": "Ahora mismo, la receta que más rinde es <b>{name}</b> ({station}): {perDay} de plata por día con los supuestos por defecto.",
+    "listHeading": "Las mejores recetas ahora",
+    "listNote": "plata por día · Brecilien, sin foco",
+    "meta": "{station} · margen {margin} · volumen {volume}",
+    "tap": "Tocá una receta para ver su costo y ganancia. Precio más viejo usado: {age}."
+  },
+  "stations": {
+    "heading": "Elegí tu estación",
+    "recipes": "{count} recetas"
+  },
+  "discord": {
+    "heading": "Avisos y alertas en Discord",
+    "body": "Todos los días publicamos en el Discord las mejores recetas. Y con tu cuenta podés guardar cálculos y recibir un aviso cuando una receta supera la ganancia que definas. Es gratis.",
+    "join": "Unirme al Discord",
+    "methodology": "Cómo calculamos todo"
+  },
+  "footer": {
+    "dataFrom": "Datos de",
+    "rest": "· Cliente del juego · Actualizado cada hora",
+    "disclaimer": "Esta herramienta no está afiliada a Sandbox Interactive. Uso no oficial."
+  }
+}

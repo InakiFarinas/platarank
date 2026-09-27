@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Fundición de artefactos de Albion Online: valor esperado por tirada",
+    "description": "Valor esperado de tirar Runas, Almas, Reliquias o fragmentos de Avalon en la Fundición de artefactos de Albion Online: costo, ganancia, peor y mejor caso y probabilidad de perder, por tier."
+  },
+  "page": {
+    "title": "Fundición de artefactos",
+    "description": "Cada tirada da un artefacto al azar del pozo elegido, todos con la misma probabilidad. Acá ves si conviene y cuánto arriesgás.",
+    "dataCredit": "Datos de mercado: Albion Online Data Project."
+  },
+  "error": {
+    "title": "No pudimos cargar la Fundición",
+    "body": "Hubo un problema leyendo los precios de mercado. Puede ser temporal: probá de nuevo.",
+    "retry": "Reintentar"
+  },
+  "foundry": {
+    "heading": "Calculadora de la Fundición",
+    "fragment": "Fragmento",
+    "tier": "Tier",
+    "fragments": {
+      "RUNE": "Runas",
+      "SOUL": "Almas",
+      "RELIC": "Reliquias",
+      "SHARD_AVALONIAN": "Avalon"
+    },
+    "classes": {
+      "warrior": "Guerrero",
+      "hunter": "Cazador",
+      "mage": "Mago"
+    },
+    "mixed": "Mixto",
+    "gains": "gana",
+    "loses": "pierde",
+    "poolsTitle": "Pozos de la Fundición",
+    "asideCity": "{fragment}: {price} c/u en {city}",
+    "asidePrice": "{fragment}: {price} c/u",
+    "asideNone": "Sin precio de {fragment}",
+    "col": {
+      "pool": "Pozo",
+      "cost": "Costo",
+      "expected": "Valor esperado",
+      "profit": "Ganancia",
+      "worstBest": "Peor / mejor",
+      "loses": "Pierde"
+    },
+    "profitLabel": "Ganancia: ",
+    "poolMeta": "{count} fragmentos · {priced}/{size} con precio",
+    "note1": "Valor esperado: promedio de lo que rinde cada artefacto del pozo, neto de impuestos ({net}% del precio). Los que no tienen precio o no se vendieron en 30 días quedan fuera del promedio. Pierde: qué parte de los artefactos con precio se vende por menos de lo que costó la tirada.",
+    "note2": "Supuestos: todos los artefactos del pozo con la misma probabilidad, y {mixed} fragmentos por tirada en el pozo Mixto. Ninguno sale del volcado del juego; los pozos sí (son los artefactos cuya receta usa ese fragmento). El costo usa el fragmento más barato de las ciudades.",
+    "compareTitle": "Comparar tiers",
+    "compareAside": "mejor ganancia esperada entre los cuatro pozos",
+    "compareRegion": "Comparación de fragmentos y tiers",
+    "compareCaption": "Mejor ganancia esperada por tirada según fragmento y tier. Elegí una celda para ver su detalle.",
+    "cellAria": "{fragment} T{tier}: {sign, select, gain {gana} other {pierde}} {amount} en el pozo {pool}",
+    "cellNone": "{fragment} T{tier}: sin datos",
+    "detailTitle": "Pozo {pool}: qué puede salir",
+    "detailAside": "{priced}/{size} con precio",
+    "perDay": "{n}/día",
+    "noSales": "sin ventas",
+    "verdictNoPrice": "No hay precio de {fragment} en ninguna ciudad, así que no podemos calcular costo ni ganancia. Abajo ves cuánto rinde cada artefacto del pozo.",
+    "verdictNoSales": "Ningún artefacto del pozo {pool} se vendió en los últimos 30 días, así que no hay un valor esperado para comparar con el costo.",
+    "verdictDetail": "valor esperado {expected} − costo {cost} · pierde {loss} de las veces · peor {worst}, mejor {best}",
+    "verdictTitle": "Ganancia esperada por tirada · {fragment} · pozo {pool}"
+  },
+  "transport": {
+    "capacity": "Capacidad de carga",
+    "bag": "Bolsa",
+    "none": "Ninguna",
+    "mount": "Montura",
+    "mountTier": "Tier de la montura",
+    "mountedOnly": " (solo montado)",
+    "cape": "Capa de gathering",
+    "capeTier": "Tier de la capa",
+    "capeTierHint": "-30% al recurso propio, hasta este tier",
+    "capeCategories": {
+      "FIBER": "Fibra",
+      "HIDE": "Cuero",
+      "ORE": "Mineral",
+      "ROCK": "Piedra",
+      "WOOD": "Madera"
+    },
+    "food": "Comida activa",
+    "foodHint": "+10%, dura 30 min",
+    "courier": "Calzado con Courier",
+    "courierHint": "pasiva elegida al craftear, estimada",
+    "mounts": {
+      "horse": "Caballo de monta",
+      "ox": "Buey de transporte",
+      "mule": "Mula novata",
+      "direboar": "Jabalí feroz",
+      "giant_stag": "Ciervo gigante",
+      "swamp_dragon": "Dragón de pantano"
+    },
+    "cargoTitle": "Qué vas a transportar",
+    "searchPlaceholder": "Buscar ítem o recurso crudo...",
+    "rawTag": "T{tier} · crudo",
+    "empty": "Todavía no agregaste nada para transportar.",
+    "weightEach": "{kg} kg c/u",
+    "weightUnknown": "peso desconocido",
+    "qtyOf": "Cantidad de {name}",
+    "remove": "Quitar {name}",
+    "resultTitle": "Resultado",
+    "cargoWeight": "Peso a transportar",
+    "maxLoad": "Capacidad máxima",
+    "load": "Carga",
+    "speed": "{speed} m/s",
+    "noBag": "Sin bolsa ni montura equipada, solo tenés la carga base (50 kg).",
+    "speedLabels": {
+      "normal": "Velocidad normal",
+      "reduced": "Reducida",
+      "noGallop": "Reducida (sin galope)",
+      "veryReduced": "Muy reducida",
+      "almostStill": "Casi inmóvil",
+      "cannotMove": "No podés moverte"
+    }
+  }
+}

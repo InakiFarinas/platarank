@@ -329,7 +329,7 @@ async function writeArtifactPools(
     const key = category && /_(armor|helmet|shoes)$/.test(category) ? category : gear["@shopsubcategory1"];
     return (key && CLASS_BY_SUBCATEGORY[key]) ?? null;
   };
-  const pools = new Map<string, { fragment: string; fragmentId: string; tier: number; fragmentCount: number; artifacts: { itemId: string; nameEs: string; class: "warrior" | "hunter" | "mage" }[] }>();
+  const pools = new Map<string, { fragment: string; fragmentId: string; tier: number; fragmentCount: number; artifacts: { itemId: string; nameEs: string; nameEn: string; class: "warrior" | "hunter" | "mage" }[] }>();
   for (const item of simpleItems) {
     const id = item["@uniquename"];
     if (!/_ARTEFACT_/.test(id) || /_FEY$/.test(id) || !item.craftingrequirements) continue;
@@ -341,7 +341,7 @@ async function writeArtifactPools(
     if (!match || !(FRAGMENTS as readonly string[]).includes(match[2])) continue;
     const key = resources[0]["@uniquename"];
     const pool = pools.get(key) ?? { fragment: match[2], fragmentId: key, tier: Number(match[1]), fragmentCount: Number(resources[0]["@count"]), artifacts: [] };
-    pool.artifacts.push({ itemId: id, nameEs: names.get(id)?.es ?? id, class: cls });
+    pool.artifacts.push({ itemId: id, nameEs: names.get(id)?.es ?? id, nameEn: names.get(id)?.en ?? id, class: cls });
     pools.set(key, pool);
   }
   const sorted = [...pools.values()].sort((a, b) => a.fragment.localeCompare(b.fragment) || a.tier - b.tier);

@@ -3,24 +3,54 @@
 import { formatInt } from "@/lib/format";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { Pencil, Trash2 } from "lucide-react";
+import { localePath, type Locale } from "@/i18n/config";
+import { enchantLabel } from "@/components/recipes/format";
 import { itemIconUrl } from "@/lib/item-icons";
 import { cn } from "@/lib/utils";
 import { CTA_PRIMARY, ConfirmDelete, Panel } from "@/components/calculator/ui";
 import { itemTotals, sessionTotals, useSessions, type CraftingSession, type SessionItem, type SessionsApi } from "@/components/sessions/use-sessions";
 
+type SavedNames = Record<string, { nameEs: string; nameEn: string; tier: number; enchant: number }>;
+const nameCache = new Map<string, Promise<SavedNames>>();
+
+/** Session items store their display name in the locale they were saved in; re-resolve it from the
+ * item id so English users see English names (and vice versa). Falls back to the stored name. */
+function useDisplayName(item: SessionItem, locale: Locale): string {
+  const [resolved, setResolved] = useState<string | null>(null);
+  useEffect(() => {
+    let live = true;
+    let req = nameCache.get(item.item_id);
+    if (!req) {
+      req = fetch(`/api/item-names?ids=${encodeURIComponent(item.item_id)}`).then((r) => (r.ok ? r.json() : {}), () => ({}));
+      nameCache.set(item.item_id, req);
+    }
+    req.then((names) => {
+      const n = names[item.item_id];
+      if (live && n) setResolved(`${locale === "en" ? n.nameEn : n.nameEs} T${n.tier}${enchantLabel(n.enchant)}`);
+    });
+    return () => {
+      live = false;
+    };
+  }, [item.item_id, locale]);
+  return resolved ?? item.item_name;
+}
+
 const signed = (n: number) => `${n >= 0 ? "+" : "−"}${formatInt(Math.abs(n))}`;
 
 export function SessionsView() {
   const api = useSessions();
+  const t = useTranslations("sessions");
+  const locale = useLocale() as Locale;
 
-  if (api.signedIn === null) return <p className="py-16 text-center text-sm text-muted-foreground">Cargando…</p>;
+  if (api.signedIn === null) return <p className="py-16 text-center text-sm text-muted-foreground">{t("loading")}</p>;
   if (!api.signedIn) {
     return (
       <div className="mt-4 rounded-md border border-dashed border-border px-4 py-12 text-center">
-        <h2 className="font-heading text-xl">Tus sesiones de crafteo</h2>
+        <h2 className="font-heading text-xl">{t("view.signedOutTitle")}</h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-          Entrá con Discord para agrupar varios crafteos en una sesión y ver cuánta plata sacás en total.
+          {t("view.signedOutBody")}
         </p>
       </div>
     );
@@ -28,15 +58,15 @@ export function SessionsView() {
   if (api.sessions.length === 0) {
     return (
       <div className="mt-4 rounded-md border border-dashed border-border px-4 py-12 text-center">
-        <h2 className="font-heading text-xl">Todavía no tenés sesiones</h2>
+        <h2 className="font-heading text-xl">{t("view.emptyTitle")}</h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-          Armá un cálculo en la calculadora y usá &quot;Agregar a sesión&quot; en el balance. Podés sumar varios ítems a la misma sesión.
+          {t("view.emptyBody")}
         </p>
         <Link
-          href="/es/calculadora"
+          href={localePath(locale, "calculator")}
           className={cn(CTA_PRIMARY, "mt-4 inline-block px-4 py-2 text-sm")}
         >
-          Ir a la calculadora
+          {t("view.goCalculator")}
         </Link>
       </div>
     );
@@ -48,7 +78,7 @@ export function SessionsView() {
     <div className="mt-4 space-y-4">
       <div className="flex items-baseline justify-between gap-3 rounded-md border-2 border-double border-money/30 bg-card/60 px-4 py-3">
         <span className="font-heading text-base">
-          Total de {api.sessions.length} {api.sessions.length === 1 ? "sesión" : "sesiones"}
+          {t("view.total", { count: api.sessions.length })}
         </span>
         <span className={cn("font-mono text-xl tabular-nums", grand >= 0 ? "text-money" : "text-destructive")}>{signed(grand)}</span>
       </div>
@@ -61,6 +91,8 @@ export function SessionsView() {
 }
 
 function SessionCard({ session, api }: { session: CraftingSession; api: SessionsApi }) {
+  const t = useTranslations("sessions.view");
+  const locale = useLocale() as Locale;
   const totals = sessionTotals(session);
   const [confirming, setConfirming] = useState(false);
   return (
@@ -68,20 +100,20 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
       title={<SessionName session={session} api={api} />}
       aside={
         <span className="flex items-center gap-3">
-          <span>{new Date(session.created_at).toLocaleDateString("es-AR")}</span>
+          <span>{new Date(session.created_at).toLocaleDateString(locale === "en" ? "en-US" : "es-AR")}</span>
           <ConfirmDelete
             confirming={confirming}
             onRequestConfirm={() => setConfirming(true)}
             onConfirm={() => api.deleteSession(session.id)}
             onCancel={() => setConfirming(false)}
-            label={`Borrar la sesión ${session.name}`}
-            confirmLabel="Borrar sesión"
+            label={t("deleteLabel", { name: session.name })}
+            confirmLabel={t("deleteConfirm")}
           />
         </span>
       }
     >
       {session.session_items.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Sin ítems todavía. Agregalos desde la calculadora.</p>
+        <p className="text-sm text-muted-foreground">{t("noItems")}</p>
       ) : (
         <ul className="-my-1 divide-y divide-border">
           {session.session_items.map((item) => (
@@ -90,10 +122,10 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
         </ul>
       )}
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t-2 border-double border-money/30 pt-3">
-        <span className="font-heading text-base">Ganancia de la sesión</span>
+        <span className="font-heading text-base">{t("sessionProfit")}</span>
         <span className="flex items-baseline gap-4">
           <span className="text-xs text-muted-foreground">
-            invertido <span className="font-mono">{formatInt(totals.cost)}</span> · ingreso <span className="font-mono">{formatInt(totals.revenue)}</span>
+            {t("invested")} <span className="font-mono">{formatInt(totals.cost)}</span> · {t("income")} <span className="font-mono">{formatInt(totals.revenue)}</span>
           </span>
           <span className={cn("font-mono text-xl tabular-nums", totals.profit >= 0 ? "text-money" : "text-destructive")}>
             {signed(totals.profit)}
@@ -106,6 +138,7 @@ function SessionCard({ session, api }: { session: CraftingSession; api: Sessions
 
 /** Session title with inline rename: pencil -> input, Enter or blur saves, Escape cancels. */
 function SessionName({ session, api }: { session: CraftingSession; api: SessionsApi }) {
+  const t = useTranslations("sessions.view");
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(session.name);
 
@@ -115,7 +148,7 @@ function SessionName({ session, api }: { session: CraftingSession; api: Sessions
         {session.name}
         <button
           type="button"
-          aria-label={`Renombrar la sesión ${session.name}`}
+          aria-label={t("renameLabel", { name: session.name })}
           onClick={() => {
             setText(session.name);
             setEditing(true);
@@ -139,7 +172,7 @@ function SessionName({ session, api }: { session: CraftingSession; api: Sessions
       onFocus={(e) => e.currentTarget.select()}
       value={text}
       maxLength={80}
-      aria-label="Nombre de la sesión"
+      aria-label={t("nameLabel")}
       onChange={(e) => setText(e.target.value)}
       onBlur={commit}
       onKeyDown={(e) => {
@@ -152,31 +185,34 @@ function SessionName({ session, api }: { session: CraftingSession; api: Sessions
 }
 
 function ItemRow({ item, api }: { item: SessionItem; api: SessionsApi }) {
+  const tr = useTranslations("sessions.view");
+  const locale = useLocale() as Locale;
   const t = itemTotals(item);
+  const displayName = useDisplayName(item, locale);
   return (
     <li className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[auto_minmax(0,1fr)_8rem_8rem_6.5rem_auto]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={itemIconUrl(item.item_id, item.params.quality, 64)} alt="" width={40} height={40} className="h-10 w-10" />
       <div className="min-w-0">
-        <Link href={`/es/calculadora?item=${encodeURIComponent(item.item_id)}`} className="block truncate text-sm hover:text-money">
-          {item.item_name}
+        <Link href={localePath(locale, "calculator", `?item=${encodeURIComponent(item.item_id)}`)} className="block truncate text-sm hover:text-money">
+          {displayName}
         </Link>
         <div className="text-xs text-muted-foreground">
-          ×{item.params.qty} · {item.params.craftCity} · {t.isReal ? "con datos reales" : "estimado"}
+          ×{item.params.qty} · {item.params.craftCity} · {t.isReal ? tr("withRealData") : tr("estimated")}
         </div>
       </div>
       <div className="col-start-3 row-start-1 text-right sm:col-start-5">
         <div className={cn("font-mono text-sm tabular-nums", t.profit >= 0 ? "text-money" : "text-destructive")}>{signed(t.profit)}</div>
       </div>
       <ActualField
-        label="Gasto real"
+        label={tr("actualCost")}
         estimate={item.snapshot.cost}
         actual={item.actual_cost}
         onCommit={(v) => api.setActuals(item.id, v, item.actual_revenue)}
         className="col-span-2 col-start-2 row-start-2 sm:col-span-1 sm:col-start-3 sm:row-start-1"
       />
       <ActualField
-        label="Venta real"
+        label={tr("actualRevenue")}
         estimate={item.snapshot.revenue}
         actual={item.actual_revenue}
         onCommit={(v) => api.setActuals(item.id, item.actual_cost, v)}
@@ -184,7 +220,7 @@ function ItemRow({ item, api }: { item: SessionItem; api: SessionsApi }) {
       />
       <button
         type="button"
-        aria-label={`Quitar ${item.item_name}`}
+        aria-label={tr("removeItem", { name: displayName })}
         onClick={() => api.removeItem(item.id)}
         className="relative col-start-1 row-start-2 justify-self-center p-1.5 text-muted-foreground transition-colors hover:text-destructive after:absolute after:-inset-1.5 after:content-[''] sm:col-start-6 sm:row-start-1"
       >

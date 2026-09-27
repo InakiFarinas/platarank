@@ -5,45 +5,48 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu as MenuPrimitive } from "@base-ui/react/menu";
 import { ChevronDown, Menu } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { AuthButton } from "@/components/auth-button";
+import { LanguageSwitch } from "@/components/language-switch";
+import { localePath, type Locale, type RouteKey } from "@/i18n/config";
 import { Logo } from "@/components/logo";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import type { CityTheme } from "@/lib/city-theme";
-import type { CitySpecialty } from "@/lib/city-specialties";
 import { cn } from "@/lib/utils";
 
-type NavItem = { href: string; label: string; count: number | null };
+type NavItem = { route?: RouteKey; label: string; count: number | null };
 
-const CRAFT_ITEMS: readonly NavItem[] = [
-  { href: "/es/alquimia", label: "Alquimia", count: 174 },
-  { href: "/es/refinado", label: "Refinado", count: 115 },
-  { href: "/es/cocina", label: "Cocina", count: 183 },
-  { href: "/es/equipo", label: "Equipo", count: 5711 },
-  { href: "/es/monturas", label: "Monturas", count: 29 },
-  { href: "/es/artefactos", label: "Artefactos", count: null },
+const CRAFT_ITEMS: readonly { route: RouteKey; count: number | null }[] = [
+  { route: "alchemy", count: 174 },
+  { route: "refining", count: 115 },
+  { route: "cooking", count: 183 },
+  { route: "gear", count: 5711 },
+  { route: "mounts", count: 29 },
+  { route: "artifacts", count: null },
 ];
-
-const NAV_BEFORE: readonly NavItem[] = [{ href: "/es", label: "Inicio", count: null }];
-const NAV_AFTER: readonly NavItem[] = [
-  { href: "/es/calculadora", label: "Calculadora", count: null },
-  { href: "/es/sesiones", label: "Sesiones", count: null },
-];
-
-/** Shared with the "Ciudad de crafteo" control (now in the Filtros panel, see controls.tsx) so
- * both name a city's bonus the same way. */
-export const BONUS_LABEL: Record<CitySpecialty["kind"], string> = {
-  crafting: "+15% crafteo",
-  refining: "+40% refinado",
-  meat: "+10% carne",
-};
 
 function formatCount(n: number): string {
   return n >= 1000 ? `${Math.round(n / 100) / 10}k` : String(n);
 }
 
-function isActive(pathname: string | null, href: string): boolean {
-  return href === "/es" ? pathname === "/es" : (pathname?.startsWith(href) ?? false);
+function isActive(pathname: string | null, href: string, locale: Locale): boolean {
+  return href === localePath(locale) ? pathname === href : (pathname?.startsWith(href) ?? false);
+}
+
+type NavEntry = NavItem & { href: string };
+
+/** Nav entries with their locale-resolved href and translated label. */
+function useNav() {
+  const locale = useLocale() as Locale;
+  const t = useTranslations("common.nav");
+  const entry = (route: RouteKey | undefined, label: string, count: number | null = null): NavEntry => ({ route, label, count, href: localePath(locale, route) });
+  return {
+    locale,
+    before: [entry(undefined, t("home"))],
+    craft: CRAFT_ITEMS.map((i) => entry(i.route, t(i.route), i.count)),
+    after: [entry("calculator", t("calculator")), entry("sessions", t("sessions"))],
+  };
 }
 
 /** The one header shared by the home page and all four ranked-list pages. The nav (logo, tabs,
@@ -69,6 +72,8 @@ export function SiteHeader({
 }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations("common");
+  const { locale, before, craft, after } = useNav();
 
   // The mobile menu opens fresh on every navigation instead of staying open across the route
   // change it just triggered.
@@ -101,18 +106,18 @@ export function SiteHeader({
       >
         <div className={cn(containerClasses, "py-3 sm:py-4")}>
           <nav className={cn("flex items-center gap-2 text-xs", !title && "gap-3 text-sm")}>
-            <Link href="/es" className="mr-2 flex shrink-0 items-center gap-2.5 font-medium text-foreground hover:text-money">
+            <Link href={localePath(locale)} className="mr-2 flex shrink-0 items-center gap-2.5 font-medium text-foreground hover:text-money">
               <Logo size={title ? 44 : 52} className={title ? "h-9 w-9 sm:h-11 sm:w-11" : "h-10 w-10 sm:h-13 sm:w-13"} />
               <span className="hidden font-display text-xl tracking-wide sm:inline sm:text-2xl">PlataRank</span>
             </Link>
 
         <div className="hidden min-w-0 flex-1 items-center gap-1 xl:flex">
-          {NAV_BEFORE.map((item) => (
-            <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href)} />
+          {before.map((item) => (
+            <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href, locale)} />
           ))}
-          <CraftMenu pathname={pathname} />
-          {NAV_AFTER.map((item) => (
-            <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href)} />
+          <CraftMenu pathname={pathname} items={craft} locale={locale} label={t("nav.craft")} />
+          {after.map((item) => (
+            <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href, locale)} />
           ))}
         </div>
 
@@ -121,7 +126,7 @@ export function SiteHeader({
             render={
               <button
                 type="button"
-                aria-label="Abrir menú"
+                aria-label={t("nav.openMenu")}
                 className="relative ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground after:absolute after:-inset-2 after:content-[''] xl:hidden"
               >
                 <Menu className="h-4 w-4" />
@@ -133,16 +138,16 @@ export function SiteHeader({
               <SheetTitle className="font-display text-base uppercase tracking-wide">PlataRank</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col gap-1 px-4 pb-4">
-              {NAV_BEFORE.map((item) => (
-                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href)} />
+              {before.map((item) => (
+                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href, locale)} />
               ))}
-              <p className="px-3 pt-3 pb-1 text-xs uppercase tracking-wide text-muted-foreground">Crafteo</p>
-              {CRAFT_ITEMS.map((item) => (
-                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href)} className="pl-6" />
+              <p className="px-3 pt-3 pb-1 text-xs uppercase tracking-wide text-muted-foreground">{t("nav.craft")}</p>
+              {craft.map((item) => (
+                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href, locale)} className="pl-6" />
               ))}
               <div className="pt-2" />
-              {NAV_AFTER.map((item) => (
-                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href)} />
+              {after.map((item) => (
+                <MobileLink key={item.href} item={item} active={isActive(pathname, item.href, locale)} />
               ))}
             </nav>
           </SheetContent>
@@ -154,6 +159,7 @@ export function SiteHeader({
               <ServerBadge />
             </div>
           )}
+          <LanguageSwitch />
           <div className="hidden sm:block">
             <AuthButton />
           </div>
@@ -210,6 +216,7 @@ export function CityGlyph({ theme }: { theme: CityTheme }) {
  * Americas has ingested data today (see PRODUCT.md) -- Europe/Asia are shown, disabled, rather
  * than hidden, so the control is honest about what exists without pretending it works. */
 function ServerBadge() {
+  const t = useTranslations("common.server");
   return (
     <Select value="americas" onValueChange={() => {}}>
       <SelectTrigger className="relative h-auto shrink-0 gap-1.5 rounded-md border-border bg-secondary/40 px-2 py-1 text-xs text-muted-foreground after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']">
@@ -218,17 +225,17 @@ function ServerBadge() {
       <SelectContent align="end">
         <SelectItem value="americas">Americas</SelectItem>
         <SelectItem value="europe" disabled>
-          Europe (sin datos todavía)
+          Europe ({t("noData")})
         </SelectItem>
         <SelectItem value="asia" disabled>
-          Asia (sin datos todavía)
+          Asia ({t("noData")})
         </SelectItem>
       </SelectContent>
     </Select>
   );
 }
 
-function MobileLink({ item, active, className }: { item: NavItem; active: boolean; className?: string }) {
+function MobileLink({ item, active, className }: { item: NavEntry; active: boolean; className?: string }) {
   return (
     <Link
       href={item.href}
@@ -255,8 +262,8 @@ function MobileLink({ item, active, className }: { item: NavItem; active: boolea
 }
 
 /** One "Crafteo" tab grouping every crafting category; active while any of them is the current page. */
-function CraftMenu({ pathname }: { pathname: string | null }) {
-  const active = CRAFT_ITEMS.some((item) => isActive(pathname, item.href));
+function CraftMenu({ pathname, items, locale, label }: { pathname: string | null; items: readonly NavEntry[]; locale: Locale; label: string }) {
+  const active = items.some((item) => isActive(pathname, item.href, locale));
   return (
     <MenuPrimitive.Root>
       <MenuPrimitive.Trigger
@@ -265,14 +272,14 @@ function CraftMenu({ pathname }: { pathname: string | null }) {
           active ? "border-money text-money" : "border-transparent text-muted-foreground hover:border-money/30 hover:text-foreground",
         )}
       >
-        Crafteo
+        {label}
         <ChevronDown className="h-3 w-3" />
       </MenuPrimitive.Trigger>
       <MenuPrimitive.Portal>
         <MenuPrimitive.Positioner align="start" sideOffset={8} className="z-30">
           <MenuPrimitive.Popup className="min-w-44 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md outline-none">
-            {CRAFT_ITEMS.map((item) => {
-              const itemActive = isActive(pathname, item.href);
+            {items.map((item) => {
+              const itemActive = isActive(pathname, item.href, locale);
               return (
                 <MenuPrimitive.LinkItem
                   key={item.href}

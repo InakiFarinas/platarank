@@ -2,6 +2,9 @@
 
 import { formatInt } from "@/lib/format";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { localePath, type Locale } from "@/i18n/config";
+import { itemName } from "@/lib/item-names";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { History, Pin, Search } from "lucide-react";
 import { CityGlyph } from "@/components/site-header";
@@ -21,20 +24,16 @@ import { useAlerts } from "@/components/alerts/use-alerts";
 import { AddToSession } from "@/components/sessions/add-to-session";
 import { CTA_PRIMARY, CTA_SECONDARY, DisclosureButton, Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
-type Hit = { itemId: string; baseItemId: string; nameEs: string; tier: number; stationType: string };
+type Hit = { itemId: string; baseItemId: string; nameEs: string; nameEn?: string; tier: number; stationType: string };
 type Variant = { itemId: string; tier: number; enchant: number };
 type ItemData = { recipe: Recipe; market: Record<string, CityPricePoint[]>; variants: Variant[] };
-type Recent = { itemId: string; name: string };
+type Recent = { itemId: string; name: string; nameEn?: string };
 
 const RECENTS_KEY = "platarank:calc-recents";
 const PINNED_KEY = "platarank:calc-pinned";
-const STATION_LABEL: Record<string, string> = {
-  alchemy: "Alquimia",
-  refining: "Refinado",
-  cooking: "Cocina",
-  gear: "Equipo",
-  mount: "Monturas",
-};
+const STATION_KEYS = ["alchemy", "refining", "cooking", "gear", "mount"];
+/** Decimal comma in Spanish, point in English. */
+const dec = (s: string, locale: Locale) => (locale === "en" ? s : s.replace(".", ","));
 
 const DEFAULTS = { qty: 1, premium: true, blackMarket: false, quality: 1, craftCity: "Brecilien", focus: false, feeRate: 500, extraCost: 0 };
 
@@ -93,6 +92,10 @@ function readRecents(): Recent[] {
 }
 
 export function Calculator() {
+  const t = useTranslations("calculator");
+  const locale = useLocale() as Locale;
+  const fInt = (n: number) => formatInt(n, locale);
+  const stationLabel = (s: string) => (STATION_KEYS.includes(s) ? t(`stations.${s}`) : s);
   const [tab, setTab] = useState<"calc" | "plans" | "transport">("calc");
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<Hit[]>([]);
@@ -158,7 +161,7 @@ export function Calculator() {
     const ctrl = new AbortController();
     const t = setTimeout(async () => {
       try {
-        const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}`, { signal: ctrl.signal });
+        const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}&locale=${locale}`, { signal: ctrl.signal });
         if (!res.ok) throw new Error(String(res.status));
         setHits(await res.json());
         setActive(0);
@@ -174,7 +177,7 @@ export function Calculator() {
       clearTimeout(t);
       ctrl.abort();
     };
-  }, [query]);
+  }, [query, locale]);
 
   async function load(id: string, keepQuality = false): Promise<boolean> {
     const seq = ++loadSeq.current;
@@ -186,7 +189,7 @@ export function Calculator() {
       if (seq !== loadSeq.current) return false;
       if (res.status === 404) {
         setLoading(false);
-        setError({ message: "No se encontró ese ítem." });
+        setError({ message: t("errors.notFound") });
         return false;
       }
       if (!res.ok) throw new Error(String(res.status));
@@ -194,7 +197,7 @@ export function Calculator() {
     } catch {
       if (seq !== loadSeq.current) return false;
       setLoading(false);
-      setError({ message: "No se pudo cargar el ítem. Revisá tu conexión y probá de nuevo.", retryId: id });
+      setError({ message: t("errors.loadFailed"), retryId: id });
       return false;
     }
     if (seq !== loadSeq.current) return false;
@@ -206,7 +209,8 @@ export function Calculator() {
     setMatOverrides({});
     setHits([]);
     setQuery("");
-    const entry = { itemId: id, name: `${next.recipe.nameEs} T${next.recipe.tier}${enchantLabel(next.recipe.enchant)}` };
+    const suffix = ` T${next.recipe.tier}${enchantLabel(next.recipe.enchant)}`;
+    const entry = { itemId: id, name: `${next.recipe.nameEs}${suffix}`, nameEn: `${next.recipe.nameEn || next.recipe.nameEs}${suffix}` };
     const updated = [entry, ...readRecents().filter((r) => r.itemId !== id)].slice(0, 6);
     setRecents(updated);
     try {
@@ -277,12 +281,20 @@ export function Calculator() {
   // Screen readers hear the bottom line once typing pauses, not on every keystroke.
   useEffect(() => {
     if (!calc) return;
-    const t = setTimeout(
-      () => setAnnounce(`Ganancia ${calc.profit >= 0 ? "" : "menos "}${formatInt(Math.abs(calc.profit))}${calc.incomplete ? ", incompleta" : ""}`),
+    const timer = setTimeout(
+      () =>
+        setAnnounce(
+          t("ledger.announce", {
+            negative: calc.profit >= 0 ? "no" : "yes",
+            amount: fInt(Math.abs(calc.profit)),
+            incomplete: calc.incomplete ? "yes" : "no",
+          }),
+        ),
       900,
     );
-    return () => clearTimeout(t);
-  }, [calc]);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [calc, locale]);
 
   async function copyLink() {
     try {
@@ -323,7 +335,7 @@ export function Calculator() {
     data && calc
       ? {
           itemId: data.recipe.itemId,
-          itemName: `${data.recipe.nameEs} T${data.recipe.tier}${enchantLabel(data.recipe.enchant)}`,
+          itemName: `${itemName(data.recipe, locale)} T${data.recipe.tier}${enchantLabel(data.recipe.enchant)}`,
           params: {
             qty,
             premium,
@@ -373,31 +385,31 @@ export function Calculator() {
               aria-autocomplete="list"
               aria-activedescendant={hits.length > 0 && active >= 0 ? `calc-hit-${active}` : undefined}
               onBlur={() => setHits([])}
-              placeholder="Buscar ítem: poción, bastón, capa, montura…"
-              aria-label="Buscar ítem"
+              placeholder={t("search.placeholder")}
+              aria-label={t("search.ariaLabel")}
               className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
-            {searching && <span className="shrink-0 text-xs text-muted-foreground">Buscando…</span>}
+            {searching && <span className="shrink-0 text-xs text-muted-foreground">{t("search.searching")}</span>}
           </label>
           <span role="status" className="sr-only">
             {hits.length > 0
-              ? `${hits.length} resultados`
+              ? t("search.results", { count: hits.length })
               : searchFailed
-                ? "No se pudo buscar"
+                ? t("search.failedSr")
                 : query.trim().length >= 2 && !searching
-                  ? "Sin resultados"
+                  ? t("search.noneSr")
                   : ""}
           </span>
           {query.trim().length >= 2 && !searching && hits.length === 0 && (
             <p className="absolute inset-x-0 top-full z-20 mt-1 rounded-md border border-border bg-popover px-3 py-3 text-sm text-muted-foreground">
-              {searchFailed ? "No se pudo buscar. Revisá tu conexión y seguí escribiendo para reintentar." : `Sin resultados para "${query.trim()}".`}
+              {searchFailed ? t("search.failed") : t("search.none", { query: query.trim() })}
             </p>
           )}
           {hits.length > 0 && (
             <ul
               id="calc-hits"
               role="listbox"
-              aria-label="Resultados"
+              aria-label={t("search.listLabel")}
               onMouseDown={(e) => e.preventDefault()}
               className="absolute inset-x-0 top-full z-20 mt-1 max-h-80 overflow-auto rounded-md border border-border bg-popover"
             >
@@ -416,8 +428,8 @@ export function Calculator() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={itemIconUrl(h.itemId, 1, 64)} alt="" width={32} height={32} className="h-8 w-8" />
-                  <span className="flex-1">{h.nameEs}</span>
-                  <span className="text-xs text-muted-foreground">{STATION_LABEL[h.stationType] ?? h.stationType}</span>
+                  <span className="flex-1">{itemName(h, locale)}</span>
+                  <span className="text-xs text-muted-foreground">{stationLabel(h.stationType)}</span>
                 </li>
               ))}
             </ul>
@@ -426,7 +438,7 @@ export function Calculator() {
 
         <div
           role="tablist"
-          aria-label="Secciones"
+          aria-label={t("tabs.label")}
           onKeyDown={(e) => {
             const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
             if (!keys.includes(e.key)) return;
@@ -442,9 +454,9 @@ export function Calculator() {
         >
           {(
             [
-              ["calc", "Calculadora"],
-              ["plans", `Planificaciones${plansApi.plans.length ? ` (${plansApi.plans.length})` : ""}`],
-              ["transport", "Transporte"],
+              ["calc", t("tabs.calc")],
+              ["plans", plansApi.plans.length ? t("tabs.plansCount", { count: plansApi.plans.length }) : t("tabs.plans")],
+              ["transport", t("tabs.transport")],
             ] as const
           ).map(([key, label]) => (
             <button
@@ -471,7 +483,7 @@ export function Calculator() {
           {error.message}
           {error.retryId && (
             <button type="button" onClick={() => load(error.retryId!)} className="ml-2 underline underline-offset-2">
-              Reintentar
+              {t("errors.retry")}
             </button>
           )}
         </p>
@@ -479,8 +491,8 @@ export function Calculator() {
 
       <div role="tabpanel" id="calc-panel" aria-labelledby={`tab-${tab}`}>
       {tab === "plans" ? (
-        <Panel title="Planificaciones" className="mt-4">
-          <h2 className="sr-only">Planificaciones guardadas</h2>
+        <Panel title={t("plans.title")} className="mt-4">
+          <h2 className="sr-only">{t("plans.srTitle")}</h2>
           {plansApi.signedIn && plansApi.plans.length > 0 && (
             <div className="mb-4">
               <WebhookForm api={alertsApi} />
@@ -501,15 +513,15 @@ export function Calculator() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={itemIconUrl(data.recipe.itemId, quality, 128)} alt="" width={64} height={64} className="h-16 w-16 shrink-0" />
                 <div className="min-w-0">
-                  <h2 className="font-heading text-2xl leading-tight">{data.recipe.nameEs}</h2>
+                  <h2 className="font-heading text-2xl leading-tight">{itemName(data.recipe, locale)}</h2>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    {STATION_LABEL[data.recipe.stationType]} · lote de {data.recipe.batchSize} · foco base {formatInt(data.recipe.craftingFocus)}
+                    {t("item.meta", { station: stationLabel(data.recipe.stationType), batch: data.recipe.batchSize, focus: fInt(data.recipe.craftingFocus) })}
                   </p>
                 </div>
               </div>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <Segmented
-                  label="Tier"
+                  label={t("item.tier")}
                   value={data.recipe.tier}
                   options={tiers.map((t) => ({ value: t, text: `T${t}` }))}
                   onChange={(t) => {
@@ -518,7 +530,7 @@ export function Calculator() {
                   }}
                 />
                 <Segmented
-                  label="Encantamiento"
+                  label={t("item.enchant")}
                   value={data.recipe.enchant}
                   options={enchants.map((e) => ({ value: e, text: `.${e}` }))}
                   onChange={(e) => {
@@ -531,7 +543,7 @@ export function Calculator() {
 
             {/* City: the single choice that decides the crafting bonus and fee, so it gets its own
              * panel up front instead of being one more row inside "Condiciones". */}
-            <Panel title="Ciudad de crafteo">
+            <Panel title={t("city.title")}>
               <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
                 {[...REAL_CITIES]
                   .sort((x, y) => Number(calc.spec?.city === y) - Number(calc.spec?.city === x))
@@ -555,7 +567,7 @@ export function Calculator() {
                         <CityGlyph theme={theme} />
                         <span className="truncate font-medium">{city}</span>
                       </span>
-                      {bonus && <span className="font-mono text-xs text-money">{bonus} bono</span>}
+                      {bonus && <span className="font-mono text-xs text-money">{t("city.bonus", { pct: bonus })}</span>}
                     </button>
                   );
                 })}
@@ -566,30 +578,30 @@ export function Calculator() {
                   onToggle={() => setCitiesOpen((o) => !o)}
                   className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {citiesOpen ? "Mostrar menos ciudades" : `Otras ciudades (${hiddenCities})`}
+                  {citiesOpen ? t("city.showLess") : t("city.others", { count: hiddenCities })}
                 </DisclosureButton>
               )}
             </Panel>
 
             {/* Conditions */}
-            <Panel title="Condiciones">
+            <Panel title={t("conditions.title")}>
               <div className="grid gap-4 sm:grid-cols-3">
                 <Segmented
-                  label="Cuenta"
+                  label={t("conditions.account")}
                   value={premium ? "p" : "n"}
                   options={[
-                    { value: "p", text: "Premium" },
-                    { value: "n", text: "Sin premium" },
+                    { value: "p", text: t("conditions.premium") },
+                    { value: "n", text: t("conditions.noPremium") },
                   ]}
                   onChange={(v) => setPremium(v === "p")}
                 />
                 {data.recipe.stationType === "gear" && (
                   <Segmented
-                    label="Mercado de venta"
+                    label={t("conditions.sellMarket")}
                     value={blackMarket ? "bm" : "royal"}
                     options={[
-                      { value: "royal", text: "Ciudades" },
-                      { value: "bm", text: "Black Market" },
+                      { value: "royal", text: t("conditions.cities") },
+                      { value: "bm", text: t("conditions.blackMarket") },
                     ]}
                     onChange={(v) => {
                       setBlackMarket(v === "bm");
@@ -598,21 +610,21 @@ export function Calculator() {
                   />
                 )}
                 <Segmented
-                  label="Foco"
+                  label={t("conditions.focus")}
                   value={focus ? "f" : "n"}
                   options={[
-                    { value: "n", text: "Sin foco" },
-                    { value: "f", text: "Con foco" },
+                    { value: "n", text: t("conditions.noFocus") },
+                    { value: "f", text: t("conditions.withFocus") },
                   ]}
                   onChange={(v) => setFocus(v === "f")}
                 />
                 {data.recipe.stationType === "mount" && data.recipe.materials.some((m) => isBreedable(m.itemId)) && (
                   <Segmented
-                    label="Animal base"
+                    label={t("conditions.baseAnimal")}
                     value={breedOwnMount ? "cria" : "compra"}
                     options={[
-                      { value: "compra", text: "Comprado" },
-                      { value: "cria", text: "Criado" },
+                      { value: "compra", text: t("conditions.bought") },
+                      { value: "cria", text: t("conditions.bred") },
                     ]}
                     onChange={(v) => setBreedOwnMount(v === "cria")}
                   />
@@ -620,23 +632,23 @@ export function Calculator() {
               </div>
 
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                <Field label="Cantidad a craftear">
-                  <SilverInput label="Cantidad a craftear" value={qty} onChange={(v) => setQty(Math.min(1_000_000, Math.max(1, v)))} />
+                <Field label={t("conditions.qty")}>
+                  <SilverInput label={t("conditions.qty")} value={qty} onChange={(v) => setQty(Math.min(1_000_000, Math.max(1, v)))} />
                 </Field>
                 <Field
-                  label="Precio de venta (c/u)"
+                  label={t("conditions.sellPriceEach")}
                   hint={
                     sellOverride !== null ? (
                       <button type="button" onClick={() => setSellOverride(null)} className="py-1 text-money underline underline-offset-2">
-                        volver a auto
+                        {t("conditions.backToAuto")}
                       </button>
                     ) : calc.oldestAge !== null ? (
-                      formatAge(calc.oldestAge)
+                      formatAge(calc.oldestAge, locale)
                     ) : undefined
                   }
                 >
                   <SilverInput
-                    label="Precio de venta"
+                    label={t("conditions.sellPrice")}
                     value={Math.round(calc.sellPrice)}
                     onChange={setSellOverride}
                     edited={sellOverride !== null}
@@ -645,12 +657,12 @@ export function Calculator() {
                 </Field>
                 {data.recipe.stationType === "gear" && (
                   <Segmented
-                    label="Calidad"
+                    label={t("conditions.quality")}
                     value={quality}
                     options={[1, 2, 3, 4, 5].map((q) => ({
                       value: q,
                       text: `Q${q}`,
-                      title: ["Normal", "Bueno", "Excepcional", "Excelente", "Obra maestra"][q - 1],
+                      title: t(`conditions.qualityNames.${q}`),
                     }))}
                     onChange={(q) => {
                       setQuality(q);
@@ -665,34 +677,34 @@ export function Calculator() {
                 onToggle={() => setAdvOpen((o) => !o)}
                 className="mt-4 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
               >
-                Configuración avanzada
-                {(feeRate !== DEFAULTS.feeRate || extraCost > 0) && <span className="text-money">(editada)</span>}
+                {t("conditions.advanced")}
+                {(feeRate !== DEFAULTS.feeRate || extraCost > 0) && <span className="text-money">{t("conditions.edited")}</span>}
               </DisclosureButton>
               {advOpen && (
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  <Field label="Tarifa de estación (por 100 nutrición)" hint={<InfoTip term="¿Qué es?" text="Plata que cobra la estación por cada 100 de nutrición que consume tu craft. La fija el dueño de la estación y la ves en el juego como tarifa de uso." />}>
-                    <SilverInput label="Tarifa de estación" value={feeRate} onChange={setFeeRate} />
+                  <Field label={t("conditions.stationFeeLabel")} hint={<InfoTip term={t("conditions.whatIsIt")} text={t("conditions.stationFeeTip")} />}>
+                    <SilverInput label={t("conditions.stationFee")} value={feeRate} onChange={setFeeRate} />
                   </Field>
-                  <Field label="Costos extra (total)">
-                    <SilverInput label="Costos extra" value={extraCost} onChange={setExtraCost} />
+                  <Field label={t("conditions.extraCostsLabel")}>
+                    <SilverInput label={t("conditions.extraCosts")} value={extraCost} onChange={setExtraCost} />
                   </Field>
                 </div>
               )}
               {calc.sellAuto === null && sellOverride === null && (
                 <p className="mt-3 text-xs text-destructive">
-                  Sin precio de venta reciente para esta calidad y mercado. Escribí uno a mano para calcular.
+                  {t("conditions.noSellPrice")}
                 </p>
               )}
             </Panel>
 
             {/* Materials */}
             <Panel
-              title="Materiales"
+              title={t("materials.title")}
               aside={
                 <>
-                  <InfoTip term="Retorno" text="Porcentaje de los materiales que el juego te devuelve al craftear. Sube con el bono de la ciudad y con el foco; los artefactos nunca devuelven." />{" "}
-                  <span className="font-mono text-money">{(calc.rrr * 100).toFixed(1).replace(".", ",")}%</span>
-                  {calc.specActive && ` · bono de ${calc.spec!.city}`}
+                  <InfoTip term={t("materials.returnTerm")} text={t("materials.returnTip")} />{" "}
+                  <span className="font-mono text-money">{dec((calc.rrr * 100).toFixed(1), locale)}%</span>
+                  {calc.specActive && t("materials.cityBonus", { city: calc.spec!.city })}
                 </>
               }
             >
@@ -707,18 +719,18 @@ export function Calculator() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={itemIconUrl(m.itemId, 1, 64)} alt="" width={40} height={40} className="h-10 w-10" />
                       <div className="min-w-0">
-                        <div className="truncate text-sm">{m.nameEs}</div>
+                        <div className="truncate text-sm">{itemName(m, locale)}</div>
                         <div className="text-xs text-muted-foreground">
                           <span className="font-mono">
-                            {m.count} → {effective.toFixed(2).replace(".", ",")}
+                            {m.count} → {dec(effective.toFixed(2), locale)}
                           </span>
-                          {noReturn ? " · sin retorno" : ""}
-                          {bred && !edited ? " · criado, no comprado" : cheapest && !edited ? ` · ${cheapest}` : ""}
+                          {noReturn ? t("materials.noReturn") : ""}
+                          {bred && !edited ? t("materials.bred") : cheapest && !edited ? ` · ${cheapest}` : ""}
                         </div>
                       </div>
                       <div className="col-span-3 row-start-2 sm:col-span-1 sm:col-start-3 sm:row-start-1">
                         <SilverInput
-                          label={`Precio de ${m.nameEs}`}
+                          label={t("materials.priceOf", { name: itemName(m, locale) })}
                           value={Math.round(price)}
                           onChange={(v) => setMatOverrides((o) => ({ ...o, [m.itemId]: v }))}
                           edited={edited}
@@ -736,13 +748,13 @@ export function Calculator() {
                             }
                             className="mt-1 block py-1.5 text-xs text-money underline underline-offset-2"
                           >
-                            volver a auto
+                            {t("conditions.backToAuto")}
                           </button>
                         )}
-                        {auto === null && !edited && <span className="mt-1 block text-xs text-destructive">sin precio: escribilo</span>}
+                        {auto === null && !edited && <span className="mt-1 block text-xs text-destructive">{t("materials.noPrice")}</span>}
                       </div>
                       <div className="col-start-3 row-start-1 text-right font-mono text-sm tabular-nums sm:col-start-4">
-                        {formatInt(price * effective * calc.crafts)}
+                        {fInt(price * effective * calc.crafts)}
                       </div>
                     </li>
                   );
@@ -755,37 +767,37 @@ export function Calculator() {
           <aside id="balance" className="scroll-mt-24 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
             <section className="rounded-md border-2 border-double border-money/30 bg-card/60">
               <header className="flex items-baseline justify-between gap-3 border-b border-border px-4 py-2.5">
-                <h3 className="font-heading text-base">Balance</h3>
+                <h3 className="font-heading text-base">{t("ledger.title")}</h3>
                 <button
                   type="button"
                   onClick={copyLink}
                   className="py-1.5 text-xs text-money underline-offset-2 transition-colors hover:underline"
                 >
-                  {copyState === "ok" ? "Enlace copiado" : copyState === "fail" ? "No se pudo copiar" : "Copiar enlace"}
+                  {copyState === "ok" ? t("ledger.linkCopied") : copyState === "fail" ? t("ledger.copyFailed") : t("ledger.copyLink")}
                 </button>
               </header>
               <span role="status" className="sr-only">
                 {announce}
-                {copyState === "ok" ? " Enlace copiado" : copyState === "fail" ? " No se pudo copiar el enlace" : ""}
+                {copyState === "ok" ? t("ledger.linkCopiedSr") : copyState === "fail" ? t("ledger.copyFailedSr") : ""}
               </span>
               <div className="space-y-4 p-4 text-sm">
                 <dl className="space-y-1.5">
-                  <Line label={`Materiales (${calc.crafts} ${calc.crafts === 1 ? "craft" : "crafts"})`} value={formatInt(calc.materialsTotal)} />
-                  <Line label={`Estación (${formatInt(calc.feePerCraft)} por craft × ${calc.crafts})`} value={formatInt(calc.feeTotal)} />
-                  {extraCost > 0 && <Line label="Costos extra" value={formatInt(extraCost)} />}
-                  <Line label="Inversión" value={formatInt(calc.cost)} total />
+                  <Line label={t("ledger.materials", { crafts: calc.crafts })} value={fInt(calc.materialsTotal)} />
+                  <Line label={t("ledger.station", { fee: fInt(calc.feePerCraft), crafts: calc.crafts })} value={fInt(calc.feeTotal)} />
+                  {extraCost > 0 && <Line label={t("ledger.extra")} value={fInt(extraCost)} />}
+                  <Line label={t("ledger.investment")} value={fInt(calc.cost)} total />
                 </dl>
                 <dl className="space-y-1.5">
-                  <Line label={`Bruto (${formatInt(calc.produced)} × ${formatInt(calc.sellPrice)})`} value={formatInt(calc.gross)} />
-                  <Line label={`Impuestos ${(calc.taxRate * 100).toFixed(1).replace(".", ",")}%`} value={`−${formatInt(calc.gross * calc.taxRate)}`} />
-                  <Line label="Ingreso neto" value={formatInt(calc.revenue)} total />
+                  <Line label={t("ledger.gross", { produced: fInt(calc.produced), price: fInt(calc.sellPrice) })} value={fInt(calc.gross)} />
+                  <Line label={t("ledger.taxes", { pct: dec((calc.taxRate * 100).toFixed(1), locale) })} value={`−${fInt(calc.gross * calc.taxRate)}`} />
+                  <Line label={t("ledger.netRevenue")} value={fInt(calc.revenue)} total />
                 </dl>
 
                 <div className="border-t-2 border-double border-money/30 pt-3">
                   <div className="flex items-baseline justify-between gap-3">
                     <span className="font-heading text-base">
-                      Ganancia
-                      {calc.incomplete && <span className="ml-2 font-sans text-xs text-destructive">incompleta</span>}
+                      {t("ledger.profit")}
+                      {calc.incomplete && <span className="ml-2 font-sans text-xs text-destructive">{t("ledger.incompleteBadge")}</span>}
                     </span>
                     <span
                       className={cn(
@@ -794,29 +806,28 @@ export function Calculator() {
                       )}
                     >
                       {calc.profit >= 0 ? "+" : "−"}
-                      {formatInt(Math.abs(calc.profit))}
+                      {fInt(Math.abs(calc.profit))}
                     </span>
                   </div>
                   {calc.incomplete && (
                     <p className="mt-2 text-xs text-destructive">
-                      {calc.unpriced > 0 &&
-                        `${calc.unpriced} ${calc.unpriced === 1 ? "material sin precio cuenta" : "materiales sin precio cuentan"} como 0. `}
-                      {calc.sellAuto === null && sellOverride === null && "Falta el precio de venta. "}
-                      Completá lo que falta para que la ganancia sea real.
+                      {calc.unpriced > 0 && t("ledger.unpriced", { count: calc.unpriced })}
+                      {calc.sellAuto === null && sellOverride === null && t("ledger.missingSell")}
+                      {t("ledger.fillIn")}
                     </p>
                   )}
                   <dl className="mt-2 space-y-1 text-xs">
-                    <Line label="Margen sobre inversión" value={calc.margin === null ? "--" : `${Math.round(calc.margin * 100)}%`} muted />
-                    <Line label="Ganancia por unidad" value={formatInt(calc.perUnit)} muted />
-                    {focus && <Line label="Foco necesario (sin maestrías)" value={formatInt(calc.focusTotal)} muted />}
-                    <Line label="Volumen de ventas (por día)" value={formatInt(calc.volume)} muted />
+                    <Line label={t("ledger.margin")} value={calc.margin === null ? "--" : `${Math.round(calc.margin * 100)}%`} muted />
+                    <Line label={t("ledger.perUnit")} value={fInt(calc.perUnit)} muted />
+                    {focus && <Line label={t("ledger.focusNeeded")} value={fInt(calc.focusTotal)} muted />}
+                    <Line label={t("ledger.volume")} value={fInt(calc.volume)} muted />
                   </dl>
                   <DisclosureButton
                     open={srcOpen}
                     onToggle={() => setSrcOpen((o) => !o)}
                     className="mt-2 flex items-center gap-1.5 py-1.5 text-xs text-money underline-offset-2 hover:underline"
                   >
-                    De dónde sale el precio de venta
+                    {t("ledger.whereFrom")}
                   </DisclosureButton>
                   {srcOpen && <SellSource calc={calc} edited={sellOverride !== null} quality={quality} />}
                 </div>
@@ -837,7 +848,7 @@ export function Calculator() {
                     className="flex items-center gap-1.5 py-1.5 text-xs text-money underline-offset-2 hover:underline"
                   >
                     <Pin className="h-3.5 w-3.5" />
-                    {pinned ? "Fijar este en lugar del anterior" : "Fijar para comparar"}
+                    {pinned ? t("ledger.repin") : t("ledger.pin")}
                   </button>
                   {pinned && <CompareCard pinned={pinned} name={draft.itemName} calc={calc} onClear={() => setPinned(null)} />}
                 </div>
@@ -849,7 +860,7 @@ export function Calculator() {
                     chevronPosition="end"
                     className={cn(CTA_SECONDARY, "flex w-full items-center justify-between px-3 py-2 text-xs")}
                   >
-                    Guardar este cálculo
+                    {t("ledger.save")}
                   </DisclosureButton>
                   {saveOpen && (
                     <div className="mt-3 space-y-3">
@@ -861,7 +872,13 @@ export function Calculator() {
                   )}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Retorno, tarifa de estación e impuestos: <Link href="/es/metodologia" className="text-money underline underline-offset-2">cómo se calcula</Link>.
+                  {t.rich("ledger.method", {
+                    link: (chunks) => (
+                      <Link href={localePath(locale, "methodology")} className="text-money underline underline-offset-2">
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
                 </p>
               </div>
             </section>
@@ -870,16 +887,19 @@ export function Calculator() {
           {/* Phone: the balance is a scroll away, so its bottom line stays in reach. */}
           <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t-2 border-double border-money/30 bg-card px-4 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] lg:hidden">
             <div>
-              <div className="text-xs text-muted-foreground">Ganancia{calc.incomplete && " (incompleta)"}</div>
+              <div className="text-xs text-muted-foreground">
+                {t("ledger.profit")}
+                {calc.incomplete && t("ledger.incompleteParen")}
+              </div>
               <div
                 className={cn("font-mono text-lg tabular-nums", calc.incomplete ? "text-muted-foreground" : calc.profit >= 0 ? "text-money" : "text-destructive")}
               >
                 {calc.profit >= 0 ? "+" : "−"}
-                {formatInt(Math.abs(calc.profit))}
+                {fInt(Math.abs(calc.profit))}
               </div>
             </div>
             <a href="#balance" className={`${CTA_PRIMARY} px-3.5 py-2 text-xs`}>
-              Ver balance
+              {t("ledger.seeBalance")}
             </a>
           </div>
         </div>
@@ -894,24 +914,27 @@ type PinnedCalc = { name: string; profit: number; margin: number | null; perUnit
 /** Side-by-side of a pinned calculation against the one on screen, so two recipes can be weighed
  * without writing numbers down. The better profit is the only value in gold. */
 function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name: string; calc: ReturnType<typeof computeCraft>; onClear: () => void }) {
+  const t = useTranslations("calculator.compare");
+  const locale = useLocale() as Locale;
+  const fInt = (n: number) => formatInt(n, locale);
   const pct = (m: number | null) => (m === null ? "--" : `${Math.round(m * 100)}%`);
   const currentBetter = calc.profit > pinned.profit;
   const rows: { label: string; a: string; b: string; win?: "a" | "b" }[] = [
-    { label: "Ganancia", a: formatInt(pinned.profit), b: formatInt(calc.profit), win: currentBetter ? "b" : pinned.profit > calc.profit ? "a" : undefined },
-    { label: "Margen", a: pct(pinned.margin), b: pct(calc.margin) },
-    { label: "Por unidad", a: formatInt(pinned.perUnit), b: formatInt(calc.perUnit) },
-    { label: "Volumen", a: formatInt(pinned.volume), b: formatInt(calc.volume) },
+    { label: t("profit"), a: fInt(pinned.profit), b: fInt(calc.profit), win: currentBetter ? "b" : pinned.profit > calc.profit ? "a" : undefined },
+    { label: t("margin"), a: pct(pinned.margin), b: pct(calc.margin) },
+    { label: t("perUnit"), a: fInt(pinned.perUnit), b: fInt(calc.perUnit) },
+    { label: t("volume"), a: fInt(pinned.volume), b: fInt(calc.volume) },
   ];
   return (
     <div className="mt-2 rounded-md border border-border bg-background/40 p-3 text-xs">
       <div className="grid grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 gap-y-1">
         <span aria-hidden="true" />
         <span className="pb-1 text-right leading-tight">
-          <span className="block text-xs text-muted-foreground">Fijado</span>
+          <span className="block text-xs text-muted-foreground">{t("pinned")}</span>
           <span className="block break-words">{pinned.name}</span>
         </span>
         <span className="pb-1 text-right leading-tight">
-          <span className="block text-xs text-muted-foreground">Actual</span>
+          <span className="block text-xs text-muted-foreground">{t("current")}</span>
           <span className="block break-words">{name}</span>
         </span>
         {rows.map((r) => (
@@ -922,40 +945,40 @@ function CompareCard({ pinned, name, calc, onClear }: { pinned: PinnedCalc; name
           </div>
         ))}
       </div>
-      {(pinned.incomplete || calc.incomplete) && <p className="mt-2 text-destructive">Alguno de los dos tiene datos incompletos; no lo tomes como comparación real.</p>}
+      {(pinned.incomplete || calc.incomplete) && <p className="mt-2 text-destructive">{t("incomplete")}</p>}
       <button type="button" onClick={onClear} className="mt-2 py-1.5 text-muted-foreground underline underline-offset-2 hover:text-foreground">
-        Quitar comparación
+        {t("clear")}
       </button>
     </div>
   );
 }
 
-const DISCARD_REASON: Record<string, string> = {
-  outlier_low: "muy por debajo de la mediana",
-  outlier_high: "muy por encima de la mediana",
-  outlier_self: "muy lejos del propio promedio de 30 días de esa ciudad",
-};
+const DISCARD_REASONS = ["outlier_low", "outlier_high", "outlier_self"];
 
 function SellSource({ calc, edited, quality }: { calc: ReturnType<typeof computeCraft>; edited: boolean; quality: number }) {
+  const t = useTranslations("calculator.sellSource");
+  const locale = useLocale() as Locale;
   return (
     <div className="mt-2 rounded-md border border-border bg-background/40 p-3 text-xs">
-      {edited && <p className="mb-2 text-money">Estás usando un precio escrito a mano; las cotizaciones son solo de referencia.</p>}
+      {edited && <p className="mb-2 text-money">{t("manual")}</p>}
       {calc.sellBreakdown.length === 0 ? (
-        <p className="text-muted-foreground">No hay cotizaciones recientes para esta calidad y mercado.</p>
+        <p className="text-muted-foreground">{t("none")}</p>
       ) : (
         <>
-          <p className="mb-2 text-muted-foreground">
-            Mediana de {calc.sellCities} {calc.sellCities === 1 ? "mercado" : "mercados"} (calidad Q{quality}). Las cotizaciones muy lejos de la mediana se descartan.
-          </p>
+          <p className="mb-2 text-muted-foreground">{t("median", { count: calc.sellCities, quality })}</p>
           <ul className="divide-y divide-border">
             {calc.sellBreakdown.map((q) => (
               <li key={q.city} className={cn("flex items-baseline justify-between gap-3 py-1.5", q.discarded && "opacity-60")}>
                 <span>
                   {q.city}
-                  <span className="ml-2 text-muted-foreground">{formatAge(q.ageSeconds)}</span>
-                  {q.discarded && <span className="ml-2 text-destructive">descartado: {DISCARD_REASON[q.discarded] ?? q.discarded}</span>}
+                  <span className="ml-2 text-muted-foreground">{formatAge(q.ageSeconds, locale)}</span>
+                  {q.discarded && (
+                    <span className="ml-2 text-destructive">
+                      {t("discarded", { reason: DISCARD_REASONS.includes(q.discarded) ? t(q.discarded as "outlier_low") : q.discarded })}
+                    </span>
+                  )}
                 </span>
-                <span className="font-mono tabular-nums">{formatInt(q.price)}</span>
+                <span className="font-mono tabular-nums">{formatInt(q.price, locale)}</span>
               </li>
             ))}
           </ul>
@@ -985,6 +1008,8 @@ function EmptyState({
   onPick: (id: string) => void;
   onFocusSearch: () => void;
 }) {
+  const t = useTranslations("calculator.empty");
+  const locale = useLocale() as Locale;
   if (loading) {
     return (
       <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_23rem]" aria-busy="true">
@@ -998,21 +1023,19 @@ function EmptyState({
   }
   return (
     <div className="mt-4 rounded-md border border-dashed border-border px-4 py-12 text-center">
-      <h2 className="font-heading text-xl">¿Qué vas a craftear?</h2>
-      <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-        Buscá un ítem y ajustá tier, encantamiento, ciudad y precios. El balance muestra de dónde sale cada número.
-      </p>
+      <h2 className="font-heading text-xl">{t("title")}</h2>
+      <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">{t("body")}</p>
       <button
         type="button"
         onClick={onFocusSearch}
         className={cn(CTA_PRIMARY, "mt-4 px-4 py-2 text-sm")}
       >
-        Buscar ítem
+        {t("search")}
       </button>
       {recents.length > 0 && (
         <div className="mx-auto mt-8 max-w-xl text-left">
           <h3 className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <History className="h-3.5 w-3.5" /> Vistos recientemente
+            <History className="h-3.5 w-3.5" /> {t("recent")}
           </h3>
           <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
             {recents.map((r) => (
@@ -1024,7 +1047,7 @@ function EmptyState({
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={itemIconUrl(r.itemId, 1, 64)} alt="" width={32} height={32} className="h-8 w-8 shrink-0" />
-                  <span className="truncate">{r.name}</span>
+                  <span className="truncate">{locale === "en" ? (r.nameEn ?? r.name) : r.name}</span>
                 </button>
               </li>
             ))}

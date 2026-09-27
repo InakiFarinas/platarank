@@ -1,22 +1,29 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { isLocale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
-import { STATION_SEO, stationDescription } from "@/lib/station-seo";
+import { getStationSeo, stationDescription } from "@/lib/station-seo";
 import { RecipePage } from "@/components/recipes/recipe-page";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = pageMetadata({
-  title: STATION_SEO.mount.title,
-  description: stationDescription("mount"),
-  path: "/es/monturas",
-});
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  setRequestLocale(locale);
+  return pageMetadata({
+    locale,
+    route: "mounts",
+    title: (await getStationSeo("mount", locale)).title,
+    description: await stationDescription("mount", locale),
+  });
+}
 
-export default function MonturasPage() {
-  return (
-    <RecipePage
-      stationType="mount"
-      title="Monturas · Américas"
-      description="Ranking por plata realizable por día crafteando monturas (animal adulto + materiales). Ninguna ciudad da bono de crafteo a las monturas. Tocá una fila para ver de dónde sale cada número."
-    />
-  );
+export default async function MonturasPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  const seo = await getStationSeo("mount", locale);
+  return <RecipePage stationType="mount" locale={locale} title={seo.pageTitle} description={seo.pageDescription} />;
 }

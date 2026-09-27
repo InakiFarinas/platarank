@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import type { PlanDraft, PlanParams, PlanSnapshot } from "@/components/calculator/plans-panel";
 
@@ -36,6 +37,7 @@ export function sessionTotals(s: CraftingSession) {
 }
 
 export function useSessions() {
+  const t = useTranslations("sessions");
   const [signedIn, setSignedIn] = useState<boolean | null>(null);
   const [sessions, setSessions] = useState<CraftingSession[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +55,7 @@ export function useSessions() {
       .select("*, session_items(*)")
       .order("created_at", { ascending: false });
     if (err) {
-      setError("No se pudieron cargar tus sesiones.");
+      setError(t("errors.load"));
       return;
     }
     const list = (data as CraftingSession[]).map((s) => ({
@@ -61,7 +63,7 @@ export function useSessions() {
       session_items: [...s.session_items].sort((a, b) => a.created_at.localeCompare(b.created_at)),
     }));
     setSessions(list);
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     void reload();
@@ -88,9 +90,9 @@ export function useSessions() {
     error,
     async createSession(name: string): Promise<string | null> {
       setError(null);
-      const { data, error: err } = await supabase().from("crafting_sessions").insert({ name: name.trim() || "Sesión sin nombre" }).select("id").single();
+      const { data, error: err } = await supabase().from("crafting_sessions").insert({ name: name.trim() || t("unnamed") }).select("id").single();
       if (err || !data) {
-        setError("No se pudo crear la sesión.");
+        setError(t("errors.create"));
         return null;
       }
       await reload();
@@ -105,14 +107,14 @@ export function useSessions() {
           params: draft.params,
           snapshot: draft.snapshot,
         }),
-        "No se pudo agregar el ítem.",
+        t("errors.addItem"),
       ),
     setActuals: (itemId: string, actual_cost: number | null, actual_revenue: number | null) =>
-      run(supabase().from("session_items").update({ actual_cost, actual_revenue }).eq("id", itemId), "No se pudo guardar el resultado real."),
-    removeItem: (itemId: string) => run(supabase().from("session_items").delete().eq("id", itemId), "No se pudo quitar el ítem."),
+      run(supabase().from("session_items").update({ actual_cost, actual_revenue }).eq("id", itemId), t("errors.saveActuals")),
+    removeItem: (itemId: string) => run(supabase().from("session_items").delete().eq("id", itemId), t("errors.removeItem")),
     renameSession: (id: string, name: string) =>
-      run(supabase().from("crafting_sessions").update({ name: name.trim() || "Sesión sin nombre" }).eq("id", id), "No se pudo renombrar."),
-    deleteSession: (id: string) => run(supabase().from("crafting_sessions").delete().eq("id", id), "No se pudo borrar la sesión."),
+      run(supabase().from("crafting_sessions").update({ name: name.trim() || t("unnamed") }).eq("id", id), t("errors.rename")),
+    deleteSession: (id: string) => run(supabase().from("crafting_sessions").delete().eq("id", id), t("errors.delete")),
   };
 }
 

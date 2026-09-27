@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "Albion Online Crafting Calculator",
+    "description": "Albion Online crafting calculator: material cost, resource return, focus, station fee, taxes and net revenue per item, with shareable links.",
+    "appName": "PlataRank Crafting Calculator",
+    "appDescription": "Calculates material cost, resource return, station fee, taxes and net revenue for an Albion Online item.",
+    "breadcrumb": "Calculator",
+    "headerTitle": "Crafting calculator",
+    "headerDescription": "Pick an item and adjust prices, premium, focus and city. Every step of the math is visible.",
+    "dataSource": "Market data: Albion Online Data Project."
+  },
+  "ui": {
+    "infoTipLabel": "What it means: {term}",
+    "infoTipFallback": "this term",
+    "delete": "Delete",
+    "cancel": "Cancel"
+  },
+  "stations": {
+    "alchemy": "Alchemy",
+    "refining": "Refining",
+    "cooking": "Cooking",
+    "gear": "Gear",
+    "mount": "Mounts"
+  },
+  "search": {
+    "placeholder": "Search item: potion, staff, cape, mount…",
+    "ariaLabel": "Search item",
+    "searching": "Searching…",
+    "results": "{count} results",
+    "failedSr": "Search failed",
+    "noneSr": "No results",
+    "failed": "Search failed. Check your connection and keep typing to retry.",
+    "none": "No results for \"{query}\".",
+    "listLabel": "Results"
+  },
+  "tabs": {
+    "label": "Sections",
+    "calc": "Calculator",
+    "plans": "Plans",
+    "plansCount": "Plans ({count})",
+    "transport": "Transport"
+  },
+  "errors": {
+    "notFound": "That item was not found.",
+    "loadFailed": "Couldn't load the item. Check your connection and try again.",
+    "retry": "Retry"
+  },
+  "plans": {
+    "title": "Plans",
+    "srTitle": "Saved plans",
+    "loadFailed": "Couldn't load your plans.",
+    "saveFailed": "Couldn't save.",
+    "deleteFailed": "Couldn't delete.",
+    "signInToSave": "Sign in with Discord to save this calculation.",
+    "nameLabel": "Plan name",
+    "saving": "Saving…",
+    "save": "Save",
+    "saved": "Saved to Plans.",
+    "signInToView": "Sign in with Discord to save your calculations and come back to them anytime.",
+    "empty": "You haven't saved any yet. Set up a calculation and use \"Save\" in the balance.",
+    "deleteLabel": "Delete {name}"
+  },
+  "item": {
+    "meta": "{station} · batch of {batch} · base focus {focus}",
+    "tier": "Tier",
+    "enchant": "Enchantment"
+  },
+  "city": {
+    "title": "Crafting city",
+    "bonus": "{pct} bonus",
+    "showLess": "Show fewer cities",
+    "others": "Other cities ({count})"
+  },
+  "conditions": {
+    "title": "Conditions",
+    "account": "Account",
+    "premium": "Premium",
+    "noPremium": "No premium",
+    "sellMarket": "Selling market",
+    "cities": "Cities",
+    "blackMarket": "Black Market",
+    "focus": "Focus",
+    "noFocus": "No focus",
+    "withFocus": "With focus",
+    "baseAnimal": "Base animal",
+    "bought": "Bought",
+    "bred": "Bred",
+    "qty": "Quantity to craft",
+    "sellPriceEach": "Sell price (each)",
+    "sellPrice": "Sell price",
+    "backToAuto": "back to auto",
+    "quality": "Quality",
+    "qualityNames": {
+      "1": "Normal",
+      "2": "Good",
+      "3": "Outstanding",
+      "4": "Excellent",
+      "5": "Masterpiece"
+    },
+    "advanced": "Advanced settings",
+    "edited": "(edited)",
+    "stationFeeLabel": "Station fee (per 100 nutrition)",
+    "stationFee": "Station fee",
+    "whatIsIt": "What is it?",
+    "stationFeeTip": "Silver the station charges for every 100 nutrition your craft uses. The station owner sets it, and you see it in game as the usage fee.",
+    "extraCostsLabel": "Extra costs (total)",
+    "extraCosts": "Extra costs",
+    "noSellPrice": "No recent sell price for this quality and market. Type one in by hand to calculate."
+  },
+  "materials": {
+    "title": "Materials",
+    "returnTerm": "Return",
+    "returnTip": "Share of the materials the game gives back when you craft (resource return). It rises with the city bonus and with focus; artifacts are never returned.",
+    "cityBonus": " · {city} bonus",
+    "noReturn": " · no return",
+    "bred": " · bred, not bought",
+    "priceOf": "Price of {name}",
+    "noPrice": "no price: enter it"
+  },
+  "ledger": {
+    "title": "Balance",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "copyFailed": "Couldn't copy",
+    "linkCopiedSr": " Link copied",
+    "copyFailedSr": " Couldn't copy the link",
+    "announce": "{negative, select, yes {Profit minus {amount}} other {Profit {amount}}}{incomplete, select, yes {, incomplete} other {}}",
+    "materials": "Materials ({crafts} {crafts, plural, one {craft} other {crafts}})",
+    "station": "Station ({fee} per craft × {crafts})",
+    "extra": "Extra costs",
+    "investment": "Investment",
+    "gross": "Gross ({produced} × {price})",
+    "taxes": "Taxes {pct}%",
+    "netRevenue": "Net revenue",
+    "profit": "Profit",
+    "incompleteBadge": "incomplete",
+    "incompleteParen": " (incomplete)",
+    "unpriced": "{count, plural, one {# material without a price counts} other {# materials without a price count}} as 0. ",
+    "missingSell": "The sell price is missing. ",
+    "fillIn": "Fill in what's missing so the profit is real.",
+    "margin": "Margin on investment",
+    "perUnit": "Profit per unit",
+    "focusNeeded": "Focus needed (without mastery)",
+    "volume": "Sales volume (per day)",
+    "whereFrom": "Where the sell price comes from",
+    "repin": "Pin this one instead of the previous",
+    "pin": "Pin to compare",
+    "save": "Save this calculation",
+    "method": "Resource return, station fee and taxes: <link>how it's calculated</link>.",
+    "seeBalance": "See balance"
+  },
+  "compare": {
+    "profit": "Profit",
+    "margin": "Margin",
+    "perUnit": "Per unit",
+    "volume": "Volume",
+    "pinned": "Pinned",
+    "current": "Current",
+    "incomplete": "One of the two has incomplete data; don't take it as a real comparison.",
+    "clear": "Clear comparison"
+  },
+  "sellSource": {
+    "manual": "You're using a hand-typed price; the quotes are for reference only.",
+    "none": "There are no recent quotes for this quality and market.",
+    "median": "Median of {count} {count, plural, one {market} other {markets}} (quality Q{quality}). Quotes far from the median are discarded.",
+    "discarded": "discarded: {reason}",
+    "outlier_low": "far below the median",
+    "outlier_high": "far above the median",
+    "outlier_self": "far from that city's own 30-day average"
+  },
+  "empty": {
+    "title": "What will you craft?",
+    "body": "Search for an item and adjust tier, enchantment, city and prices. The balance shows where every number comes from.",
+    "search": "Search item",
+    "recent": "Recently viewed"
+  }
+}

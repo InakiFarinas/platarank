@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { Loader2, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import type { Locale } from "@/i18n/config";
 import { RecipeTable } from "./recipe-table";
 import { SiteHeader } from "@/components/site-header";
 import { Controls, FiltersPanel, NameSearchField, DEFAULT_FILTERS, type FilterParams } from "./controls";
@@ -40,6 +42,8 @@ export function RecipeExplorer({
   title: string;
   description: string;
 }) {
+  const t = useTranslations("rankingUi.explorer");
+  const locale = useLocale() as Locale;
   const [params, setParams] = useState<RecipeMathParams>(DEFAULT_PARAMS);
   const [filters, setFilters] = useState<FilterParams>(DEFAULT_FILTERS);
   const [sortKey, setSortKey] = useState<SortKey>("platinumPerDay");
@@ -129,7 +133,7 @@ export function RecipeExplorer({
   }, [remoteStation, remoteResult, recipes, market, params, initialRows]);
   const totalMatching = remoteStation ? (remoteResult?.total ?? totalCount) : allRows.length;
 
-  const rows = useMemo(() => applyFilters(allRows, filters), [allRows, filters]);
+  const rows = useMemo(() => applyFilters(allRows, filters, locale), [allRows, filters, locale]);
 
   // Which bonus (if any) each city offers for THIS rubro's categories, for the city-selector
   // dropdown's badge. A city either has a specialty among this page's categories or it doesn't --
@@ -162,27 +166,27 @@ export function RecipeExplorer({
           <div className="flex flex-wrap items-center gap-2">
             <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
               {remoteStation && totalMatching > rows.length
-                ? `Mostrando las ${rows.length} mejores de ${totalMatching} recetas.`
-                : `Mostrando ${rows.length} de ${totalMatching} recetas.`}
+                ? t("showingTop", { shown: rows.length, total: totalMatching })
+                : t("showing", { shown: rows.length, total: totalMatching })}
               {(isPending || remoteLoading) && (
                 <span className="inline-flex items-center gap-1 text-money">
                   <Loader2 className="h-3 w-3 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-                  Recalculando con los nuevos supuestos...
+                  {t("recalculatingFull")}
                 </span>
               )}
             </p>
             <div role="status" aria-live="polite" className="sr-only">
-              {isPending || remoteLoading ? "Recalculando con los nuevos supuestos" : ""}
+              {isPending || remoteLoading ? t("recalculatingSr") : ""}
             </div>
             {remoteError && (
               <p role="alert" className="flex items-center gap-2 text-xs text-destructive">
-                No se pudo recalcular; la lista muestra el cálculo anterior.
+                {t("recalcFailed")}
                 <button
                   type="button"
                   onClick={() => setRetryKey((n) => n + 1)}
                   className="rounded-sm border border-destructive/50 px-2 py-0.5 hover:bg-destructive/10"
                 >
-                  Reintentar
+                  {t("retry")}
                 </button>
               </p>
             )}
@@ -205,7 +209,7 @@ export function RecipeExplorer({
               >
                 <div className="flex items-center gap-2 rounded-full border border-money/50 bg-background/95 px-3 py-1.5 text-xs text-money shadow-none">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
-                  Recalculando...
+                  {t("recalculating")}
                 </div>
               </div>
             )}
@@ -238,6 +242,7 @@ function ActiveFilterChips({
   filters: FilterParams;
   onFiltersChange: (filters: FilterParams) => void;
 }) {
+  const t = useTranslations("rankingUi.explorer");
   const chips: { key: string; label: string; onClear: () => void }[] = [];
 
   if (filters.nameQuery !== "") {
@@ -250,38 +255,38 @@ function ActiveFilterChips({
   if (filters.maxAgeHours !== null) {
     chips.push({
       key: "age",
-      label: `Antigüedad <= ${filters.maxAgeHours}h`,
+      label: t("chipAge", { hours: filters.maxAgeHours }),
       onClear: () => onFiltersChange({ ...filters, maxAgeHours: null }),
     });
   }
   if (filters.minVolume !== null) {
     chips.push({
       key: "vol",
-      label: `Volumen >= ${filters.minVolume}`,
+      label: t("chipVolume", { volume: filters.minVolume }),
       onClear: () => onFiltersChange({ ...filters, minVolume: null }),
     });
   }
   if (params.buyCities.length !== DEFAULT_PARAMS.buyCities.length) {
     chips.push({
       key: "buy",
-      label: `Comprar en ${params.buyCities.length} ciudad${params.buyCities.length === 1 ? "" : "es"}`,
+      label: t("chipBuy", { count: params.buyCities.length }),
       onClear: () => onParamsChange({ ...params, buyCities: DEFAULT_PARAMS.buyCities }),
     });
   }
   if (params.sellCities.length !== DEFAULT_PARAMS.sellCities.length) {
     chips.push({
       key: "sell",
-      label: `Vender en ${params.sellCities.length} ciudad${params.sellCities.length === 1 ? "" : "es"}`,
+      label: t("chipSell", { count: params.sellCities.length }),
       onClear: () => onParamsChange({ ...params, sellCities: DEFAULT_PARAMS.sellCities }),
     });
   }
   if (params.focus !== DEFAULT_PARAMS.focus) {
-    chips.push({ key: "focus", label: "Foco activado", onClear: () => onParamsChange({ ...params, focus: DEFAULT_PARAMS.focus }) });
+    chips.push({ key: "focus", label: t("chipFocus"), onClear: () => onParamsChange({ ...params, focus: DEFAULT_PARAMS.focus }) });
   }
   if (params.breedOwnMount !== DEFAULT_PARAMS.breedOwnMount) {
     chips.push({
       key: "breed",
-      label: "Criando caballo/buey",
+      label: t("chipBreed"),
       onClear: () => onParamsChange({ ...params, breedOwnMount: DEFAULT_PARAMS.breedOwnMount }),
     });
   }
@@ -295,7 +300,7 @@ function ActiveFilterChips({
           key={chip.key}
           type="button"
           onClick={chip.onClear}
-          aria-label={`Quitar filtro: ${chip.label}`}
+          aria-label={t("removeFilter", { label: chip.label })}
           className="relative flex shrink-0 items-center gap-1 rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-xs text-foreground transition-colors after:absolute after:-inset-y-1.5 after:inset-x-0 after:content-[''] hover:bg-accent/40"
         >
           {chip.label}

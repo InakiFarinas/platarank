@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+import { ROUTES } from "./src/i18n/config";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 // Enforced CSP is deliberately limited to the directives that cannot break the app (framing,
 // <base>, plugins, form targets). A full script-src needs nonces for Next's inline scripts, so that
@@ -38,13 +42,25 @@ const securityHeaders = [
   { key: "Content-Security-Policy-Report-Only", value: reportOnlyCsp },
 ];
 
+const ENGLISH_SLUGS = (Object.values(ROUTES) as { es: string; en: string }[]).filter((r) => r.es !== "receta").map((r) => [r.es, r.en] as const);
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  // Single-locale site: send any path without the /es prefix to it (replaces the old middleware).
+  // Locales: es (default) and en. Route folders under app/[locale] keep the Spanish names; the
+  // English slugs are rewrites onto them (the Spanish slug under /en redirects to the English one).
+  // Paths without a locale prefix go to /es; "/" itself picks by Accept-Language (app/route.ts).
   async redirects() {
     return [
-      { source: "/", destination: "/es", permanent: true },
-      { source: "/:path((?!es(?:/|$)|_next|api|auth|opengraph-image|favicon\\.ico|.*\\..*).+)", destination: "/es/:path", permanent: true },
+      { source: "/opengraph-image", destination: "/es/opengraph-image/og", permanent: true },
+      { source: "/:path((?!es(?:/|$)|en(?:/|$)|_next|api|auth|opengraph-image|favicon\\.ico|.*\\..*).+)", destination: "/es/:path", permanent: true },
+      ...ENGLISH_SLUGS.map(([es, en]) => ({ source: `/en/${es}`, destination: `/en/${en}`, permanent: true })),
+      { source: "/en/receta/:itemId", destination: "/en/recipe/:itemId", permanent: true },
+    ];
+  },
+  async rewrites() {
+    return [
+      ...ENGLISH_SLUGS.map(([es, en]) => ({ source: `/en/${en}`, destination: `/en/${es}` })),
+      { source: "/en/recipe/:itemId", destination: "/en/receta/:itemId" },
     ];
   },
   async headers() {
@@ -52,4 +68,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

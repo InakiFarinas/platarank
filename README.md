@@ -56,6 +56,10 @@ Next.js 15 (App Router) + TypeScript · Tailwind + shadcn/ui · TanStack Virtual
 
 El brief original pedía TanStack Table, pero su versión instalable (v9) es una reescritura pre-release con una API inestable: se optó por un sort manual más TanStack Virtual, que sí es estable.
 
+## Idiomas
+
+El sitio está en español (`/es`) e inglés (`/en`) con next-intl, sin middleware. Los textos viven en `src/messages/{es,en}/<namespace>.json` (ambos idiomas con las mismas claves; `legal` es solo servidor). Las carpetas de `src/app/[locale]/` conservan los nombres en español; los slugs en inglés (`/en/artifacts`, `/en/recipe/...`) son rewrites definidos en `next.config.ts` a partir de la tabla `ROUTES` de `src/i18n/config.ts`. Los enlaces se arman siempre con `localePath`, y `/` elige idioma según `Accept-Language` (`src/app/route.ts`). Para agregar una página: carpeta en `[locale]`, entrada en `ROUTES`, textos en ambos JSON y `pageMetadata({ locale, route, ... })`.
+
 ## Desarrollo
 
 ```bash

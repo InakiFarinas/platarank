@@ -41,9 +41,12 @@ async function main() {
     fetchJson<LocalizedItem[]>(FORMATTED_ITEMS_URL),
   ]);
   const namesEs = new Map<string, string>();
+  const namesEn = new Map<string, string>();
   for (const item of formattedItems) {
     const es = item.LocalizedNames?.["ES-ES"];
     if (es) namesEs.set(item.UniqueName, es);
+    const en = item.LocalizedNames?.["EN-US"];
+    if (en) namesEn.set(item.UniqueName, en);
   }
 
   // items.json's top-level categories (weapon, equipmentitem, mount, consumableitem, simpleitem,
@@ -116,7 +119,7 @@ async function main() {
   const rawResources = RAW_RESOURCE_CATEGORIES.flatMap((category) =>
     RAW_RESOURCE_TIERS.map((tier) => ({ itemId: `T${tier}_${category}`, tier, category })),
   ).filter((r) => weights[r.itemId] !== undefined)
-    .map((r) => ({ ...r, nameEs: namesEs.get(r.itemId) ?? r.itemId }));
+    .map((r) => ({ ...r, nameEs: namesEs.get(r.itemId) ?? r.itemId, nameEn: namesEn.get(r.itemId) ?? r.itemId }));
   await writeFile(RAW_RESOURCES_OUTPUT_PATH, JSON.stringify(rawResources, null, 2) + "\n", "utf8");
   console.log(`Wrote ${rawResources.length} raw resources to ${RAW_RESOURCES_OUTPUT_PATH}`);
 }

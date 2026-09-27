@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Albion Online Artifact Foundry: expected value per roll",
+    "description": "Expected value of rolling Runes, Souls, Relics or Avalonian shards in the Albion Online Artifact Foundry: cost, profit, worst and best case and chance of losing, by tier."
+  },
+  "page": {
+    "title": "Artifact Foundry",
+    "description": "Each roll gives one random artifact from the chosen pool, all equally likely. Here you see whether it pays off and how much you risk.",
+    "dataCredit": "Market data: Albion Online Data Project."
+  },
+  "error": {
+    "title": "We couldn’t load the Foundry",
+    "body": "There was a problem reading market prices. It may be temporary: try again.",
+    "retry": "Retry"
+  },
+  "foundry": {
+    "heading": "Foundry calculator",
+    "fragment": "Fragment",
+    "tier": "Tier",
+    "fragments": {
+      "RUNE": "Runes",
+      "SOUL": "Souls",
+      "RELIC": "Relics",
+      "SHARD_AVALONIAN": "Avalon"
+    },
+    "classes": {
+      "warrior": "Warrior",
+      "hunter": "Hunter",
+      "mage": "Mage"
+    },
+    "mixed": "Mixed",
+    "gains": "gains",
+    "loses": "loses",
+    "poolsTitle": "Foundry pools",
+    "asideCity": "{fragment}: {price} each in {city}",
+    "asidePrice": "{fragment}: {price} each",
+    "asideNone": "No price for {fragment}",
+    "col": {
+      "pool": "Pool",
+      "cost": "Cost",
+      "expected": "Expected value",
+      "profit": "Profit",
+      "worstBest": "Worst / best",
+      "loses": "Loss chance"
+    },
+    "profitLabel": "Profit: ",
+    "poolMeta": "{count} fragments · {priced}/{size} priced",
+    "note1": "Expected value: average payout of each artifact in the pool, net of taxes ({net}% of the price). Artifacts with no price or no sales in 30 days are left out of the average. Loss chance: the share of priced artifacts that sell for less than the roll cost.",
+    "note2": "Assumptions: every artifact in the pool is equally likely, and {mixed} fragments per roll in the Mixed pool. Neither comes from the game data dump; the pools do (they are the artifacts whose recipe uses that fragment). Cost uses the cheapest fragment across the cities.",
+    "compareTitle": "Compare tiers",
+    "compareAside": "best expected profit across the four pools",
+    "compareRegion": "Fragment and tier comparison",
+    "compareCaption": "Best expected profit per roll by fragment and tier. Pick a cell to see its detail.",
+    "cellAria": "{fragment} T{tier}: {sign, select, gain {gains} other {loses}} {amount} in the {pool} pool",
+    "cellNone": "{fragment} T{tier}: no data",
+    "detailTitle": "{pool} pool: what can drop",
+    "detailAside": "{priced}/{size} priced",
+    "perDay": "{n}/day",
+    "noSales": "no sales",
+    "verdictNoPrice": "There is no {fragment} price in any city, so we can’t calculate cost or profit. Below you can see what each artifact in the pool is worth.",
+    "verdictNoSales": "No artifact in the {pool} pool sold in the last 30 days, so there is no expected value to compare with the cost.",
+    "verdictDetail": "expected value {expected} − cost {cost} · loses {loss} of the time · worst {worst}, best {best}",
+    "verdictTitle": "Expected profit per roll · {fragment} · {pool} pool"
+  },
+  "transport": {
+    "capacity": "Carry capacity",
+    "bag": "Bag",
+    "none": "None",
+    "mount": "Mount",
+    "mountTier": "Mount tier",
+    "mountedOnly": " (mounted only)",
+    "cape": "Gathering cape",
+    "capeTier": "Cape tier",
+    "capeTierHint": "-30% on its own resource, up to this tier",
+    "capeCategories": {
+      "FIBER": "Fiber",
+      "HIDE": "Hide",
+      "ORE": "Ore",
+      "ROCK": "Stone",
+      "WOOD": "Wood"
+    },
+    "food": "Food active",
+    "foodHint": "+10%, lasts 30 min",
+    "courier": "Courier boots",
+    "courierHint": "passive chosen when crafting, estimated",
+    "mounts": {
+      "horse": "Riding Horse",
+      "ox": "Transport Ox",
+      "mule": "Novice Mule",
+      "direboar": "Direboar",
+      "giant_stag": "Giant Stag",
+      "swamp_dragon": "Swamp Dragon"
+    },
+    "cargoTitle": "What you’re carrying",
+    "searchPlaceholder": "Search item or raw resource...",
+    "rawTag": "T{tier} · raw",
+    "empty": "You haven’t added anything to carry yet.",
+    "weightEach": "{kg} kg each",
+    "weightUnknown": "unknown weight",
+    "qtyOf": "Quantity of {name}",
+    "remove": "Remove {name}",
+    "resultTitle": "Result",
+    "cargoWeight": "Weight to carry",
+    "maxLoad": "Max capacity",
+    "load": "Load",
+    "speed": "{speed} m/s",
+    "noBag": "With no bag or mount equipped, you only have the base load (50 kg).",
+    "speedLabels": {
+      "normal": "Normal speed",
+      "reduced": "Reduced",
+      "noGallop": "Reduced (no gallop)",
+      "veryReduced": "Very reduced",
+      "almostStill": "Almost immobile",
+      "cannotMove": "You can’t move"
+    }
+  }
+}

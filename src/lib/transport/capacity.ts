@@ -32,7 +32,6 @@ export type MountId = "horse" | "ox" | "mule" | "direboar" | "giant_stag" | "swa
 
 export type MountOption = {
   id: MountId;
-  label: string;
   /** Tiers this specific mount line exists at, each with its own carry bonus in kg. */
   capacityByTier: Partial<Record<Tier, number>>;
   /** "courier": bonus applies even dismounted, just by owning/equipping the mount (like a bag).
@@ -46,42 +45,36 @@ export type MountOption = {
 export const MOUNTS: MountOption[] = [
   {
     id: "horse",
-    label: "Caballo de monta",
     kind: "courier",
     hasSpeedBonus: true,
     capacityByTier: { 3: 72, 4: 94, 5: 122, 6: 156, 7: 197, 8: 247 },
   },
   {
     id: "ox",
-    label: "Buey de transporte",
     kind: "mounted",
     hasSpeedBonus: false,
     capacityByTier: { 3: 1503, 4: 1655, 5: 1901, 6: 2237, 7: 2667, 8: 3200 },
   },
   {
     id: "mule",
-    label: "Mula novata",
     kind: "courier",
     hasSpeedBonus: true,
     capacityByTier: { 2: 53 },
   },
   {
     id: "direboar",
-    label: "Jabalí feroz",
     kind: "mounted",
     hasSpeedBonus: true,
     capacityByTier: { 7: 1261 },
   },
   {
     id: "giant_stag",
-    label: "Ciervo gigante",
     kind: "mounted",
     hasSpeedBonus: true,
     capacityByTier: { 4: 227 },
   },
   {
     id: "swamp_dragon",
-    label: "Dragón de pantano",
     kind: "mounted",
     hasSpeedBonus: true,
     capacityByTier: { 7: 630 },
@@ -93,17 +86,17 @@ export const MOUNTS: MountOption[] = [
 export const FOOD_MAXLOAD_BONUS_PCT = 10;
 
 /** Movement speed at increasing encumbrance -- wiki.albiononline.com/wiki/Weight_and_Burden. */
-export const OVERWEIGHT_TIERS: { maxPct: number; speedMs: number; label: string }[] = [
-  { maxPct: 100, speedMs: 5.5, label: "Velocidad normal" },
-  { maxPct: 130, speedMs: 4.4, label: "Reducida" },
-  { maxPct: 160, speedMs: 2.75, label: "Reducida (sin galope)" },
-  { maxPct: 180, speedMs: 1.65, label: "Muy reducida" },
-  { maxPct: 200, speedMs: 0.83, label: "Casi inmóvil" },
-  { maxPct: 800, speedMs: 0.44, label: "Casi inmóvil" },
-  { maxPct: Infinity, speedMs: 0, label: "No podés moverte" },
+export const OVERWEIGHT_TIERS: { maxPct: number; speedMs: number; labelKey: string }[] = [
+  { maxPct: 100, speedMs: 5.5, labelKey: "normal" },
+  { maxPct: 130, speedMs: 4.4, labelKey: "reduced" },
+  { maxPct: 160, speedMs: 2.75, labelKey: "noGallop" },
+  { maxPct: 180, speedMs: 1.65, labelKey: "veryReduced" },
+  { maxPct: 200, speedMs: 0.83, labelKey: "almostStill" },
+  { maxPct: 800, speedMs: 0.44, labelKey: "almostStill" },
+  { maxPct: Infinity, speedMs: 0, labelKey: "cannotMove" },
 ];
 
-export function speedAt(loadPct: number): { speedMs: number; label: string } {
+export function speedAt(loadPct: number): { speedMs: number; labelKey: string } {
   const tier = OVERWEIGHT_TIERS.find((t) => loadPct <= t.maxPct) ?? OVERWEIGHT_TIERS[OVERWEIGHT_TIERS.length - 1];
-  return { speedMs: tier.speedMs, label: tier.label };
+  return { speedMs: tier.speedMs, labelKey: tier.labelKey };
 }

@@ -1,4 +1,6 @@
 import type { RecipeRow } from "@/lib/recipe-math";
+import type { Locale } from "@/i18n/config";
+import { itemName } from "@/lib/item-names";
 
 export type FilterParams = {
   nameQuery: string;
@@ -17,10 +19,10 @@ export function normalize(s: string): string {
     .toLowerCase();
 }
 
-export function applyFilters(rows: RecipeRow[], filters: FilterParams): RecipeRow[] {
+export function applyFilters(rows: RecipeRow[], filters: FilterParams, locale: Locale = "es"): RecipeRow[] {
   const query = normalize(filters.nameQuery.trim());
   return rows.filter((r) => {
-    if (query !== "" && !normalize(r.recipe.nameEs).includes(query)) return false;
+    if (query !== "" && !normalize(itemName(r.recipe, locale)).includes(query)) return false;
     if (filters.maxAgeHours !== null) {
       const ageHours = r.sellRefAgeSeconds !== null ? r.sellRefAgeSeconds / 3600 : Infinity;
       if (ageHours > filters.maxAgeHours) return false;

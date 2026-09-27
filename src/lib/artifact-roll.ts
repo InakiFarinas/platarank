@@ -10,8 +10,6 @@ export type FragmentKind = "RUNE" | "SOUL" | "RELIC" | "SHARD_AVALONIAN";
 /** Fragments for a roll over all three classes at once. Game knowledge, not in the client data dump. */
 export const MIXED_FRAGMENT_COUNT = 36;
 
-export const CLASS_LABEL: Record<ArtifactClass, string> = { warrior: "Guerrero", hunter: "Cazador", mage: "Mago" };
-
 export type RollResult = {
   /** Silver spent on the fragments of one roll, null when the fragment has no price. */
   cost: number | null;

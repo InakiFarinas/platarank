@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "Calculadora de crafteo de Albion Online",
+    "description": "Calculadora de crafteo de Albion Online: costo de materiales, retorno de recursos, foco, tarifa de estación, impuestos e ingreso neto por ítem, con enlaces para compartir.",
+    "appName": "Calculadora de crafteo de PlataRank",
+    "appDescription": "Calcula costo de materiales, retorno de recursos, tarifa de estación, impuestos e ingreso neto de un ítem de Albion Online.",
+    "breadcrumb": "Calculadora",
+    "headerTitle": "Calculadora de crafteo",
+    "headerDescription": "Elegí un ítem y ajustá precios, premium, foco y ciudad. Todo el cálculo es visible.",
+    "dataSource": "Datos de mercado: Albion Online Data Project."
+  },
+  "ui": {
+    "infoTipLabel": "Qué significa: {term}",
+    "infoTipFallback": "este término",
+    "delete": "Borrar",
+    "cancel": "Cancelar"
+  },
+  "stations": {
+    "alchemy": "Alquimia",
+    "refining": "Refinado",
+    "cooking": "Cocina",
+    "gear": "Equipo",
+    "mount": "Monturas"
+  },
+  "search": {
+    "placeholder": "Buscar ítem: poción, bastón, capa, montura…",
+    "ariaLabel": "Buscar ítem",
+    "searching": "Buscando…",
+    "results": "{count} resultados",
+    "failedSr": "No se pudo buscar",
+    "noneSr": "Sin resultados",
+    "failed": "No se pudo buscar. Revisá tu conexión y seguí escribiendo para reintentar.",
+    "none": "Sin resultados para \"{query}\".",
+    "listLabel": "Resultados"
+  },
+  "tabs": {
+    "label": "Secciones",
+    "calc": "Calculadora",
+    "plans": "Planificaciones",
+    "plansCount": "Planificaciones ({count})",
+    "transport": "Transporte"
+  },
+  "errors": {
+    "notFound": "No se encontró ese ítem.",
+    "loadFailed": "No se pudo cargar el ítem. Revisá tu conexión y probá de nuevo.",
+    "retry": "Reintentar"
+  },
+  "plans": {
+    "title": "Planificaciones",
+    "srTitle": "Planificaciones guardadas",
+    "loadFailed": "No se pudieron cargar tus planificaciones.",
+    "saveFailed": "No se pudo guardar.",
+    "deleteFailed": "No se pudo borrar.",
+    "signInToSave": "Entrá con Discord para guardar este cálculo.",
+    "nameLabel": "Nombre de la planificación",
+    "saving": "Guardando…",
+    "save": "Guardar",
+    "saved": "Guardada en Planificaciones.",
+    "signInToView": "Entrá con Discord para guardar tus cálculos y volver a verlos cuando quieras.",
+    "empty": "Todavía no guardaste ninguna. Armá un cálculo y usá \"Guardar\" en el balance.",
+    "deleteLabel": "Borrar {name}"
+  },
+  "item": {
+    "meta": "{station} · lote de {batch} · foco base {focus}",
+    "tier": "Tier",
+    "enchant": "Encantamiento"
+  },
+  "city": {
+    "title": "Ciudad de crafteo",
+    "bonus": "{pct} bono",
+    "showLess": "Mostrar menos ciudades",
+    "others": "Otras ciudades ({count})"
+  },
+  "conditions": {
+    "title": "Condiciones",
+    "account": "Cuenta",
+    "premium": "Premium",
+    "noPremium": "Sin premium",
+    "sellMarket": "Mercado de venta",
+    "cities": "Ciudades",
+    "blackMarket": "Black Market",
+    "focus": "Foco",
+    "noFocus": "Sin foco",
+    "withFocus": "Con foco",
+    "baseAnimal": "Animal base",
+    "bought": "Comprado",
+    "bred": "Criado",
+    "qty": "Cantidad a craftear",
+    "sellPriceEach": "Precio de venta (c/u)",
+    "sellPrice": "Precio de venta",
+    "backToAuto": "volver a auto",
+    "quality": "Calidad",
+    "qualityNames": {
+      "1": "Normal",
+      "2": "Bueno",
+      "3": "Excepcional",
+      "4": "Excelente",
+      "5": "Obra maestra"
+    },
+    "advanced": "Configuración avanzada",
+    "edited": "(editada)",
+    "stationFeeLabel": "Tarifa de estación (por 100 nutrición)",
+    "stationFee": "Tarifa de estación",
+    "whatIsIt": "¿Qué es?",
+    "stationFeeTip": "Plata que cobra la estación por cada 100 de nutrición que consume tu craft. La fija el dueño de la estación y la ves en el juego como tarifa de uso.",
+    "extraCostsLabel": "Costos extra (total)",
+    "extraCosts": "Costos extra",
+    "noSellPrice": "Sin precio de venta reciente para esta calidad y mercado. Escribí uno a mano para calcular."
+  },
+  "materials": {
+    "title": "Materiales",
+    "returnTerm": "Retorno",
+    "returnTip": "Porcentaje de los materiales que el juego te devuelve al craftear. Sube con el bono de la ciudad y con el foco; los artefactos nunca devuelven.",
+    "cityBonus": " · bono de {city}",
+    "noReturn": " · sin retorno",
+    "bred": " · criado, no comprado",
+    "priceOf": "Precio de {name}",
+    "noPrice": "sin precio: escribilo"
+  },
+  "ledger": {
+    "title": "Balance",
+    "copyLink": "Copiar enlace",
+    "linkCopied": "Enlace copiado",
+    "copyFailed": "No se pudo copiar",
+    "linkCopiedSr": " Enlace copiado",
+    "copyFailedSr": " No se pudo copiar el enlace",
+    "announce": "{negative, select, yes {Ganancia menos {amount}} other {Ganancia {amount}}}{incomplete, select, yes {, incompleta} other {}}",
+    "materials": "Materiales ({crafts} {crafts, plural, one {craft} other {crafts}})",
+    "station": "Estación ({fee} por craft × {crafts})",
+    "extra": "Costos extra",
+    "investment": "Inversión",
+    "gross": "Bruto ({produced} × {price})",
+    "taxes": "Impuestos {pct}%",
+    "netRevenue": "Ingreso neto",
+    "profit": "Ganancia",
+    "incompleteBadge": "incompleta",
+    "incompleteParen": " (incompleta)",
+    "unpriced": "{count, plural, one {# material sin precio cuenta} other {# materiales sin precio cuentan}} como 0. ",
+    "missingSell": "Falta el precio de venta. ",
+    "fillIn": "Completá lo que falta para que la ganancia sea real.",
+    "margin": "Margen sobre inversión",
+    "perUnit": "Ganancia por unidad",
+    "focusNeeded": "Foco necesario (sin maestrías)",
+    "volume": "Volumen de ventas (por día)",
+    "whereFrom": "De dónde sale el precio de venta",
+    "repin": "Fijar este en lugar del anterior",
+    "pin": "Fijar para comparar",
+    "save": "Guardar este cálculo",
+    "method": "Retorno, tarifa de estación e impuestos: <link>cómo se calcula</link>.",
+    "seeBalance": "Ver balance"
+  },
+  "compare": {
+    "profit": "Ganancia",
+    "margin": "Margen",
+    "perUnit": "Por unidad",
+    "volume": "Volumen",
+    "pinned": "Fijado",
+    "current": "Actual",
+    "incomplete": "Alguno de los dos tiene datos incompletos; no lo tomes como comparación real.",
+    "clear": "Quitar comparación"
+  },
+  "sellSource": {
+    "manual": "Estás usando un precio escrito a mano; las cotizaciones son solo de referencia.",
+    "none": "No hay cotizaciones recientes para esta calidad y mercado.",
+    "median": "Mediana de {count} {count, plural, one {mercado} other {mercados}} (calidad Q{quality}). Las cotizaciones muy lejos de la mediana se descartan.",
+    "discarded": "descartado: {reason}",
+    "outlier_low": "muy por debajo de la mediana",
+    "outlier_high": "muy por encima de la mediana",
+    "outlier_self": "muy lejos del propio promedio de 30 días de esa ciudad"
+  },
+  "empty": {
+    "title": "¿Qué vas a craftear?",
+    "body": "Buscá un ítem y ajustá tier, encantamiento, ciudad y precios. El balance muestra de dónde sale cada número.",
+    "search": "Buscar ítem",
+    "recent": "Vistos recientemente"
+  }
+}

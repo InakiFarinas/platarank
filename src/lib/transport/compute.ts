@@ -19,7 +19,7 @@ export function itemWeightKg(itemId: string): number | null {
   return WEIGHTS[itemId] ?? null;
 }
 
-export type CargoLine = { itemId: string; nameEs: string; qty: number };
+export type CargoLine = { itemId: string; name: string; qty: number };
 
 export type TransportSetup = {
   bagTier: Tier | null;
