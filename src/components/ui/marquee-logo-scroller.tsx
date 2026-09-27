@@ -4,10 +4,8 @@ export type MarqueeLogo = {
   name: string;
   /** Where the logo links to: the community's own site or invite. */
   href: string;
-  /** Path under /public. Without one the tile shows the community name as text. */
+  /** Square icon under /public, shown beside the name. Optional: the tile is text-only without it. */
   src?: string;
-  width?: number;
-  height?: number;
 };
 
 type Speed = "slow" | "normal" | "fast";
@@ -25,21 +23,13 @@ function LogoTile({ logo, copy = false }: { logo: MarqueeLogo; copy?: boolean })
       rel="noopener noreferrer sponsored"
       aria-label={copy ? undefined : logo.name}
       tabIndex={copy ? -1 : undefined}
-      className="flex h-20 w-40 shrink-0 items-center justify-center rounded-sm border border-border bg-card px-4 transition-colors hover:border-money/50 hover:bg-money/5"
+      className="flex h-20 w-52 shrink-0 items-center justify-center gap-3 rounded-sm border border-border bg-card px-4 transition-colors hover:border-money/50 hover:bg-money/5"
     >
-      {logo.src ? (
+      {logo.src && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={logo.src}
-          alt=""
-          width={logo.width ?? 160}
-          height={logo.height ?? 64}
-          loading="lazy"
-          className="max-h-12 w-auto max-w-full object-contain"
-        />
-      ) : (
-        <span className="text-balance text-center font-heading text-sm leading-tight">{logo.name}</span>
+        <img src={logo.src} alt="" width={48} height={48} loading="lazy" className="h-12 w-12 shrink-0 rounded-sm object-cover" />
       )}
+      <span className={cn("text-balance font-heading text-sm leading-tight", logo.src ? "text-left" : "text-center")}>{logo.name}</span>
     </a>
   );
 }
@@ -54,7 +44,7 @@ export function MarqueeLogoScroller({ logos, speed = "normal", className }: { lo
 
   if (logos.length < MIN_TO_SCROLL) {
     return (
-      <ul className={cn("flex flex-wrap items-center justify-center gap-4", className)}>
+      <ul className={cn("flex flex-wrap items-center gap-4", className)}>
         {logos.map((logo) => (
           <li key={logo.href}>
             <LogoTile logo={logo} />

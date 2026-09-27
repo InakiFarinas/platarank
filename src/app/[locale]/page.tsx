@@ -282,7 +282,7 @@ export default async function HomePage() {
         </section>
 
         <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl">
             {COMMUNITY_SPONSORS.length > 0 ? (
               <>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
@@ -299,7 +299,7 @@ export default async function HomePage() {
                 </p>
               </>
             ) : (
-              <div className="mx-auto max-w-3xl">
+              <div>
                 <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Publicitá tu comunidad</h2>
                 <p className="mt-3 text-sm text-muted-foreground sm:text-base">
                   Si tenés un gremio, un servidor de Discord o un canal de Albion Online, tu logo puede aparecer en esta página junto con un enlace a tu
