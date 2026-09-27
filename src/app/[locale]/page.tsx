@@ -9,8 +9,7 @@ import { formatAge, formatSilver } from "@/components/recipes/format";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CTA_PRIMARY, CTA_SECONDARY } from "@/lib/cta";
-import { MarqueeLogoScroller } from "@/components/ui/marquee-logo-scroller";
-import { COMMUNITY_SPONSORS } from "@/lib/sponsors";
+import { CommunitySponsors } from "@/components/community-sponsors";
 import { itemIconUrl } from "@/lib/item-icons";
 import { getRecipeCounts, loadTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
 
@@ -283,39 +282,7 @@ export default async function HomePage() {
 
         <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            {COMMUNITY_SPONSORS.length > 0 ? (
-              <>
-                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                  <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Comunidades que nos apoyan</h2>
-                  <p className="text-xs text-muted-foreground">Publicidad de comunidades de Albion Online</p>
-                </div>
-                <MarqueeLogoScroller logos={COMMUNITY_SPONSORS} className="mt-8" />
-                <p className="mt-6 text-sm text-muted-foreground">
-                  ¿Tu comunidad quiere estar acá?{" "}
-                  <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="text-money underline underline-offset-2">
-                    Escribinos por Discord
-                  </a>
-                  .
-                </p>
-              </>
-            ) : (
-              <div>
-                <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">Publicitá tu comunidad</h2>
-                <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                  Si tenés un gremio, un servidor de Discord o un canal de Albion Online, tu logo puede aparecer en esta página junto con un enlace a tu
-                  comunidad. Escribinos por Discord y lo coordinamos.
-                </p>
-                <a
-                  href={DISCORD_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${CTA_SECONDARY} mt-6 inline-flex min-h-11 items-center gap-2 px-5 text-sm`}
-                >
-                  Hablar por Discord
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-            )}
+            <CommunitySponsors />
           </div>
         </section>
 

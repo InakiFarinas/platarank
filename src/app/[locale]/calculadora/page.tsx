@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, JsonLd } from "@/components/json-ld";
 import { absoluteUrl } from "@/lib/seo";
 import { Calculator } from "@/components/calculator/calculator";
+import { CommunitySponsors } from "@/components/community-sponsors";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -33,6 +34,9 @@ export default function CalculadoraPage() {
       <SiteHeader title="Calculadora de crafteo" description="Elegí un ítem y ajustá precios, premium, foco y ciudad. Todo el cálculo es visible." />
       <main id="contenido" className="mx-auto max-w-5xl px-3 pb-8 sm:px-6">
         <Calculator />
+        <section className="mt-12 border-t border-border pt-10">
+          <CommunitySponsors />
+        </section>
         <SiteFooter className="mt-8">
           <p className="text-xs text-muted-foreground">Datos de mercado: Albion Online Data Project.</p>
         </SiteFooter>
