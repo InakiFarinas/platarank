@@ -181,12 +181,16 @@ function FilterFields({
             cities={REAL_CITIES}
             selected={params.sellCities}
             onToggle={(city, checked) => toggleCity("sellCities", city, checked)}
-            extra={{
-              label: "Black Market",
-              checked: params.sellCities.includes(BLACK_MARKET),
-              onToggle: (checked) => toggleCity("sellCities", BLACK_MARKET, checked),
-              note: "Solo compra: vendés contra la mejor oferta, que puede desaparecer antes de que llegues.",
-            }}
+            extra={
+              stationType === "gear"
+                ? {
+                    label: "Black Market",
+                    checked: params.sellCities.includes(BLACK_MARKET),
+                    onToggle: (checked) => toggleCity("sellCities", BLACK_MARKET, checked),
+                    note: "Solo compra: vendés contra la mejor oferta, que puede desaparecer antes de que llegues.",
+                  }
+                : undefined
+            }
           />
         </div>
       </FilterCard>

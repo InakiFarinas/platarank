@@ -239,7 +239,8 @@ function sellStatSplit(points: CityPricePoint[]) {
 /** Alquimia, refinado, cocina: everything trades at quality 1, so this is the whole story. */
 function computeSingleQualitySellSide(itemId: string, market: MarketData, params: RecipeMathParams): SellSide {
   const points = (market.get(itemId) ?? []).filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
-  const stat = sellStatSplit(points);
+  // Potions, food, refined goods and mounts don't trade at the Black Market: only real cities count.
+  const stat = sellStatSplit(points.filter((p) => p.city !== BLACK_MARKET));
 
   // Volume is only real for the cities whose price actually fed the reference above -- a city with
   // real daily volume but no live price today must not lend its volume to a price from a different,

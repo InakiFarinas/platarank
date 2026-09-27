@@ -39,14 +39,14 @@ describe("computeRecipeRow", () => {
     expect(both.sellRefPrice).toBe(15000);
   });
 
-  test("el Mercado Negro se cotiza aparte: no se mezcla en la mediana de las ciudades", () => {
+  test("pociones, comidas, refinado y monturas no se venden en el Mercado Negro: se ignora aunque este elegido", () => {
     const data = market({
       T6_POTION_HEAL: [point("Caerleon", 10000), point("Martlock", 12000), point("Black Market", 30000, 50)],
       T6_FOXGLOVE: [point("Caerleon", 100)],
     });
     const both = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, buyCities: ["Caerleon"], sellCities: ["Caerleon", "Martlock", "Black Market"] });
-    expect(both.sellRefPrice).toBe(30000);
-    expect(both.avgDailyVolume30d).toBe(50);
+    expect(both.sellRefPrice).toBe(11000);
+    expect(both.avgDailyVolume30d).toBe(2000);
     const citiesOnly = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, buyCities: ["Caerleon"], sellCities: ["Caerleon", "Martlock"] });
     expect(citiesOnly.sellRefPrice).toBe(11000);
   });

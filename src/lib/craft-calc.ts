@@ -84,8 +84,10 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     return { m, price, auto: stat.value, cheapest, noReturn, bred: breedCost !== null, effective: m.count * (1 - (noReturn ? 0 : rrr)) };
   });
 
+  // Only weapons and armor trade at the Black Market; potions, food, refined goods and mounts don't.
+  const useBlackMarket = p.blackMarket && recipe.stationType === "gear";
   const sellPoints = (market[recipe.itemId] ?? []).filter(
-    (pt) => pt.quality === p.quality && pt.price !== null && (p.blackMarket ? pt.city === BLACK_MARKET : pt.city !== BLACK_MARKET),
+    (pt) => pt.quality === p.quality && pt.price !== null && (useBlackMarket ? pt.city === BLACK_MARKET : pt.city !== BLACK_MARKET),
   );
   const sellStat = robustStat(
     sellPoints.map((pt) => ({ city: pt.city, price: pt.price!, selfRef: pt.weightedAvgPrice30d })),

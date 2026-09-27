@@ -583,18 +583,20 @@ export function Calculator() {
                   ]}
                   onChange={(v) => setPremium(v === "p")}
                 />
-                <Segmented
-                  label="Mercado de venta"
-                  value={blackMarket ? "bm" : "royal"}
-                  options={[
-                    { value: "royal", text: "Ciudades" },
-                    { value: "bm", text: "Black Market" },
-                  ]}
-                  onChange={(v) => {
-                    setBlackMarket(v === "bm");
-                    setSellOverride(null);
-                  }}
-                />
+                {data.recipe.stationType === "gear" && (
+                  <Segmented
+                    label="Mercado de venta"
+                    value={blackMarket ? "bm" : "royal"}
+                    options={[
+                      { value: "royal", text: "Ciudades" },
+                      { value: "bm", text: "Black Market" },
+                    ]}
+                    onChange={(v) => {
+                      setBlackMarket(v === "bm");
+                      setSellOverride(null);
+                    }}
+                  />
+                )}
                 <Segmented
                   label="Foco"
                   value={focus ? "f" : "n"}
