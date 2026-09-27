@@ -4,8 +4,8 @@ export type MarqueeLogo = {
   name: string;
   /** Where the logo links to: the community's own site or invite. */
   href: string;
-  /** Path under /public. */
-  src: string;
+  /** Path under /public. Without one the tile shows the community name as text. */
+  src?: string;
   width?: number;
   height?: number;
 };
@@ -27,15 +27,19 @@ function LogoTile({ logo, copy = false }: { logo: MarqueeLogo; copy?: boolean })
       tabIndex={copy ? -1 : undefined}
       className="flex h-20 w-40 shrink-0 items-center justify-center rounded-sm border border-border bg-card px-4 transition-colors hover:border-money/50 hover:bg-money/5"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={logo.src}
-        alt=""
-        width={logo.width ?? 160}
-        height={logo.height ?? 64}
-        loading="lazy"
-        className="max-h-12 w-auto max-w-full object-contain"
-      />
+      {logo.src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={logo.src}
+          alt=""
+          width={logo.width ?? 160}
+          height={logo.height ?? 64}
+          loading="lazy"
+          className="max-h-12 w-auto max-w-full object-contain"
+        />
+      ) : (
+        <span className="text-balance text-center font-heading text-sm leading-tight">{logo.name}</span>
+      )}
     </a>
   );
 }
