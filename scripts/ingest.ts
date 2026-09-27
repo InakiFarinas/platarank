@@ -6,7 +6,7 @@
 // to compute the aggregate, then discarded; only the upserted, storage-bounded market_aggregates
 // rows land in the DB.
 import "dotenv/config";
-import { sql, eq, getTableColumns } from "drizzle-orm";
+import { sql, eq, lt, getTableColumns } from "drizzle-orm";
 import { db } from "../src/lib/db/client";
 import { ingestState, marketAggregates, recipes, type Recipe } from "../src/lib/db/schema";
 import { fetchPrices } from "../src/lib/aodp/client";
@@ -14,6 +14,7 @@ import { AODP_SERVERS, ALL_LOCATIONS as REAL_CITIES_AND_BM, type AodpServer } fr
 import { findLatestDumpUrl, fetchDumpVolumeSummaries, type DumpVolumeSummary } from "../src/lib/aodp/dumps";
 import { fetchClusterIdToLocation } from "../src/lib/aodp/world";
 import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsurdPrices } from "../src/lib/ingest/aggregate";
+import { ALL_BREEDING_MARKET_ITEMS } from "../src/lib/formulas/breeding";
 import { runAlerts } from "../src/lib/ingest/alerts";
 import { refreshRankSnapshot } from "../src/lib/server/station-data";
 import { refreshTopRecipesSnapshot } from "../src/lib/server/top-recipes";
@@ -114,6 +115,9 @@ function collectItemIds(): string[] {
     ids.add(recipe.itemId);
     for (const material of recipe.materials) ids.add(material.itemId);
   }
+  // Monturas: feed crops/meat and market-traded babies for the "criar por tu cuenta" toggle; they
+  // aren't materials of any mount recipe, so they'd otherwise never be priced.
+  for (const itemId of ALL_BREEDING_MARKET_ITEMS) ids.add(itemId);
   return [...ids];
 }
 
@@ -150,7 +154,11 @@ async function storeFullAggregates(
     );
   });
 
-  for (const batch of chunk(rows, 500)) {
+  // A combination with no price and no volume carries no information (every reader skips
+  // unpriced points and only counts volume from priced ones), so it isn't stored -- ~70% of them
+  // are empty, and they'd otherwise ship on every ranking load.
+  const kept = rows.filter((r) => r.price !== null || Number(r.avgDailyVolume30d) > 0);
+  for (const batch of chunk(kept, 500)) {
     await db
       .insert(marketAggregates)
       .values(batch)
@@ -166,7 +174,10 @@ async function storeFullAggregates(
         },
       });
   }
-  console.log(`Computed ${rows.length} item-city-quality aggregates (prices + volume) for ${itemIds.length} items.`);
+  // Everything stored was just rewritten with computedAt = now, so any older row is one that went
+  // empty (or belongs to an item no recipe references anymore).
+  await db.delete(marketAggregates).where(lt(marketAggregates.computedAt, now));
+  console.log(`Stored ${kept.length} of ${rows.length} item-city-quality aggregates (prices + volume) for ${itemIds.length} items.`);
 }
 
 /** Cheap hourly path: current price only, leaving the dump-derived volume columns untouched. */
@@ -194,7 +205,9 @@ async function storePriceOnlyUpdates(itemIds: string[], gearItemIdSet: Set<strin
     );
   });
 
-  for (const batch of chunk(rows, 500)) {
+  // Only priced combinations are written; a combination that lost its price is handled below.
+  const priced = rows.filter((r) => r.price !== null);
+  for (const batch of chunk(priced, 500)) {
     await db
       .insert(marketAggregates)
       .values(batch)
@@ -207,7 +220,14 @@ async function storePriceOnlyUpdates(itemIds: string[], gearItemIdSet: Set<strin
         },
       });
   }
-  console.log(`Refreshed prices for ${rows.length} item-city-quality combinations (volume left untouched).`);
+  // Rows not refreshed above have no live price anymore: clear it (volume stays), then drop the
+  // ones that are now empty.
+  await db
+    .update(marketAggregates)
+    .set({ price: null, priceAgeSeconds: null, computedAt: now })
+    .where(sql`${marketAggregates.computedAt} < ${now.toISOString()} and ${marketAggregates.price} is not null`);
+  await db.delete(marketAggregates).where(sql`${marketAggregates.price} is null and ${marketAggregates.avgDailyVolume30d} = 0`);
+  console.log(`Refreshed prices for ${priced.length} of ${rows.length} item-city-quality combinations (volume left untouched).`);
 }
 
 function numOrNull(v: number | null): string | null {
