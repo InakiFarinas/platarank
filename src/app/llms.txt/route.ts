@@ -14,11 +14,15 @@ const BODY = `# PlataRank
 - [Equipo](${SITE_URL}/es/equipo): armas, armaduras, bolsas y capas, ponderando las 5 calidades
 - [Monturas](${SITE_URL}/es/monturas): animales de montura
 
+## Páginas por receta
+- ${SITE_URL}/es/receta/{itemId}: costo, ganancia y plata por día de una receta concreta (por ejemplo T4_2H_BOW), con sus materiales y precios
+
 ## Herramientas
 - [Calculadora de crafteo](${SITE_URL}/es/calculadora): costo de materiales, retorno de recursos, tarifa de estación, impuestos e ingreso neto de un ítem
 
 ## Documentación
 - [Metodología](${SITE_URL}/es/metodologia): fuentes de datos, filtrado de precios, retorno, tarifa de estación, impuestos y limitaciones conocidas
+- [Acerca de](${SITE_URL}/es/acerca)
 - [Privacidad](${SITE_URL}/es/privacidad)
 - [Términos](${SITE_URL}/es/terminos)
 
