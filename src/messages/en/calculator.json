@@ -107,7 +107,10 @@
     "extraCosts": "Extra costs",
     "noSellPrice": "No recent sell price for this quality and market. Type one in by hand to calculate.",
     "instantSell": "Instant sell: {value} silver (a buy order standing right now, not part of the calculation).",
-    "instantSellCity": "Instant sell: {value} silver in {city} (a buy order standing right now, not part of the calculation)."
+    "instantSellCity": "Instant sell: {value} silver in {city} (a buy order standing right now, not part of the calculation).",
+    "journals": "Laborer journals",
+    "journalsOn": "Include",
+    "journalsOff": "Don't include"
   },
   "materials": {
     "title": "Materials",
@@ -149,7 +152,11 @@
     "pin": "Pin to compare",
     "save": "Save this calculation",
     "method": "Resource return, station fee and taxes: <link>how it's calculated</link>.",
-    "seeBalance": "See balance"
+    "seeBalance": "See balance",
+    "emptyJournals": "Empty journals ({count} × {price})",
+    "fullJournals": "Full journals ({count} × {price})",
+    "journalFame": "Journal fame ({max} fills one)",
+    "journalsUnpriced": "This item's journals have no recent price (empty or full), so they aren't added to the profit."
   },
   "compare": {
     "profit": "Profit",

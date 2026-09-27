@@ -67,6 +67,7 @@ export async function POST(request: NextRequest) {
     // Gear never crafts a mount, so this never actually applies here; kept only for type
     // completeness with the shared RecipeMathParams shape.
     breedOwnMount: false,
+    journals: p.journals !== false,
   };
   const filters: FilterParams = {
     nameQuery: typeof f.nameQuery === "string" ? f.nameQuery.slice(0, 80) : "",
@@ -81,7 +82,7 @@ export async function POST(request: NextRequest) {
   };
 
   // Key on the sanitized inputs (not the raw body) so equivalent requests share one result.
-  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.focus, params.stationRatePer100Nutrition, params.craftCity, filters, sort]);
+  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.focus, params.stationRatePer100Nutrition, params.craftCity, params.journals, filters, sort]);
   const cached = results.get(key);
   if (cached && Date.now() - cached.at < RESULT_TTL_MS) return NextResponse.json(cached.body);
 

@@ -31,6 +31,7 @@ export function writeStateToUrl(params: RecipeMathParams, filters: FilterParams)
   }
   if (params.craftCity !== DEFAULT_PARAMS.craftCity) q.set("craftea", params.craftCity);
   if (params.breedOwnMount !== DEFAULT_PARAMS.breedOwnMount) q.set("cria", params.breedOwnMount ? "1" : "0");
+  if (params.journals !== DEFAULT_PARAMS.journals) q.set("diarios", params.journals ? "1" : "0");
   if (filters.nameQuery !== DEFAULT_FILTERS.nameQuery) q.set("nombre", filters.nameQuery);
   if (filters.maxAgeHours !== DEFAULT_FILTERS.maxAgeHours) q.set("antiguedad", String(filters.maxAgeHours));
   if (filters.minVolume !== DEFAULT_FILTERS.minVolume) q.set("volumen", String(filters.minVolume));
@@ -62,6 +63,7 @@ export function parseStateFromUrl(): { params: RecipeMathParams; filters: Filter
     params.craftCity = q.get("craftea") as Location;
   }
   if (q.has("cria")) params.breedOwnMount = q.get("cria") === "1";
+  if (q.has("diarios")) params.journals = q.get("diarios") === "1";
   if (q.has("nombre")) filters.nameQuery = q.get("nombre")!;
   if (q.has("antiguedad")) {
     const v = Number(q.get("antiguedad"));

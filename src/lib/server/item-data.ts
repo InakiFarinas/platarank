@@ -3,15 +3,16 @@ import { eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { marketAggregates, recipes as recipesTable } from "@/lib/db/schema";
 import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type RecipeRow } from "@/lib/recipe-math";
+import { recipeJournal } from "@/lib/journals";
 
 /** One recipe with default-assumption math, reading only its own and its materials' aggregates. */
 export const loadItemRow = cache(async (itemId: string): Promise<RecipeRow | null> => {
   const [recipe] = await db.select().from(recipesTable).where(eq(recipesTable.itemId, itemId));
   if (!recipe) return null;
-  const rows = await db
-    .select()
-    .from(marketAggregates)
-    .where(inArray(marketAggregates.itemId, [recipe.itemId, ...recipe.materials.map((m) => m.itemId)]));
+  const journal = recipeJournal(recipe);
+  const ids = [recipe.itemId, ...recipe.materials.map((m) => m.itemId)];
+  if (journal) ids.push(journal.emptyItemId, journal.fullItemId);
+  const rows = await db.select().from(marketAggregates).where(inArray(marketAggregates.itemId, ids));
   const market = new Map<string, CityPricePoint[]>();
   for (const a of rows) {
     const list = market.get(a.itemId) ?? [];

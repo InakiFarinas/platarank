@@ -1,0 +1,5706 @@
+{
+  "maxFame": {
+    "WARRIOR": {
+      "2": 900,
+      "3": 1800,
+      "4": 3600,
+      "5": 7200,
+      "6": 14400,
+      "7": 28380,
+      "8": 58590
+    },
+    "HUNTER": {
+      "2": 900,
+      "3": 1800,
+      "4": 3600,
+      "5": 7200,
+      "6": 14400,
+      "7": 28380,
+      "8": 58590
+    },
+    "MAGE": {
+      "2": 900,
+      "3": 1800,
+      "4": 3600,
+      "5": 7200,
+      "6": 14400,
+      "7": 28380,
+      "8": 58590
+    },
+    "TOOLMAKER": {
+      "2": 900,
+      "3": 1800,
+      "4": 3600,
+      "5": 7200,
+      "6": 14400,
+      "7": 28380,
+      "8": 58590
+    }
+  },
+  "byBaseItem": {
+    "T2_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T2_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T2_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T2_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T2_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T2_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T2_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T2_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T2_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T2_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T2_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T2_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T2_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T2_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T2_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T3_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T3_2H_CROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T3_2H_KNUCKLES_SET1": [
+      "WARRIOR",
+      1.2
+    ],
+    "T3_2H_QUARTERSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T3_2H_SHAPESHIFTER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T3_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_FISHINGROD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_2H_TOOL_TRACKING": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T3_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T3_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T3_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T3_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T3_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T3_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T3_MAIN_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T3_MAIN_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T3_MAIN_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T3_MAIN_DAGGER": [
+      "HUNTER",
+      1
+    ],
+    "T3_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T3_MAIN_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T3_MAIN_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T3_MAIN_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T3_MAIN_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T3_MAIN_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T3_MAIN_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T3_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T3_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T3_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T3_OFF_TORCH": [
+      "HUNTER",
+      1
+    ],
+    "T3_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T3_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T3_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_ARCANESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T4_2H_ARCANESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_2H_ARCANE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_2H_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_AXE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_BOW_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_BOW_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_BOW_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_2H_BOW_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_2H_CLAWPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_CLAYMORE": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_CLAYMORE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_CLEAVER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_COMBATSTAFF_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_2H_CROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_CROSSBOWLARGE": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_CROSSBOWLARGE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_2H_CROSSBOW_CANNON_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_CURSEDSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T4_2H_DAGGERPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_DAGGERPAIR_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_DAGGER_KATAR_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_DEMONICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_DIVINESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_DOUBLEBLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_DOUBLEBLADEDSTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_DUALAXE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_2H_DUALCROSSBOW_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_DUALCROSSBOW_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_DUALHAMMER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_DUALMACE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_DUALSCIMITAR_UNDEAD": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_2H_DUALSICKLE_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_2H_DUALSWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_ENIGMATICORB_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T4_2H_ENIGMATICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_FIRESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_2H_FIRE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_2H_FLAIL": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_FROSTSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T4_2H_GLACIALSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_GLAIVE": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_GLAIVE_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_HALBERD": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_HALBERD_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_2H_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_HAMMER_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_HAMMER_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_HAMMER_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_2H_HARPOON_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_2H_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_HOLYSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T4_2H_HOLYSTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_2H_HOLYSTAFF_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T4_2H_ICECRYSTAL_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T4_2H_ICEGAUNTLETS_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_2H_INFERNOSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_2H_INFERNOSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T4_2H_IRONCLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_KNUCKLES_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_KNUCKLES_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_KNUCKLES_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_KNUCKLES_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_2H_KNUCKLES_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_2H_KNUCKLES_SET1": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_KNUCKLES_SET2": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_KNUCKLES_SET3": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_LONGBOW": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_LONGBOW_UNDEAD": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_2H_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_MACE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_2H_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_NATURESTAFF_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_2H_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_2H_POLEHAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T4_2H_QUARTERSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_QUARTERSTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_RAM_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_2H_REPEATINGCROSSBOW_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_2H_ROCKSTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_2H_SCYTHE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_2H_SCYTHE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_2H_SHAPESHIFTER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_SHAPESHIFTER_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_2H_SHAPESHIFTER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_2H_SHAPESHIFTER_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_2H_SHAPESHIFTER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_2H_SHAPESHIFTER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_SHAPESHIFTER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_SHAPESHIFTER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_SKULLORB_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_2H_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_AXE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_FISHINGROD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_FISHINGROD_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_HAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_KNIFE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_PICK_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_SICKLE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_SIEGEHAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TOOL_TRACKING": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_2H_TRIDENT_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_2H_TWINSCYTHE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_2H_WARBOW": [
+      "HUNTER",
+      1
+    ],
+    "T4_2H_WILDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T4_ARMOR_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_ARMOR_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T4_ARMOR_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_ARMOR_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T4_ARMOR_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T4_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T4_ARMOR_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T4_ARMOR_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T4_ARMOR_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_ARMOR_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_ARMOR_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_ARMOR_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_ARMOR_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_ARMOR_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_ARMOR_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_ARMOR_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_ARMOR_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_ARMOR_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_ARMOR_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T4_ARMOR_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T4_ARMOR_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T4_ARMOR_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_ARMOR_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_ARMOR_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_ARMOR_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_ARMOR_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T4_ARMOR_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T4_ARMOR_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T4_ARMOR_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_BACKPACK_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BACKPACK_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BACKPACK_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BACKPACK_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BACKPACK_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BACKPACK_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_BAG_INSIGHT": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_HEAD_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T4_HEAD_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_HEAD_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T4_HEAD_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T4_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T4_HEAD_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T4_HEAD_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T4_HEAD_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_HEAD_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_HEAD_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_HEAD_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_HEAD_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_HEAD_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T4_HEAD_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T4_HEAD_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T4_HEAD_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_HEAD_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_HEAD_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_HEAD_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_HEAD_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T4_HEAD_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T4_HEAD_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T4_HEAD_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_MAIN_1HCROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T4_MAIN_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_MAIN_ARCANESTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T4_MAIN_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T4_MAIN_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_MAIN_CURSEDSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_MAIN_CURSEDSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T4_MAIN_CURSEDSTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T4_MAIN_DAGGER": [
+      "HUNTER",
+      1
+    ],
+    "T4_MAIN_DAGGER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_MAIN_FIRESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T4_MAIN_FIRESTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T4_MAIN_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_MAIN_FROSTSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_MAIN_FROSTSTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T4_MAIN_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T4_MAIN_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T4_MAIN_HOLYSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_MAIN_HOLYSTAFF_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T4_MAIN_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T4_MAIN_MACE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_MAIN_MACE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_MAIN_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T4_MAIN_NATURESTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_MAIN_NATURESTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_MAIN_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_MAIN_RAPIER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_MAIN_ROCKMACE_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_MAIN_SCIMITAR_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_MAIN_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T4_MAIN_SPEAR_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_MAIN_SPEAR_LANCE_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T4_MAIN_SWORD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T4_OFF_CENSER_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_OFF_DEMONSKULL_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_OFF_HORN_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_OFF_JESTERCANE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_OFF_LAMP_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_OFF_ORB_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T4_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T4_OFF_SHIELD_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_OFF_SHIELD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_OFF_SHIELD_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_OFF_SPIKEDSHIELD_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_OFF_TALISMAN_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_OFF_TOME_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T4_OFF_TORCH": [
+      "HUNTER",
+      1
+    ],
+    "T4_OFF_TORCH_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_OFF_TOTEM_KEEPER": [
+      "MAGE",
+      1.3
+    ],
+    "T4_OFF_TOWERSHIELD_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T4_SHOES_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T4_SHOES_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T4_SHOES_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T4_SHOES_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T4_SHOES_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T4_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T4_SHOES_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T4_SHOES_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T4_SHOES_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_SHOES_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_SHOES_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_SHOES_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_SHOES_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_SHOES_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T4_SHOES_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_SHOES_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T4_SHOES_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_SHOES_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T4_SHOES_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T4_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T4_SHOES_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T4_SHOES_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T4_SHOES_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T4_SHOES_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T4_SHOES_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_SHOES_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T4_SHOES_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T4_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T4_SHOES_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T4_SHOES_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T4_SHOES_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_2H_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_ARCANESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T5_2H_ARCANESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_2H_ARCANE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_2H_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_AXE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_BOW_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_BOW_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_BOW_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_2H_BOW_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_2H_CLAWPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_CLAYMORE": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_CLAYMORE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_CLEAVER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_COMBATSTAFF_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_2H_CROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_CROSSBOWLARGE": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_CROSSBOWLARGE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_2H_CROSSBOW_CANNON_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_CURSEDSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T5_2H_DAGGERPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_DAGGERPAIR_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_DAGGER_KATAR_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_DEMONICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_DIVINESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_DOUBLEBLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_DOUBLEBLADEDSTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_DUALAXE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_2H_DUALCROSSBOW_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_DUALCROSSBOW_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_DUALHAMMER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_DUALMACE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_DUALSCIMITAR_UNDEAD": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_2H_DUALSICKLE_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_2H_DUALSWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_ENIGMATICORB_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T5_2H_ENIGMATICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_FIRESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_2H_FIRE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_2H_FLAIL": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_FROSTSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T5_2H_GLACIALSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_GLAIVE": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_GLAIVE_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_HALBERD": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_HALBERD_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_2H_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_HAMMER_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_HAMMER_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_HAMMER_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_2H_HARPOON_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_2H_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_HOLYSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T5_2H_HOLYSTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_2H_HOLYSTAFF_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T5_2H_ICECRYSTAL_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T5_2H_ICEGAUNTLETS_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_2H_INFERNOSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_2H_INFERNOSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T5_2H_IRONCLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_KNUCKLES_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_KNUCKLES_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_KNUCKLES_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_KNUCKLES_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_2H_KNUCKLES_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_2H_KNUCKLES_SET1": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_KNUCKLES_SET2": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_KNUCKLES_SET3": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_LONGBOW": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_LONGBOW_UNDEAD": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_2H_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_MACE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_2H_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_NATURESTAFF_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_2H_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_2H_POLEHAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T5_2H_QUARTERSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_QUARTERSTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_RAM_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_2H_REPEATINGCROSSBOW_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_2H_ROCKSTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_2H_SCYTHE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_2H_SCYTHE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_2H_SHAPESHIFTER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_SHAPESHIFTER_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_2H_SHAPESHIFTER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_2H_SHAPESHIFTER_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_2H_SHAPESHIFTER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_2H_SHAPESHIFTER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_SHAPESHIFTER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_SHAPESHIFTER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_SKULLORB_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_2H_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_AXE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_FISHINGROD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_FISHINGROD_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_HAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_KNIFE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_PICK_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_SICKLE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_SIEGEHAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TOOL_TRACKING": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_2H_TRIDENT_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_2H_TWINSCYTHE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_2H_WARBOW": [
+      "HUNTER",
+      1
+    ],
+    "T5_2H_WILDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T5_ARMOR_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_ARMOR_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T5_ARMOR_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_ARMOR_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T5_ARMOR_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T5_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T5_ARMOR_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T5_ARMOR_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T5_ARMOR_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_ARMOR_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_ARMOR_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_ARMOR_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_ARMOR_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_ARMOR_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_ARMOR_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_ARMOR_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_ARMOR_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_ARMOR_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_ARMOR_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T5_ARMOR_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T5_ARMOR_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T5_ARMOR_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_ARMOR_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_ARMOR_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_ARMOR_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_ARMOR_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T5_ARMOR_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T5_ARMOR_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T5_ARMOR_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_BACKPACK_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BACKPACK_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BACKPACK_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BACKPACK_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BACKPACK_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BACKPACK_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_BAG_INSIGHT": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_HEAD_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T5_HEAD_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_HEAD_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T5_HEAD_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T5_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T5_HEAD_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T5_HEAD_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T5_HEAD_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_HEAD_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_HEAD_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_HEAD_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_HEAD_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_HEAD_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T5_HEAD_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T5_HEAD_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T5_HEAD_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_HEAD_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_HEAD_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_HEAD_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_HEAD_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T5_HEAD_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T5_HEAD_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T5_HEAD_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_MAIN_1HCROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T5_MAIN_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_MAIN_ARCANESTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T5_MAIN_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T5_MAIN_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_MAIN_CURSEDSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_MAIN_CURSEDSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T5_MAIN_CURSEDSTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T5_MAIN_DAGGER": [
+      "HUNTER",
+      1
+    ],
+    "T5_MAIN_DAGGER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_MAIN_FIRESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T5_MAIN_FIRESTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T5_MAIN_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_MAIN_FROSTSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_MAIN_FROSTSTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T5_MAIN_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T5_MAIN_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T5_MAIN_HOLYSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_MAIN_HOLYSTAFF_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T5_MAIN_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T5_MAIN_MACE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_MAIN_MACE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_MAIN_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T5_MAIN_NATURESTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_MAIN_NATURESTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_MAIN_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_MAIN_RAPIER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_MAIN_ROCKMACE_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_MAIN_SCIMITAR_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_MAIN_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T5_MAIN_SPEAR_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_MAIN_SPEAR_LANCE_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T5_MAIN_SWORD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T5_OFF_CENSER_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_OFF_DEMONSKULL_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_OFF_HORN_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_OFF_JESTERCANE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_OFF_LAMP_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_OFF_ORB_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T5_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T5_OFF_SHIELD_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_OFF_SHIELD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_OFF_SHIELD_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_OFF_SPIKEDSHIELD_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_OFF_TALISMAN_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_OFF_TOME_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T5_OFF_TORCH": [
+      "HUNTER",
+      1
+    ],
+    "T5_OFF_TORCH_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_OFF_TOTEM_KEEPER": [
+      "MAGE",
+      1.3
+    ],
+    "T5_OFF_TOWERSHIELD_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T5_SHOES_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T5_SHOES_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T5_SHOES_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T5_SHOES_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T5_SHOES_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T5_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T5_SHOES_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T5_SHOES_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T5_SHOES_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_SHOES_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_SHOES_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_SHOES_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_SHOES_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_SHOES_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T5_SHOES_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_SHOES_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T5_SHOES_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_SHOES_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T5_SHOES_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T5_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T5_SHOES_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T5_SHOES_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T5_SHOES_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T5_SHOES_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T5_SHOES_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_SHOES_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T5_SHOES_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T5_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T5_SHOES_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T5_SHOES_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T5_SHOES_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_2H_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_ARCANESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T6_2H_ARCANESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_2H_ARCANE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_2H_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_AXE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_BOW_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_BOW_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_BOW_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_2H_BOW_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_2H_CLAWPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_CLAYMORE": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_CLAYMORE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_CLEAVER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_COMBATSTAFF_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_2H_CROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_CROSSBOWLARGE": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_CROSSBOWLARGE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_2H_CROSSBOW_CANNON_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_CURSEDSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T6_2H_DAGGERPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_DAGGERPAIR_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_DAGGER_KATAR_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_DEMONICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_DIVINESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_DOUBLEBLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_DOUBLEBLADEDSTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_DUALAXE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_2H_DUALCROSSBOW_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_DUALCROSSBOW_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_DUALHAMMER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_DUALMACE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_DUALSCIMITAR_UNDEAD": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_2H_DUALSICKLE_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_2H_DUALSWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_ENIGMATICORB_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T6_2H_ENIGMATICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_FIRESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_2H_FIRE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_2H_FLAIL": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_FROSTSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T6_2H_GLACIALSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_GLAIVE": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_GLAIVE_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_HALBERD": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_HALBERD_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_2H_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_HAMMER_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_HAMMER_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_HAMMER_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_2H_HARPOON_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_2H_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_HOLYSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T6_2H_HOLYSTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_2H_HOLYSTAFF_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T6_2H_ICECRYSTAL_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T6_2H_ICEGAUNTLETS_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_2H_INFERNOSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_2H_INFERNOSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T6_2H_IRONCLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_KNUCKLES_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_KNUCKLES_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_KNUCKLES_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_KNUCKLES_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_2H_KNUCKLES_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_2H_KNUCKLES_SET1": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_KNUCKLES_SET2": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_KNUCKLES_SET3": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_LONGBOW": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_LONGBOW_UNDEAD": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_2H_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_MACE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_2H_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_NATURESTAFF_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_2H_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_2H_POLEHAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T6_2H_QUARTERSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_QUARTERSTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_RAM_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_2H_REPEATINGCROSSBOW_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_2H_ROCKSTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_2H_SCYTHE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_2H_SCYTHE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_2H_SHAPESHIFTER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_SHAPESHIFTER_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_2H_SHAPESHIFTER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_2H_SHAPESHIFTER_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_2H_SHAPESHIFTER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_2H_SHAPESHIFTER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_SHAPESHIFTER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_SHAPESHIFTER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_SKULLORB_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_2H_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_AXE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_FISHINGROD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_FISHINGROD_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_HAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_KNIFE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_PICK_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_SICKLE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_SIEGEHAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TOOL_TRACKING": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_2H_TRIDENT_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_2H_TWINSCYTHE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_2H_WARBOW": [
+      "HUNTER",
+      1
+    ],
+    "T6_2H_WILDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T6_ARMOR_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_ARMOR_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T6_ARMOR_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_ARMOR_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T6_ARMOR_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T6_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T6_ARMOR_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T6_ARMOR_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T6_ARMOR_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_ARMOR_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_ARMOR_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_ARMOR_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_ARMOR_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_ARMOR_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_ARMOR_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_ARMOR_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_ARMOR_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_ARMOR_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_ARMOR_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T6_ARMOR_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T6_ARMOR_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T6_ARMOR_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_ARMOR_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_ARMOR_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_ARMOR_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_ARMOR_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T6_ARMOR_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T6_ARMOR_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T6_ARMOR_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_BACKPACK_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BACKPACK_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BACKPACK_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BACKPACK_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BACKPACK_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BACKPACK_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_BAG_INSIGHT": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_HEAD_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T6_HEAD_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_HEAD_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T6_HEAD_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T6_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T6_HEAD_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T6_HEAD_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T6_HEAD_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_HEAD_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_HEAD_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_HEAD_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_HEAD_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_HEAD_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T6_HEAD_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T6_HEAD_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T6_HEAD_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_HEAD_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_HEAD_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_HEAD_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_HEAD_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T6_HEAD_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T6_HEAD_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T6_HEAD_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_MAIN_1HCROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T6_MAIN_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_MAIN_ARCANESTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T6_MAIN_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T6_MAIN_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_MAIN_CURSEDSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_MAIN_CURSEDSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T6_MAIN_CURSEDSTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T6_MAIN_DAGGER": [
+      "HUNTER",
+      1
+    ],
+    "T6_MAIN_DAGGER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_MAIN_FIRESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T6_MAIN_FIRESTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T6_MAIN_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_MAIN_FROSTSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_MAIN_FROSTSTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T6_MAIN_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T6_MAIN_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T6_MAIN_HOLYSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_MAIN_HOLYSTAFF_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T6_MAIN_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T6_MAIN_MACE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_MAIN_MACE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_MAIN_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T6_MAIN_NATURESTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_MAIN_NATURESTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_MAIN_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_MAIN_RAPIER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_MAIN_ROCKMACE_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_MAIN_SCIMITAR_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_MAIN_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T6_MAIN_SPEAR_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_MAIN_SPEAR_LANCE_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T6_MAIN_SWORD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T6_OFF_CENSER_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_OFF_DEMONSKULL_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_OFF_HORN_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_OFF_JESTERCANE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_OFF_LAMP_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_OFF_ORB_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T6_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T6_OFF_SHIELD_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_OFF_SHIELD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_OFF_SHIELD_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_OFF_SPIKEDSHIELD_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_OFF_TALISMAN_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_OFF_TOME_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T6_OFF_TORCH": [
+      "HUNTER",
+      1
+    ],
+    "T6_OFF_TORCH_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_OFF_TOTEM_KEEPER": [
+      "MAGE",
+      1.3
+    ],
+    "T6_OFF_TOWERSHIELD_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T6_SHOES_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T6_SHOES_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T6_SHOES_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T6_SHOES_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T6_SHOES_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T6_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T6_SHOES_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T6_SHOES_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T6_SHOES_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_SHOES_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_SHOES_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_SHOES_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_SHOES_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_SHOES_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T6_SHOES_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_SHOES_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T6_SHOES_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_SHOES_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T6_SHOES_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T6_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T6_SHOES_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T6_SHOES_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T6_SHOES_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T6_SHOES_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T6_SHOES_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_SHOES_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T6_SHOES_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T6_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T6_SHOES_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T6_SHOES_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T6_SHOES_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_2H_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_ARCANESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T7_2H_ARCANESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_2H_ARCANE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_2H_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_AXE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_BOW_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_BOW_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_BOW_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_2H_BOW_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_2H_CLAWPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_CLAYMORE": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_CLAYMORE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_CLEAVER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_COMBATSTAFF_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_2H_CROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_CROSSBOWLARGE": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_CROSSBOWLARGE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_2H_CROSSBOW_CANNON_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_CURSEDSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T7_2H_DAGGERPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_DAGGERPAIR_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_DAGGER_KATAR_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_DEMONICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_DIVINESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_DOUBLEBLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_DOUBLEBLADEDSTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_DUALAXE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_2H_DUALCROSSBOW_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_DUALCROSSBOW_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_DUALHAMMER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_DUALMACE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_DUALSCIMITAR_UNDEAD": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_2H_DUALSICKLE_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_2H_DUALSWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_ENIGMATICORB_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T7_2H_ENIGMATICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_FIRESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_2H_FIRE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_2H_FLAIL": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_FROSTSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T7_2H_GLACIALSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_GLAIVE": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_GLAIVE_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_HALBERD": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_HALBERD_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_2H_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_HAMMER_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_HAMMER_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_HAMMER_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_2H_HARPOON_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_2H_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_HOLYSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T7_2H_HOLYSTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_2H_HOLYSTAFF_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T7_2H_ICECRYSTAL_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T7_2H_ICEGAUNTLETS_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_2H_INFERNOSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_2H_INFERNOSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T7_2H_IRONCLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_KNUCKLES_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_KNUCKLES_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_KNUCKLES_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_KNUCKLES_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_2H_KNUCKLES_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_2H_KNUCKLES_SET1": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_KNUCKLES_SET2": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_KNUCKLES_SET3": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_LONGBOW": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_LONGBOW_UNDEAD": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_2H_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_MACE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_2H_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_NATURESTAFF_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_2H_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_2H_POLEHAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T7_2H_QUARTERSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_QUARTERSTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_RAM_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_2H_REPEATINGCROSSBOW_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_2H_ROCKSTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_2H_SCYTHE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_2H_SCYTHE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_2H_SHAPESHIFTER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_SHAPESHIFTER_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_2H_SHAPESHIFTER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_2H_SHAPESHIFTER_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_2H_SHAPESHIFTER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_2H_SHAPESHIFTER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_SHAPESHIFTER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_SHAPESHIFTER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_SKULLORB_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_2H_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_AXE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_FISHINGROD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_FISHINGROD_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_HAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_KNIFE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_PICK_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_SICKLE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_SIEGEHAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TOOL_TRACKING": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_2H_TRIDENT_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_2H_TWINSCYTHE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_2H_WARBOW": [
+      "HUNTER",
+      1
+    ],
+    "T7_2H_WILDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T7_ARMOR_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_ARMOR_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T7_ARMOR_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_ARMOR_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T7_ARMOR_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T7_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T7_ARMOR_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T7_ARMOR_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T7_ARMOR_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_ARMOR_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_ARMOR_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_ARMOR_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_ARMOR_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_ARMOR_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_ARMOR_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_ARMOR_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_ARMOR_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_ARMOR_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_ARMOR_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T7_ARMOR_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T7_ARMOR_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T7_ARMOR_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_ARMOR_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_ARMOR_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_ARMOR_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_ARMOR_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T7_ARMOR_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T7_ARMOR_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T7_ARMOR_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_BACKPACK_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BACKPACK_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BACKPACK_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BACKPACK_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BACKPACK_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BACKPACK_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_BAG_INSIGHT": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_HEAD_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T7_HEAD_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_HEAD_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T7_HEAD_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T7_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T7_HEAD_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T7_HEAD_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T7_HEAD_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_HEAD_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_HEAD_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_HEAD_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_HEAD_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_HEAD_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T7_HEAD_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T7_HEAD_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T7_HEAD_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_HEAD_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_HEAD_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_HEAD_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_HEAD_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T7_HEAD_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T7_HEAD_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T7_HEAD_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_MAIN_1HCROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T7_MAIN_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_MAIN_ARCANESTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T7_MAIN_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T7_MAIN_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_MAIN_CURSEDSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_MAIN_CURSEDSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T7_MAIN_CURSEDSTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T7_MAIN_DAGGER": [
+      "HUNTER",
+      1
+    ],
+    "T7_MAIN_DAGGER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_MAIN_FIRESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T7_MAIN_FIRESTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T7_MAIN_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_MAIN_FROSTSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_MAIN_FROSTSTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T7_MAIN_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T7_MAIN_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T7_MAIN_HOLYSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_MAIN_HOLYSTAFF_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T7_MAIN_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T7_MAIN_MACE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_MAIN_MACE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_MAIN_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T7_MAIN_NATURESTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_MAIN_NATURESTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_MAIN_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_MAIN_RAPIER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_MAIN_ROCKMACE_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_MAIN_SCIMITAR_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_MAIN_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T7_MAIN_SPEAR_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_MAIN_SPEAR_LANCE_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T7_MAIN_SWORD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T7_OFF_CENSER_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_OFF_DEMONSKULL_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_OFF_HORN_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_OFF_JESTERCANE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_OFF_LAMP_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_OFF_ORB_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T7_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T7_OFF_SHIELD_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_OFF_SHIELD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_OFF_SHIELD_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_OFF_SPIKEDSHIELD_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_OFF_TALISMAN_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_OFF_TOME_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T7_OFF_TORCH": [
+      "HUNTER",
+      1
+    ],
+    "T7_OFF_TORCH_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_OFF_TOTEM_KEEPER": [
+      "MAGE",
+      1.3
+    ],
+    "T7_OFF_TOWERSHIELD_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T7_SHOES_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T7_SHOES_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T7_SHOES_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T7_SHOES_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T7_SHOES_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T7_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T7_SHOES_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T7_SHOES_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T7_SHOES_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_SHOES_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_SHOES_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_SHOES_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_SHOES_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_SHOES_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T7_SHOES_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_SHOES_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T7_SHOES_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_SHOES_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T7_SHOES_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T7_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T7_SHOES_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T7_SHOES_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T7_SHOES_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T7_SHOES_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T7_SHOES_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_SHOES_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T7_SHOES_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T7_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T7_SHOES_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T7_SHOES_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T7_SHOES_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_2H_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_ARCANESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T8_2H_ARCANESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_2H_ARCANE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_2H_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_AXE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_BOW": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_BOW_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_BOW_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_BOW_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_2H_BOW_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_2H_CLAWPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_CLAYMORE": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_CLAYMORE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_CLEAVER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_COMBATSTAFF_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_2H_CROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_CROSSBOWLARGE": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_CROSSBOWLARGE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_2H_CROSSBOW_CANNON_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_CURSEDSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T8_2H_DAGGERPAIR": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_DAGGERPAIR_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_DAGGER_KATAR_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_DEMONICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_DIVINESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_DOUBLEBLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_DOUBLEBLADEDSTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_DUALAXE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_2H_DUALCROSSBOW_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_DUALCROSSBOW_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_DUALHAMMER_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_DUALMACE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_DUALSCIMITAR_UNDEAD": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_2H_DUALSICKLE_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_2H_DUALSWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_ENIGMATICORB_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T8_2H_ENIGMATICSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_FIRESTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_2H_FIRE_RINGPAIR_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_2H_FLAIL": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_FROSTSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T8_2H_GLACIALSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_GLAIVE": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_GLAIVE_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_HALBERD": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_HALBERD_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_2H_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_HAMMER_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_HAMMER_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_HAMMER_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_2H_HARPOON_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_2H_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_HOLYSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T8_2H_HOLYSTAFF_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_2H_HOLYSTAFF_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T8_2H_ICECRYSTAL_UNDEAD": [
+      "MAGE",
+      1.3
+    ],
+    "T8_2H_ICEGAUNTLETS_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_2H_INFERNOSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_2H_INFERNOSTAFF_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T8_2H_IRONCLADEDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_KNUCKLES_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_KNUCKLES_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_KNUCKLES_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_KNUCKLES_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_2H_KNUCKLES_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_2H_KNUCKLES_SET1": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_KNUCKLES_SET2": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_KNUCKLES_SET3": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_LONGBOW": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_LONGBOW_UNDEAD": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_2H_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_MACE_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_2H_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_NATURESTAFF_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_2H_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_2H_POLEHAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T8_2H_QUARTERSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_QUARTERSTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_RAM_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_2H_REPEATINGCROSSBOW_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_2H_ROCKSTAFF_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_2H_SCYTHE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_2H_SCYTHE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_2H_SHAPESHIFTER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_SHAPESHIFTER_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_2H_SHAPESHIFTER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_2H_SHAPESHIFTER_KEEPER": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_2H_SHAPESHIFTER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_2H_SHAPESHIFTER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_SHAPESHIFTER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_SHAPESHIFTER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_SKULLORB_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_2H_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_TOOL_AXE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_AXE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_FISHINGROD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_FISHINGROD_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_HAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_HAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_KNIFE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_KNIFE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_PICK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_PICK_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_SICKLE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_SICKLE_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_SIEGEHAMMER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_SIEGEHAMMER_AVALON": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TOOL_TRACKING": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_2H_TRIDENT_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_2H_TWINSCYTHE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_2H_WARBOW": [
+      "HUNTER",
+      1
+    ],
+    "T8_2H_WILDSTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T8_ARMOR_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_ARMOR_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T8_ARMOR_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_ARMOR_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T8_ARMOR_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T8_ARMOR_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T8_ARMOR_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T8_ARMOR_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T8_ARMOR_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_ARMOR_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_ARMOR_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_ARMOR_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_ARMOR_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_ARMOR_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_ARMOR_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_ARMOR_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_ARMOR_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_ARMOR_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_ARMOR_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_ARMOR_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T8_ARMOR_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T8_ARMOR_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T8_ARMOR_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_ARMOR_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_ARMOR_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_ARMOR_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_ARMOR_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_ARMOR_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T8_ARMOR_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T8_ARMOR_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T8_ARMOR_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_BACKPACK_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BACKPACK_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BACKPACK_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BACKPACK_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BACKPACK_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BACKPACK_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BAG": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_BAG_INSIGHT": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_CAPE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_HEAD_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T8_HEAD_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_HEAD_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T8_HEAD_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T8_HEAD_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T8_HEAD_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T8_HEAD_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T8_HEAD_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_HEAD_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_HEAD_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_HEAD_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_HEAD_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_HEAD_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_HEAD_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T8_HEAD_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T8_HEAD_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T8_HEAD_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_HEAD_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_HEAD_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_HEAD_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_HEAD_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_HEAD_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T8_HEAD_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T8_HEAD_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T8_HEAD_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_MAIN_1HCROSSBOW": [
+      "WARRIOR",
+      1
+    ],
+    "T8_MAIN_ARCANESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_MAIN_ARCANESTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T8_MAIN_AXE": [
+      "WARRIOR",
+      1
+    ],
+    "T8_MAIN_CURSEDSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_MAIN_CURSEDSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_MAIN_CURSEDSTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T8_MAIN_CURSEDSTAFF_UNDEAD": [
+      "MAGE",
+      1.1
+    ],
+    "T8_MAIN_DAGGER": [
+      "HUNTER",
+      1
+    ],
+    "T8_MAIN_DAGGER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_MAIN_FIRESTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_MAIN_FIRESTAFF_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T8_MAIN_FIRESTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T8_MAIN_FROSTSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_MAIN_FROSTSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_MAIN_FROSTSTAFF_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T8_MAIN_HAMMER": [
+      "WARRIOR",
+      1
+    ],
+    "T8_MAIN_HOLYSTAFF": [
+      "MAGE",
+      1
+    ],
+    "T8_MAIN_HOLYSTAFF_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_MAIN_HOLYSTAFF_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T8_MAIN_MACE": [
+      "WARRIOR",
+      1
+    ],
+    "T8_MAIN_MACE_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_MAIN_MACE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_MAIN_NATURESTAFF": [
+      "HUNTER",
+      1
+    ],
+    "T8_MAIN_NATURESTAFF_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_MAIN_NATURESTAFF_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_MAIN_NATURESTAFF_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_MAIN_RAPIER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_MAIN_ROCKMACE_KEEPER": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_MAIN_SCIMITAR_MORGANA": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_MAIN_SPEAR": [
+      "HUNTER",
+      1
+    ],
+    "T8_MAIN_SPEAR_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_MAIN_SPEAR_LANCE_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_MAIN_SWORD": [
+      "WARRIOR",
+      1
+    ],
+    "T8_MAIN_SWORD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_OFF_BOOK": [
+      "MAGE",
+      1
+    ],
+    "T8_OFF_CENSER_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_OFF_DEMONSKULL_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_OFF_HORN_KEEPER": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_OFF_JESTERCANE_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_OFF_LAMP_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_OFF_ORB_MORGANA": [
+      "MAGE",
+      1.1
+    ],
+    "T8_OFF_SHIELD": [
+      "WARRIOR",
+      1
+    ],
+    "T8_OFF_SHIELD_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_OFF_SHIELD_CRYSTAL": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_OFF_SHIELD_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_OFF_SPIKEDSHIELD_MORGANA": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_OFF_TALISMAN_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_OFF_TOME_CRYSTAL": [
+      "MAGE",
+      1.4
+    ],
+    "T8_OFF_TORCH": [
+      "HUNTER",
+      1
+    ],
+    "T8_OFF_TORCH_CRYSTAL": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_OFF_TOTEM_KEEPER": [
+      "MAGE",
+      1.3
+    ],
+    "T8_OFF_TOWERSHIELD_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ],
+    "T8_SHOES_CLOTH_AVALON": [
+      "MAGE",
+      1.4
+    ],
+    "T8_SHOES_CLOTH_FEY": [
+      "MAGE",
+      1.3
+    ],
+    "T8_SHOES_CLOTH_HELL": [
+      "MAGE",
+      1.2
+    ],
+    "T8_SHOES_CLOTH_KEEPER": [
+      "MAGE",
+      1.1
+    ],
+    "T8_SHOES_CLOTH_MORGANA": [
+      "MAGE",
+      1.3
+    ],
+    "T8_SHOES_CLOTH_SET1": [
+      "MAGE",
+      1
+    ],
+    "T8_SHOES_CLOTH_SET2": [
+      "MAGE",
+      1
+    ],
+    "T8_SHOES_CLOTH_SET3": [
+      "MAGE",
+      1
+    ],
+    "T8_SHOES_GATHERER_FIBER": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_SHOES_GATHERER_FISH": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_SHOES_GATHERER_HIDE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_SHOES_GATHERER_ORE": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_SHOES_GATHERER_ROCK": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_SHOES_GATHERER_WOOD": [
+      "TOOLMAKER",
+      1
+    ],
+    "T8_SHOES_LEATHER_AVALON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_SHOES_LEATHER_DRAGON": [
+      "HUNTER",
+      1.4
+    ],
+    "T8_SHOES_LEATHER_FEY": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_SHOES_LEATHER_HELL": [
+      "HUNTER",
+      1.2
+    ],
+    "T8_SHOES_LEATHER_MORGANA": [
+      "HUNTER",
+      1.1
+    ],
+    "T8_SHOES_LEATHER_SET1": [
+      "HUNTER",
+      1
+    ],
+    "T8_SHOES_LEATHER_SET2": [
+      "HUNTER",
+      1
+    ],
+    "T8_SHOES_LEATHER_SET3": [
+      "HUNTER",
+      1
+    ],
+    "T8_SHOES_LEATHER_UNDEAD": [
+      "HUNTER",
+      1.3
+    ],
+    "T8_SHOES_PLATE_AVALON": [
+      "WARRIOR",
+      1.4
+    ],
+    "T8_SHOES_PLATE_FEY": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_SHOES_PLATE_HELL": [
+      "WARRIOR",
+      1.2
+    ],
+    "T8_SHOES_PLATE_KEEPER": [
+      "WARRIOR",
+      1.3
+    ],
+    "T8_SHOES_PLATE_SET1": [
+      "WARRIOR",
+      1
+    ],
+    "T8_SHOES_PLATE_SET2": [
+      "WARRIOR",
+      1
+    ],
+    "T8_SHOES_PLATE_SET3": [
+      "WARRIOR",
+      1
+    ],
+    "T8_SHOES_PLATE_UNDEAD": [
+      "WARRIOR",
+      1.1
+    ]
+  }
+}

@@ -28,7 +28,9 @@
     "required": "Este campo es obligatorio.",
     "invalidNumber": "Ingresá un número válido.",
     "clampedMin": "Ajustado a {value} (mínimo permitido).",
-    "clampedMax": "Ajustado a {value} (máximo permitido)."
+    "clampedMax": "Ajustado a {value} (máximo permitido).",
+    "journalsLabel": "Sumar los diarios de trabajador",
+    "journalsNote": "Comprás el diario vacío del tier del ítem, lo llenás con la fama del craft y lo vendés lleno. Esa ganancia se suma al costo, al ingreso neto y a la plata/día. Solo equipo: refinado, alquimia y cocina no llenan diarios en el juego."
   },
   "explorer": {
     "showingTop": "Mostrando las {shown} mejores de {total} recetas.",
@@ -44,7 +46,8 @@
     "chipSell": "Vender en {count, plural, one {# ciudad} other {# ciudades}}",
     "chipFocus": "Foco activado",
     "chipBreed": "Criando caballo/buey",
-    "removeFilter": "Quitar filtro: {label}"
+    "removeFilter": "Quitar filtro: {label}",
+    "chipNoJournals": "Sin diarios"
   },
   "table": {
     "noMatches": "No hay recetas que coincidan con la búsqueda o los filtros actuales.",
@@ -110,6 +113,19 @@
     "noPriceData": "sin dato de precio",
     "costPerUnit": "Costo por unidad",
     "netRevenuePerUnit": "Ingreso neto por unidad",
-    "profitPerUnit": "Ganancia por unidad"
+    "profitPerUnit": "Ganancia por unidad",
+    "journalTitle": "Diario de {type}",
+    "journalType_WARRIOR": "herrero",
+    "journalType_HUNTER": "flechero",
+    "journalType_MAGE": "imbuidor",
+    "journalType_TOOLMAKER": "hojalatero",
+    "journalFame": "Fama por craft",
+    "journalFameValue": "{fame} (el diario se llena con {max})",
+    "journalsPerUnit": "Diarios llenos por unidad",
+    "journalEmpty": "Diario vacío (el más barato)",
+    "journalFull": "Diario lleno (venta)",
+    "journalProfit": "Suma por unidad (tras impuestos)",
+    "journalNotAdded": "sin precio, no se suma",
+    "journalExcluded": " (no sumado: diarios desactivados)"
   }
 }

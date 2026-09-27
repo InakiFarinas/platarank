@@ -5,6 +5,7 @@ import { db } from "@/lib/db/client";
 import { alerts, marketAggregates, plans, recipes, userSettings, type Recipe } from "@/lib/db/schema";
 import { computeCraft, type CraftParams } from "@/lib/craft-calc";
 import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
+import { recipeJournal } from "@/lib/journals";
 import type { CityPricePoint } from "@/lib/recipe-math";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
@@ -40,6 +41,9 @@ export async function runAlerts(now: Date) {
     // market-traded babies too, or re-pricing would silently fall back to the market price it was
     // saved to avoid.
     if (r.stationType === "mount") for (const itemId of ALL_BREEDING_MARKET_ITEMS) marketIds.add(itemId);
+    // Same for a gear plan's labourer journal, which the plan's profit includes by default.
+    const journal = recipeJournal(r);
+    if (journal) marketIds.add(journal.emptyItemId).add(journal.fullItemId);
   }
   const market: Record<string, CityPricePoint[]> = {};
   for (const a of await db.select().from(marketAggregates).where(inArray(marketAggregates.itemId, [...marketIds]))) {

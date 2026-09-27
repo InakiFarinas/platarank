@@ -107,7 +107,10 @@
     "extraCosts": "Costos extra",
     "noSellPrice": "Sin precio de venta reciente para esta calidad y mercado. Escribí uno a mano para calcular.",
     "instantSell": "Venta instantánea: {value} plata (orden de compra puesta ahora, no forma parte del cálculo).",
-    "instantSellCity": "Venta instantánea: {value} plata en {city} (orden de compra puesta ahora, no forma parte del cálculo)."
+    "instantSellCity": "Venta instantánea: {value} plata en {city} (orden de compra puesta ahora, no forma parte del cálculo).",
+    "journals": "Diarios de trabajador",
+    "journalsOn": "Incluir",
+    "journalsOff": "No incluir"
   },
   "materials": {
     "title": "Materiales",
@@ -149,7 +152,11 @@
     "pin": "Fijar para comparar",
     "save": "Guardar este cálculo",
     "method": "Retorno, tarifa de estación e impuestos: <link>cómo se calcula</link>.",
-    "seeBalance": "Ver balance"
+    "seeBalance": "Ver balance",
+    "emptyJournals": "Diarios vacíos ({count} × {price})",
+    "fullJournals": "Diarios llenos ({count} × {price})",
+    "journalFame": "Fama para diarios (llena {max} cada uno)",
+    "journalsUnpriced": "Los diarios de este ítem no tienen precio reciente (vacío o lleno), así que no se suman a la ganancia."
   },
   "compare": {
     "profit": "Ganancia",

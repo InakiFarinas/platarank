@@ -49,6 +49,7 @@ function paramsToQuery(itemId: string, p: PlanParams): string {
   if (p.feeRate !== DEFAULTS.feeRate) q.set("fee", String(p.feeRate));
   if (p.extraCost !== DEFAULTS.extraCost) q.set("extra", String(p.extraCost));
   if (p.breedOwnMount) q.set("cria", "1");
+  if (p.journals === false) q.set("diarios", "0");
   if (p.sellOverride !== null) q.set("sell", String(p.sellOverride));
   const mo = Object.entries(p.matOverrides);
   if (mo.length > 0) q.set("mo", mo.map(([id, v]) => `${id}:${v}`).join(";"));
@@ -78,6 +79,7 @@ function paramsFromUrl(sp: URLSearchParams): Partial<PlanParams> {
     feeRate: int("fee", 0),
     extraCost: int("extra", 0),
     breedOwnMount: sp.get("cria") === "1" ? true : undefined,
+    journals: sp.get("diarios") === "0" ? false : undefined,
     sellOverride: int("sell", 0),
     matOverrides: Object.keys(matOverrides).length > 0 ? matOverrides : undefined,
   };
@@ -124,6 +126,7 @@ export function Calculator() {
   const [feeRate, setFeeRate] = useState(DEFAULTS.feeRate);
   const [extraCost, setExtraCost] = useState(0);
   const [breedOwnMount, setBreedOwnMount] = useState(false);
+  const [journals, setJournals] = useState(true);
   const [sellOverride, setSellOverride] = useState<number | null>(null);
   const [matOverrides, setMatOverrides] = useState<Record<string, number>>({});
 
@@ -231,6 +234,8 @@ export function Calculator() {
     if (p.feeRate !== undefined) setFeeRate(p.feeRate);
     if (p.extraCost !== undefined) setExtraCost(p.extraCost);
     if (p.breedOwnMount !== undefined) setBreedOwnMount(p.breedOwnMount);
+    // A plan saved before journals existed reads as ON, same as computeCraft does.
+    setJournals(p.journals !== false);
     if (p.sellOverride !== undefined) setSellOverride(p.sellOverride);
     if (p.matOverrides !== undefined) setMatOverrides(p.matOverrides);
   }
@@ -253,11 +258,12 @@ export function Calculator() {
             feeRate,
             extraCost,
             breedOwnMount,
+            journals,
             sellOverride,
             matOverrides,
           })
         : null,
-    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, sellOverride, matOverrides],
+    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, journals, sellOverride, matOverrides],
   );
 
   // Keep the address bar a shareable snapshot of the calculation.
@@ -269,14 +275,14 @@ export function Calculator() {
         window.history.replaceState(
           null,
           "",
-          `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, sellOverride, matOverrides })}`,
+          `?${paramsToQuery(data.recipe.itemId, { qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, journals, sellOverride, matOverrides })}`,
         );
       } catch {
         // The address bar just stops mirroring the calculation; nothing else depends on it.
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, sellOverride, matOverrides]);
+  }, [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, journals, sellOverride, matOverrides]);
 
   // Screen readers hear the bottom line once typing pauses, not on every keystroke.
   useEffect(() => {
@@ -346,6 +352,7 @@ export function Calculator() {
             feeRate,
             extraCost,
             breedOwnMount,
+            journals,
             sellOverride,
             matOverrides,
           } satisfies PlanParams,
@@ -629,6 +636,17 @@ export function Calculator() {
                     onChange={(v) => setBreedOwnMount(v === "cria")}
                   />
                 )}
+                {calc.journal && (
+                  <Segmented
+                    label={t("conditions.journals")}
+                    value={journals ? "si" : "no"}
+                    options={[
+                      { value: "si", text: t("conditions.journalsOn") },
+                      { value: "no", text: t("conditions.journalsOff") },
+                    ]}
+                    onChange={(v) => setJournals(v === "si")}
+                  />
+                )}
               </div>
 
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -791,12 +809,27 @@ export function Calculator() {
                 <dl className="space-y-1.5">
                   <Line label={t("ledger.materials", { crafts: calc.crafts })} value={fInt(calc.materialsTotal)} />
                   <Line label={t("ledger.station", { fee: fInt(calc.feePerCraft), crafts: calc.crafts })} value={fInt(calc.feeTotal)} />
+                  {calc.journal?.included && (
+                    <Line
+                      label={t("ledger.emptyJournals", { count: dec(calc.journal.count.toFixed(2), locale), price: fInt(calc.journal.emptyPrice!) })}
+                      value={fInt(calc.journal.cost)}
+                    />
+                  )}
                   {extraCost > 0 && <Line label={t("ledger.extra")} value={fInt(extraCost)} />}
                   <Line label={t("ledger.investment")} value={fInt(calc.cost)} total />
                 </dl>
                 <dl className="space-y-1.5">
                   <Line label={t("ledger.gross", { produced: fInt(calc.produced), price: fInt(calc.sellPrice) })} value={fInt(calc.gross)} />
-                  <Line label={t("ledger.taxes", { pct: dec((calc.taxRate * 100).toFixed(1), locale) })} value={`−${fInt(calc.gross * calc.taxRate)}`} />
+                  {calc.journal?.included && (
+                    <Line
+                      label={t("ledger.fullJournals", { count: dec(calc.journal.count.toFixed(2), locale), price: fInt(calc.journal.fullPrice!) })}
+                      value={fInt(calc.journal.gross)}
+                    />
+                  )}
+                  <Line
+                    label={t("ledger.taxes", { pct: dec((calc.taxRate * 100).toFixed(1), locale) })}
+                    value={`−${fInt((calc.gross + (calc.journal?.gross ?? 0)) * calc.taxRate)}`}
+                  />
                   <Line label={t("ledger.netRevenue")} value={fInt(calc.revenue)} total />
                 </dl>
 
@@ -828,7 +861,17 @@ export function Calculator() {
                     <Line label={t("ledger.perUnit")} value={fInt(calc.perUnit)} muted />
                     {focus && <Line label={t("ledger.focusNeeded")} value={fInt(calc.focusTotal)} muted />}
                     <Line label={t("ledger.volume")} value={fInt(calc.volume)} muted />
+                    {calc.journal && (
+                      <Line
+                        label={t("ledger.journalFame", { max: fInt(calc.journal.maxFame) })}
+                        value={fInt(calc.journal.fame)}
+                        muted
+                      />
+                    )}
                   </dl>
+                  {calc.journal && journals && !calc.journal.priced && (
+                    <p className="mt-2 text-xs text-muted-foreground">{t("ledger.journalsUnpriced")}</p>
+                  )}
                   <DisclosureButton
                     open={srcOpen}
                     onToggle={() => setSrcOpen((o) => !o)}

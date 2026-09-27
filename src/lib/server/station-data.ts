@@ -4,6 +4,7 @@ import { recipes as recipesTable, marketAggregates, rankSnapshots, type Recipe }
 import { computeRecipeRow, DEFAULT_PARAMS, SORT_ACCESSORS, type CityPricePoint, type RecipeMathParams, type RecipeRow, type SortKey } from "@/lib/recipe-math";
 import { applyFilters, DEFAULT_FILTERS, type FilterParams } from "@/lib/recipe-filters";
 import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
+import { ALL_JOURNAL_MARKET_ITEMS } from "@/lib/journals";
 
 /** Rows shipped per ranking view of a large station (gear). */
 export const ROW_LIMIT = 300;
@@ -61,6 +62,11 @@ export async function loadStationData(stationType: StationType): Promise<Station
   // never be fetched here.
   if (stationType === "mount") {
     for (const itemId of ALL_BREEDING_MARKET_ITEMS) relevantItemIds.add(itemId);
+  }
+  // Equipo: the empty and full labourer journals a craft fills (see src/lib/journals.ts) aren't
+  // materials of any recipe either.
+  if (stationType === "gear") {
+    for (const itemId of ALL_JOURNAL_MARKET_ITEMS) relevantItemIds.add(itemId);
   }
 
   const marketByItem = await loadMarketFor(relevantItemIds);

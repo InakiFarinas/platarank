@@ -47,6 +47,19 @@ export default function Es() {
         con ventas). No modelamos el efecto del foco, la comida ni el tablero del destino sobre la calidad, porque esa fórmula no es pública.
       </p>
 
+      <h2>Diarios de trabajador</h2>
+      <p>
+        Craftear equipo llena diarios de trabajador: placas, espadas, hachas, mazas, martillos, ballestas y guanteletes llenan el de herrero;
+        cuero, arcos, dagas, lanzas, bastones de combate, naturales y cambiaformas, el de flechero; tela y bastones de fuego, hielo, arcano,
+        sagrado y maldición, el de imbuidor; herramientas, capas, bolsas y equipo de recolección, el de hojalatero. El diario
+        tiene que ser del mismo tier que el ítem. Por defecto sumamos esa ganancia: comprás el diario vacío en la ciudad más barata, lo llenás y
+        lo vendés lleno al precio de referencia, con el mismo impuesto que el ítem. La fama de un craft es la cantidad de recursos refinados de la
+        receta × la fama por recurso del tier (22,5 en T4, 90 en T5, 270 en T6, 645 en T7, 1.395 en T8; se duplica con cada encantamiento) × el
+        factor propio del ítem en los artefactos (1,1 a 1,4). Los artefactos no suman fama, el bono de premium no llena diarios, y el foco y la
+        calidad no cambian la fama. Qué ítem llena qué diario y cuánta fama entra en cada uno salen del volcado del juego. Refinado, alquimia y
+        cocina no llenan ningún diario.
+      </p>
+
       <h2>Monturas criadas</h2>
       <p>
         En monturas podés elegir criar el animal base en vez de comprarlo crecido. En caballo y buey (T3 a T8) la cría tiene un precio fijo en el
@@ -61,9 +74,10 @@ export default function Es() {
 
       <h2>Limitaciones conocidas</h2>
       <ul>
-        <li>La calculadora todavía no modela diarios ni maestrías (el foco necesario se muestra sin reducción por maestría).</li>
+        <li>La calculadora todavía no modela maestrías (el foco necesario se muestra sin reducción por maestría).</li>
         <li>El Black Market acepta calidades iguales o mayores a la pedida y no lo modelamos: solo contamos la calidad exacta.</li>
-        <li>No modelamos el reroll de calidad ni los diarios.</li>
+        <li>No modelamos el reroll de calidad.</li>
+        <li>El volumen de venta de los diarios llenos no limita la plata/día: asumimos que se venden al ritmo del ítem.</li>
         <li>Los datos dependen de que jugadores los suban al proyecto; ítems poco comerciados pueden tener precios viejos.</li>
       </ul>
     </>

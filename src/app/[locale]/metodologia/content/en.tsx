@@ -43,6 +43,18 @@ export default function En() {
         with sales). We do not model the effect of focus, food or the destiny board on quality, because that formula is not public.
       </p>
 
+      <h2>Laborer journals</h2>
+      <p>
+        Crafting gear fills laborer journals: plate, swords, axes, maces, hammers, crossbows and war gloves fill the Blacksmith&apos;s; leather,
+        bows, daggers, spears, quarterstaffs, nature and shapeshifter staffs, the Fletcher&apos;s; cloth and fire, frost, arcane, holy and cursed
+        staffs, the Imbuer&apos;s; tools, capes, bags and gathering gear, the Tinker&apos;s. The journal must match
+        the item&apos;s tier. By default we add that profit: you buy the empty journal in the cheapest city, fill it and sell it full at the
+        reference price, taxed like the item. A craft&apos;s fame is the recipe&apos;s refined resources × the tier&apos;s fame per resource (22.5 at
+        T4, 90 at T5, 270 at T6, 645 at T7, 1,395 at T8; doubled per enchantment) × the item&apos;s own factor for artifact gear (1.1 to 1.4).
+        Artifacts add no fame, the premium bonus doesn&apos;t fill journals, and focus and quality don&apos;t change fame. Which item fills which
+        journal and how much fame each one holds come from the game data dump. Refining, alchemy and cooking fill no journal.
+      </p>
+
       <h2>Raised mounts</h2>
       <p>
         For mounts you can choose to raise the base animal instead of buying it fully grown. For horse and ox (T3 to T8) the young animal has a
@@ -57,9 +69,10 @@ export default function En() {
 
       <h2>Known limitations</h2>
       <ul>
-        <li>The calculator does not yet model journals or masteries (the focus required is shown without mastery reduction).</li>
+        <li>The calculator does not yet model masteries (the focus required is shown without mastery reduction).</li>
         <li>The Black Market accepts qualities equal to or higher than the one requested and we do not model that: we only count the exact quality.</li>
-        <li>We do not model quality rerolls or journals.</li>
+        <li>We do not model quality rerolls.</li>
+        <li>Full journals&apos; sales volume doesn&apos;t cap silver per day: we assume they sell at the item&apos;s pace.</li>
         <li>The data depends on players uploading it to the project; rarely traded items may have stale prices.</li>
       </ul>
     </>
