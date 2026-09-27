@@ -46,6 +46,8 @@ const ENGLISH_SLUGS = (Object.values(ROUTES) as { es: string; en: string }[]).fi
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // The OG image route reads public/logo-og.png at runtime (it is dynamic per locale), so Vercel must bundle it.
+  outputFileTracingIncludes: { "/[locale]/opengraph-image/[__metadata_id__]": ["./public/logo-og.png"] },
   // Locales: es (default) and en. Route folders under app/[locale] keep the Spanish names; the
   // English slugs are rewrites onto them (the Spanish slug under /en redirects to the English one).
   // Paths without a locale prefix go to /es; "/" itself picks by Accept-Language (app/route.ts).
