@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-25T06:41:20.211Z",
+  "generatedAt": "2026-09-27T01:21:34.631Z",
   "title": "Design System: PlataRank",
   "extensions": {
     "colorMeta": {
@@ -89,13 +89,22 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Column headers and stat captions, in Geist Sans."
+        "purpose": "Column headers and stat captions, in Geist Sans at 12px (the text floor)."
       }
     },
     "breakpoints": [
       {
         "name": "sm",
         "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px",
+        "purpose": "Header nav switches from the left Sheet menu to the inline row."
       }
     ],
     "motion": [
@@ -230,7 +239,9 @@
       "**Do** keep the Faction Banner Rule's saturated per-city colors and emblem glyphs confined to the city selector -- it is the one control allowed a full palette, not a precedent for adding color elsewhere.",
       "**Do** build any money-colored button from `CTA_PRIMARY` or `CTA_SECONDARY` (`src/lib/cta.ts`) and add only size and layout classes.",
       "**Do** give any small text link a 24px-tall hit area (`min-h-6` or an `after:-inset-*` pad), and keep touch targets on the mobile-first surfaces at 44px.",
-      "**Do** keep color feedback under `prefers-reduced-motion`; remove movement (transforms, spinners), not the hover change itself."
+      "**Do** keep color feedback under `prefers-reduced-motion`; remove movement (transforms, spinners), not the hover change itself.",
+      "Do reuse the shared pieces before writing a new one: DisclosureButton, ConfirmDelete, ranking-loading/ranking-error, formatInt. A second copy of any of them is a bug.",
+      "Do keep text at 12px or larger and give every page the skip-to-content link and one <main id=\"contenido\">."
     ],
     "donts": [
       "**Don't** introduce a light theme variant; dark-only is a confirmed product decision (`<html class=\"dark\">` is hardcoded).",
