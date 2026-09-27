@@ -12,7 +12,7 @@ import { CTA_SECONDARY } from "@/lib/cta";
 import { itemIconUrl } from "@/lib/item-icons";
 import { CITY_THEMES } from "@/lib/city-theme";
 import type { Location } from "@/lib/aodp/cities";
-import type { QualityBreakdownEntry, RecipeRow as RecipeRowData } from "@/lib/recipe-math";
+import type { JournalLine, QualityBreakdownEntry, RecipeRow as RecipeRowData } from "@/lib/recipe-math";
 import { cn } from "@/lib/utils";
 import { localePath, type Locale } from "@/i18n/config";
 import { itemName } from "@/lib/item-names";
@@ -322,8 +322,43 @@ function RowDetail({ row }: { row: RecipeRowData }) {
             />
             <Row k={t("profitPerUnit")} v={row.profitPerUnit !== null ? t("silverAmount", { value: formatSilver(row.profitPerUnit) }) : "--"} />
           </dl>
+          {row.journal && <JournalDetail journal={row.journal} />}
         </section>
       </div>
+    </div>
+  );
+}
+
+/** The labourer journal this craft fills: how much fame, how many journals per unit, and what buying
+ * them empty and selling them full adds (or why it adds nothing). */
+function JournalDetail({ journal }: { journal: JournalLine }) {
+  const t = useTranslations("rankingUi.row");
+  const locale = useLocale() as Locale;
+  const journalsPerUnit = journal.journalsPerUnit.toLocaleString(locale, { maximumFractionDigits: 3 });
+  return (
+    <div className="mt-3">
+      <h4 className="mb-1 font-medium text-foreground">{t("journalTitle", { type: t(`journalType_${journal.type}`) })}</h4>
+      <dl className="space-y-1 text-muted-foreground">
+        <Row k={t("journalFame")} v={t("journalFameValue", { fame: formatSilver(journal.famePerCraft), max: formatSilver(journal.maxFame) })} />
+        <Row k={t("journalsPerUnit")} v={journalsPerUnit} />
+        <Row
+          k={t("journalEmpty")}
+          v={
+            journal.emptyPrice !== null
+              ? `${t("silverAmount", { value: formatSilver(journal.emptyPrice) })}${journal.emptyCity ? ` · ${journal.emptyCity}` : ""}`
+              : t("noPriceData")
+          }
+        />
+        <Row k={t("journalFull")} v={journal.fullPrice !== null ? t("silverAmount", { value: formatSilver(journal.fullPrice) }) : t("noPriceData")} />
+        <Row
+          k={t("journalProfit")}
+          v={
+            journal.profitPerUnit === null
+              ? t("journalNotAdded")
+              : `${t("silverAmount", { value: formatSilver(journal.profitPerUnit) })}${journal.included ? "" : t("journalExcluded")}`
+          }
+        />
+      </dl>
     </div>
   );
 }

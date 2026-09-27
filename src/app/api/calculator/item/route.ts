@@ -4,6 +4,7 @@ import { db } from "@/lib/db/client";
 import { marketAggregates, recipes } from "@/lib/db/schema";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
+import { recipeJournal } from "@/lib/journals";
 
 const CACHE_HEADERS = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=900" };
 
@@ -31,6 +32,9 @@ export async function GET(request: NextRequest) {
   // aren't a material of the recipe itself (see src/lib/formulas/breeding.ts), so they'd otherwise
   // never be fetched here.
   if (recipe.stationType === "mount") ids.push(...ALL_BREEDING_MARKET_ITEMS);
+  // Equipo: the labourer journal this craft fills, empty and full (see src/lib/journals.ts).
+  const journal = recipeJournal(recipe);
+  if (journal) ids.push(journal.emptyItemId, journal.fullItemId);
   const rows = await db.select().from(marketAggregates).where(inArray(marketAggregates.itemId, ids));
   const market: Record<string, CityPricePoint[]> = {};
   for (const a of rows) {

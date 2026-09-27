@@ -291,6 +291,14 @@ function ActiveFilterChips({
     });
   }
 
+  if (params.journals !== DEFAULT_PARAMS.journals) {
+    chips.push({
+      key: "journals",
+      label: t("chipNoJournals"),
+      onClear: () => onParamsChange({ ...params, journals: DEFAULT_PARAMS.journals }),
+    });
+  }
+
   if (chips.length === 0) return null;
 
   return (

@@ -28,7 +28,9 @@
     "required": "This field is required.",
     "invalidNumber": "Enter a valid number.",
     "clampedMin": "Adjusted to {value} (minimum allowed).",
-    "clampedMax": "Adjusted to {value} (maximum allowed)."
+    "clampedMax": "Adjusted to {value} (maximum allowed).",
+    "journalsLabel": "Add laborer journals",
+    "journalsNote": "You buy the item's tier empty journal, fill it with the craft's fame and sell it full. That profit is added to cost, net revenue and silver/day. Gear only: refining, alchemy and cooking fill no journal in the game."
   },
   "explorer": {
     "showingTop": "Showing the top {shown} of {total} recipes.",
@@ -44,7 +46,8 @@
     "chipSell": "Sell in {count, plural, one {# city} other {# cities}}",
     "chipFocus": "Focus enabled",
     "chipBreed": "Breeding horse/ox",
-    "removeFilter": "Remove filter: {label}"
+    "removeFilter": "Remove filter: {label}",
+    "chipNoJournals": "No journals"
   },
   "table": {
     "noMatches": "No recipes match the current search or filters.",
@@ -110,6 +113,19 @@
     "noPriceData": "no price data",
     "costPerUnit": "Cost per unit",
     "netRevenuePerUnit": "Net revenue per unit",
-    "profitPerUnit": "Profit per unit"
+    "profitPerUnit": "Profit per unit",
+    "journalTitle": "{type} journal",
+    "journalType_WARRIOR": "Blacksmith",
+    "journalType_HUNTER": "Fletcher",
+    "journalType_MAGE": "Imbuer",
+    "journalType_TOOLMAKER": "Tinker",
+    "journalFame": "Fame per craft",
+    "journalFameValue": "{fame} (a journal fills at {max})",
+    "journalsPerUnit": "Full journals per unit",
+    "journalEmpty": "Empty journal (cheapest)",
+    "journalFull": "Full journal (sale)",
+    "journalProfit": "Added per unit (after taxes)",
+    "journalNotAdded": "no price, not added",
+    "journalExcluded": " (not added: journals off)"
   }
 }

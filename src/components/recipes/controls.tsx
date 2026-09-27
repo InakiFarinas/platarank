@@ -210,6 +210,20 @@ function FilterFields({
           />
         </div>
 
+        {stationType === "gear" && (
+          <div>
+            <div className="flex items-center justify-between gap-4">
+              <Label htmlFor="journals-switch">{t("journalsLabel")}</Label>
+              <Switch
+                id="journals-switch"
+                checked={params.journals}
+                onCheckedChange={(checked) => onParamsChange({ ...params, journals: checked })}
+              />
+            </div>
+            <p className="mt-1.5 text-xs text-muted-foreground">{t("journalsNote")}</p>
+          </div>
+        )}
+
         {stationType === "mount" && (
           <div>
             <div className="flex items-center justify-between gap-4">

@@ -4,6 +4,7 @@ import { returnRate } from "@/lib/formulas/return-rate";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
 import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { getCitySpecialty } from "@/lib/city-specialties";
+import { recipeJournal, type RecipeJournal } from "@/lib/journals";
 import { BASE_QUALITY_WEIGHTS } from "@/lib/quality-mechanics";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import type { Recipe, RecipeMaterial } from "@/lib/db/schema";
@@ -46,6 +47,10 @@ export type RecipeMathParams = {
   /** Monturas only: cría la montura base (caballo/buey) en vez de comprarla ya crecida -- ver
    * src/lib/formulas/breeding.ts. Sin efecto en cualquier otro rubro o familia de montura. */
   breedOwnMount: boolean;
+  /** Equipo only: buy the empty labourer journal, fill it with the craft's fame, sell it full --
+   * the journal's profit is added to the item's (see src/lib/journals.ts). Other stations fill no
+   * journal, so it has no effect there. */
+  journals: boolean;
 };
 
 export const DEFAULT_PARAMS: RecipeMathParams = {
@@ -56,6 +61,7 @@ export const DEFAULT_PARAMS: RecipeMathParams = {
   stationRatePer100Nutrition: 500,
   craftCity: "Brecilien",
   breedOwnMount: false,
+  journals: true,
 };
 
 export type MaterialLine = RecipeMaterial & {
@@ -75,6 +81,19 @@ export type QualityBreakdownEntry = {
   citiesCount: number;
   avgDailyVolume30d: number;
   liquid: boolean;
+};
+
+export type JournalLine = RecipeJournal & {
+  /** Cheapest empty journal across the buy cities, and where. */
+  emptyPrice: number | null;
+  emptyCity: string | null;
+  /** Full journal's sell reference (median of the sell cities' listings), before taxes. */
+  fullPrice: number | null;
+  /** Net silver per crafted unit: journals per unit x (full after taxes - empty). Null when either
+   * price is missing -- then nothing is added, and the row says so. */
+  profitPerUnit: number | null;
+  /** Whether `profitPerUnit` is inside the row's cost/revenue/profit (priced and toggled on). */
+  included: boolean;
 };
 
 export type SortKey = "margin" | "volume" | "cost" | "sellPrice" | "platinumPerDay";
@@ -114,6 +133,10 @@ export type RecipeRow = {
    * into plata/día (see the note on SellSide.instantGross). */
   sellInstantPrice: number | null;
   sellInstantCity: string | null;
+  /** Equipo only: the labourer journal this craft fills and what it's worth. Null when the item
+   * fills none. When `journal.included`, its empty cost is inside `costPerUnit` and its full net
+   * sale inside `revenuePerUnitNet`. */
+  journal: JournalLine | null;
 };
 
 export function computeRecipeRow(recipe: Recipe, market: MarketData, params: RecipeMathParams): RecipeRow {
@@ -187,9 +210,14 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
   // to resolve (not just unpriced) must not read as "zero-cost", so require at least one material.
   const allMaterialsPriced = materials.length > 0 && materials.every((m) => m.costContribution !== null);
   const materialCostPerBatch = allMaterialsPriced ? materials.reduce((sum, m) => sum + (m.costContribution ?? 0), 0) : null;
-  const costPerUnit = materialCostPerBatch !== null ? materialCostPerBatch / recipe.batchSize + feePerUnit : null;
+  const journal = computeJournalLine(recipe, market, params);
+  const journalCost = journal?.included ? journal.journalsPerUnit * journal.emptyPrice! : 0;
+  const journalRevenue = journal?.included ? journal.journalsPerUnit * journal.fullPrice! * netSellMultiplier() : 0;
 
-  const revenuePerUnitNet = sellSide.sellRefPriceGross !== null ? sellSide.sellRefPriceGross * netSellMultiplier() : null;
+  const costPerUnit = materialCostPerBatch !== null ? materialCostPerBatch / recipe.batchSize + feePerUnit + journalCost : null;
+
+  const revenuePerUnitNet =
+    sellSide.sellRefPriceGross !== null ? sellSide.sellRefPriceGross * netSellMultiplier() + journalRevenue : null;
   const profitPerUnit = revenuePerUnitNet !== null && costPerUnit !== null ? revenuePerUnitNet - costPerUnit : null;
   const marginPct = profitPerUnit !== null && costPerUnit !== null && costPerUnit > 0 ? profitPerUnit / costPerUnit : null;
   const platinumPerDay = profitPerUnit !== null ? profitPerUnit * sellSide.avgDailyVolume30d * params.marketShare : null;
@@ -218,6 +246,37 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     qualityBreakdown: sellSide.qualityBreakdown,
     sellInstantPrice: sellSide.instantGross,
     sellInstantCity: sellSide.instantCity,
+    journal,
+  };
+}
+
+/** The journal side of a gear craft: an empty journal bought at the cheapest buy city, sold full at
+ * the sell cities' median listing (real cities only -- the Black Market doesn't buy journals). Its
+ * volume doesn't cap anything: the journals follow the item's own sales, one fraction per craft. */
+function computeJournalLine(recipe: Recipe, market: MarketData, params: RecipeMathParams): JournalLine | null {
+  const journal = recipeJournal(recipe);
+  if (!journal) return null;
+
+  const emptyQuotes: CityQuote[] = (market.get(journal.emptyItemId) ?? [])
+    .filter((p) => p.quality === 1 && params.buyCities.includes(p.city as Location) && p.price !== null)
+    .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
+  const emptyStat = robustStat(emptyQuotes, "min");
+  const fullPoints = (market.get(journal.fullItemId) ?? []).filter(
+    (p) => p.quality === 1 && p.city !== BLACK_MARKET && params.sellCities.includes(p.city as Location),
+  );
+  const fullStat = sellStatSplit(fullPoints);
+
+  const emptyPrice = emptyStat.value;
+  const fullPrice = fullStat.value;
+  const profitPerUnit =
+    emptyPrice !== null && fullPrice !== null ? journal.journalsPerUnit * (fullPrice * netSellMultiplier() - emptyPrice) : null;
+  return {
+    ...journal,
+    emptyPrice,
+    emptyCity: emptyStat.result.kept.find((q) => q.price === emptyPrice)?.city ?? null,
+    fullPrice,
+    profitPerUnit,
+    included: params.journals && profitPerUnit !== null,
   };
 }
 

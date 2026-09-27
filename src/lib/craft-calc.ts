@@ -5,11 +5,14 @@ import { saleTaxRate } from "@/lib/formulas/market-tax";
 import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { returnRate } from "@/lib/formulas/return-rate";
+import { recipeJournal } from "@/lib/journals";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 
 /** Everything the player controls in the crafting calculator. Also what a saved plan stores.
- * `breedOwnMount` is undefined on plans saved before this existed -- reads as falsy, same as false. */
+ * `breedOwnMount` is undefined on plans saved before this existed -- reads as falsy, same as false.
+ * `journals` likewise, but reads as ON: the journal profit is part of the real number, and the
+ * ranking includes it by default too. */
 export type CraftParams = {
   qty: number;
   premium: boolean;
@@ -22,6 +25,7 @@ export type CraftParams = {
   sellOverride: number | null;
   matOverrides: Record<string, number>;
   breedOwnMount?: boolean;
+  journals?: boolean;
 };
 
 /** Cheapest quote for any of the given items, royal cities only -- same as every other material
@@ -132,10 +136,42 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
   const feePerCraft = craftingFeePerBatch(Number(recipe.materialItemValue), p.feeRate);
   const materialsTotal = materials.reduce((s, x) => s + x.price * x.effective, 0) * crafts;
   const feeTotal = feePerCraft * crafts;
-  const cost = materialsTotal + feeTotal + p.extraCost;
   const taxRate = saleTaxRate(p.premium);
+
+  // Equipo: the labourer journal the crafts fill -- empties bought at the cheapest city, sold full
+  // at the median listing, taxed like the item (see src/lib/journals.ts).
+  const journalInfo = recipeJournal(recipe);
+  const journal = journalInfo
+    ? (() => {
+        const quotes = (itemId: string) =>
+          (market[itemId] ?? [])
+            .filter((pt) => pt.quality === 1 && pt.price !== null && pt.city !== BLACK_MARKET)
+            .map((pt): CityQuote => ({ city: pt.city, price: pt.price!, selfRef: pt.weightedAvgPrice30d }));
+        const empty = robustStat(quotes(journalInfo.emptyItemId), "min");
+        const full = robustStat(quotes(journalInfo.fullItemId), "median");
+        const count = journalInfo.journalsPerUnit * produced;
+        const priced = empty.value !== null && full.value !== null;
+        const included = p.journals !== false && priced;
+        return {
+          ...journalInfo,
+          count,
+          fame: journalInfo.famePerCraft * crafts,
+          emptyPrice: empty.value,
+          emptyCity: empty.result.kept.find((q) => q.price === empty.value)?.city ?? null,
+          fullPrice: full.value,
+          priced,
+          included,
+          cost: included ? count * empty.value! : 0,
+          gross: included ? count * full.value! : 0,
+        };
+      })()
+    : null;
+  const journalCost = journal?.cost ?? 0;
+  const journalGross = journal?.gross ?? 0;
+
+  const cost = materialsTotal + feeTotal + journalCost + p.extraCost;
   const gross = sellPrice * produced;
-  const revenue = gross * (1 - taxRate);
+  const revenue = (gross + journalGross) * (1 - taxRate);
   const profit = revenue - cost;
 
   return {
@@ -156,6 +192,7 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     feePerCraft,
     materialsTotal,
     feeTotal,
+    journal,
     cost,
     taxRate,
     gross,
