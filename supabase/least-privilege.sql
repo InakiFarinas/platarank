@@ -29,12 +29,20 @@ grant select on public.recipes, public.market_aggregates to platarank_web;
 
 -- Ingester + alert checker.
 grant select, insert, update on public.recipes, public.market_aggregates, public.ingest_state to platarank_ingest;
+-- The ingester prunes empty market_aggregates rows (no price, no volume) instead of storing them.
+grant delete on public.market_aggregates to platarank_ingest;
 grant select on public.plans, public.user_settings to platarank_ingest;
 grant select, update on public.alerts to platarank_ingest;
 
 -- RLS stays on everywhere, so the ingest role needs explicit policies (no BYPASSRLS).
-create policy "ingest write recipes" on public.recipes for all to platarank_ingest using (true) with check (true);
-create policy "ingest write market_aggregates" on public.market_aggregates for all to platarank_ingest using (true) with check (true);
+-- Explicit write policies (not FOR ALL): "public read" already covers SELECT, and a FOR ALL policy
+-- would overlap it (Supabase performance advisor: multiple_permissive_policies).
+create policy "ingest insert recipes" on public.recipes for insert to platarank_ingest with check (true);
+create policy "ingest update recipes" on public.recipes for update to platarank_ingest using (true) with check (true);
+create policy "ingest delete recipes" on public.recipes for delete to platarank_ingest using (true);
+create policy "ingest insert market_aggregates" on public.market_aggregates for insert to platarank_ingest with check (true);
+create policy "ingest update market_aggregates" on public.market_aggregates for update to platarank_ingest using (true) with check (true);
+create policy "ingest delete market_aggregates" on public.market_aggregates for delete to platarank_ingest using (true);
 create policy "ingest all ingest_state" on public.ingest_state for all to platarank_ingest using (true) with check (true);
 create policy "ingest read plans" on public.plans for select to platarank_ingest using (true);
 create policy "ingest read user_settings" on public.user_settings for select to platarank_ingest using (true);

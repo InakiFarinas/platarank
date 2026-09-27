@@ -63,7 +63,9 @@ export async function runAlerts(now: Date) {
 
     const result = computeCraft(recipe, market, plan.params as CraftParams);
     const threshold = Number(alert.threshold);
-    const state = result.profit >= threshold ? "above" : "below";
+    // A missing material price counts as 0 in computeCraft, which would read as a huge profit and
+    // fire a false alert; without complete prices the plan just stays "below".
+    const state = !result.incomplete && result.profit >= threshold ? "above" : "below";
     const crossed = state === "above" && alert.lastState !== "above";
 
     let error: string | null = null;
