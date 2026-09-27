@@ -39,7 +39,7 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
     <div className="rounded-md border border-border bg-background/40 p-3">
       <div className="flex items-baseline justify-between gap-3">
         <h4 className="text-sm font-medium">Avisos por Discord</h4>
-        {api.webhook && <span className="text-xs text-money">Webhook configurado</span>}
+        {api.webhook && <span className="text-xs text-muted-foreground">Webhook configurado</span>}
       </div>
       <p className="mt-1 text-xs text-muted-foreground">
         En tu servidor: Ajustes del canal → Integraciones → Webhooks → Nuevo webhook → Copiar URL. Pegala acá. Solo se usa para enviarte tus avisos.
