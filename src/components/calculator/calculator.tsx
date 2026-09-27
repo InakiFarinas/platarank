@@ -16,6 +16,7 @@ import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 import { computeCraft } from "@/lib/craft-calc";
+import { searchItems, type SearchEntry, type SearchHit } from "@/lib/item-search";
 import { isBreedable } from "@/lib/formulas/breeding";
 import { PlanList, SavePlanForm, usePlans, type OpenedPlan, type Plan, type PlanParams } from "@/components/calculator/plans-panel";
 import { TransportTool } from "@/components/transport/transport-tool";
@@ -23,7 +24,21 @@ import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
 import { CTA_PRIMARY, CTA_SECONDARY, DisclosureButton, Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
 
-type Hit = { itemId: string; baseItemId: string; nameEs: string; nameEn?: string; tier: number; stationType: string };
+type Hit = SearchHit;
+
+// The picker's whole item list, fetched once per page load and filtered locally: typing used to
+// send one DB query per letter (every prefix is a different URL, so the CDN never helped).
+let searchIndex: Promise<SearchEntry[]> | null = null;
+function loadSearchIndex(): Promise<SearchEntry[]> {
+  searchIndex ??= fetch("/api/calculator/search-index").then((r) => {
+    if (!r.ok) throw new Error(String(r.status));
+    return r.json() as Promise<SearchEntry[]>;
+  });
+  searchIndex.catch(() => {
+    searchIndex = null;
+  });
+  return searchIndex;
+}
 type Variant = { itemId: string; tier: number; enchant: number };
 type ItemData = { recipe: Recipe; market: Record<string, CityPricePoint[]>; variants: Variant[] };
 type Recent = { itemId: string; name: string; nameEn?: string };
@@ -163,22 +178,38 @@ export function Calculator() {
     }
     setSearching(true);
     setSearchFailed(false);
+    let live = true;
     const ctrl = new AbortController();
-    const t = setTimeout(async () => {
-      try {
-        const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}&locale=${locale}`, { signal: ctrl.signal });
-        if (!res.ok) throw new Error(String(res.status));
-        setHits(await res.json());
+    let t: ReturnType<typeof setTimeout> | undefined;
+    loadSearchIndex().then(
+      (index) => {
+        if (!live) return;
+        setHits(searchItems(index, query, locale));
         setActive(0);
         setSearching(false);
-      } catch (err) {
-        if ((err as Error).name === "AbortError") return;
-        setHits([]);
-        setSearchFailed(true);
-        setSearching(false);
-      }
-    }, 250);
+      },
+      () => {
+        if (!live) return;
+        // Index unavailable: fall back to the server search, debounced so a slow typist doesn't
+        // send one request per letter.
+        t = setTimeout(async () => {
+          try {
+            const res = await fetch(`/api/calculator/search?q=${encodeURIComponent(query.trim())}&locale=${locale}`, { signal: ctrl.signal });
+            if (!res.ok) throw new Error(String(res.status));
+            setHits(await res.json());
+            setActive(0);
+            setSearching(false);
+          } catch (err) {
+            if ((err as Error).name === "AbortError") return;
+            setHits([]);
+            setSearchFailed(true);
+            setSearching(false);
+          }
+        }, 500);
+      },
+    );
     return () => {
+      live = false;
       clearTimeout(t);
       ctrl.abort();
     };
@@ -397,6 +428,8 @@ export function Calculator() {
               aria-autocomplete="list"
               aria-activedescendant={hits.length > 0 && active >= 0 ? `calc-hit-${active}` : undefined}
               onBlur={() => setHits([])}
+              // Warm the item index as soon as the box is focused, so the first letters already hit it.
+              onFocus={() => void loadSearchIndex().catch(() => {})}
               placeholder={t("search.placeholder")}
               aria-label={t("search.ariaLabel")}
               className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
