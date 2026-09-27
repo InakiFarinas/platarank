@@ -29,6 +29,7 @@ export function SiteFooter({
         </div>
         <nav aria-label="Legal" className="mt-4 flex flex-wrap justify-center gap-x-5 text-xs text-muted-foreground sm:justify-start">
           <Link href="/es/metodologia" className={LEGAL_LINK}>Metodología</Link>
+          <Link href="/es/acerca" className={LEGAL_LINK}>Acerca de</Link>
           <Link href="/es/privacidad" className={LEGAL_LINK}>Privacidad</Link>
           <Link href="/es/terminos" className={LEGAL_LINK}>Términos</Link>
           <a href="https://discord.gg/ZZRcGSEXeh" target="_blank" rel="noopener noreferrer" className={`${LEGAL_LINK} text-money`}>

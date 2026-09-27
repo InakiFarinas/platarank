@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import { LegalPage } from "@/components/legal-page";
+import { absoluteUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Metodología",
-  description: "Cómo calcula PlataRank el costo, el retorno, los impuestos y la plata por día de cada receta.",
-  alternates: { canonical: "/es/metodologia" },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Metodología: cómo se calcula la plata por día",
+  description:
+    "Cómo calcula PlataRank el costo, el retorno de recursos, la tarifa de estación, los impuestos y la plata por día de cada receta de Albion Online, y qué limitaciones tiene.",
+  path: "/es/metodologia",
+});
 
 export default function MetodologiaPage() {
   return (
     <LegalPage title="Metodología" updated="27 de septiembre de 2026">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          headline: "Metodología: cómo se calcula la plata por día",
+          url: absoluteUrl("/es/metodologia"),
+          inLanguage: "es",
+          dateModified: "2026-09-27",
+          author: { "@id": absoluteUrl("/#organization") },
+          publisher: { "@id": absoluteUrl("/#organization") },
+        }}
+      />
       <h2>Fuentes de datos</h2>
       <ul>
         <li>

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/legal-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Términos de uso",
-  alternates: { canonical: "/es/terminos" },
-};
+  description: "Condiciones de uso de PlataRank, una herramienta informativa y no oficial para Albion Online.",
+  path: "/es/terminos",
+});
 
 export default function TerminosPage() {
   return (

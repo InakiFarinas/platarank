@@ -2,6 +2,8 @@ import { formatInt } from "@/lib/format";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { faqSchema, FaqList, JsonLd, type Faq } from "@/components/json-ld";
+import { DISCORD_URL, pageMetadata } from "@/lib/seo";
 import { ArrowRight, CheckCircle2, TrendingUp } from "lucide-react";
 import { formatAge, formatSilver } from "@/components/recipes/format";
 import { SiteFooter } from "@/components/site-footer";
@@ -13,12 +15,12 @@ import { getRecipeCounts, loadTopRecipes, type TopRecipe } from "@/lib/server/to
 // The ranking preview is live data: refresh it on the same cadence as the ranking pages.
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Ranking de crafteo por plata realizable por día",
+export const metadata: Metadata = pageMetadata({
+  title: "Ranking de crafteo de Albion Online por plata realizable por día",
   description:
     "PlataRank ordena las recetas de Albion Online (alquimia, refinado, cocina, equipo y monturas) por ganancia × volumen diario de ventas, no por margen unitario. Con calculadora, sesiones y alertas por Discord.",
-  alternates: { canonical: "/es" },
-};
+  path: "/es",
+});
 
 const STATIONS = [
   { type: "alchemy", href: "/es/alquimia", label: "Alquimia", note: "Pociones" },
@@ -35,7 +37,28 @@ const CAPABILITIES = [
   "Alertas por Discord cuando una receta guardada supera la ganancia que definas.",
 ] as const;
 
-const DISCORD_URL = "https://discord.gg/ZZRcGSEXeh";
+const FAQS: Faq[] = [
+  {
+    q: "¿Qué es PlataRank?",
+    a: "PlataRank es un ranking gratuito de crafteo de Albion Online (servidor Américas). Ordena las recetas de alquimia, refinado, cocina, equipo y monturas por la plata que dejan por día, con precios que se actualizan cada hora.",
+  },
+  {
+    q: "¿Qué es la plata por día?",
+    a: "Es la ganancia por unidad multiplicada por el volumen diario de ventas y por la cuota de mercado que asumas. Una receta con margen alto que casi no se vende rinde menos que una de margen chico que se vende todo el día.",
+  },
+  {
+    q: "¿Qué crafteo conviene hacer hoy en Albion Online?",
+    a: "El de la primera fila del ranking con tus supuestos (ciudad, foco, cuota de mercado). El bloque de arriba muestra las cinco mejores recetas ahora, y cada estación tiene su propio ranking.",
+  },
+  {
+    q: "¿De dónde salen los precios y las recetas?",
+    a: "Los precios vienen del Albion Online Data Project, alimentado por jugadores, y las recetas del dump oficial del cliente. Los precios raros se filtran y el detalle de cada fórmula está en la página de metodología.",
+  },
+  {
+    q: "¿PlataRank es oficial?",
+    a: "No. Es una herramienta de la comunidad, gratuita y sin afiliación con Sandbox Interactive.",
+  },
+];
 
 async function loadLive(): Promise<{ top: TopRecipe[]; counts: Record<string, number> }> {
   try {
@@ -90,6 +113,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={faqSchema(FAQS)} />
       <SiteHeader />
       <main id="contenido">
         <section className="relative overflow-hidden border-b border-money/20">
@@ -140,6 +164,16 @@ export default async function HomePage() {
                 Ordenamos por plata realizable por día: ganancia por unidad × volumen de ventas × cuota de mercado. Una receta con margen alto que casi
                 no se vende rinde menos que una de margen chico que se vende todo el día.
               </p>
+              {best && (
+                <p className="mt-3 text-sm sm:text-base">
+                  Ahora mismo, la receta que más rinde es{" "}
+                  <strong>
+                    {best.row.recipe.nameEs} T{best.row.recipe.tier}
+                    {best.row.recipe.enchant > 0 ? `.${best.row.recipe.enchant}` : ""}
+                  </strong>{" "}
+                  ({best.label.toLowerCase()}): {formatSilver(best.row.platinumPerDay)} de plata por día con los supuestos por defecto.
+                </p>
+              )}
               <ul className="mt-5 space-y-2.5">
                 {CAPABILITIES.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
@@ -163,7 +197,7 @@ export default async function HomePage() {
                     return (
                       <li key={r.itemId}>
                         <Link
-                          href={`/es/calculadora?item=${encodeURIComponent(r.itemId)}`}
+                          href={`/es/receta/${encodeURIComponent(r.itemId)}`}
                           className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-money/5"
                         >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -184,7 +218,7 @@ export default async function HomePage() {
                   })}
                 </ul>
                 <p className="border-t border-border px-4 py-2 text-xs text-muted-foreground">
-                  Tocá una receta para abrirla en la calculadora. Precio más viejo usado: {formatAge(oldestAge)}.
+                  Tocá una receta para ver su costo y ganancia. Precio más viejo usado: {formatAge(oldestAge)}.
                 </p>
               </div>
             )}
@@ -243,6 +277,10 @@ export default async function HomePage() {
               </Link>
             </div>
           </div>
+        </section>
+
+        <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+          <FaqList faqs={FAQS} className="mx-auto max-w-3xl" />
         </section>
 
         <SiteFooter className="px-3 py-8 sm:px-6 lg:px-8" containerClassName="mx-auto max-w-6xl">
