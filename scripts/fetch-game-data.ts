@@ -92,9 +92,9 @@ type RawIndexedItem = {
   craftingrequirements?: RawCraftingRequirements | RawCraftingRequirements[];
 };
 
-// Weapons and armor pieces this project ranks (see brief section 7). Excludes "tools" and
-// "gatherergear" (Caerleon's OTHER two crafting specialties -- gathering gear, not "armas y
-// armaduras"). Bags and capes (Brecilien's specialties) ARE included, via ARMOR_CATEGORIES below.
+// Gear this project ranks (see brief section 7): weapons and armor, plus gathering tools ("tools",
+// weapon-slot pickaxes/sickles/etc.) and gathering gear ("gatherergear", in ARMOR_CATEGORIES below),
+// Caerleon's other two crafting specialties. Bags and capes (Brecilien's) are included too.
 const WEAPON_CATEGORIES = new Set([
   "arcanestaff",
   "axe",
@@ -112,6 +112,7 @@ const WEAPON_CATEGORIES = new Set([
   "quarterstaff",
   "spear",
   "sword",
+  "tools",
 ]);
 const ARMOR_CATEGORIES = new Set([
   "cloth_armor",
@@ -126,6 +127,7 @@ const ARMOR_CATEGORIES = new Set([
   "offhand",
   "bag",
   "cape",
+  "gatherergear",
 ]);
 
 async function main() {
@@ -137,6 +139,8 @@ async function main() {
         simpleitem: RawSimpleItem[];
         weapon: RawGearItem[];
         equipmentitem: RawGearItem[];
+        trackingitem?: RawGearItem[];
+        transformationweapon?: RawGearItem[];
       } & Record<string, RawIndexedItem | RawIndexedItem[]>;
     }>(ITEMS_URL),
     fetchJson<LocalizedItem[]>(FORMATTED_ITEMS_URL),
@@ -182,6 +186,17 @@ async function main() {
         recipes.push(buildRecipe(itemId, baseItemId, tier, level, "alchemy", category, 1, cr, names, itemValueIndex, itemValueCache));
       }
     }
+  }
+
+  // Restos animales raros del rastreo (T5/T3 salen de partir un resto de tier superior en 2). Sin
+  // categoria de crafteo ni bono de ciudad; van con alquimia, su subcategoria de tienda.
+  const rareRemains = itemsRoot.items.simpleitem.filter(
+    (i) => /_ALCHEMY_RARE_/.test(i["@uniquename"]) && i.craftingrequirements,
+  );
+  for (const item of rareRemains) {
+    const itemId = item["@uniquename"];
+    const cr = pickCraftingRequirements(asArray(item.craftingrequirements!));
+    recipes.push(buildRecipe(itemId, itemId, Number(item["@tier"]), 0, "alchemy", null, 1, cr, names, itemValueIndex, itemValueCache));
   }
 
   // Cocina: mismo patron anidado de "enchantments" que las pociones. Algunas lineas (los platos
@@ -234,6 +249,11 @@ async function main() {
   const gearItems = [
     ...itemsRoot.items.weapon.filter((w) => w["@craftingcategory"] && WEAPON_CATEGORIES.has(w["@craftingcategory"])),
     ...itemsRoot.items.equipmentitem.filter((e) => e["@craftingcategory"] && ARMOR_CATEGORIES.has(e["@craftingcategory"])),
+    // Tracking toolkits live in their own "trackingitem" container (category "tools", T3-T8, no enchants).
+    ...(itemsRoot.items.trackingitem ?? []),
+    // Shapeshifter staffs (category "shapeshifterstaff", Caerleon +15%) also have their own container;
+    // they consume rare animal remains from tracking, classified as artifacts (no RRR, no fee).
+    ...(itemsRoot.items.transformationweapon ?? []),
   ].filter((g) => g.craftingrequirements);
 
   for (const gear of gearItems) {

@@ -27,7 +27,7 @@ const STATIONS = [
   { type: "alchemy", href: "/es/alquimia", label: "Alquimia", note: "Pociones" },
   { type: "refining", href: "/es/refinado", label: "Refinado", note: "Tablas, lingotes, tela y cuero" },
   { type: "cooking", href: "/es/cocina", label: "Cocina", note: "Comidas" },
-  { type: "gear", href: "/es/equipo", label: "Equipo", note: "Armas, armaduras, bolsas y capas" },
+  { type: "gear", href: "/es/equipo", label: "Equipo", note: "Armas, armaduras, bolsas, capas y equipo de recolección" },
   { type: "mount", href: "/es/monturas", label: "Monturas", note: "Animales de montura" },
 ] as const;
 
