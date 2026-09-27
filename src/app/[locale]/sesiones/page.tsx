@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { SessionsView } from "@/components/sessions/sessions-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export const metadata: Metadata = {
-  title: "Sesiones de crafteo",
-  robots: { index: false },
-  alternates: { canonical: "/es/sesiones" },
-};
+export const metadata: Metadata = pageMetadata({ title: "Sesiones de crafteo", path: "/es/sesiones", index: false });
 
 export default function SesionesPage() {
   return (

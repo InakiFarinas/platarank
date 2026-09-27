@@ -20,7 +20,7 @@ async function loadCinzel(): Promise<ArrayBuffer | null> {
 }
 
 export default async function OpengraphImage() {
-  const [logo, cinzel] = await Promise.all([readFile(path.join(process.cwd(), "public", "logo.png")), loadCinzel()]);
+  const [logo, cinzel] = await Promise.all([readFile(path.join(process.cwd(), "public", "logo-og.png")), loadCinzel()]);
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
