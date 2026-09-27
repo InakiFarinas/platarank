@@ -58,8 +58,10 @@ describe("recipeJournal", () => {
   });
 
   test("refinado, alquimia y cocina no llenan ningún diario", () => {
-    expect(recipeJournal({ ...sword, itemId: "T6_PLANKS", baseItemId: "T6_PLANKS", stationType: "refining" })).toBeNull();
-    expect(recipeJournal({ ...sword, itemId: "T6_POTION_HEAL", baseItemId: "T6_POTION_HEAL", stationType: "alchemy" })).toBeNull();
+    const planks: Recipe = { ...sword, itemId: "T6_PLANKS", baseItemId: "T6_PLANKS", stationType: "refining" };
+    const potion: Recipe = { ...sword, itemId: "T6_POTION_HEAL", baseItemId: "T6_POTION_HEAL", stationType: "alchemy" };
+    expect(recipeJournal(planks)).toBeNull();
+    expect(recipeJournal(potion)).toBeNull();
   });
 
   test("los ids de mercado cubren los 4 diarios de crafteo, vacío y lleno, T2-T8", () => {
