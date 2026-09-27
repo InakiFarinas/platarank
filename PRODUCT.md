@@ -56,7 +56,7 @@ Database access is least-privilege: `platarank_web` (Vercel, and the daily diges
 - **Discord alerts** re-price a saved plan after every ingest and post to the user's own webhook only when profit crosses the threshold from below (no repeats while it stays above; webhook errors are surfaced to the user; `allowed_mentions` is empty so plan names can't ping anyone).
 - Every ranked row must expose the silver-per-day figure and an expandable derivation (price source + city + age, materials + costs with the cheapest city to buy each in, station fee, return rate, market share, and every discarded outlier with its reason). The 0-100 data-quality score that once sat beside each row was removed at the user's explicit request; the derivation's own fields already carry that signal.
 - Data can be missing or stale per city (Brecilien especially); the UI says so explicitly rather than hiding it or fabricating a number.
-- SEO: `/` redirects to `/es`, each route has its own metadata and canonical, `sitemap.xml`/`robots.txt` are generated, `NEXT_PUBLIC_SITE_URL` (`src/lib/seo.ts`) is the single source of the absolute domain.
+- SEO and AEO: `/` redirects to `/es`; every route has its own metadata and canonical (`pageMetadata`, `src/lib/seo.ts`); JSON-LD and per-station FAQ copy (`src/components/json-ld.tsx`, `src/lib/station-seo.ts`); an indexable page per recipe (`/es/receta/[itemId]`); an about page (`/es/acerca`); generated `sitemap.xml`, `robots.txt`, `manifest` and `llms.txt` for LLM crawlers. `NEXT_PUBLIC_SITE_URL` is the single source of the absolute domain.
 - Security headers (`next.config.ts`), GitHub workflows with minimal permissions and pinned actions.
 
 **Open gaps (tracked, not silent):**

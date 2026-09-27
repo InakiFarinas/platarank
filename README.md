@@ -22,7 +22,9 @@ PlataRank mete el volumen diario de ventas (expuesto desde siempre por la API p�
 | `/es/monturas` | Monturas (29 recetas), con opción de criar el animal base en vez de comprarlo |
 | `/es/calculadora` | Calculadora de un ítem, planificaciones guardadas, avisos por Discord y la pestaña Transporte (peso a cargar contra bolsa, montura y capa de recolección) |
 | `/es/sesiones` | Sesiones de crafteo: agrupá varios crafteos y reemplazá las estimaciones por tus números reales |
+| `/es/receta/[itemId]` | Página indexable de una receta concreta: costo, ganancia y plata por día |
 | `/es/metodologia` | Cómo se calcula cada número |
+| `/es/acerca` | Qué es PlataRank y de dónde salen los datos |
 
 Entrar con Discord es opcional: solo hace falta para guardar planificaciones, sesiones y avisos. Los rankings y la calculadora funcionan sin cuenta.
 
