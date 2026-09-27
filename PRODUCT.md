@@ -12,13 +12,13 @@ Next.js 15 (App Router) + TypeScript, Tailwind + shadcn/ui (base-ui primitives),
 
 ## Users
 
-Albion Online players who craft (alchemy potions, refined materials, cooking, weapons and armor, mounts) to sell for silver, checking the tool from a phone next to the game (mobile is the primary reading context) or from a desktop browser while planning a crafting session. They already know the game's mechanics; they don't need those explained, they need trustworthy numbers. Signing in with Discord is optional and only unlocks what needs a saved identity: saved plans, crafting sessions, and Discord profit alerts. Every ranking and the calculator work without an account.
+Albion Online players who craft (alchemy potions, refined materials, cooking, weapons and armor, mounts) to sell for silver, checking the tool from a phone next to the game (mobile is the primary reading context) or from a desktop browser while planning a crafting session. They already know the game's mechanics; they don't need those explained, they need trustworthy numbers. Signing in with Discord is optional and only unlocks what needs a saved identity: saved plans and Discord profit alerts. Every ranking and the calculator work without an account.
 
 ## Product Purpose
 
 Ranks crafting recipes by **realizable silver per day** (unit margin x daily sell-order volume x the player's assumed market share) instead of unit margin alone, because a high-ROI recipe that the market barely absorbs is worth less than a lower-ROI recipe with real daily volume. Success is a player trusting the ranking enough to act on it without re-deriving the math themselves.
 
-Surfaces: five rankings (`/es/alquimia`, `/es/refinado`, `/es/cocina`, `/es/equipo`, `/es/monturas`), a calculator (`/es/calculadora`) with saved plans and a Transporte tab (weight to carry vs. bag, mount and gathering-cape capacity), crafting sessions (`/es/sesiones`) that total several crafts and let the player replace estimates with real numbers, a home page with the live top recipes, a methodology page and the legal pages. Plans and sessions are separate on purpose: a plan is one item's assumptions (and can carry an alert), a session groups the crafts actually done.
+Surfaces: five rankings (`/es/alquimia`, `/es/refinado`, `/es/cocina`, `/es/equipo`, `/es/monturas`), a calculator (`/es/calculadora`) with saved plans and a Transporte tab (weight to carry vs. bag, mount and gathering-cape capacity), a home page with the live top recipes, a methodology page and the legal pages. A saved plan is the only saved entity: one item's assumptions, listed with its profit when saved and **today** (re-priced with current market prices, hand-typed prices dropped -- the same figure its Discord alert checks), updatable in place ("Actualizar", so the alert follows it), and optionally carrying the real result of the craft (real spend + real net sale, both needed before a real profit is shown). Crafting sessions (`/es/sesiones`) were removed on 2026-09-27: they duplicated plans (item + params + frozen snapshot) with no user ever creating one; old links redirect to the plans tab.
 
 Precision note: AODP's history endpoint (the source of every volume figure in this app) reports sell-order fulfillment, not total market activity -- `item_count` is sell-side volume, not "the whole market's" volume. Copy avoids "volumen del mercado" for exactly this reason; say "volumen de ventas" instead.
 
@@ -34,7 +34,7 @@ A GitHub Actions cron ingests hourly (`.github/workflows/ingest.yml`, single AOD
 
 Supabase is on the free plan, so **egress (5 GB/month) is a first-class constraint**: the gear ranking is served from a snapshot precomputed by the ingester (`rank_snapshots`, refreshed on a new dump and every six hours), the home page reads a precomputed top list, pages revalidate hourly, and `market_aggregates` does not store empty rows (see below). Any change that widens what a page reads from the database needs to account for it.
 
-Database access is least-privilege: `platarank_web` (Vercel, and the daily digest) can only read `recipes` and `market_aggregates` (and `rank_snapshots`); `platarank_ingest` writes them and reads plans, settings and alerts. User data (plans, sessions, settings, alerts) sits behind Supabase RLS and is reached from the browser with the user's own session. See `docs/db-least-privilege.md`.
+Database access is least-privilege: `platarank_web` (Vercel, and the daily digest) can only read `recipes` and `market_aggregates` (and `rank_snapshots`); `platarank_ingest` writes them and reads plans, settings and alerts. User data (plans, settings, alerts) sits behind Supabase RLS and is reached from the browser with the user's own session. See `docs/db-least-privilege.md`.
 
 ## Capabilities and Constraints
 

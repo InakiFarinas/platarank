@@ -7,7 +7,7 @@ Antes, la web, la ingesta y el aviso diario usaban el rol `postgres`. Ahora hay 
 | `platarank_web` | Vercel (`DATABASE_URL`) y el aviso diario (`DATABASE_URL_READONLY`) | Solo leer `recipes`, `market_aggregates` y `rank_snapshots` |
 | `platarank_ingest` | Ingesta + alertas (`DATABASE_URL` en GitHub) | Escribir `recipes`, `market_aggregates` (incluye borrar las filas sin precio ni volumen), `ingest_state` y `rank_snapshots`; leer `plans`, `user_settings`; leer y actualizar `alerts` |
 
-Las tablas de usuario (`plans`, `crafting_sessions`, `session_items`, `user_settings`, `alerts`) tienen RLS: cada
+Las tablas de usuario (`plans`, `user_settings`, `alerts`) tienen RLS: cada
 usuario solo ve sus filas y se accede a ellas desde el navegador con su propia sesión de Supabase, no con estos roles.
 
 Las políticas de escritura de `platarank_ingest` en `recipes` y `market_aggregates` son INSERT, UPDATE y DELETE

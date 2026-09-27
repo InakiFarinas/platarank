@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 /** Where alerts get delivered: a Discord webhook the user creates in their own channel. */
 export function WebhookForm({ api }: { api: AlertsApi }) {
-  const t = useTranslations("sessions.alerts");
+  const t = useTranslations("calculator.alerts");
   const locale = useLocale();
   const [url, setUrl] = useState("");
   const [busy, setBusy] = useState(false);
@@ -94,13 +94,30 @@ export function WebhookForm({ api }: { api: AlertsApi }) {
   );
 }
 
-/** Bell toggle + threshold editor for one saved plan. */
-export function AlertControl({ planId, currentProfit, api }: { planId: string; currentProfit: number; api: AlertsApi }) {
-  const t = useTranslations("sessions.alerts");
+/** Suggested threshold for a new alert: today's profit plus 10%, rounded up to a thousand -- a
+ * real improvement over now, not a number that is already crossed (which would notify at once). */
+function suggestedThreshold(profitToday: number): number {
+  return Math.max(1000, Math.ceil((Math.max(0, profitToday) * 1.1) / 1000) * 1000);
+}
+
+/** Bell toggle + threshold editor for one saved plan. `currentProfit` is the plan re-priced with
+ * today's market, the same figure the hourly check uses. */
+export function AlertControl({
+  planId,
+  currentProfit,
+  hasOverrides,
+  api,
+}: {
+  planId: string;
+  currentProfit: number;
+  hasOverrides: boolean;
+  api: AlertsApi;
+}) {
+  const t = useTranslations("calculator.alerts");
   const locale = useLocale();
   const alert: PlanAlert | undefined = api.alerts.find((a) => a.plan_id === planId);
   const [open, setOpen] = useState(false);
-  const [threshold, setThreshold] = useState(alert ? alert.threshold : Math.max(0, Math.round(currentProfit * 1.5)));
+  const [threshold, setThreshold] = useState(alert ? Number(alert.threshold) : suggestedThreshold(currentProfit));
   const active = alert?.enabled === true;
 
   return (
@@ -108,7 +125,11 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
       <button
         type="button"
         aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          // Suggest from today's figure at the moment it's opened (it arrives after first render).
+          if (!open && !alert) setThreshold(suggestedThreshold(currentProfit));
+          setOpen((o) => !o);
+        }}
         className={cn(
           "inline-flex items-center gap-1.5 text-xs transition-colors",
           active ? "text-money" : "text-muted-foreground hover:text-foreground",
@@ -158,6 +179,7 @@ export function AlertControl({ planId, currentProfit, api }: { planId: string; c
           <p className="mt-2 text-xs text-muted-foreground">
             {t("howItWorks")}
           </p>
+          {hasOverrides && <p className="mt-1 text-xs text-muted-foreground">{t("marketPricesNote")}</p>}
           {alert && (
             <p className="mt-1 text-xs text-muted-foreground">
               {alert.last_checked_at

@@ -1,6 +1,6 @@
 {
   "title": "Albion Online crafting ranking by realizable silver per day",
-  "description": "PlataRank sorts Albion Online recipes (alchemy, refining, cooking, gear and mounts) by profit × daily sales volume, not by per-unit margin. With a calculator, sessions and Discord alerts.",
+  "description": "PlataRank sorts Albion Online recipes (alchemy, refining, cooking, gear and mounts) by profit × daily sales volume, not by per-unit margin. With a calculator, saved plans and Discord alerts.",
   "stationNotes": {
     "alchemy": "Potions",
     "refining": "Planks, bars, cloth and leather",
@@ -11,7 +11,7 @@
   "capabilities": [
     "Ranking by silver per day: the margin is multiplied by the real sales volume.",
     "Calculator with resource return, focus, station fee and taxes, plus links to share your calculation.",
-    "Crafting sessions to add up several items and load your real numbers.",
+    "Saved plans with today's profit and your real result.",
     "Discord alerts when a saved recipe goes above the profit you set."
   ],
   "faq": {

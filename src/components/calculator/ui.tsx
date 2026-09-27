@@ -206,7 +206,7 @@ export function DisclosureButton({
 }
 
 /** Trash icon that turns into an inline "Borrar / Cancelar" pair on click, instead of deleting on
- * the first tap -- shared by every list here (planificaciones, sesiones) that lets the player
+ * the first tap -- shared by every list here (planificaciones) that lets the player
  * remove a saved row. */
 export function ConfirmDelete({
   confirming,

@@ -3,7 +3,7 @@ import { formatInt } from "@/lib/format";
 import { and, eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { alerts, marketAggregates, plans, recipes, userSettings, type Recipe } from "@/lib/db/schema";
-import { computeCraft, type CraftParams } from "@/lib/craft-calc";
+import { computeCraft, marketPricedParams, type CraftParams } from "@/lib/craft-calc";
 import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
 import { recipeJournal } from "@/lib/journals";
 import type { CityPricePoint } from "@/lib/recipe-math";
@@ -71,7 +71,9 @@ export async function runAlerts(now: Date) {
       continue;
     }
 
-    const result = computeCraft(recipe, market, plan.params as CraftParams);
+    // Market prices only: a hand-typed sell or material price would freeze the alert (see
+    // marketPricedParams). The plans list shows the same figure as "hoy".
+    const result = computeCraft(recipe, market, marketPricedParams(plan.params as CraftParams));
     const threshold = Number(alert.threshold);
     // A missing material price counts as 0 in computeCraft, which would read as a huge profit and
     // fire a false alert; without complete prices the plan just stays "below".

@@ -1,6 +1,6 @@
 # PlataRank
 
-Ranking de crafteo en [Albion Online](https://albiononline.com/) por **plata realizable por día**, no por margen unitario. Cubre alquimia, refinado, cocina, armas y armaduras, y monturas, y suma una calculadora con planificaciones, sesiones de crafteo y avisos por Discord.
+Ranking de crafteo en [Albion Online](https://albiononline.com/) por **plata realizable por día**, no por margen unitario. Cubre alquimia, refinado, cocina, armas y armaduras, y monturas, y suma una calculadora con planificaciones guardadas y avisos por Discord.
 
 ## La tesis
 
@@ -21,12 +21,11 @@ PlataRank mete el volumen diario de ventas (expuesto desde siempre por la API p�
 | `/es/equipo` | Armas y armaduras (5.711 recetas, calidades Q1-Q5) |
 | `/es/monturas` | Monturas (29 recetas), con opción de criar el animal base en vez de comprarlo |
 | `/es/calculadora` | Calculadora de un ítem, planificaciones guardadas, avisos por Discord y la pestaña Transporte (peso a cargar contra bolsa, montura y capa de recolección) |
-| `/es/sesiones` | Sesiones de crafteo: agrupá varios crafteos y reemplazá las estimaciones por tus números reales |
 | `/es/receta/[itemId]` | Página indexable de una receta concreta: costo, ganancia y plata por día |
 | `/es/metodologia` | Cómo se calcula cada número |
 | `/es/acerca` | Qué es PlataRank y de dónde salen los datos |
 
-Entrar con Discord es opcional: solo hace falta para guardar planificaciones, sesiones y avisos. Los rankings y la calculadora funcionan sin cuenta.
+Entrar con Discord es opcional: solo hace falta para guardar planificaciones y avisos. Los rankings y la calculadora funcionan sin cuenta.
 
 ## Cómo calcula
 
@@ -95,7 +94,7 @@ pnpm db:generate        # genera migraciones de Drizzle a partir de src/lib/db/s
 - **Snapshots**: el ranking por defecto de equipo y la lista del inicio se precalculan en el ingester (`rank_snapshots`, `src/lib/server/top-recipes.ts`) para no leer decenas de miles de filas en cada visita. Supabase free tiene 5 GB de egress por mes, así que cualquier cambio que amplíe lo que una página lee de la base tiene que contarlo.
 - **Cálculo**: la reducción entre ciudades y calidades (mediana con recorte de outliers) está en `src/lib/recipe-math.ts` y corre en el navegador para rubros chicos; equipo se rankea en el servidor (`rankStation`) para el orden y los filtros elegidos.
 - **Avisos**: tras cada ingesta se recalculan los planes con alerta (`src/lib/ingest/alerts.ts`) y se avisa al webhook de Discord del usuario solo cuando la ganancia cruza el umbral desde abajo.
-- **Base de datos**: las tablas de mercado se acceden con Drizzle; planificaciones, sesiones, ajustes y alertas están protegidas con RLS y se usan desde el navegador con la sesión del usuario. Acceso con mínimo privilegio en [docs/db-least-privilege.md](docs/db-least-privilege.md); SQL de referencia en `supabase/`.
+- **Base de datos**: las tablas de mercado se acceden con Drizzle; planificaciones, ajustes y alertas están protegidas con RLS y se usan desde el navegador con la sesión del usuario. Acceso con mínimo privilegio en [docs/db-least-privilege.md](docs/db-least-privilege.md); SQL de referencia en `supabase/`.
 
 ## Documentación
 

@@ -5,8 +5,6 @@
 
 alter table public.plans enable row level security;
 alter table public.alerts enable row level security;
-alter table public.crafting_sessions enable row level security;
-alter table public.session_items enable row level security;
 alter table public.user_settings enable row level security;
 
 -- plans
@@ -16,7 +14,10 @@ create policy "plans_insert_own" on public.plans for insert to authenticated
   with check (user_id = (select auth.uid()));
 create policy "plans_delete_own" on public.plans for delete to authenticated
   using (user_id = (select auth.uid()));
--- No update policy: plans are saved once and re-saved as a new row.
+-- Update (added 2026-09-27, supabase/plans-update-and-actuals.sql): "Actualizar" rewrites a plan in
+-- place so its alert follows it, and the real result is stored on the plan.
+create policy "plans_update_own" on public.plans for update to authenticated
+  using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
 
 -- alerts: one per plan, so an insert must also own the plan it points at -- otherwise a leaked
 -- plan id (a UUID, but still) would let an attacker alert on someone else's saved plan and get its
@@ -31,29 +32,6 @@ create policy "alerts_insert_own" on public.alerts for insert to authenticated
 create policy "alerts_update_own" on public.alerts for update to authenticated
   using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
 create policy "alerts_delete_own" on public.alerts for delete to authenticated
-  using (user_id = (select auth.uid()));
-
--- crafting_sessions
-create policy "sessions_select_own" on public.crafting_sessions for select to authenticated
-  using (user_id = (select auth.uid()));
-create policy "sessions_insert_own" on public.crafting_sessions for insert to authenticated
-  with check (user_id = (select auth.uid()));
-create policy "sessions_update_own" on public.crafting_sessions for update to authenticated
-  using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
-create policy "sessions_delete_own" on public.crafting_sessions for delete to authenticated
-  using (user_id = (select auth.uid()));
-
--- session_items: same "insert must own the parent" shape as alerts/plans.
-create policy "items_select_own" on public.session_items for select to authenticated
-  using (user_id = (select auth.uid()));
-create policy "items_insert_own" on public.session_items for insert to authenticated
-  with check (
-    user_id = (select auth.uid())
-    and exists (select 1 from public.crafting_sessions s where s.id = session_items.session_id and s.user_id = (select auth.uid()))
-  );
-create policy "items_update_own" on public.session_items for update to authenticated
-  using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
-create policy "items_delete_own" on public.session_items for delete to authenticated
   using (user_id = (select auth.uid()));
 
 -- user_settings: one row per user, holds the Discord webhook URL. A DB-level CHECK constraint

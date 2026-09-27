@@ -63,6 +63,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/opengraph-image", destination: "/es/opengraph-image/og", permanent: true },
+      // Crafting sessions were folded into saved plans (2026-09-27): old links land on the plans tab.
+      { source: "/es/sesiones", destination: "/es/calculadora?tab=planes", permanent: false },
+      { source: "/en/sessions", destination: "/en/calculator?tab=planes", permanent: false },
       { source: "/:path((?!es(?:/|$)|en(?:/|$)|_next|api|auth|opengraph-image|favicon\\.ico|.*\\..*).+)", destination: "/es/:path", permanent: true },
       ...ENGLISH_SLUGS.map(([es, en]) => ({ source: `/en/${es}`, destination: `/en/${en}`, permanent: true })),
       { source: "/en/receta/:itemId", destination: "/en/recipe/:itemId", permanent: true },

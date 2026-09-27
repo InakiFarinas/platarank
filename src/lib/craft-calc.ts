@@ -28,6 +28,19 @@ export type CraftParams = {
   journals?: boolean;
 };
 
+/** The plan's own assumptions with every hand-typed price dropped, so the result follows the
+ * market: what a saved plan's "today" figure and its Discord alert are computed with. A typed sell
+ * or material price is a snapshot of one moment; frozen into an alert it would never react to the
+ * very prices the alert exists to watch. */
+export function marketPricedParams(p: CraftParams): CraftParams {
+  return { ...p, sellOverride: null, matOverrides: {} };
+}
+
+/** True when the plan carries a hand-typed price that `marketPricedParams` drops. */
+export function hasPriceOverrides(p: CraftParams): boolean {
+  return p.sellOverride !== null || Object.keys(p.matOverrides ?? {}).length > 0;
+}
+
 /** Cheapest quote for any of the given items, royal cities only -- same as every other material
  * price in the calculator (Black Market has no sell orders to buy against). Used for breeding's
  * feed pools (any tier-equivalent crop or cut of meat feeds the same) and for a baby animal that
