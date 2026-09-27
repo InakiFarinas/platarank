@@ -6,7 +6,7 @@
 // to compute the aggregate, then discarded; only the upserted, storage-bounded market_aggregates
 // rows land in the DB.
 import "dotenv/config";
-import { sql, eq } from "drizzle-orm";
+import { sql, eq, getTableColumns } from "drizzle-orm";
 import { db } from "../src/lib/db/client";
 import { ingestState, marketAggregates, recipes, type Recipe } from "../src/lib/db/schema";
 import { fetchPrices } from "../src/lib/aodp/client";
@@ -100,11 +100,10 @@ async function setLastProcessedDumpUrl(url: string) {
 }
 
 async function syncRecipes() {
-  for (const recipe of recipesData) {
-    await db
-      .insert(recipes)
-      .values(recipe)
-      .onConflictDoUpdate({ target: recipes.itemId, set: recipe });
+  const { itemId: _pk, ...columns } = getTableColumns(recipes);
+  const set = Object.fromEntries(Object.entries(columns).map(([key, col]) => [key, sql.raw(`excluded."${col.name}"`)]));
+  for (const batch of chunk(recipesData, 200)) {
+    await db.insert(recipes).values(batch).onConflictDoUpdate({ target: recipes.itemId, set });
   }
   console.log(`Synced ${recipesData.length} recipes.`);
 }

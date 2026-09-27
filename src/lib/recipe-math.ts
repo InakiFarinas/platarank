@@ -221,20 +221,35 @@ type SellSide = {
   qualityBreakdown: QualityBreakdownEntry[] | null;
 };
 
+/** Sell reference for one quality: the real cities and the Black Market are priced apart -- the
+ * Black Market quote is a buy order (what a seller receives), the cities' are sell orders, so a
+ * median across both would mix two different things. The better side wins and its own cities lend
+ * the volume. */
+function sellStatSplit(points: CityPricePoint[]) {
+  const side = (list: CityPricePoint[]) =>
+    robustStat(
+      list.filter((p) => p.price !== null).map((p): CityQuote => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d })),
+      "median",
+    );
+  const cities = side(points.filter((p) => p.city !== BLACK_MARKET));
+  const bm = side(points.filter((p) => p.city === BLACK_MARKET));
+  return bm.value !== null && (cities.value === null || bm.value > cities.value) ? bm : cities;
+}
+
 /** Alquimia, refinado, cocina: everything trades at quality 1, so this is the whole story. */
 function computeSingleQualitySellSide(itemId: string, market: MarketData, params: RecipeMathParams): SellSide {
   const points = (market.get(itemId) ?? []).filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
-  const quotes: CityQuote[] = points
-    .filter((p) => p.price !== null)
-    .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
-  const stat = robustStat(quotes, "median");
+  const stat = sellStatSplit(points);
 
   // Volume is only real for the cities whose price actually fed the reference above -- a city with
   // real daily volume but no live price today must not lend its volume to a price from a different,
   // single bait-listing city (see the outlier_self note in outliers.ts).
   const keptCities = new Set(stat.result.kept.map((q) => q.city));
   const oldestAgeSeconds = oldestAge(points, [...keptCities]);
-  const avgDailyVolume30d = points.filter((p) => keptCities.has(p.city)).reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
+  // A city that traded on only a couple of days isn't a daily rate (same bar as gear's liquidity gate).
+  const avgDailyVolume30d = points
+    .filter((p) => keptCities.has(p.city) && p.daysWithVolume30d >= MIN_LIQUID_DAYS)
+    .reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
 
   return {
     sellRefPriceGross: stat.value,
@@ -262,10 +277,7 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
 
   for (let quality = 1; quality <= 5; quality++) {
     const points = allPoints.filter((p) => p.quality === quality && params.sellCities.includes(p.city as Location));
-    const quotes: CityQuote[] = points
-      .filter((p) => p.price !== null)
-      .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
-    const stat = robustStat(quotes, "median");
+    const stat = sellStatSplit(points);
     const keptCities = new Set(stat.result.kept.map((q) => q.city));
     const volume = points.filter((p) => keptCities.has(p.city)).reduce((sum, p) => sum + p.avgDailyVolume30d, 0);
     const daysWithVolume = Math.max(0, ...points.filter((p) => keptCities.has(p.city)).map((p) => p.daysWithVolume30d));
@@ -284,10 +296,7 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
   // Sell reference (age/city-count/discards) for the row detail is driven by Q1, the bulk of any
   // real crafter's output.
   const q1Points = allPoints.filter((p) => p.quality === 1 && params.sellCities.includes(p.city as Location));
-  const q1Quotes: CityQuote[] = q1Points
-    .filter((p) => p.price !== null)
-    .map((p) => ({ city: p.city, price: p.price!, selfRef: p.weightedAvgPrice30d }));
-  const q1Stat = robustStat(q1Quotes, "median");
+  const q1Stat = sellStatSplit(q1Points);
   const oldestAgeSeconds = oldestAge(q1Points, q1Stat.result.kept.map((q) => q.city));
 
   return {

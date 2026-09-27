@@ -1,7 +1,7 @@
 // Daily digest: posts the top recipes by realizable silver/day to a Discord channel webhook.
 // Runs from .github/workflows/daily-digest.yml. DRY_RUN=1 prints the message instead of sending.
 import "dotenv/config";
-import { getTopRecipes } from "../src/lib/server/top-recipes";
+import { loadTopRecipes } from "../src/lib/server/top-recipes";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
 const TOP = 5;
@@ -15,7 +15,7 @@ async function main() {
     process.exit(0);
   }
 
-  const top = await getTopRecipes(TOP);
+  const top = await loadTopRecipes(TOP);
   if (top.length === 0) {
     console.log("No rows to report.");
     process.exit(0);

@@ -39,6 +39,18 @@ describe("computeRecipeRow", () => {
     expect(both.sellRefPrice).toBe(15000);
   });
 
+  test("el Mercado Negro se cotiza aparte: no se mezcla en la mediana de las ciudades", () => {
+    const data = market({
+      T6_POTION_HEAL: [point("Caerleon", 10000), point("Martlock", 12000), point("Black Market", 30000, 50)],
+      T6_FOXGLOVE: [point("Caerleon", 100)],
+    });
+    const both = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, buyCities: ["Caerleon"], sellCities: ["Caerleon", "Martlock", "Black Market"] });
+    expect(both.sellRefPrice).toBe(30000);
+    expect(both.avgDailyVolume30d).toBe(50);
+    const citiesOnly = computeRecipeRow(recipe, data, { ...DEFAULT_PARAMS, buyCities: ["Caerleon"], sellCities: ["Caerleon", "Martlock"] });
+    expect(citiesOnly.sellRefPrice).toBe(11000);
+  });
+
   test("restringir ciudades de compra cambia el costo de materiales", () => {
     const data = market({
       T6_POTION_HEAL: [point("Caerleon", 10000)],
@@ -136,7 +148,7 @@ describe("computeRecipeRow (refinado)", () => {
       T4_WOOD: [point("Caerleon", 10)],
       T3_PLANKS: [point("Caerleon", 20)],
     });
-    const row = computeRecipeRow(planksRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    const row = computeRecipeRow(planksRecipe, data, { ...DEFAULT_PARAMS, stationRatePer100Nutrition: 235, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
     // 1000 * 235 * 0.001125 = 264.375 -> redondeado a 264
     expect(row.feePerBatch).toBe(264);
   });
@@ -198,7 +210,7 @@ describe("computeRecipeRow (cocina)", () => {
       T5_MEAL_SOUP: [point("Caerleon", 1000)],
       T5_CABBAGE: [point("Caerleon", 10)],
     });
-    const row = computeRecipeRow(soupRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    const row = computeRecipeRow(soupRecipe, data, { ...DEFAULT_PARAMS, stationRatePer100Nutrition: 235, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
     // 3000 * 235 * 0.001125 = 793.125 -> redondeado a 793
     expect(row.feePerBatch).toBe(793);
   });
@@ -318,7 +330,7 @@ describe("computeRecipeRow (armas y armaduras)", () => {
       T6_METALBAR: [point("Caerleon", 10)],
       T6_LEATHER: [point("Caerleon", 10)],
     });
-    const row = computeRecipeRow(swordRecipe, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
+    const row = computeRecipeRow(swordRecipe, data, { ...DEFAULT_PARAMS, stationRatePer100Nutrition: 235, sellCities: ["Caerleon"], buyCities: ["Caerleon"] });
     // 2000 * 235 * 0.001125 = 528.75 -> redondeado a 529
     expect(row.feePerBatch).toBe(529);
   });
