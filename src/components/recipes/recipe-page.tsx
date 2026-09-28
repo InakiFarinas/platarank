@@ -1,7 +1,8 @@
 import { computeRecipeRow, DEFAULT_PARAMS } from "@/lib/recipe-math";
 import { RecipeExplorer } from "@/components/recipes/recipe-explorer";
 import { SiteFooter } from "@/components/site-footer";
-import { loadRankSnapshot, loadStationData, rankStation, ROW_LIMIT, type StationType } from "@/lib/server/station-data";
+import { rankStation, ROW_LIMIT, type StationType } from "@/lib/server/station-data";
+import { loadRankSnapshotShared, loadStationDataShared } from "@/lib/server/shared-cache";
 import recipesJson from "@/data/generated/recipes.json";
 import { DEFAULT_FILTERS } from "@/lib/recipe-filters";
 import { breadcrumbSchema, faqSchema, FaqList, JsonLd } from "@/components/json-ld";
@@ -38,7 +39,7 @@ export async function RecipePage({
   let content;
   if (remote) {
     // Precomputed by the ingester; the fallback (first deploy, before its first run) loads everything.
-    const { rows, total } = (await loadRankSnapshot(stationType)) ?? rankStation(await loadStationData(stationType), DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
+    const { rows, total } = (await loadRankSnapshotShared(stationType)) ?? rankStation(await loadStationDataShared(stationType), DEFAULT_PARAMS, DEFAULT_FILTERS, ROW_LIMIT);
     content = (
       <RecipeExplorer
         recipes={[]}
@@ -53,7 +54,7 @@ export async function RecipePage({
       />
     );
   } else {
-    const data = await loadStationData(stationType);
+    const data = await loadStationDataShared(stationType);
     const market = new Map(Object.entries(data.marketByItem));
     const initialRows = data.recipes.map((r) => computeRecipeRow(r, market, DEFAULT_PARAMS));
     content = (

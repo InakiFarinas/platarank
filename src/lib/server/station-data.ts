@@ -1,10 +1,11 @@
 import { and, eq, gt, inArray, isNotNull, or } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { recipes as recipesTable, marketAggregates, rankSnapshots, type Recipe } from "@/lib/db/schema";
+import { marketAggregates, rankSnapshots, type Recipe } from "@/lib/db/schema";
+import { recipesOfStation } from "@/lib/recipes-data";
 import { computeRecipeRow, DEFAULT_PARAMS, SORT_ACCESSORS, type CityPricePoint, type RecipeMathParams, type RecipeRow, type SortKey } from "@/lib/recipe-math";
 import { applyFilters, DEFAULT_FILTERS, type FilterParams } from "@/lib/recipe-filters";
 import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
-import { ALL_JOURNAL_MARKET_ITEMS } from "@/lib/journals";
+import { ALL_JOURNAL_MARKET_ITEMS, recipeJournal } from "@/lib/journals";
 
 /** Rows shipped per ranking view of a large station (gear). */
 export const ROW_LIMIT = 300;
@@ -13,22 +14,37 @@ export type StationType = "alchemy" | "refining" | "cooking" | "gear" | "mount";
 
 export type StationData = { recipes: Recipe[]; marketByItem: Record<string, CityPricePoint[]> };
 
+// Only the columns the math reads: computed_at (a timestamp in every row) was ~25% of the payload
+// and nothing used it.
+const MARKET_COLUMNS = {
+  itemId: marketAggregates.itemId,
+  city: marketAggregates.city,
+  quality: marketAggregates.quality,
+  price: marketAggregates.price,
+  priceAgeSeconds: marketAggregates.priceAgeSeconds,
+  buyPriceMax: marketAggregates.buyPriceMax,
+  avgDailyVolume30d: marketAggregates.avgDailyVolume30d,
+  daysWithVolume30d: marketAggregates.daysWithVolume30d,
+  weightedAvgPrice30d: marketAggregates.weightedAvgPrice30d,
+};
+
 /** Market price points of the given items, grouped by item. */
-export async function loadMarketFor(relevantItemIds: Set<string>): Promise<Record<string, CityPricePoint[]>> {
-  // Fetch only the aggregates this station's recipes actually reference -- with thousands of gear
-  // items across the whole game, pulling the entire table for every rubro would balloon payload
-  // and query time for no reason.
+export async function loadMarketFor(relevantItemIds: Iterable<string>): Promise<Record<string, CityPricePoint[]>> {
+  const ids = [...new Set(relevantItemIds)];
+  // Fetch only the aggregates the caller's recipes actually reference -- with thousands of gear
+  // items across the whole game, pulling the entire table would balloon payload and query time.
   const aggregateRows =
-    relevantItemIds.size > 0
+    ids.length > 0
       ? await db
-          .select()
+          .select(MARKET_COLUMNS)
           .from(marketAggregates)
           .where(
             and(
-              inArray(marketAggregates.itemId, [...relevantItemIds]),
-              // Rows with no price and no volume carry nothing the math reads (~64% of the table) and
-              // are pure egress on the 5 GB/month plan.
-              or(isNotNull(marketAggregates.price), gt(marketAggregates.avgDailyVolume30d, "0")),
+              inArray(marketAggregates.itemId, ids),
+              // Rows with no price, no buy order and no volume carry nothing the math reads and are
+              // pure egress on the 5 GB/month plan. (A buy order alone does count: it is the
+              // instant-sell price of rarely traded goods like artifacts.)
+              or(isNotNull(marketAggregates.price), isNotNull(marketAggregates.buyPriceMax), gt(marketAggregates.avgDailyVolume30d, "0")),
             ),
           )
       : [];
@@ -49,11 +65,10 @@ export async function loadMarketFor(relevantItemIds: Set<string>): Promise<Recor
   return marketByItem;
 }
 
-export async function loadStationData(stationType: StationType): Promise<StationData> {
-  const recipeRows = await db.select().from(recipesTable).where(eq(recipesTable.stationType, stationType));
-
+/** Every market item a station's ranking reads: its recipes, their materials and the extras below. */
+export function stationMarketItemIds(stationType: StationType): Set<string> {
   const relevantItemIds = new Set<string>();
-  for (const r of recipeRows) {
+  for (const r of recipesOfStation(stationType)) {
     relevantItemIds.add(r.itemId);
     for (const m of r.materials) relevantItemIds.add(m.itemId);
   }
@@ -68,13 +83,25 @@ export async function loadStationData(stationType: StationType): Promise<Station
   if (stationType === "gear") {
     for (const itemId of ALL_JOURNAL_MARKET_ITEMS) relevantItemIds.add(itemId);
   }
-
-  const marketByItem = await loadMarketFor(relevantItemIds);
-  return { recipes: recipeRows, marketByItem };
+  return relevantItemIds;
 }
 
-// Prices refresh hourly, so a warm serverless instance can reuse one load for a few minutes
-// instead of re-reading ~230k aggregate rows on every /api/rank call.
+/** Market items one recipe's own row reads: itself, its materials, and its breeding or journal extras. */
+export function recipeMarketItemIds(recipe: Recipe): string[] {
+  const ids = [recipe.itemId, ...recipe.materials.map((m) => m.itemId)];
+  if (recipe.stationType === "mount") ids.push(...ALL_BREEDING_MARKET_ITEMS);
+  const journal = recipeJournal(recipe);
+  if (journal) ids.push(journal.emptyItemId, journal.fullItemId);
+  return ids;
+}
+
+export async function loadStationData(stationType: StationType): Promise<StationData> {
+  return { recipes: recipesOfStation(stationType), marketByItem: await loadMarketFor(stationMarketItemIds(stationType)) };
+}
+
+// Within one process (the ingester's snapshot refresh ranks gear and then every station for the home
+// list), reuse a station's load instead of reading its aggregates twice. The web goes through
+// shared-cache.ts instead.
 const CACHE_TTL_MS = 30 * 60 * 1000;
 const cache = new Map<StationType, { at: number; data: Promise<StationData> }>();
 

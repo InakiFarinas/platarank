@@ -2,7 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { ALL_LOCATIONS, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import { DEFAULT_PARAMS, SORT_ACCESSORS, type RecipeMathParams, type SortKey } from "@/lib/recipe-math";
 import type { FilterParams } from "@/lib/recipe-filters";
-import { loadStationDataCached, rankStation, ROW_LIMIT } from "@/lib/server/station-data";
+import { rankStation, ROW_LIMIT } from "@/lib/server/station-data";
+import { loadStationDataMemo } from "@/lib/server/shared-cache";
 
 // /equipo has ~5,700 recipes: shipping all of them (plus their market data) to the browser is a
 // ~50MB page. Instead the page ships the default top rows and this route recomputes server-side
@@ -86,7 +87,7 @@ export async function POST(request: NextRequest) {
   const cached = results.get(key);
   if (cached && Date.now() - cached.at < RESULT_TTL_MS) return NextResponse.json(cached.body);
 
-  const data = await loadStationDataCached("gear");
+  const data = await loadStationDataMemo("gear");
   const ranked = rankStation(data, params, filters, ROW_LIMIT, sort);
   results.set(key, { at: Date.now(), body: ranked });
   if (results.size > RESULT_MAX_ENTRIES) results.delete(results.keys().next().value as string);
