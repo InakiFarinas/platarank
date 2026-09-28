@@ -2,7 +2,9 @@ name: Ingest AODP data
 
 on:
   schedule:
-    - cron: "0 * * * *" # cada hora
+    # Minute 23, not 0: GitHub delays and drops scheduled runs at the top of the hour, when every
+    # other repo fires; on :00 this "hourly" job was running about three times a day.
+    - cron: "23 * * * *" # cada hora
   workflow_dispatch: {}
 
 # The job only needs to read the repository; nothing here writes back to GitHub.
