@@ -55,6 +55,16 @@ export default function En() {
         journal and how much fame each one holds come from the game data dump. Refining, alchemy and cooking fill no journal.
       </p>
 
+      <h2>Focus and specialization</h2>
+      <p>
+        A craft&apos;s focus is its base focus × 0.5 to the power of (efficiency / 10,000): every 10,000 focus cost efficiency halves it.
+        Efficiency comes from your Destiny Board: each mastery level adds 30 to its whole category, each level of an item&apos;s
+        specialization adds 250 to that item, and the category&apos;s other specializations add 11.25 to 30 per level (depending on the node;
+        crystal specs about 2 to the whole tree). In refining each tier is a node: 250 to its own tier and 30 to every tier of that resource.
+        The per-level values and which items they apply to come from the game data dump (Destiny Board), and the result matches what the game
+        charges. The game rounds the order&apos;s total, not each craft. Mounts have no node that lowers focus.
+      </p>
+
       <h2>Raised mounts</h2>
       <p>
         For mounts you can choose to raise the base animal instead of buying it fully grown. For horse and ox (T3 to T8) the young animal has a
@@ -69,7 +79,7 @@ export default function En() {
 
       <h2>Known limitations</h2>
       <ul>
-        <li>The calculator does not yet model masteries (the focus required is shown without mastery reduction).</li>
+        <li>The calculator computes focus with your specialization, but the rankings don&apos;t sort by silver per focus point yet.</li>
         <li>The Black Market accepts qualities equal to or higher than the one requested and we do not model that: we only count the exact quality.</li>
         <li>We do not model quality rerolls.</li>
         <li>Full journals&apos; sales volume doesn&apos;t cap silver per day: we assume they sell at the item&apos;s pace.</li>

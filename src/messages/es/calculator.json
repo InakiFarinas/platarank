@@ -163,7 +163,7 @@
     "fillIn": "Completá lo que falta para que la ganancia sea real.",
     "margin": "Margen sobre inversión",
     "perUnit": "Ganancia por unidad",
-    "focusNeeded": "Foco necesario (sin maestrías)",
+    "focusNeeded": "Foco necesario (sin especialización)",
     "volume": "Volumen de ventas (por día)",
     "whereFrom": "De dónde sale el precio de venta",
     "repin": "Fijar este en lugar del anterior",
@@ -174,7 +174,8 @@
     "emptyJournals": "Diarios vacíos ({count} × {price})",
     "fullJournals": "Diarios llenos ({count} × {price})",
     "journalFame": "Fama para diarios (llena {max} cada uno)",
-    "journalsUnpriced": "Los diarios de este ítem no tienen precio reciente (vacío o lleno), así que no se suman a la ganancia."
+    "journalsUnpriced": "Los diarios de este ítem no tienen precio reciente (vacío o lleno), así que no se suman a la ganancia.",
+    "focusNeededSpec": "Foco necesario (con tu especialización)"
   },
   "compare": {
     "profit": "Ganancia",
@@ -235,5 +236,17 @@
     "toggleError": "No se pudo cambiar la alerta.",
     "removeError": "No se pudo borrar la alerta.",
     "marketPricesNote": "Esta planificación tiene precios escritos a mano: el aviso usa los precios de mercado, para reaccionar a lo que cambie."
+  },
+  "focusSpec": {
+    "title": "Tu especialización (foco)",
+    "fce": "Eficiencia {fce}",
+    "intro": "Tus niveles del tablero del destino que bajan el foco de este ítem. Cada 10.000 de eficiencia el foco se reduce a la mitad. Se guardan en este navegador y valen para todos los ítems.",
+    "minor": "{count, plural, one {# especialización más de la categoría} other {# especializaciones más de la categoría}}",
+    "perCraft": "Foco por craft",
+    "vsBase": "sin especialización {base} · pagás el {pct} %",
+    "mastery": "Maestría",
+    "spec": "Especialización",
+    "perLevel": "+{fce} por nivel",
+    "levelLabel": "Nivel de {name}"
   }
 }

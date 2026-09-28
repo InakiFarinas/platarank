@@ -4,6 +4,7 @@ import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
 import { saleTaxRate } from "@/lib/formulas/market-tax";
 import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
+import { focusPerCraft } from "@/lib/formulas/focus-cost";
 import { returnRate } from "@/lib/formulas/return-rate";
 import { recipeJournal } from "@/lib/journals";
 import type { CityPricePoint } from "@/lib/recipe-math";
@@ -69,8 +70,10 @@ function bestInstantSellPrice(market: Record<string, CityPricePoint[]>, itemId: 
 }
 
 /** One item's crafting result under the given assumptions -- shared by the calculator (browser)
- * and the alert checker (ingest), so both always agree on the number. */
-export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoint[]>, p: CraftParams) {
+ * and the alert checker (ingest), so both always agree on the number. `fce` is the player's
+ * Destiny Board focus cost efficiency for this item (src/lib/destiny-focus.ts); it only changes the
+ * focus figures, never the silver ones, so it isn't part of a saved plan. */
+export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoint[]>, p: CraftParams, fce = 0) {
   const spec = getCitySpecialty(recipe.craftingCategory);
   const specActive = spec !== null && spec.city === p.craftCity;
   const rrr = returnRate({
@@ -213,7 +216,9 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     profit,
     margin: cost > 0 ? profit / cost : null,
     perUnit: produced > 0 ? profit / produced : 0,
-    focusTotal: p.focus ? recipe.craftingFocus * crafts : 0,
+    /** Focus per craft with the player's board, unrounded (the game rounds the order's total). */
+    focusPerCraft: focusPerCraft(recipe.craftingFocus, fce),
+    focusTotal: p.focus ? Math.round(focusPerCraft(recipe.craftingFocus, fce) * crafts) : 0,
     /** True when the profit figure rests on a missing price (materials counted as 0 or no sell price). */
     incomplete:
       materials.some((x) => x.auto === null && p.matOverrides[x.m.itemId] === undefined) ||

@@ -163,7 +163,7 @@
     "fillIn": "Fill in what's missing so the profit is real.",
     "margin": "Margin on investment",
     "perUnit": "Profit per unit",
-    "focusNeeded": "Focus needed (without mastery)",
+    "focusNeeded": "Focus needed (no specialization)",
     "volume": "Sales volume (per day)",
     "whereFrom": "Where the sell price comes from",
     "repin": "Pin this one instead of the previous",
@@ -174,7 +174,8 @@
     "emptyJournals": "Empty journals ({count} × {price})",
     "fullJournals": "Full journals ({count} × {price})",
     "journalFame": "Journal fame ({max} fills one)",
-    "journalsUnpriced": "This item's journals have no recent price (empty or full), so they aren't added to the profit."
+    "journalsUnpriced": "This item's journals have no recent price (empty or full), so they aren't added to the profit.",
+    "focusNeededSpec": "Focus needed (with your specialization)"
   },
   "compare": {
     "profit": "Profit",
@@ -235,5 +236,17 @@
     "toggleError": "Couldn't change the alert.",
     "removeError": "Couldn't delete the alert.",
     "marketPricesNote": "This plan has hand-typed prices: the alert uses market prices, so it reacts to what changes."
+  },
+  "focusSpec": {
+    "title": "Your specialization (focus)",
+    "fce": "Efficiency {fce}",
+    "intro": "Your Destiny Board levels that lower this item’s focus cost. Every 10,000 efficiency halves the focus. Saved in this browser and shared by every item.",
+    "minor": "{count, plural, one {# more spec in the category} other {# more specs in the category}}",
+    "perCraft": "Focus per craft",
+    "vsBase": "no specialization {base} · you pay {pct}%",
+    "mastery": "Mastery",
+    "spec": "Specialization",
+    "perLevel": "+{fce} per level",
+    "levelLabel": "{name} level"
   }
 }
