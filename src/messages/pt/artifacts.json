@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "Fundição de artefatos de Albion Online: valor esperado por rolagem",
+    "description": "Valor esperado de rolar Runas, Almas, Relíquias ou fragmentos de Avalon na Fundição de artefatos de Albion Online: custo, lucro, pior e melhor caso e chance de perder, por tier."
+  },
+  "page": {
+    "title": "Fundição de artefatos",
+    "description": "Cada rolagem dá um artefato aleatório do conjunto escolhido, todos com a mesma chance. Aqui você vê se compensa e quanto arrisca.",
+    "dataCredit": "Dados de mercado: Albion Online Data Project."
+  },
+  "error": {
+    "title": "Não conseguimos carregar a Fundição",
+    "body": "Houve um problema ao ler os preços de mercado. Pode ser temporário: tente de novo.",
+    "retry": "Tentar de novo"
+  },
+  "foundry": {
+    "heading": "Calculadora da Fundição",
+    "fragment": "Fragmento",
+    "tier": "Tier",
+    "fragments": {
+      "RUNE": "Runas",
+      "SOUL": "Almas",
+      "RELIC": "Relíquias",
+      "SHARD_AVALONIAN": "Avalon"
+    },
+    "classes": {
+      "warrior": "Guerreiro",
+      "hunter": "Caçador",
+      "mage": "Mago"
+    },
+    "mixed": "Misto",
+    "gains": "ganha",
+    "loses": "perde",
+    "sellMode": "Venda",
+    "sellModeInstant": "Instantânea",
+    "sellModeOrder": "Com ordem de venda",
+    "poolsTitle": "Conjuntos da Fundição",
+    "asideCity": "{fragment}: {price} cada em {city}",
+    "asidePrice": "{fragment}: {price} cada",
+    "asideNone": "Sem preço de {fragment}",
+    "col": {
+      "pool": "Conjunto",
+      "cost": "Custo",
+      "expected": "Valor esperado",
+      "profit": "Lucro",
+      "worstBest": "Pior / melhor",
+      "loses": "Perde"
+    },
+    "profitLabel": "Lucro: ",
+    "poolMeta": "{count} fragmentos · {priced}/{size} com preço",
+    "poolMetaInstant": "{count} fragmentos · {priced}/{size} com ordem de compra",
+    "note1Order": "Valor esperado: média do que rende cada artefato do conjunto, líquido de impostos ({net}% do preço), publicando sua própria ordem de venda e esperando ela ser concluída. Os que não têm preço ou não venderam em 30 dias ficam fora da média. Perde: que parte dos artefatos com preço vende por menos do que custou a rolagem.",
+    "note1Instant": "Valor esperado: média do que rende cada artefato do conjunto, líquido de impostos ({net}% do preço), vendendo na hora para a melhor ordem de compra ativa em qualquer cidade (sem publicar a sua). Como uma ordem de compra reserva a prata antecipadamente, esse preço é real, não um anúncio. Os artefatos sem nenhuma ordem de compra ficam fora da média. Perde: que parte dos artefatos com oferta vende por menos do que custou a rolagem.",
+    "note2": "Premissas: todos os artefatos do conjunto com a mesma chance, e {mixed} fragmentos por rolagem no conjunto Misto. Nenhuma delas vem dos dados do jogo; os conjuntos sim (são os artefatos cuja receita usa esse fragmento). O custo usa o fragmento mais barato entre as cidades.",
+    "compareTitle": "Comparar tiers",
+    "compareAside": "melhor lucro esperado entre os quatro conjuntos",
+    "compareRegion": "Comparação de fragmentos e tiers",
+    "compareCaption": "Melhor lucro esperado por rolagem conforme fragmento e tier. Escolha uma célula para ver o detalhe.",
+    "cellAria": "{fragment} T{tier}: {sign, select, gain {ganha} other {perde}} {amount} no conjunto {pool}",
+    "cellNone": "{fragment} T{tier}: sem dados",
+    "detailTitle": "Conjunto {pool}: o que pode sair",
+    "detailAside": "{priced}/{size} com preço",
+    "perDay": "{n}/dia",
+    "noSales": "sem vendas",
+    "instantAt": "em {city}",
+    "noBuyOrder": "sem ordem de compra",
+    "verdictNoPrice": "Não há preço de {fragment} em nenhuma cidade, então não dá para calcular custo nem lucro. Abaixo você vê quanto rende cada artefato do conjunto.",
+    "verdictNoSales": "Nenhum artefato do conjunto {pool} foi vendido nos últimos 30 dias, então não há valor esperado para comparar com o custo.",
+    "verdictNoBuyOrders": "Nenhum artefato do conjunto {pool} tem uma ordem de compra ativa agora, então não há valor esperado para comparar com o custo.",
+    "verdictDetail": "valor esperado {expected} − custo {cost} · perde {loss} das vezes · pior {worst}, melhor {best}",
+    "verdictTitle": "Lucro esperado por rolagem · {fragment} · conjunto {pool}"
+  },
+  "transport": {
+    "capacity": "Capacidade de carga",
+    "bag": "Bolsa",
+    "none": "Nenhuma",
+    "mount": "Montaria",
+    "mountTier": "Tier da montaria",
+    "mountedOnly": " (só montado)",
+    "cape": "Capa de coleta",
+    "capeTier": "Tier da capa",
+    "capeTierHint": "-30% no próprio recurso, até este tier",
+    "capeCategories": {
+      "FIBER": "Fibra",
+      "HIDE": "Couro",
+      "ORE": "Minério",
+      "ROCK": "Pedra",
+      "WOOD": "Madeira"
+    },
+    "food": "Comida ativa",
+    "foodHint": "+10%, dura 30 min",
+    "courier": "Calçado com Courier",
+    "courierHint": "passiva escolhida ao criar, estimada",
+    "mounts": {
+      "horse": "Cavalo de montar",
+      "ox": "Boi de transporte",
+      "mule": "Mula do novato",
+      "direboar": "Javali-vil",
+      "giant_stag": "Veado gigante",
+      "swamp_dragon": "Dragão do pântano"
+    },
+    "cargoTitle": "O que você vai transportar",
+    "searchPlaceholder": "Buscar item ou recurso bruto...",
+    "rawTag": "T{tier} · bruto",
+    "empty": "Você ainda não adicionou nada para transportar.",
+    "weightEach": "{kg} kg cada",
+    "weightUnknown": "peso desconhecido",
+    "qtyOf": "Quantidade de {name}",
+    "remove": "Remover {name}",
+    "resultTitle": "Resultado",
+    "cargoWeight": "Peso a transportar",
+    "maxLoad": "Capacidade máxima",
+    "load": "Carga",
+    "speed": "{speed} m/s",
+    "noBag": "Sem bolsa nem montaria equipada, você só tem a carga base (50 kg).",
+    "speedLabels": {
+      "normal": "Velocidade normal",
+      "reduced": "Reduzida",
+      "noGallop": "Reduzida (sem galope)",
+      "veryReduced": "Muito reduzida",
+      "almostStill": "Quase parado",
+      "cannotMove": "Você não consegue se mover"
+    }
+  }
+}

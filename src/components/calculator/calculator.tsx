@@ -44,12 +44,13 @@ function loadSearchIndex(): Promise<SearchEntry[]> {
 }
 type Variant = { itemId: string; tier: number; enchant: number };
 type ItemData = { recipe: Recipe; market: Record<string, CityPricePoint[]>; variants: Variant[] };
-type Recent = { itemId: string; name: string; nameEn?: string };
+type Recent = { itemId: string; name: string; nameEn?: string; namePt?: string };
 
 const RECENTS_KEY = "platarank:calc-recents";
 const PINNED_KEY = "platarank:calc-pinned";
 const STATION_KEYS = ["alchemy", "refining", "cooking", "gear", "mount"];
 /** Decimal comma in Spanish, point in English. */
+// Spanish and Portuguese both use a decimal comma; English a point.
 const dec = (s: string, locale: Locale) => (locale === "en" ? s : s.replace(".", ","));
 
 const DEFAULTS = { qty: 1, premium: true, blackMarket: false, quality: 1, craftCity: "Brecilien", focus: false, feeRate: 500, extraCost: 0 };
@@ -254,7 +255,12 @@ export function Calculator() {
     setHits([]);
     setQuery("");
     const suffix = ` T${next.recipe.tier}${enchantLabel(next.recipe.enchant)}`;
-    const entry = { itemId: id, name: `${next.recipe.nameEs}${suffix}`, nameEn: `${next.recipe.nameEn || next.recipe.nameEs}${suffix}` };
+    const entry = {
+      itemId: id,
+      name: `${next.recipe.nameEs}${suffix}`,
+      nameEn: `${itemName(next.recipe, "en")}${suffix}`,
+      namePt: `${itemName(next.recipe, "pt")}${suffix}`,
+    };
     const updated = [entry, ...readRecents().filter((r) => r.itemId !== id)].slice(0, 6);
     setRecents(updated);
     try {
@@ -1167,7 +1173,7 @@ function EmptyState({
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={itemIconUrl(r.itemId, 1, 64)} alt="" width={32} height={32} className="h-8 w-8 shrink-0" />
-                  <span className="truncate">{locale === "en" ? (r.nameEn ?? r.name) : r.name}</span>
+                  <span className="truncate">{itemName({ nameEs: r.name, nameEn: r.nameEn, namePt: r.namePt }, locale)}</span>
                 </button>
               </li>
             ))}

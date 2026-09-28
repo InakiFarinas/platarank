@@ -1,0 +1,71 @@
+{
+  "title": "Ranking de criação do Albion Online por prata realizável por dia",
+  "description": "O PlataRank ordena as receitas do Albion Online (alquimia, refino, culinária, equipamento e montarias) por lucro × volume diário de vendas, não por margem unitária. Com calculadora, planejamentos salvos e alertas pelo Discord.",
+  "stationNotes": {
+    "alchemy": "Poções",
+    "refining": "Tábuas, barras, tecido e couro",
+    "cooking": "Refeições",
+    "gear": "Armas, armaduras, bolsas, capas e equipamento de coleta",
+    "mount": "Animais de montaria"
+  },
+  "capabilities": [
+    "Ranking por prata por dia: a margem é multiplicada pelo volume real de vendas.",
+    "Calculadora com retorno, foco, taxa da estação e impostos, e links para compartilhar seu cálculo.",
+    "Planejamentos salvos com o lucro de hoje e o seu resultado real.",
+    "Alertas pelo Discord quando uma receita salva passa do lucro que você definir."
+  ],
+  "faq": {
+    "whatIsQ": "O que é o PlataRank?",
+    "whatIsA": "O PlataRank é um ranking gratuito de criação do Albion Online (servidor Américas). Ele ordena as receitas de alquimia, refino, culinária, equipamento e montarias pela prata que rendem por dia, com preços atualizados a cada hora.",
+    "silverPerDayQ": "O que é a prata por dia?",
+    "silverPerDayA": "É o lucro por unidade multiplicado pelo volume diário de vendas e pela fatia de mercado que você assumir. Uma receita com margem alta que quase não vende rende menos que uma de margem pequena que vende o dia todo.",
+    "whatToCraftQ": "O que vale a pena criar hoje no Albion Online?",
+    "whatToCraftA": "A primeira linha do ranking com as suas premissas (cidade, foco, fatia de mercado). O bloco acima mostra as cinco melhores receitas agora, e cada estação tem seu próprio ranking.",
+    "sourcesQ": "De onde vêm os preços e as receitas?",
+    "sourcesA": "Os preços vêm do Albion Online Data Project, alimentado por jogadores, e as receitas do dump oficial do cliente. Preços estranhos são filtrados, e o detalhe de cada fórmula está na página de metodologia.",
+    "officialQ": "O PlataRank é oficial?",
+    "officialA": "Não. É uma ferramenta da comunidade, gratuita e sem afiliação com a Sandbox Interactive."
+  },
+  "how": {
+    "heading": "Como sai o número de {name}",
+    "cost": "Custo por unidade (materiais e taxa)",
+    "sell": "Preço de venda (mediana das cidades)",
+    "net": "Receita líquida após impostos",
+    "profit": "Lucro por unidade",
+    "volume": "× volume diário de vendas × {share}% de fatia",
+    "perDay": "Prata por dia"
+  },
+  "hero": {
+    "title": "Maximize sua <money>prata</money> no Albion Online",
+    "body": "Descubra quais receitas de criação rendem mais prata por dia, com dados reais de volume de vendas, preços e todas as fórmulas de cálculo à vista.",
+    "viewRecipes": "Ver receitas lucrativas",
+    "openCalc": "Abrir calculadora",
+    "recipes": "{count} receitas · ",
+    "stats": "5 estações · servidor Américas · preços atualizados a cada hora · ",
+    "discord": "Discord da comunidade"
+  },
+  "top": {
+    "heading": "O que mais rende hoje",
+    "intro": "Ordenamos por prata realizável por dia: lucro por unidade × volume de vendas × fatia de mercado. Uma receita com margem alta que quase não vende rende menos que uma de margem pequena que vende o dia todo.",
+    "best": "Agora mesmo, a receita que mais rende é <b>{name}</b> ({station}): {perDay} de prata por dia com as premissas padrão.",
+    "listHeading": "As melhores receitas agora",
+    "listNote": "prata por dia · Brecilien, sem foco",
+    "meta": "{station} · margem {margin} · volume {volume}",
+    "tap": "Toque em uma receita para ver o custo e o lucro. Preço mais antigo usado: {age}."
+  },
+  "stations": {
+    "heading": "Escolha sua estação",
+    "recipes": "{count} receitas"
+  },
+  "discord": {
+    "heading": "Avisos e alertas no Discord",
+    "body": "Todos os dias publicamos no Discord as melhores receitas. E com sua conta você pode salvar cálculos e receber um aviso quando uma receita passar do lucro que você definir. É grátis.",
+    "join": "Entrar no Discord",
+    "methodology": "Como calculamos tudo"
+  },
+  "footer": {
+    "dataFrom": "Dados de",
+    "rest": "· Cliente do jogo · Atualizado a cada hora",
+    "disclaimer": "Esta ferramenta não é afiliada à Sandbox Interactive. Uso não oficial."
+  }
+}

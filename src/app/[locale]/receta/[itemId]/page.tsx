@@ -29,7 +29,7 @@ type Variant = { itemId: string; tier: number; enchant: number };
 
 const tierless = (id: string) => id.replace(/^T[0-9]+_/, "");
 
-function itemLabel(r: { nameEs: string; nameEn?: string | null; tier: number; enchant: number }, locale: Locale) {
+function itemLabel(r: { nameEs: string; nameEn?: string | null; namePt?: string | null; tier: number; enchant: number }, locale: Locale) {
   return `${itemName(r, locale)} T${r.tier}${r.enchant > 0 ? `.${r.enchant}` : ""}`;
 }
 

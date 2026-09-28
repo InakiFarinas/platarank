@@ -1,0 +1,28 @@
+{
+  "updatedLabel": "Última atualização: {date}",
+  "disclaimer": "Esta ferramenta não é afiliada à Sandbox Interactive. Uso não oficial.",
+  "about": {
+    "title": "Sobre",
+    "heading": "Sobre o PlataRank",
+    "description": "O que é o PlataRank, de onde vêm seus dados, como falar conosco e por que não é uma ferramenta oficial do Albion Online.",
+    "updated": "2026-09-28"
+  },
+  "methodology": {
+    "title": "Metodologia: como é calculada a prata por dia",
+    "heading": "Metodologia",
+    "description": "Como o PlataRank calcula o custo, o retorno de recursos, a taxa da estação, os impostos e a prata por dia de cada receita do Albion Online, e quais são suas limitações.",
+    "updated": "2026-09-28"
+  },
+  "privacy": {
+    "title": "Política de privacidade",
+    "heading": "Política de privacidade",
+    "description": "Quais dados o PlataRank trata, com quem os compartilha e quais direitos você tem sobre eles.",
+    "updated": "2026-09-28"
+  },
+  "terms": {
+    "title": "Termos de uso",
+    "heading": "Termos de uso",
+    "description": "Condições de uso do PlataRank, uma ferramenta informativa e não oficial para o Albion Online.",
+    "updated": "2026-09-28"
+  }
+}

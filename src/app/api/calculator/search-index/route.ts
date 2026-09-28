@@ -8,7 +8,15 @@ import { toSearchEntry } from "@/lib/item-search";
 // ships as a new deploy anyway.
 export const dynamic = "force-static";
 
-type RecipeRow = { itemId: string; nameEs: string; nameEn: string; tier: number; enchant: number; stationType: "alchemy" | "refining" | "cooking" | "gear" | "mount" };
+type RecipeRow = {
+  itemId: string;
+  nameEs: string;
+  nameEn: string;
+  namePt: string;
+  tier: number;
+  enchant: number;
+  stationType: "alchemy" | "refining" | "cooking" | "gear" | "mount";
+};
 
 export function GET() {
   const index = (recipesJson as RecipeRow[]).filter((r) => r.enchant === 0).map(toSearchEntry);

@@ -88,14 +88,14 @@ async function main() {
   if (!formattedRes.ok) throw new Error(`${FORMATTED_ITEMS_URL}: HTTP ${formattedRes.status}`);
   const formatted = (await formattedRes.json()) as { UniqueName: string; LocalizedNames?: Record<string, string> }[];
   const byId = new Map(formatted.map((i) => [i.UniqueName, i.LocalizedNames ?? {}]));
-  const names: Record<string, [string, string]> = {};
+  const names: Record<string, [string, string, string]> = {};
   for (const type of JOURNAL_TYPES) {
     for (let tier = 2; tier <= 8; tier++) {
       for (const state of ["EMPTY", "FULL"]) {
         const id = `T${tier}_JOURNAL_${type}_${state}`;
         const n = byId.get(id);
-        if (!n?.["ES-ES"] || !n["EN-US"]) throw new Error(`${id} has no localized name in formatted/items.json`);
-        names[id] = [n["ES-ES"], n["EN-US"]];
+        if (!n?.["ES-ES"] || !n["EN-US"] || !n["PT-BR"]) throw new Error(`${id} has no localized name in formatted/items.json`);
+        names[id] = [n["ES-ES"], n["EN-US"], n["PT-BR"]];
       }
     }
   }

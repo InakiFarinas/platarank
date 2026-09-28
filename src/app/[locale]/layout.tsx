@@ -88,7 +88,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale === "pt" ? "pt-BR" : locale} className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} ${imFell.variable} ${cinzel.variable} antialiased`}>
         <JsonLd data={siteSchema} />
         <a

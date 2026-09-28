@@ -37,6 +37,7 @@ export type DestinyNode = {
   kind: "mastery" | "spec";
   nameEs: string;
   nameEn: string;
+  namePt: string;
   maxLevel: number;
   bonuses: { fcePerLevel: number; minTier: number; maxTier: number; patterns: string[] }[];
 };
@@ -100,6 +101,7 @@ async function main() {
       kind: /BASE$/.test(template) ? "mastery" : "spec",
       nameEs: names.get(tag)?.es ?? raw["@_id"],
       nameEn: names.get(tag)?.en ?? raw["@_id"],
+      namePt: names.get(tag)?.pt ?? raw["@_id"],
       maxLevel,
       bonuses,
     };
@@ -117,13 +119,13 @@ function patternRegex(pattern: string): RegExp {
 
 /** Spanish and English names for the given localization tags, streamed with a regex rather than a
  * full parse (the file is ~75 MB and every other language is irrelevant here). */
-function localizedNames(xml: string, tags: Set<string>): Map<string, { es: string; en: string }> {
-  const out = new Map<string, { es: string; en: string }>();
+function localizedNames(xml: string, tags: Set<string>): Map<string, { es: string; en: string; pt: string }> {
+  const out = new Map<string, { es: string; en: string; pt: string }>();
   const tu = /<tu tuid="([^"]+)">([\s\S]*?)<\/tu>/g;
   for (let m = tu.exec(xml); m; m = tu.exec(xml)) {
     if (!tags.has(m[1])) continue;
     const seg = (lang: string) => m![2].match(new RegExp(`<tuv xml:lang="${lang}">\\s*<seg>([\\s\\S]*?)</seg>`))?.[1];
-    out.set(m[1], { es: seg("ES-ES") ?? seg("EN-US") ?? m[1], en: seg("EN-US") ?? m[1] });
+    out.set(m[1], { es: seg("ES-ES") ?? seg("EN-US") ?? m[1], en: seg("EN-US") ?? m[1], pt: seg("PT-BR") ?? seg("EN-US") ?? m[1] });
   }
   return out;
 }

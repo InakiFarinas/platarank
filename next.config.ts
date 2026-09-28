@@ -51,14 +51,20 @@ const securityHeaders = [
   { key: "Content-Security-Policy-Report-Only", value: reportOnlyCsp },
 ];
 
-const ENGLISH_SLUGS = (Object.values(ROUTES) as { es: string; en: string }[]).filter((r) => r.es !== "receta").map((r) => [r.es, r.en] as const);
+// Every non-Spanish locale whose slug differs from the Spanish folder name: [locale, es, slug].
+const TRANSLATED_SLUGS = (["en", "pt"] as const).flatMap((l) =>
+  (Object.values(ROUTES) as { es: string; en: string; pt: string }[])
+    .filter((r) => r.es !== "receta" && r[l] !== r.es)
+    .map((r) => [l, r.es, r[l]] as const),
+);
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // The OG image route reads public/logo-og.png at runtime (it is dynamic per locale), so Vercel must bundle it.
   outputFileTracingIncludes: { "/[locale]/opengraph-image/[__metadata_id__]": ["./public/logo-og.png"] },
-  // Locales: es (default) and en. Route folders under app/[locale] keep the Spanish names; the
-  // English slugs are rewrites onto them (the Spanish slug under /en redirects to the English one).
+  // Locales: es (default), en and pt. Route folders under app/[locale] keep the Spanish names; the
+  // English and Portuguese slugs are rewrites onto them (the Spanish slug under /en or /pt redirects
+  // to that locale's own slug).
   // Paths without a locale prefix go to /es; "/" itself picks by Accept-Language (app/route.ts).
   async redirects() {
     return [
@@ -66,15 +72,17 @@ const nextConfig: NextConfig = {
       // Crafting sessions were folded into saved plans (2026-09-27): old links land on the plans tab.
       { source: "/es/sesiones", destination: "/es/calculadora?tab=planes", permanent: false },
       { source: "/en/sessions", destination: "/en/calculator?tab=planes", permanent: false },
-      { source: "/:path((?!es(?:/|$)|en(?:/|$)|_next|api|auth|opengraph-image|favicon\\.ico|.*\\..*).+)", destination: "/es/:path", permanent: true },
-      ...ENGLISH_SLUGS.map(([es, en]) => ({ source: `/en/${es}`, destination: `/en/${en}`, permanent: true })),
+      { source: "/:path((?!es(?:/|$)|en(?:/|$)|pt(?:/|$)|_next|api|auth|opengraph-image|favicon\\.ico|.*\\..*).+)", destination: "/es/:path", permanent: true },
+      ...TRANSLATED_SLUGS.map(([l, es, slug]) => ({ source: `/${l}/${es}`, destination: `/${l}/${slug}`, permanent: true })),
       { source: "/en/receta/:itemId", destination: "/en/recipe/:itemId", permanent: true },
+      { source: "/pt/receta/:itemId", destination: "/pt/receita/:itemId", permanent: true },
     ];
   },
   async rewrites() {
     return [
-      ...ENGLISH_SLUGS.map(([es, en]) => ({ source: `/en/${en}`, destination: `/en/${es}` })),
+      ...TRANSLATED_SLUGS.map(([l, es, slug]) => ({ source: `/${l}/${slug}`, destination: `/${l}/${es}` })),
       { source: "/en/recipe/:itemId", destination: "/en/receta/:itemId" },
+      { source: "/pt/receita/:itemId", destination: "/pt/receta/:itemId" },
     ];
   },
   async headers() {

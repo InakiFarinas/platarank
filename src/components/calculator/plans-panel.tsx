@@ -2,7 +2,7 @@
 
 import { formatInt } from "@/lib/format";
 import { useLocale, useTranslations } from "next-intl";
-import type { Locale } from "@/i18n/config";
+import { intlLocale, type Locale } from "@/i18n/config";
 import { useCallback, useEffect, useState } from "react";
 import { computeCraft, hasPriceOverrides, marketPricedParams, type CraftParams } from "@/lib/craft-calc";
 import type { CityPricePoint } from "@/lib/recipe-math";
@@ -262,7 +262,7 @@ function PlanRow({
   const locale = useLocale() as Locale;
   const [resultOpen, setResultOpen] = useState(false);
   const realProfit = p.actual_cost !== null && p.actual_revenue !== null ? p.actual_revenue - p.actual_cost : null;
-  const date = new Date(p.updated_at ?? p.created_at).toLocaleDateString(locale === "en" ? "en-US" : "es-AR");
+  const date = new Date(p.updated_at ?? p.created_at).toLocaleDateString(intlLocale(locale));
 
   return (
     <li className="py-3">

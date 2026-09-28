@@ -73,6 +73,7 @@ type Recipe = {
   baseItemId: string;
   nameEs: string;
   nameEn: string;
+  namePt: string;
   tier: number;
   enchant: number;
   stationType: "alchemy" | "refining" | "cooking" | "gear" | "mount";
@@ -150,12 +151,13 @@ async function main() {
     fetchText(GAMEDATA_URL),
   ]);
 
-  const names = new Map<string, { es: string; en: string }>();
+  const names = new Map<string, { es: string; en: string; pt: string }>();
   for (const item of formattedItems) {
     if (!item.LocalizedNames) continue;
     names.set(item.UniqueName, {
       es: item.LocalizedNames["ES-ES"] ?? item.UniqueName,
       en: item.LocalizedNames["EN-US"] ?? item.UniqueName,
+      pt: item.LocalizedNames["PT-BR"] ?? item.LocalizedNames["EN-US"] ?? item.UniqueName,
     });
   }
 
@@ -306,7 +308,7 @@ async function main() {
 async function writeArtifactPools(
   simpleItems: RawSimpleItem[],
   gearItems: (RawGearItem & { "@shopsubcategory1"?: string })[],
-  names: Map<string, { es: string; en: string }>,
+  names: Map<string, { es: string; en: string; pt: string }>,
 ) {
   const FRAGMENTS = ["RUNE", "SOUL", "RELIC", "SHARD_AVALONIAN"] as const;
   // Foundry class of the gear an artifact makes: armor by its material, offhands by type (shield /
@@ -329,7 +331,7 @@ async function writeArtifactPools(
     const key = category && /_(armor|helmet|shoes)$/.test(category) ? category : gear["@shopsubcategory1"];
     return (key && CLASS_BY_SUBCATEGORY[key]) ?? null;
   };
-  const pools = new Map<string, { fragment: string; fragmentId: string; tier: number; fragmentCount: number; artifacts: { itemId: string; nameEs: string; nameEn: string; class: "warrior" | "hunter" | "mage" }[] }>();
+  const pools = new Map<string, { fragment: string; fragmentId: string; tier: number; fragmentCount: number; artifacts: { itemId: string; nameEs: string; nameEn: string; namePt: string; class: "warrior" | "hunter" | "mage" }[] }>();
   for (const item of simpleItems) {
     const id = item["@uniquename"];
     if (!/_ARTEFACT_/.test(id) || /_FEY$/.test(id) || !item.craftingrequirements) continue;
@@ -341,7 +343,7 @@ async function writeArtifactPools(
     if (!match || !(FRAGMENTS as readonly string[]).includes(match[2])) continue;
     const key = resources[0]["@uniquename"];
     const pool = pools.get(key) ?? { fragment: match[2], fragmentId: key, tier: Number(match[1]), fragmentCount: Number(resources[0]["@count"]), artifacts: [] };
-    pool.artifacts.push({ itemId: id, nameEs: names.get(id)?.es ?? id, nameEn: names.get(id)?.en ?? id, class: cls });
+    pool.artifacts.push({ itemId: id, nameEs: names.get(id)?.es ?? id, nameEn: names.get(id)?.en ?? id, namePt: names.get(id)?.pt ?? id, class: cls });
     pools.set(key, pool);
   }
   const sorted = [...pools.values()].sort((a, b) => a.fragment.localeCompare(b.fragment) || a.tier - b.tier);
@@ -359,7 +361,7 @@ function buildRecipe(
   craftingCategory: string | null,
   maxQualityLevel: number,
   cr: RawCraftingRequirements,
-  names: Map<string, { es: string; en: string }>,
+  names: Map<string, { es: string; en: string; pt: string }>,
   itemValueIndex: Map<string, ItemValueEntry>,
   itemValueCache: Map<string, number | null>,
 ): Recipe {
@@ -372,6 +374,7 @@ function buildRecipe(
       category: classifyMaterial(materialId),
       nameEs: materialNames?.es ?? materialId,
       nameEn: materialNames?.en ?? materialId,
+      namePt: materialNames?.pt ?? materialId,
       // Per recipe, from the game itself: e.g. a mount's grown animal and Avalonian tokens are never
       // returned. Read here rather than inferred from the item id, which is how they were missed.
       ...(r["@maxreturnamount"] === "0" ? { noReturn: true as const } : {}),
@@ -391,6 +394,7 @@ function buildRecipe(
     baseItemId,
     nameEs: itemNames?.es ?? itemId,
     nameEn: itemNames?.en ?? itemId,
+    namePt: itemNames?.pt ?? itemId,
     tier,
     enchant,
     stationType,

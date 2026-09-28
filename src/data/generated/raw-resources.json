@@ -4,244 +4,279 @@
     "tier": 2,
     "category": "FIBER",
     "nameEs": "Algodón",
-    "nameEn": "Cotton"
+    "nameEn": "Cotton",
+    "namePt": "Algodão"
   },
   {
     "itemId": "T3_FIBER",
     "tier": 3,
     "category": "FIBER",
     "nameEs": "Lino",
-    "nameEn": "Flax"
+    "nameEn": "Flax",
+    "namePt": "Linho"
   },
   {
     "itemId": "T4_FIBER",
     "tier": 4,
     "category": "FIBER",
     "nameEs": "Cáñamo",
-    "nameEn": "Hemp"
+    "nameEn": "Hemp",
+    "namePt": "Cânhamo"
   },
   {
     "itemId": "T5_FIBER",
     "tier": 5,
     "category": "FIBER",
     "nameEs": "Duranta",
-    "nameEn": "Skyflower"
+    "nameEn": "Skyflower",
+    "namePt": "Verbena"
   },
   {
     "itemId": "T6_FIBER",
     "tier": 6,
     "category": "FIBER",
     "nameEs": "Algodón ambarino",
-    "nameEn": "Amberleaf Cotton"
+    "nameEn": "Amberleaf Cotton",
+    "namePt": "Algodão-dourado"
   },
   {
     "itemId": "T7_FIBER",
     "tier": 7,
     "category": "FIBER",
     "nameEs": "Lino solar",
-    "nameEn": "Sunflax"
+    "nameEn": "Sunflax",
+    "namePt": "Linhossol"
   },
   {
     "itemId": "T8_FIBER",
     "tier": 8,
     "category": "FIBER",
     "nameEs": "Cáñamo fantasma",
-    "nameEn": "Ghost Hemp"
+    "nameEn": "Ghost Hemp",
+    "namePt": "Cânhamo-fantasma"
   },
   {
     "itemId": "T2_HIDE",
     "tier": 2,
     "category": "HIDE",
     "nameEs": "Piel dura",
-    "nameEn": "Rugged Hide"
+    "nameEn": "Rugged Hide",
+    "namePt": "Pelego Rústico"
   },
   {
     "itemId": "T3_HIDE",
     "tier": 3,
     "category": "HIDE",
     "nameEs": "Piel fina",
-    "nameEn": "Thin Hide"
+    "nameEn": "Thin Hide",
+    "namePt": "Pelego Fino"
   },
   {
     "itemId": "T4_HIDE",
     "tier": 4,
     "category": "HIDE",
     "nameEs": "Piel media",
-    "nameEn": "Medium Hide"
+    "nameEn": "Medium Hide",
+    "namePt": "Pelego Médio"
   },
   {
     "itemId": "T5_HIDE",
     "tier": 5,
     "category": "HIDE",
     "nameEs": "Piel pesada",
-    "nameEn": "Heavy Hide"
+    "nameEn": "Heavy Hide",
+    "namePt": "Pelego Pesado"
   },
   {
     "itemId": "T6_HIDE",
     "tier": 6,
     "category": "HIDE",
     "nameEs": "Piel fornida",
-    "nameEn": "Robust Hide"
+    "nameEn": "Robust Hide",
+    "namePt": "Pelego Robusto"
   },
   {
     "itemId": "T7_HIDE",
     "tier": 7,
     "category": "HIDE",
     "nameEs": "Piel gruesa",
-    "nameEn": "Thick Hide"
+    "nameEn": "Thick Hide",
+    "namePt": "Pelego Grosso"
   },
   {
     "itemId": "T8_HIDE",
     "tier": 8,
     "category": "HIDE",
     "nameEs": "Piel resistente",
-    "nameEn": "Resilient Hide"
+    "nameEn": "Resilient Hide",
+    "namePt": "Pelego Resistente"
   },
   {
     "itemId": "T2_ORE",
     "tier": 2,
     "category": "ORE",
     "nameEs": "Mineral de cobre",
-    "nameEn": "Copper Ore"
+    "nameEn": "Copper Ore",
+    "namePt": "Minério de Cobre"
   },
   {
     "itemId": "T3_ORE",
     "tier": 3,
     "category": "ORE",
     "nameEs": "Mineral de estaño",
-    "nameEn": "Tin Ore"
+    "nameEn": "Tin Ore",
+    "namePt": "Minério de Estanho"
   },
   {
     "itemId": "T4_ORE",
     "tier": 4,
     "category": "ORE",
     "nameEs": "Mineral de hierro",
-    "nameEn": "Iron Ore"
+    "nameEn": "Iron Ore",
+    "namePt": "Minério de Ferro"
   },
   {
     "itemId": "T5_ORE",
     "tier": 5,
     "category": "ORE",
     "nameEs": "Mineral de titanio",
-    "nameEn": "Titanium Ore"
+    "nameEn": "Titanium Ore",
+    "namePt": "Minério de Titânio"
   },
   {
     "itemId": "T6_ORE",
     "tier": 6,
     "category": "ORE",
     "nameEs": "Mineral de runita",
-    "nameEn": "Runite Ore"
+    "nameEn": "Runite Ore",
+    "namePt": "Minério de Runita"
   },
   {
     "itemId": "T7_ORE",
     "tier": 7,
     "category": "ORE",
     "nameEs": "Mineral de meteorito",
-    "nameEn": "Meteorite Ore"
+    "nameEn": "Meteorite Ore",
+    "namePt": "Minério de Meteorito"
   },
   {
     "itemId": "T8_ORE",
     "tier": 8,
     "category": "ORE",
     "nameEs": "Mineral de adamantio",
-    "nameEn": "Adamantium Ore"
+    "nameEn": "Adamantium Ore",
+    "namePt": "Minério de Adamante"
   },
   {
     "itemId": "T2_ROCK",
     "tier": 2,
     "category": "ROCK",
     "nameEs": "Piedra caliza",
-    "nameEn": "Limestone"
+    "nameEn": "Limestone",
+    "namePt": "Calcário"
   },
   {
     "itemId": "T3_ROCK",
     "tier": 3,
     "category": "ROCK",
     "nameEs": "Arenisca",
-    "nameEn": "Sandstone"
+    "nameEn": "Sandstone",
+    "namePt": "Arenito"
   },
   {
     "itemId": "T4_ROCK",
     "tier": 4,
     "category": "ROCK",
     "nameEs": "Travertino",
-    "nameEn": "Travertine"
+    "nameEn": "Travertine",
+    "namePt": "Travertino"
   },
   {
     "itemId": "T5_ROCK",
     "tier": 5,
     "category": "ROCK",
     "nameEs": "Granito",
-    "nameEn": "Granite"
+    "nameEn": "Granite",
+    "namePt": "Granito"
   },
   {
     "itemId": "T6_ROCK",
     "tier": 6,
     "category": "ROCK",
     "nameEs": "Pizarra",
-    "nameEn": "Slate"
+    "nameEn": "Slate",
+    "namePt": "Ardósia"
   },
   {
     "itemId": "T7_ROCK",
     "tier": 7,
     "category": "ROCK",
     "nameEs": "Basalto",
-    "nameEn": "Basalt"
+    "nameEn": "Basalt",
+    "namePt": "Basalto"
   },
   {
     "itemId": "T8_ROCK",
     "tier": 8,
     "category": "ROCK",
     "nameEs": "Mármol",
-    "nameEn": "Marble"
+    "nameEn": "Marble",
+    "namePt": "Mármore"
   },
   {
     "itemId": "T2_WOOD",
     "tier": 2,
     "category": "WOOD",
     "nameEs": "Troncos de abedul",
-    "nameEn": "Birch Logs"
+    "nameEn": "Birch Logs",
+    "namePt": "Troncos de Bétula"
   },
   {
     "itemId": "T3_WOOD",
     "tier": 3,
     "category": "WOOD",
     "nameEs": "Troncos de castaño",
-    "nameEn": "Chestnut Logs"
+    "nameEn": "Chestnut Logs",
+    "namePt": "Troncos de Castanheira"
   },
   {
     "itemId": "T4_WOOD",
     "tier": 4,
     "category": "WOOD",
     "nameEs": "Troncos de pino",
-    "nameEn": "Pine Logs"
+    "nameEn": "Pine Logs",
+    "namePt": "Troncos de Pinho"
   },
   {
     "itemId": "T5_WOOD",
     "tier": 5,
     "category": "WOOD",
     "nameEs": "Troncos de cedro",
-    "nameEn": "Cedar Logs"
+    "nameEn": "Cedar Logs",
+    "namePt": "Troncos de Cedro"
   },
   {
     "itemId": "T6_WOOD",
     "tier": 6,
     "category": "WOOD",
     "nameEs": "Troncos de roble rojo",
-    "nameEn": "Bloodoak Logs"
+    "nameEn": "Bloodoak Logs",
+    "namePt": "Troncos de Carvalho-sangue"
   },
   {
     "itemId": "T7_WOOD",
     "tier": 7,
     "category": "WOOD",
     "nameEs": "Troncos de cortezaceniza",
-    "nameEn": "Ashenbark Logs"
+    "nameEn": "Ashenbark Logs",
+    "namePt": "Troncos de Freixo"
   },
   {
     "itemId": "T8_WOOD",
     "tier": 8,
     "category": "WOOD",
     "nameEs": "Troncos de maderablanca",
-    "nameEn": "Whitewood Logs"
+    "nameEn": "Whitewood Logs",
+    "namePt": "Troncos de Pau-branco"
   }
 ]

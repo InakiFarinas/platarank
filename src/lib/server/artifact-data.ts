@@ -16,6 +16,7 @@ export type ArtifactPoolView = {
     itemId: string;
     nameEs: string;
     nameEn: string;
+    namePt?: string;
     class: ArtifactClass;
     /** Net payout waiting for your own sell order to fill. Null when no sale in the last 30 days. */
     gross: number | null;

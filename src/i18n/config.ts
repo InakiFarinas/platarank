@@ -1,4 +1,4 @@
-export const locales = ["es", "en"] as const;
+export const locales = ["es", "en", "pt"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "es";
 
@@ -7,21 +7,21 @@ export function isLocale(value: string): value is Locale {
 }
 
 /** Route keys -> URL slug per locale. The folders under app/[locale] keep the Spanish names (the
- * `es` slugs); English URLs are rewritten to them in next.config.ts. Always build hrefs with
+ * `es` slugs); English and Portuguese URLs are rewritten to them in next.config.ts. Always build hrefs with
  * `localePath` so links, canonicals and the sitemap stay in sync with those rewrites. */
 export const ROUTES = {
-  alchemy: { es: "alquimia", en: "alchemy" },
-  refining: { es: "refinado", en: "refining" },
-  cooking: { es: "cocina", en: "cooking" },
-  gear: { es: "equipo", en: "gear" },
-  mounts: { es: "monturas", en: "mounts" },
-  artifacts: { es: "artefactos", en: "artifacts" },
-  calculator: { es: "calculadora", en: "calculator" },
-  about: { es: "acerca", en: "about" },
-  methodology: { es: "metodologia", en: "methodology" },
-  privacy: { es: "privacidad", en: "privacy" },
-  terms: { es: "terminos", en: "terms" },
-  recipe: { es: "receta", en: "recipe" },
+  alchemy: { es: "alquimia", en: "alchemy", pt: "alquimia" },
+  refining: { es: "refinado", en: "refining", pt: "refino" },
+  cooking: { es: "cocina", en: "cooking", pt: "culinaria" },
+  gear: { es: "equipo", en: "gear", pt: "equipamento" },
+  mounts: { es: "monturas", en: "mounts", pt: "montarias" },
+  artifacts: { es: "artefactos", en: "artifacts", pt: "artefatos" },
+  calculator: { es: "calculadora", en: "calculator", pt: "calculadora" },
+  about: { es: "acerca", en: "about", pt: "sobre" },
+  methodology: { es: "metodologia", en: "methodology", pt: "metodologia" },
+  privacy: { es: "privacidad", en: "privacy", pt: "privacidade" },
+  terms: { es: "terminos", en: "terms", pt: "termos" },
+  recipe: { es: "receta", en: "recipe", pt: "receita" },
 } as const;
 
 export type RouteKey = keyof typeof ROUTES;
@@ -30,6 +30,18 @@ export type RouteKey = keyof typeof ROUTES;
 export function localePath(locale: Locale, route?: RouteKey, sub?: string): string {
   if (!route) return `/${locale}`;
   return `/${locale}/${ROUTES[route][locale]}${sub ?? ""}`;
+}
+
+/** BCP 47 tag for number and date formatting (es-AR, en-US, pt-BR -- the audience's own
+ * conventions: 1.234,5 in Spanish and Portuguese, 1,234.5 in English). */
+export function intlLocale(locale: Locale): string {
+  return locale === "en" ? "en-US" : locale === "pt" ? "pt-BR" : "es-AR";
+}
+
+/** Pick the value for a locale from a per-locale record -- the one way to branch on language in
+ * code (instead of `locale === "en" ? ... : ...`, which silently gave Portuguese the Spanish). */
+export function byLocale<T>(locale: Locale, values: Record<Locale, T>): T {
+  return values[locale];
 }
 
 /** Route key for a station type (StationType in server/station-data.ts). */

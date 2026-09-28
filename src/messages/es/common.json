@@ -22,7 +22,7 @@
     "calculator": "Calculadora",
     "openMenu": "Abrir menú"
   },
-  "language": { "label": "Idioma", "es": "Español", "en": "English" },
+  "language": { "label": "Idioma", "es": "Español", "en": "English", "pt": "Português" },
   "server": { "noData": "sin datos todavía" },
   "auth": { "account": "Cuenta", "signOut": "Cerrar sesión", "signIn": "Entrar con Discord" },
   "bonus": { "crafting": "+15% crafteo", "refining": "+40% refinado", "meat": "+10% carne" },

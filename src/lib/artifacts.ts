@@ -9,7 +9,7 @@ export type ArtifactPool = {
   tier: number;
   /** Fragments per roll when a class is picked (the mixed pool costs MIXED_FRAGMENT_COUNT). */
   fragmentCount: number;
-  artifacts: { itemId: string; nameEs: string; nameEn: string; class: ArtifactClass }[];
+  artifacts: { itemId: string; nameEs: string; nameEn: string; namePt?: string; class: ArtifactClass }[];
 };
 
 export const ARTIFACT_POOLS = poolsJson as ArtifactPool[];

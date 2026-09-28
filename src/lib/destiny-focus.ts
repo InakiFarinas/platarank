@@ -2,7 +2,7 @@ import destinyJson from "@/data/generated/destiny-focus.json";
 import type { Locale } from "@/i18n/config";
 
 type Bonus = { fcePerLevel: number; minTier: number; maxTier: number; patterns: string[] };
-type Node = { id: string; kind: "mastery" | "spec"; nameEs: string; nameEn: string; maxLevel: number; bonuses: Bonus[] };
+type Node = { id: string; kind: "mastery" | "spec"; nameEs: string; nameEn: string; namePt: string; maxLevel: number; bonuses: Bonus[] };
 const NODES = (destinyJson as { nodes: Node[] }).nodes;
 
 /** The player's Destiny Board levels, by node id. Missing = 0. */
@@ -35,7 +35,7 @@ export function relevantNodes(recipe: { baseItemId: string; tier: number }, loca
       if (b.patterns.some((p) => patternRegex(p).test(recipe.baseItemId))) fcePerLevel += b.fcePerLevel;
     }
     if (fcePerLevel > 0) {
-      out.push({ id: node.id, kind: node.kind, name: locale === "en" ? node.nameEn : node.nameEs, maxLevel: node.maxLevel, fcePerLevel });
+      out.push({ id: node.id, kind: node.kind, name: locale === "en" ? node.nameEn : locale === "pt" ? node.namePt : node.nameEs, maxLevel: node.maxLevel, fcePerLevel });
     }
   }
   return out.sort((a, b) => (a.kind === b.kind ? b.fcePerLevel - a.fcePerLevel || a.name.localeCompare(b.name) : a.kind === "mastery" ? -1 : 1));
