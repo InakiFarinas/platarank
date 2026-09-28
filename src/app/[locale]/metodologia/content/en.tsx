@@ -25,7 +25,8 @@ export default function En() {
       <h2>Resource return</h2>
       <p>
         Return = 1 − 1 / (1 + bonus). The bonus adds 18% base, +15% if the city has the crafting specialty for that category (+40% for refining)
-        and +59% with focus. Artifacts never get a return.
+        and +59% with focus. Artifacts never get a return, and neither does anything the game&apos;s own recipe marks as non-returnable: a
+        mount&apos;s grown animal or Avalonian tokens.
       </p>
 
       <h2>Station fee</h2>
@@ -70,8 +71,12 @@ export default function En() {
         For mounts you can choose to raise the base animal instead of buying it fully grown. For horse and ox (T3 to T8) the young animal has a
         fixed price at the Farm Merchant (25,000 at T3, tripling per tier up to 6,075,000 at T8). For giant stag, moose, direwolf, swiftclaw, bear,
         swamp dragon and mammoth the young animal has no fixed price, so it is priced on the market like any other material. On top of that comes
-        feed: the cheapest crop or meat of the day, for the number of units needed for it to grow (according to the game data). The Fire-Winged
-        Draco and the Spring Rabbit are left out, since they have no cost we can calculate from real data.
+        feed: the cheapest crop or meat of the day, for the number of units needed for it to grow (according to the game data). Horse and ox,
+        once grown, give you a new baby back with a 78 to 87% chance depending on tier, so the baby only counts for the part that doesn&apos;t
+        come back (at T4, 75,000 × 21% ≈ 16,000); the other families give no babies back. Raising takes 44 h (T3) to 284 h (T8), and silver
+        per day doesn&apos;t discount that wait. Caring for the animal with focus raises the offspring chance, but we don&apos;t model it since
+        we haven&apos;t verified it in-game. The Fire-Winged Draco and the Spring Rabbit are left out, since they have no cost we can calculate
+        from real data.
       </p>
 
       <h2>Silver per day</h2>

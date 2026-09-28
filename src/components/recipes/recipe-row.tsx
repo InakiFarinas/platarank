@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { localePath, type Locale } from "@/i18n/config";
 import { itemName } from "@/lib/item-names";
 import { journalBaseName, journalItemName } from "@/lib/journals";
+import { breedingLabelValues } from "@/lib/formulas/breeding";
 
 const DISCARD_REASONS = ["outlier_low", "outlier_high", "outlier_self"];
 
@@ -307,7 +308,11 @@ function RowDetail({ row }: { row: RecipeRowData }) {
                 v={
                   m.buyRefPrice !== null
                     ? `${t("eachTo", { price: formatSilver(m.buyRefPrice), total: formatSilver(m.costContribution) })}${
-                        m.bred ? t("bred") : m.cheapestCity ? ` · ${m.cheapestCity}` : ""
+                        m.bred
+                          ? t("bred", breedingLabelValues(m.itemId))
+                          : m.cheapestCity
+                            ? ` · ${m.cheapestCity}`
+                            : ""
                       }`
                     : t("noPriceData")
                 }

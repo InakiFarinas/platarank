@@ -112,7 +112,8 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
       cheapest = stat.result.kept.find((q) => q.price === stat.value)?.city ?? null;
     }
     const price = p.matOverrides[m.itemId] ?? stat.value ?? 0;
-    const noReturn = m.category === "artifact";
+    // Artifacts, plus whatever the recipe marks as never returned (@maxreturnamount="0").
+    const noReturn = m.category === "artifact" || m.noReturn === true;
     return { m, price, auto: stat.value, cheapest, noReturn, bred: breedCost !== null, effective: m.count * (1 - (noReturn ? 0 : rrr)) };
   });
 

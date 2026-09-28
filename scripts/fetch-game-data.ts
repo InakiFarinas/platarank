@@ -28,7 +28,7 @@ const ARTIFACT_POOLS_OUTPUT_PATH = path.join(GENERATED_DIR, "artifact-pools.json
 // next fetch-game-data run rather than mistranscribed by hand.
 const REAL_CITY_NAMES = ["Thetford", "Lymhurst", "Bridgewatch", "Martlock", "Fort Sterling", "Caerleon", "Brecilien"];
 
-type RawCraftResource = { "@uniquename": string; "@count": string; "@enchantmentlevel"?: string };
+type RawCraftResource = { "@uniquename": string; "@count": string; "@enchantmentlevel"?: string; "@maxreturnamount"?: string };
 type RawCraftingRequirements = {
   "@amountcrafted"?: string;
   "@craftingfocus"?: string;
@@ -372,6 +372,9 @@ function buildRecipe(
       category: classifyMaterial(materialId),
       nameEs: materialNames?.es ?? materialId,
       nameEn: materialNames?.en ?? materialId,
+      // Per recipe, from the game itself: e.g. a mount's grown animal and Avalonian tokens are never
+      // returned. Read here rather than inferred from the item id, which is how they were missed.
+      ...(r["@maxreturnamount"] === "0" ? { noReturn: true as const } : {}),
     } satisfies RecipeMaterial;
   });
 

@@ -26,7 +26,8 @@ export default function Es() {
       <h2>Retorno de recursos</h2>
       <p>
         Retorno = 1 − 1 / (1 + bono). El bono suma 18 % base, +15 % si la ciudad tiene la especialidad de crafteo de esa categoría (+40 % en
-        refinado) y +59 % con foco. Los artefactos nunca reciben retorno.
+        refinado) y +59 % con foco. Los artefactos nunca reciben retorno, y tampoco lo que la propia receta del juego marca como no retornable: el
+        animal crecido de una montura o las fichas de Avalon.
       </p>
 
       <h2>Tarifa de estación</h2>
@@ -75,8 +76,11 @@ export default function Es() {
         En monturas podés elegir criar el animal base en vez de comprarlo crecido. En caballo y buey (T3 a T8) la cría tiene un precio fijo en el
         Mercader de granja (25.000 en T3, y se triplica por tier hasta 6.075.000 en T8). En ciervo gigante, alce, huargo, jabalí, oso, dragón de
         pantano y mamut la cría no tiene precio fijo, así que se cotiza en el mercado como cualquier material. A eso se suma el alimento: el
-        cultivo o la carne más barata del día, por las unidades que hacen falta para que crezca (según los datos del juego). Quedan afuera el
-        Draco Ala de Fuego y el Conejo primaveral, que no tienen un costo que podamos calcular con datos reales.
+        cultivo o la carne más barata del día, por las unidades que hacen falta para que crezca (según los datos del juego). Caballo y buey,
+        al crecer, te devuelven una cría nueva con una probabilidad de 78 a 87 % según el tier, así que la cría cuenta solo por la parte que no
+        vuelve (en T4, 75.000 × 21 % ≈ 16.000); las demás familias no devuelven crías. Criar tarda de 44 h (T3) a 284 h (T8), y la plata por
+        día no descuenta esa espera. Cuidar al animal con foco sube la probabilidad de cría, pero no lo modelamos porque no lo verificamos en el
+        juego. Quedan afuera el Draco Ala de Fuego y el Conejo primaveral, que no tienen un costo que podamos calcular con datos reales.
       </p>
 
       <h2>Plata por día</h2>
