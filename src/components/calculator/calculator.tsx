@@ -567,7 +567,7 @@ export function Calculator() {
                 <div className="min-w-0">
                   <h2 className="font-heading text-2xl leading-tight">{itemName(data.recipe, locale)}</h2>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    {t("item.meta", { station: stationLabel(data.recipe.stationType), batch: data.recipe.batchSize, focus: fInt(data.recipe.craftingFocus) })}
+                    {t("item.meta", { station: stationLabel(data.recipe.stationType), batch: data.recipe.batchSize, focus: fInt(data.recipe.craftingFocus * data.recipe.batchSize) })}
                   </p>
                 </div>
               </div>
@@ -773,7 +773,8 @@ export function Calculator() {
                 levels={destiny.levels}
                 setLevel={destiny.setLevel}
                 fce={fce}
-                baseFocus={data.recipe.craftingFocus}
+                baseFocus={data.recipe.craftingFocus * data.recipe.batchSize}
+                batchSize={data.recipe.batchSize}
                 perCraft={calc.focusPerCraft}
               />
             )}

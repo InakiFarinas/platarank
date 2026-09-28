@@ -216,9 +216,11 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
     profit,
     margin: cost > 0 ? profit / cost : null,
     perUnit: produced > 0 ? profit / produced : 0,
-    /** Focus per craft with the player's board, unrounded (the game rounds the order's total). */
-    focusPerCraft: focusPerCraft(recipe.craftingFocus, fce),
-    focusTotal: p.focus ? Math.round(focusPerCraft(recipe.craftingFocus, fce) * crafts) : 0,
+    /** Focus per craft with the player's board, unrounded (the game rounds the order's total).
+     * items.json's @craftingfocus is per unit produced, not per craft: a T4 poison craft (5 potions,
+     * @craftingfocus 84) costs 5 x 84 x 0.553 = 232 with a real player's board, as the game showed. */
+    focusPerCraft: focusPerCraft(recipe.craftingFocus * recipe.batchSize, fce),
+    focusTotal: p.focus ? Math.round(focusPerCraft(recipe.craftingFocus * recipe.batchSize, fce) * crafts) : 0,
     /** True when the profit figure rests on a missing price (materials counted as 0 or no sell price). */
     incomplete:
       materials.some((x) => x.auto === null && p.matOverrides[x.m.itemId] === undefined) ||

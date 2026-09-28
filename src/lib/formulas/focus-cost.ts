@@ -3,9 +3,10 @@
  * fetch script fails if a patch changes it. */
 export const FCE_PER_HALVING = 10000;
 
-/** Focus one craft costs with the player's Destiny Board: base x 0.5^(FCE / 10,000). Not rounded:
- * the game rounds the total of a multi-craft order, not each craft (5 x 46.47 shows as 232, which
- * rounding per craft could never give -- checked in-game 2026-09-28). */
+/** Focus with the player's Destiny Board: base x 0.5^(FCE / 10,000), where base is the focus of
+ * what's being crafted (items.json's @craftingfocus is per unit produced, so a 5-potion craft's base
+ * is 5 x @craftingfocus). Not rounded: the game rounds the order's total (checked in-game
+ * 2026-09-28: 5 poison potions, 5 x 84 x 0.553 = 232.3, shown as 232). */
 export function focusPerCraft(baseFocus: number, fce: number): number {
   return baseFocus * 0.5 ** (Math.max(0, fce) / FCE_PER_HALVING);
 }
