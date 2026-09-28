@@ -51,13 +51,16 @@ export function FocusSpecPanel({
   setLevel,
   fce,
   baseFocus,
+  batchSize,
   perCraft,
 }: {
   nodes: RelevantNode[];
   levels: DestinyLevels;
   setLevel: (id: string, level: number) => void;
   fce: number;
+  /** Focus of one craft without any specialization (per-unit focus x units per craft). */
   baseFocus: number;
+  batchSize: number;
   perCraft: number;
 }) {
   const t = useTranslations("calculator.focusSpec");
@@ -97,7 +100,7 @@ export function FocusSpecPanel({
         </>
       )}
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-t border-border pt-3 text-sm">
-        <span>{t("perCraft")}</span>
+        <span>{batchSize > 1 ? t("perCraftBatch", { batch: batchSize }) : t("perCraft")}</span>
         <span className="font-mono tabular-nums">
           <span className="text-money">{dec1(perCraft)}</span>
           <span className="ml-2 text-xs text-muted-foreground">{t("vsBase", { base: formatInt(baseFocus, locale), pct: dec1(pct) })}</span>

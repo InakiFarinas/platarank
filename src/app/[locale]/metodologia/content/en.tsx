@@ -62,7 +62,7 @@ export default function En() {
         specialization adds 250 to that item, and the category&apos;s other specializations add 11.25 to 30 per level (depending on the node;
         crystal specs about 2 to the whole tree). In refining each tier is a node: 250 to its own tier and 30 to every tier of that resource.
         The per-level values and which items they apply to come from the game data dump (Destiny Board), and the result matches what the game
-        charges. The game rounds the order&apos;s total, not each craft. Mounts have no node that lowers focus.
+        charges. The game&apos;s base focus is per unit produced: a 5-potion craft costs 5 times one potion&apos;s focus. The game rounds the order&apos;s total, not each craft. Mounts have no node that lowers focus.
       </p>
 
       <h2>Raised mounts</h2>

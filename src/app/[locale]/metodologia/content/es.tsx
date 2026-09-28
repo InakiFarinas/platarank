@@ -67,7 +67,7 @@ export default function Es() {
         especialización de un ítem le suma 250 a ese ítem, y las demás especializaciones de la categoría suman entre 11,25 y 30 por nivel
         (según el nodo; las de cristal, unos 2 a todo el árbol). En refinado, cada tier es un nodo: 250 a su tier y 30 a todos los tiers de
         ese recurso. Los valores por nivel y a qué ítems aplican salen del volcado del juego (tablero del destino), y el resultado coincide
-        con lo que cobra el juego. El juego redondea el total del pedido, no cada craft. Las monturas no tienen nodos que bajen el foco.
+        con lo que cobra el juego. El foco base del juego es por unidad producida: un craft de 5 pociones cuesta 5 veces el foco de una. El juego redondea el total del pedido, no cada craft. Las monturas no tienen nodos que bajen el foco.
       </p>
 
       <h2>Monturas criadas</h2>

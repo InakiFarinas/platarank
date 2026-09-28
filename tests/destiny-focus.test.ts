@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import recipesJson from "@/data/generated/recipes.json";
 import { recipeFce, relevantNodes, type DestinyLevels } from "@/lib/destiny-focus";
 import { focusPerCraft } from "@/lib/formulas/focus-cost";
+import { computeCraft } from "@/lib/craft-calc";
 import type { Recipe } from "@/lib/db/schema";
 
 const recipes = new Map((recipesJson as unknown as Recipe[]).map((r) => [r.itemId, r]));
@@ -24,14 +25,24 @@ const alchemist: DestinyLevels = {
 };
 
 describe("foco con el tablero del destino", () => {
-  test("coincide con el juego: 5 crafts de veneno T4 cuestan 232 de foco", () => {
+  test("coincide con el juego: 5 pociones de veneno T4 (un craft) cuestan 232 de foco", () => {
     const poison = get("T4_POTION_COOLDOWN");
+    // @craftingfocus is per potion; one craft makes 5.
     expect(poison.craftingFocus).toBe(84);
+    expect(poison.batchSize).toBe(5);
     const nodes = relevantNodes(poison, "es");
     const fce = recipeFce(nodes, alchemist);
     // 3,000 mastery + 1,788.75 potion category (the client rounds it to +1789) + 3,750 poison.
     expect(fce).toBeCloseTo(8538.75, 6);
-    expect(Math.round(5 * focusPerCraft(poison.craftingFocus, fce))).toBe(232);
+    expect(Math.round(focusPerCraft(poison.craftingFocus * poison.batchSize, fce))).toBe(232);
+  });
+
+  test("computeCraft cobra el foco por unidad producida: 5 pociones = 232, 10 = 465", () => {
+    const poison = get("T4_POTION_COOLDOWN");
+    const fce = recipeFce(relevantNodes(poison, "es"), alchemist);
+    const params = { qty: 5, premium: true, blackMarket: false, quality: 1, craftCity: "Caerleon", focus: true, feeRate: 500, extraCost: 0, sellOverride: null, matOverrides: {} };
+    expect(computeCraft(poison, {}, params, fce).focusTotal).toBe(232);
+    expect(computeCraft(poison, {}, { ...params, qty: 10 }, fce).focusTotal).toBe(465);
   });
 
   test("la categoría de pociones suma lo que muestra el juego (+1789) sin contar la maestría", () => {

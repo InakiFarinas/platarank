@@ -247,6 +247,7 @@
     "mastery": "Maestría",
     "spec": "Especialización",
     "perLevel": "+{fce} por nivel",
-    "levelLabel": "Nivel de {name}"
+    "levelLabel": "Nivel de {name}",
+    "perCraftBatch": "Foco por craft ({batch} unidades)"
   }
 }
