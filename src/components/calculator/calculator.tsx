@@ -17,7 +17,7 @@ import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 import { computeCraft } from "@/lib/craft-calc";
 import { searchItems, type SearchEntry, type SearchHit } from "@/lib/item-search";
-import { isBreedable } from "@/lib/formulas/breeding";
+import { breedingLabelValues, isBreedable } from "@/lib/formulas/breeding";
 import { PlanList, SavePlanForm, usePlans, type OpenedPlan, type Plan, type PlanParams } from "@/components/calculator/plans-panel";
 import { TransportTool } from "@/components/transport/transport-tool";
 import { FocusSpecPanel, useDestinyLevels } from "@/components/calculator/focus-spec";
@@ -811,7 +811,11 @@ export function Calculator() {
                             {m.count} → {dec(effective.toFixed(2), locale)}
                           </span>
                           {noReturn ? t("materials.noReturn") : ""}
-                          {bred && !edited ? t("materials.bred") : cheapest && !edited ? ` · ${cheapest}` : ""}
+                          {bred && !edited
+                            ? t("materials.bred", breedingLabelValues(m.itemId))
+                            : cheapest && !edited
+                              ? ` · ${cheapest}`
+                              : ""}
                         </div>
                       </div>
                       <div className="col-span-3 row-start-2 sm:col-span-1 sm:col-start-3 sm:row-start-1">

@@ -136,7 +136,7 @@
     "returnTip": "Porcentaje de los materiales que el juego te devuelve al craftear. Sube con el bono de la ciudad y con el foco; los artefactos nunca devuelven.",
     "cityBonus": " · bono de {city}",
     "noReturn": " · sin retorno",
-    "bred": " · criado, no comprado",
+    "bred": " · criado ({hours} h en crecer{hasOffspring, select, yes {, {offspring, number} % de chance de cría de vuelta, ya descontada} other {}})",
     "priceOf": "Precio de {name}",
     "noPrice": "sin precio: escribilo"
   },

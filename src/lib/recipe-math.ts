@@ -191,7 +191,9 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
 
     // Hard engine rule: artifacts (runic/soul/relic/avalonian, plus faction crests and base mounts,
     // neither of which this app recipes) never get RRR, regardless of focus or city specialty.
-    const materialReturnRatePct = m.category === "artifact" ? 0 : returnRatePct;
+    // ...and neither does anything the recipe itself marks as never returned (a mount's grown
+    // animal, Avalonian tokens: `noReturn`, from items.json's @maxreturnamount="0").
+    const materialReturnRatePct = m.category === "artifact" || m.noReturn ? 0 : returnRatePct;
     const effectiveCount = m.count * (1 - materialReturnRatePct);
     return {
       ...m,

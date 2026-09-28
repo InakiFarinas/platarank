@@ -25,29 +25,37 @@ export type BreedingEntry = {
   babyItemId?: string;
   feedQty: number;
   feedCategory: "plants" | "meat";
+  /** Chance that raising the animal gives a new baby back when it's grown (`grownitem.offspring
+   * @chance`). Only horse and ox have one (78.7-87.4%); every other family is 0. The expected baby
+   * cost per grown animal is its price x (1 - chance): a T4 horse's 75,000 baby really costs
+   * ~16,000 per horse over time, which lands right on the grown horse's own market price. Caring
+   * for it with focus raises the chance further (`@activefarmbonus`); not modeled -- unverified. */
+  offspringChance: number;
+  /** Hours from baby to grown (`grownitem @growtime`), shown so a player knows the wait. */
+  growHours: number;
 };
 
 export const BREEDING_TABLE: Record<string, BreedingEntry> = {
-  T3_FARM_HORSE_GROWN: { babySilver: 25_000, feedQty: 10, feedCategory: "plants" },
-  T3_FARM_OX_GROWN: { babySilver: 25_000, feedQty: 10, feedCategory: "plants" },
-  T4_FARM_HORSE_GROWN: { babySilver: 75_000, feedQty: 16, feedCategory: "plants" },
-  T4_FARM_OX_GROWN: { babySilver: 75_000, feedQty: 16, feedCategory: "plants" },
-  T5_FARM_HORSE_GROWN: { babySilver: 225_000, feedQty: 31, feedCategory: "plants" },
-  T5_FARM_OX_GROWN: { babySilver: 225_000, feedQty: 31, feedCategory: "plants" },
-  T6_FARM_HORSE_GROWN: { babySilver: 675_000, feedQty: 69, feedCategory: "plants" },
-  T6_FARM_OX_GROWN: { babySilver: 675_000, feedQty: 69, feedCategory: "plants" },
-  T7_FARM_HORSE_GROWN: { babySilver: 2_025_000, feedQty: 165, feedCategory: "plants" },
-  T7_FARM_OX_GROWN: { babySilver: 2_025_000, feedQty: 165, feedCategory: "plants" },
-  T8_FARM_HORSE_GROWN: { babySilver: 6_075_000, feedQty: 411, feedCategory: "plants" },
-  T8_FARM_OX_GROWN: { babySilver: 6_075_000, feedQty: 411, feedCategory: "plants" },
+  T3_FARM_HORSE_GROWN: { babySilver: 25_000, feedQty: 10, feedCategory: "plants", offspringChance: 0.84, growHours: 44 },
+  T3_FARM_OX_GROWN: { babySilver: 25_000, feedQty: 10, feedCategory: "plants", offspringChance: 0.84, growHours: 44 },
+  T4_FARM_HORSE_GROWN: { babySilver: 75_000, feedQty: 16, feedCategory: "plants", offspringChance: 0.7867, growHours: 92 },
+  T4_FARM_OX_GROWN: { babySilver: 75_000, feedQty: 16, feedCategory: "plants", offspringChance: 0.7867, growHours: 92 },
+  T5_FARM_HORSE_GROWN: { babySilver: 225_000, feedQty: 31, feedCategory: "plants", offspringChance: 0.7867, growHours: 140 },
+  T5_FARM_OX_GROWN: { babySilver: 225_000, feedQty: 31, feedCategory: "plants", offspringChance: 0.7867, growHours: 140 },
+  T6_FARM_HORSE_GROWN: { babySilver: 675_000, feedQty: 69, feedCategory: "plants", offspringChance: 0.8104, growHours: 188 },
+  T6_FARM_OX_GROWN: { babySilver: 675_000, feedQty: 69, feedCategory: "plants", offspringChance: 0.8104, growHours: 188 },
+  T7_FARM_HORSE_GROWN: { babySilver: 2_025_000, feedQty: 165, feedCategory: "plants", offspringChance: 0.842, growHours: 236 },
+  T7_FARM_OX_GROWN: { babySilver: 2_025_000, feedQty: 165, feedCategory: "plants", offspringChance: 0.842, growHours: 236 },
+  T8_FARM_HORSE_GROWN: { babySilver: 6_075_000, feedQty: 411, feedCategory: "plants", offspringChance: 0.8736, growHours: 284 },
+  T8_FARM_OX_GROWN: { babySilver: 6_075_000, feedQty: 411, feedCategory: "plants", offspringChance: 0.8736, growHours: 284 },
 
-  T4_FARM_GIANTSTAG_GROWN: { babyItemId: "T4_FARM_GIANTSTAG_BABY", feedQty: 16, feedCategory: "plants" },
-  T6_FARM_GIANTSTAG_MOOSE_GROWN: { babyItemId: "T6_FARM_GIANTSTAG_MOOSE_BABY", feedQty: 69, feedCategory: "plants" },
-  T6_FARM_DIREWOLF_GROWN: { babyItemId: "T6_FARM_DIREWOLF_BABY", feedQty: 64, feedCategory: "meat" },
-  T7_FARM_DIREBOAR_GROWN: { babyItemId: "T7_FARM_DIREBOAR_BABY", feedQty: 153, feedCategory: "meat" },
-  T7_FARM_SWAMPDRAGON_GROWN: { babyItemId: "T7_FARM_SWAMPDRAGON_BABY", feedQty: 153, feedCategory: "meat" },
-  T8_FARM_DIREBEAR_GROWN: { babyItemId: "T8_FARM_DIREBEAR_BABY", feedQty: 380, feedCategory: "meat" },
-  T8_FARM_MAMMOTH_GROWN: { babyItemId: "T8_FARM_MAMMOTH_BABY", feedQty: 411, feedCategory: "plants" },
+  T4_FARM_GIANTSTAG_GROWN: { babyItemId: "T4_FARM_GIANTSTAG_BABY", feedQty: 16, feedCategory: "plants", offspringChance: 0, growHours: 92 },
+  T6_FARM_GIANTSTAG_MOOSE_GROWN: { babyItemId: "T6_FARM_GIANTSTAG_MOOSE_BABY", feedQty: 69, feedCategory: "plants", offspringChance: 0, growHours: 188 },
+  T6_FARM_DIREWOLF_GROWN: { babyItemId: "T6_FARM_DIREWOLF_BABY", feedQty: 64, feedCategory: "meat", offspringChance: 0, growHours: 188 },
+  T7_FARM_DIREBOAR_GROWN: { babyItemId: "T7_FARM_DIREBOAR_BABY", feedQty: 153, feedCategory: "meat", offspringChance: 0, growHours: 236 },
+  T7_FARM_SWAMPDRAGON_GROWN: { babyItemId: "T7_FARM_SWAMPDRAGON_BABY", feedQty: 153, feedCategory: "meat", offspringChance: 0, growHours: 236 },
+  T8_FARM_DIREBEAR_GROWN: { babyItemId: "T8_FARM_DIREBEAR_BABY", feedQty: 380, feedCategory: "meat", offspringChance: 0, growHours: 284 },
+  T8_FARM_MAMMOTH_GROWN: { babyItemId: "T8_FARM_MAMMOTH_BABY", feedQty: 411, feedCategory: "plants", offspringChance: 0, growHours: 284 },
 };
 
 /** Every crop here feeds "plants"-category animals at the same 48 nutrition per unit (verified in
@@ -79,6 +87,14 @@ export function breedingPriceInputs(grownItemId: string): { babyItemId: string |
   };
 }
 
+/** The breeding facts shown next to a bred material ("criado: 92 h, 78,7 % de cría de vuelta"), as
+ * ICU message values: `hasOffspring` selects whether the chance is worth mentioning at all. */
+export function breedingLabelValues(grownItemId: string): { hours: number; offspring: number; hasOffspring: "yes" | "no" } {
+  const entry = BREEDING_TABLE[grownItemId];
+  const chance = entry?.offspringChance ?? 0;
+  return { hours: entry?.growHours ?? 0, offspring: Math.round(chance * 1000) / 10, hasOffspring: chance > 0 ? "yes" : "no" };
+}
+
 export function isBreedable(grownItemId: string): boolean {
   return grownItemId in BREEDING_TABLE;
 }
@@ -96,8 +112,9 @@ export const ALL_BREEDING_MARKET_ITEMS: readonly string[] = [
     .filter((id): id is string => id !== undefined),
 ];
 
-/** Silver cost of raising your own animal instead of buying it grown: the baby (fixed price, or its
- * cheapest market offer) plus feed at its cheapest available price. `null` when the item can't be
+/** Silver cost of raising your own animal instead of buying it grown: the baby's expected cost (its
+ * fixed price or cheapest market offer, times the chance it does NOT come back as offspring) plus
+ * feed at its cheapest available price. `null` when the item can't be
  * bred (see module comment) or a needed price isn't available yet -- callers fall back to the
  * market price for the grown animal. `babyMarketPrice` is ignored (and may be omitted) for the
  * horse/ox NPC-priced entries. */
@@ -106,5 +123,5 @@ export function breedingCostSilver(grownItemId: string, babyMarketPrice: number 
   if (!entry || cheapestFeedPrice === null) return null;
   const babyPrice = entry.babySilver ?? babyMarketPrice;
   if (babyPrice === null || babyPrice === undefined) return null;
-  return Math.round(babyPrice + entry.feedQty * cheapestFeedPrice);
+  return Math.round(babyPrice * (1 - entry.offspringChance) + entry.feedQty * cheapestFeedPrice);
 }

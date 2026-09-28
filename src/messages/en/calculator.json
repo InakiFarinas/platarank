@@ -136,7 +136,7 @@
     "returnTip": "Share of the materials the game gives back when you craft (resource return). It rises with the city bonus and with focus; artifacts are never returned.",
     "cityBonus": " · {city} bonus",
     "noReturn": " · no return",
-    "bred": " · bred, not bought",
+    "bred": " · bred ({hours} h to grow{hasOffspring, select, yes {, {offspring, number}% chance of a baby back, already discounted} other {}})",
     "priceOf": "Price of {name}",
     "noPrice": "no price: enter it"
   },

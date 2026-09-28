@@ -31,6 +31,9 @@ export type RecipeMaterial = {
   category: "farm" | "extract" | "artifact" | "meat" | "fish" | "other";
   nameEs: string;
   nameEn: string;
+  /** The recipe's own `@maxreturnamount="0"` in items.json: the game never returns this material
+   * (a mount's grown animal, Avalonian tokens...), whatever the return rate. Only present when true. */
+  noReturn?: true;
 };
 
 // NOTE on raw retention: the brief originally called for persisting 30 days of raw price_quotes

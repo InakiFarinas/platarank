@@ -391,9 +391,10 @@ describe("computeRecipeRow (armas y armaduras)", () => {
     const row = computeRecipeRow(mountRecipe, data, params);
 
     const horseLine = row.materials.find((m) => m.itemId === "T5_FARM_HORSE_GROWN")!;
-    // T5 horse: 225000 silver baby + 31 feed x 30 (cheapest of the two crops) = 225930.
+    // T5 horse: 225000 silver baby, of which 78.67% comes back as offspring, + 31 feed x 30 (cheapest
+    // of the two crops) = 225000 x 0.2133 + 930 = 48,923.
     expect(horseLine.bred).toBe(true);
-    expect(horseLine.buyRefPrice).toBe(225_000 + 31 * 30);
+    expect(horseLine.buyRefPrice).toBe(Math.round(225_000 * (1 - 0.7867) + 31 * 30));
 
     const stagLine = row.materials.find((m) => m.itemId === "T5_FARM_GIANTSTAG_GROWN")!;
     expect(stagLine.bred).toBe(false);
@@ -401,6 +402,38 @@ describe("computeRecipeRow (armas y armaduras)", () => {
 
     const withoutBreeding = computeRecipeRow(mountRecipe, data, { ...params, breedOwnMount: false });
     expect(withoutBreeding.materials.find((m) => m.itemId === "T5_FARM_HORSE_GROWN")!.buyRefPrice).toBe(999999);
+  });
+
+  test("el animal crecido de una montura nunca se devuelve (noReturn), aunque haya foco", () => {
+    const horse: Recipe = {
+      itemId: "T4_MOUNT_HORSE",
+      baseItemId: "T4_MOUNT_HORSE",
+      nameEs: "Caballo T4",
+      nameEn: "T4 Horse",
+      tier: 4,
+      enchant: 0,
+      stationType: "mount",
+      craftingCategory: null,
+      maxQualityLevel: 1,
+      batchSize: 1,
+      craftingFocus: 0,
+      materials: [
+        { itemId: "T4_FARM_HORSE_GROWN", count: 1, category: "other", nameEs: "Caballo", nameEn: "Horse", noReturn: true },
+        { itemId: "T4_LEATHER", count: 20, category: "other", nameEs: "Cuero", nameEn: "Leather" },
+      ],
+      materialItemValue: "320",
+    };
+    const data = market({
+      T4_MOUNT_HORSE: [point("Caerleon", 37839)],
+      T4_FARM_HORSE_GROWN: [point("Caerleon", 22599)],
+      T4_LEATHER: [point("Caerleon", 327)],
+    });
+    const row = computeRecipeRow(horse, data, { ...DEFAULT_PARAMS, sellCities: ["Caerleon"], buyCities: ["Caerleon"], focus: true });
+    const animal = row.materials.find((m) => m.itemId === "T4_FARM_HORSE_GROWN")!;
+    const leather = row.materials.find((m) => m.itemId === "T4_LEATHER")!;
+    expect(animal.effectiveCount).toBe(1);
+    expect(animal.costContribution).toBe(22599);
+    expect(leather.effectiveCount).toBeLessThan(20); // the leather still gets its return
   });
 
   test("criar una montura sin precio de cria fijo compra la cria mas barata en el mercado y la alimenta con carne", () => {
