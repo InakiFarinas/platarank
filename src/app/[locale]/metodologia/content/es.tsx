@@ -60,6 +60,16 @@ export default function Es() {
         cocina no llenan ningún diario.
       </p>
 
+      <h2>Foco y especialización</h2>
+      <p>
+        El foco de un craft es su foco base × 0,5 elevado a (eficiencia / 10.000): cada 10.000 de eficiencia de coste de foco lo reduce a
+        la mitad. La eficiencia sale de tu tablero del destino: cada nivel de maestría suma 30 a toda su categoría, cada nivel de la
+        especialización de un ítem le suma 250 a ese ítem, y las demás especializaciones de la categoría suman entre 11,25 y 30 por nivel
+        (según el nodo; las de cristal, unos 2 a todo el árbol). En refinado, cada tier es un nodo: 250 a su tier y 30 a todos los tiers de
+        ese recurso. Los valores por nivel y a qué ítems aplican salen del volcado del juego (tablero del destino), y el resultado coincide
+        con lo que cobra el juego. El juego redondea el total del pedido, no cada craft. Las monturas no tienen nodos que bajen el foco.
+      </p>
+
       <h2>Monturas criadas</h2>
       <p>
         En monturas podés elegir criar el animal base en vez de comprarlo crecido. En caballo y buey (T3 a T8) la cría tiene un precio fijo en el
@@ -74,7 +84,7 @@ export default function Es() {
 
       <h2>Limitaciones conocidas</h2>
       <ul>
-        <li>La calculadora todavía no modela maestrías (el foco necesario se muestra sin reducción por maestría).</li>
+        <li>El foco con tu especialización se calcula en la calculadora, pero el ranking todavía no ordena por plata por punto de foco.</li>
         <li>El Black Market acepta calidades iguales o mayores a la pedida y no lo modelamos: solo contamos la calidad exacta.</li>
         <li>No modelamos el reroll de calidad.</li>
         <li>El volumen de venta de los diarios llenos no limita la plata/día: asumimos que se venden al ritmo del ítem.</li>

@@ -20,6 +20,8 @@ import { searchItems, type SearchEntry, type SearchHit } from "@/lib/item-search
 import { isBreedable } from "@/lib/formulas/breeding";
 import { PlanList, SavePlanForm, usePlans, type OpenedPlan, type Plan, type PlanParams } from "@/components/calculator/plans-panel";
 import { TransportTool } from "@/components/transport/transport-tool";
+import { FocusSpecPanel, useDestinyLevels } from "@/components/calculator/focus-spec";
+import { recipeFce, relevantNodes } from "@/lib/destiny-focus";
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
 import { CTA_PRIMARY, CTA_SECONDARY, DisclosureButton, Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
@@ -142,6 +144,7 @@ export function Calculator() {
   const [breedOwnMount, setBreedOwnMount] = useState(false);
   const [journals, setJournals] = useState(true);
   const [openedPlan, setOpenedPlan] = useState<OpenedPlan | null>(null);
+  const destiny = useDestinyLevels();
   const [sellOverride, setSellOverride] = useState<number | null>(null);
   const [matOverrides, setMatOverrides] = useState<Record<string, number>>({});
 
@@ -281,6 +284,10 @@ export function Calculator() {
     setSaveOpen(true);
   }
 
+  // Destiny Board nodes that lower this item's focus cost, and the player's FCE from them.
+  const focusNodes = useMemo(() => (data ? relevantNodes(data.recipe, locale) : []), [data, locale]);
+  const fce = recipeFce(focusNodes, destiny.levels);
+
   const calc = useMemo(
     () =>
       data
@@ -297,9 +304,9 @@ export function Calculator() {
             journals,
             sellOverride,
             matOverrides,
-          })
+          }, fce)
         : null,
-    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, journals, sellOverride, matOverrides],
+    [data, qty, premium, blackMarket, quality, craftCity, focus, feeRate, extraCost, breedOwnMount, journals, sellOverride, matOverrides, fce],
   );
 
   // Keep the address bar a shareable snapshot of the calculation.
@@ -760,6 +767,17 @@ export function Calculator() {
               )}
             </Panel>
 
+            {focusNodes.length > 0 && (
+              <FocusSpecPanel
+                nodes={focusNodes}
+                levels={destiny.levels}
+                setLevel={destiny.setLevel}
+                fce={fce}
+                baseFocus={data.recipe.craftingFocus}
+                perCraft={calc.focusPerCraft}
+              />
+            )}
+
             {/* Materials */}
             <Panel
               title={t("materials.title")}
@@ -897,7 +915,7 @@ export function Calculator() {
                   <dl className="mt-2 space-y-1 text-xs">
                     <Line label={t("ledger.margin")} value={calc.margin === null ? "--" : `${Math.round(calc.margin * 100)}%`} muted />
                     <Line label={t("ledger.perUnit")} value={fInt(calc.perUnit)} muted />
-                    {focus && <Line label={t("ledger.focusNeeded")} value={fInt(calc.focusTotal)} muted />}
+                    {focus && <Line label={fce > 0 ? t("ledger.focusNeededSpec") : t("ledger.focusNeeded")} value={fInt(calc.focusTotal)} muted />}
                     <Line label={t("ledger.volume")} value={fInt(calc.volume)} muted />
                     {calc.journal && (
                       <Line
