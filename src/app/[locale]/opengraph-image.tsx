@@ -63,7 +63,6 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
           color: "#ece3d3",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logoSrc} width={300} height={300} alt="" />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontFamily: cinzel ? "Cinzel" : "serif", fontSize: 96, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", lineHeight: 1 }}>

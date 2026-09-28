@@ -159,6 +159,9 @@ export function Calculator() {
     if (id) void load(id).then((ok) => ok && applyParams(paramsFromUrl(sp)));
     // Old /sesiones links redirect here (next.config.ts): land on the saved plans.
     else if (sp.get("tab") === "planes") setTab("plans");
+    // Mount only, on purpose: it reads the shared link once. `load` isn't memoized, so listing it
+    // would re-run this on every render and keep re-applying the URL over the player's edits.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // "/" jumps to the search box, like most tools with a global search.
