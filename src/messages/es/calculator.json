@@ -171,9 +171,9 @@
     "save": "Guardar este cálculo",
     "method": "Retorno, tarifa de estación e impuestos: <link>cómo se calcula</link>.",
     "seeBalance": "Ver balance",
-    "emptyJournals": "Diarios vacíos ({count} × {price})",
-    "fullJournals": "Diarios llenos ({count} × {price})",
-    "journalFame": "Fama para diarios (llena {max} cada uno)",
+    "emptyJournals": "{name}: {count} × {price}",
+    "fullJournals": "{name}: {count} × {price}",
+    "journalFame": "Fama para el {name} (se llena con {max})",
     "journalsUnpriced": "Los diarios de este ítem no tienen precio reciente (vacío o lleno), así que no se suman a la ganancia.",
     "focusNeededSpec": "Foco necesario (con tu especialización)"
   },

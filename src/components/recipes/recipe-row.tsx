@@ -16,6 +16,7 @@ import type { JournalLine, QualityBreakdownEntry, RecipeRow as RecipeRowData } f
 import { cn } from "@/lib/utils";
 import { localePath, type Locale } from "@/i18n/config";
 import { itemName } from "@/lib/item-names";
+import { journalBaseName, journalItemName } from "@/lib/journals";
 
 const DISCARD_REASONS = ["outlier_low", "outlier_high", "outlier_self"];
 
@@ -337,19 +338,23 @@ function JournalDetail({ journal }: { journal: JournalLine }) {
   const journalsPerUnit = journal.journalsPerUnit.toLocaleString(locale, { maximumFractionDigits: 3 });
   return (
     <div className="mt-3">
-      <h4 className="mb-1 font-medium text-foreground">{t("journalTitle", { type: t(`journalType_${journal.type}`) })}</h4>
+      <h4 className="mb-1 flex items-center gap-2 font-medium text-foreground">
+        {/* eslint-disable-next-line @next/next/no-img-element -- external CDN icon, same as every item icon here */}
+        <img src={itemIconUrl(journal.emptyItemId)} alt="" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" loading="lazy" />
+        {t("journalTitle", { name: journalBaseName(journal, locale) })}
+      </h4>
       <dl className="space-y-1 text-muted-foreground">
         <Row k={t("journalFame")} v={t("journalFameValue", { fame: formatSilver(journal.famePerCraft), max: formatSilver(journal.maxFame) })} />
         <Row k={t("journalsPerUnit")} v={journalsPerUnit} />
         <Row
-          k={t("journalEmpty")}
+          k={t("journalEmpty", { name: journalItemName(journal.emptyItemId, locale) })}
           v={
             journal.emptyPrice !== null
               ? `${t("silverAmount", { value: formatSilver(journal.emptyPrice) })}${journal.emptyCity ? ` · ${journal.emptyCity}` : ""}`
               : t("noPriceData")
           }
         />
-        <Row k={t("journalFull")} v={journal.fullPrice !== null ? t("silverAmount", { value: formatSilver(journal.fullPrice) }) : t("noPriceData")} />
+        <Row k={t("journalFull", { name: journalItemName(journal.fullItemId, locale) })} v={journal.fullPrice !== null ? t("silverAmount", { value: formatSilver(journal.fullPrice) }) : t("noPriceData")} />
         <Row
           k={t("journalProfit")}
           v={

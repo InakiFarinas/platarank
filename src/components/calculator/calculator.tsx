@@ -22,6 +22,7 @@ import { PlanList, SavePlanForm, usePlans, type OpenedPlan, type Plan, type Plan
 import { TransportTool } from "@/components/transport/transport-tool";
 import { FocusSpecPanel, useDestinyLevels } from "@/components/calculator/focus-spec";
 import { recipeFce, relevantNodes } from "@/lib/destiny-focus";
+import { journalBaseName, journalItemName } from "@/lib/journals";
 import { WebhookForm } from "@/components/alerts/alerts-ui";
 import { useAlerts } from "@/components/alerts/use-alerts";
 import { CTA_PRIMARY, CTA_SECONDARY, DisclosureButton, Field, InfoTip, Panel, Segmented, SilverInput } from "@/components/calculator/ui";
@@ -871,7 +872,11 @@ export function Calculator() {
                   <Line label={t("ledger.station", { fee: fInt(calc.feePerCraft), crafts: calc.crafts })} value={fInt(calc.feeTotal)} />
                   {calc.journal?.included && (
                     <Line
-                      label={t("ledger.emptyJournals", { count: dec(calc.journal.count.toFixed(2), locale), price: fInt(calc.journal.emptyPrice!) })}
+                      label={t("ledger.emptyJournals", {
+                        name: journalItemName(calc.journal.emptyItemId, locale),
+                        count: dec(calc.journal.count.toFixed(2), locale),
+                        price: fInt(calc.journal.emptyPrice!),
+                      })}
                       value={fInt(calc.journal.cost)}
                     />
                   )}
@@ -882,7 +887,11 @@ export function Calculator() {
                   <Line label={t("ledger.gross", { produced: fInt(calc.produced), price: fInt(calc.sellPrice) })} value={fInt(calc.gross)} />
                   {calc.journal?.included && (
                     <Line
-                      label={t("ledger.fullJournals", { count: dec(calc.journal.count.toFixed(2), locale), price: fInt(calc.journal.fullPrice!) })}
+                      label={t("ledger.fullJournals", {
+                        name: journalItemName(calc.journal.fullItemId, locale),
+                        count: dec(calc.journal.count.toFixed(2), locale),
+                        price: fInt(calc.journal.fullPrice!),
+                      })}
                       value={fInt(calc.journal.gross)}
                     />
                   )}
@@ -923,7 +932,7 @@ export function Calculator() {
                     <Line label={t("ledger.volume")} value={fInt(calc.volume)} muted />
                     {calc.journal && (
                       <Line
-                        label={t("ledger.journalFame", { max: fInt(calc.journal.maxFame) })}
+                        label={t("ledger.journalFame", { name: journalBaseName(calc.journal, locale), max: fInt(calc.journal.maxFame) })}
                         value={fInt(calc.journal.fame)}
                         muted
                       />
