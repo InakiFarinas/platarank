@@ -216,6 +216,9 @@ export default async function RecipeItemPage({ params }: { params: Promise<Param
                 <li key={v.itemId}>
                   <Link
                     href={localePath(locale, "recipe", `/${encodeURIComponent(v.itemId)}`)}
+                    // Up to 12 tier/enchant siblings: prefetching them all rendered ~12 uncached
+                    // pages (each a Supabase read) per recipe visit. They load on click instead.
+                    prefetch={false}
                     className="inline-flex min-h-6 items-center rounded-sm border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
                   >
                     T{v.tier}
