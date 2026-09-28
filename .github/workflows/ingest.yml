@@ -31,3 +31,14 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           AODP_SERVER: west
           AODP_CONTACT: ${{ vars.AODP_CONTACT }}
+      # Fresh prices are in: drop the site's shared market cache (and the pages built from it) so they
+      # show up now instead of up to an hour later. Best effort: a failure here never fails the ingest,
+      # the cache still expires on its own within the hour. Skipped until REVALIDATE_SECRET exists.
+      - name: Refresh the site's market cache
+        env:
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://platarank.vercel.app' }}
+        run: |
+          if [ -z "$REVALIDATE_SECRET" ]; then echo "REVALIDATE_SECRET not set; skipping."; exit 0; fi
+          curl -sS --fail-with-body --max-time 30 -X POST -H "Authorization: Bearer $REVALIDATE_SECRET" "$SITE_URL/api/revalidate" \
+            || echo "::warning::Could not refresh the site's market cache; it expires on its own within the hour."

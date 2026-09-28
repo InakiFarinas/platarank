@@ -31,7 +31,7 @@ export type ArtifactPoolView = {
 /** Prices for every Foundry pool, reduced server-side to one buy price per fragment and one sell
  * price per artifact so the browser only gets a few KB. */
 export async function loadArtifactPools(): Promise<ArtifactPoolView[]> {
-  const market = new Map(Object.entries(await loadMarketFor(new Set(ARTIFACT_MARKET_ITEMS))));
+  const market = new Map(Object.entries(await loadMarketFor(ARTIFACT_MARKET_ITEMS)));
   return ARTIFACT_POOLS.map((pool) => {
     const fragmentPrice = cheapestMarketPrice(market, DEFAULT_PARAMS.buyCities, [pool.fragmentId]);
     const fragmentCity =

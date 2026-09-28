@@ -15,7 +15,9 @@ import { itemIconUrl } from "@/lib/item-icons";
 import { itemName } from "@/lib/item-names";
 import { isLocale, localePath, stationRoute, type Locale } from "@/i18n/config";
 import { formatAgeLocale, formatIntLocale, STATION_TYPES } from "@/lib/station-seo";
-import { getRecipeCounts, loadTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
+import type { TopRecipe } from "@/lib/server/top-recipes";
+import { loadTopRecipesShared } from "@/lib/server/shared-cache";
+import { recipeCounts } from "@/lib/recipes-data";
 import type { StationType } from "@/lib/server/station-data";
 
 // The ranking preview is live data: refresh it on the same cadence as the ranking pages.
@@ -31,8 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 async function loadLive(): Promise<{ top: TopRecipe[]; counts: Record<string, number> }> {
   try {
-    const [top, counts] = await Promise.all([loadTopRecipes(5), getRecipeCounts()]);
-    return { top, counts };
+    return { top: await loadTopRecipesShared(5), counts: recipeCounts() };
   } catch {
     // The page must still render if the database is unreachable; it just loses the live block.
     return { top: [], counts: {} };

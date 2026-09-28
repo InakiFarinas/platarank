@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import { FoundryTool } from "@/components/artifacts/foundry-tool";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { loadArtifactPools } from "@/lib/server/artifact-data";
+import { loadArtifactPoolsShared } from "@/lib/server/shared-cache";
 
 export const revalidate = 3600;
 
@@ -23,7 +23,7 @@ export default async function ArtefactosPage({ params }: { params: Promise<{ loc
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "artifacts" });
-  const pools = await loadArtifactPools();
+  const pools = await loadArtifactPoolsShared();
   return (
     <>
       <SiteHeader title={t("page.title")} description={t("page.description")} />

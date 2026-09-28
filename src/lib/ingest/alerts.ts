@@ -1,12 +1,11 @@
 import { localePath } from "@/i18n/config";
 import { formatInt } from "@/lib/format";
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { alerts, marketAggregates, plans, recipes, userSettings, type Recipe } from "@/lib/db/schema";
+import { alerts, plans, userSettings, type Recipe } from "@/lib/db/schema";
 import { computeCraft, marketPricedParams, type CraftParams } from "@/lib/craft-calc";
-import { ALL_BREEDING_MARKET_ITEMS } from "@/lib/formulas/breeding";
-import { recipeJournal } from "@/lib/journals";
-import type { CityPricePoint } from "@/lib/recipe-math";
+import { recipeById } from "@/lib/recipes-data";
+import { loadMarketFor, recipeMarketItemIds } from "@/lib/server/station-data";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://platarank.vercel.app";
 
@@ -30,38 +29,14 @@ export async function runAlerts(now: Date) {
   }
 
   const itemIds = [...new Set(rows.map((r) => r.plan.itemId))];
-  const recipeRows = await db.select().from(recipes).where(inArray(recipes.itemId, itemIds));
-  const recipeById = new Map<string, Recipe>(recipeRows.map((r) => [r.itemId, r]));
-
-  const marketIds = new Set<string>();
-  for (const r of recipeRows) {
-    marketIds.add(r.itemId);
-    for (const m of r.materials) marketIds.add(m.itemId);
-    // A saved mount plan may have "criar por tu cuenta" on -- price its feed crops and
-    // market-traded babies too, or re-pricing would silently fall back to the market price it was
-    // saved to avoid.
-    if (r.stationType === "mount") for (const itemId of ALL_BREEDING_MARKET_ITEMS) marketIds.add(itemId);
-    // Same for a gear plan's labourer journal, which the plan's profit includes by default.
-    const journal = recipeJournal(r);
-    if (journal) marketIds.add(journal.emptyItemId).add(journal.fullItemId);
-  }
-  const market: Record<string, CityPricePoint[]> = {};
-  for (const a of await db.select().from(marketAggregates).where(inArray(marketAggregates.itemId, [...marketIds]))) {
-    (market[a.itemId] ??= []).push({
-      city: a.city,
-      quality: a.quality,
-      price: a.price != null ? Number(a.price) : null,
-      priceAgeSeconds: a.priceAgeSeconds,
-      buyPriceMax: a.buyPriceMax != null ? Number(a.buyPriceMax) : null,
-      avgDailyVolume30d: Number(a.avgDailyVolume30d),
-      daysWithVolume30d: a.daysWithVolume30d,
-      weightedAvgPrice30d: a.weightedAvgPrice30d != null ? Number(a.weightedAvgPrice30d) : null,
-    });
-  }
+  // Recipes come from the bundled game data; prices for every plan's item, materials and
+  // breeding/journal extras in one query.
+  const recipes = itemIds.map(recipeById).filter((r): r is Recipe => r !== null);
+  const market = await loadMarketFor(recipes.flatMap(recipeMarketItemIds));
 
   let sent = 0;
   for (const { alert, plan, webhook } of rows) {
-    const recipe = recipeById.get(plan.itemId);
+    const recipe = recipeById(plan.itemId);
     if (!recipe) {
       await db.update(alerts).set({ lastError: "La receta ya no existe.", lastCheckedAt: now }).where(eq(alerts.id, alert.id));
       continue;

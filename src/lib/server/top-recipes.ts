@@ -1,6 +1,4 @@
-import { sql } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { recipes } from "@/lib/db/schema";
 import { DEFAULT_PARAMS, type RecipeRow } from "@/lib/recipe-math";
 import { rankSnapshots } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -42,11 +40,6 @@ export async function getTopRecipes(limit = 5): Promise<TopRecipe[]> {
   }
   all.sort((a, b) => (b.row.platinumPerDay ?? 0) - (a.row.platinumPerDay ?? 0));
   return all.filter((x) => (x.row.platinumPerDay ?? 0) > 0).slice(0, limit);
-}
-
-export async function getRecipeCounts(): Promise<Record<string, number>> {
-  const rows = await db.select({ type: recipes.stationType, n: sql<number>`count(*)::int` }).from(recipes).groupBy(recipes.stationType);
-  return Object.fromEntries(rows.map((r) => [r.type, r.n]));
 }
 
 const HOME_TOP_KEY = "home_top";
