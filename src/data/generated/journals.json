@@ -5706,227 +5706,283 @@
   "names": {
     "T2_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero novato (vacío)",
-      "Novice Blacksmith's Journal (Empty)"
+      "Novice Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Novato (Vazio)"
     ],
     "T2_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero novato (lleno)",
-      "Novice Blacksmith's Journal (Full)"
+      "Novice Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Novato (Cheio)"
     ],
     "T3_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero obrero (vacío)",
-      "Journeyman Blacksmith's Journal (Empty)"
+      "Journeyman Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Iniciante (Vazio)"
     ],
     "T3_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero obrero (lleno)",
-      "Journeyman Blacksmith's Journal (Full)"
+      "Journeyman Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Iniciante (Cheio)"
     ],
     "T4_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero iniciado (vacío)",
-      "Adept Blacksmith's Journal (Empty)"
+      "Adept Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Adepto (Vazio)"
     ],
     "T4_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero iniciado (lleno)",
-      "Adept Blacksmith's Journal (Full)"
+      "Adept Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Adepto (Cheio)"
     ],
     "T5_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero experto (vacío)",
-      "Expert Blacksmith's Journal (Empty)"
+      "Expert Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Perito (Vazio)"
     ],
     "T5_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero experto (lleno)",
-      "Expert Blacksmith's Journal (Full)"
+      "Expert Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Perito (Cheio)"
     ],
     "T6_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero maestro (vacío)",
-      "Master Blacksmith's Journal (Empty)"
+      "Master Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Mestre (Vazio)"
     ],
     "T6_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero maestro (lleno)",
-      "Master Blacksmith's Journal (Full)"
+      "Master Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Mestre (Cheio)"
     ],
     "T7_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero gran maestro (vacío)",
-      "Grandmaster Blacksmith's Journal (Empty)"
+      "Grandmaster Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Grão-mestre (Vazio)"
     ],
     "T7_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero gran maestro (lleno)",
-      "Grandmaster Blacksmith's Journal (Full)"
+      "Grandmaster Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Grão-mestre (Cheio)"
     ],
     "T8_JOURNAL_WARRIOR_EMPTY": [
       "Diario del herrero anciano (vacío)",
-      "Elder Blacksmith's Journal (Empty)"
+      "Elder Blacksmith's Journal (Empty)",
+      "Diário do Ferreiro Ancião (Vazio)"
     ],
     "T8_JOURNAL_WARRIOR_FULL": [
       "Diario del herrero anciano (lleno)",
-      "Elder Blacksmith's Journal (Full)"
+      "Elder Blacksmith's Journal (Full)",
+      "Diário do Ferreiro Ancião (Cheio)"
     ],
     "T2_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero novato (vacío)",
-      "Novice Fletcher's Journal (Empty)"
+      "Novice Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Novato (Vazio)"
     ],
     "T2_JOURNAL_HUNTER_FULL": [
       "Diario del flechero novato (lleno)",
-      "Novice Fletcher's Journal (Full)"
+      "Novice Fletcher's Journal (Full)",
+      "Diário do Flecheiro Novato (Cheio)"
     ],
     "T3_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero obrero (vacío)",
-      "Journeyman Fletcher's Journal (Empty)"
+      "Journeyman Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Iniciante (Vazio)"
     ],
     "T3_JOURNAL_HUNTER_FULL": [
       "Diario del flechero obrero (lleno)",
-      "Journeyman Fletcher's Journal (Full)"
+      "Journeyman Fletcher's Journal (Full)",
+      "Diário do Flecheiro Iniciante (Cheio)"
     ],
     "T4_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero iniciado (vacío)",
-      "Adept Fletcher's Journal (Empty)"
+      "Adept Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Adepto (Vazio)"
     ],
     "T4_JOURNAL_HUNTER_FULL": [
       "Diario del flechero iniciado (lleno)",
-      "Adept Fletcher's Journal (Full)"
+      "Adept Fletcher's Journal (Full)",
+      "Diário do Flecheiro Adepto (Cheio)"
     ],
     "T5_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero experto (vacío)",
-      "Expert Fletcher's Journal (Empty)"
+      "Expert Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Perito (Vazio)"
     ],
     "T5_JOURNAL_HUNTER_FULL": [
       "Diario del flechero experto (lleno)",
-      "Expert Fletcher's Journal (Full)"
+      "Expert Fletcher's Journal (Full)",
+      "Diário do Flecheiro Perito (Cheio)"
     ],
     "T6_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero maestro (vacío)",
-      "Master Fletcher's Journal (Empty)"
+      "Master Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Mestre (Vazio)"
     ],
     "T6_JOURNAL_HUNTER_FULL": [
       "Diario del flechero maestro (lleno)",
-      "Master Fletcher's Journal (Full)"
+      "Master Fletcher's Journal (Full)",
+      "Diário do Flecheiro Mestre (Cheio)"
     ],
     "T7_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero gran maestro (vacío)",
-      "Grandmaster Fletcher's Journal (Empty)"
+      "Grandmaster Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Grão-mestre (Vazio)"
     ],
     "T7_JOURNAL_HUNTER_FULL": [
       "Diario del flechero gran maestro (lleno)",
-      "Grandmaster Fletcher's Journal (Full)"
+      "Grandmaster Fletcher's Journal (Full)",
+      "Diário do Flecheiro Grão-mestre (Cheio)"
     ],
     "T8_JOURNAL_HUNTER_EMPTY": [
       "Diario del flechero anciano (vacío)",
-      "Elder Fletcher's Journal (Empty)"
+      "Elder Fletcher's Journal (Empty)",
+      "Diário do Flecheiro Ancião (Vazio)"
     ],
     "T8_JOURNAL_HUNTER_FULL": [
       "Diario del flechero anciano (lleno)",
-      "Elder Fletcher's Journal (Full)"
+      "Elder Fletcher's Journal (Full)",
+      "Diário do Flecheiro Ancião (Cheio)"
     ],
     "T2_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico novato (vacío)",
-      "Novice Imbuer's Journal (Empty)"
+      "Novice Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Novato (Vazio)"
     ],
     "T2_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico novato (lleno)",
-      "Novice Imbuer's Journal (Full)"
+      "Novice Imbuer's Journal (Full)",
+      "Diário do Imbuidor Novato (Cheio)"
     ],
     "T3_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico obrero (vacío)",
-      "Journeyman Imbuer's Journal (Empty)"
+      "Journeyman Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Iniciante (Vazio)"
     ],
     "T3_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico obrero (lleno)",
-      "Journeyman Imbuer's Journal (Full)"
+      "Journeyman Imbuer's Journal (Full)",
+      "Diário do Imbuidor Iniciante (Cheio)"
     ],
     "T4_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico iniciado (vacío)",
-      "Adept Imbuer's Journal (Empty)"
+      "Adept Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Adepto (Vazio)"
     ],
     "T4_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico iniciado (lleno)",
-      "Adept Imbuer's Journal (Full)"
+      "Adept Imbuer's Journal (Full)",
+      "Diário do Imbuidor Adepto (Cheio)"
     ],
     "T5_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico experto (vacío)",
-      "Expert Imbuer's Journal (Empty)"
+      "Expert Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Perito (Vazio)"
     ],
     "T5_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico experto (lleno)",
-      "Expert Imbuer's Journal (Full)"
+      "Expert Imbuer's Journal (Full)",
+      "Diário do Imbuidor Perito (Cheio)"
     ],
     "T6_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico maestro (vacío)",
-      "Master Imbuer's Journal (Empty)"
+      "Master Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Mestre (Vazio)"
     ],
     "T6_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico maestro (lleno)",
-      "Master Imbuer's Journal (Full)"
+      "Master Imbuer's Journal (Full)",
+      "Diário do Imbuidor Mestre (Cheio)"
     ],
     "T7_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico gran maestro (vacío)",
-      "Grandmaster Imbuer's Journal (Empty)"
+      "Grandmaster Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Grão-mestre (Vazio)"
     ],
     "T7_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico gran maestro (lleno)",
-      "Grandmaster Imbuer's Journal (Full)"
+      "Grandmaster Imbuer's Journal (Full)",
+      "Diário do Imbuidor Grão-mestre (Cheio)"
     ],
     "T8_JOURNAL_MAGE_EMPTY": [
       "Diario del herrero mágico anciano (vacío)",
-      "Elder Imbuer's Journal (Empty)"
+      "Elder Imbuer's Journal (Empty)",
+      "Diário do Imbuidor Ancião (Vazio)"
     ],
     "T8_JOURNAL_MAGE_FULL": [
       "Diario del herrero mágico anciano (lleno)",
-      "Elder Imbuer's Journal (Full)"
+      "Elder Imbuer's Journal (Full)",
+      "Diário do Imbuidor Ancião (Cheio)"
     ],
     "T2_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero novato (vacío)",
-      "Novice Tinker's Journal (Empty)"
+      "Novice Tinker's Journal (Empty)",
+      "Diário do Funileiro Novato (Vazio)"
     ],
     "T2_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero novato (lleno)",
-      "Novice Tinker's Journal (Full)"
+      "Novice Tinker's Journal (Full)",
+      "Diário do Funileiro Novato (Cheio)"
     ],
     "T3_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero obrero (vacío)",
-      "Journeyman Tinker's Journal (Empty)"
+      "Journeyman Tinker's Journal (Empty)",
+      "Diário do Funileiro Iniciante (Vazio)"
     ],
     "T3_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero obrero (lleno)",
-      "Journeyman Tinker's Journal (Full)"
+      "Journeyman Tinker's Journal (Full)",
+      "Diário do Funileiro Iniciante (Cheio)"
     ],
     "T4_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero iniciado (vacío)",
-      "Adept Tinker's Journal (Empty)"
+      "Adept Tinker's Journal (Empty)",
+      "Diário do Funileiro Adepto (Vazio)"
     ],
     "T4_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero iniciado (lleno)",
-      "Adept Tinker's Journal (Full)"
+      "Adept Tinker's Journal (Full)",
+      "Diário do Funileiro Adepto (Cheio)"
     ],
     "T5_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero experto (vacío)",
-      "Expert Tinker's Journal (Empty)"
+      "Expert Tinker's Journal (Empty)",
+      "Diário do Funileiro Perito (Vazio)"
     ],
     "T5_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero experto (lleno)",
-      "Expert Tinker's Journal (Full)"
+      "Expert Tinker's Journal (Full)",
+      "Diário do Funileiro Perito (Cheio)"
     ],
     "T6_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero maestro (vacío)",
-      "Master Tinker's Journal (Empty)"
+      "Master Tinker's Journal (Empty)",
+      "Diário do Funileiro Mestre (Vazio)"
     ],
     "T6_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero maestro (lleno)",
-      "Master Tinker's Journal (Full)"
+      "Master Tinker's Journal (Full)",
+      "Diário do Funileiro Mestre (Cheio)"
     ],
     "T7_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero gran maestro (vacío)",
-      "Grandmaster Tinker's Journal (Empty)"
+      "Grandmaster Tinker's Journal (Empty)",
+      "Diário do Funileiro Grão-mestre (Vazio)"
     ],
     "T7_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero gran maestro (lleno)",
-      "Grandmaster Tinker's Journal (Full)"
+      "Grandmaster Tinker's Journal (Full)",
+      "Diário do Funileiro Grão-mestre (Cheio)"
     ],
     "T8_JOURNAL_TOOLMAKER_EMPTY": [
       "Diario del hojalatero anciano (vacío)",
-      "Elder Tinker's Journal (Empty)"
+      "Elder Tinker's Journal (Empty)",
+      "Diário do Funileiro Ancião (Vazio)"
     ],
     "T8_JOURNAL_TOOLMAKER_FULL": [
       "Diario del hojalatero anciano (lleno)",
-      "Elder Tinker's Journal (Full)"
+      "Elder Tinker's Journal (Full)",
+      "Diário do Funileiro Ancião (Cheio)"
     ]
   }
 }

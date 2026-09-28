@@ -7,6 +7,7 @@ import { isLocale, localePath } from "@/i18n/config";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
 import Es from "./content/es";
 import En from "./content/en";
+import Pt from "./content/pt";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -35,7 +36,7 @@ export default async function MetodologiaPage({ params }: { params: Promise<{ lo
           publisher: { "@id": absoluteUrl("/#organization") },
         }}
       />
-      {locale === "es" ? <Es /> : <En />}
+      {{ es: <Es />, en: <En />, pt: <Pt /> }[locale]}
     </LegalPage>
   );
 }

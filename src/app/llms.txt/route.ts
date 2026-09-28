@@ -65,10 +65,44 @@ const BODY_EN = `# PlataRank
 - [Discord](${DISCORD_URL})
 `;
 
+const BODY_PT = `# PlataRank
+
+> Ranking de criação de Albion Online (servidor Américas) por prata realizável por dia: lucro por unidade × volume diário de vendas × fatia de mercado, não por margem unitária. Os preços são atualizados a cada hora. Ferramenta não oficial, sem afiliação com a Sandbox Interactive.
+
+## Rankings por estação
+- [Alquimia](${SITE_URL}/pt/alquimia): poções
+- [Refino](${SITE_URL}/pt/refino): tábuas, barras, tecido, couro e pedra
+- [Culinária](${SITE_URL}/pt/culinaria): comidas
+- [Equipamento](${SITE_URL}/pt/equipamento): armas, armaduras, bolsas e capas, ponderando as 5 qualidades
+- [Montarias](${SITE_URL}/pt/montarias): animais de montaria
+
+## Páginas por receita
+- ${SITE_URL}/pt/receita/{itemId}: custo, lucro e prata por dia de uma receita específica (por exemplo T4_2H_BOW), com seus materiais e preços
+
+## Ferramentas
+- [Calculadora de criação](${SITE_URL}/pt/calculadora): custo de materiais, retorno de recursos, taxa de estação, impostos e receita líquida de um item
+
+## Documentação
+- [Metodologia](${SITE_URL}/pt/metodologia): fontes de dados, filtragem de preços, retorno, taxa de estação, impostos e limitações conhecidas
+- [Sobre](${SITE_URL}/pt/sobre)
+- [Privacidade](${SITE_URL}/pt/privacidade)
+- [Termos](${SITE_URL}/pt/termos)
+
+## Fontes de dados
+- Preços de mercado: Albion Online Data Project (https://www.albion-online-data.com/)
+- Receitas: dump oficial do cliente (ao-bin-dumps)
+
+## Comunidade
+- [Discord](${DISCORD_URL})
+`;
+
 export function GET() {
   const BODY = `${BODY_ES}
 ---
 
-${BODY_EN}`;
+${BODY_EN}
+---
+
+${BODY_PT}`;
   return new Response(BODY, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

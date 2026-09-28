@@ -14,16 +14,19 @@ export function formatPercent(value: number | null): string {
   return `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`;
 }
 
+const AGE_WORDS: Record<Locale, { none: string; ago: (n: string) => string }> = {
+  es: { none: "sin dato", ago: (n) => `hace ${n}` },
+  en: { none: "no data", ago: (n) => `${n} ago` },
+  pt: { none: "sem dado", ago: (n) => `há ${n}` },
+};
+
 export function formatAge(seconds: number | null, locale: Locale = "es"): string {
-  const en = locale === "en";
-  if (seconds === null) return en ? "no data" : "sin dato";
+  const w = AGE_WORDS[locale];
+  if (seconds === null) return w.none;
   const hours = seconds / 3600;
-  if (hours < 1) {
-    const min = Math.max(1, Math.round(seconds / 60));
-    return en ? `${min} min ago` : `hace ${min} min`;
-  }
-  if (hours < 48) return en ? `${Math.round(hours)}h ago` : `hace ${Math.round(hours)}h`;
-  return en ? `${Math.round(hours / 24)}d ago` : `hace ${Math.round(hours / 24)}d`;
+  if (hours < 1) return w.ago(`${Math.max(1, Math.round(seconds / 60))} min`);
+  if (hours < 48) return w.ago(`${Math.round(hours)}h`);
+  return w.ago(`${Math.round(hours / 24)}d`);
 }
 
 export function enchantLabel(enchant: number): string {
@@ -33,6 +36,7 @@ export function enchantLabel(enchant: number): string {
 const QUALITY_NAMES: Record<Locale, string[]> = {
   es: ["Normal", "Bueno", "Excepcional", "Excelente", "Obra maestra"],
   en: ["Normal", "Good", "Outstanding", "Excellent", "Masterpiece"],
+  pt: ["Normal", "Bom", "Excepcional", "Excelente", "Obra-prima"],
 };
 
 export function qualityLabel(quality: number, locale: Locale = "es"): string {

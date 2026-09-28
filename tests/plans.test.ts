@@ -8,6 +8,7 @@ const potion: Recipe = {
   baseItemId: "T6_POTION_HEAL",
   nameEs: "Poción de curación mayor",
   nameEn: "Major Healing Potion",
+  namePt: null,
   tier: 6,
   enchant: 0,
   stationType: "alchemy",

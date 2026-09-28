@@ -9,168 +9,196 @@
         "itemId": "T4_ARTEFACT_2H_BOW_KEEPER",
         "nameEs": "Hueso tallado del iniciado",
         "nameEn": "Adept's Carved Bone",
+        "namePt": "Osso Entalhado do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_CROSSBOWLARGE_MORGANA",
         "nameEs": "Saetas tentadoras del iniciado",
         "nameEn": "Adept's Alluring Bolts",
+        "namePt": "Virotes Fascinantes do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_CURSEDSTAFF_MORGANA",
         "nameEs": "Catalizador forjado con sangre del iniciado",
         "nameEn": "Adept's Bloodforged Catalyst",
+        "namePt": "Catalisador Forjado em Sangue do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DUALAXE_KEEPER",
         "nameEs": "Cabezas de hacha de guardián del iniciado",
         "nameEn": "Adept's Keeper Axeheads",
+        "namePt": "Cabeças de Machado Protetoras do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DUALSCIMITAR_UNDEAD",
         "nameEs": "Hojas malditas del iniciado",
         "nameEn": "Adept's Cursed Blades",
+        "namePt": "Lâminas Amaldiçoadas do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DUALSICKLE_UNDEAD",
         "nameEs": "Hojas abominables del iniciado",
         "nameEn": "Adept's Ghastly Blades",
+        "namePt": "Lâminas Sinistras do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_ENIGMATICORB_MORGANA",
         "nameEs": "Catalizador poseído del iniciado",
         "nameEn": "Adept's Possessed Catalyst",
+        "namePt": "Catalisador Possuído do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_HOLYSTAFF_UNDEAD",
         "nameEs": "Pergamino abominable del iniciado",
         "nameEn": "Adept's Ghastly Scroll",
+        "namePt": "Pergaminho Sinistro do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_ICECRYSTAL_UNDEAD",
         "nameEs": "Cristal congelado maldito del iniciado",
         "nameEn": "Adept's Cursed Frozen Crystal",
+        "namePt": "Cristal Congelado Amaldiçoado do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_INFERNOSTAFF_MORGANA",
         "nameEs": "Pergamino profano del iniciado",
         "nameEn": "Adept's Unholy Scroll",
+        "namePt": "Pergaminho Profano do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_KNUCKLES_MORGANA",
         "nameEs": "Placa de cuervo deforme del iniciado",
         "nameEn": "Adept's Warped Raven Plate",
+        "namePt": "Placa de Corvo Deformado do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_MACE_MORGANA",
         "nameEs": "Cabeza de maza imbuida del iniciado",
         "nameEn": "Adept's Imbued Mace Head",
+        "namePt": "Cabeça de Maça Imbuída do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_NATURESTAFF_KEEPER",
         "nameEs": "Tronco preservado del iniciado",
         "nameEn": "Adept's Preserved Log",
+        "namePt": "Cepo Preservado do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_RAM_KEEPER",
         "nameEs": "Tronco grabado del iniciado",
         "nameEn": "Adept's Engraved Log",
+        "namePt": "Cepo Entalhado do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_ROCKSTAFF_KEEPER",
         "nameEs": "Rocas preservadas del iniciado",
         "nameEn": "Adept's Preserved Rocks",
+        "namePt": "Rochas Preservadas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_TRIDENT_UNDEAD",
         "nameEs": "Pinchos malditos del iniciado",
         "nameEn": "Adept's Cursed Barbs",
+        "namePt": "Farpas Amaldiçoadas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_CLOTH_MORGANA",
         "nameEs": "Amuleto tentador del iniciado",
         "nameEn": "Adept's Alluring Amulet",
+        "namePt": "Amuleto Fascinante do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_LEATHER_UNDEAD",
         "nameEs": "Cuero abominable del iniciado",
         "nameEn": "Adept's Ghastly Leather",
+        "namePt": "Couro Sinistro do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_PLATE_KEEPER",
         "nameEs": "Pieles de animal preservadas del iniciado",
         "nameEn": "Adept's Preserved Animal Fur",
+        "namePt": "Pele Preservada do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_CLOTH_MORGANA",
         "nameEs": "Acolchado tentador del iniciado",
         "nameEn": "Adept's Alluring Padding",
+        "namePt": "Estofamento Fascinante do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_LEATHER_UNDEAD",
         "nameEs": "Visera abominable del iniciado",
         "nameEn": "Adept's Ghastly Visor",
+        "namePt": "Visor Sinistro do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_PLATE_KEEPER",
         "nameEs": "Acolchado de calavera tallada del iniciado",
         "nameEn": "Adept's Carved Skull Padding",
+        "namePt": "Estofamento de Caveira Entalhada do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_LAMP_UNDEAD",
         "nameEs": "Candil abominable del iniciado",
         "nameEn": "Adept's Ghastly Candle",
+        "namePt": "Vela Sinistra do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_SPIKEDSHIELD_MORGANA",
         "nameEs": "Púas forjadas con sangre del iniciado",
         "nameEn": "Adept's Bloodforged Spikes",
+        "namePt": "Cavilhas Forjadas em Sangue do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_TOTEM_KEEPER",
         "nameEs": "Piedra inscrita del iniciado",
         "nameEn": "Adept's Inscribed Stone",
+        "namePt": "Pedra Inscrita do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_CLOTH_MORGANA",
         "nameEs": "Ataduras tentadoras del iniciado",
         "nameEn": "Adept's Alluring Bindings",
+        "namePt": "Ataduras Fascinantes do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_LEATHER_UNDEAD",
         "nameEs": "Ataduras abominables del iniciado",
         "nameEn": "Adept's Ghastly Bindings",
+        "namePt": "Ataduras Sinistras do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_PLATE_KEEPER",
         "nameEs": "Ataduras inscritas del iniciado",
         "nameEn": "Adept's Inscribed Bindings",
+        "namePt": "Ataduras Inscritas do Adepto",
         "class": "warrior"
       }
     ]
@@ -185,168 +213,196 @@
         "itemId": "T5_ARTEFACT_2H_BOW_KEEPER",
         "nameEs": "Hueso tallado del experto",
         "nameEn": "Expert's Carved Bone",
+        "namePt": "Osso Entalhado do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_CROSSBOWLARGE_MORGANA",
         "nameEs": "Saetas tentadoras del experto",
         "nameEn": "Expert's Alluring Bolts",
+        "namePt": "Virotes Fascinantes do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_CURSEDSTAFF_MORGANA",
         "nameEs": "Catalizador forjado con sangre del experto",
         "nameEn": "Expert's Bloodforged Catalyst",
+        "namePt": "Catalisador Forjado em Sangue do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DUALAXE_KEEPER",
         "nameEs": "Cabezas de hacha de guardián del experto",
         "nameEn": "Expert's Keeper Axeheads",
+        "namePt": "Cabeças de Machado Protetoras do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DUALSCIMITAR_UNDEAD",
         "nameEs": "Hojas malditas del experto",
         "nameEn": "Expert's Cursed Blades",
+        "namePt": "Lâminas Amaldiçoadas do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DUALSICKLE_UNDEAD",
         "nameEs": "Hojas abominables del experto",
         "nameEn": "Expert's Ghastly Blades",
+        "namePt": "Lâminas Sinistras do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_ENIGMATICORB_MORGANA",
         "nameEs": "Catalizador poseído del experto",
         "nameEn": "Expert's Possessed Catalyst",
+        "namePt": "Catalisador Possuído do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_HOLYSTAFF_UNDEAD",
         "nameEs": "Pergamino abominable del experto",
         "nameEn": "Expert's Ghastly Scroll",
+        "namePt": "Pergaminho Sinistro do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_ICECRYSTAL_UNDEAD",
         "nameEs": "Cristal congelado maldito del experto",
         "nameEn": "Expert's Cursed Frozen Crystal",
+        "namePt": "Cristal Congelado Amaldiçoado do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_INFERNOSTAFF_MORGANA",
         "nameEs": "Pergamino profano del experto",
         "nameEn": "Expert's Unholy Scroll",
+        "namePt": "Pergaminho Profano do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_KNUCKLES_MORGANA",
         "nameEs": "Placa de cuervo deforme del experto",
         "nameEn": "Expert's Warped Raven Plate",
+        "namePt": "Placa de Corvo Deformado do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_MACE_MORGANA",
         "nameEs": "Cabeza de maza imbuida del experto",
         "nameEn": "Expert's Imbued Mace Head",
+        "namePt": "Cabeça de Maça Imbuída do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_NATURESTAFF_KEEPER",
         "nameEs": "Tronco preservado del experto",
         "nameEn": "Expert's Preserved Log",
+        "namePt": "Cepo Preservado do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_RAM_KEEPER",
         "nameEs": "Tronco grabado del experto",
         "nameEn": "Expert's Engraved Log",
+        "namePt": "Cepo Entalhado do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_ROCKSTAFF_KEEPER",
         "nameEs": "Rocas preservadas del experto",
         "nameEn": "Expert's Preserved Rocks",
+        "namePt": "Rochas Preservadas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_TRIDENT_UNDEAD",
         "nameEs": "Pinchos malditos del experto",
         "nameEn": "Expert's Cursed Barbs",
+        "namePt": "Farpas Amaldiçoadas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_CLOTH_MORGANA",
         "nameEs": "Amuleto tentador del experto",
         "nameEn": "Expert's Alluring Amulet",
+        "namePt": "Amuleto Fascinante do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_LEATHER_UNDEAD",
         "nameEs": "Cuero abominable del experto",
         "nameEn": "Expert's Ghastly Leather",
+        "namePt": "Couro Sinistro do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_PLATE_KEEPER",
         "nameEs": "Pieles de animal preservadas del experto",
         "nameEn": "Expert's Preserved Animal Fur",
+        "namePt": "Pele Preservada do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_CLOTH_MORGANA",
         "nameEs": "Acolchado tentador del experto",
         "nameEn": "Expert's Alluring Padding",
+        "namePt": "Estofamento Fascinante do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_LEATHER_UNDEAD",
         "nameEs": "Visera abominable del experto",
         "nameEn": "Expert's Ghastly Visor",
+        "namePt": "Visor Sinistro do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_PLATE_KEEPER",
         "nameEs": "Acolchado de calavera tallada del experto",
         "nameEn": "Expert's Carved Skull Padding",
+        "namePt": "Estofamento de Caveira Entalhada do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_LAMP_UNDEAD",
         "nameEs": "Candil abominable del experto",
         "nameEn": "Expert's Ghastly Candle",
+        "namePt": "Vela Sinistra do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_SPIKEDSHIELD_MORGANA",
         "nameEs": "Púas forjadas con sangre del experto",
         "nameEn": "Expert's Bloodforged Spikes",
+        "namePt": "Cavilhas Forjadas em Sangue do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_TOTEM_KEEPER",
         "nameEs": "Piedra inscrita del experto",
         "nameEn": "Expert's Inscribed Stone",
+        "namePt": "Pedra Inscrita do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_CLOTH_MORGANA",
         "nameEs": "Ataduras tentadoras del experto",
         "nameEn": "Expert's Alluring Bindings",
+        "namePt": "Ataduras Fascinantes do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_LEATHER_UNDEAD",
         "nameEs": "Ataduras abominables del experto",
         "nameEn": "Expert's Ghastly Bindings",
+        "namePt": "Ataduras Sinistras do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_PLATE_KEEPER",
         "nameEs": "Ataduras inscritas del experto",
         "nameEn": "Expert's Inscribed Bindings",
+        "namePt": "Ataduras Inscritas do Perito",
         "class": "warrior"
       }
     ]
@@ -361,168 +417,196 @@
         "itemId": "T6_ARTEFACT_2H_BOW_KEEPER",
         "nameEs": "Hueso tallado del maestro",
         "nameEn": "Master's Carved Bone",
+        "namePt": "Osso Entalhado do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_CROSSBOWLARGE_MORGANA",
         "nameEs": "Saetas tentadoras del maestro",
         "nameEn": "Master's Alluring Bolts",
+        "namePt": "Virotes Fascinantes do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_CURSEDSTAFF_MORGANA",
         "nameEs": "Catalizador forjado con sangre del maestro",
         "nameEn": "Master's Bloodforged Catalyst",
+        "namePt": "Catalisador Forjado em Sangue do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DUALAXE_KEEPER",
         "nameEs": "Cabezas de hacha de guardián del maestro",
         "nameEn": "Master's Keeper Axeheads",
+        "namePt": "Cabeças de Machado Protetoras do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DUALSCIMITAR_UNDEAD",
         "nameEs": "Hojas malditas del maestro",
         "nameEn": "Master's Cursed Blades",
+        "namePt": "Lâminas Amaldiçoadas do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DUALSICKLE_UNDEAD",
         "nameEs": "Hojas abominables del maestro",
         "nameEn": "Master's Ghastly Blades",
+        "namePt": "Lâminas Sinistras do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_ENIGMATICORB_MORGANA",
         "nameEs": "Catalizador poseído del maestro",
         "nameEn": "Master's Possessed Catalyst",
+        "namePt": "Catalisador Possuído do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_HOLYSTAFF_UNDEAD",
         "nameEs": "Pergamino abominable del maestro",
         "nameEn": "Master's Ghastly Scroll",
+        "namePt": "Pergaminho Sinistro do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_ICECRYSTAL_UNDEAD",
         "nameEs": "Cristal congelado maldito del maestro",
         "nameEn": "Master's Cursed Frozen Crystal",
+        "namePt": "Cristal Congelado Amaldiçoado do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_INFERNOSTAFF_MORGANA",
         "nameEs": "Pergamino profano del maestro",
         "nameEn": "Master's Unholy Scroll",
+        "namePt": "Pergaminho Profano do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_KNUCKLES_MORGANA",
         "nameEs": "Placa de cuervo deforme del maestro",
         "nameEn": "Master's Warped Raven Plate",
+        "namePt": "Placa de Corvo Deformado do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_MACE_MORGANA",
         "nameEs": "Cabeza de maza imbuida del maestro",
         "nameEn": "Master's Imbued Mace Head",
+        "namePt": "Cabeça de Maça Imbuída do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_NATURESTAFF_KEEPER",
         "nameEs": "Tronco preservado del maestro",
         "nameEn": "Master's Preserved Log",
+        "namePt": "Cepo Preservado do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_RAM_KEEPER",
         "nameEs": "Tronco grabado del maestro",
         "nameEn": "Master's Engraved Log",
+        "namePt": "Cepo Entalhado do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_ROCKSTAFF_KEEPER",
         "nameEs": "Rocas preservadas del maestro",
         "nameEn": "Master's Preserved Rocks",
+        "namePt": "Rochas Preservadas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_TRIDENT_UNDEAD",
         "nameEs": "Pinchos malditos del maestro",
         "nameEn": "Master's Cursed Barbs",
+        "namePt": "Farpas Amaldiçoadas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_CLOTH_MORGANA",
         "nameEs": "Amuleto tentador del maestro",
         "nameEn": "Master's Alluring Amulet",
+        "namePt": "Amuleto Fascinante do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_LEATHER_UNDEAD",
         "nameEs": "Cuero abominable del maestro",
         "nameEn": "Master's Ghastly Leather",
+        "namePt": "Couro Sinistro do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_PLATE_KEEPER",
         "nameEs": "Pieles de animal preservadas del maestro",
         "nameEn": "Master's Preserved Animal Fur",
+        "namePt": "Pele Preservada do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_CLOTH_MORGANA",
         "nameEs": "Acolchado tentador del maestro",
         "nameEn": "Master's Alluring Padding",
+        "namePt": "Estofamento Fascinante do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_LEATHER_UNDEAD",
         "nameEs": "Visera abominable del maestro",
         "nameEn": "Master's Ghastly Visor",
+        "namePt": "Visor Sinistro do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_PLATE_KEEPER",
         "nameEs": "Acolchado de calavera tallada del maestro",
         "nameEn": "Master's Carved Skull Padding",
+        "namePt": "Estofamento de Caveira Entalhada do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_LAMP_UNDEAD",
         "nameEs": "Candil abominable del maestro",
         "nameEn": "Master's Ghastly Candle",
+        "namePt": "Vela Sinistra do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_SPIKEDSHIELD_MORGANA",
         "nameEs": "Púas forjadas con sangre del maestro",
         "nameEn": "Master's Bloodforged Spikes",
+        "namePt": "Cavilhas Forjadas em Sangue do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_TOTEM_KEEPER",
         "nameEs": "Piedra inscrita del maestro",
         "nameEn": "Master's Inscribed Stone",
+        "namePt": "Pedra Inscrita do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_CLOTH_MORGANA",
         "nameEs": "Ataduras tentadoras del maestro",
         "nameEn": "Master's Alluring Bindings",
+        "namePt": "Ataduras Fascinantes do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_LEATHER_UNDEAD",
         "nameEs": "Ataduras abominables del maestro",
         "nameEn": "Master's Ghastly Bindings",
+        "namePt": "Ataduras Sinistras do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_PLATE_KEEPER",
         "nameEs": "Ataduras inscritas del maestro",
         "nameEn": "Master's Inscribed Bindings",
+        "namePt": "Ataduras Inscritas do Mestre",
         "class": "warrior"
       }
     ]
@@ -537,168 +621,196 @@
         "itemId": "T7_ARTEFACT_2H_BOW_KEEPER",
         "nameEs": "Hueso tallado del gran maestro",
         "nameEn": "Grandmaster's Carved Bone",
+        "namePt": "Osso Entalhado do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_CROSSBOWLARGE_MORGANA",
         "nameEs": "Saetas tentadoras del gran maestro",
         "nameEn": "Grandmaster's Alluring Bolts",
+        "namePt": "Virotes Fascinantes do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_CURSEDSTAFF_MORGANA",
         "nameEs": "Catalizador forjado con sangre del gran maestro",
         "nameEn": "Grandmaster's Bloodforged Catalyst",
+        "namePt": "Catalisador Forjado em Sangue do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DUALAXE_KEEPER",
         "nameEs": "Cabezas de hacha de guardián del gran maestro",
         "nameEn": "Grandmaster's Keeper Axeheads",
+        "namePt": "Cabeças de Machado Protetoras do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DUALSCIMITAR_UNDEAD",
         "nameEs": "Hojas malditas del gran maestro",
         "nameEn": "Grandmaster's Cursed Blades",
+        "namePt": "Lâminas Amaldiçoadas do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DUALSICKLE_UNDEAD",
         "nameEs": "Hojas abominables del gran maestro",
         "nameEn": "Grandmaster's Ghastly Blades",
+        "namePt": "Lâminas Sinistras do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_ENIGMATICORB_MORGANA",
         "nameEs": "Catalizador poseído del gran maestro",
         "nameEn": "Grandmaster's Possessed Catalyst",
+        "namePt": "Catalisador Possuído do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_HOLYSTAFF_UNDEAD",
         "nameEs": "Pergamino abominable del gran maestro",
         "nameEn": "Grandmaster's Ghastly Scroll",
+        "namePt": "Pergaminho Sinistro do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_ICECRYSTAL_UNDEAD",
         "nameEs": "Cristal congelado maldito del gran maestro",
         "nameEn": "Grandmaster's Cursed Frozen Crystal",
+        "namePt": "Cristal Congelado Amaldiçoado do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_INFERNOSTAFF_MORGANA",
         "nameEs": "Pergamino profano del gran maestro",
         "nameEn": "Grandmaster's Unholy Scroll",
+        "namePt": "Pergaminho Profano do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_KNUCKLES_MORGANA",
         "nameEs": "Placa de cuervo deforme del gran maestro",
         "nameEn": "Grandmaster's Warped Raven Plate",
+        "namePt": "Placa de Corvo Deformado do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_MACE_MORGANA",
         "nameEs": "Cabeza de maza imbuida del gran maestro",
         "nameEn": "Grandmaster's Imbued Mace Head",
+        "namePt": "Cabeça de Maça Imbuída do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_NATURESTAFF_KEEPER",
         "nameEs": "Tronco preservado del gran maestro",
         "nameEn": "Grandmaster's Preserved Log",
+        "namePt": "Cepo Preservado do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_RAM_KEEPER",
         "nameEs": "Tronco grabado del gran maestro",
         "nameEn": "Grandmaster's Engraved Log",
+        "namePt": "Cepo Entalhado do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_ROCKSTAFF_KEEPER",
         "nameEs": "Rocas preservadas del gran maestro",
         "nameEn": "Grandmaster's Preserved Rocks",
+        "namePt": "Rochas Preservadas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_TRIDENT_UNDEAD",
         "nameEs": "Pinchos malditos del gran maestro",
         "nameEn": "Grandmaster's Cursed Barbs",
+        "namePt": "Farpas Amaldiçoadas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_CLOTH_MORGANA",
         "nameEs": "Amuleto tentador del gran maestro",
         "nameEn": "Grandmaster's Alluring Amulet",
+        "namePt": "Amuleto Fascinante do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_LEATHER_UNDEAD",
         "nameEs": "Cuero abominable del gran maestro",
         "nameEn": "Grandmaster's Ghastly Leather",
+        "namePt": "Couro Sinistro do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_PLATE_KEEPER",
         "nameEs": "Pieles de animal preservadas del gran maestro",
         "nameEn": "Grandmaster's Preserved Animal Fur",
+        "namePt": "Pele Preservada do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_CLOTH_MORGANA",
         "nameEs": "Acolchado tentador del gran maestro",
         "nameEn": "Grandmaster's Alluring Padding",
+        "namePt": "Estofamento Fascinante do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_LEATHER_UNDEAD",
         "nameEs": "Visera abominable del gran maestro",
         "nameEn": "Grandmaster's Ghastly Visor",
+        "namePt": "Visor Sinistro do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_PLATE_KEEPER",
         "nameEs": "Acolchado de calavera tallada del gran maestro",
         "nameEn": "Grandmaster's Carved Skull Padding",
+        "namePt": "Estofamento de Caveira Entalhada do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_LAMP_UNDEAD",
         "nameEs": "Candil abominable del gran maestro",
         "nameEn": "Grandmaster's Ghastly Candle",
+        "namePt": "Vela Sinistra do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_SPIKEDSHIELD_MORGANA",
         "nameEs": "Púas forjadas con sangre del gran maestro",
         "nameEn": "Grandmaster's Bloodforged Spikes",
+        "namePt": "Cavilhas Forjadas em Sangue do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_TOTEM_KEEPER",
         "nameEs": "Piedra inscrita del gran maestro",
         "nameEn": "Grandmaster's Inscribed Stone",
+        "namePt": "Pedra Inscrita do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_CLOTH_MORGANA",
         "nameEs": "Ataduras tentadoras del gran maestro",
         "nameEn": "Grandmaster's Alluring Bindings",
+        "namePt": "Ataduras Fascinantes do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_LEATHER_UNDEAD",
         "nameEs": "Ataduras abominables del gran maestro",
         "nameEn": "Grandmaster's Ghastly Bindings",
+        "namePt": "Ataduras Sinistras do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_PLATE_KEEPER",
         "nameEs": "Ataduras inscritas del gran maestro",
         "nameEn": "Grandmaster's Inscribed Bindings",
+        "namePt": "Ataduras Inscritas do Grão-mestre",
         "class": "warrior"
       }
     ]
@@ -713,168 +825,196 @@
         "itemId": "T8_ARTEFACT_2H_BOW_KEEPER",
         "nameEs": "Hueso tallado del anciano",
         "nameEn": "Elder's Carved Bone",
+        "namePt": "Osso Entalhado do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_CROSSBOWLARGE_MORGANA",
         "nameEs": "Saetas tentadoras del anciano",
         "nameEn": "Elder's Alluring Bolts",
+        "namePt": "Virotes Fascinantes do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_CURSEDSTAFF_MORGANA",
         "nameEs": "Catalizador forjado con sangre del anciano",
         "nameEn": "Elder's Bloodforged Catalyst",
+        "namePt": "Catalisador Forjado em Sangue do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DUALAXE_KEEPER",
         "nameEs": "Cabezas de hacha de guardián del anciano",
         "nameEn": "Elder's Keeper Axeheads",
+        "namePt": "Cabeças de Machado Protetoras do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DUALSCIMITAR_UNDEAD",
         "nameEs": "Hojas malditas del anciano",
         "nameEn": "Elder's Cursed Blades",
+        "namePt": "Lâminas Amaldiçoadas do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DUALSICKLE_UNDEAD",
         "nameEs": "Hojas abominables del anciano",
         "nameEn": "Elder's Ghastly Blades",
+        "namePt": "Lâminas Sinistras do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_ENIGMATICORB_MORGANA",
         "nameEs": "Catalizador poseído del anciano",
         "nameEn": "Elder's Possessed Catalyst",
+        "namePt": "Catalisador Possuído do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_HOLYSTAFF_UNDEAD",
         "nameEs": "Pergamino abominable del anciano",
         "nameEn": "Elder's Ghastly Scroll",
+        "namePt": "Pergaminho Sinistro do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_ICECRYSTAL_UNDEAD",
         "nameEs": "Cristal congelado maldito del anciano",
         "nameEn": "Elder's Cursed Frozen Crystal",
+        "namePt": "Cristal Congelado Amaldiçoado do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_INFERNOSTAFF_MORGANA",
         "nameEs": "Pergamino profano del anciano",
         "nameEn": "Elder's Unholy Scroll",
+        "namePt": "Pergaminho Profano do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_KNUCKLES_MORGANA",
         "nameEs": "Placa de cuervo deforme del anciano",
         "nameEn": "Elder's Warped Raven Plate",
+        "namePt": "Placa de Corvo Deformado do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_MACE_MORGANA",
         "nameEs": "Cabeza de maza imbuida del anciano",
         "nameEn": "Elder's Imbued Mace Head",
+        "namePt": "Cabeça de Maça Imbuída do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_NATURESTAFF_KEEPER",
         "nameEs": "Tronco preservado del anciano",
         "nameEn": "Elder's Preserved Log",
+        "namePt": "Cepo Preservado do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_RAM_KEEPER",
         "nameEs": "Tronco grabado del anciano",
         "nameEn": "Elder's Engraved Log",
+        "namePt": "Cepo Entalhado do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_ROCKSTAFF_KEEPER",
         "nameEs": "Rocas preservadas del anciano",
         "nameEn": "Elder's Preserved Rocks",
+        "namePt": "Rochas Preservadas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_TRIDENT_UNDEAD",
         "nameEs": "Pinchos malditos del anciano",
         "nameEn": "Elder's Cursed Barbs",
+        "namePt": "Farpas Amaldiçoadas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_CLOTH_MORGANA",
         "nameEs": "Amuleto tentador del anciano",
         "nameEn": "Elder's Alluring Amulet",
+        "namePt": "Amuleto Fascinante do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_LEATHER_UNDEAD",
         "nameEs": "Cuero abominable del anciano",
         "nameEn": "Elder's Ghastly Leather",
+        "namePt": "Couro Sinistro do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_PLATE_KEEPER",
         "nameEs": "Pieles de animal preservadas del anciano",
         "nameEn": "Elder's Preserved Animal Fur",
+        "namePt": "Pele Preservada do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_CLOTH_MORGANA",
         "nameEs": "Acolchado tentador del anciano",
         "nameEn": "Elder's Alluring Padding",
+        "namePt": "Estofamento Fascinante do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_LEATHER_UNDEAD",
         "nameEs": "Visera abominable del anciano",
         "nameEn": "Elder's Ghastly Visor",
+        "namePt": "Visor Sinistro do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_PLATE_KEEPER",
         "nameEs": "Acolchado de calavera tallada del anciano",
         "nameEn": "Elder's Carved Skull Padding",
+        "namePt": "Estofamento de Caveira Entalhada do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_LAMP_UNDEAD",
         "nameEs": "Candil abominable del anciano",
         "nameEn": "Elder's Ghastly Candle",
+        "namePt": "Vela Sinistra do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_SPIKEDSHIELD_MORGANA",
         "nameEs": "Púas forjadas con sangre del anciano",
         "nameEn": "Elder's Bloodforged Spikes",
+        "namePt": "Cavilhas Forjadas em Sangue do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_TOTEM_KEEPER",
         "nameEs": "Piedra inscrita del anciano",
         "nameEn": "Elder's Inscribed Stone",
+        "namePt": "Pedra Inscrita do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_CLOTH_MORGANA",
         "nameEs": "Ataduras tentadoras del anciano",
         "nameEn": "Elder's Alluring Bindings",
+        "namePt": "Ataduras Fascinantes do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_LEATHER_UNDEAD",
         "nameEs": "Ataduras abominables del anciano",
         "nameEn": "Elder's Ghastly Bindings",
+        "namePt": "Ataduras Sinistras do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_PLATE_KEEPER",
         "nameEs": "Ataduras inscritas del anciano",
         "nameEn": "Elder's Inscribed Bindings",
+        "namePt": "Ataduras Inscritas do Ancião",
         "class": "warrior"
       }
     ]
@@ -889,168 +1029,196 @@
         "itemId": "T4_ARTEFACT_2H_COMBATSTAFF_MORGANA",
         "nameEs": "Palo de Morgana reforzado del iniciado",
         "nameEn": "Adept's Reinforced Morgana Pole",
+        "namePt": "Estaca de Morgana Reforçada do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_HALBERD_MORGANA",
         "nameEs": "Cabeza de alabarda de Morgana del iniciado",
         "nameEn": "Adept's Morgana Halberd Head",
+        "namePt": "Cabeça de Alabarda de Morgana do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_HAMMER_UNDEAD",
         "nameEs": "Cabeza de martillo antigua del iniciado",
         "nameEn": "Adept's Ancient Hammer Head",
+        "namePt": "Cabeça de Martelo Ancestral do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_KNUCKLES_KEEPER",
         "nameEs": "Restos de guardián osuno del iniciado",
         "nameEn": "Adept's Ursine Guardian Remains",
+        "namePt": "Restos de Guardião Ursino do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_LONGBOW_UNDEAD",
         "nameEs": "Flechas abominables del iniciado",
         "nameEn": "Adept's Ghastly Arrows",
+        "namePt": "Flechas Sinistras do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_REPEATINGCROSSBOW_UNDEAD",
         "nameEs": "Mecanismo perdido de ballesta del iniciado",
         "nameEn": "Adept's Lost Crossbow Mechanism",
+        "namePt": "Mecanismo de Besta Perdido do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_CLOTH_KEEPER",
         "nameEs": "Plumas druidas del iniciado",
         "nameEn": "Adept's Druidic Feathers",
+        "namePt": "Penas Druídicas do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_LEATHER_MORGANA",
         "nameEs": "Pliegues de cuero imbuidos del iniciado",
         "nameEn": "Adept's Imbued Leather Folds",
+        "namePt": "Peças de Couro Imbuído do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_PLATE_UNDEAD",
         "nameEs": "Cota de malla antigua del iniciado",
         "nameEn": "Adept's Ancient Chain Rings",
+        "namePt": "Anilhas Ancestrais do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_CLOTH_KEEPER",
         "nameEs": "Pico preservado druida del iniciado",
         "nameEn": "Adept's Druidic Preserved Beak",
+        "namePt": "Bico Preservado Druídico do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_LEATHER_MORGANA",
         "nameEs": "Visera imbuida del iniciado",
         "nameEn": "Adept's Imbued Visor",
+        "namePt": "Visor Imbuído do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_PLATE_UNDEAD",
         "nameEs": "Acolchado antiguo del iniciado",
         "nameEn": "Adept's Ancient Padding",
+        "namePt": "Estofamento Ancestral do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_ARCANESTAFF_UNDEAD",
         "nameEs": "Cristal arcano perdido del iniciado",
         "nameEn": "Adept's Lost Arcane Crystal",
+        "namePt": "Cristal Arcano Perdido do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_CURSEDSTAFF_UNDEAD",
         "nameEs": "Cristal maldito perdido del iniciado",
         "nameEn": "Adept's Lost Cursed Crystal",
+        "namePt": "Cristal Amaldiçoado Perdido do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_FIRESTAFF_KEEPER",
         "nameEs": "Orbe de fuego incontrolable del iniciado",
         "nameEn": "Adept's Wildfire Orb",
+        "namePt": "Orbe Incendiário do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_FROSTSTAFF_KEEPER",
         "nameEs": "Orbe de escarcha del iniciado",
         "nameEn": "Adept's Hoarfrost Orb",
+        "namePt": "Orbe Enregelante do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_HOLYSTAFF_MORGANA",
         "nameEs": "Pergamino poseído del iniciado",
         "nameEn": "Adept's Possessed Scroll",
+        "namePt": "Pergaminho Possuído do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_NATURESTAFF_KEEPER",
         "nameEs": "Inscripciones de druida del iniciado",
         "nameEn": "Adept's Druidic Inscriptions",
+        "namePt": "Inscrições Druídicas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_RAPIER_MORGANA",
         "nameEs": "Punta endurecida del iniciado",
         "nameEn": "Adept's Hardened Debole",
+        "namePt": "Débil Endurecido do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_ROCKMACE_KEEPER",
         "nameEs": "Roca rúnica del iniciado",
         "nameEn": "Adept's Runed Rock",
+        "namePt": "Rocha com Runa do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_SCIMITAR_MORGANA",
         "nameEs": "Hoja forjada con sangre del iniciado",
         "nameEn": "Adept's Bloodforged Blade",
+        "namePt": "Lâmina Forjada em Sangue do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_SPEAR_KEEPER",
         "nameEs": "Cabeza de lanza de guardián del iniciado",
         "nameEn": "Adept's Keeper Spearhead",
+        "namePt": "Cabeça de Lança Protetora do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_HORN_KEEPER",
         "nameEs": "Cuerno rúnico del iniciado",
         "nameEn": "Adept's Runed Horn",
+        "namePt": "Chifre com Runa do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_ORB_MORGANA",
         "nameEs": "Cristal tentador del iniciado",
         "nameEn": "Adept's Alluring Crystal",
+        "namePt": "Cristal Fascinante do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_TOWERSHIELD_UNDEAD",
         "nameEs": "Núcleo de escudo antiguo del iniciado",
         "nameEn": "Adept's Ancient Shield Core",
+        "namePt": "Núcleo de Escudo Ancestral do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_CLOTH_KEEPER",
         "nameEs": "Ataduras druidas del iniciado",
         "nameEn": "Adept's Druidic Bindings",
+        "namePt": "Ataduras Druídicas do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_LEATHER_MORGANA",
         "nameEs": "Suelas imbuidas del iniciado",
         "nameEn": "Adept's Imbued Soles",
+        "namePt": "Solas Imbuídas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_PLATE_UNDEAD",
         "nameEs": "Ataduras antiguas del iniciado",
         "nameEn": "Adept's Ancient Bindings",
+        "namePt": "Ataduras Ancestrais do Adepto",
         "class": "warrior"
       }
     ]
@@ -1065,168 +1233,196 @@
         "itemId": "T5_ARTEFACT_2H_COMBATSTAFF_MORGANA",
         "nameEs": "Palo de Morgana reforzado del experto",
         "nameEn": "Expert's Reinforced Morgana Pole",
+        "namePt": "Estaca de Morgana Reforçada do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_HALBERD_MORGANA",
         "nameEs": "Cabeza de alabarda de Morgana del experto",
         "nameEn": "Expert's Morgana Halberd Head",
+        "namePt": "Cabeça de Alabarda de Morgana do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_HAMMER_UNDEAD",
         "nameEs": "Cabeza de martillo antigua del experto",
         "nameEn": "Expert's Ancient Hammer Head",
+        "namePt": "Cabeça de Martelo Ancestral do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_KNUCKLES_KEEPER",
         "nameEs": "Restos de guardián osuno del experto",
         "nameEn": "Expert's Ursine Guardian Remains",
+        "namePt": "Restos de Guardião Ursino do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_LONGBOW_UNDEAD",
         "nameEs": "Flechas abominables del experto",
         "nameEn": "Expert's Ghastly Arrows",
+        "namePt": "Flechas Sinistras do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_REPEATINGCROSSBOW_UNDEAD",
         "nameEs": "Mecanismo perdido de ballesta del experto",
         "nameEn": "Expert's Lost Crossbow Mechanism",
+        "namePt": "Mecanismo de Besta Perdido do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_CLOTH_KEEPER",
         "nameEs": "Plumas druidas del experto",
         "nameEn": "Expert's Druidic Feathers",
+        "namePt": "Penas Druídicas do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_LEATHER_MORGANA",
         "nameEs": "Pliegues de cuero imbuidos del experto",
         "nameEn": "Expert's Imbued Leather Folds",
+        "namePt": "Peças de Couro Imbuído do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_PLATE_UNDEAD",
         "nameEs": "Cota de malla antigua del experto",
         "nameEn": "Expert's Ancient Chain Rings",
+        "namePt": "Anilhas Ancestrais do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_CLOTH_KEEPER",
         "nameEs": "Pico preservado druida del experto",
         "nameEn": "Expert's Druidic Preserved Beak",
+        "namePt": "Bico Preservado Druídico do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_LEATHER_MORGANA",
         "nameEs": "Visera imbuida del experto",
         "nameEn": "Expert's Imbued Visor",
+        "namePt": "Visor Imbuído do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_PLATE_UNDEAD",
         "nameEs": "Acolchado antiguo del experto",
         "nameEn": "Expert's Ancient Padding",
+        "namePt": "Estofamento Ancestral do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_ARCANESTAFF_UNDEAD",
         "nameEs": "Cristal arcano perdido del experto",
         "nameEn": "Expert's Lost Arcane Crystal",
+        "namePt": "Cristal Arcano Perdido do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_CURSEDSTAFF_UNDEAD",
         "nameEs": "Cristal maldito perdido del experto",
         "nameEn": "Expert's Lost Cursed Crystal",
+        "namePt": "Cristal Amaldiçoado Perdido do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_FIRESTAFF_KEEPER",
         "nameEs": "Orbe de fuego incontrolable del experto",
         "nameEn": "Expert's Wildfire Orb",
+        "namePt": "Orbe Incendiário do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_FROSTSTAFF_KEEPER",
         "nameEs": "Orbe de escarcha del experto",
         "nameEn": "Expert's Hoarfrost Orb",
+        "namePt": "Orbe Enregelante do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_HOLYSTAFF_MORGANA",
         "nameEs": "Pergamino poseído del experto",
         "nameEn": "Expert's Possessed Scroll",
+        "namePt": "Pergaminho Possuído do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_NATURESTAFF_KEEPER",
         "nameEs": "Inscripciones de druida del experto",
         "nameEn": "Expert's Druidic Inscriptions",
+        "namePt": "Inscrições Druídicas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_RAPIER_MORGANA",
         "nameEs": "Punta endurecida del experto",
         "nameEn": "Expert's Hardened Debole",
+        "namePt": "Débil Endurecido do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_ROCKMACE_KEEPER",
         "nameEs": "Roca rúnica del experto",
         "nameEn": "Expert's Runed Rock",
+        "namePt": "Rocha com Runas do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_SCIMITAR_MORGANA",
         "nameEs": "Hoja forjada con sangre del experto",
         "nameEn": "Expert's Bloodforged Blade",
+        "namePt": "Lâmina Forjada em Sangue do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_SPEAR_KEEPER",
         "nameEs": "Cabeza de lanza de guardián del experto",
         "nameEn": "Expert's Keeper Spearhead",
+        "namePt": "Cabeça de Lança Protetora do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_HORN_KEEPER",
         "nameEs": "Cuerno rúnico del experto",
         "nameEn": "Expert's Runed Horn",
+        "namePt": "Chifre com Runa do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_ORB_MORGANA",
         "nameEs": "Cristal tentador del experto",
         "nameEn": "Expert's Alluring Crystal",
+        "namePt": "Cristal Fascinante do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_TOWERSHIELD_UNDEAD",
         "nameEs": "Núcleo de escudo antiguo del experto",
         "nameEn": "Expert's Ancient Shield Core",
+        "namePt": "Núcleo de Escudo Ancestral do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_CLOTH_KEEPER",
         "nameEs": "Ataduras druidas del experto",
         "nameEn": "Expert's Druidic Bindings",
+        "namePt": "Ataduras Druídicas do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_LEATHER_MORGANA",
         "nameEs": "Suelas imbuidas del experto",
         "nameEn": "Expert's Imbued Soles",
+        "namePt": "Solas Imbuídas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_PLATE_UNDEAD",
         "nameEs": "Ataduras antiguas del experto",
         "nameEn": "Expert's Ancient Bindings",
+        "namePt": "Ataduras Ancestrais do Perito",
         "class": "warrior"
       }
     ]
@@ -1241,168 +1437,196 @@
         "itemId": "T6_ARTEFACT_2H_COMBATSTAFF_MORGANA",
         "nameEs": "Palo de Morgana reforzado del maestro",
         "nameEn": "Master's Reinforced Morgana Pole",
+        "namePt": "Estaca de Morgana Reforçada do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_HALBERD_MORGANA",
         "nameEs": "Cabeza de alabarda de Morgana del maestro",
         "nameEn": "Master's Morgana Halberd Head",
+        "namePt": "Cabeça de Alabarda de Morgana do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_HAMMER_UNDEAD",
         "nameEs": "Cabeza de martillo antigua del maestro",
         "nameEn": "Master's Ancient Hammer Head",
+        "namePt": "Cabeça de Martelo Ancestral do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_KNUCKLES_KEEPER",
         "nameEs": "Restos de guardián osuno del maestro",
         "nameEn": "Master's Ursine Guardian Remains",
+        "namePt": "Restos de Guardião Ursino do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_LONGBOW_UNDEAD",
         "nameEs": "Flechas abominables del maestro",
         "nameEn": "Master's Ghastly Arrows",
+        "namePt": "Flechas Sinistras do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_REPEATINGCROSSBOW_UNDEAD",
         "nameEs": "Mecanismo perdido de ballesta del maestro",
         "nameEn": "Master's Lost Crossbow Mechanism",
+        "namePt": "Mecanismo de Besta Perdido do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_CLOTH_KEEPER",
         "nameEs": "Plumas druidas del maestro",
         "nameEn": "Master's Druidic Feathers",
+        "namePt": "Penas Druídicas do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_LEATHER_MORGANA",
         "nameEs": "Pliegues de cuero imbuidos del maestro",
         "nameEn": "Master's Imbued Leather Folds",
+        "namePt": "Peças de Couro Imbuído do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_PLATE_UNDEAD",
         "nameEs": "Cota de malla antigua del maestro",
         "nameEn": "Master's Ancient Chain Rings",
+        "namePt": "Anilhas Ancestrais do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_CLOTH_KEEPER",
         "nameEs": "Pico preservado druida del maestro",
         "nameEn": "Master's Druidic Preserved Beak",
+        "namePt": "Bico Preservado Druídico do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_LEATHER_MORGANA",
         "nameEs": "Visera imbuida del maestro",
         "nameEn": "Master's Imbued Visor",
+        "namePt": "Visor Imbuído do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_PLATE_UNDEAD",
         "nameEs": "Acolchado antiguo del maestro",
         "nameEn": "Master's Ancient Padding",
+        "namePt": "Estofamento Ancestral do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_ARCANESTAFF_UNDEAD",
         "nameEs": "Cristal arcano perdido del maestro",
         "nameEn": "Master's Lost Arcane Crystal",
+        "namePt": "Cristal Arcano Perdido do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_CURSEDSTAFF_UNDEAD",
         "nameEs": "Cristal maldito perdido del maestro",
         "nameEn": "Master's Lost Cursed Crystal",
+        "namePt": "Cristal Amaldiçoado Perdido do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_FIRESTAFF_KEEPER",
         "nameEs": "Orbe de fuego incontrolable del maestro",
         "nameEn": "Master's Wildfire Orb",
+        "namePt": "Orbe Incendiário do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_FROSTSTAFF_KEEPER",
         "nameEs": "Orbe de escarcha del maestro",
         "nameEn": "Master's Hoarfrost Orb",
+        "namePt": "Orbe Enregelante do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_HOLYSTAFF_MORGANA",
         "nameEs": "Pergamino poseído del maestro",
         "nameEn": "Master's Possessed Scroll",
+        "namePt": "Pergaminho Possuído do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_NATURESTAFF_KEEPER",
         "nameEs": "Inscripciones de druida del maestro",
         "nameEn": "Master's Druidic Inscriptions",
+        "namePt": "Inscrições Druídicas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_RAPIER_MORGANA",
         "nameEs": "Punta endurecida del maestro",
         "nameEn": "Master's Hardened Debole",
+        "namePt": "Débil Endurecido do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_ROCKMACE_KEEPER",
         "nameEs": "Roca rúnica del maestro",
         "nameEn": "Master's Runed Rock",
+        "namePt": "Rocha com Runas do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_SCIMITAR_MORGANA",
         "nameEs": "Hoja forjada con sangre del maestro",
         "nameEn": "Master's Bloodforged Blade",
+        "namePt": "Lâmina Forjada em Sangue do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_SPEAR_KEEPER",
         "nameEs": "Cabeza de lanza de guardián del maestro",
         "nameEn": "Master's Keeper Spearhead",
+        "namePt": "Cabeça de Lança Protetora do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_HORN_KEEPER",
         "nameEs": "Cuerno rúnico del maestro",
         "nameEn": "Master's Runed Horn",
+        "namePt": "Chifre com Runa do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_ORB_MORGANA",
         "nameEs": "Cristal tentador del maestro",
         "nameEn": "Master's Alluring Crystal",
+        "namePt": "Cristal Fascinante do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_TOWERSHIELD_UNDEAD",
         "nameEs": "Núcleo de escudo antiguo del maestro",
         "nameEn": "Master's Ancient Shield Core",
+        "namePt": "Núcleo de Escudo Ancestral do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_CLOTH_KEEPER",
         "nameEs": "Ataduras druidas del maestro",
         "nameEn": "Master's Druidic Bindings",
+        "namePt": "Ataduras Druídicas do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_LEATHER_MORGANA",
         "nameEs": "Suelas imbuidas del maestro",
         "nameEn": "Master's Imbued Soles",
+        "namePt": "Solas Imbuídas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_PLATE_UNDEAD",
         "nameEs": "Ataduras antiguas del maestro",
         "nameEn": "Master's Ancient Bindings",
+        "namePt": "Ataduras Ancestrais do Mestre",
         "class": "warrior"
       }
     ]
@@ -1417,168 +1641,196 @@
         "itemId": "T7_ARTEFACT_2H_COMBATSTAFF_MORGANA",
         "nameEs": "Palo de Morgana reforzado del gran maestro",
         "nameEn": "Grandmaster's Reinforced Morgana Pole",
+        "namePt": "Estaca de Morgana Reforçada do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_HALBERD_MORGANA",
         "nameEs": "Cabeza de alabarda de Morgana del gran maestro",
         "nameEn": "Grandmaster's Morgana Halberd Head",
+        "namePt": "Cabeça de Alabarda de Morgana do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_HAMMER_UNDEAD",
         "nameEs": "Cabeza de martillo antigua del gran maestro",
         "nameEn": "Grandmaster's Ancient Hammer Head",
+        "namePt": "Cabeça de Martelo Ancestral do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_KNUCKLES_KEEPER",
         "nameEs": "Restos de guardián osuno del gran maestro",
         "nameEn": "Grandmaster's Ursine Guardian Remains",
+        "namePt": "Restos de Guardião Ursino do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_LONGBOW_UNDEAD",
         "nameEs": "Flechas abominables del gran maestro",
         "nameEn": "Grandmaster's Ghastly Arrows",
+        "namePt": "Flechas Sinistro do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_REPEATINGCROSSBOW_UNDEAD",
         "nameEs": "Mecanismo perdido de ballesta del gran maestro",
         "nameEn": "Grandmaster's Lost Crossbow Mechanism",
+        "namePt": "Mecanismo de Besta Perdido do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_CLOTH_KEEPER",
         "nameEs": "Plumas druidas del gran maestro",
         "nameEn": "Grandmaster's Druidic Feathers",
+        "namePt": "Penas Druídicas do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_LEATHER_MORGANA",
         "nameEs": "Pliegues de cuero imbuidos del gran maestro",
         "nameEn": "Grandmaster's Imbued Leather Folds",
+        "namePt": "Peças de Couro Imbuído do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_PLATE_UNDEAD",
         "nameEs": "Cota de malla antigua del gran maestro",
         "nameEn": "Grandmaster's Ancient Chain Rings",
+        "namePt": "Anilhas Ancestrais do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_CLOTH_KEEPER",
         "nameEs": "Pico preservado druida del gran maestro",
         "nameEn": "Grandmaster's Druidic Preserved Beak",
+        "namePt": "Bico Preservado Druídico do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_LEATHER_MORGANA",
         "nameEs": "Visera imbuida del gran maestro",
         "nameEn": "Grandmaster's Imbued Visor",
+        "namePt": "Visor Imbuído do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_PLATE_UNDEAD",
         "nameEs": "Acolchado antiguo del gran maestro",
         "nameEn": "Grandmaster's Ancient Padding",
+        "namePt": "Estofamento Ancestral do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_ARCANESTAFF_UNDEAD",
         "nameEs": "Cristal arcano perdido del gran maestro",
         "nameEn": "Grandmaster's Lost Arcane Crystal",
+        "namePt": "Cristal Arcano Perdido do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_CURSEDSTAFF_UNDEAD",
         "nameEs": "Cristal maldito perdido del gran maestro",
         "nameEn": "Grandmaster's Lost Cursed Crystal",
+        "namePt": "Cristal Amaldiçoado Perdido do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_FIRESTAFF_KEEPER",
         "nameEs": "Orbe de fuego incontrolable del gran maestro",
         "nameEn": "Grandmaster's Wildfire Orb",
+        "namePt": "Orbe Incendiário do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_FROSTSTAFF_KEEPER",
         "nameEs": "Orbe de escarcha del gran maestro",
         "nameEn": "Grandmaster's Hoarfrost Orb",
+        "namePt": "Orbe Enregelante do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_HOLYSTAFF_MORGANA",
         "nameEs": "Pergamino poseído del gran maestro",
         "nameEn": "Grandmaster's Possessed Scroll",
+        "namePt": "Pergaminho Possuído do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_NATURESTAFF_KEEPER",
         "nameEs": "Inscripciones de druida del gran maestro",
         "nameEn": "Grandmaster's Druidic Inscriptions",
+        "namePt": "Inscrições Druídicas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_RAPIER_MORGANA",
         "nameEs": "Punta endurecida del gran maestro",
         "nameEn": "Grandmaster's Hardened Debole",
+        "namePt": "Débil Endurecido do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_ROCKMACE_KEEPER",
         "nameEs": "Roca rúnica del gran maestro",
         "nameEn": "Grandmaster's Runed Rock",
+        "namePt": "Rocha com Runas do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_SCIMITAR_MORGANA",
         "nameEs": "Hoja forjada con sangre del gran maestro",
         "nameEn": "Grandmaster's Bloodforged Blade",
+        "namePt": "Lâmina Forjada em Sangue do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_SPEAR_KEEPER",
         "nameEs": "Cabeza de lanza de guardián del gran maestro",
         "nameEn": "Grandmaster's Keeper Spearhead",
+        "namePt": "Cabeça de Lança Protetora do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_HORN_KEEPER",
         "nameEs": "Cuerno rúnico del gran maestro",
         "nameEn": "Grandmaster's Runed Horn",
+        "namePt": "Chifre com Runa do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_ORB_MORGANA",
         "nameEs": "Cristal tentador del gran maestro",
         "nameEn": "Grandmaster's Alluring Crystal",
+        "namePt": "Cristal Fascinante do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_TOWERSHIELD_UNDEAD",
         "nameEs": "Núcleo de escudo antiguo del gran maestro",
         "nameEn": "Grandmaster's Ancient Shield Core",
+        "namePt": "Núcleo de Escudo Ancestral do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_CLOTH_KEEPER",
         "nameEs": "Ataduras druidas del gran maestro",
         "nameEn": "Grandmaster's Druidic Bindings",
+        "namePt": "Ataduras Druídicas do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_LEATHER_MORGANA",
         "nameEs": "Suelas imbuidas del gran maestro",
         "nameEn": "Grandmaster's Imbued Soles",
+        "namePt": "Solas Imbuídas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_PLATE_UNDEAD",
         "nameEs": "Ataduras antiguas del gran maestro",
         "nameEn": "Grandmaster's Ancient Bindings",
+        "namePt": "Ataduras Ancestrais do Grão-mestre",
         "class": "warrior"
       }
     ]
@@ -1593,168 +1845,196 @@
         "itemId": "T8_ARTEFACT_2H_COMBATSTAFF_MORGANA",
         "nameEs": "Palo de Morgana reforzado del anciano",
         "nameEn": "Elder's Reinforced Morgana Pole",
+        "namePt": "Estaca de Morgana Reforçada do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_HALBERD_MORGANA",
         "nameEs": "Cabeza de alabarda de Morgana del anciano",
         "nameEn": "Elder's Morgana Halberd Head",
+        "namePt": "Cabeça de Alabarda de Morgana do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_HAMMER_UNDEAD",
         "nameEs": "Cabeza de martillo antigua del anciano",
         "nameEn": "Elder's Ancient Hammer Head",
+        "namePt": "Cabeça de Martelo Ancestral do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_KNUCKLES_KEEPER",
         "nameEs": "Restos de guardián osuno del anciano",
         "nameEn": "Elder's Ursine Guardian Remains",
+        "namePt": "Restos de Guardião Ursino do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_LONGBOW_UNDEAD",
         "nameEs": "Flechas abominables del anciano",
         "nameEn": "Elder's Ghastly Arrows",
+        "namePt": "Flechas Sinistro do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_REPEATINGCROSSBOW_UNDEAD",
         "nameEs": "Mecanismo perdido de ballesta del anciano",
         "nameEn": "Elder's Lost Crossbow Mechanism",
+        "namePt": "Mecanismo de Besta Perdido do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_CLOTH_KEEPER",
         "nameEs": "Plumas druidas del anciano",
         "nameEn": "Elder's Druidic Feathers",
+        "namePt": "Penas Druídicas do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_LEATHER_MORGANA",
         "nameEs": "Pliegues de cuero imbuidos del anciano",
         "nameEn": "Elder's Imbued Leather Folds",
+        "namePt": "Peças de Couro Imbuído do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_PLATE_UNDEAD",
         "nameEs": "Cota de malla antigua del anciano",
         "nameEn": "Elder's Ancient Chain Rings",
+        "namePt": "Anilhas Ancestrais do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_CLOTH_KEEPER",
         "nameEs": "Pico preservado druida del anciano",
         "nameEn": "Elder's Druidic Preserved Beak",
+        "namePt": "Bico Preservado Druídico do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_LEATHER_MORGANA",
         "nameEs": "Visera imbuida del anciano",
         "nameEn": "Elder's Imbued Visor",
+        "namePt": "Visor Imbuído do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_PLATE_UNDEAD",
         "nameEs": "Acolchado antiguo del anciano",
         "nameEn": "Elder's Ancient Padding",
+        "namePt": "Estofamento Ancestral do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_ARCANESTAFF_UNDEAD",
         "nameEs": "Cristal arcano perdido del anciano",
         "nameEn": "Elder's Lost Arcane Crystal",
+        "namePt": "Cristal Arcano Perdido do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_CURSEDSTAFF_UNDEAD",
         "nameEs": "Cristal maldito perdido del anciano",
         "nameEn": "Elder's Lost Cursed Crystal",
+        "namePt": "Cristal Amaldiçoado Perdido do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_FIRESTAFF_KEEPER",
         "nameEs": "Orbe de fuego incontrolable del anciano",
         "nameEn": "Elder's Wildfire Orb",
+        "namePt": "Orbe Incendiário do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_FROSTSTAFF_KEEPER",
         "nameEs": "Orbe de escarcha del anciano",
         "nameEn": "Elder's Hoarfrost Orb",
+        "namePt": "Orbe Enregelante do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_HOLYSTAFF_MORGANA",
         "nameEs": "Pergamino poseído del anciano",
         "nameEn": "Elder's Possessed Scroll",
+        "namePt": "Pergaminho Possuído do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_NATURESTAFF_KEEPER",
         "nameEs": "Inscripciones de druida del anciano",
         "nameEn": "Elder's Druidic Inscriptions",
+        "namePt": "Inscrições Druídicas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_RAPIER_MORGANA",
         "nameEs": "Punta endurecida del anciano",
         "nameEn": "Elder's Hardened Debole",
+        "namePt": "Débil Endurecido do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_ROCKMACE_KEEPER",
         "nameEs": "Roca rúnica del anciano",
         "nameEn": "Elder's Runed Rock",
+        "namePt": "Rocha com Runas do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_SCIMITAR_MORGANA",
         "nameEs": "Hoja forjada con sangre del anciano",
         "nameEn": "Elder's Bloodforged Blade",
+        "namePt": "Lâmina Forjada em Sangue do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_SPEAR_KEEPER",
         "nameEs": "Cabeza de lanza de guardián del anciano",
         "nameEn": "Elder's Keeper Spearhead",
+        "namePt": "Cabeça de Lança Protetora do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_HORN_KEEPER",
         "nameEs": "Cuerno rúnico del anciano",
         "nameEn": "Elder's Runed Horn",
+        "namePt": "Chifre com Runa do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_ORB_MORGANA",
         "nameEs": "Cristal tentador del anciano",
         "nameEn": "Elder's Alluring Crystal",
+        "namePt": "Cristal Fascinante do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_TOWERSHIELD_UNDEAD",
         "nameEs": "Núcleo de escudo antiguo del anciano",
         "nameEn": "Elder's Ancient Shield Core",
+        "namePt": "Núcleo de Escudo Ancestral do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_CLOTH_KEEPER",
         "nameEs": "Ataduras druidas del anciano",
         "nameEn": "Elder's Druidic Bindings",
+        "namePt": "Ataduras Druídicas do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_LEATHER_MORGANA",
         "nameEs": "Suelas imbuidas del anciano",
         "nameEn": "Elder's Imbued Soles",
+        "namePt": "Solas Imbuídas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_PLATE_UNDEAD",
         "nameEs": "Ataduras antiguas del anciano",
         "nameEn": "Elder's Ancient Bindings",
+        "namePt": "Ataduras Ancestrais do Ancião",
         "class": "warrior"
       }
     ]
@@ -1769,168 +2049,196 @@
         "itemId": "T4_ARTEFACT_2H_ARCANE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico hipnótico del iniciado",
         "nameEn": "Adept's Hypnotic Harmonic Ring",
+        "namePt": "Anel Harmônico Hipnótico do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_AXE_AVALON",
         "nameEs": "Recuerdos de batalla avalonianos del iniciado",
         "nameEn": "Adept's Avalonian Battle Memoir",
+        "namePt": "Memórias de Batalha Avaloniana do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_BOW_AVALON",
         "nameEs": "Tubo fabricado inmaculado del iniciado",
         "nameEn": "Adept's Immaculately Crafted Riser",
+        "namePt": "Tubo Bem Fabricado do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_CLAYMORE_AVALON",
         "nameEs": "Restos del viejo rey del iniciado",
         "nameEn": "Adept's Remnants of the Old King",
+        "namePt": "Restos do Velho Rei do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_CROSSBOW_CANNON_AVALON",
         "nameEs": "Veleta de zumbido avaloniano del iniciado",
         "nameEn": "Adept's Humming Avalonian Whirligig",
+        "namePt": "Turbilhão Sussurrante Avaloniano do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DAGGER_KATAR_AVALON",
         "nameEs": "Antigüedades sangrientas del iniciado",
         "nameEn": "Adept's Bloodstained Antiquities",
+        "namePt": "Antiquidades Ensanguentadas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DUALMACE_AVALON",
         "nameEs": "Juramentos rotos del iniciado",
         "nameEn": "Adept's Broken Oaths",
+        "namePt": "Juramentos Quebrados do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_FIRE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico brillante del iniciado",
         "nameEn": "Adept's Glowing Harmonic Ring",
+        "namePt": "Anel Harmônico Brilhante do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_HAMMER_AVALON",
         "nameEs": "Mano metálica masiva del iniciado",
         "nameEn": "Adept's Massive Metallic Hand",
+        "namePt": "Mão Metálica do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_KNUCKLES_AVALON",
         "nameEs": "Guantelete avaloniano dañado del iniciado",
         "nameEn": "Adept's Damaged Avalonian Gauntlet",
+        "namePt": "Manopla Avaloniana Danificada do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_QUARTERSTAFF_AVALON",
         "nameEs": "Bastón desgastado del iniciado",
         "nameEn": "Adept's Timeworn Walking Staff",
+        "namePt": "Bengala Desgastada do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_CLOTH_AVALON",
         "nameEs": "Cinturón santificado del iniciado",
         "nameEn": "Adept's Sanctified Belt",
+        "namePt": "Cinto Santificado do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_LEATHER_AVALON",
         "nameEs": "Faja augurada del iniciado",
         "nameEn": "Adept's Augured Sash",
+        "namePt": "Cinturão Augurado do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_PLATE_AVALON",
         "nameEs": "Enchapado exaltado del iniciado",
         "nameEn": "Adept's Exalted Plating",
+        "namePt": "Couraça Elevada do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_CLOTH_AVALON",
         "nameEs": "Máscara santificada del iniciado",
         "nameEn": "Adept's Sanctified Mask",
+        "namePt": "Máscara Santificada do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_LEATHER_AVALON",
         "nameEs": "Relleno Augurado del Iniciado",
         "nameEn": "Adept's Augured Padding",
+        "namePt": "Estofamento Augurado do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_PLATE_AVALON",
         "nameEs": "Visera exaltada del iniciado",
         "nameEn": "Adept's Exalted Visor",
+        "namePt": "Viseira Elevada do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_CURSEDSTAFF_AVALON",
         "nameEs": "Orbe opaco fracturado del iniciado",
         "nameEn": "Adept's Fractured Opaque Orb",
+        "namePt": "Orbe Opaca Fraturada do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_FROSTSTAFF_AVALON",
         "nameEs": "Fragmento cristalino helado del iniciado",
         "nameEn": "Adept's Chilled Crystalline Shard",
+        "namePt": "Fragmento Cristalino Gelado do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_HOLYSTAFF_AVALON",
         "nameEs": "Rareza mesiánica del iniciado",
         "nameEn": "Adept's Messianic Curio",
+        "namePt": "Raridade Messiânica do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_NATURESTAFF_AVALON",
         "nameEs": "Plántula desarraigada perenne del iniciado",
         "nameEn": "Adept's Uprooted Perennial Sapling",
+        "namePt": "Muda Desenraizada Perene do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_SPEAR_LANCE_AVALON",
         "nameEs": "Vamplate ancestral arruinado del iniciado",
         "nameEn": "Adept's Ruined Ancestral Vamplate",
+        "namePt": "Vamplate Ancestral Arruinado do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_CENSER_AVALON",
         "nameEs": "Recuerdo celestial roto del iniciado",
         "nameEn": "Adept's Severed Celestial Keepsake",
+        "namePt": "Lembrança Celestial Rompida do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_SHIELD_AVALON",
         "nameEs": "Reliquia avaloniana destruida del iniciado",
         "nameEn": "Adept's Crushed Avalonian Heirloom",
+        "namePt": "Relíquia Avaloniana Destruída do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_TALISMAN_AVALON",
         "nameEs": "Recuerdo avaloniano destrozado del iniciado",
         "nameEn": "Adept's Shattered Avalonian Memento",
+        "namePt": "Lembrança Avaloniana Despedaçada do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_CLOTH_AVALON",
         "nameEs": "Ataduras santificadas del iniciado",
         "nameEn": "Adept's Sanctified Bindings",
+        "namePt": "Ligaduras Santificadas do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_LEATHER_AVALON",
         "nameEs": "Sujetadores augurados del iniciado",
         "nameEn": "Adept's Augured Fasteners",
+        "namePt": "Botas Auguradas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_PLATE_AVALON",
         "nameEs": "Greba exaltada del iniciado",
         "nameEn": "Adept's Exalted Greave",
+        "namePt": "Perneira Elevada do Adepto",
         "class": "warrior"
       }
     ]
@@ -1945,168 +2253,196 @@
         "itemId": "T5_ARTEFACT_2H_ARCANE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico hipnótico del experto",
         "nameEn": "Expert's Hypnotic Harmonic Ring",
+        "namePt": "Anel Harmônico Hipnótico do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_AXE_AVALON",
         "nameEs": "Recuerdos de batalla avalonianos del experto",
         "nameEn": "Expert's Avalonian Battle Memoir",
+        "namePt": "Memórias de Batalha Avaloniana do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_BOW_AVALON",
         "nameEs": "Tubo fabricado inmaculado del experto",
         "nameEn": "Expert's Immaculately Crafted Riser",
+        "namePt": "Tubo Bem Fabricado do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_CLAYMORE_AVALON",
         "nameEs": "Restos del viejo rey del experto",
         "nameEn": "Expert's Remnants of the Old King",
+        "namePt": "Restos do Velho Rei do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_CROSSBOW_CANNON_AVALON",
         "nameEs": "Veleta de zumbido avaloniano del experto",
         "nameEn": "Expert's Humming Avalonian Whirligig",
+        "namePt": "Turbilhão Sussurrante Avaloniano do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DAGGER_KATAR_AVALON",
         "nameEs": "Antigüedades sangrientas del experto",
         "nameEn": "Expert's Bloodstained Antiquities",
+        "namePt": "Antiquidades Ensanguentadas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DUALMACE_AVALON",
         "nameEs": "Juramentos rotos del experto",
         "nameEn": "Expert's Broken Oaths",
+        "namePt": "Juramentos Quebrados do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_FIRE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico brillante del experto",
         "nameEn": "Expert's Glowing Harmonic Ring",
+        "namePt": "Anel Harmônico Brilhante do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_HAMMER_AVALON",
         "nameEs": "Mano metálica masiva del experto",
         "nameEn": "Expert's Massive Metallic Hand",
+        "namePt": "Mão Metálica do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_KNUCKLES_AVALON",
         "nameEs": "Guantelete avaloniano dañado del experto",
         "nameEn": "Expert's Damaged Avalonian Gauntlet",
+        "namePt": "Manopla Avaloniana Danificada do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_QUARTERSTAFF_AVALON",
         "nameEs": "Bastón desgastado del experto",
         "nameEn": "Expert's Timeworn Walking Staff",
+        "namePt": "Bengala Desgastada do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_CLOTH_AVALON",
         "nameEs": "Cinturón santificado del experto",
         "nameEn": "Expert's Sanctified Belt",
+        "namePt": "Cinto Santificado do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_LEATHER_AVALON",
         "nameEs": "Faja augurada del experto",
         "nameEn": "Expert's Augured Sash",
+        "namePt": "Cinturão Augurado do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_PLATE_AVALON",
         "nameEs": "Enchapado exaltado del experto",
         "nameEn": "Expert's Exalted Plating",
+        "namePt": "Couraça Elevada do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_CLOTH_AVALON",
         "nameEs": "Máscara santificada del experto",
         "nameEn": "Expert's Sanctified Mask",
+        "namePt": "Máscara Santificada do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_LEATHER_AVALON",
         "nameEs": "Relleno Augurado del Experto",
         "nameEn": "Expert's Augured Padding",
+        "namePt": "Estofamento Augurado do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_PLATE_AVALON",
         "nameEs": "Visor exaltado del experto",
         "nameEn": "Expert's Exalted Visor",
+        "namePt": "Viseira Elevada do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_CURSEDSTAFF_AVALON",
         "nameEs": "Orbe opaco fracturado del experto",
         "nameEn": "Expert's Fractured Opaque Orb",
+        "namePt": "Orbe Opaca Fraturada do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_FROSTSTAFF_AVALON",
         "nameEs": "Fragmento cristalino helado del experto",
         "nameEn": "Expert's Chilled Crystalline Shard",
+        "namePt": "Fragmento Cristalino Gelado do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_HOLYSTAFF_AVALON",
         "nameEs": "Rareza mesiánica del experto",
         "nameEn": "Expert's Messianic Curio",
+        "namePt": "Raridade Messiânica do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_NATURESTAFF_AVALON",
         "nameEs": "Plántula desarraigada perenne del experto",
         "nameEn": "Expert's Uprooted Perennial Sapling",
+        "namePt": "Muda Desenraizada Perene do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_SPEAR_LANCE_AVALON",
         "nameEs": "Vamplate ancestral arruinado del experto",
         "nameEn": "Expert's Ruined Ancestral Vamplate",
+        "namePt": "Vamplate Ancestral Arruinado do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_CENSER_AVALON",
         "nameEs": "Recuerdo celestial roto del experto",
         "nameEn": "Expert's Severed Celestial Keepsake",
+        "namePt": "Lembrança Celestial Rompida do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_SHIELD_AVALON",
         "nameEs": "Reliquia avaloniana destruida del experto",
         "nameEn": "Expert's Crushed Avalonian Heirloom",
+        "namePt": "Relíquia Avaloniana Destruída do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_TALISMAN_AVALON",
         "nameEs": "Recuerdo avaloniano destrozado del experto",
         "nameEn": "Expert's Shattered Avalonian Memento",
+        "namePt": "Lembrança Avaloniana Despedaçada do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_CLOTH_AVALON",
         "nameEs": "Ataduras santificadas del experto",
         "nameEn": "Expert's Sanctified Bindings",
+        "namePt": "Ligaduras Santificadas do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_LEATHER_AVALON",
         "nameEs": "Sujetadores augurados del experto",
         "nameEn": "Expert's Augured Fasteners",
+        "namePt": "Botas Auguradas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_PLATE_AVALON",
         "nameEs": "Greba exaltada del experto",
         "nameEn": "Expert's Exalted Greave",
+        "namePt": "Perneira Elevada do Perito",
         "class": "warrior"
       }
     ]
@@ -2121,168 +2457,196 @@
         "itemId": "T6_ARTEFACT_2H_ARCANE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico hipnótico del maestro",
         "nameEn": "Master's Hypnotic Harmonic Ring",
+        "namePt": "Anel Harmônico Hipnótico do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_AXE_AVALON",
         "nameEs": "Recuerdos de batalla avalonianos del maestro",
         "nameEn": "Master's Avalonian Battle Memoir",
+        "namePt": "Memórias de Batalha Avaloniana do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_BOW_AVALON",
         "nameEs": "Tubo fabricado inmaculado del maestro",
         "nameEn": "Master's Immaculately Crafted Riser",
+        "namePt": "Tubo Bem Fabricado do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_CLAYMORE_AVALON",
         "nameEs": "Restos del viejo rey del maestro",
         "nameEn": "Master's Remnants of the Old King",
+        "namePt": "Restos do Velho Rei do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_CROSSBOW_CANNON_AVALON",
         "nameEs": "Veleta de zumbido avaloniano del maestro",
         "nameEn": "Master's Humming Avalonian Whirligig",
+        "namePt": "Turbilhão Sussurrante Avaloniano do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DAGGER_KATAR_AVALON",
         "nameEs": "Antigüedades sangrientas del maestro",
         "nameEn": "Master's Bloodstained Antiquities",
+        "namePt": "Antiquidades Ensanguentadas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DUALMACE_AVALON",
         "nameEs": "Juramentos rotos del maestro",
         "nameEn": "Master's Broken Oaths",
+        "namePt": "Juramentos Quebrados do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_FIRE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico brillante del maestro",
         "nameEn": "Master's Glowing Harmonic Ring",
+        "namePt": "Anel Harmônico Brilhante do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_HAMMER_AVALON",
         "nameEs": "Mano metálica masiva del maestro",
         "nameEn": "Master's Massive Metallic Hand",
+        "namePt": "Mão Metálica do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_KNUCKLES_AVALON",
         "nameEs": "Guantelete avaloniano dañado del maestro",
         "nameEn": "Master's Damaged Avalonian Gauntlet",
+        "namePt": "Manopla Avaloniana Danificada do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_QUARTERSTAFF_AVALON",
         "nameEs": "Bastón desgastado del maestro",
         "nameEn": "Master's Timeworn Walking Staff",
+        "namePt": "Bengala Desgastada do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_CLOTH_AVALON",
         "nameEs": "Cinturón santificado de maestro",
         "nameEn": "Master's Sanctified Belt",
+        "namePt": "Cinto Santificado do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_LEATHER_AVALON",
         "nameEs": "Faja augurada del maestro",
         "nameEn": "Master's Augured Sash",
+        "namePt": "Cinturão Augurado do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_PLATE_AVALON",
         "nameEs": "Enchapado exaltado del maestro",
         "nameEn": "Master's Exalted Plating",
+        "namePt": "Couraça Elevada do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_CLOTH_AVALON",
         "nameEs": "Máscara santificada del maestro",
         "nameEn": "Master's Sanctified Mask",
+        "namePt": "Máscara Santificada do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_LEATHER_AVALON",
         "nameEs": "Relleno Augurado del Maestro",
         "nameEn": "Master's Augured Padding",
+        "namePt": "Estofamento Augurado do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_PLATE_AVALON",
         "nameEs": "Visera exaltada del maestro",
         "nameEn": "Master's Exalted Visor",
+        "namePt": "Viseira Elevada do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_CURSEDSTAFF_AVALON",
         "nameEs": "Orbe opaco fracturado del maestro",
         "nameEn": "Master's Fractured Opaque Orb",
+        "namePt": "Orbe Opaca Fraturada do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_FROSTSTAFF_AVALON",
         "nameEs": "Fragmento cristalino helado del maestro",
         "nameEn": "Master's Chilled Crystalline Shard",
+        "namePt": "Fragmento Cristalino Gelado do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_HOLYSTAFF_AVALON",
         "nameEs": "Rareza mesiánica del maestro",
         "nameEn": "Master's Messianic Curio",
+        "namePt": "Raridade Messiânica do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_NATURESTAFF_AVALON",
         "nameEs": "Plántula desarraigada perenne del maestro",
         "nameEn": "Master's Uprooted Perennial Sapling",
+        "namePt": "Muda Desenraizada Perene do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_SPEAR_LANCE_AVALON",
         "nameEs": "Vamplate ancestral arruinado del maestro",
         "nameEn": "Master's Ruined Ancestral Vamplate",
+        "namePt": "Vamplate Ancestral Arruinado do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_CENSER_AVALON",
         "nameEs": "Recuerdo celestial roto del maestro",
         "nameEn": "Master's Severed Celestial Keepsake",
+        "namePt": "Lembrança Celestial Rompida do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_SHIELD_AVALON",
         "nameEs": "Reliquia avaloniana destruida del maestro",
         "nameEn": "Master's Crushed Avalonian Heirloom",
+        "namePt": "Relíquia Avaloniana Destruída do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_TALISMAN_AVALON",
         "nameEs": "Recuerdo avaloniano destrozado del maestro",
         "nameEn": "Master's Shattered Avalonian Memento",
+        "namePt": "Lembrança Avaloniana Despedaçada do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_CLOTH_AVALON",
         "nameEs": "Ataduras santificadas del maestro",
         "nameEn": "Master's Sanctified Bindings",
+        "namePt": "Ligaduras Santificadas do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_LEATHER_AVALON",
         "nameEs": "Sujetadores augurados del maestro",
         "nameEn": "Master's Augured Fasteners",
+        "namePt": "Botas Auguradas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_PLATE_AVALON",
         "nameEs": "Greba exaltada del maestro",
         "nameEn": "Master's Exalted Greave",
+        "namePt": "Perneira Elevada do Mestre",
         "class": "warrior"
       }
     ]
@@ -2297,168 +2661,196 @@
         "itemId": "T7_ARTEFACT_2H_ARCANE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico hipnótico del gran maestro",
         "nameEn": "Grandmaster's Hypnotic Harmonic Ring",
+        "namePt": "Anel Harmônico Hipnótico do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_AXE_AVALON",
         "nameEs": "Recuerdos de batalla avalonianos del gran maestro",
         "nameEn": "Grandmaster's Avalonian Battle Memoir",
+        "namePt": "Memórias de Batalha Avaloniana do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_BOW_AVALON",
         "nameEs": "Tubo fabricado inmaculado del gran maestro",
         "nameEn": "Grandmaster's Immaculately Crafted Riser",
+        "namePt": "Tubo Bem Fabricado do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_CLAYMORE_AVALON",
         "nameEs": "Restos del viejo rey del gran maestro",
         "nameEn": "Grandmaster's Remnants of the Old King",
+        "namePt": "Restos do Velho Rei do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_CROSSBOW_CANNON_AVALON",
         "nameEs": "Veleta de zumbido avaloniano del gran maestro",
         "nameEn": "Grandmaster's Humming Avalonian Whirligig",
+        "namePt": "Turbilhão Sussurrante Avaloniano do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DAGGER_KATAR_AVALON",
         "nameEs": "Antigüedades sangrientas del gran maestro",
         "nameEn": "Grandmaster's Bloodstained Antiquities",
+        "namePt": "Antiquidades Ensanguentadas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DUALMACE_AVALON",
         "nameEs": "Juramentos rotos del gran maestro",
         "nameEn": "Grandmaster's Broken Oaths",
+        "namePt": "Juramentos Quebrados do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_FIRE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico brillante del gran maestro",
         "nameEn": "Grandmaster's Glowing Harmonic Ring",
+        "namePt": "Anel Harmônico Brilhante do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_HAMMER_AVALON",
         "nameEs": "Mano metálica masiva del gran maestro",
         "nameEn": "Grandmaster's Massive Metallic Hand",
+        "namePt": "Mão Metálica do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_KNUCKLES_AVALON",
         "nameEs": "Guantelete avaloniano dañado del gran maestro",
         "nameEn": "Grandmaster's Damaged Avalonian Gauntlet",
+        "namePt": "Manopla Avaloniana Danificada do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_QUARTERSTAFF_AVALON",
         "nameEs": "Bastón desgastado del gran maestro",
         "nameEn": "Grandmaster's Timeworn Walking Staff",
+        "namePt": "Bengala Desgastada do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_CLOTH_AVALON",
         "nameEs": "Cinturón santificado del gran maestro",
         "nameEn": "Grandmaster's Sanctified Belt",
+        "namePt": "Cinto Santificado do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_LEATHER_AVALON",
         "nameEs": "Faja augurada del gran maestro",
         "nameEn": "Grandmaster's Augured Sash",
+        "namePt": "Cinturão Augurado do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_PLATE_AVALON",
         "nameEs": "Enchapado exaltado del gran maestro",
         "nameEn": "Grandmaster's Exalted Plating",
+        "namePt": "Couraça Elevada do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_CLOTH_AVALON",
         "nameEs": "Máscara santificada del gran maestro",
         "nameEn": "Grandmaster's Sanctified Mask",
+        "namePt": "Máscara Santificada do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_LEATHER_AVALON",
         "nameEs": "Relleno Augurado del Gran Maestro",
         "nameEn": "Grandmaster's Augured Padding",
+        "namePt": "Estofamento Augurado do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_PLATE_AVALON",
         "nameEs": "Visera exaltada del gran maestro",
         "nameEn": "Grandmaster's Exalted Visor",
+        "namePt": "Viseira Elevada do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_CURSEDSTAFF_AVALON",
         "nameEs": "Orbe opaco fracturado del gran maestro",
         "nameEn": "Grandmaster's Fractured Opaque Orb",
+        "namePt": "Orbe Opaca Fraturada do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_FROSTSTAFF_AVALON",
         "nameEs": "Fragmento cristalino helado del gran maestro",
         "nameEn": "Grandmaster's Chilled Crystalline Shard",
+        "namePt": "Fragmento Cristalino Gelado do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_HOLYSTAFF_AVALON",
         "nameEs": "Rareza mesiánica del gran maestro",
         "nameEn": "Grandmaster's Messianic Curio",
+        "namePt": "Raridade Messiânica do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_NATURESTAFF_AVALON",
         "nameEs": "Plántula desarraigada perenne del gran maestro",
         "nameEn": "Grandmaster's Uprooted Perennial Sapling",
+        "namePt": "Muda Desenraizada Perene do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_SPEAR_LANCE_AVALON",
         "nameEs": "Vamplate ancestral arruinado del gran maestro",
         "nameEn": "Grandmaster's Ruined Ancestral Vamplate",
+        "namePt": "Vamplate Ancestral Arruinado do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_CENSER_AVALON",
         "nameEs": "Recuerdo celestial roto del gran maestro",
         "nameEn": "Grandmaster's Severed Celestial Keepsake",
+        "namePt": "Lembrança Celestial Rompida do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_SHIELD_AVALON",
         "nameEs": "Reliquia avaloniana destruida del gran maestro",
         "nameEn": "Grandmaster's Crushed Avalonian Heirloom",
+        "namePt": "Relíquia Avaloniana Destruída do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_TALISMAN_AVALON",
         "nameEs": "Recuerdo avaloniano destrozado del gran maestro",
         "nameEn": "Grandmaster's Shattered Avalonian Memento",
+        "namePt": "Lembrança Avaloniana Despedaçada do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_CLOTH_AVALON",
         "nameEs": "Ataduras santificadas del gran maestro",
         "nameEn": "Grandmaster's Sanctified Bindings",
+        "namePt": "Ligaduras Santificadas do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_LEATHER_AVALON",
         "nameEs": "Sujetadores augurados del gran maestro",
         "nameEn": "Grandmaster's Augured Fasteners",
+        "namePt": "Botas Auguradas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_PLATE_AVALON",
         "nameEs": "Greba exaltada del gran maestro",
         "nameEn": "Grandmaster's Exalted Greave",
+        "namePt": "Perneira Elevada do Grão-mestre",
         "class": "warrior"
       }
     ]
@@ -2473,168 +2865,196 @@
         "itemId": "T8_ARTEFACT_2H_ARCANE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico hipnótico del anciano",
         "nameEn": "Elder's Hypnotic Harmonic Ring",
+        "namePt": "Anel Harmônico Hipnótico do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_AXE_AVALON",
         "nameEs": "Recuerdos de batalla avalonianos del anciano",
         "nameEn": "Elder's Avalonian Battle Memoir",
+        "namePt": "Memórias de Batalha Avaloniana do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_BOW_AVALON",
         "nameEs": "Tubo fabricado inmaculado del anciano",
         "nameEn": "Elder's Immaculately Crafted Riser",
+        "namePt": "Tubo Bem Fabricado do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_CLAYMORE_AVALON",
         "nameEs": "Restos del viejo rey del anciano",
         "nameEn": "Elder's Remnants of the Old King",
+        "namePt": "Restos do Velho Rei do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_CROSSBOW_CANNON_AVALON",
         "nameEs": "Veleta de zumbido avaloniano del anciano",
         "nameEn": "Elder's Humming Avalonian Whirligig",
+        "namePt": "Turbilhão Sussurrante Avaloniano do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DAGGER_KATAR_AVALON",
         "nameEs": "Antigüedades sangrientas del anciano",
         "nameEn": "Elder's Bloodstained Antiquities",
+        "namePt": "Antiquidades Ensanguentadas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DUALMACE_AVALON",
         "nameEs": "Juramentos rotos del anciano",
         "nameEn": "Elder's Broken Oaths",
+        "namePt": "Juramentos Quebrados do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_FIRE_RINGPAIR_AVALON",
         "nameEs": "Anillo armónico brillante del anciano",
         "nameEn": "Elder's Glowing Harmonic Ring",
+        "namePt": "Anel Harmônico Brilhante do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_HAMMER_AVALON",
         "nameEs": "Mano metálica masiva del anciano",
         "nameEn": "Elder's Massive Metallic Hand",
+        "namePt": "Mão Metálica do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_KNUCKLES_AVALON",
         "nameEs": "Guantelete avaloniano dañado del anciano",
         "nameEn": "Elder's Damaged Avalonian Gauntlet",
+        "namePt": "Manopla Avaloniana Danificada do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_QUARTERSTAFF_AVALON",
         "nameEs": "Bastón desgastado del anciano",
         "nameEn": "Elder's Timeworn Walking Staff",
+        "namePt": "Bengala Desgastada do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_CLOTH_AVALON",
         "nameEs": "Cinturón santificado del anciano",
         "nameEn": "Elder's Sanctified Belt",
+        "namePt": "Cinto Santificado do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_LEATHER_AVALON",
         "nameEs": "Faja augurada del anciano",
         "nameEn": "Elder's Augured Sash",
+        "namePt": "Cinturão Augurado do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_PLATE_AVALON",
         "nameEs": "Enchapado exaltado del anciano",
         "nameEn": "Elder's Exalted Plating",
+        "namePt": "Couraça Elevada do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_CLOTH_AVALON",
         "nameEs": "Máscara santificada del anciano",
         "nameEn": "Elder's Sanctified Mask",
+        "namePt": "Máscara Santificada do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_LEATHER_AVALON",
         "nameEs": "Relleno Augurado del Anciano",
         "nameEn": "Elder's Augured Padding",
+        "namePt": "Estofamento Augurado do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_PLATE_AVALON",
         "nameEs": "Visera exaltada del anciano",
         "nameEn": "Elder's Exalted Visor",
+        "namePt": "Viseira Elevada do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_CURSEDSTAFF_AVALON",
         "nameEs": "Orbe opaco fracturado del anciano",
         "nameEn": "Elder's Fractured Opaque Orb",
+        "namePt": "Orbe Opaca Fraturada do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_FROSTSTAFF_AVALON",
         "nameEs": "Fragmento cristalino helado del anciano",
         "nameEn": "Elder's Chilled Crystalline Shard",
+        "namePt": "Fragmento Cristalino Gelado do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_HOLYSTAFF_AVALON",
         "nameEs": "Rareza mesiánica del anciano",
         "nameEn": "Elder's Messianic Curio",
+        "namePt": "Raridade Messiânica do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_NATURESTAFF_AVALON",
         "nameEs": "Plántula desarraigada perenne del anciano",
         "nameEn": "Elder's Uprooted Perennial Sapling",
+        "namePt": "Muda Desenraizada Perene do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_SPEAR_LANCE_AVALON",
         "nameEs": "Vamplate ancestral arruinado del anciano",
         "nameEn": "Elder's Ruined Ancestral Vamplate",
+        "namePt": "Vamplate Ancestral Arruinado do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_CENSER_AVALON",
         "nameEs": "Recuerdo celestial roto del anciano",
         "nameEn": "Elder's Severed Celestial Keepsake",
+        "namePt": "Lembrança Celestial Rompida do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_SHIELD_AVALON",
         "nameEs": "Reliquia avaloniana destruida del anciano",
         "nameEn": "Elder's Crushed Avalonian Heirloom",
+        "namePt": "Relíquia Avaloniana Destruída do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_TALISMAN_AVALON",
         "nameEs": "Recuerdo avaloniano destrozado del anciano",
         "nameEn": "Elder's Shattered Avalonian Memento",
+        "namePt": "Lembrança Avaloniana Despedaçada do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_CLOTH_AVALON",
         "nameEs": "Ataduras santificadas del anciano",
         "nameEn": "Elder's Sanctified Bindings",
+        "namePt": "Ligaduras Santificadas do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_LEATHER_AVALON",
         "nameEs": "Sujetadores augurados del anciano",
         "nameEn": "Elder's Augured Fasteners",
+        "namePt": "Botas Auguradas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_PLATE_AVALON",
         "nameEs": "Greba exaltada del anciano",
         "nameEn": "Elder's Exalted Greave",
+        "namePt": "Perneira Elevada do Ancião",
         "class": "warrior"
       }
     ]
@@ -2649,174 +3069,203 @@
         "itemId": "T4_ARTEFACT_2H_ARCANESTAFF_HELL",
         "nameEs": "Orbe oculto del iniciado",
         "nameEn": "Adept's Occult Orb",
+        "namePt": "Orbe Oculto do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_BOW_HELL",
         "nameEs": "Puntas de flecha demoníacas del iniciado",
         "nameEn": "Adept's Demonic Arrowheads",
+        "namePt": "Pontas de Flecha Demoníacas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_CLEAVER_HELL",
         "nameEs": "Hoja demoníaca del iniciado",
         "nameEn": "Adept's Demonic Blade",
+        "namePt": "Lâmina Demoníaca do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DUALCROSSBOW_HELL",
         "nameEs": "Saetas diabólicas del iniciado",
         "nameEn": "Adept's Hellish Bolts",
+        "namePt": "Virotes Diabólicos do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_DUALHAMMER_HELL",
         "nameEs": "Cabezas de martillo diabólicas del iniciado",
         "nameEn": "Adept's Hellish Hammer Heads",
+        "namePt": "Cabeças de Martelo Diabólicas do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_FIRESTAFF_HELL",
         "nameEs": "Orbe ardiente del iniciado",
         "nameEn": "Adept's Burning Orb",
+        "namePt": "Orbe Inflamado do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_HARPOON_HELL",
         "nameEs": "Punta de arpón infernal del iniciado",
         "nameEn": "Adept's Infernal Harpoon Tip",
+        "namePt": "Ponta de Arpão Infernal do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_HOLYSTAFF_HELL",
         "nameEs": "Pergamino infernal del iniciado",
         "nameEn": "Adept's Infernal Scroll",
+        "namePt": "Pergaminho Infernal do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_ICEGAUNTLETS_HELL",
         "nameEs": "Orbe de carámbanos del iniciado",
         "nameEn": "Adept's Icicle Orb",
+        "namePt": "Orbe de Sincelo do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_IRONGAUNTLETS_HELL",
         "nameEs": "Cuero negro del iniciado",
         "nameEn": "Adept's Black Leather",
+        "namePt": "Couro Preto do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_KNUCKLES_HELL",
         "nameEs": "Cuernos demoníacos rotos del iniciado",
         "nameEn": "Adept's Severed Demonic Horns",
+        "namePt": "Chifres Demoníacos Cortados do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_NATURESTAFF_HELL",
         "nameEs": "Símbolo de infortunio del iniciado",
         "nameEn": "Adept's Symbol of Blight",
+        "namePt": "Símbolo de Malignidade do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_2H_SCYTHE_HELL",
         "nameEs": "Cabeza de hoz diabólica del iniciado",
         "nameEn": "Adept's Hellish Sicklehead",
+        "namePt": "Cabeça de Foice Diabólica do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_2H_SKULLORB_HELL",
         "nameEs": "Quijada maldita del iniciado",
         "nameEn": "Adept's Cursed Jawbone",
+        "namePt": "Mandíbula Amaldiçoada do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_2H_TWINSCYTHE_HELL",
         "nameEs": "Par de cabezas de hoz diabólica del iniciado",
         "nameEn": "Adept's Hellish Sicklehead Pair",
+        "namePt": "Par de Cabeças de Foice Diabólicas do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_CLOTH_HELL",
         "nameEs": "Pliegues de tela infernal del iniciado",
         "nameEn": "Adept's Infernal Cloth Folds",
+        "namePt": "Peças de Tecido Infernal do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_LEATHER_HELL",
         "nameEs": "Cuero de piel de demonio del iniciado",
         "nameEn": "Adept's Demonhide Leather",
+        "namePt": "Couro de Pele Demoníaca do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_ARMOR_PLATE_HELL",
         "nameEs": "Placas demoníacas del iniciado",
         "nameEn": "Adept's Demonic Plates",
+        "namePt": "Placas Demoníacas do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_CLOTH_HELL",
         "nameEs": "Visera de tela infernal del iniciado",
         "nameEn": "Adept's Infernal Cloth Visor",
+        "namePt": "Visor de Tecido Infernal do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_LEATHER_HELL",
         "nameEs": "Acolchado de piel de demonio del iniciado",
         "nameEn": "Adept's Demonhide Padding",
+        "namePt": "Estofamento de Pele Demoníaca do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_HEAD_PLATE_HELL",
         "nameEs": "Esquirlas demoníacas del iniciado",
         "nameEn": "Adept's Demonic Scraps",
+        "namePt": "Restos Demoníacos do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_DAGGER_HELL",
         "nameEs": "Colmillo demoníaco roto del iniciado",
         "nameEn": "Adept's Broken Demonic Fang",
+        "namePt": "Presa Demoníaca Quebrada do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_MAIN_MACE_HELL",
         "nameEs": "Cabeza de maza infernal del iniciado",
         "nameEn": "Adept's Infernal Mace Head",
+        "namePt": "Cabeça de Maça Infernal do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_DEMONSKULL_HELL",
         "nameEs": "Quijada demoníaca del iniciado",
         "nameEn": "Adept's Demonic Jawbone",
+        "namePt": "Mandíbula Demoníaca do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_JESTERCANE_HELL",
         "nameEs": "Empuñadura diabólica del iniciado",
         "nameEn": "Adept's Hellish Handle",
+        "namePt": "Manípulo Diabólico do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_OFF_SHIELD_HELL",
         "nameEs": "Núcleo de escudo infernal del iniciado",
         "nameEn": "Adept's Infernal Shield Core",
+        "namePt": "Núcleo de Escudo Infernal do Adepto",
         "class": "warrior"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_CLOTH_HELL",
         "nameEs": "Ataduras de tela infernal del iniciado",
         "nameEn": "Adept's Infernal Cloth Bindings",
+        "namePt": "Ataduras de Tecido Infernal do Adepto",
         "class": "mage"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_LEATHER_HELL",
         "nameEs": "Ataduras de piel de demonio del iniciado",
         "nameEn": "Adept's Demonhide Bindings",
+        "namePt": "Ataduras de Pele Demoníaca do Adepto",
         "class": "hunter"
       },
       {
         "itemId": "T4_ARTEFACT_SHOES_PLATE_HELL",
         "nameEs": "Relleno demoníaco del iniciado",
         "nameEn": "Adept's Demonic Filling",
+        "namePt": "Preenchimento Demoníaco do Adepto",
         "class": "warrior"
       }
     ]
@@ -2831,174 +3280,203 @@
         "itemId": "T5_ARTEFACT_2H_ARCANESTAFF_HELL",
         "nameEs": "Orbe oculto del experto",
         "nameEn": "Expert's Occult Orb",
+        "namePt": "Orbe Oculto do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_BOW_HELL",
         "nameEs": "Puntas de flecha demoníacas del experto",
         "nameEn": "Expert's Demonic Arrowheads",
+        "namePt": "Pontas de Flecha Demoníacas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_CLEAVER_HELL",
         "nameEs": "Hoja demoníaca del experto",
         "nameEn": "Expert's Demonic Blade",
+        "namePt": "Lâmina Demoníaca do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DUALCROSSBOW_HELL",
         "nameEs": "Saetas diabólicas del experto",
         "nameEn": "Expert's Hellish Bolts",
+        "namePt": "Virotes Diabólicos do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_DUALHAMMER_HELL",
         "nameEs": "Cabezas de martillo diabólicas del experto",
         "nameEn": "Expert's Hellish Hammer Heads",
+        "namePt": "Cabeças de Martelo Diabólicas do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_FIRESTAFF_HELL",
         "nameEs": "Orbe ardiente del experto",
         "nameEn": "Expert's Burning Orb",
+        "namePt": "Orbe Inflamado do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_HARPOON_HELL",
         "nameEs": "Punta de arpón infernal del experto",
         "nameEn": "Expert's Infernal Harpoon Tip",
+        "namePt": "Ponta de Arpão Infernal do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_HOLYSTAFF_HELL",
         "nameEs": "Pergamino infernal del experto",
         "nameEn": "Expert's Infernal Scroll",
+        "namePt": "Pergaminho Infernal do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_ICEGAUNTLETS_HELL",
         "nameEs": "Orbe de carámbanos del experto",
         "nameEn": "Expert's Icicle Orb",
+        "namePt": "Orbe de Sincelo do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_IRONGAUNTLETS_HELL",
         "nameEs": "Cuero negro del experto",
         "nameEn": "Expert's Black Leather",
+        "namePt": "Couro Preto do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_KNUCKLES_HELL",
         "nameEs": "Cuernos demoníacos rotos del experto",
         "nameEn": "Expert's Severed Demonic Horns",
+        "namePt": "Chifres Demoníacos Cortados do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_NATURESTAFF_HELL",
         "nameEs": "Símbolo de infortunio del experto",
         "nameEn": "Expert's Symbol of Blight",
+        "namePt": "Símbolo de Malignidade do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_2H_SCYTHE_HELL",
         "nameEs": "Cabeza de hoz diabólica del experto",
         "nameEn": "Expert's Hellish Sicklehead",
+        "namePt": "Cabeça de Foice Diabólica do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_2H_SKULLORB_HELL",
         "nameEs": "Quijada maldita del experto",
         "nameEn": "Expert's Cursed Jawbone",
+        "namePt": "Mandíbula Amaldiçoada do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_2H_TWINSCYTHE_HELL",
         "nameEs": "Par de cabezas de hoz diabólica del experto",
         "nameEn": "Expert's Hellish Sicklehead Pair",
+        "namePt": "Par de Cabeças de Foice Diabólicas do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_CLOTH_HELL",
         "nameEs": "Pliegues de tela infernal del experto",
         "nameEn": "Expert's Infernal Cloth Folds",
+        "namePt": "Peças de Tecido Infernal do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_LEATHER_HELL",
         "nameEs": "Cuero de piel de demonio del experto",
         "nameEn": "Expert's Demonhide Leather",
+        "namePt": "Couro de Pele Demoníaca do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_ARMOR_PLATE_HELL",
         "nameEs": "Placas demoníacas del experto",
         "nameEn": "Expert's Demonic Plates",
+        "namePt": "Placas Demoníacas do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_CLOTH_HELL",
         "nameEs": "Visera de tela infernal del experto",
         "nameEn": "Expert's Infernal Cloth Visor",
+        "namePt": "Visor de Tecido Infernal do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_LEATHER_HELL",
         "nameEs": "Acolchado de piel de demonio del experto",
         "nameEn": "Expert's Demonhide Padding",
+        "namePt": "Estofamento de Pele Demoníaca do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_HEAD_PLATE_HELL",
         "nameEs": "Esquirlas demoníacas del experto",
         "nameEn": "Expert's Demonic Scraps",
+        "namePt": "Restos Demoníacos do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_DAGGER_HELL",
         "nameEs": "Colmillo demoníaco roto del experto",
         "nameEn": "Expert's Broken Demonic Fang",
+        "namePt": "Presa Demoníaca Quebrada do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_MAIN_MACE_HELL",
         "nameEs": "Cabeza de maza infernal del experto",
         "nameEn": "Expert's Infernal Mace Head",
+        "namePt": "Cabeça de Maça Infernal do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_DEMONSKULL_HELL",
         "nameEs": "Quijada demoníaca del experto",
         "nameEn": "Expert's Demonic Jawbone",
+        "namePt": "Mandíbula Demoníaca do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_JESTERCANE_HELL",
         "nameEs": "Empuñadura diabólica del experto",
         "nameEn": "Expert's Hellish Handle",
+        "namePt": "Manípulo Diabólico do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_OFF_SHIELD_HELL",
         "nameEs": "Núcleo de escudo infernal del experto",
         "nameEn": "Expert's Infernal Shield Core",
+        "namePt": "Núcleo de Escudo Infernal do Perito",
         "class": "warrior"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_CLOTH_HELL",
         "nameEs": "Ataduras de tela infernal del experto",
         "nameEn": "Expert's Infernal Cloth Bindings",
+        "namePt": "Ataduras de Tecido Infernal do Perito",
         "class": "mage"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_LEATHER_HELL",
         "nameEs": "Ataduras de piel de demonio del experto",
         "nameEn": "Expert's Demonhide Bindings",
+        "namePt": "Ataduras de Pele Demoníaca do Perito",
         "class": "hunter"
       },
       {
         "itemId": "T5_ARTEFACT_SHOES_PLATE_HELL",
         "nameEs": "Relleno demoníaco del experto",
         "nameEn": "Expert's Demonic Filling",
+        "namePt": "Preenchimento Demoníaco do Perito",
         "class": "warrior"
       }
     ]
@@ -3013,174 +3491,203 @@
         "itemId": "T6_ARTEFACT_2H_ARCANESTAFF_HELL",
         "nameEs": "Orbe oculto del maestro",
         "nameEn": "Master's Occult Orb",
+        "namePt": "Orbe Oculto do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_BOW_HELL",
         "nameEs": "Puntas de flecha demoníacas del maestro",
         "nameEn": "Master's Demonic Arrowheads",
+        "namePt": "Pontas de Flecha Demoníacas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_CLEAVER_HELL",
         "nameEs": "Hoja demoníaca del maestro",
         "nameEn": "Master's Demonic Blade",
+        "namePt": "Lâmina Demoníaca do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DUALCROSSBOW_HELL",
         "nameEs": "Saetas diabólicas del maestro",
         "nameEn": "Master's Hellish Bolts",
+        "namePt": "Virotes Diabólicos do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_DUALHAMMER_HELL",
         "nameEs": "Cabezas de martillo diabólicas del maestro",
         "nameEn": "Master's Hellish Hammer Heads",
+        "namePt": "Cabeças de Martelo Diabólicas do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_FIRESTAFF_HELL",
         "nameEs": "Orbe ardiente del maestro",
         "nameEn": "Master's Burning Orb",
+        "namePt": "Orbe Inflamado do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_HARPOON_HELL",
         "nameEs": "Punta de arpón infernal del maestro",
         "nameEn": "Master's Infernal Harpoon Tip",
+        "namePt": "Ponta de Arpão Infernal do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_HOLYSTAFF_HELL",
         "nameEs": "Pergamino infernal del maestro",
         "nameEn": "Master's Infernal Scroll",
+        "namePt": "Pergaminho Infernal do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_ICEGAUNTLETS_HELL",
         "nameEs": "Orbe de carámbanos del maestro",
         "nameEn": "Master's Icicle Orb",
+        "namePt": "Orbe de Sincelo do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_IRONGAUNTLETS_HELL",
         "nameEs": "Cuero negro del maestro",
         "nameEn": "Master's Black Leather",
+        "namePt": "Couro Preto do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_KNUCKLES_HELL",
         "nameEs": "Cuernos demoníacos rotos del maestro",
         "nameEn": "Master's Severed Demonic Horns",
+        "namePt": "Chifres Demoníacos Cortados do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_NATURESTAFF_HELL",
         "nameEs": "Símbolo de infortunio del maestro",
         "nameEn": "Master's Symbol of Blight",
+        "namePt": "Símbolo de Malignidade do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_2H_SCYTHE_HELL",
         "nameEs": "Cabeza de hoz diabólica del maestro",
         "nameEn": "Master's Hellish Sicklehead",
+        "namePt": "Cabeça de Foice Diabólica do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_2H_SKULLORB_HELL",
         "nameEs": "Quijada maldita del maestro",
         "nameEn": "Master's Cursed Jawbone",
+        "namePt": "Mandíbula Amaldiçoada do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_2H_TWINSCYTHE_HELL",
         "nameEs": "Par de cabezas de hoz diabólica del maestro",
         "nameEn": "Master's Hellish Sicklehead Pair",
+        "namePt": "Par de Cabeças de Foice Diabólicas do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_CLOTH_HELL",
         "nameEs": "Pliegues de tela infernal del maestro",
         "nameEn": "Master's Infernal Cloth Folds",
+        "namePt": "Peças de Tecido Infernal do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_LEATHER_HELL",
         "nameEs": "Cuero de piel de demonio del maestro",
         "nameEn": "Master's Demonhide Leather",
+        "namePt": "Couro de Pele Demoníaca do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_ARMOR_PLATE_HELL",
         "nameEs": "Placas demoníacas del maestro",
         "nameEn": "Master's Demonic Plates",
+        "namePt": "Placas Demoníacas do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_CLOTH_HELL",
         "nameEs": "Visera de tela infernal del maestro",
         "nameEn": "Master's Infernal Cloth Visor",
+        "namePt": "Visor de Tecido Infernal do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_LEATHER_HELL",
         "nameEs": "Acolchado de piel de demonio del maestro",
         "nameEn": "Master's Demonhide Padding",
+        "namePt": "Estofamento de Pele Demoníaca do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_HEAD_PLATE_HELL",
         "nameEs": "Esquirlas demoníacas del maestro",
         "nameEn": "Master's Demonic Scraps",
+        "namePt": "Restos Demoníacos do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_DAGGER_HELL",
         "nameEs": "Colmillo demoníaco roto del maestro",
         "nameEn": "Master's Broken Demonic Fang",
+        "namePt": "Presa Demoníaca Quebrada do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_MAIN_MACE_HELL",
         "nameEs": "Cabeza de maza infernal del maestro",
         "nameEn": "Master's Infernal Mace Head",
+        "namePt": "Cabeça de Maça Infernal do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_DEMONSKULL_HELL",
         "nameEs": "Quijada demoníaca del maestro",
         "nameEn": "Master's Demonic Jawbone",
+        "namePt": "Mandíbula Demoníaca do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_JESTERCANE_HELL",
         "nameEs": "Empuñadura diabólica del maestro",
         "nameEn": "Master's Hellish Handle",
+        "namePt": "Manípulo Diabólico do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_OFF_SHIELD_HELL",
         "nameEs": "Núcleo de escudo infernal del maestro",
         "nameEn": "Master's Infernal Shield Core",
+        "namePt": "Núcleo de Escudo Infernal do Mestre",
         "class": "warrior"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_CLOTH_HELL",
         "nameEs": "Ataduras de tela infernal del maestro",
         "nameEn": "Master's Infernal Cloth Bindings",
+        "namePt": "Ataduras de Tecido Infernal do Mestre",
         "class": "mage"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_LEATHER_HELL",
         "nameEs": "Ataduras de piel de demonio del maestro",
         "nameEn": "Master's Demonhide Bindings",
+        "namePt": "Ataduras de Pele Demoníaca do Mestre",
         "class": "hunter"
       },
       {
         "itemId": "T6_ARTEFACT_SHOES_PLATE_HELL",
         "nameEs": "Relleno demoníaco del maestro",
         "nameEn": "Master's Demonic Filling",
+        "namePt": "Preenchimento Demoníaco do Mestre",
         "class": "warrior"
       }
     ]
@@ -3195,174 +3702,203 @@
         "itemId": "T7_ARTEFACT_2H_ARCANESTAFF_HELL",
         "nameEs": "Orbe oculto del gran maestro",
         "nameEn": "Grandmaster's Occult Orb",
+        "namePt": "Orbe Oculto do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_BOW_HELL",
         "nameEs": "Puntas de flecha demoníacas del gran maestro",
         "nameEn": "Grandmaster's Demonic Arrowheads",
+        "namePt": "Pontas de Flecha Demoníacas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_CLEAVER_HELL",
         "nameEs": "Hoja demoníaca del gran maestro",
         "nameEn": "Grandmaster's Demonic Blade",
+        "namePt": "Lâmina Demoníaca do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DUALCROSSBOW_HELL",
         "nameEs": "Saetas diabólicas del gran maestro",
         "nameEn": "Grandmaster's Hellish Bolts",
+        "namePt": "Virotes Diabólicos do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_DUALHAMMER_HELL",
         "nameEs": "Cabezas de martillo diabólicas del gran maestro",
         "nameEn": "Grandmaster's Hellish Hammer Heads",
+        "namePt": "Cabeças de Martelo Diabólicas do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_FIRESTAFF_HELL",
         "nameEs": "Orbe ardiente del gran maestro",
         "nameEn": "Grandmaster's Burning Orb",
+        "namePt": "Orbe Inflamado do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_HARPOON_HELL",
         "nameEs": "Punta de arpón infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Harpoon Tip",
+        "namePt": "Ponta de Arpão Infernal do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_HOLYSTAFF_HELL",
         "nameEs": "Pergamino infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Scroll",
+        "namePt": "Pergaminho Infernal do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_ICEGAUNTLETS_HELL",
         "nameEs": "Orbe de carámbanos del gran maestro",
         "nameEn": "Grandmaster's Icicle Orb",
+        "namePt": "Orbe de Sincelo do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_IRONGAUNTLETS_HELL",
         "nameEs": "Cuero negro del gran maestro",
         "nameEn": "Grandmaster's Black Leather",
+        "namePt": "Couro Preto do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_KNUCKLES_HELL",
         "nameEs": "Cuernos demoníacos rotos del gran maestro",
         "nameEn": "Grandmaster's Severed Demonic Horns",
+        "namePt": "Chifres Demoníacos Cortados do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_NATURESTAFF_HELL",
         "nameEs": "Símbolo de infortunio del gran maestro",
         "nameEn": "Grandmaster's Symbol of Blight",
+        "namePt": "Símbolo de Malignidade do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_2H_SCYTHE_HELL",
         "nameEs": "Cabeza de hoz diabólica del gran maestro",
         "nameEn": "Grandmaster's Hellish Sicklehead",
+        "namePt": "Cabeça de Foice Diabólica do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_2H_SKULLORB_HELL",
         "nameEs": "Quijada maldita del gran maestro",
         "nameEn": "Grandmaster's Cursed Jawbone",
+        "namePt": "Mandíbula Amaldiçoada do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_2H_TWINSCYTHE_HELL",
         "nameEs": "Par de cabezas de hoz diabólica del gran maestro",
         "nameEn": "Grandmaster's Hellish Sicklehead Pair",
+        "namePt": "Par de Cabeças de Foice Diabólicas do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_CLOTH_HELL",
         "nameEs": "Pliegues de tela infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Cloth Folds",
+        "namePt": "Peças de Tecido Infernal do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_LEATHER_HELL",
         "nameEs": "Cuero de piel de demonio del gran maestro",
         "nameEn": "Grandmaster's Demonhide Leather",
+        "namePt": "Couro de Pele Demoníaca do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_ARMOR_PLATE_HELL",
         "nameEs": "Placas demoníacas del gran maestro",
         "nameEn": "Grandmaster's Demonic Plates",
+        "namePt": "Placas Demoníacas do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_CLOTH_HELL",
         "nameEs": "Visera de tela infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Cloth Visor",
+        "namePt": "Visor de Tecido Infernal do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_LEATHER_HELL",
         "nameEs": "Acolchado de piel de demonio del gran maestro",
         "nameEn": "Grandmaster's Demonhide Padding",
+        "namePt": "Estofamento de Pele Demoníaca do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_HEAD_PLATE_HELL",
         "nameEs": "Esquirlas demoníacas del gran maestro",
         "nameEn": "Grandmaster's Demonic Scraps",
+        "namePt": "Restos Demoníacos do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_DAGGER_HELL",
         "nameEs": "Colmillo demoníaco roto del gran maestro",
         "nameEn": "Grandmaster's Broken Demonic Fang",
+        "namePt": "Presa Demoníaca Quebrada do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_MAIN_MACE_HELL",
         "nameEs": "Cabeza de maza infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Mace Head",
+        "namePt": "Cabeça de Maça Infernal do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_DEMONSKULL_HELL",
         "nameEs": "Quijada demoníaca del gran maestro",
         "nameEn": "Grandmaster's Demonic Jawbone",
+        "namePt": "Mandíbula Demoníaca do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_JESTERCANE_HELL",
         "nameEs": "Empuñadura diabólica del gran maestro",
         "nameEn": "Grandmaster's Hellish Handle",
+        "namePt": "Manípulo Diabólico do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_OFF_SHIELD_HELL",
         "nameEs": "Núcleo de escudo infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Shield Core",
+        "namePt": "Núcleo de Escudo Infernal do Grão-mestre",
         "class": "warrior"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_CLOTH_HELL",
         "nameEs": "Ataduras de tela infernal del gran maestro",
         "nameEn": "Grandmaster's Infernal Cloth Bindings",
+        "namePt": "Ataduras de Tecido Infernal do Grão-mestre",
         "class": "mage"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_LEATHER_HELL",
         "nameEs": "Ataduras de piel de demonio del gran maestro",
         "nameEn": "Grandmaster's Demonhide Bindings",
+        "namePt": "Ataduras de Pele Demoníaca do Grão-mestre",
         "class": "hunter"
       },
       {
         "itemId": "T7_ARTEFACT_SHOES_PLATE_HELL",
         "nameEs": "Relleno demoníaco del gran maestro",
         "nameEn": "Grandmaster's Demonic Filling",
+        "namePt": "Preenchimento Demoníaco do Grão-mestre",
         "class": "warrior"
       }
     ]
@@ -3377,174 +3913,203 @@
         "itemId": "T8_ARTEFACT_2H_ARCANESTAFF_HELL",
         "nameEs": "Orbe oculto del anciano",
         "nameEn": "Elder's Occult Orb",
+        "namePt": "Orbe Oculto do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_BOW_HELL",
         "nameEs": "Puntas de flecha demoníacas del anciano",
         "nameEn": "Elder's Demonic Arrowheads",
+        "namePt": "Pontas de Flecha Demoníacas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_CLEAVER_HELL",
         "nameEs": "Hoja demoníaca del anciano",
         "nameEn": "Elder's Demonic Blade",
+        "namePt": "Lâmina Demoníaca do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DUALCROSSBOW_HELL",
         "nameEs": "Saetas diabólicas del anciano",
         "nameEn": "Elder's Hellish Bolts",
+        "namePt": "Virotes Diabólicos do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_DUALHAMMER_HELL",
         "nameEs": "Cabezas de martillo diabólicas del anciano",
         "nameEn": "Elder's Hellish Hammer Heads",
+        "namePt": "Cabeças de Martelo Diabólicas do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_FIRESTAFF_HELL",
         "nameEs": "Orbe ardiente del anciano",
         "nameEn": "Elder's Burning Orb",
+        "namePt": "Orbe Inflamado do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_HARPOON_HELL",
         "nameEs": "Punta de arpón infernal del anciano",
         "nameEn": "Elder's Infernal Harpoon Tip",
+        "namePt": "Ponta de Arpão Infernal do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_HOLYSTAFF_HELL",
         "nameEs": "Pergamino infernal del anciano",
         "nameEn": "Elder's Infernal Scroll",
+        "namePt": "Pergaminho Infernal do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_ICEGAUNTLETS_HELL",
         "nameEs": "Orbe de carámbanos del anciano",
         "nameEn": "Elder's Icicle Orb",
+        "namePt": "Orbe de Sincelo do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_IRONGAUNTLETS_HELL",
         "nameEs": "Cuero negro del anciano",
         "nameEn": "Elder's Black Leather",
+        "namePt": "Couro Preto do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_KNUCKLES_HELL",
         "nameEs": "Cuernos demoníacos rotos del anciano",
         "nameEn": "Elder's Severed Demonic Horns",
+        "namePt": "Chifres Demoníacos Cortados do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_NATURESTAFF_HELL",
         "nameEs": "Símbolo de infortunio del anciano",
         "nameEn": "Elder's Symbol of Blight",
+        "namePt": "Símbolo de Malignidade do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_2H_SCYTHE_HELL",
         "nameEs": "Cabeza de hoz diabólica del anciano",
         "nameEn": "Elder's Hellish Sicklehead",
+        "namePt": "Cabeça de Foice Diabólica do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_2H_SKULLORB_HELL",
         "nameEs": "Quijada maldita del anciano",
         "nameEn": "Elder's Cursed Jawbone",
+        "namePt": "Mandíbula Amaldiçoada do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_2H_TWINSCYTHE_HELL",
         "nameEs": "Par de cabezas de hoz diabólica del anciano",
         "nameEn": "Elder's Hellish Sicklehead Pair",
+        "namePt": "Par de Cabeças de Foice Diabólicas do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_CLOTH_HELL",
         "nameEs": "Pliegues de tela infernal del anciano",
         "nameEn": "Elder's Infernal Cloth Folds",
+        "namePt": "Peças de Tecido Infernal do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_LEATHER_HELL",
         "nameEs": "Cuero de piel de demonio del anciano",
         "nameEn": "Elder's Demonhide Leather",
+        "namePt": "Couro de Pele Demoníaca do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_ARMOR_PLATE_HELL",
         "nameEs": "Placas demoníacas del anciano",
         "nameEn": "Elder's Demonic Plates",
+        "namePt": "Placas Demoníacas do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_CLOTH_HELL",
         "nameEs": "Visera de tela infernal del anciano",
         "nameEn": "Elder's Infernal Cloth Visor",
+        "namePt": "Visor de Tecido Infernal do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_LEATHER_HELL",
         "nameEs": "Acolchado de piel de demonio del anciano",
         "nameEn": "Elder's Demonhide Padding",
+        "namePt": "Estofamento de Pele Demoníaca do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_HEAD_PLATE_HELL",
         "nameEs": "Esquirlas demoníacas del anciano",
         "nameEn": "Elder's Demonic Scraps",
+        "namePt": "Restos Demoníacos do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_DAGGER_HELL",
         "nameEs": "Colmillo demoníaco roto del anciano",
         "nameEn": "Elder's Broken Demonic Fang",
+        "namePt": "Presa Demoníaca Quebrada do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_MAIN_MACE_HELL",
         "nameEs": "Cabeza de maza infernal del anciano",
         "nameEn": "Elder's Infernal Mace Head",
+        "namePt": "Cabeça de Maça Infernal do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_DEMONSKULL_HELL",
         "nameEs": "Quijada demoníaca del anciano",
         "nameEn": "Elder's Demonic Jawbone",
+        "namePt": "Mandíbula Demoníaca do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_JESTERCANE_HELL",
         "nameEs": "Empuñadura diabólica del anciano",
         "nameEn": "Elder's Hellish Handle",
+        "namePt": "Manípulo Diabólico do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_OFF_SHIELD_HELL",
         "nameEs": "Núcleo de escudo infernal del anciano",
         "nameEn": "Elder's Infernal Shield Core",
+        "namePt": "Núcleo de Escudo Infernal do Ancião",
         "class": "warrior"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_CLOTH_HELL",
         "nameEs": "Ataduras de tela infernal del anciano",
         "nameEn": "Elder's Infernal Cloth Bindings",
+        "namePt": "Ataduras de Tecido Infernal do Ancião",
         "class": "mage"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_LEATHER_HELL",
         "nameEs": "Ataduras de piel de demonio del anciano",
         "nameEn": "Elder's Demonhide Bindings",
+        "namePt": "Ataduras de Pele Demoníaca do Ancião",
         "class": "hunter"
       },
       {
         "itemId": "T8_ARTEFACT_SHOES_PLATE_HELL",
         "nameEs": "Relleno demoníaco del anciano",
         "nameEn": "Elder's Demonic Filling",
+        "namePt": "Preenchimento Demoníaco do Ancião",
         "class": "warrior"
       }
     ]

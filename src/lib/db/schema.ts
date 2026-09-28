@@ -5,6 +5,9 @@ export const recipes = pgTable("recipes", {
   baseItemId: text("base_item_id").notNull(),
   nameEs: text("name_es").notNull(),
   nameEn: text("name_en").notNull(),
+  // Portuguese (pt-BR) name. Nullable: rows synced before it existed read it as missing and fall
+  // back to English (itemName in src/lib/item-names.ts).
+  namePt: text("name_pt"),
   tier: smallint("tier").notNull(),
   enchant: smallint("enchant").notNull(),
   stationType: text("station_type").notNull(),
@@ -31,6 +34,7 @@ export type RecipeMaterial = {
   category: "farm" | "extract" | "artifact" | "meat" | "fish" | "other";
   nameEs: string;
   nameEn: string;
+  namePt?: string;
   /** The recipe's own `@maxreturnamount="0"` in items.json: the game never returns this material
    * (a mount's grown animal, Avalonian tokens...), whatever the return rate. Only present when true. */
   noReturn?: true;

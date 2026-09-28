@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "description": "Ranking de criação do Albion Online por prata realizável por dia (margem × volume diário de vendas), não por margem unitária.",
+    "manifestDescription": "Ranking de criação do Albion Online por prata realizável por dia.",
+    "skipToContent": "Pular para o conteúdo"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "heading": "Não encontramos essa página",
+    "body": "O link pode estar digitado errado ou a página não existe mais.",
+    "home": "Voltar ao início"
+  },
+  "nav": {
+    "home": "Início",
+    "craft": "Criação",
+    "alchemy": "Alquimia",
+    "refining": "Refino",
+    "cooking": "Culinária",
+    "gear": "Equipamento",
+    "mounts": "Montarias",
+    "artifacts": "Artefatos",
+    "calculator": "Calculadora",
+    "openMenu": "Abrir menu"
+  },
+  "language": { "label": "Idioma", "es": "Español", "en": "English", "pt": "Português" },
+  "server": { "noData": "sem dados ainda" },
+  "auth": { "account": "Conta", "signOut": "Sair", "signIn": "Entrar com Discord" },
+  "bonus": { "crafting": "+15% criação", "refining": "+40% refino", "meat": "+10% carne" },
+  "footer": {
+    "legalNav": "Legal",
+    "methodology": "Metodologia",
+    "about": "Sobre",
+    "privacy": "Privacidade",
+    "terms": "Termos",
+    "discord": "Discord da comunidade",
+    "kofi": "Apoiar no Ko-fi"
+  }
+}

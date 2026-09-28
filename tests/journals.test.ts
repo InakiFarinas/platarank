@@ -11,6 +11,7 @@ const sword: Recipe = {
   baseItemId: "T6_MAIN_SWORD",
   nameEs: "Espada ancha",
   nameEn: "Broadsword",
+  namePt: null,
   tier: 6,
   enchant: 0,
   stationType: "gear",

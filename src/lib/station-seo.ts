@@ -1,13 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import type { Faq } from "@/components/json-ld";
-import type { Locale } from "@/i18n/config";
+import { intlLocale, type Locale } from "@/i18n/config";
 import { recipeCount } from "@/lib/seo";
 import type { StationType } from "@/lib/server/station-data";
 
 export const STATION_TYPES: StationType[] = ["alchemy", "refining", "cooking", "gear", "mount"];
 
 /** Whole number with locale thousands separators (es-AR / en-US). */
-export const formatIntLocale = (n: number, locale: Locale) => Math.round(n).toLocaleString(locale === "en" ? "en-US" : "es-AR");
+export const formatIntLocale = (n: number, locale: Locale) => Math.round(n).toLocaleString(intlLocale(locale));
 
 type AgeT = (key: "none" | "minutes" | "hours" | "days", values?: { n: number }) => string;
 

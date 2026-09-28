@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import type { Locale } from "@/i18n/config";
+import { intlLocale, type Locale } from "@/i18n/config";
 import { formatInt } from "@/lib/format";
 import type { DestinyLevels, RelevantNode } from "@/lib/destiny-focus";
 import { DisclosureButton, Panel } from "@/components/calculator/ui";
@@ -69,7 +69,7 @@ export function FocusSpecPanel({
   const main = nodes.filter((n) => n.kind === "mastery" || n.fcePerLevel >= OWN_SPEC_FCE_PER_LEVEL);
   const minor = nodes.filter((n) => !main.includes(n));
   const minorFce = minor.reduce((sum, n) => sum + (levels[n.id] ?? 0) * n.fcePerLevel, 0);
-  const dec1 = (n: number) => n.toLocaleString(locale === "en" ? "en-US" : "es-AR", { maximumFractionDigits: 1 });
+  const dec1 = (n: number) => n.toLocaleString(intlLocale(locale), { maximumFractionDigits: 1 });
   const pct = baseFocus > 0 ? (perCraft / baseFocus) * 100 : 100;
 
   return (
@@ -113,7 +113,7 @@ export function FocusSpecPanel({
 function NodeRow({ node, level, setLevel }: { node: RelevantNode; level: number; setLevel: (id: string, level: number) => void }) {
   const t = useTranslations("calculator.focusSpec");
   const locale = useLocale() as Locale;
-  const perLevel = Number.isInteger(node.fcePerLevel) ? String(node.fcePerLevel) : node.fcePerLevel.toFixed(2).replace(/0+$/, "").replace(".", locale === "en" ? "." : ",");
+  const perLevel = node.fcePerLevel.toLocaleString(intlLocale(locale), { maximumFractionDigits: 2 });
   return (
     <li className="flex items-center gap-3 py-2">
       <div className="min-w-0 flex-1">

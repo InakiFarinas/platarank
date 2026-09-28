@@ -1,0 +1,110 @@
+{
+  "names": { "alchemy": "Alquimia", "refining": "Refino", "cooking": "Culinária", "gear": "Equipamento", "mount": "Montarias" },
+  "seo": {
+    "alchemy": {
+      "title": "Ranking de alquimia do Albion Online: poções",
+      "subject": "poções",
+      "intro": "A alquimia transforma ervas, ovos e materiais de animais em poções. Este ranking ordena cada poção pela prata que rende por dia, não pela margem unitária.",
+      "faqQ": "Quais poções vale a pena criar no Albion Online?",
+      "faqA": "As que mais rendem prata por dia: as de margem razoável que, além disso, vendem todos os dias. O ranking é atualizado a cada hora e a primeira linha é a melhor opção com as premissas que você escolher.",
+      "pageTitle": "Alquimia · Américas",
+      "pageDescription": "Ranking por prata realizável por dia: margem x volume diário de vendas. Toque em uma linha para ver de onde sai cada número."
+    },
+    "refining": {
+      "title": "Ranking de refino do Albion Online: tábuas, barras, tecido e couro",
+      "subject": "materiais refinados",
+      "intro": "O refino transforma recursos brutos (madeira, minério, fibra, peles e pedra) em tábuas, barras, tecido, couro e blocos. É a categoria em que o retorno de recursos de cada cidade mais pesa.",
+      "faqQ": "Qual cidade dá mais retorno ao refinar?",
+      "faqA": "Cada cidade tem um bônus de refino para um recurso específico, que aumenta o retorno de recursos. O ranking marca o bônus de cada cidade para você comparar com o mesmo critério.",
+      "pageTitle": "Refino · Américas",
+      "pageDescription": "Ranking por prata realizável por dia refinando madeira, fibra, minério, couro e pedra. Toque em uma linha para ver de onde sai cada número."
+    },
+    "cooking": {
+      "title": "Ranking de culinária do Albion Online: refeições",
+      "subject": "refeições",
+      "intro": "A culinária prepara refeições que restauram vida e energia, e estão entre as receitas de maior giro diário do mercado. Aqui você vê quais valem a pena segundo preço, volume e retorno.",
+      "faqQ": "Cozinhar é lucrativo no Albion Online?",
+      "faqA": "Depende da refeição e do momento. As de muito giro podem render mais prata por dia do que outras com margem maior, e os preços mudam com o consumo do servidor. Por isso o ranking usa dados das últimas horas.",
+      "pageTitle": "Culinária · Américas",
+      "pageDescription": "Ranking por prata realizável por dia cozinhando pratos que restauram vida/energia. Toque em uma linha para ver de onde sai cada número."
+    },
+    "gear": {
+      "title": "Ranking de equipamento do Albion Online: armas e armaduras",
+      "subject": "armas, armaduras, bolsas e capas",
+      "intro": "O equipamento tem qualidades de Normal a Obra-prima, e cada uma vende a um preço diferente. O ranking pondera as cinco qualidades pelo peso base do jogo e descarta as que não têm liquidez real.",
+      "faqQ": "Como é calculado o preço de venda do equipamento?",
+      "faqA": "O preço de cada qualidade é ponderado pela probabilidade base de obtê-la ao criar, e as qualidades sem vendas recentes são descartadas. Assim o número reflete o que você realmente consegue vender.",
+      "pageTitle": "Armas e armaduras · Américas",
+      "pageDescription": "Ranking por prata realizável por dia criando equipamento. O preço de venda pondera as 5 qualidades pelos pesos base do jogo e descarta as que não têm liquidez real. Toque em uma linha para ver de onde sai cada número."
+    },
+    "mount": {
+      "title": "Ranking de montarias do Albion Online",
+      "subject": "montarias",
+      "intro": "Criar uma montaria exige um animal adulto mais materiais. Nenhuma cidade dá bônus de criação às montarias, então o ranking compara apenas custo, preço de venda e volume.",
+      "faqQ": "Vale a pena criar montarias no Albion Online?",
+      "faqA": "Vale quando o preço de venda cobre o animal adulto e os materiais com margem, e a montaria vende com frequência. As montarias de muito valor vendem pouco por dia, então o volume pesa muito no ranking.",
+      "pageTitle": "Montarias · Américas",
+      "pageDescription": "Ranking por prata realizável por dia criando montarias (animal adulto + materiais). Nenhuma cidade dá bônus de criação às montarias. Toque em uma linha para ver de onde sai cada número."
+    }
+  },
+  "stationDescription": "Ranking de {subject} do Albion Online por prata realizável por dia (lucro × volume de vendas). {count} receitas, servidor Américas, atualizado a cada hora.",
+  "commonFaq": {
+    "silverPerDayQ": "O que é a prata por dia?",
+    "silverPerDayA": "É o lucro por unidade multiplicado pelo volume diário de vendas e pela fatia de mercado que você assumir. Uma receita com margem alta que quase não vende rende menos que uma de margem pequena que vende o dia todo.",
+    "sourcesQ": "De onde vêm os preços e as receitas?",
+    "sourcesA": "Os preços vêm do Albion Online Data Project (servidor Américas) e as receitas do dump oficial do cliente. Os preços são atualizados a cada hora e a metodologia completa está publicada."
+  },
+  "info": { "heading": "Sobre este ranking de {name}" },
+  "footer": {
+    "marketData": "Dados de mercado cortesia do",
+    "recipes": ". Receitas extraídas do dump oficial do cliente (ao-bin-dumps)."
+  },
+  "error": { "title": "Não conseguimos carregar o ranking", "body": "Houve um problema ao ler os dados de mercado. Pode ser temporário -- tente de novo.", "retry": "Tentar de novo" },
+  "loading": "Carregando…",
+  "faqHeading": "Perguntas frequentes",
+  "sponsors": {
+    "adTitle": "Divulgue sua comunidade",
+    "adBody": "Se você tem uma guilda, um servidor de Discord ou um canal de Albion Online, seu logo pode aparecer nesta página junto com um link para a sua comunidade. Fale com a gente pelo Discord e combinamos.",
+    "adCta": "Falar pelo Discord",
+    "title": "Comunidades que nos apoiam",
+    "label": "Publicidade de comunidades de Albion Online",
+    "wantIn": "Sua comunidade quer aparecer aqui?",
+    "writeUs": "Fale com a gente pelo Discord",
+    "avalonDesc": "Grande comunidade de língua espanhola das estradas de Avalon",
+    "panteonDesc": "Comunidade de língua espanhola de rastreamento"
+  },
+  "age": { "none": "sem dado", "minutes": "há {n} min", "hours": "há {n}h", "days": "há {n}d" },
+  "recipe": {
+    "notFound": "Receita não encontrada",
+    "title": "Quanto custa criar {label} no Albion Online",
+    "metaDescription": "{label} custa {cost} de prata por unidade e vende a {sell}: lucro de {profit} ({margin}) e {perDay} de prata por dia. Servidor Américas.",
+    "headerDescription": "Custo de criação, lucro e prata por dia · {station} · Américas",
+    "faqCostQ": "Quanto custa criar {label}?",
+    "faqCostA": "Com os preços atuais do servidor Américas, {cost} de prata por unidade: materiais comprados na cidade mais barata{returnNote} mais a taxa da estação.",
+    "returnNote": " (com {rate}% de retorno de recursos)",
+    "faqProfitQ": "Criar {label} dá lucro?",
+    "faqProfitA": "{profitable, select, yes {Sim} other {Não}} com estas premissas: lucro de {profit} por unidade ({margin} de margem) e {perDay} de prata por dia, com um volume de {volume} vendas diárias e {share}% de fatia de mercado.",
+    "faqAssumptionsQ": "Com quais premissas é calculado?",
+    "faqAssumptionsA": "A criação é feita em Brecilien sem foco, a compra na cidade mais barata e a venda pela mediana das cidades, descontando impostos. Na calculadora você pode mudar cidade, foco e preços.",
+    "summary": "Criar <b>{label}</b> no Albion Online custa <b>{cost}</b> de prata por unidade e vende a <b>{sell}</b>. O lucro é de <b>{profit}</b> por unidade ({margin} de margem) e rende <b>{perDay}</b> de prata por dia. Preço mais antigo usado: {age}.",
+    "noData": "Ainda não há preços suficientes no servidor Américas para calcular o custo e o lucro de <b>{label}</b>. Você pode inserir seus próprios preços na calculadora.",
+    "openCalc": "Abrir na calculadora",
+    "stationRanking": "Ranking de {station}",
+    "howHeading": "Como sai o número",
+    "costPerUnit": "Custo por unidade (materiais e taxa)",
+    "sellPrice": "Preço de venda (mediana das cidades)",
+    "netRevenue": "Receita líquida após impostos",
+    "profitPerUnit": "Lucro por unidade",
+    "dailyVolume": "Volume diário de vendas",
+    "silverPerDay": "Prata por dia",
+    "materials": "Materiais",
+    "colMaterial": "Material",
+    "colQty": "Quantidade",
+    "colPrice": "Preço",
+    "colCity": "Cidade mais barata",
+    "bred": "Criado",
+    "variants": "Outros tiers e encantamentos",
+    "footerData": "Dados de mercado: Albion Online Data Project. Premissas padrão; os detalhes estão na",
+    "methodology": "metodologia"
+  }
+}

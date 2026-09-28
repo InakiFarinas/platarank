@@ -15,7 +15,7 @@ export function recipeCount(stationType: string): number {
  * openGraph object replaces the one the file convention injects. */
 export const ogImage = (locale: Locale) => [{ url: `/${locale}/opengraph-image/og`, width: 1200, height: 630 }];
 
-export const OG_LOCALE: Record<Locale, string> = { es: "es_AR", en: "en_US" };
+export const OG_LOCALE: Record<Locale, string> = { es: "es_AR", en: "en_US", pt: "pt_BR" };
 
 /** Per-page metadata with its own canonical, hreflang alternates, Open Graph and Twitter fields
  * (child pages otherwise inherit the generic root ones, including a missing og:url). `route` +

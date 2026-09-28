@@ -4,6 +4,7 @@ import { formatInt } from "@/lib/format";
 import { useState } from "react";
 import { Bell } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { intlLocale, type Locale } from "@/i18n/config";
 import { CTA_PRIMARY, CTA_SECONDARY, SilverInput } from "@/components/calculator/ui";
 import { WEBHOOK_PATTERN, type AlertsApi, type PlanAlert } from "@/components/alerts/use-alerts";
 import { cn } from "@/lib/utils";
@@ -183,7 +184,7 @@ export function AlertControl({
           {alert && (
             <p className="mt-1 text-xs text-muted-foreground">
               {alert.last_checked_at
-                ? t("lastChecked", { date: new Date(alert.last_checked_at).toLocaleString(locale === "en" ? "en-US" : "es-AR") }) + (alert.last_profit !== null ? t("lastProfit", { profit: formatInt(alert.last_profit) }) : "")
+                ? t("lastChecked", { date: new Date(alert.last_checked_at).toLocaleString(intlLocale(locale as Locale)) }) + (alert.last_profit !== null ? t("lastProfit", { profit: formatInt(alert.last_profit) }) : "")
                 : t("neverChecked")}
               {!alert.enabled && t("paused")}
             </p>

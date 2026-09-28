@@ -12,7 +12,7 @@ const lastSent = new Map<string, number>();
  * user's own row (RLS) and re-validated, so this can only ever post to a Discord webhook. */
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as { locale?: unknown } | null;
-  const en = body?.locale === "en";
+  const lang = body?.locale === "en" || body?.locale === "pt" ? body.locale : "es";
   const supabase = await createClient();
   const { data: userData } = await supabase.auth.getUser();
   if (!userData.user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -35,9 +35,11 @@ export async function POST(request: Request) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       username: "PlataRank",
-      content: en
-        ? "PlataRank test: profit alerts will arrive in this channel."
-        : "Prueba de PlataRank: los avisos de ganancia van a llegar a este canal.",
+      content: {
+        es: "Prueba de PlataRank: los avisos de ganancia van a llegar a este canal.",
+        en: "PlataRank test: profit alerts will arrive in this channel.",
+        pt: "Teste do PlataRank: os alertas de lucro vão chegar neste canal.",
+      }[lang],
       allowed_mentions: { parse: [] },
     }),
     redirect: "error",

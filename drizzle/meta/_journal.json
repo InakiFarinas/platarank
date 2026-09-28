@@ -36,6 +36,13 @@
       "when": 1790493735504,
       "tag": "0004_acoustic_argent",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1790586841721,
+      "tag": "0005_low_barracuda",
+      "breakpoints": true
     }
   ]
 }

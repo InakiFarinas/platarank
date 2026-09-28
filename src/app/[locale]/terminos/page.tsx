@@ -6,6 +6,7 @@ import { isLocale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import Es from "./content/es";
 import En from "./content/en";
+import Pt from "./content/pt";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -22,7 +23,7 @@ export default async function TerminosPage({ params }: { params: Promise<{ local
   const t = await getTranslations({ locale, namespace: "legal" });
   return (
     <LegalPage locale={locale} title={t("terms.heading")} updated={t("terms.updated")}>
-      {locale === "es" ? <Es /> : <En />}
+      {{ es: <Es />, en: <En />, pt: <Pt /> }[locale]}
     </LegalPage>
   );
 }

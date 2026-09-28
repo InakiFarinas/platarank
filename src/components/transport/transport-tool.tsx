@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Search, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import type { Locale } from "@/i18n/config";
+import { intlLocale, type Locale } from "@/i18n/config";
 import { formatInt } from "@/lib/format";
 import { itemName } from "@/lib/item-names";
 import { itemIconUrl } from "@/lib/item-icons";
@@ -14,14 +14,14 @@ import rawResourcesJson from "@/data/generated/raw-resources.json";
 import { BAG_CAPACITY_KG, MOUNTS, type MountId, type Tier } from "@/lib/transport/capacity";
 import { computeTransportResult, itemWeightKg, type CargoLine, type TransportSetup } from "@/lib/transport/compute";
 
-type RawResource = { itemId: string; tier: number; category: string; nameEs: string; nameEn?: string };
+type RawResource = { itemId: string; tier: number; category: string; nameEs: string; nameEn?: string; namePt?: string };
 const RAW_RESOURCES = rawResourcesJson as RawResource[];
 
 const CAPE_CATEGORIES = ["FIBER", "HIDE", "ORE", "ROCK", "WOOD"] as const;
 
 const BAG_TIERS = Object.keys(BAG_CAPACITY_KG).map(Number) as Tier[];
 
-type Hit = { itemId: string; nameEs: string; nameEn?: string | null; tier: number };
+type Hit = { itemId: string; nameEs: string; nameEn?: string | null; namePt?: string | null; tier: number };
 
 /** "Qué vas a transportar": crafted goods come from the same search the rest of the calculator
  * uses; raw resources (relevant when a gathering cape is equipped) aren't recipe outputs in this
@@ -255,7 +255,7 @@ export function TransportTool() {
                     <div className="min-w-0">
                       <div className="truncate text-sm">{line.name}</div>
                       <div className="text-xs text-muted-foreground">
-                        {unitWeight !== null ? t("weightEach", { kg: unitWeight.toLocaleString(locale === "en" ? "en-US" : "es-AR", { maximumFractionDigits: 2 }) }) : t("weightUnknown")}
+                        {unitWeight !== null ? t("weightEach", { kg: unitWeight.toLocaleString(intlLocale(locale), { maximumFractionDigits: 2 }) }) : t("weightUnknown")}
                       </div>
                     </div>
                     <SilverInput

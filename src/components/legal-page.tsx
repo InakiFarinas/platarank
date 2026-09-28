@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { Locale } from "@/i18n/config";
 
-const DATE_LOCALE: Record<Locale, string> = { es: "es-AR", en: "en-US" };
+const DATE_LOCALE: Record<Locale, string> = { es: "es-AR", en: "en-US", pt: "pt-BR" };
 
 /** `updated` is an ISO date (YYYY-MM-DD); it is formatted per locale here. */
 export async function LegalPage({ locale, title, updated, children }: { locale: Locale; title: string; updated: string; children: ReactNode }) {

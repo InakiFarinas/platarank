@@ -97,7 +97,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const best = top[0];
   const oldestAge = top.length > 0 ? Math.max(...top.map((x) => x.row.sellRefAgeSeconds ?? 0)) : null;
   const rankingHref = best ? localePath(locale, stationRoute(best.row.recipe.stationType as StationType)) : localePath(locale, "alchemy");
-  const label = (r: { tier: number; enchant: number; nameEs: string; nameEn?: string | null }) =>
+  const label = (r: { tier: number; enchant: number; nameEs: string; nameEn?: string | null; namePt?: string | null }) =>
     `${itemName(r, locale)} T${r.tier}${r.enchant > 0 ? `.${r.enchant}` : ""}`;
 
   return (

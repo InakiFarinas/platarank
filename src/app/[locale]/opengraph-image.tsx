@@ -18,6 +18,13 @@ const COPY = {
     after: "in Albion Online",
     sub: "Ranking, calculator and Discord alerts",
   },
+  pt: {
+    alt: "PlataRank: maximize sua prata no Albion Online",
+    before: "Descubra quais criações rendem mais ",
+    accent: "prata por dia ",
+    after: "no Albion Online",
+    sub: "Ranking, calculadora e alertas pelo Discord",
+  },
 } as const;
 
 export const alt = COPY.es.alt;
