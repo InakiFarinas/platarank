@@ -21,6 +21,7 @@ import recipesJson from "../src/data/generated/recipes.json";
 import { JOURNAL_TYPES, famePerResource, type JournalType } from "../src/lib/formulas/journal-fame";
 
 const ITEMS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/items.json";
+const FORMATTED_ITEMS_URL = "https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/formatted/items.json";
 const OUTPUT_PATH = path.join(__dirname, "..", "src", "data", "generated", "journals.json");
 
 type RawNode = Record<string, unknown>;
@@ -81,7 +82,25 @@ async function main() {
     byBaseItem[baseItemId] = [type, factor !== undefined ? Number(factor) : 1];
   }
 
-  await writeFile(OUTPUT_PATH, JSON.stringify({ maxFame, byBaseItem }, null, 2) + "\n");
+  // The in-game names of the exact journals to buy and sell ("Diario del herrero iniciado (vacío)"),
+  // so the UI can say which one instead of just its type.
+  const formattedRes = await fetch(FORMATTED_ITEMS_URL);
+  if (!formattedRes.ok) throw new Error(`${FORMATTED_ITEMS_URL}: HTTP ${formattedRes.status}`);
+  const formatted = (await formattedRes.json()) as { UniqueName: string; LocalizedNames?: Record<string, string> }[];
+  const byId = new Map(formatted.map((i) => [i.UniqueName, i.LocalizedNames ?? {}]));
+  const names: Record<string, [string, string]> = {};
+  for (const type of JOURNAL_TYPES) {
+    for (let tier = 2; tier <= 8; tier++) {
+      for (const state of ["EMPTY", "FULL"]) {
+        const id = `T${tier}_JOURNAL_${type}_${state}`;
+        const n = byId.get(id);
+        if (!n?.["ES-ES"] || !n["EN-US"]) throw new Error(`${id} has no localized name in formatted/items.json`);
+        names[id] = [n["ES-ES"], n["EN-US"]];
+      }
+    }
+  }
+
+  await writeFile(OUTPUT_PATH, JSON.stringify({ maxFame, byBaseItem, names }, null, 2) + "\n");
   console.log(
     `Wrote ${Object.keys(byBaseItem).length} of ${gearBaseIds.size} gear base items to ${OUTPUT_PATH} ` +
       `(${noFame} give no craft fame, ${gearBaseIds.size - Object.keys(byBaseItem).length - noFame} fill no journal).`,

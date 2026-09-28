@@ -5,3 +5,9 @@ overrides:
 allowBuilds:
   esbuild: true
   unrs-resolver: true
+
+# Pulled in by next-intl's own tooling, unused by the build; both ship prebuilt binaries, so their
+# install scripts (a from-source fallback) are explicitly skipped instead of warned about.
+ignoredBuiltDependencies:
+  - "@parcel/watcher"
+  - "@swc/core"

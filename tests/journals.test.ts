@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { famePerResource, journalFamePerCraft } from "@/lib/formulas/journal-fame";
-import { ALL_JOURNAL_MARKET_ITEMS, recipeJournal } from "@/lib/journals";
+import { ALL_JOURNAL_MARKET_ITEMS, journalBaseName, journalItemName, recipeJournal } from "@/lib/journals";
 import { computeRecipeRow, DEFAULT_PARAMS, type CityPricePoint, type MarketData } from "@/lib/recipe-math";
 import { computeCraft, type CraftParams } from "@/lib/craft-calc";
 import { netSellMultiplier, saleTaxRate } from "@/lib/formulas/market-tax";
@@ -62,6 +62,14 @@ describe("recipeJournal", () => {
     const potion: Recipe = { ...sword, itemId: "T6_POTION_HEAL", baseItemId: "T6_POTION_HEAL", stationType: "alchemy" };
     expect(recipeJournal(planks)).toBeNull();
     expect(recipeJournal(potion)).toBeNull();
+  });
+
+  test("nombra el diario exacto a usar, como en el juego", () => {
+    const j = recipeJournal(sword)!;
+    expect(journalBaseName(j, "es")).toBe("Diario del herrero maestro");
+    expect(journalItemName(j.emptyItemId, "es")).toBe("Diario del herrero maestro (vacío)");
+    expect(journalItemName(j.fullItemId, "en")).toBe("Master Blacksmith's Journal (Full)");
+    for (const id of ALL_JOURNAL_MARKET_ITEMS) expect(journalItemName(id, "es")).not.toBe(id);
   });
 
   test("los ids de mercado cubren los 4 diarios de crafteo, vacío y lleno, T2-T8", () => {

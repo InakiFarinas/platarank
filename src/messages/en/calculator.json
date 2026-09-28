@@ -171,9 +171,9 @@
     "save": "Save this calculation",
     "method": "Resource return, station fee and taxes: <link>how it's calculated</link>.",
     "seeBalance": "See balance",
-    "emptyJournals": "Empty journals ({count} × {price})",
-    "fullJournals": "Full journals ({count} × {price})",
-    "journalFame": "Journal fame ({max} fills one)",
+    "emptyJournals": "{name}: {count} × {price}",
+    "fullJournals": "{name}: {count} × {price}",
+    "journalFame": "Fame for the {name} ({max} fills one)",
     "journalsUnpriced": "This item's journals have no recent price (empty or full), so they aren't added to the profit.",
     "focusNeededSpec": "Focus needed (with your specialization)"
   },

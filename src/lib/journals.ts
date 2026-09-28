@@ -1,7 +1,12 @@
 import journalsJson from "@/data/generated/journals.json";
 import { JOURNAL_TYPES, journalFamePerCraft, type JournalType } from "@/lib/formulas/journal-fame";
 
-type JournalsData = { maxFame: Record<JournalType, Record<string, number>>; byBaseItem: Record<string, [JournalType, number]> };
+type JournalsData = {
+  maxFame: Record<JournalType, Record<string, number>>;
+  byBaseItem: Record<string, [JournalType, number]>;
+  /** In-game names of every journal market id, [es, en], e.g. "Diario del herrero maestro (vacío)". */
+  names: Record<string, [string, string]>;
+};
 // JSON imports widen tuples to arrays; the shape is fixed by scripts/fetch-journal-data.ts.
 const data = journalsJson as unknown as JournalsData;
 
@@ -43,6 +48,18 @@ export function recipeJournal(recipe: {
     maxFame,
     journalsPerUnit: famePerCraft / maxFame / recipe.batchSize,
   };
+}
+
+/** The journal's exact in-game name ("Diario del herrero maestro (vacío)"), falling back to its id. */
+export function journalItemName(itemId: string, locale: "es" | "en"): string {
+  const n = data.names[itemId];
+  return n ? n[locale === "en" ? 1 : 0] : itemId;
+}
+
+/** The journal's name without the (vacío)/(lleno) state -- which journal to use, e.g. "Diario del
+ * herrero maestro". */
+export function journalBaseName(journal: RecipeJournal, locale: "es" | "en"): string {
+  return journalItemName(journal.emptyItemId, locale).replace(/\s*\([^)]*\)\s*$/, "");
 }
 
 /** Every journal market id (empty and full, T2-T8, all four types) -- what the ingester prices and

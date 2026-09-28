@@ -5702,5 +5702,231 @@
       "WARRIOR",
       1.1
     ]
+  },
+  "names": {
+    "T2_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero novato (vacío)",
+      "Novice Blacksmith's Journal (Empty)"
+    ],
+    "T2_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero novato (lleno)",
+      "Novice Blacksmith's Journal (Full)"
+    ],
+    "T3_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero obrero (vacío)",
+      "Journeyman Blacksmith's Journal (Empty)"
+    ],
+    "T3_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero obrero (lleno)",
+      "Journeyman Blacksmith's Journal (Full)"
+    ],
+    "T4_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero iniciado (vacío)",
+      "Adept Blacksmith's Journal (Empty)"
+    ],
+    "T4_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero iniciado (lleno)",
+      "Adept Blacksmith's Journal (Full)"
+    ],
+    "T5_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero experto (vacío)",
+      "Expert Blacksmith's Journal (Empty)"
+    ],
+    "T5_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero experto (lleno)",
+      "Expert Blacksmith's Journal (Full)"
+    ],
+    "T6_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero maestro (vacío)",
+      "Master Blacksmith's Journal (Empty)"
+    ],
+    "T6_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero maestro (lleno)",
+      "Master Blacksmith's Journal (Full)"
+    ],
+    "T7_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero gran maestro (vacío)",
+      "Grandmaster Blacksmith's Journal (Empty)"
+    ],
+    "T7_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero gran maestro (lleno)",
+      "Grandmaster Blacksmith's Journal (Full)"
+    ],
+    "T8_JOURNAL_WARRIOR_EMPTY": [
+      "Diario del herrero anciano (vacío)",
+      "Elder Blacksmith's Journal (Empty)"
+    ],
+    "T8_JOURNAL_WARRIOR_FULL": [
+      "Diario del herrero anciano (lleno)",
+      "Elder Blacksmith's Journal (Full)"
+    ],
+    "T2_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero novato (vacío)",
+      "Novice Fletcher's Journal (Empty)"
+    ],
+    "T2_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero novato (lleno)",
+      "Novice Fletcher's Journal (Full)"
+    ],
+    "T3_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero obrero (vacío)",
+      "Journeyman Fletcher's Journal (Empty)"
+    ],
+    "T3_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero obrero (lleno)",
+      "Journeyman Fletcher's Journal (Full)"
+    ],
+    "T4_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero iniciado (vacío)",
+      "Adept Fletcher's Journal (Empty)"
+    ],
+    "T4_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero iniciado (lleno)",
+      "Adept Fletcher's Journal (Full)"
+    ],
+    "T5_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero experto (vacío)",
+      "Expert Fletcher's Journal (Empty)"
+    ],
+    "T5_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero experto (lleno)",
+      "Expert Fletcher's Journal (Full)"
+    ],
+    "T6_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero maestro (vacío)",
+      "Master Fletcher's Journal (Empty)"
+    ],
+    "T6_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero maestro (lleno)",
+      "Master Fletcher's Journal (Full)"
+    ],
+    "T7_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero gran maestro (vacío)",
+      "Grandmaster Fletcher's Journal (Empty)"
+    ],
+    "T7_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero gran maestro (lleno)",
+      "Grandmaster Fletcher's Journal (Full)"
+    ],
+    "T8_JOURNAL_HUNTER_EMPTY": [
+      "Diario del flechero anciano (vacío)",
+      "Elder Fletcher's Journal (Empty)"
+    ],
+    "T8_JOURNAL_HUNTER_FULL": [
+      "Diario del flechero anciano (lleno)",
+      "Elder Fletcher's Journal (Full)"
+    ],
+    "T2_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico novato (vacío)",
+      "Novice Imbuer's Journal (Empty)"
+    ],
+    "T2_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico novato (lleno)",
+      "Novice Imbuer's Journal (Full)"
+    ],
+    "T3_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico obrero (vacío)",
+      "Journeyman Imbuer's Journal (Empty)"
+    ],
+    "T3_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico obrero (lleno)",
+      "Journeyman Imbuer's Journal (Full)"
+    ],
+    "T4_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico iniciado (vacío)",
+      "Adept Imbuer's Journal (Empty)"
+    ],
+    "T4_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico iniciado (lleno)",
+      "Adept Imbuer's Journal (Full)"
+    ],
+    "T5_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico experto (vacío)",
+      "Expert Imbuer's Journal (Empty)"
+    ],
+    "T5_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico experto (lleno)",
+      "Expert Imbuer's Journal (Full)"
+    ],
+    "T6_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico maestro (vacío)",
+      "Master Imbuer's Journal (Empty)"
+    ],
+    "T6_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico maestro (lleno)",
+      "Master Imbuer's Journal (Full)"
+    ],
+    "T7_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico gran maestro (vacío)",
+      "Grandmaster Imbuer's Journal (Empty)"
+    ],
+    "T7_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico gran maestro (lleno)",
+      "Grandmaster Imbuer's Journal (Full)"
+    ],
+    "T8_JOURNAL_MAGE_EMPTY": [
+      "Diario del herrero mágico anciano (vacío)",
+      "Elder Imbuer's Journal (Empty)"
+    ],
+    "T8_JOURNAL_MAGE_FULL": [
+      "Diario del herrero mágico anciano (lleno)",
+      "Elder Imbuer's Journal (Full)"
+    ],
+    "T2_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero novato (vacío)",
+      "Novice Tinker's Journal (Empty)"
+    ],
+    "T2_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero novato (lleno)",
+      "Novice Tinker's Journal (Full)"
+    ],
+    "T3_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero obrero (vacío)",
+      "Journeyman Tinker's Journal (Empty)"
+    ],
+    "T3_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero obrero (lleno)",
+      "Journeyman Tinker's Journal (Full)"
+    ],
+    "T4_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero iniciado (vacío)",
+      "Adept Tinker's Journal (Empty)"
+    ],
+    "T4_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero iniciado (lleno)",
+      "Adept Tinker's Journal (Full)"
+    ],
+    "T5_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero experto (vacío)",
+      "Expert Tinker's Journal (Empty)"
+    ],
+    "T5_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero experto (lleno)",
+      "Expert Tinker's Journal (Full)"
+    ],
+    "T6_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero maestro (vacío)",
+      "Master Tinker's Journal (Empty)"
+    ],
+    "T6_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero maestro (lleno)",
+      "Master Tinker's Journal (Full)"
+    ],
+    "T7_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero gran maestro (vacío)",
+      "Grandmaster Tinker's Journal (Empty)"
+    ],
+    "T7_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero gran maestro (lleno)",
+      "Grandmaster Tinker's Journal (Full)"
+    ],
+    "T8_JOURNAL_TOOLMAKER_EMPTY": [
+      "Diario del hojalatero anciano (vacío)",
+      "Elder Tinker's Journal (Empty)"
+    ],
+    "T8_JOURNAL_TOOLMAKER_FULL": [
+      "Diario del hojalatero anciano (lleno)",
+      "Elder Tinker's Journal (Full)"
+    ]
   }
 }
