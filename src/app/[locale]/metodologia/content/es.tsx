@@ -30,6 +30,19 @@ export default function Es() {
         animal crecido de una montura o las fichas de Avalon.
       </p>
 
+      <h2>Escondites</h2>
+      <p>
+        En la calculadora podés elegir craftear en un escondite en vez de una ciudad. En un escondite no hay 18% base: la
+        fabricación suma el bono general del nivel de poder (0 % en nivel 1 hasta 26 % en nivel 9) y, si el ítem es especialidad del
+        escondite, además el bono de la calidad de la zona (1 % en Q1 hasta 26 % en Q6) y el bono de especialista del nivel de poder (hasta 30
+        %). Las especialidades de cada bioma son las mismas cinco que su ciudad (pantano = Thetford, bosque = Lymhurst, estepa = Bridgewatch,
+        tierras altas = Martlock, montaña = Fort Sterling). En los caminos de Avalon cada camino tiene las suyas, así que se indica a mano. El
+        refinado en un escondite tiene un bono fijo, 15 % en zona negra y 10 % en caminos (+10 % en el recurso del camino), que el nivel de poder
+        no cambia. Los valores salen del volcado del juego (hideouts.xml y craftingmodifiers.xml) y
+        coinciden con la wiki oficial y las notas de parche; que la cocina y la alquimia reciben el bono general del nivel de poder lo asumimos
+        porque en las ciudades el mismo bono de fabricación las cubre, pero no lo verificamos en el juego.
+      </p>
+
       <h2>Tarifa de estación</h2>
       <p>
         Nutrición consumida = valor de ítem × 0,1125. Costo = (nutrición / 100) × tarifa de la estación (por defecto 500, editable). El valor de ítem suma
