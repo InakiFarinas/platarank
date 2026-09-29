@@ -24,7 +24,7 @@ end $$;
 
 grant usage on schema public to platarank_web, platarank_ingest;
 
--- Web app and the Discord digest: read-only market data (existing "public read" policies apply).
+-- Web app and the Discord digest: read-only market data (policies in market-data-private.sql).
 grant select on public.recipes, public.market_aggregates to platarank_web;
 
 -- Ingester + alert checker.
@@ -35,7 +35,7 @@ grant select on public.plans, public.user_settings to platarank_ingest;
 grant select, update on public.alerts to platarank_ingest;
 
 -- RLS stays on everywhere, so the ingest role needs explicit policies (no BYPASSRLS).
--- Explicit write policies (not FOR ALL): "public read" already covers SELECT, and a FOR ALL policy
+-- Explicit write policies (not FOR ALL): the read policy (market-data-private.sql) covers SELECT, and a FOR ALL policy
 -- would overlap it (Supabase performance advisor: multiple_permissive_policies).
 create policy "ingest insert recipes" on public.recipes for insert to platarank_ingest with check (true);
 create policy "ingest update recipes" on public.recipes for update to platarank_ingest using (true) with check (true);

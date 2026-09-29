@@ -103,8 +103,12 @@ async function setLastProcessedDumpUrl(url: string) {
 }
 
 async function syncRecipes() {
-  const { itemId: _pk, ...columns } = getTableColumns(recipes);
-  const set = Object.fromEntries(Object.entries(columns).map(([key, col]) => [key, sql.raw(`excluded."${col.name}"`)]));
+  // Every column but the primary key is overwritten from the incoming row.
+  const set = Object.fromEntries(
+    Object.entries(getTableColumns(recipes))
+      .filter(([key]) => key !== "itemId")
+      .map(([key, col]) => [key, sql.raw(`excluded."${col.name}"`)]),
+  );
   for (const batch of chunk(recipesData, 200)) {
     await db.insert(recipes).values(batch).onConflictDoUpdate({ target: recipes.itemId, set });
   }
