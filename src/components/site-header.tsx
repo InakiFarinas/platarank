@@ -106,7 +106,7 @@ export function SiteHeader({
       >
         <div className={cn(containerClasses, "py-3 sm:py-4")}>
           <nav className={cn("flex items-center gap-2 text-xs", !title && "gap-3 text-sm")}>
-            <Link href={localePath(locale)} className="mr-2 flex shrink-0 items-center gap-2.5 font-medium text-foreground hover:text-money">
+            <Link href={localePath(locale)} aria-label="PlataRank" className="mr-2 flex shrink-0 items-center gap-2.5 font-medium text-foreground hover:text-money">
               <Logo size={title ? 44 : 52} className={title ? "h-9 w-9 sm:h-11 sm:w-11" : "h-10 w-10 sm:h-13 sm:w-13"} />
               <span className="hidden font-display text-xl tracking-wide sm:inline sm:text-2xl">PlataRank</span>
             </Link>
@@ -219,7 +219,7 @@ function ServerBadge() {
   const t = useTranslations("common.server");
   return (
     <Select value="americas" onValueChange={() => {}}>
-      <SelectTrigger className="relative h-auto shrink-0 gap-1.5 rounded-md border-border bg-secondary/40 px-2 py-1 text-xs text-muted-foreground after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']">
+      <SelectTrigger aria-label={t("label")} className="relative h-auto shrink-0 gap-1.5 rounded-md border-border bg-secondary/40 px-2 py-1 text-xs text-muted-foreground after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']">
         <span className="font-medium text-foreground">Americas</span>
       </SelectTrigger>
       <SelectContent align="end">

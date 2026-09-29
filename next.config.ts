@@ -69,6 +69,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/opengraph-image", destination: "/es/opengraph-image/og", permanent: true },
+      // iOS asks for these fixed names when a page is added to the home screen; the icon lives at
+      // /apple-icon.png (app/apple-icon.png).
+      { source: "/apple-touch-icon.png", destination: "/apple-icon.png", permanent: true },
+      { source: "/apple-touch-icon-precomposed.png", destination: "/apple-icon.png", permanent: true },
       // Crafting sessions were folded into saved plans (2026-09-27): old links land on the plans tab.
       { source: "/es/sesiones", destination: "/es/calculadora?tab=planes", permanent: false },
       { source: "/en/sessions", destination: "/en/calculator?tab=planes", permanent: false },

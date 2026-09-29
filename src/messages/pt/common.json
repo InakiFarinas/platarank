@@ -22,10 +22,26 @@
     "calculator": "Calculadora",
     "openMenu": "Abrir menu"
   },
-  "language": { "label": "Idioma", "es": "Español", "en": "English", "pt": "Português" },
-  "server": { "noData": "sem dados ainda" },
-  "auth": { "account": "Conta", "signOut": "Sair", "signIn": "Entrar com Discord" },
-  "bonus": { "crafting": "+15% criação", "refining": "+40% refino", "meat": "+10% carne" },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English",
+    "pt": "Português"
+  },
+  "server": {
+    "noData": "sem dados ainda",
+    "label": "Servidor do Albion"
+  },
+  "auth": {
+    "account": "Conta",
+    "signOut": "Sair",
+    "signIn": "Entrar com Discord"
+  },
+  "bonus": {
+    "crafting": "+15% criação",
+    "refining": "+40% refino",
+    "meat": "+10% carne"
+  },
   "footer": {
     "legalNav": "Legal",
     "methodology": "Metodologia",

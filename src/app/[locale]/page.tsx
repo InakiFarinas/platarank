@@ -145,7 +145,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
 
         <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
-          <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-10 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("top.heading")}</h2>
               <p className="mt-3 text-sm text-muted-foreground sm:text-base">{t("top.intro")}</p>
