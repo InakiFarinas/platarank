@@ -308,6 +308,7 @@
       "holystaff": "holy staffs",
       "plate_helmet": "plate helmets",
       "spear": "spears"
-    }
+    },
+    "roadRankingNote": "On the Roads of Avalon each road has its own specialties: the ranking doesn't add them. For a single item, mark it in the calculator."
   }
 }

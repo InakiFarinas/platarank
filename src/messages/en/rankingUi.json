@@ -122,6 +122,8 @@
     "journalFull": "Sell: {name}",
     "journalProfit": "Added per unit (after taxes)",
     "journalNotAdded": "no price, not added",
-    "journalExcluded": " (not added: journals off)"
+    "journalExcluded": " (not added: journals off)",
+    "hideoutSpecialty": "hideout, biome specialty, {focus}",
+    "hideoutNoSpecialty": "hideout, no specialty, {focus}"
   }
 }

@@ -221,6 +221,7 @@ function Stat({ label, value, mono, className }: { label: string; value: string;
 
 function specialtyLabel(row: RecipeRowData, t: ReturnType<typeof useTranslations>): string {
   const focus = row.focus ? t("withFocus") : t("withoutFocus");
+  if (row.hideoutSpecialty !== undefined) return t(row.hideoutSpecialty ? "hideoutSpecialty" : "hideoutNoSpecialty", { focus });
   if (!row.specialtyCity) return t("noSpecialty", { focus });
   return t(row.specialtyActive ? "specialtyActive" : "specialtyInactive", { city: row.specialtyCity, focus });
 }

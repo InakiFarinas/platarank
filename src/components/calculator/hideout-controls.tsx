@@ -12,12 +12,17 @@ export function HideoutControls({
   onChange,
   refining,
   specialty,
+  askRoadSpecialty = true,
 }: {
   site: HideoutSite;
   onChange: (site: HideoutSite) => void;
   refining: boolean;
-  /** Whether the chosen hideout counts this item as a specialty (computed by the caller). */
-  specialty: boolean;
+  /** Whether the chosen hideout counts this item as a specialty (computed by the caller). Omitted
+   * where there's no single item (the rankings): then only the biome's list is shown. */
+  specialty?: boolean;
+  /** False in the rankings: a road's specialties differ road by road, so a yes/no for "the item"
+   * can't apply to a whole list. The ranking then counts no road specialty and says so. */
+  askRoadSpecialty?: boolean;
 }) {
   const t = useTranslations("calculator.site");
   const biomeId = useId();
@@ -31,7 +36,9 @@ export function HideoutControls({
         options={[1, 2, 3, 4, 5, 6].map((q) => ({ value: q, text: `Q${q}`, title: t("zoneQuality", { q }) })).concat({ value: 0, text: t("roadShort"), title: t("road") })}
         onChange={(zone) => onChange({ ...site, zone })}
       />
-      {road ? (
+      {road && !askRoadSpecialty ? (
+        <p className="text-xs text-muted-foreground">{t("roadRankingNote")}</p>
+      ) : road ? (
         <Segmented
           label={refining ? t("roadResource") : t("roadSpecialty")}
           value={site.roadSpecialty ? "si" : "no"}
@@ -73,9 +80,9 @@ export function HideoutControls({
           onChange={(power) => onChange({ ...site, power })}
         />
       )}
-      <p className="text-xs text-muted-foreground">
-        {refining ? t("refiningNote") : specialty ? t("isSpecialty") : t("notSpecialty")}
-      </p>
+      {(refining || specialty !== undefined) && (
+        <p className="text-xs text-muted-foreground">{refining ? t("refiningNote") : specialty ? t("isSpecialty") : t("notSpecialty")}</p>
+      )}
     </div>
   );
 }

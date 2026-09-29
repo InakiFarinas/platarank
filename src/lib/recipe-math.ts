@@ -1,6 +1,6 @@
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { netSellMultiplier } from "@/lib/formulas/market-tax";
-import { returnRate } from "@/lib/formulas/return-rate";
+import { siteBonus, siteReturnRate, type CraftSite } from "@/lib/formulas/craft-site";
 import { robustStat, type CityQuote } from "@/lib/formulas/outliers";
 import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { getCitySpecialty } from "@/lib/city-specialties";
@@ -51,6 +51,9 @@ export type RecipeMathParams = {
    * the journal's profit is added to the item's (see src/lib/journals.ts). Other stations fill no
    * journal, so it has no effect there. */
   journals: boolean;
+  /** Crafting in a guild hideout instead of `craftCity` (see src/lib/formulas/craft-site.ts).
+   * Undefined = the royal city. */
+  site?: CraftSite;
 };
 
 export const DEFAULT_PARAMS: RecipeMathParams = {
@@ -116,6 +119,9 @@ export type RecipeRow = {
   discarded: { city: string; price: number; reason: string }[];
   returnRatePct: number;
   focus: boolean;
+  /** Set when ranked for a hideout: whether the item is one of its specialties. Absent (city
+   * rankings, and snapshots stored before hideouts) means a royal city. */
+  hideoutSpecialty?: boolean;
   specialtyActive: boolean;
   specialtyCity: string | null;
   marketSharePct: number;
@@ -143,12 +149,10 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
   const isGear = recipe.stationType === "gear";
 
   const spec = getCitySpecialty(recipe.craftingCategory);
-  const specialtyActive = spec !== null && spec.city === params.craftCity;
-  const returnRatePct = returnRate({
-    cityCraftingSpecialty: specialtyActive && spec!.kind === "crafting",
-    cityRefiningSpecialty: specialtyActive && spec!.kind === "refining",
-    focus: params.focus,
-  });
+  const inHideout = params.site?.kind === "hideout";
+  const specialtyActive = !inHideout && spec !== null && spec.city === params.craftCity;
+  const site = siteBonus(params.site, recipe, params.craftCity);
+  const returnRatePct = siteReturnRate(site.bonus, params.focus);
 
   const sellSide = isGear
     ? computeGearSellSide(recipe.itemId, market, params)
@@ -233,6 +237,7 @@ export function computeRecipeRow(recipe: Recipe, market: MarketData, params: Rec
     avgDailyVolume30d: sellSide.avgDailyVolume30d,
     discarded: sellSide.discarded,
     returnRatePct,
+    ...(inHideout ? { hideoutSpecialty: site.specialty } : {}),
     focus: params.focus,
     specialtyActive,
     specialtyCity: spec?.city ?? null,

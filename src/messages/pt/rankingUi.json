@@ -122,6 +122,8 @@
     "journalFull": "Venda: {name}",
     "journalProfit": "Soma por unidade (após impostos)",
     "journalNotAdded": "sem preço, não é somado",
-    "journalExcluded": " (não somado: diários desativados)"
+    "journalExcluded": " (não somado: diários desativados)",
+    "hideoutSpecialty": "esconderijo, especialidade do bioma, {focus}",
+    "hideoutNoSpecialty": "esconderijo, sem especialidade, {focus}"
   }
 }

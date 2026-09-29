@@ -15,6 +15,9 @@ import { DEFAULT_FILTERS, type FilterParams } from "@/lib/recipe-filters";
 import { CityGlyph } from "@/components/site-header";
 import type { StationType } from "@/lib/server/station-data";
 import { cn } from "@/lib/utils";
+import { Segmented } from "@/components/calculator/ui";
+import { HideoutControls } from "@/components/calculator/hideout-controls";
+import { DEFAULT_HIDEOUT } from "@/lib/formulas/craft-site";
 
 export type { FilterParams };
 
@@ -140,34 +143,50 @@ function FilterFields({
 }) {
   const t = useTranslations("rankingUi.controls");
   const tBonus = useTranslations("common.bonus");
+  const tSite = useTranslations("calculator.site");
+  const hideout = params.site?.kind === "hideout" ? params.site : null;
   return (
     <div className="flex flex-col gap-4">
       <FilterCard title={t("craftCity")}>
-        <div className="grid grid-cols-2 gap-1.5 @sm:grid-cols-3">
-          {REAL_CITIES.map((city) => {
-            const theme = CITY_THEMES[city];
-            const active = city === params.craftCity;
-            const bonus = cityBonuses.get(city);
-            return (
-              <button
-                key={city}
-                type="button"
-                aria-pressed={active}
-                onClick={() => onParamsChange({ ...params, craftCity: city })}
-                className={cn(
-                  "relative flex items-center gap-1.5 rounded-md border px-2 py-1.5 text-xs transition-colors after:absolute after:-inset-y-1 after:inset-x-0 after:content-['']",
-                  active ? cn(theme.border, theme.bg, theme.text) : "border-border text-muted-foreground hover:border-money/30 hover:text-foreground",
-                )}
-              >
-                <CityGlyph theme={theme} />
-                <span className="min-w-0 flex-1 truncate text-left font-medium">{city}</span>
-                {bonus && (
-                  <span className="shrink-0 font-mono text-[0.6875rem] tabular-nums text-money">{tBonus(bonus.kind)}</span>
-                )}
-              </button>
-            );
-          })}
-        </div>
+        <Segmented
+          label={tSite("kind")}
+          value={hideout ? "hideout" : "city"}
+          options={[
+            { value: "city", text: tSite("city") },
+            { value: "hideout", text: tSite("hideout") },
+          ]}
+          onChange={(kind) => onParamsChange({ ...params, site: kind === "hideout" ? DEFAULT_HIDEOUT : undefined })}
+          className="mb-3"
+        />
+        {hideout ? (
+          <HideoutControls site={hideout} onChange={(site) => onParamsChange({ ...params, site })} refining={stationType === "refining"} askRoadSpecialty={false} />
+        ) : (
+          <div className="grid grid-cols-2 gap-1.5 @sm:grid-cols-3">
+            {REAL_CITIES.map((city) => {
+              const theme = CITY_THEMES[city];
+              const active = city === params.craftCity;
+              const bonus = cityBonuses.get(city);
+              return (
+                <button
+                  key={city}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => onParamsChange({ ...params, craftCity: city })}
+                  className={cn(
+                    "relative flex items-center gap-1.5 rounded-md border px-2 py-1.5 text-xs transition-colors after:absolute after:-inset-y-1 after:inset-x-0 after:content-['']",
+                    active ? cn(theme.border, theme.bg, theme.text) : "border-border text-muted-foreground hover:border-money/30 hover:text-foreground",
+                  )}
+                >
+                  <CityGlyph theme={theme} />
+                  <span className="min-w-0 flex-1 truncate text-left font-medium">{city}</span>
+                  {bonus && (
+                    <span className="shrink-0 font-mono text-[0.6875rem] tabular-nums text-money">{tBonus(bonus.kind)}</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </FilterCard>
 
       <FilterCard title={t("cities")}>

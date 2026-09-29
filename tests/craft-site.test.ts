@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import { biomeSpecialties, siteBonus, siteReturnRate, type HideoutSite } from "@/lib/formulas/craft-site";
 import { computeCraft, type CraftParams } from "@/lib/craft-calc";
 import type { Recipe } from "@/lib/db/schema";
+import { computeRecipeRow, DEFAULT_PARAMS } from "@/lib/recipe-math";
 
 const mace = { stationType: "gear", craftingCategory: "mace" };
 const sword = { stationType: "gear", craftingCategory: "sword" };
@@ -84,5 +85,37 @@ describe("computeCraft con escondite", () => {
 
   test("un plan guardado antes de los escondites (sin site) sigue siendo de ciudad", () => {
     expect(computeCraft(recipe, {}, p).rrr).toBeCloseTo(1 - 1 / 1.33, 10);
+  });
+});
+
+describe("ranking con escondite", () => {
+  const recipe: Recipe = {
+    itemId: "T6_MAIN_SWORD",
+    baseItemId: "T6_MAIN_SWORD",
+    nameEs: "Espada",
+    nameEn: "Sword",
+    namePt: null,
+    tier: 6,
+    enchant: 0,
+    stationType: "gear",
+    craftingCategory: "sword",
+    maxQualityLevel: 5,
+    batchSize: 1,
+    craftingFocus: 1000,
+    materials: [{ itemId: "T6_METALBAR", count: 16, category: "other", nameEs: "Lingote", nameEn: "Metal Bar" }],
+    materialItemValue: "1024",
+  };
+
+  test("el retorno del ranking sigue al escondite y la fila dice si es especialidad", () => {
+    const city = computeRecipeRow(recipe, new Map(), DEFAULT_PARAMS);
+    const forest = computeRecipeRow(recipe, new Map(), { ...DEFAULT_PARAMS, site: { kind: "hideout", zone: 6, biome: "FOREST", power: 9 } });
+    const swamp = computeRecipeRow(recipe, new Map(), { ...DEFAULT_PARAMS, site: { kind: "hideout", zone: 6, biome: "SWAMP", power: 9 } });
+    expect(city.returnRatePct).toBeCloseTo(1 - 1 / 1.18, 10);
+    expect(city.hideoutSpecialty).toBeUndefined();
+    expect(forest.returnRatePct).toBeCloseTo(1 - 1 / 1.82, 10);
+    expect(forest.hideoutSpecialty).toBe(true);
+    expect(forest.specialtyActive).toBe(false);
+    expect(swamp.returnRatePct).toBeCloseTo(1 - 1 / 1.26, 10);
+    expect(swamp.hideoutSpecialty).toBe(false);
   });
 });

@@ -1,6 +1,7 @@
 import { ALL_LOCATIONS, type Location } from "@/lib/aodp/cities";
 import { DEFAULT_PARAMS, type RecipeMathParams } from "@/lib/recipe-math";
 import { DEFAULT_FILTERS, type FilterParams } from "./controls";
+import { parseHideout } from "@/lib/formulas/craft-site";
 
 /** Reflects the current filters/params in the address bar so a tuned session is bookmarkable and
  * shareable -- read once on mount (client-only, so the server-rendered defaults still match on
@@ -30,6 +31,8 @@ export function writeStateToUrl(params: RecipeMathParams, filters: FilterParams)
     q.set("tarifa", String(params.stationRatePer100Nutrition));
   }
   if (params.craftCity !== DEFAULT_PARAMS.craftCity) q.set("craftea", params.craftCity);
+  // Rankings never carry a road specialty (it differs road by road): zone:biome:power only.
+  if (params.site?.kind === "hideout") q.set("escondite", `${params.site.zone}:${params.site.biome}:${params.site.power}`);
   if (params.breedOwnMount !== DEFAULT_PARAMS.breedOwnMount) q.set("cria", params.breedOwnMount ? "1" : "0");
   if (params.journals !== DEFAULT_PARAMS.journals) q.set("diarios", params.journals ? "1" : "0");
   if (filters.nameQuery !== DEFAULT_FILTERS.nameQuery) q.set("nombre", filters.nameQuery);
@@ -61,6 +64,11 @@ export function parseStateFromUrl(): { params: RecipeMathParams; filters: Filter
   }
   if (q.has("craftea") && (ALL_LOCATIONS as readonly string[]).includes(q.get("craftea")!)) {
     params.craftCity = q.get("craftea") as Location;
+  }
+  if (q.has("escondite")) {
+    const [zone, biome, power] = q.get("escondite")!.split(":");
+    const site = parseHideout({ zone, biome, power });
+    if (site) params.site = site;
   }
   if (q.has("cria")) params.breedOwnMount = q.get("cria") === "1";
   if (q.has("diarios")) params.journals = q.get("diarios") === "1";

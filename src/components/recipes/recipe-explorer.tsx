@@ -243,6 +243,7 @@ function ActiveFilterChips({
   onFiltersChange: (filters: FilterParams) => void;
 }) {
   const t = useTranslations("rankingUi.explorer");
+  const tSite = useTranslations("calculator.site");
   const chips: { key: string; label: string; onClear: () => void }[] = [];
 
   if (filters.nameQuery !== "") {
@@ -291,6 +292,14 @@ function ActiveFilterChips({
     });
   }
 
+  if (params.site?.kind === "hideout") {
+    const site = params.site;
+    chips.push({
+      key: "site",
+      label: site.zone === 0 ? tSite("summaryRoad", { power: site.power }) : tSite("summaryHideout", { zone: site.zone, power: site.power }),
+      onClear: () => onParamsChange({ ...params, site: undefined }),
+    });
+  }
   if (params.journals !== DEFAULT_PARAMS.journals) {
     chips.push({
       key: "journals",
