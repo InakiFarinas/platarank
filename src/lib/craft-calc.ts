@@ -28,7 +28,7 @@ export type CraftParams = {
   breedOwnMount?: boolean;
   journals?: boolean;
   /** Where the crafting happens. Undefined (every plan saved before hideouts) is a royal city,
-   * `craftCity`. A hideout or island sets the return bonus; `craftCity` then stays as it was. */
+   * `craftCity`. A hideout sets the return bonus; `craftCity` then stays as it was. */
   site?: CraftSite;
 };
 

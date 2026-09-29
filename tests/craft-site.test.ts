@@ -46,11 +46,6 @@ describe("bono por lugar de crafteo", () => {
     expect(siteBonus(hideout(0, 5, { roadSpecialty: true }), mace, "Brecilien").bonus).toBeCloseTo(0.18 + 0.01 + 0.15, 10);
   });
 
-  test("isla: sin bono, solo el foco", () => {
-    expect(siteBonus({ kind: "island" }, mace, "Thetford").bonus).toBe(0);
-    expect(siteReturnRate(0, true)).toBeCloseTo(0.371, 3);
-  });
-
   test("un escondite inválido en un plan guardado se lee como ciudad en vez de romper", () => {
     const broken = { kind: "hideout", zone: 9, biome: "LAVA", power: 99 } as unknown as HideoutSite;
     expect(siteBonus(broken, mace, "Lymhurst").bonus).toBeCloseTo(0.18, 10);

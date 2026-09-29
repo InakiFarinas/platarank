@@ -1,5 +1,5 @@
 // Downloads ao-bin-dumps hideouts.xml and craftingmodifiers.xml and writes hideout-bonuses.json: the
-// production bonuses of crafting in a guild Hideout (black zone or Roads of Avalon) and on an island.
+// production bonuses of crafting in a guild Hideout (black zone or Roads of Avalon).
 // Run manually when the game patches; not called at runtime.
 //
 // What the dump says (verified 2026-09-29), and what the wiki and patch notes confirm:
@@ -17,7 +17,6 @@
 // - Roads of Avalon (TNL-* clusters): `refiningbonus` 0.10, +10% to one refined resource and 1% to
 //   five crafting categories that differ road by road (50 combinations), so the player tells us
 //   whether the item is one of their road's specialties.
-// - Royal cities carry `islandvalue="0"` on both bonuses: crafting on an island has no base bonus.
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import { XMLParser } from "fast-xml-parser";
@@ -93,17 +92,10 @@ async function main() {
     throw new Error(`Roads of Avalon bonuses are no longer uniform: refining ${[...roadRefining]}, crafting ${[...roadCrafting]}, resource ${[...roadResource]}`);
   }
 
-  // Islands: every royal city zeroes both bonuses on its islands.
-  const islandValues = new Set(
-    locations.filter((l) => l.clusterid && !l.clusterid.startsWith("TNL-")).flatMap((l) => [...asArray(l.craftingbonus), ...asArray(l.refiningbonus)].map((b) => b.islandvalue)),
-  );
-  if ([...islandValues].some((v) => v !== undefined && Number(v) !== 0)) throw new Error(`An island bonus is no longer 0: ${[...islandValues]}`);
-
   const out = {
     powerLevels,
     outlands: { refining: outlandsRefining, zoneBonus, specialties },
     roads: { refining: [...roadRefining][0], resourceSpecialty: [...roadResource][0], craftingSpecialty: [...roadCrafting][0] },
-    island: { crafting: 0, refining: 0 },
   };
   await writeFile(OUTPUT_PATH, JSON.stringify(out, null, 2) + "\n");
   console.log(`Wrote ${OUTPUT_PATH}: ${powerLevels.length} power levels, ${BIOMES.length} biomes, ${roads.length} roads.`);

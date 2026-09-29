@@ -70,7 +70,6 @@ function paramsToQuery(itemId: string, p: PlanParams): string {
   if (p.extraCost !== DEFAULTS.extraCost) q.set("extra", String(p.extraCost));
   if (p.breedOwnMount) q.set("cria", "1");
   if (p.journals === false) q.set("diarios", "0");
-  if (p.site?.kind === "island") q.set("site", "isla");
   if (p.site?.kind === "hideout") q.set("site", `esc:${p.site.zone}:${p.site.biome}:${p.site.power}${p.site.roadSpecialty ? ":esp" : ""}`);
   if (p.sellOverride !== null) q.set("sell", String(p.sellOverride));
   const mo = Object.entries(p.matOverrides);
@@ -94,7 +93,7 @@ function paramsFromUrl(sp: URLSearchParams): Partial<PlanParams> {
   const siteParam = sp.get("site") ?? "";
   const [siteKind, zone, biome, power, esp] = siteParam.split(":");
   const site: CraftSite | undefined =
-    siteKind === "isla" ? { kind: "island" } : siteKind === "esc" ? (parseHideout({ zone, biome, power, roadSpecialty: esp === "esp" }) ?? undefined) : undefined;
+    siteKind === "esc" ? (parseHideout({ zone, biome, power, roadSpecialty: esp === "esp" }) ?? undefined) : undefined;
   return {
     site,
     qty: int("q", 1),
@@ -154,7 +153,7 @@ export function Calculator() {
   const [extraCost, setExtraCost] = useState(0);
   const [breedOwnMount, setBreedOwnMount] = useState(false);
   const [journals, setJournals] = useState(true);
-  // Undefined = a royal city (craftCity); a hideout or island otherwise.
+  // Undefined = a royal city (craftCity); a hideout otherwise.
   const [site, setSite] = useState<CraftSite | undefined>(undefined);
   const [openedPlan, setOpenedPlan] = useState<OpenedPlan | null>(null);
   const destiny = useDestinyLevels();
@@ -295,7 +294,7 @@ export function Calculator() {
     // A plan saved before journals existed reads as ON, same as computeCraft does.
     setJournals(p.journals !== false);
     // A plan saved before hideouts (or a link without one) is a city plan.
-    setSite(p.site?.kind === "island" ? { kind: "island" } : p.site?.kind === "hideout" ? (parseHideout(p.site) ?? undefined) : undefined);
+    setSite(p.site?.kind === "hideout" ? (parseHideout(p.site) ?? undefined) : undefined);
     if (p.sellOverride !== undefined) setSellOverride(p.sellOverride);
     if (p.matOverrides !== undefined) setMatOverrides(p.matOverrides);
   }
@@ -620,7 +619,7 @@ export function Calculator() {
 
             {/* Where: the single choice that decides the crafting bonus, so it gets its own panel up
              * front instead of being one more row inside "Condiciones". A royal city, a guild
-             * hideout (zone, biome, Power Level) or an island. */}
+             * hideout (zone, biome, Power Level). */}
             <Panel
               title={t("site.title")}
               aside={<span className="font-mono text-money">{t("site.bonus", { pct: `${dec((calc.siteBonus * 100).toFixed(1).replace(/\.0$/, ""), locale)}%` })}</span>}
@@ -631,15 +630,12 @@ export function Calculator() {
                 options={[
                   { value: "city", text: t("site.city") },
                   { value: "hideout", text: t("site.hideout") },
-                  { value: "island", text: t("site.island") },
                 ]}
-                onChange={(kind) => setSite(kind === "city" ? undefined : kind === "island" ? { kind: "island" } : DEFAULT_HIDEOUT)}
+                onChange={(kind) => setSite(kind === "city" ? undefined : DEFAULT_HIDEOUT)}
                 className="mb-4"
               />
               {site?.kind === "hideout" ? (
                 <HideoutControls site={site} onChange={setSite} refining={data.recipe.stationType === "refining"} specialty={calc.siteSpecialty} />
-              ) : site?.kind === "island" ? (
-                <p className="text-xs text-muted-foreground">{t("site.islandNote")}</p>
               ) : (
                 <>
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
@@ -836,7 +832,6 @@ export function Calculator() {
                   <span className="font-mono text-money">{dec((calc.rrr * 100).toFixed(1), locale)}%</span>
                   {calc.specActive && t("materials.cityBonus", { city: calc.spec!.city })}
                   {site?.kind === "hideout" && t(calc.siteSpecialty ? "materials.siteHideoutSpecialty" : "materials.siteHideout")}
-                  {site?.kind === "island" && t("materials.siteIsland")}
                 </>
               }
             >

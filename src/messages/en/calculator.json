@@ -140,8 +140,7 @@
     "priceOf": "Price of {name}",
     "noPrice": "no price: enter it",
     "siteHideout": " · hideout",
-    "siteHideoutSpecialty": " · hideout specialty",
-    "siteIsland": " · island"
+    "siteHideoutSpecialty": " · hideout specialty"
   },
   "ledger": {
     "title": "Balance",
@@ -258,7 +257,6 @@
     "kind": "Place",
     "city": "City",
     "hideout": "Hideout",
-    "island": "Island",
     "zone": "Zone",
     "zoneQuality": "Zone quality Q{q}",
     "road": "Roads of Avalon",
@@ -274,11 +272,9 @@
     "refiningNote": "Refining in a hideout has a flat bonus (15% in the black zone, 10% on roads): Power Level doesn't change it.",
     "isSpecialty": "It's one of this hideout's specialties: the zone quality and Power Level's specialist bonus add up.",
     "notSpecialty": "It's not one of this hideout's specialties: only Power Level's general bonus applies.",
-    "islandNote": "Islands have no production bonus: only focus adds up.",
     "bonus": "Production bonus {pct}",
     "summaryHideout": "Hideout Q{zone} · power {power}",
     "summaryRoad": "Road hideout · power {power}",
-    "summaryIsland": "Island",
     "biomes": {
       "SWAMP": "Swamp",
       "FOREST": "Forest",

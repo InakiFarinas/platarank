@@ -140,8 +140,7 @@
     "priceOf": "Precio de {name}",
     "noPrice": "sin precio: escribilo",
     "siteHideout": " · escondite",
-    "siteHideoutSpecialty": " · especialidad del escondite",
-    "siteIsland": " · isla"
+    "siteHideoutSpecialty": " · especialidad del escondite"
   },
   "ledger": {
     "title": "Balance",
@@ -258,7 +257,6 @@
     "kind": "Lugar",
     "city": "Ciudad",
     "hideout": "Escondite",
-    "island": "Isla",
     "zone": "Zona",
     "zoneQuality": "Calidad de zona Q{q}",
     "road": "Camino de Avalon",
@@ -274,11 +272,9 @@
     "refiningNote": "Refinar en un escondite tiene un bono fijo (15% en zona negra, 10% en caminos): el nivel de poder no lo cambia.",
     "isSpecialty": "Es especialidad de este escondite: suma la calidad de la zona y el bono de especialista del nivel de poder.",
     "notSpecialty": "No es especialidad de este escondite: solo suma el bono general del nivel de poder.",
-    "islandNote": "Las islas no tienen bono de producción: solo suma el foco.",
     "bonus": "Bono de producción {pct}",
     "summaryHideout": "Escondite Q{zone} · poder {power}",
     "summaryRoad": "Escondite en camino · poder {power}",
-    "summaryIsland": "Isla",
     "biomes": {
       "SWAMP": "Pantano",
       "FOREST": "Bosque",

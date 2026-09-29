@@ -98,9 +98,5 @@
     "refining": 0.1,
     "resourceSpecialty": 0.1,
     "craftingSpecialty": 0.01
-  },
-  "island": {
-    "crafting": 0,
-    "refining": 0
   }
 }

@@ -140,8 +140,7 @@
     "priceOf": "Preço de {name}",
     "noPrice": "sem preço: digite",
     "siteHideout": " · esconderijo",
-    "siteHideoutSpecialty": " · especialidade do esconderijo",
-    "siteIsland": " · ilha"
+    "siteHideoutSpecialty": " · especialidade do esconderijo"
   },
   "ledger": {
     "title": "Balanço",
@@ -258,7 +257,6 @@
     "kind": "Local",
     "city": "Cidade",
     "hideout": "Esconderijo",
-    "island": "Ilha",
     "zone": "Zona",
     "zoneQuality": "Qualidade da zona Q{q}",
     "road": "Estradas de Avalon",
@@ -274,11 +272,9 @@
     "refiningNote": "Refinar num esconderijo tem um bônus fixo (15% na zona negra, 10% nas estradas): o nível de poder não muda isso.",
     "isSpecialty": "É especialidade deste esconderijo: somam a qualidade da zona e o bônus de especialista do nível de poder.",
     "notSpecialty": "Não é especialidade deste esconderijo: só soma o bônus geral do nível de poder.",
-    "islandNote": "As ilhas não têm bônus de produção: só o foco soma.",
     "bonus": "Bônus de produção {pct}",
     "summaryHideout": "Esconderijo Q{zone} · poder {power}",
     "summaryRoad": "Esconderijo na estrada · poder {power}",
-    "summaryIsland": "Ilha",
     "biomes": {
       "SWAMP": "Pântano",
       "FOREST": "Floresta",

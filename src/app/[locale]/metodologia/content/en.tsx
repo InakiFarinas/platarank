@@ -29,14 +29,14 @@ export default function En() {
         mount&apos;s grown animal or Avalonian tokens.
       </p>
 
-      <h2>Hideouts and islands</h2>
+      <h2>Hideouts</h2>
       <p>
-        In the calculator you can craft in a hideout or on an island instead of a city. A hideout has no 18% base: crafting gets Power Level&apos;s
+        In the calculator you can craft in a hideout instead of a city. A hideout has no 18% base: crafting gets Power Level&apos;s
         general bonus (0% at level 1 up to 26% at level 9) and, when the item is one of the hideout&apos;s specialties, the zone quality&apos;s bonus
         (1% at Q1 up to 26% at Q6) and Power Level&apos;s specialist bonus (up to 30%) on top. Each biome&apos;s specialties are the same five as its
         royal city&apos;s (swamp = Thetford, forest = Lymhurst, steppe = Bridgewatch, highland = Martlock, mountain = Fort Sterling). On the Roads of
         Avalon every road has its own, so you mark it yourself. Refining in a hideout has a flat bonus, 15% in the black zone and 10% on roads
-        (+10% on the road&apos;s resource), which Power Level doesn&apos;t change. Islands have no bonus: only focus adds up. The values come from the
+        (+10% on the road&apos;s resource), which Power Level doesn&apos;t change. The values come from the
         game dump (hideouts.xml and craftingmodifiers.xml) and match the official wiki and patch notes; that cooking and alchemy get Power
         Level&apos;s general bonus is our assumption, since in the cities the same crafting bonus covers them, but we haven&apos;t verified it in game.
       </p>

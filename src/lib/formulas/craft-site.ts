@@ -2,13 +2,12 @@ import hideoutData from "@/data/generated/hideout-bonuses.json";
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { BASE_STATION_BONUS, CITY_CRAFTING_SPECIALTY_BONUS, CITY_REFINING_SPECIALTY_BONUS, FOCUS_BONUS } from "@/lib/formulas/return-rate";
 
-// Where the player crafts, beyond the royal cities: a guild Hideout or an island. Every number comes
+// Where the player crafts, beyond the royal cities: a guild Hideout. Every number comes
 // from the game dump (scripts/fetch-hideout-data.ts, which documents the sources):
 // - Hideout, crafting: Power Level's generalist bonus on everything, plus -- on the Hideout's
 //   specialties -- the zone quality's bonus and Power Level's specialist bonus. No 18% base.
 // - Hideout, refining: a flat bonus (15% black zone, 10% Roads + 10% on the road's resource); Power
 //   Level doesn't touch refining.
-// - Island: no base bonus at all, only focus.
 
 export const BIOMES = ["SWAMP", "FOREST", "STEPPE", "HIGHLAND", "MOUNTAIN"] as const;
 export type Biome = (typeof BIOMES)[number];
@@ -16,13 +15,12 @@ export type Biome = (typeof BIOMES)[number];
 /** `zone` 1-6 is the black zone quality (Q1-Q6); 0 is a Roads of Avalon hideout, whose specialties
  * vary road by road, so the player says whether the item is one (`roadSpecialty`). */
 export type HideoutSite = { kind: "hideout"; zone: number; biome: Biome; power: number; roadSpecialty?: boolean };
-export type CraftSite = { kind: "city" } | { kind: "island" } | HideoutSite;
+export type CraftSite = { kind: "city" } | HideoutSite;
 
 type HideoutData = {
   powerLevels: { level: number; generalist: number; specialist: number }[];
   outlands: { refining: number; zoneBonus: Record<string, number>; specialties: Record<Biome, string[]> };
   roads: { refining: number; resourceSpecialty: number; craftingSpecialty: number };
-  island: { crafting: number; refining: number };
 };
 const data = hideoutData as HideoutData;
 
@@ -48,7 +46,7 @@ export type SiteBonus = {
 export function siteBonus(rawSite: CraftSite | undefined, recipe: { stationType: string; craftingCategory: string | null }, craftCity: string): SiteBonus {
   // Saved plans are user-written JSON (and re-priced by the ingest's alerts): an out-of-range
   // hideout reads as a city rather than breaking the calculation.
-  const site = rawSite?.kind === "hideout" ? (parseHideout(rawSite) ?? undefined) : rawSite?.kind === "island" ? rawSite : undefined;
+  const site = rawSite?.kind === "hideout" ? (parseHideout(rawSite) ?? undefined) : undefined;
   const refining = recipe.stationType === "refining";
   if (!site) {
     const spec = getCitySpecialty(recipe.craftingCategory);
@@ -57,8 +55,6 @@ export function siteBonus(rawSite: CraftSite | undefined, recipe: { stationType:
     const kind = spec!.kind as "crafting" | "refining";
     return { bonus: BASE_STATION_BONUS + (kind === "refining" ? CITY_REFINING_SPECIALTY_BONUS : CITY_CRAFTING_SPECIALTY_BONUS), specialty: true, cityKind: kind };
   }
-  if (site.kind === "island") return { bonus: refining ? data.island.refining : data.island.crafting, specialty: false };
-
   const road = site.zone === 0;
   if (refining) {
     if (!road) return { bonus: data.outlands.refining, specialty: false };
