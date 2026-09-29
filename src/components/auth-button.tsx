@@ -5,7 +5,15 @@ import { LogOut } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { User } from "@supabase/supabase-js";
 import { CTA_SECONDARY } from "@/lib/cta";
-import { createClient } from "@/lib/supabase/client";
+// Supabase's auth client is ~50 kB gzipped and this button sits in every page's header, so it's
+// loaded only when needed: when the browser holds a session cookie, or on "Entrar con Discord".
+const loadClient = () => import("@/lib/supabase/client").then((m) => m.createClient());
+
+/** @supabase/ssr keeps the session in `sb-<project>-auth-token` cookies (split into .0, .1, ...
+ * when long), readable from the page. No such cookie means signed out: nothing to load. */
+function hasSessionCookie(): boolean {
+  return document.cookie.split(";").some((c) => /^\s*sb-[^=]+-auth-token/.test(c));
+}
 
 function DiscordMark({ className }: { className?: string }) {
   return (
@@ -27,13 +35,26 @@ function AuthControls() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
+    if (!hasSessionCookie()) {
       setReady(true);
+      return;
+    }
+    let cancelled = false;
+    let unsubscribe: (() => void) | undefined;
+    void loadClient().then((supabase) => {
+      if (cancelled) return;
+      supabase.auth.getUser().then(({ data }) => {
+        if (cancelled) return;
+        setUser(data.user);
+        setReady(true);
+      });
+      const { data } = supabase.auth.onAuthStateChange((_e, session) => setUser(session?.user ?? null));
+      unsubscribe = () => data.subscription.unsubscribe();
     });
-    const { data } = supabase.auth.onAuthStateChange((_e, session) => setUser(session?.user ?? null));
-    return () => data.subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, []);
 
   if (!ready) return <span className="h-8 w-24 shrink-0" aria-hidden="true" />;
@@ -51,7 +72,11 @@ function AuthControls() {
         <button
           type="button"
           aria-label={t("signOut")}
-          onClick={() => createClient().auth.signOut()}
+          onClick={() =>
+            void loadClient()
+              .then((supabase) => supabase.auth.signOut())
+              .then(() => setUser(null))
+          }
           className="rounded-md p-1.5 text-muted-foreground transition-colors hover:text-foreground"
         >
           <LogOut className="h-4 w-4" />
@@ -64,10 +89,12 @@ function AuthControls() {
     <button
       type="button"
       onClick={() =>
-        createClient().auth.signInWithOAuth({
-          provider: "discord",
-          options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(window.location.pathname)}` },
-        })
+        void loadClient().then((supabase) =>
+          supabase.auth.signInWithOAuth({
+            provider: "discord",
+            options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(window.location.pathname)}` },
+          }),
+        )
       }
       className={`${CTA_SECONDARY} inline-flex shrink-0 items-center gap-1.5 px-3 py-1.5 text-xs`}
     >
