@@ -13,6 +13,7 @@ import { itemIconUrl } from "@/lib/item-icons";
 import { itemName } from "@/lib/item-names";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
 import { loadItemRow } from "@/lib/server/item-data";
+import { isIndexableRow } from "@/lib/server/sitemap";
 import { formatAgeLocale, formatIntLocale } from "@/lib/station-seo";
 import type { StationType } from "@/lib/server/station-data";
 import recipesJson from "@/data/generated/recipes.json";
@@ -55,7 +56,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const sub = `/${encodeURIComponent(r.itemId)}`;
   const label = itemLabel(r, locale);
   const title = t("title", { label });
-  if (!row.hasData || row.costPerUnit === null || row.profitPerUnit === null || row.sellRefPrice === null) {
+  // Same test the sitemap uses to list it (src/lib/server/sitemap.ts).
+  if (!isIndexableRow(row) || row.costPerUnit === null || row.profitPerUnit === null || row.sellRefPrice === null) {
     return pageMetadata({ locale, route: "recipe", sub, title, index: false });
   }
   const description = t("metaDescription", {
