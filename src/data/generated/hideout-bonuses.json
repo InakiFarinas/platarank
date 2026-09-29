@@ -1,0 +1,106 @@
+{
+  "powerLevels": [
+    {
+      "level": 1,
+      "generalist": 0,
+      "specialist": 0
+    },
+    {
+      "level": 2,
+      "generalist": 0.06,
+      "specialist": 0.0375
+    },
+    {
+      "level": 3,
+      "generalist": 0.11,
+      "specialist": 0.075
+    },
+    {
+      "level": 4,
+      "generalist": 0.15,
+      "specialist": 0.1125
+    },
+    {
+      "level": 5,
+      "generalist": 0.18,
+      "specialist": 0.15
+    },
+    {
+      "level": 6,
+      "generalist": 0.2,
+      "specialist": 0.1875
+    },
+    {
+      "level": 7,
+      "generalist": 0.22,
+      "specialist": 0.225
+    },
+    {
+      "level": 8,
+      "generalist": 0.24,
+      "specialist": 0.2625
+    },
+    {
+      "level": 9,
+      "generalist": 0.26,
+      "specialist": 0.3
+    }
+  ],
+  "outlands": {
+    "refining": 0.15,
+    "zoneBonus": {
+      "1": 0.01,
+      "2": 0.06,
+      "3": 0.11,
+      "4": 0.16,
+      "5": 0.21,
+      "6": 0.26
+    },
+    "specialties": {
+      "SWAMP": [
+        "cloth_helmet",
+        "firestaff",
+        "leather_armor",
+        "mace",
+        "naturestaff"
+      ],
+      "FOREST": [
+        "arcanestaff",
+        "bow",
+        "leather_helmet",
+        "leather_shoes",
+        "sword"
+      ],
+      "STEPPE": [
+        "cloth_shoes",
+        "crossbow",
+        "cursestaff",
+        "dagger",
+        "plate_armor"
+      ],
+      "HIGHLAND": [
+        "axe",
+        "froststaff",
+        "offhand",
+        "plate_shoes",
+        "quarterstaff"
+      ],
+      "MOUNTAIN": [
+        "cloth_armor",
+        "hammer",
+        "holystaff",
+        "plate_helmet",
+        "spear"
+      ]
+    }
+  },
+  "roads": {
+    "refining": 0.1,
+    "resourceSpecialty": 0.1,
+    "craftingSpecialty": 0.01
+  },
+  "island": {
+    "crafting": 0,
+    "refining": 0
+  }
+}

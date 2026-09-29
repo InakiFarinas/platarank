@@ -84,6 +84,7 @@ pnpm test               # fórmulas, matemática de recetas, agregados y outlier
 pnpm lint
 pnpm fetch-game-data    # regenera recipes.json + city-specialties.json + quality-mechanics.json desde ao-bin-dumps
 pnpm tsx scripts/fetch-transport-data.ts   # pesos de ítems y capas de recolección para Transporte
+pnpm tsx scripts/fetch-hideout-data.ts     # bonos de escondites (nivel de poder, calidad de zona, biomas) e islas
 pnpm ingest             # corre el ingester (precios + volumen + agregados + avisos) una vez
 pnpm db:generate        # genera migraciones de Drizzle a partir de src/lib/db/schema.ts
 ```

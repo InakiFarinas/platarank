@@ -259,8 +259,18 @@ function PlanRow({
   setConfirming: (on: boolean) => void;
 }) {
   const t = useTranslations("calculator.plans");
+  const tSite = useTranslations("calculator.site");
   const locale = useLocale() as Locale;
   const [resultOpen, setResultOpen] = useState(false);
+  const site = p.params.site;
+  const where =
+    site?.kind === "island"
+      ? tSite("summaryIsland")
+      : site?.kind === "hideout"
+        ? site.zone === 0
+          ? tSite("summaryRoad", { power: site.power })
+          : tSite("summaryHideout", { zone: site.zone, power: site.power })
+        : p.params.craftCity;
   const realProfit = p.actual_cost !== null && p.actual_revenue !== null ? p.actual_revenue - p.actual_cost : null;
   const date = new Date(p.updated_at ?? p.created_at).toLocaleDateString(intlLocale(locale));
 
@@ -273,7 +283,7 @@ function PlanRow({
           <span className="min-w-0">
             <span className="block truncate text-sm">{p.name}</span>
             <span className="block text-xs text-muted-foreground">
-              ×{p.params.qty} · {p.params.craftCity} · {t("savedOn", { date })}
+              ×{p.params.qty} · {where} · {t("savedOn", { date })}
             </span>
           </span>
         </button>

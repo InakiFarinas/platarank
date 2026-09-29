@@ -5,7 +5,7 @@ import { saleTaxRate } from "@/lib/formulas/market-tax";
 import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingPriceInputs } from "@/lib/formulas/breeding";
 import { craftingFeePerBatch } from "@/lib/formulas/station-fee";
 import { focusPerCraft } from "@/lib/formulas/focus-cost";
-import { returnRate } from "@/lib/formulas/return-rate";
+import { siteBonus, siteReturnRate, type CraftSite } from "@/lib/formulas/craft-site";
 import { recipeJournal } from "@/lib/journals";
 import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
@@ -27,6 +27,9 @@ export type CraftParams = {
   matOverrides: Record<string, number>;
   breedOwnMount?: boolean;
   journals?: boolean;
+  /** Where the crafting happens. Undefined (every plan saved before hideouts) is a royal city,
+   * `craftCity`. A hideout or island sets the return bonus; `craftCity` then stays as it was. */
+  site?: CraftSite;
 };
 
 /** The plan's own assumptions with every hand-typed price dropped, so the result follows the
@@ -75,12 +78,10 @@ function bestInstantSellPrice(market: Record<string, CityPricePoint[]>, itemId: 
  * focus figures, never the silver ones, so it isn't part of a saved plan. */
 export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoint[]>, p: CraftParams, fce = 0) {
   const spec = getCitySpecialty(recipe.craftingCategory);
-  const specActive = spec !== null && spec.city === p.craftCity;
-  const rrr = returnRate({
-    cityCraftingSpecialty: specActive && spec!.kind === "crafting",
-    cityRefiningSpecialty: specActive && spec!.kind === "refining",
-    focus: p.focus,
-  });
+  const inCity = !p.site || p.site.kind === "city";
+  const specActive = inCity && spec !== null && spec.city === p.craftCity;
+  const site = siteBonus(p.site, recipe, p.craftCity);
+  const rrr = siteReturnRate(site.bonus, p.focus);
 
   const feedPriceCache = new Map<"plants" | "meat", number | null>();
   const cheapestFeedPrice = (category: "plants" | "meat") => {
@@ -194,6 +195,9 @@ export function computeCraft(recipe: Recipe, market: Record<string, CityPricePoi
   return {
     spec,
     specActive,
+    /** Production bonus of the chosen site before focus, and whether a site specialty applies. */
+    siteBonus: site.bonus,
+    siteSpecialty: site.specialty,
     rrr,
     materials,
     sellPrice,
