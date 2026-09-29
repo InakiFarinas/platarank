@@ -31,11 +31,11 @@ export default function Pt() {
 
       <h2>Esconderijos</h2>
       <p>
-        Na calculadora você pode escolher criar num esconderijo em vez de uma cidade. Num esconderijo não há 18 % de base: a
+        Na calculadora e nos rankings você pode escolher criar num esconderijo em vez de uma cidade. Num esconderijo não há 18 % de base: a
         criação soma o bônus geral do nível de poder (0 % no nível 1 até 26 % no nível 9) e, se o item for especialidade do esconderijo, também o
         bônus da qualidade da zona (1 % em Q1 até 26 % em Q6) e o bônus de especialista do nível de poder (até 30 %). As especialidades de cada
         bioma são as mesmas cinco da sua cidade (pântano = Thetford, floresta = Lymhurst, estepe = Bridgewatch, planalto = Martlock, montanha =
-        Fort Sterling). Nas estradas de Avalon cada estrada tem as suas, então isso é indicado à mão. O refino num esconderijo tem um bônus fixo,
+        Fort Sterling). Nas estradas de Avalon cada estrada tem as suas, então isso é indicado à mão na calculadora; o ranking não as soma. O refino num esconderijo tem um bônus fixo,
         15 % na zona negra e 10 % nas estradas (+10 % no recurso da estrada), que o nível de poder não muda. Os valores vêm do dump do jogo (hideouts.xml e craftingmodifiers.xml) e batem com a wiki oficial e as notas de patch; que a
         culinária e a alquimia recebem o bônus geral do nível de poder nós assumimos, porque nas cidades o mesmo bônus de criação as cobre, mas
         não verificamos no jogo.

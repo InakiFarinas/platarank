@@ -122,6 +122,8 @@
     "journalFull": "Vendé: {name}",
     "journalProfit": "Suma por unidad (tras impuestos)",
     "journalNotAdded": "sin precio, no se suma",
-    "journalExcluded": " (no sumado: diarios desactivados)"
+    "journalExcluded": " (no sumado: diarios desactivados)",
+    "hideoutSpecialty": "escondite, especialidad del bioma, {focus}",
+    "hideoutNoSpecialty": "escondite, sin especialidad, {focus}"
   }
 }

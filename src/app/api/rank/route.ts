@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { ALL_LOCATIONS, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import { DEFAULT_PARAMS, SORT_ACCESSORS, type RecipeMathParams, type SortKey } from "@/lib/recipe-math";
 import type { FilterParams } from "@/lib/recipe-filters";
+import { parseHideout } from "@/lib/formulas/craft-site";
 import { rankStation, ROW_LIMIT } from "@/lib/server/station-data";
 import { loadStationDataMemo } from "@/lib/server/shared-cache";
 
@@ -69,6 +70,13 @@ export async function POST(request: NextRequest) {
     // completeness with the shared RecipeMathParams shape.
     breedOwnMount: false,
     journals: p.journals !== false,
+    // A hideout instead of craftCity, clamped to valid values; a road specialty never applies to a
+    // whole ranking (it differs road by road).
+    site: (() => {
+      const s = (p.site ?? null) as Record<string, unknown> | null;
+      const hideout = s?.kind === "hideout" ? parseHideout({ ...s, roadSpecialty: false }) : null;
+      return hideout ?? undefined;
+    })(),
   };
   const filters: FilterParams = {
     nameQuery: typeof f.nameQuery === "string" ? f.nameQuery.slice(0, 80) : "",
@@ -83,7 +91,7 @@ export async function POST(request: NextRequest) {
   };
 
   // Key on the sanitized inputs (not the raw body) so equivalent requests share one result.
-  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.focus, params.stationRatePer100Nutrition, params.craftCity, params.journals, filters, sort]);
+  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.focus, params.stationRatePer100Nutrition, params.craftCity, params.journals, params.site ?? null, filters, sort]);
   const cached = results.get(key);
   if (cached && Date.now() - cached.at < RESULT_TTL_MS) return NextResponse.json(cached.body);
 
