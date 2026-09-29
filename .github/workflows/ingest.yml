@@ -1,11 +1,17 @@
 name: Ingest AODP data
 
 on:
-  schedule:
-    # Minute 23, not 0: GitHub delays and drops scheduled runs at the top of the hour, when every
-    # other repo fires; on :00 this "hourly" job was running about three times a day.
-    - cron: "23 * * * *" # cada hora
+  # Started every hour at :23 by the database, not by GitHub's own `schedule:`: GitHub's cron is best
+  # effort and ran this "hourly" job about three times a day, even off minute 0. A pg_cron job in
+  # Supabase (`ingest-hourly`) calls this workflow's workflow_dispatch with a fine-grained token
+  # kept in Supabase Vault (`github_ingest_token`, Actions read/write on this repo only). It can
+  # also be started by hand from the Actions tab.
   workflow_dispatch: {}
+
+# Never two ingests at once (a manual run while the hourly one is still going): the second waits.
+concurrency:
+  group: ingest
+  cancel-in-progress: false
 
 # The job only needs to read the repository; nothing here writes back to GitHub.
 permissions:
