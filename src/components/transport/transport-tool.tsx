@@ -13,6 +13,7 @@ import { Switch } from "@/components/ui/switch";
 import rawResourcesJson from "@/data/generated/raw-resources.json";
 import { BAG_CAPACITY_KG, MOUNTS, type MountId, type Tier } from "@/lib/transport/capacity";
 import { computeTransportResult, itemWeightKg, type CargoLine, type TransportSetup } from "@/lib/transport/compute";
+import { flipItemById } from "@/lib/flip-items";
 
 type RawResource = { itemId: string; tier: number; category: string; nameEs: string; nameEn?: string; namePt?: string };
 const RAW_RESOURCES = rawResourcesJson as RawResource[];
@@ -58,7 +59,7 @@ function useCargoSearch(query: string, locale: Locale) {
   return { craftedHits, rawHits };
 }
 
-export function TransportTool() {
+export function TransportTool({ initialItemId }: { initialItemId?: string | null }) {
   const t = useTranslations("artifacts.transport");
   const locale = useLocale() as Locale;
   const [bagTier, setBagTier] = useState<Tier | null>(null);
@@ -83,6 +84,19 @@ export function TransportTool() {
     });
     setQuery("");
   }
+
+  // /flipping's row detail links here with the flip's item id to size the run for that specific
+  // cargo. It isn't necessarily a recipe output (can be a raw resource, journal or artifact), so
+  // it's resolved against the same 4-source name union flip rows themselves are built from, rather
+  // than the calculator's recipe-only search.
+  useEffect(() => {
+    if (!initialItemId) return;
+    const item = flipItemById(initialItemId);
+    if (!item) return;
+    addLine(initialItemId, `${itemName(item, locale)} (T${item.tier})`);
+    // Mount only, on purpose: it reads the shared link once, not on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const setup: TransportSetup = { bagTier, mountId, mountTier, foodActive, shoesCourierActive, capeCategory, capeTier };
   const result = computeTransportResult(lines, setup);

@@ -143,6 +143,7 @@ export function Calculator() {
   const [pinned, setPinned] = useState<PinnedCalc | null>(null);
   const [announce, setAnnounce] = useState("");
   const [recents, setRecents] = useState<Recent[]>([]);
+  const [transportInitialItemId, setTransportInitialItemId] = useState<string | null>(null);
 
   const [qty, setQty] = useState(1);
   const [premium, setPremium] = useState(true);
@@ -169,11 +170,19 @@ export function Calculator() {
     setRecents(readRecents());
     const sp = new URLSearchParams(window.location.search);
     const id = sp.get("item");
-    if (id) void load(id).then((ok) => ok && applyParams(paramsFromUrl(sp)));
+    const tabParam = sp.get("tab");
+    // /flipping's row detail links here (?item=...&tab=transporte) to size the run with the
+    // flip's own cargo. That item isn't necessarily a recipe -- it can be a raw resource, journal
+    // or artifact -- so it must go to the Transport tool's own cargo search, never through `load`
+    // (the calculator's recipe-only item loader, which 404s on anything that isn't a recipe).
+    if (tabParam === "transporte") {
+      setTab("transport");
+      if (id) setTransportInitialItemId(id);
+    } else if (id) {
+      void load(id).then((ok) => ok && applyParams(paramsFromUrl(sp)));
+    }
     // Old /sesiones links redirect here (next.config.ts): land on the saved plans.
-    if (sp.get("tab") === "planes") setTab("plans");
-    // /flipping's row detail links here (alongside ?item=) to size the run with the flip's own cargo.
-    if (sp.get("tab") === "transporte") setTab("transport");
+    if (tabParam === "planes") setTab("plans");
     // Mount only, on purpose: it reads the shared link once. `load` isn't memoized, so listing it
     // would re-run this on every render and keep re-applying the URL over the player's edits.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -586,7 +595,7 @@ export function Calculator() {
           <PlanList api={plansApi} alertsApi={alertsApi} onOpen={openPlan} />
         </Panel>
       ) : tab === "transport" ? (
-        <TransportTool />
+        <TransportTool initialItemId={transportInitialItemId} />
       ) : !data || !calc || !draft ? (
         <EmptyState loading={loading} recents={recents} onPick={load} onFocusSearch={() => searchRef.current?.focus()} />
       ) : (
