@@ -171,7 +171,9 @@ export function Calculator() {
     const id = sp.get("item");
     if (id) void load(id).then((ok) => ok && applyParams(paramsFromUrl(sp)));
     // Old /sesiones links redirect here (next.config.ts): land on the saved plans.
-    else if (sp.get("tab") === "planes") setTab("plans");
+    if (sp.get("tab") === "planes") setTab("plans");
+    // /flipping's row detail links here (alongside ?item=) to size the run with the flip's own cargo.
+    if (sp.get("tab") === "transporte") setTab("transport");
     // Mount only, on purpose: it reads the shared link once. `load` isn't memoized, so listing it
     // would re-run this on every render and keep re-applying the URL over the player's edits.
     // eslint-disable-next-line react-hooks/exhaustive-deps

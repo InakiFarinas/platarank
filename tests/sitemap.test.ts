@@ -13,7 +13,7 @@ describe("sitemap", () => {
 
   test("las páginas fijas salen en los 3 idiomas, con alternates y fechas reales", async () => {
     const xml = (await sitemapFile("pages"))!;
-    expect(xml.match(/<loc>/g)).toHaveLength(12 * 3);
+    expect(xml.match(/<loc>/g)).toHaveLength(13 * 3);
     expect(xml).toContain("/pt/metodologia</loc>");
     expect(xml).toContain('hreflang="x-default"');
     expect(xml).toContain("<lastmod>2026-09-19</lastmod>");

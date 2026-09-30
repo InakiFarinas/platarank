@@ -6,13 +6,9 @@ import { BREEDING_FEED_ITEMS, BREEDING_MEAT_ITEMS, breedingCostSilver, breedingP
 import { getCitySpecialty } from "@/lib/city-specialties";
 import { recipeJournal, type RecipeJournal } from "@/lib/journals";
 import { BASE_QUALITY_WEIGHTS } from "@/lib/quality-mechanics";
+import { MIN_LIQUID_DAYS } from "@/lib/formulas/liquidity";
 import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import type { Recipe, RecipeMaterial } from "@/lib/db/schema";
-
-// A single trade in 30 days still passes `volume > 0` and can carry a fantasy price into the
-// blend. Require the quality to have actually traded on more than a handful of days before it
-// counts as liquid.
-const MIN_LIQUID_DAYS = 3;
 
 export type CityPricePoint = {
   city: string;
@@ -400,7 +396,7 @@ function computeGearSellSide(itemId: string, market: MarketData, params: RecipeM
   };
 }
 
-function oldestAge(points: CityPricePoint[], cities: string[]): number | null {
+export function oldestAge(points: CityPricePoint[], cities: string[]): number | null {
   const ages = points.filter((p) => cities.includes(p.city) && p.priceAgeSeconds !== null).map((p) => p.priceAgeSeconds!);
   return ages.length > 0 ? Math.max(...ages) : null;
 }

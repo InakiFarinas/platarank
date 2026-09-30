@@ -313,19 +313,31 @@ function FilterFields({
  * paging through the sorted list by hand isn't a real path to "does this app cover my item".
  * Rendered once, always visible above the table (not inside the Filtros sheet/sidebar), so it
  * doesn't cost mobile an extra tap to reach the control it needs most on the densest rubro. */
-export function NameSearchField({ value, onChange }: { value: string; onChange: (value: string) => void }) {
+export function NameSearchField({
+  value,
+  onChange,
+  label,
+  placeholder,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  /** Override for a caller with different subject matter (e.g. /flipping's "ítem" vs. this
+   * namespace's default "receta"). Omit to keep the crafting-station wording. */
+  label?: string;
+  placeholder?: string;
+}) {
   const t = useTranslations("rankingUi.controls");
   const id = useId();
   return (
     <div className="relative">
       <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
       <Label htmlFor={id} className="sr-only">
-        {t("searchLabel")}
+        {label ?? t("searchLabel")}
       </Label>
       <Input
         id={id}
         type="search"
-        placeholder={t("searchPlaceholder")}
+        placeholder={placeholder ?? t("searchPlaceholder")}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="pl-9 pr-9"
@@ -344,7 +356,7 @@ export function NameSearchField({ value, onChange }: { value: string; onChange: 
   );
 }
 
-function FilterCard({
+export function FilterCard({
   title,
   children,
   collapsible,
@@ -385,7 +397,7 @@ function FilterCard({
   );
 }
 
-function CitySection({
+export function CitySection({
   title,
   icon: Icon,
   cities,
@@ -443,7 +455,7 @@ function CitySection({
   );
 }
 
-function NumberField({
+export function NumberField({
   label,
   hint,
   value,
