@@ -14,7 +14,7 @@ export async function LegalPage({ locale, title, updated, children }: { locale: 
     <>
       <SiteHeader title={title} description={t("updatedLabel", { date })} />
       <main id="contenido" className="mx-auto max-w-3xl px-3 pb-8 sm:px-6">
-        <div className="space-y-4 text-sm leading-relaxed text-muted-foreground [&_a]:text-money [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-8 [&_h2]:font-heading [&_h2]:text-base [&_h2]:text-foreground [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-foreground">
+        <div className="space-y-4 text-sm leading-relaxed text-muted-foreground [&_a]:text-money [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded [&_code]:bg-card [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-xs [&_code]:text-foreground [&_h2]:mt-8 [&_h2]:border-t [&_h2]:border-border [&_h2]:pt-6 [&_h2]:font-heading [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-foreground [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-foreground">
           {children}
         </div>
         <SiteFooter className="mt-12">

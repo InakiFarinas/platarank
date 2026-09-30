@@ -34,6 +34,7 @@
   },
   "auth": {
     "account": "Account",
+    "signedInAs": "Signed in as {name}",
     "signOut": "Sign out",
     "signIn": "Sign in with Discord"
   },

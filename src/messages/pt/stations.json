@@ -86,7 +86,7 @@
     "faqProfitA": "{profitable, select, yes {Sim} other {Não}} com estas premissas: lucro de {profit} por unidade ({margin} de margem) e {perDay} de prata por dia, com um volume de {volume} vendas diárias e {share}% de fatia de mercado.",
     "faqAssumptionsQ": "Com quais premissas é calculado?",
     "faqAssumptionsA": "A criação é feita em Brecilien sem foco, a compra na cidade mais barata e a venda pela mediana das cidades, descontando impostos. Na calculadora você pode mudar cidade, foco e preços.",
-    "summary": "Criar <b>{label}</b> no Albion Online custa <b>{cost}</b> de prata por unidade e vende a <b>{sell}</b>. O lucro é de <b>{profit}</b> por unidade ({margin} de margem) e rende <b>{perDay}</b> de prata por dia. Preço mais antigo usado: {age}.",
+    "summary": "Veja como rende criar <b>{label}</b> no Albion Online hoje, com {margin} de margem. Preço mais antigo usado: {age}.",
     "noData": "Ainda não há preços suficientes no servidor Américas para calcular o custo e o lucro de <b>{label}</b>. Você pode inserir seus próprios preços na calculadora.",
     "openCalc": "Abrir na calculadora",
     "stationRanking": "Ranking de {station}",

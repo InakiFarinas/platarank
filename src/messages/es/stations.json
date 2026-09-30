@@ -86,7 +86,7 @@
     "faqProfitA": "{profitable, select, yes {Sí} other {No}} con estos supuestos: ganancia de {profit} por unidad ({margin} de margen) y {perDay} de plata por día, con un volumen de {volume} ventas diarias y {share}% de cuota de mercado.",
     "faqAssumptionsQ": "¿Con qué supuestos se calcula?",
     "faqAssumptionsA": "Se craftea en Brecilien sin foco, se compra en la ciudad más barata y se vende a la mediana de ciudades, descontando impuestos. En la calculadora podés cambiar ciudad, foco y precios.",
-    "summary": "Craftear <b>{label}</b> en Albion Online cuesta <b>{cost}</b> de plata por unidad y se vende a <b>{sell}</b>. La ganancia es de <b>{profit}</b> por unidad ({margin} de margen) y deja <b>{perDay}</b> de plata por día. Precio más viejo usado: {age}.",
+    "summary": "Así rinde craftear <b>{label}</b> en Albion Online hoy, con {margin} de margen. Precio más viejo usado: {age}.",
     "noData": "Todavía no hay precios suficientes en el servidor Américas para calcular el costo y la ganancia de <b>{label}</b>. Podés cargar tus propios precios en la calculadora.",
     "openCalc": "Abrir en la calculadora",
     "stationRanking": "Ranking de {station}",
