@@ -42,6 +42,7 @@
     "refining": "+40% refinado",
     "meat": "+10% carne"
   },
+  "ui": { "close": "Cerrar" },
   "footer": {
     "legalNav": "Legal",
     "methodology": "Metodología",

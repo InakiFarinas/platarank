@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState, type ComponentType, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowDownToLine, ArrowUpFromLine, Search, SlidersHorizontal, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -283,7 +283,7 @@ function FilterFields({
         </div>
       </FilterCard>
 
-      <FilterCard title={t("listFilters")}>
+      <FilterCard title={t("listFilters")} collapsible startOpen={filters.maxAgeHours !== null || filters.minVolume !== null}>
         <div className="grid gap-4 @sm:grid-cols-2">
           <NumberField
             key={`max-age-${resetCount}`}
@@ -344,11 +344,43 @@ export function NameSearchField({ value, onChange }: { value: string; onChange: 
   );
 }
 
-function FilterCard({ title, children }: { title: string; children: ReactNode }) {
+function FilterCard({
+  title,
+  children,
+  collapsible,
+  startOpen,
+}: {
+  title: string;
+  children: ReactNode;
+  /** Lets a rarely-touched card start collapsed instead of always taking screen space -- see
+   * /impeccable critique 2026-09-28 on the Filtros sidebar's ~27 always-expanded controls. */
+  collapsible?: boolean;
+  /** Force it open regardless of the collapsible default, e.g. because a filter inside is active. */
+  startOpen?: boolean;
+}) {
+  const t = useTranslations("rankingUi.controls");
+  const [open, setOpen] = useState(!collapsible || startOpen === true);
+  if (!collapsible) {
+    return (
+      <section className="@container rounded-md border border-border bg-card/40 p-4">
+        <h2 className="mb-3 font-heading text-sm">{title}</h2>
+        <div className="flex flex-col gap-4">{children}</div>
+      </section>
+    );
+  }
   return (
     <section className="@container rounded-md border border-border bg-card/40 p-4">
-      <h2 className="mb-3 font-heading text-sm">{title}</h2>
-      <div className="flex flex-col gap-4">{children}</div>
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        className="flex w-full items-center justify-between gap-2 font-heading text-sm"
+      >
+        {title}
+        <ChevronDown className={cn("h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")} />
+      </button>
+      {open && <div className="mt-3 flex flex-col gap-4">{children}</div>}
+      {!open && <p className="mt-1 text-xs text-muted-foreground">{t("noLimit")} · {t("noMinimum")}</p>}
     </section>
   );
 }

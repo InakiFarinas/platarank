@@ -47,7 +47,7 @@
   "top": {
     "heading": "Lo que más rinde hoy",
     "intro": "Ordenamos por plata realizable por día: ganancia por unidad × volumen de ventas × cuota de mercado. Una receta con margen alto que casi no se vende rinde menos que una de margen chico que se vende todo el día.",
-    "best": "Ahora mismo, la receta que más rinde es <b>{name}</b> ({station}): {perDay} de plata por día con los supuestos por defecto.",
+    "unavailable": "No pudimos cargar el ranking en vivo ahora mismo. <link>Mirá el ranking completo</link>.",
     "listHeading": "Las mejores recetas ahora",
     "listNote": "plata por día · Brecilien, sin foco",
     "meta": "{station} · margen {margin} · volumen {volume}",

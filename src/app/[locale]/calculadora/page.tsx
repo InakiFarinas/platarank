@@ -45,7 +45,7 @@ export default async function CalculadoraPage({ params }: { params: Promise<{ lo
         ])}
       />
       <SiteHeader title={t("headerTitle")} description={t("headerDescription")} />
-      <main id="contenido" className="mx-auto max-w-5xl px-3 pb-8 sm:px-6">
+      <main id="contenido" className="mx-auto max-w-5xl px-3 pb-24 sm:px-6 lg:pb-8">
         <Calculator />
         <section className="mt-12 border-t border-border pt-10">
           <CommunitySponsors />

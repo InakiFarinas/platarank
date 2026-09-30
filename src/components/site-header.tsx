@@ -150,6 +150,12 @@ export function SiteHeader({
                 <MobileLink key={item.href} item={item} active={isActive(pathname, item.href, locale)} />
               ))}
             </nav>
+            {/* AuthButton is `hidden sm:block` in the nav strip above -- the mobile Sheet is the
+             * only sign-in entry point below that breakpoint, so it needs its own copy here
+             * (see /impeccable audit 2026-09-30). */}
+            <div className="border-t border-border px-4 pt-3 pb-4">
+              <AuthButton />
+            </div>
           </SheetContent>
         </Sheet>
 

@@ -52,6 +52,14 @@ export function RecipeTable({
 
   const pageRows = sortedRows.slice(currentPage * PAGE_SIZE, currentPage * PAGE_SIZE + PAGE_SIZE);
 
+  const [pageInput, setPageInput] = useState(String(currentPage + 1));
+  useEffect(() => setPageInput(String(currentPage + 1)), [currentPage]);
+  const commitPageInput = () => {
+    const n = Math.round(Number(pageInput));
+    if (Number.isFinite(n) && n >= 1) setPage(Math.min(pageCount, Math.max(1, n)) - 1);
+    else setPageInput(String(currentPage + 1));
+  };
+
   if (rows.length === 0) {
     return (
       <div className="rounded-md border border-border px-4 py-10 text-center text-sm text-muted-foreground">
@@ -121,6 +129,20 @@ export function RecipeTable({
           <PageButton onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={currentPage === 0} label={t("prevPage")}>
             <ArrowLeft className="h-3.5 w-3.5" />
           </PageButton>
+          {pageCount > 5 && (
+            <input
+              type="text"
+              inputMode="numeric"
+              aria-label={t("goToPage")}
+              value={pageInput}
+              onChange={(e) => setPageInput(e.target.value.replace(/\D/g, ""))}
+              onBlur={commitPageInput}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") e.currentTarget.blur();
+              }}
+              className="h-9 w-12 shrink-0 rounded-md border border-border bg-background text-center font-mono text-xs tabular-nums outline-none transition-colors focus-visible:border-money"
+            />
+          )}
           <PageButton
             onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
             disabled={currentPage >= pageCount - 1}

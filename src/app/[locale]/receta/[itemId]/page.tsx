@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { breadcrumbSchema, faqSchema, FaqList, JsonLd, type Faq } from "@/components/json-ld";
-import { formatSilver } from "@/components/recipes/format";
+import { formatSilver, qualityLabel } from "@/components/recipes/format";
+import { CITY_THEMES } from "@/lib/city-theme";
+import type { Location } from "@/lib/aodp/cities";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CTA_PRIMARY, CTA_SECONDARY } from "@/lib/cta";
@@ -77,6 +79,10 @@ export default async function RecipeItemPage({ params }: { params: Promise<Param
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "stations.recipe" });
   const ts = await getTranslations({ locale, namespace: "stations" });
+  // Reuses the ranking row's own derivation strings (quality breakdown, discarded outliers) so this
+  // page shows exactly the same "trust the derivation" detail instead of a shorter, inconsistent copy.
+  const tr = await getTranslations({ locale, namespace: "rankingUi.row" });
+  const DISCARD_REASONS = ["outlier_low", "outlier_high", "outlier_self"];
   const row = await loadItemRow(decodeURIComponent(raw));
   if (!row) notFound();
 
@@ -153,10 +159,10 @@ export default async function RecipeItemPage({ params }: { params: Promise<Param
               <p>{t.rich("noData", { b, label })}</p>
             )}
             <div className="mt-4 flex flex-wrap gap-3">
-              <Link href={calcHref} className={`${CTA_PRIMARY} inline-flex items-center px-4 py-2 text-sm`}>
+              <Link href={calcHref} className={`${CTA_PRIMARY} inline-flex min-h-11 items-center px-4 text-sm`}>
                 {t("openCalc")}
               </Link>
-              <Link href={stationHref} className={`${CTA_SECONDARY} inline-flex items-center px-4 py-2 text-sm`}>
+              <Link href={stationHref} className={`${CTA_SECONDARY} inline-flex min-h-11 items-center px-4 text-sm`}>
                 {t("stationRanking", { station: stationName.toLocaleLowerCase(locale) })}
               </Link>
             </div>
@@ -174,6 +180,7 @@ export default async function RecipeItemPage({ params }: { params: Promise<Param
                 [t("profitPerUnit"), fmt(profit)],
                 [t("dailyVolume"), fmt(row.avgDailyVolume30d)],
                 [t("silverPerDay"), fmt(row.platinumPerDay ?? 0)],
+                [tr("marketShare"), `${Math.round(row.marketSharePct * 100)}%`],
               ].map(([k, v]) => (
                 <div key={k} className="flex items-baseline justify-between gap-3">
                   <dt className="text-muted-foreground">{k}</dt>
@@ -181,6 +188,40 @@ export default async function RecipeItemPage({ params }: { params: Promise<Param
                 </div>
               ))}
             </dl>
+            {row.qualityBreakdown && (
+              <div className="mt-4 max-w-md text-sm">
+                <h3 className="mb-1 font-medium text-foreground">{tr("byQuality")}</h3>
+                <ul className="space-y-0.5">
+                  {row.qualityBreakdown.map((q) => (
+                    <li
+                      key={q.quality}
+                      className={`flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 ${q.liquid ? "" : "opacity-70"}`}
+                    >
+                      <span className="text-muted-foreground">{qualityLabel(q.quality, locale)}</span>
+                      <span
+                        className={`ml-auto shrink-0 font-mono tabular-nums ${q.liquid ? "" : "underline decoration-dashed decoration-muted-foreground underline-offset-4"}`}
+                      >
+                        {q.price !== null ? tr("silverAmount", { value: formatSilver(q.price) }) : tr("noDataShort")}
+                        {!q.liquid && tr("noLiquidity")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {row.discarded.length > 0 && (
+              <div className="mt-4 max-w-md text-sm">
+                <h3 className="mb-1 font-medium text-foreground">{tr("discarded")}</h3>
+                <ul className="space-y-0.5">
+                  {row.discarded.map((d, i) => (
+                    <li key={i} className="text-muted-foreground">
+                      <span className={CITY_THEMES[d.city as Location]?.text}>{d.city}</span>: {formatSilver(d.price)} --{" "}
+                      {DISCARD_REASONS.includes(d.reason) ? tr(`discard_${d.reason}` as "discard_outlier_low") : d.reason}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
         )}
 

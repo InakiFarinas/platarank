@@ -16,6 +16,7 @@ import type { CityPricePoint } from "@/lib/recipe-math";
 import type { Recipe } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 import { computeCraft } from "@/lib/craft-calc";
+import { getCitySpecialty } from "@/lib/city-specialties";
 import { DEFAULT_HIDEOUT, parseHideout, type CraftSite } from "@/lib/formulas/craft-site";
 import { HideoutControls } from "@/components/calculator/hideout-controls";
 import { searchItems, type SearchEntry, type SearchHit } from "@/lib/item-search";
@@ -259,7 +260,13 @@ export function Calculator() {
     setData(next);
     setOpenedPlan(null);
     setTab("calc");
-    if (!keepQuality) setQuality(1);
+    if (!keepQuality) {
+      setQuality(1);
+      // Default to the recipe's own specialty city instead of always Brecilien, so a fresh
+      // calculation doesn't open on a misleading loss for every recipe that bonuses elsewhere.
+      const spec = getCitySpecialty(next.recipe.craftingCategory);
+      setCraftCity((spec?.city as Location) ?? DEFAULTS.craftCity);
+    }
     setSellOverride(null);
     setMatOverrides({});
     setHits([]);
@@ -428,7 +435,7 @@ export function Calculator() {
       : null;
 
   return (
-    <div className="mt-2 pb-24 lg:pb-0">
+    <div className="mt-2">
       {/* Search + tabs */}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative min-w-0 flex-1 basis-72">
@@ -691,29 +698,6 @@ export function Calculator() {
                   ]}
                   onChange={(v) => setPremium(v === "p")}
                 />
-                {data.recipe.stationType === "gear" && (
-                  <Segmented
-                    label={t("conditions.sellMarket")}
-                    value={blackMarket ? "bm" : "royal"}
-                    options={[
-                      { value: "royal", text: t("conditions.cities") },
-                      { value: "bm", text: t("conditions.blackMarket") },
-                    ]}
-                    onChange={(v) => {
-                      setBlackMarket(v === "bm");
-                      setSellOverride(null);
-                    }}
-                  />
-                )}
-                <Segmented
-                  label={t("conditions.focus")}
-                  value={focus ? "f" : "n"}
-                  options={[
-                    { value: "n", text: t("conditions.noFocus") },
-                    { value: "f", text: t("conditions.withFocus") },
-                  ]}
-                  onChange={(v) => setFocus(v === "f")}
-                />
                 {data.recipe.stationType === "mount" && data.recipe.materials.some((m) => isBreedable(m.itemId)) && (
                   <Segmented
                     label={t("conditions.baseAnimal")}
@@ -765,12 +749,15 @@ export function Calculator() {
                 {data.recipe.stationType === "gear" && (
                   <Segmented
                     label={t("conditions.quality")}
+                    labelHint={
+                      <InfoTip
+                        term=""
+                        ariaLabel={t("ui.infoTipLabel", { term: t("conditions.quality") })}
+                        text={[1, 2, 3, 4, 5].map((q) => `Q${q} ${t(`conditions.qualityNames.${q}`)}`).join(" · ")}
+                      />
+                    }
                     value={quality}
-                    options={[1, 2, 3, 4, 5].map((q) => ({
-                      value: q,
-                      text: `Q${q}`,
-                      title: t(`conditions.qualityNames.${q}`),
-                    }))}
+                    options={[1, 2, 3, 4, 5].map((q) => ({ value: q, text: `Q${q}` }))}
                     onChange={(q) => {
                       setQuality(q);
                       setSellOverride(null);
@@ -785,10 +772,35 @@ export function Calculator() {
                 className="mt-4 flex items-center gap-1.5 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
               >
                 {t("conditions.advanced")}
-                {(feeRate !== DEFAULTS.feeRate || extraCost > 0) && <span className="text-money">{t("conditions.edited")}</span>}
+                {(blackMarket || focus || feeRate !== DEFAULTS.feeRate || extraCost > 0) && (
+                  <span className="text-money">{t("conditions.edited")}</span>
+                )}
               </DisclosureButton>
               {advOpen && (
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {data.recipe.stationType === "gear" && (
+                    <Segmented
+                      label={t("conditions.sellMarket")}
+                      value={blackMarket ? "bm" : "royal"}
+                      options={[
+                        { value: "royal", text: t("conditions.cities") },
+                        { value: "bm", text: t("conditions.blackMarket") },
+                      ]}
+                      onChange={(v) => {
+                        setBlackMarket(v === "bm");
+                        setSellOverride(null);
+                      }}
+                    />
+                  )}
+                  <Segmented
+                    label={t("conditions.focus")}
+                    value={focus ? "f" : "n"}
+                    options={[
+                      { value: "n", text: t("conditions.noFocus") },
+                      { value: "f", text: t("conditions.withFocus") },
+                    ]}
+                    onChange={(v) => setFocus(v === "f")}
+                  />
                   <Field label={t("conditions.stationFeeLabel")} hint={<InfoTip term={t("conditions.whatIsIt")} text={t("conditions.stationFeeTip")} />}>
                     <SilverInput label={t("conditions.stationFee")} value={feeRate} onChange={setFeeRate} />
                   </Field>

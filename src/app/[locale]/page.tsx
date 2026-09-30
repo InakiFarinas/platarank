@@ -5,10 +5,11 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { faqSchema, FaqList, JsonLd, type Faq } from "@/components/json-ld";
 import { DISCORD_URL, pageMetadata } from "@/lib/seo";
-import { ArrowRight, CheckCircle2, TrendingUp } from "lucide-react";
+import { Anvil, ArrowRight, CheckCircle2, MessageCircle, TrendingUp } from "lucide-react";
 import { formatSilver } from "@/components/recipes/format";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ShieldBadge } from "@/components/icons/shield-badge";
 import { CTA_PRIMARY, CTA_SECONDARY } from "@/lib/cta";
 import { CommunitySponsors } from "@/components/community-sponsors";
 import { itemIconUrl } from "@/lib/item-icons";
@@ -106,7 +107,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd data={faqSchema(faqs)} />
       <SiteHeader />
       <main id="contenido">
-        <section className="relative overflow-hidden border-b border-money/20">
+        <section className="relative overflow-hidden border-b-2 border-double border-money/20">
           <Image src="/hero.webp" alt="" fill priority sizes="100vw" className="object-cover object-[75%_center]" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/10 sm:via-background/70 sm:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
@@ -120,7 +121,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <Link
                   href={rankingHref}
-                  className={`${CTA_PRIMARY} inline-flex min-h-11 items-center gap-2 px-5 text-sm outline outline-1 outline-offset-[3px] outline-money/40`}
+                  className={`${CTA_PRIMARY} inline-flex min-h-11 items-center gap-2 px-5 text-sm outline outline-1 outline-offset-[3px] outline-money/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-money`}
                 >
                   <TrendingUp className="h-4 w-4" />
                   {t("hero.viewRecipes")}
@@ -144,21 +145,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </section>
 
-        <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <section className="border-b-2 border-double border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-10 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("top.heading")}</h2>
+              <div className="flex items-center gap-3">
+                <ShieldBadge>
+                  <TrendingUp className="h-5 w-5" />
+                </ShieldBadge>
+                <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("top.heading")}</h2>
+              </div>
               <p className="mt-3 text-sm text-muted-foreground sm:text-base">{t("top.intro")}</p>
-              {best && (
-                <p className="mt-3 text-sm sm:text-base">
-                  {t.rich("top.best", {
-                    b: (c) => <strong>{c}</strong>,
-                    name: label(best.row.recipe),
-                    station: stationName(best.row.recipe.stationType).toLocaleLowerCase(locale),
-                    perDay: formatSilver(best.row.platinumPerDay),
-                  })}
-                </p>
-              )}
               <ul className="mt-5 space-y-2.5">
                 {capabilities.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
@@ -208,15 +204,31 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </p>
               </div>
             )}
+            {top.length === 0 && (
+              <p className="rounded-sm border border-dashed border-border bg-card px-4 py-3 text-sm text-muted-foreground">
+                {t.rich("top.unavailable", {
+                  link: (chunks) => (
+                    <Link href={rankingHref} className="text-money underline underline-offset-2">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </p>
+            )}
 
             {best && <HowItAdds row={best.row} locale={locale} />}
             </div>
           </div>
         </section>
 
-        <section className="border-b border-money/20 bg-money/[0.03] px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <section className="border-b-2 border-double border-money/20 bg-money/[0.03] px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("stations.heading")}</h2>
+            <div className="flex items-center gap-3">
+              <ShieldBadge>
+                <Anvil className="h-5 w-5" />
+              </ShieldBadge>
+              <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("stations.heading")}</h2>
+            </div>
             <ul className="mt-6 divide-y divide-border rounded-sm border border-border bg-card">
               {STATION_TYPES.map((type) => (
                 <li key={type}>
@@ -238,9 +250,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </section>
 
-        <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <section className="border-b-2 border-double border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("discord.heading")}</h2>
+            <div className="flex items-center gap-3">
+              <ShieldBadge>
+                <MessageCircle className="h-5 w-5" />
+              </ShieldBadge>
+              <h2 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">{t("discord.heading")}</h2>
+            </div>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">{t("discord.body")}</p>
             <div className="mt-6 flex flex-wrap gap-4">
               <a
@@ -262,13 +279,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </section>
 
-        <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <section className="border-b-2 border-double border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <CommunitySponsors />
           </div>
         </section>
 
-        <section className="border-b border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <section className="border-b-2 border-double border-border px-3 py-14 sm:px-6 sm:py-20 lg:px-8">
           <FaqList faqs={faqs} className="mx-auto max-w-3xl" />
         </section>
 

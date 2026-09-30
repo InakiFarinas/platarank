@@ -13,12 +13,17 @@ export { CTA_PRIMARY, CTA_SECONDARY } from "@/lib/cta";
  * sides have a name (Premium / Sin premium, Royal / Black Market). */
 export function Segmented<T extends string | number>({
   label,
+  labelHint,
   value,
   options,
   onChange,
   className,
 }: {
   label: string;
+  /** An `InfoTip` (or similar) placed next to the label, for a control whose options need more
+   * explanation than a per-option `title` attribute can give on touch (see /impeccable critique
+   * 2026-09-28 on the quality Segmented -- `title` never opens on tap). */
+  labelHint?: ReactNode;
   value: T;
   options: { value: T; text: ReactNode; title?: string }[];
   onChange: (v: T) => void;
@@ -26,7 +31,10 @@ export function Segmented<T extends string | number>({
 }) {
   return (
     <div className={className}>
-      <span className="text-xs text-muted-foreground">{label}</span>
+      <span className="flex items-center gap-1 text-xs text-muted-foreground">
+        {label}
+        {labelHint}
+      </span>
       <div
         role="radiogroup"
         aria-label={label}
@@ -151,7 +159,7 @@ export function Panel({ title, aside, children, className }: { title: ReactNode;
 
 /** A term followed by a "?" that opens a short explanation on tap, click or Enter -- unlike a
  * title attribute, it works on a phone and with the keyboard. Closes on blur or Escape. */
-export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
+export function InfoTip({ term, text, ariaLabel }: { term: ReactNode; text: string; ariaLabel?: string }) {
   const t = useTranslations("calculator.ui");
   const [open, setOpen] = useState(false);
   const tipId = useId();
@@ -160,7 +168,7 @@ export function InfoTip({ term, text }: { term: ReactNode; text: string }) {
       {term}
       <button
         type="button"
-        aria-label={t("infoTipLabel", { term: typeof term === "string" ? term : t("infoTipFallback") })}
+        aria-label={ariaLabel ?? t("infoTipLabel", { term: typeof term === "string" ? term : t("infoTipFallback") })}
         aria-expanded={open}
         aria-describedby={open ? tipId : undefined}
         onClick={() => setOpen((o) => !o)}
