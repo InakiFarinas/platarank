@@ -16,3 +16,11 @@ export function saleTaxRate(premium: boolean): number {
 export function netSellMultiplier(premium = true): number {
   return 1 - saleTaxRate(premium);
 }
+
+/** Matching an existing buy order instead of publishing your own sell listing still owes the sale
+ * tax, but never the setup fee (that fee is for placing an order, not for filling someone else's).
+ * Used by flipping's instant-sell leg -- `netSellMultiplier` always bakes in `SETUP_FEE` and so
+ * can't represent this case. */
+export function netInstantSellMultiplier(premium = true): number {
+  return 1 - (premium ? SALE_TAX_WITH_PREMIUM : SALE_TAX_WITHOUT_PREMIUM);
+}

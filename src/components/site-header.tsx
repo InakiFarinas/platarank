@@ -44,10 +44,11 @@ function useNav() {
     locale,
     before: [entry(undefined, t("home"))],
     craft: CRAFT_ITEMS.map((i) => entry(i.route, t(i.route), i.count)),
-    // Artefactos is a materially different tool (no silver/day ranking, no derivation panel --
-    // see /impeccable critique 2026-09-30), so it gets its own top-level slot instead of sitting
-    // inside "Crafteo" alongside the 5 ranked rubros it doesn't work like.
-    after: [entry("artifacts", t("artifacts")), entry("calculator", t("calculator"))],
+    // Artefactos and Flipping are both materially different tools (no crafting, no recipe/station
+    // -- see /impeccable critique 2026-09-30 for Artefactos, same reasoning applies to Flipping),
+    // so they get their own top-level slot instead of sitting inside "Crafteo" alongside the 5
+    // ranked crafting rubros they don't work like.
+    after: [entry("artifacts", t("artifacts")), entry("flipping", t("flipping")), entry("calculator", t("calculator"))],
   };
 }
 

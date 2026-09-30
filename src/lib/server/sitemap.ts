@@ -27,6 +27,7 @@ const PAGES: Entry[] = [
   { route: "gear" },
   { route: "mounts" },
   { route: "artifacts" },
+  { route: "flipping" },
   { route: "calculator" },
   { route: "about", lastModified: "2026-09-27" },
   { route: "methodology", lastModified: "2026-09-29" },

@@ -17,9 +17,11 @@ import { ABSURD_PRICE_FACTOR, computeCityAggregates, computeCityPrice, dropAbsur
 import { ALL_BREEDING_MARKET_ITEMS } from "../src/lib/formulas/breeding";
 import { ARTIFACT_MARKET_ITEMS } from "../src/lib/artifacts";
 import { ALL_JOURNAL_MARKET_ITEMS } from "../src/lib/journals";
+import { RAW_RESOURCES } from "../src/lib/raw-resources-data";
 import { runAlerts } from "../src/lib/ingest/alerts";
 import { refreshRankSnapshot } from "../src/lib/server/station-data";
 import { refreshTopRecipesSnapshot } from "../src/lib/server/top-recipes";
+import { refreshFlipRankSnapshot } from "../src/lib/server/flip-data";
 import recipesJson from "../src/data/generated/recipes.json";
 import type { AodpPriceRow } from "../src/lib/aodp/types";
 
@@ -80,7 +82,8 @@ async function main() {
     try {
       await refreshRankSnapshot("gear");
       await refreshTopRecipesSnapshot();
-      console.log("Refreshed the gear and home snapshots.");
+      await refreshFlipRankSnapshot();
+      console.log("Refreshed the gear, home and flipping snapshots.");
     } catch (err) {
       console.error("Rank snapshot refresh failed:", err);
     }
@@ -128,6 +131,9 @@ function collectItemIds(): string[] {
   for (const itemId of ALL_JOURNAL_MARKET_ITEMS) ids.add(itemId);
   // Artifact Foundry (/artefactos): the fragments and every artifact they can roll into.
   for (const itemId of ARTIFACT_MARKET_ITEMS) ids.add(itemId);
+  // Flipping (/flipping): raw gatherable resources aren't a material of any recipe (players gather
+  // them free), but they're real, named, market-traded goods a flipper buys and sells cross-city.
+  for (const r of RAW_RESOURCES) ids.add(r.itemId);
   return [...ids];
 }
 

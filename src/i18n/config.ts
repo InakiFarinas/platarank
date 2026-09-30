@@ -16,6 +16,7 @@ export const ROUTES = {
   gear: { es: "equipo", en: "gear", pt: "equipamento" },
   mounts: { es: "monturas", en: "mounts", pt: "montarias" },
   artifacts: { es: "artefactos", en: "artifacts", pt: "artefatos" },
+  flipping: { es: "flipping", en: "flipping", pt: "flipping" },
   calculator: { es: "calculadora", en: "calculator", pt: "calculadora" },
   about: { es: "acerca", en: "about", pt: "sobre" },
   methodology: { es: "metodologia", en: "methodology", pt: "metodologia" },

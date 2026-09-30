@@ -4,6 +4,9 @@ import { recipeMarketItemIds, loadMarketFor, loadRankSnapshot, stationMarketItem
 import { loadTopRecipes, type TopRecipe } from "@/lib/server/top-recipes";
 import { recipeById, recipesOfStation } from "@/lib/recipes-data";
 import { loadArtifactPools, type ArtifactPoolView } from "@/lib/server/artifact-data";
+import { FLIP_ITEM_IDS } from "@/lib/flip-items";
+import { loadFlipRankSnapshot } from "@/lib/server/flip-data";
+import type { FlipRow } from "@/lib/flip-math";
 
 // Supabase egress is 5 GB/month on the free plan, and every serverless instance, every locale's ISR
 // render and every deploy used to read the same market rows on its own. These wrappers keep one copy
@@ -129,3 +132,55 @@ export const loadArtifactPoolsShared: () => Promise<ArtifactPoolView[]> = unstab
   revalidate: HOUR,
   tags: ["market"],
 });
+
+// Measured at ~4.6 MB packed (all ~7.2k items, quality 1 only) -- over Vercel's 2 MB data-cache
+// entry limit, so this needs gear's multi-shard split after all (the earlier estimate from row/item
+// counts alone undershot the real packed size). 6 shards keeps each one comfortably under the limit
+// with room for the item list to grow.
+const FLIP_SHARD_COUNT = 6;
+
+function flipShards(): string[][] {
+  const ids = [...FLIP_ITEM_IDS].sort();
+  const size = Math.ceil(ids.length / FLIP_SHARD_COUNT);
+  return Array.from({ length: FLIP_SHARD_COUNT }, (_, i) => ids.slice(i * size, (i + 1) * size)).filter((c) => c.length > 0);
+}
+
+// The item list is rebuilt inside from `index` (not passed directly): passing it as an argument
+// would put thousands of ids into the cache key. The list's hash is an argument only so it lands in
+// the key -- same convention `loadShard` above uses for gear's own shards.
+const loadFlipShard = unstable_cache(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async (index: number, _listHash: string): Promise<PackedMarket> => pack(await loadMarketFor(flipShards()[index] ?? [])),
+  ["flip-market-shard-v1"],
+  { revalidate: HOUR, tags: ["market"] },
+);
+
+/** Flippable items' market data, shared across instances/locales -- one Supabase read an hour. */
+export async function loadFlipMarketShared(): Promise<Record<string, CityPricePoint[]>> {
+  const shards = flipShards();
+  const parts = await Promise.all(shards.map((ids, i) => loadFlipShard(i, hash(ids.join(",")))));
+  const market: Record<string, CityPricePoint[]> = {};
+  for (const part of parts) unpackInto(market, part);
+  return market;
+}
+
+// /api/rank-flip recomputes on every changed filter; same short in-memory unpack memo gear's own
+// route gets via loadStationDataMemo, so a warm instance doesn't re-unpack the shard every request.
+let flipMemo: { at: number; data: Promise<Record<string, CityPricePoint[]>> } | null = null;
+
+export function loadFlipMarketMemo(): Promise<Record<string, CityPricePoint[]>> {
+  if (flipMemo && Date.now() - flipMemo.at < MEMO_TTL_MS) return flipMemo.data;
+  const data = loadFlipMarketShared();
+  flipMemo = { at: Date.now(), data };
+  data.catch(() => {
+    flipMemo = null;
+  });
+  return data;
+}
+
+/** The flipping ranking snapshot, same hourly-shared-read treatment as gear's. */
+export const loadFlipRankSnapshotShared: () => Promise<{ rows: FlipRow[]; total: number } | null> = unstable_cache(
+  () => loadFlipRankSnapshot(),
+  ["flip-rank-snapshot-v1"],
+  { revalidate: HOUR, tags: ["market"] },
+);
