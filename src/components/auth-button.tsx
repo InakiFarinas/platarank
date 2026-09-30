@@ -68,6 +68,7 @@ function AuthControls() {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={meta.avatar_url} alt="" width={28} height={28} className="h-7 w-7 rounded-full border border-border" />
         )}
+        <span className="sr-only md:hidden">{t("signedInAs", { name })}</span>
         <span className="hidden max-w-28 truncate text-xs text-muted-foreground md:inline">{name}</span>
         <button
           type="button"

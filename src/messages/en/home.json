@@ -47,7 +47,7 @@
   "top": {
     "heading": "What pays best today",
     "intro": "We sort by realizable silver per day: profit per unit × sales volume × market share. A recipe with a high margin that barely sells earns less than a low-margin one that sells all day.",
-    "best": "Right now, the best-earning recipe is <b>{name}</b> ({station}): {perDay} silver per day with the default assumptions.",
+    "unavailable": "We couldn't load the live ranking right now. <link>See the full ranking</link>.",
     "listHeading": "The best recipes right now",
     "listNote": "silver per day · Brecilien, no focus",
     "meta": "{station} · margin {margin} · volume {volume}",

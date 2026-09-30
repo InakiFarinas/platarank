@@ -86,7 +86,7 @@
     "faqProfitA": "{profitable, select, yes {Yes} other {No}} under these assumptions: a profit of {profit} per unit ({margin} margin) and {perDay} silver per day, with a volume of {volume} daily sales and {share}% market share.",
     "faqAssumptionsQ": "What assumptions are used?",
     "faqAssumptionsA": "It is crafted in Brecilien without focus, bought in the cheapest city and sold at the median across cities, after taxes. In the calculator you can change the city, focus and prices.",
-    "summary": "Crafting <b>{label}</b> in Albion Online costs <b>{cost}</b> silver per unit and it sells for <b>{sell}</b>. The profit is <b>{profit}</b> per unit ({margin} margin) and it earns <b>{perDay}</b> silver per day. Oldest price used: {age}.",
+    "summary": "Here's how crafting <b>{label}</b> in Albion Online pays off today, at {margin} margin. Oldest price used: {age}.",
     "noData": "There are not enough prices on the Americas server yet to calculate the cost and profit of <b>{label}</b>. You can enter your own prices in the calculator.",
     "openCalc": "Open in the calculator",
     "stationRanking": "{station} ranking",

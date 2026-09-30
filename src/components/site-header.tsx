@@ -23,7 +23,6 @@ const CRAFT_ITEMS: readonly { route: RouteKey; count: number | null }[] = [
   { route: "cooking", count: 183 },
   { route: "gear", count: 5711 },
   { route: "mounts", count: 29 },
-  { route: "artifacts", count: null },
 ];
 
 function formatCount(n: number): string {
@@ -45,7 +44,10 @@ function useNav() {
     locale,
     before: [entry(undefined, t("home"))],
     craft: CRAFT_ITEMS.map((i) => entry(i.route, t(i.route), i.count)),
-    after: [entry("calculator", t("calculator"))],
+    // Artefactos is a materially different tool (no silver/day ranking, no derivation panel --
+    // see /impeccable critique 2026-09-30), so it gets its own top-level slot instead of sitting
+    // inside "Crafteo" alongside the 5 ranked rubros it doesn't work like.
+    after: [entry("artifacts", t("artifacts")), entry("calculator", t("calculator"))],
   };
 }
 
@@ -108,10 +110,10 @@ export function SiteHeader({
           <nav className={cn("flex items-center gap-2 text-xs", !title && "gap-3 text-sm")}>
             <Link href={localePath(locale)} aria-label="PlataRank" className="mr-2 flex shrink-0 items-center gap-2.5 font-medium text-foreground hover:text-money">
               <Logo size={title ? 44 : 52} className={title ? "h-9 w-9 sm:h-11 sm:w-11" : "h-10 w-10 sm:h-13 sm:w-13"} />
-              <span className="hidden font-display text-xl tracking-wide sm:inline sm:text-2xl">PlataRank</span>
+              <span className="font-display text-sm tracking-wide sm:text-xl lg:text-2xl">PlataRank</span>
             </Link>
 
-        <div className="hidden min-w-0 flex-1 items-center gap-1 xl:flex">
+        <div className="hidden min-w-0 flex-1 items-center gap-1 lg:flex">
           {before.map((item) => (
             <NavTab key={item.href} href={item.href} label={item.label} count={item.count} active={isActive(pathname, item.href, locale)} />
           ))}
@@ -127,7 +129,7 @@ export function SiteHeader({
               <button
                 type="button"
                 aria-label={t("nav.openMenu")}
-                className="relative ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground after:absolute after:-inset-2 after:content-[''] xl:hidden"
+                className="relative ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground after:absolute after:-inset-2 after:content-[''] lg:hidden"
               >
                 <Menu className="h-4 w-4" />
               </button>
@@ -150,6 +152,12 @@ export function SiteHeader({
                 <MobileLink key={item.href} item={item} active={isActive(pathname, item.href, locale)} />
               ))}
             </nav>
+            {/* AuthButton is `hidden sm:block` in the nav strip above -- the mobile Sheet is the
+             * only sign-in entry point below that breakpoint, so it needs its own copy here
+             * (see /impeccable audit 2026-09-30). */}
+            <div className="border-t border-border px-4 pt-3 pb-4">
+              <AuthButton />
+            </div>
           </SheetContent>
         </Sheet>
 
@@ -277,7 +285,7 @@ function CraftMenu({ pathname, items, locale, label }: { pathname: string | null
       </MenuPrimitive.Trigger>
       <MenuPrimitive.Portal>
         <MenuPrimitive.Positioner align="start" sideOffset={8} className="z-30">
-          <MenuPrimitive.Popup className="min-w-44 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md outline-none">
+          <MenuPrimitive.Popup className="min-w-44 rounded-md border border-border bg-popover p-1 text-popover-foreground outline-none">
             {items.map((item) => {
               const itemActive = isActive(pathname, item.href, locale);
               return (

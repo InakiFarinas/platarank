@@ -26,7 +26,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
           aria-current={l === locale ? "true" : undefined}
           aria-label={t(l)}
           className={cn(
-            "rounded px-1.5 py-1 font-mono uppercase transition-colors",
+            "relative rounded px-1.5 py-1 font-mono uppercase transition-colors after:absolute after:-inset-2.5 after:content-['']",
             l === locale ? "bg-money/15 text-money" : "text-muted-foreground hover:text-foreground",
           )}
         >

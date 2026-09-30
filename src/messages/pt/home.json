@@ -47,7 +47,7 @@
   "top": {
     "heading": "O que mais rende hoje",
     "intro": "Ordenamos por prata realizável por dia: lucro por unidade × volume de vendas × fatia de mercado. Uma receita com margem alta que quase não vende rende menos que uma de margem pequena que vende o dia todo.",
-    "best": "Agora mesmo, a receita que mais rende é <b>{name}</b> ({station}): {perDay} de prata por dia com as premissas padrão.",
+    "unavailable": "Não conseguimos carregar o ranking ao vivo agora. <link>Veja o ranking completo</link>.",
     "listHeading": "As melhores receitas agora",
     "listNote": "prata por dia · Brecilien, sem foco",
     "meta": "{station} · margem {margin} · volume {volume}",

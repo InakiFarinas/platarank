@@ -39,9 +39,13 @@ function subscribeWide(onChange: () => void) {
 }
 
 /** Only one variant is mounted at a time (the other used to sit in the DOM under `display: none`,
- * doubling every row and its Sheet). The server snapshot is desktop, matching the SSR markup. */
+ * doubling every row and its Sheet). The server snapshot is mobile: mobile is this product's
+ * primary reading context (PRODUCT.md), so a pre-hydration visitor there sees the real mobile
+ * Contract Card immediately instead of a flash of the dense desktop row -- see /impeccable
+ * critique 2026-09-28. A desktop visitor gets one brief mobile-shaped frame before hydration
+ * flips it, which is the lesser cost. */
 function useIsWide() {
-  return useSyncExternalStore(subscribeWide, () => window.matchMedia(WIDE_QUERY).matches, () => true);
+  return useSyncExternalStore(subscribeWide, () => window.matchMedia(WIDE_QUERY).matches, () => false);
 }
 
 export function RecipeRowItem({ row, rank }: { row: RecipeRowData; rank: number }) {

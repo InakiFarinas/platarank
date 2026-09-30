@@ -40,6 +40,7 @@
     "recalculating": "Recalculando...",
     "recalcFailed": "No se pudo recalcular; la lista muestra el cálculo anterior.",
     "retry": "Reintentar",
+    "chipCraftCity": "Crafteo en {city}",
     "chipAge": "Antigüedad <= {hours}h",
     "chipVolume": "Volumen >= {volume}",
     "chipBuy": "Comprar en {count, plural, one {# ciudad} other {# ciudades}}",
@@ -65,6 +66,7 @@
     "page": "Página <n>{current}</n> de <n>{total}</n>",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
+    "goToPage": "Ir a la página",
     "sortDesc": ", orden descendente",
     "sortAsc": ", orden ascendente"
   },

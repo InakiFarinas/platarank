@@ -246,6 +246,13 @@ function ActiveFilterChips({
   const tSite = useTranslations("calculator.site");
   const chips: { key: string; label: string; onClear: () => void }[] = [];
 
+  if (params.craftCity !== DEFAULT_PARAMS.craftCity) {
+    chips.push({
+      key: "craftCity",
+      label: t("chipCraftCity", { city: params.craftCity }),
+      onClear: () => onParamsChange({ ...params, craftCity: DEFAULT_PARAMS.craftCity }),
+    });
+  }
   if (filters.nameQuery !== "") {
     chips.push({
       key: "name",

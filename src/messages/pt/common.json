@@ -34,6 +34,7 @@
   },
   "auth": {
     "account": "Conta",
+    "signedInAs": "Conectado como {name}",
     "signOut": "Sair",
     "signIn": "Entrar com Discord"
   },
@@ -42,6 +43,7 @@
     "refining": "+40% refino",
     "meat": "+10% carne"
   },
+  "ui": { "close": "Fechar" },
   "footer": {
     "legalNav": "Legal",
     "methodology": "Metodologia",
