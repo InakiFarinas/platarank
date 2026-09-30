@@ -8,7 +8,7 @@ import { BLACK_MARKET, REAL_CITIES, type Location } from "@/lib/aodp/cities";
 import { DEFAULT_FLIP_PARAMS, type FlipParams } from "@/lib/flip-math";
 import { DEFAULT_FLIP_FILTERS, type FlipFilterParams } from "@/lib/flip-filters";
 import { CitySection, FilterCard, NumberField, NameSearchField as RecipeNameSearchField } from "@/components/recipes/controls";
-import { Segmented } from "@/components/calculator/ui";
+import { InfoTip, Segmented } from "@/components/calculator/ui";
 
 export function NameSearchField({ value, onChange }: { value: string; onChange: (value: string) => void }) {
   const t = useTranslations("flipping.controls");
@@ -112,26 +112,13 @@ function FlipFilterFields({
     <div className="flex flex-col gap-4">
       <FilterCard title={t("cities")}>
         <div className="grid gap-4 @sm:grid-cols-2">
-          <div>
-            <CitySection
-              title={t("buyItemIn")}
-              icon={ArrowDownToLine}
-              cities={REAL_CITIES}
-              selected={params.buyCities}
-              onToggle={(city, checked) => toggleCity("buyCities", city, checked)}
-            />
-            <Segmented
-              label={t("buyMethod")}
-              value={params.buyMethodPref}
-              options={[
-                { value: "auto", text: t("buyMethodAuto"), title: t("buyMethodAutoHint") },
-                { value: "instant", text: t("buyMethodInstantOnly"), title: t("buyMethodInstantOnlyHint") },
-                { value: "order", text: t("buyMethodOrderOnly"), title: t("buyMethodOrderOnlyHint") },
-              ]}
-              onChange={(buyMethodPref) => onParamsChange({ ...params, buyMethodPref })}
-              className="mt-3"
-            />
-          </div>
+          <CitySection
+            title={t("buyItemIn")}
+            icon={ArrowDownToLine}
+            cities={REAL_CITIES}
+            selected={params.buyCities}
+            onToggle={(city, checked) => toggleCity("buyCities", city, checked)}
+          />
           <CitySection
             title={t("sellItemIn")}
             icon={ArrowUpFromLine}
@@ -146,6 +133,20 @@ function FlipFilterFields({
             }}
           />
         </div>
+      </FilterCard>
+
+      <FilterCard title={t("buyMethod")}>
+        <Segmented
+          label={t("buyMethodLabel")}
+          labelHint={<InfoTip term="" ariaLabel={t("buyMethodInfoLabel")} text={t("buyMethodInfo")} />}
+          value={params.buyMethodPref}
+          options={[
+            { value: "auto", text: t("buyMethodAuto") },
+            { value: "instant", text: t("buyMethodInstantOnly") },
+            { value: "order", text: t("buyMethodOrderOnly") },
+          ]}
+          onChange={(buyMethodPref) => onParamsChange({ ...params, buyMethodPref })}
+        />
       </FilterCard>
 
       <FilterCard title={t("assumptions")}>

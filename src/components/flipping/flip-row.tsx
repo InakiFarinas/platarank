@@ -18,8 +18,25 @@ import { itemName } from "@/lib/item-names";
 
 const DISCARD_REASONS = ["outlier_low", "outlier_high", "outlier_self"];
 
+/** Which side is actually missing, so the row can say why instead of a generic "insufficient
+ * data" -- a player shouldn't need to open the detail sheet just to learn that. */
+function missingDataKey(row: FlipRowData): "insufficientDataBuy" | "insufficientDataSell" | "insufficientData" | null {
+  if (row.hasData) return null;
+  if (row.buyPrice === null && row.sellPriceGross !== null) return "insufficientDataBuy";
+  if (row.sellPriceGross === null && row.buyPrice !== null) return "insufficientDataSell";
+  return "insufficientData";
+}
+
+/** A flip's buy and sell city can land on the same city (an order-book spread, not a haul between
+ * markets) -- distinct enough from real cross-city arbitrage that it needs its own copy, not the
+ * arrow and Transport-capacity CTA a genuine haul gets. */
+function isSameCityFlip(row: FlipRowData): boolean {
+  return row.buyCity !== null && row.buyCity === row.sellCity;
+}
+
 function rowAriaLabel(row: FlipRowData, t: ReturnType<typeof useTranslations>, locale: Locale): string {
-  const dataNote = row.hasData ? "" : t("insufficientDataSuffix");
+  const missing = missingDataKey(row);
+  const dataNote = missing ? t("insufficientDataSuffix") : "";
   return t("ariaLabel", { name: itemName(row.item, locale), tier: `T${row.item.tier}`, value: formatSilver(row.platinumPerDay), dataNote });
 }
 
@@ -48,6 +65,8 @@ function LedgerRow({ row, rank }: { row: FlipRowData; rank: number }) {
   const [open, setOpen] = useState(false);
   const detailId = useId();
   const { item } = row;
+  const missing = missingDataKey(row);
+  const sameCity = isSameCityFlip(row);
 
   return (
     <div>
@@ -71,9 +90,14 @@ function LedgerRow({ row, rank }: { row: FlipRowData; rank: number }) {
           <Badge variant="secondary" className="shrink-0 font-mono text-xs tabular-nums">
             T{item.tier}
           </Badge>
-          {!row.hasData && (
+          {sameCity && (
             <Badge variant="outline" className="shrink-0 text-xs text-muted-foreground">
-              {t("insufficientData")}
+              {t("sameCityBadge")}
+            </Badge>
+          )}
+          {missing && (
+            <Badge variant="outline" className="shrink-0 text-xs text-muted-foreground">
+              {t(missing)}
             </Badge>
           )}
         </div>
@@ -104,6 +128,8 @@ function ContractCard({ row }: { row: FlipRowData }) {
   const locale = useLocale() as Locale;
   const [sheetOpen, setSheetOpen] = useState(false);
   const { item } = row;
+  const missing = missingDataKey(row);
+  const sameCity = isSameCityFlip(row);
 
   return (
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
@@ -124,9 +150,14 @@ function ContractCard({ row }: { row: FlipRowData }) {
                     <Badge variant="secondary" className="font-mono text-xs tabular-nums">
                       T{item.tier}
                     </Badge>
-                    {!row.hasData && (
+                    {sameCity && (
                       <Badge variant="outline" className="text-xs text-muted-foreground">
-                        {t("insufficientData")}
+                        {t("sameCityBadge")}
+                      </Badge>
+                    )}
+                    {missing && (
+                      <Badge variant="outline" className="text-xs text-muted-foreground">
+                        {t(missing)}
                       </Badge>
                     )}
                   </div>
@@ -140,11 +171,22 @@ function ContractCard({ row }: { row: FlipRowData }) {
 
             <div className="mt-2.5 flex items-center justify-between gap-3 text-xs text-muted-foreground">
               <span>
-                {row.buyCity && <span className={CITY_THEMES[row.buyCity as Location]?.text}>{row.buyCity}</span>}
-                {row.buyPrice !== null && ` ${formatSilver(row.buyPrice)}`}
-                {" -> "}
-                {row.sellCity && <span className={CITY_THEMES[row.sellCity as Location]?.text}>{row.sellCity}</span>}
-                {row.sellPriceGross !== null && ` ${formatSilver(row.sellPriceGross)}`}
+                {sameCity ? (
+                  <>
+                    {row.buyCity && <span className={CITY_THEMES[row.buyCity as Location]?.text}>{row.buyCity}</span>}
+                    {row.buyPrice !== null && ` ${formatSilver(row.buyPrice)}`}
+                    {" / "}
+                    {row.sellPriceGross !== null && formatSilver(row.sellPriceGross)}
+                  </>
+                ) : (
+                  <>
+                    {row.buyCity && <span className={CITY_THEMES[row.buyCity as Location]?.text}>{row.buyCity}</span>}
+                    {row.buyPrice !== null && ` ${formatSilver(row.buyPrice)}`}
+                    {" -> "}
+                    {row.sellCity && <span className={CITY_THEMES[row.sellCity as Location]?.text}>{row.sellCity}</span>}
+                    {row.sellPriceGross !== null && ` ${formatSilver(row.sellPriceGross)}`}
+                  </>
+                )}
               </span>
               <span className="font-mono tabular-nums text-foreground">{formatPercent(row.marginPct)}</span>
             </div>
@@ -178,15 +220,20 @@ function Stat({ label, value, city, mono }: { label: string; value: string; city
 function RowDetail({ row }: { row: FlipRowData }) {
   const t = useTranslations("flipping.row");
   const locale = useLocale() as Locale;
+  const sameCity = isSameCityFlip(row);
   return (
     <div className="bg-card/50 px-3 py-3 text-xs sm:px-9">
-      <Link
-        href={localePath(locale, "calculator", `?item=${encodeURIComponent(row.item.itemId)}&tab=transporte`)}
-        className={`${CTA_SECONDARY} mb-3 inline-flex items-center gap-1.5 px-2.5 py-1`}
-      >
-        <Truck className="h-3.5 w-3.5" />
-        {t("openTransport")}
-      </Link>
+      {sameCity ? (
+        <p className="mb-3 text-muted-foreground">{t("sameCityNote")}</p>
+      ) : (
+        <Link
+          href={localePath(locale, "calculator", `?item=${encodeURIComponent(row.item.itemId)}&tab=transporte`)}
+          className={`${CTA_SECONDARY} mb-3 inline-flex items-center gap-1.5 px-2.5 py-1`}
+        >
+          <Truck className="h-3.5 w-3.5" />
+          {t("openTransport")}
+        </Link>
+      )}
       <dl className="space-y-1 text-muted-foreground">
         <Row
           k={t("buyAt")}
