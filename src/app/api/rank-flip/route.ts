@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
     buyCities: Array.isArray(p.buyCities) ? p.buyCities.filter(isLocation).filter((c) => (REAL_CITIES as readonly string[]).includes(c)) : DEFAULT_FLIP_PARAMS.buyCities,
     sellCities: Array.isArray(p.sellCities) ? p.sellCities.filter(isLocation) : DEFAULT_FLIP_PARAMS.sellCities,
     marketShare: num(p.marketShare, DEFAULT_FLIP_PARAMS.marketShare, 0, 1),
+    buyMethodPref: p.buyMethodPref === "instant" || p.buyMethodPref === "order" ? p.buyMethodPref : "auto",
   };
   const filters: FlipFilterParams = {
     nameQuery: typeof f.nameQuery === "string" ? f.nameQuery.slice(0, 80) : "",
@@ -75,7 +76,7 @@ export async function POST(request: NextRequest) {
     desc: s.desc !== false,
   };
 
-  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, filters, sort]);
+  const key = JSON.stringify([[...params.buyCities].sort(), [...params.sellCities].sort(), params.marketShare, params.buyMethodPref, filters, sort]);
   const cached = results.get(key);
   if (cached && Date.now() - cached.at < RESULT_TTL_MS) return NextResponse.json(cached.body);
 

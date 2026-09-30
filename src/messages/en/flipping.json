@@ -26,7 +26,14 @@
     "maxAge": "Maximum age (hours)",
     "noLimit": "no limit",
     "searchLabel": "Search item by name",
-    "searchPlaceholder": "Search item by name..."
+    "searchPlaceholder": "Search item by name...",
+    "buyMethod": "How you buy",
+    "buyMethodAuto": "Automatic",
+    "buyMethodAutoHint": "Uses whichever is cheaper in each city: buying now or placing your own order.",
+    "buyMethodInstantOnly": "Buy now only",
+    "buyMethodInstantOnlyHint": "Only counts buying against an existing sell order, no waiting.",
+    "buyMethodOrderOnly": "Own order only",
+    "buyMethodOrderOnlyHint": "Only counts placing your own buy order and waiting for a seller to fill it."
   },
   "explorer": {
     "showingTop": "Showing the {shown} best of {total} items.",
@@ -42,6 +49,8 @@
     "chipBuy": "Buy in {count, plural, one {# city} other {# cities}}",
     "chipSell": "Sell in {count, plural, one {# city} other {# cities}}",
     "chipShare": "Market share: {value}%",
+    "chipBuyMethodInstant": "Buy: buy now only",
+    "chipBuyMethodOrder": "Buy: own order only",
     "removeFilter": "Remove filter: {label}"
   },
   "table": {
@@ -76,6 +85,8 @@
     "openTransport": "Check carry capacity",
     "methodListing": "sell order",
     "methodInstant": "instant buy order",
+    "buyMethodInstant": "instant buy",
+    "buyMethodOrder": "own buy order",
     "buyAt": "Buy in",
     "sellAt": "Sell in",
     "ageBuy": "Age (buy)",

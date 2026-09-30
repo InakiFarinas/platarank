@@ -198,6 +198,13 @@ function ActiveFilterChips({
       onClear: () => onParamsChange({ ...params, marketShare: DEFAULT_FLIP_PARAMS.marketShare }),
     });
   }
+  if (params.buyMethodPref !== DEFAULT_FLIP_PARAMS.buyMethodPref) {
+    chips.push({
+      key: "buyMethod",
+      label: t(params.buyMethodPref === "instant" ? "chipBuyMethodInstant" : "chipBuyMethodOrder"),
+      onClear: () => onParamsChange({ ...params, buyMethodPref: DEFAULT_FLIP_PARAMS.buyMethodPref }),
+    });
+  }
 
   if (chips.length === 0) return null;
 

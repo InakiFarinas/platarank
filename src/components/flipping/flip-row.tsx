@@ -188,7 +188,14 @@ function RowDetail({ row }: { row: FlipRowData }) {
         {t("openTransport")}
       </Link>
       <dl className="space-y-1 text-muted-foreground">
-        <Row k={t("buyAt")} v={row.buyCity ? `${row.buyCity} · ${t("silverAmount", { value: formatSilver(row.buyPrice) })}` : t("noData")} />
+        <Row
+          k={t("buyAt")}
+          v={
+            row.buyCity
+              ? `${row.buyCity} · ${t("silverAmount", { value: formatSilver(row.buyPrice) })} (${row.buyMethod === "order" ? t("buyMethodOrder") : t("buyMethodInstant")})`
+              : t("noData")
+          }
+        />
         <Row k={t("ageBuy")} v={formatAge(row.buyAgeSeconds, locale)} />
         <Row
           k={t("sellAt")}

@@ -22,6 +22,7 @@ describe("computeFlipRow", () => {
     expect(row.hasData).toBe(true);
     expect(row.buyCity).toBe("Caerleon");
     expect(row.buyPrice).toBe(100);
+    expect(row.buyMethod).toBe("instant");
     expect(row.sellCity).toBe("Martlock");
     expect(row.sellMethod).toBe("listing");
     expect(row.marginPerUnit).not.toBeNull();
@@ -55,6 +56,33 @@ describe("computeFlipRow", () => {
     const data = market([point("Caerleon", 100, null, 50), point("Martlock", 150, 140, 9000)]);
     const row = computeFlipRow(item, data, params);
     expect(row.avgDailyVolume30d).toBe(50);
+  });
+
+  test("en modo automático, poner tu propia orden de compra gana si es más barata que comprar ya", () => {
+    const data = market([point("Caerleon", 100, 90), point("Martlock", 150, 140)]);
+    const row = computeFlipRow(item, data, params);
+    expect(row.buyCity).toBe("Caerleon");
+    expect(row.buyPrice).toBe(90);
+    expect(row.buyMethod).toBe("order");
+  });
+
+  test("buyMethodPref 'instant' ignora la orden de compra propia aunque sea más barata", () => {
+    const data = market([point("Caerleon", 100, 90)]);
+    const row = computeFlipRow(item, data, { ...params, buyMethodPref: "instant" });
+    expect(row.buyPrice).toBe(100);
+    expect(row.buyMethod).toBe("instant");
+  });
+
+  test("buyMethodPref 'order' ignora comprar ya, incluso si no hay orden de compra en esa ciudad", () => {
+    const withOrder = market([point("Caerleon", 100, 90)]);
+    const rowWithOrder = computeFlipRow(item, withOrder, { ...params, buyMethodPref: "order" });
+    expect(rowWithOrder.buyPrice).toBe(90);
+    expect(rowWithOrder.buyMethod).toBe("order");
+
+    const withoutOrder = market([point("Caerleon", 100)]);
+    const rowWithoutOrder = computeFlipRow(item, withoutOrder, { ...params, buyMethodPref: "order" });
+    expect(rowWithoutOrder.hasData).toBe(false);
+    expect(rowWithoutOrder.buyPrice).toBeNull();
   });
 
   test("los supuestos por defecto nunca ofrecen Black Market como ciudad de compra", () => {

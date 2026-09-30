@@ -15,12 +15,18 @@ export type FlipParams = {
   /** 0-1. Fraction of the smaller side's (buy or sell) daily volume the player assumes they can
    * capture -- same semantics as crafting's `marketShare`. */
   marketShare: number;
+  /** How the buy leg is allowed to fill: "auto" picks whichever of the two is cheaper per city
+   * (the default), "instant" forces matching an existing sell order right now, "order" forces
+   * placing your own buy order and waiting. A player who doesn't want to sit on a buy order can
+   * pin it to "instant"; one who always undercuts can pin it to "order". */
+  buyMethodPref: "auto" | "instant" | "order";
 };
 
 export const DEFAULT_FLIP_PARAMS: FlipParams = {
   buyCities: [...REAL_CITIES],
   sellCities: [...REAL_CITIES, BLACK_MARKET],
   marketShare: 0.1,
+  buyMethodPref: "auto",
 };
 
 export type FlipRow = {
@@ -28,6 +34,10 @@ export type FlipRow = {
   hasData: boolean;
   buyCity: string | null;
   buyPrice: number | null;
+  /** Which quote won the buy leg -- "instant" (match the cheapest standing sell order right now) or
+   * "order" (place your own buy order and wait for a seller to fill it, at the best standing buy
+   * order price). Buying never pays tax or a setup fee either way, so the cheaper one always wins. */
+  buyMethod: "instant" | "order" | null;
   buyAgeSeconds: number | null;
   sellCity: string | null;
   /** The raw quote before tax: the city's sell-listing price, or its best standing buy order. */
@@ -67,16 +77,26 @@ export const FLIP_SORT_ACCESSORS: Record<FlipSortKey, (r: FlipRow) => number> = 
  * hidden), just excluded from what counts as "the top" for the default sort/snapshot. */
 export const SANE_MARGIN_CEILING = 0.8;
 
-function buyLeg(item: FlipItem, points: CityPricePoint[], buyCities: Location[]) {
-  const quotes: (CityQuote & { age: number | null })[] = [];
+function buyLeg(item: FlipItem, points: CityPricePoint[], buyCities: Location[], methodPref: FlipParams["buyMethodPref"]) {
+  const quotes: (CityQuote & { age: number | null; method: "instant" | "order" })[] = [];
   for (const p of points) {
-    if (p.quality !== 1 || !buyCities.includes(p.city as Location) || p.price === null || !isLiquid(p)) continue;
-    quotes.push({ city: p.city, price: p.price, selfRef: p.weightedAvgPrice30d, age: p.priceAgeSeconds });
+    if (p.quality !== 1 || !buyCities.includes(p.city as Location) || !isLiquid(p)) continue;
+    // Buying never pays tax or a setup fee in Albion -- whether you instant-buy against an existing
+    // sell order (`price`) or place your own buy order and wait for a seller to fill it
+    // (`buyPriceMax`, the same "best standing buy order" field the sell leg's instant-sell method
+    // reads). No multiplier needed either way, so "auto" always picks whichever is cheaper; a
+    // pinned preference restricts the city to just that one method instead.
+    const instant = methodPref !== "order" ? p.price : null;
+    const order = methodPref !== "instant" ? p.buyPriceMax : null;
+    const useOrder = order !== null && (instant === null || order < instant);
+    const price = useOrder ? order : instant;
+    if (price === null) continue;
+    quotes.push({ city: p.city, price, selfRef: p.weightedAvgPrice30d, age: p.priceAgeSeconds, method: useOrder ? "order" : "instant" });
   }
   const stat = robustStat(quotes, "min");
-  if (stat.value === null) return { price: null, city: null, age: null, discarded: stat.result.discarded };
-  const kept = stat.result.kept.find((q) => q.price === stat.value) as (CityQuote & { age: number | null }) | undefined;
-  return { price: stat.value, city: kept?.city ?? null, age: kept?.age ?? null, discarded: stat.result.discarded };
+  if (stat.value === null) return { price: null, city: null, age: null, method: null, discarded: stat.result.discarded };
+  const kept = stat.result.kept.find((q) => q.price === stat.value) as (CityQuote & { age: number | null; method: "instant" | "order" }) | undefined;
+  return { price: stat.value, city: kept?.city ?? null, age: kept?.age ?? null, method: kept?.method ?? null, discarded: stat.result.discarded };
 }
 
 function sellLeg(points: CityPricePoint[], sellCities: Location[]) {
@@ -106,7 +126,7 @@ function sellLeg(points: CityPricePoint[], sellCities: Location[]) {
 
 export function computeFlipRow(item: FlipItem, market: MarketData, params: FlipParams): FlipRow {
   const points = market.get(item.itemId) ?? [];
-  const buy = buyLeg(item, points, params.buyCities);
+  const buy = buyLeg(item, points, params.buyCities, params.buyMethodPref);
   const sell = sellLeg(points, params.sellCities);
   const hasData = buy.price !== null && sell !== null;
 
@@ -120,6 +140,7 @@ export function computeFlipRow(item: FlipItem, market: MarketData, params: FlipP
     hasData,
     buyCity: buy.city,
     buyPrice: buy.price,
+    buyMethod: buy.method,
     buyAgeSeconds: buy.age ?? oldestAge(points, params.buyCities),
     sellCity: sell?.city ?? null,
     sellPriceGross: sell?.gross ?? null,

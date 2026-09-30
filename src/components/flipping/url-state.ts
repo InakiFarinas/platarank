@@ -22,6 +22,7 @@ export function writeStateToUrl(params: FlipParams, filters: FlipFilterParams): 
   if (citiesToParam(params.buyCities) !== citiesToParam(DEFAULT_FLIP_PARAMS.buyCities)) q.set("comprar", citiesToParam(params.buyCities));
   if (citiesToParam(params.sellCities) !== citiesToParam(DEFAULT_FLIP_PARAMS.sellCities)) q.set("vender", citiesToParam(params.sellCities));
   if (params.marketShare !== DEFAULT_FLIP_PARAMS.marketShare) q.set("cuota", String(Math.round(params.marketShare * 100)));
+  if (params.buyMethodPref !== DEFAULT_FLIP_PARAMS.buyMethodPref) q.set("metodo", params.buyMethodPref);
   if (filters.nameQuery !== DEFAULT_FLIP_FILTERS.nameQuery) q.set("nombre", filters.nameQuery);
   if (filters.minMarginPct !== DEFAULT_FLIP_FILTERS.minMarginPct) q.set("margen", String(filters.minMarginPct));
   if (filters.minVolume !== DEFAULT_FLIP_FILTERS.minVolume) q.set("volumen", String(filters.minVolume));
@@ -44,6 +45,10 @@ export function parseStateFromUrl(): { params: FlipParams; filters: FlipFilterPa
   if (q.has("cuota")) {
     const v = Number(q.get("cuota"));
     if (Number.isFinite(v)) params.marketShare = v / 100;
+  }
+  if (q.has("metodo")) {
+    const v = q.get("metodo");
+    if (v === "instant" || v === "order") params.buyMethodPref = v;
   }
   if (q.has("nombre")) filters.nameQuery = q.get("nombre")!;
   if (q.has("margen")) {

@@ -26,7 +26,14 @@
     "maxAge": "Antigüedad máxima (horas)",
     "noLimit": "sin límite",
     "searchLabel": "Buscar ítem por nombre",
-    "searchPlaceholder": "Buscar ítem por nombre..."
+    "searchPlaceholder": "Buscar ítem por nombre...",
+    "buyMethod": "Cómo comprás",
+    "buyMethodAuto": "Automático",
+    "buyMethodAutoHint": "Usa lo que salga más barato en cada ciudad: comprar ya o poner tu propia orden.",
+    "buyMethodInstantOnly": "Solo compra ya",
+    "buyMethodInstantOnlyHint": "Solo cuenta comprar contra una orden de venta existente, sin esperar.",
+    "buyMethodOrderOnly": "Solo orden propia",
+    "buyMethodOrderOnlyHint": "Solo cuenta poner tu propia orden de compra y esperar a que alguien te venda."
   },
   "explorer": {
     "showingTop": "Mostrando los {shown} mejores de {total} ítems.",
@@ -42,6 +49,8 @@
     "chipBuy": "Comprar en {count, plural, one {# ciudad} other {# ciudades}}",
     "chipSell": "Vender en {count, plural, one {# ciudad} other {# ciudades}}",
     "chipShare": "Cuota de mercado: {value}%",
+    "chipBuyMethodInstant": "Compra: solo compra ya",
+    "chipBuyMethodOrder": "Compra: solo orden propia",
     "removeFilter": "Quitar filtro: {label}"
   },
   "table": {
@@ -76,6 +85,8 @@
     "openTransport": "Ver capacidad de carga",
     "methodListing": "orden de venta",
     "methodInstant": "orden de compra instantánea",
+    "buyMethodInstant": "compra instantánea",
+    "buyMethodOrder": "orden de compra propia",
     "buyAt": "Comprar en",
     "sellAt": "Vender en",
     "ageBuy": "Antigüedad (compra)",
